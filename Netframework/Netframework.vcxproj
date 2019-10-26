@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <CustomProjectExtensionsPath>$(MSBuildBinPath)\..\..\VisualAda\BuildSystem\</CustomProjectExtensionsPath>
+    <ProjectName>Netframework</ProjectName>
+    <ProjectGuid>{3d7eb817-1a32-47dc-a1b0-3441be6c52bf}</ProjectGuid>
+    <Keyword>Netframework</Keyword>
+    <RootNamespace>Netframework</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <VisualAdaVersion>1.2.0.0</VisualAdaVersion>
+  </PropertyGroup>
+  <PropertyGroup Label="Globals" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <UseMicrosoftLinker>true</UseMicrosoftLinker>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64' or '$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <AdaTarget>x86_64-w64-mingw32</AdaTarget>
+    <GnatRoot>C:\msys64\mingw64</GnatRoot>
+    <GnatRootRTS>C:\msys64\mingw64\lib\gcc\x86_64-w64-mingw32\9.2.0</GnatRootRTS>
+    <GnatMingwRoot>C:\msys64\mingw64\x86_64-w64-mingw32</GnatMingwRoot>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32' or '$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <AdaTarget>Unknown</AdaTarget>
+    <GnatRoot>Unknown</GnatRoot>
+    <GnatRootRTS>Unknown</GnatRootRTS>
+    <GnatMingwRoot>Unknown</GnatMingwRoot>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GnatRootRTSAda Condition="'$(AdaRTS)'==''">$(GnatRootRTS)</GnatRootRTSAda>
+    <GnatRootRTSAda Condition="'$(AdaRTS)'!=''">$(GnatRootRTS)\rts-$(AdaRTS)</GnatRootRTSAda>
+    <GnatRootRTSAdaLib Condition="'$(AdaRTS)'==''">$(GnatRootRTS)\adalib</GnatRootRTSAdaLib>
+    <GnatRootRTSAdaLib Condition="'$(AdaRTS)'!=''">$(GnatRootRTS)\rts-$(AdaRTS)\adalib</GnatRootRTSAdaLib>
+    <GnatLibraryDir>$(GnatRoot)\lib</GnatLibraryDir>
+    <GnatWinRtLibraryDir>$(GnatRootRTSAda)\lib\WinRt</GnatWinRtLibraryDir>
+    <GprbuildOptions>-aP$(GnatRootRTSAda)\share\gpr</GprbuildOptions>
+  </PropertyGroup>
+  <Import Project="$(CustomProjectExtensionsPath)Ada_Default.props" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(CustomProjectExtensionsPath)Ada.props" />
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\Build\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\Build\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\Build\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\Build\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NetframeworkBase\NetframeworkBase.vcxproj">
+      <Project>{e6b29e36-12a7-4aca-985a-4cc8257ee15c}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AdaCompile Include="NetFramework.ads" />
+    <AdaCompile Include="NetFramework.Microsoft.ads" />
+    <AdaCompile Include="NetFramework.Microsoft.Win32.ads" />
+    <AdaCompile Include="NetFramework.Microsoft.Win32.SafeHandles.ads" />
+    <AdaCompile Include="NetFramework.System.ads" />
+    <AdaCompile Include="NetFramework.System.Collections.ads" />
+    <AdaCompile Include="NetFramework.System.Configuration.ads" />
+    <AdaCompile Include="NetFramework.System.Configuration.Assemblies.ads" />
+    <AdaCompile Include="NetFramework.System.Globalization.ads" />
+    <AdaCompile Include="NetFramework.System.IO.ads" />
+    <AdaCompile Include="NetFramework.System.Reflection.ads" />
+    <AdaCompile Include="NetFramework.System.Runtime.ads" />
+    <AdaCompile Include="NetFramework.System.Runtime.CompilerServices.ads" />
+    <AdaCompile Include="NetFramework.System.Runtime.ConstrainedExecution.ads" />
+    <AdaCompile Include="NetFramework.System.Runtime.InteropServices.ads" />
+    <AdaCompile Include="NetFramework.System.Runtime.Remoting.ads" />
+    <AdaCompile Include="NetFramework.System.Runtime.Remoting.Messaging.ads" />
+    <AdaCompile Include="NetFramework.System.Runtime.Serialization.ads" />
+    <AdaCompile Include="NetFramework.System.Security.AccessControl.ads" />
+    <AdaCompile Include="NetFramework.System.Security.ads" />
+    <AdaCompile Include="NetFramework.System.Security.Cryptography.ads" />
+    <AdaCompile Include="NetFramework.System.Security.Cryptography.X509Certificates.ads" />
+    <AdaCompile Include="NetFramework.System.Security.Permissions.ads" />
+    <AdaCompile Include="NetFramework.System.Security.Policy.ads" />
+    <AdaCompile Include="NetFramework.System.Security.Principal.ads" />
+    <AdaCompile Include="NetFramework.System.Text.ads" />
+    <AdaCompile Include="NetFramework.System.Threading.ads" />
+    <AdaCompile Include="NetFramework.System.Threading.Tasks.ads" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(CustomProjectExtensionsPath)Ada.targets" />
+  </ImportGroup>
+</Project>

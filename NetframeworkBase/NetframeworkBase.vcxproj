@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <CustomProjectExtensionsPath>$(MSBuildBinPath)\..\..\VisualAda\BuildSystem\</CustomProjectExtensionsPath>
+    <ProjectName>NetframeworkBase</ProjectName>
+    <ProjectGuid>{e6b29e36-12a7-4aca-985a-4cc8257ee15c}</ProjectGuid>
+    <Keyword>NetframeworkBase</Keyword>
+    <RootNamespace>NetframeworkBase</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <VisualAdaVersion>1.2.0.0</VisualAdaVersion>
+  </PropertyGroup>
+  <PropertyGroup Label="Globals" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <UseMicrosoftLinker>true</UseMicrosoftLinker>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64' or '$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <AdaTarget>x86_64-w64-mingw32</AdaTarget>
+    <GnatRoot>C:\msys64\mingw64</GnatRoot>
+    <GnatRootRTS>C:\msys64\mingw64\lib\gcc\x86_64-w64-mingw32\9.2.0</GnatRootRTS>
+    <GnatMingwRoot>C:\msys64\mingw64\x86_64-w64-mingw32</GnatMingwRoot>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32' or '$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <AdaTarget>Unknown</AdaTarget>
+    <GnatRoot>Unknown</GnatRoot>
+    <GnatRootRTS>Unknown</GnatRootRTS>
+    <GnatMingwRoot>Unknown</GnatMingwRoot>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GnatRootRTSAda Condition="'$(AdaRTS)'==''">$(GnatRootRTS)</GnatRootRTSAda>
+    <GnatRootRTSAda Condition="'$(AdaRTS)'!=''">$(GnatRootRTS)\rts-$(AdaRTS)</GnatRootRTSAda>
+    <GnatRootRTSAdaLib Condition="'$(AdaRTS)'==''">$(GnatRootRTS)\adalib</GnatRootRTSAdaLib>
+    <GnatRootRTSAdaLib Condition="'$(AdaRTS)'!=''">$(GnatRootRTS)\rts-$(AdaRTS)\adalib</GnatRootRTSAdaLib>
+    <GnatLibraryDir>$(GnatRoot)\lib</GnatLibraryDir>
+    <GnatWinRtLibraryDir>$(GnatRootRTSAda)\lib\WinRt</GnatWinRtLibraryDir>
+    <GprbuildOptions>-aP$(GnatRootRTSAda)\share\gpr</GprbuildOptions>
+  </PropertyGroup>
+  <Import Project="$(CustomProjectExtensionsPath)Ada_Default.props" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(CustomProjectExtensionsPath)Ada.props" />
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\Build\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\Build\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\Build\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\Build\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NetframeworkAdaRuntime\NetframeworkAdaRuntime.vcxproj">
+      <Project>{c48d47fd-ef62-496a-894e-8da3c008440a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\NetframeworkWin32\NetframeworkWin32.vcxproj">
+      <Project>{60b29f15-dfb1-4016-b035-7b3c17f05d2c}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AdaCompile Include="NetFrameworkBase.ads" />
+    <AdaCompile Include="NetFrameworkBase.Microsoft.ads" />
+    <AdaCompile Include="NetFrameworkBase.Microsoft.Win32.ads" />
+    <AdaCompile Include="NetFrameworkBase.Microsoft.Win32.SafeHandles.ads" />
+    <AdaCompile Include="NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeFileHandle.adb" />
+    <AdaCompile Include="NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeFileHandle.ads" />
+    <AdaCompile Include="NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid.adb" />
+    <AdaCompile Include="NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid.ads" />
+    <AdaCompile Include="NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeWaitHandle.adb" />
+    <AdaCompile Include="NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeWaitHandle.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Action.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.AggregateException.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.AggregateException.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Array_x.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Array_x.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.AsyncCallback.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Attribute.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Attribute.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Boolean.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Boolean.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Byte.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Byte.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Char.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Char.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.CharEnumerator.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.CharEnumerator.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Collections.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Collections.ArrayList.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Collections.ArrayList.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Collections.DictionaryEntry.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Collections.DictionaryEntry.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Collections.Hashtable.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Collections.Hashtable.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Collections.ICollection.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Collections.IComparer.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Collections.IDictionary.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Collections.IDictionaryEnumerator.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Collections.IEnumerator.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Collections.IEqualityComparer.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Collections.IHashCodeProvider.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Collections.IList.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Collections.ReadOnlyCollectionBase.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Collections.ReadOnlyCollectionBase.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Configuration.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Configuration.Assemblies.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Configuration.Assemblies.AssemblyHashAlgorithm.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Configuration.Assemblies.AssemblyVersionCompatibility.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Console.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Console.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.ConsoleCancelEventArgs.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.ConsoleCancelEventArgs.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.ConsoleCancelEventHandler.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.ConsoleColor.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.ConsoleKey.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.ConsoleKeyInfo.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.ConsoleKeyInfo.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.ConsoleModifiers.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.ConsoleSpecialKey.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.DateTime.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.DateTime.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.DateTimeKind.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.DayOfWeek.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Decimal.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Decimal.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Delegate.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Delegate.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Double.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Double.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Enum.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Enum.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Environment.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Environment.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Environment.SpecialFolder.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Environment.SpecialFolderOption.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.EnvironmentVariableTarget.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.EventArgs.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.EventArgs.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Exception_x.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Exception_x.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Globalization.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Globalization.Calendar.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Globalization.Calendar.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Globalization.CalendarAlgorithmType.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Globalization.CalendarWeekRule.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Globalization.CompareInfo.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Globalization.CompareInfo.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Globalization.CompareOptions.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Globalization.CultureInfo.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Globalization.CultureInfo.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Globalization.CultureTypes.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Globalization.DateTimeFormatInfo.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Globalization.DateTimeFormatInfo.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Globalization.DateTimeStyles.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Globalization.DigitShapes.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Globalization.NumberFormatInfo.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Globalization.NumberFormatInfo.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Globalization.NumberStyles.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Globalization.SortKey.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Globalization.SortKey.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Globalization.SortVersion.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Globalization.SortVersion.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Globalization.TextInfo.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Globalization.TextInfo.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Globalization.TimeSpanStyles.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Globalization.UnicodeCategory.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Guid.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Guid.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.IAsyncResult.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.IFormatProvider.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Int16.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Int16.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Int32.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Int32.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Int64.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Int64.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.IntPtr.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.IntPtr.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.IO.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.IO.FileAccess.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.IO.FileMode.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.IO.FileOptions.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.IO.FileShare.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.IO.FileStream.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.IO.FileStream.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.IO.SeekOrigin.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.IO.Stream.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.IO.Stream.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.IO.TextReader.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.IO.TextReader.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.IO.TextWriter.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.IO.TextWriter.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.MarshalByRefObject.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.MarshalByRefObject.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.MidpointRounding.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.ModuleHandle.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.ModuleHandle.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.MulticastDelegate.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Object.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Object.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.OperatingSystem.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.OperatingSystem.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.PlatformID.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.Assembly.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.Assembly.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.AssemblyContentType.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.AssemblyName.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.AssemblyName.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.AssemblyNameFlags.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.Binder.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.Binder.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.BindingFlags.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.CallingConventions.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.ConstructorInfo.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.ConstructorInfo.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.CustomAttributeData.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.CustomAttributeData.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.CustomAttributeNamedArgument.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.CustomAttributeNamedArgument.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.CustomAttributeTypedArgument.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.CustomAttributeTypedArgument.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.EventAttributes.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.EventInfo.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.EventInfo.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.ExceptionHandlingClause.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.ExceptionHandlingClause.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.ExceptionHandlingClauseOptions.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.FieldAttributes.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.FieldInfo.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.FieldInfo.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.GenericParameterAttributes.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.ICustomAttributeProvider.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.ImageFileMachine.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.InterfaceMapping.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.LocalVariableInfo.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.LocalVariableInfo.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.ManifestResourceInfo.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.ManifestResourceInfo.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.MemberFilter.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.MemberInfo.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.MemberInfo.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.MemberTypes.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.MethodAttributes.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.MethodBase.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.MethodBase.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.MethodBody.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.MethodBody.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.MethodImplAttributes.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.MethodInfo.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.MethodInfo.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.Module.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.Module.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.ModuleResolveEventHandler.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.ParameterAttributes.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.ParameterInfo.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.ParameterInfo.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.ParameterModifier.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.ParameterModifier.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.PortableExecutableKinds.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.ProcessorArchitecture.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.PropertyAttributes.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.PropertyInfo.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.PropertyInfo.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.ResourceLocation.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.StrongNameKeyPair.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.StrongNameKeyPair.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.TypeAttributes.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.TypeFilter.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.TypeInfo.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.TypeInfo.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.ResolveEventArgs.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.ResolveEventArgs.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.CompilerServices.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.CompilerServices.ConfiguredTaskAwaitable.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.CompilerServices.ConfiguredTaskAwaitable.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.CompilerServices.ConfiguredTaskAwaitable.ConfiguredTaskAwaiter.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.CompilerServices.ConfiguredTaskAwaitable.ConfiguredTaskAwaiter.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.CompilerServices.TaskAwaiter.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.CompilerServices.TaskAwaiter.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.CompilerServices.YieldAwaitable.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.CompilerServices.YieldAwaitable.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.CompilerServices.YieldAwaitable.YieldAwaiter.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.CompilerServices.YieldAwaitable.YieldAwaiter.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.ConstrainedExecution.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.ConstrainedExecution.CriticalFinalizerObject.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.InteropServices.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.InteropServices.IActivator.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.InteropServices.IAssembly.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.InteropServices.LayoutKind.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.InteropServices.SafeHandle.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.InteropServices.SafeHandle.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.InteropServices.StructLayoutAttribute.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.InteropServices.StructLayoutAttribute.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.Remoting.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.Remoting.IChannelInfo.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.Remoting.IEnvoyInfo.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.Remoting.IRemotingTypeInfo.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.Remoting.Messaging.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.Remoting.Messaging.IMessage.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.Remoting.Messaging.IMessageCtrl.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.Remoting.Messaging.IMessageSink.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.Remoting.ObjRef.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.Remoting.ObjRef.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.Serialization.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.Serialization.IFormatterConverter.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.Serialization.SerializationEntry.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.Serialization.SerializationEntry.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.Serialization.SerializationInfoEnumerator.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.Serialization.SerializationInfoEnumerator.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.Serialization.StreamingContext.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.Serialization.StreamingContext.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.Serialization.StreamingContextStates.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.RuntimeFieldHandle.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.RuntimeFieldHandle.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.RuntimeMethodHandle.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.RuntimeMethodHandle.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.RuntimeTypeHandle.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.RuntimeTypeHandle.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.SByte.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.SByte.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.AccessControl.AccessControlModification.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.AccessControl.AccessControlSections.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.AccessControl.AccessControlType.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.AccessControl.AccessRule.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.AccessControl.AccessRule.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.AccessControl.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.AccessControl.AuditFlags.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.AccessControl.AuditRule.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.AccessControl.AuditRule.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.AccessControl.AuthorizationRule.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.AccessControl.AuthorizationRule.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.AccessControl.AuthorizationRuleCollection.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.AccessControl.AuthorizationRuleCollection.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.AccessControl.CommonObjectSecurity.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.AccessControl.CommonObjectSecurity.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.AccessControl.FileSecurity.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.AccessControl.FileSecurity.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.AccessControl.FileSystemAccessRule.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.AccessControl.FileSystemAccessRule.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.AccessControl.FileSystemAuditRule.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.AccessControl.FileSystemAuditRule.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.AccessControl.FileSystemRights.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.AccessControl.InheritanceFlags.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.AccessControl.NativeObjectSecurity.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.AccessControl.ObjectSecurity.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.AccessControl.ObjectSecurity.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.AccessControl.PropagationFlags.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.Cryptography.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.Cryptography.X509Certificates.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ContentType.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.IPermission.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.Permissions.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.Permissions.PermissionState.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.PermissionSet.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.PermissionSet.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.Policy.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.Policy.Evidence.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.Policy.Evidence.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.Policy.EvidenceBase.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.Policy.EvidenceBase.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.Principal.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.Principal.IdentityReference.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.Principal.IdentityReference.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.SecureString.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.SecureString.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.SecurityContextSource.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.SecurityElement.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.SecurityElement.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Security.SecurityRuleSet.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Single.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Single.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.String.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.String.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.StringComparison.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.StringSplitOptions.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Text.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Text.Decoder.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Text.Decoder.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Text.DecoderFallback.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Text.DecoderFallback.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Text.DecoderFallbackBuffer.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Text.DecoderFallbackBuffer.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Text.Encoder.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Text.Encoder.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Text.EncoderFallback.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Text.EncoderFallback.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Text.EncoderFallbackBuffer.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Text.EncoderFallbackBuffer.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Text.Encoding.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Text.Encoding.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Text.EncodingInfo.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Text.EncodingInfo.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Text.EncodingProvider.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Text.EncodingProvider.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Text.NormalizationForm.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Threading.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Threading.CancellationToken.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Threading.CancellationToken.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Threading.CancellationTokenRegistration.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Threading.CancellationTokenRegistration.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Threading.Tasks.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Threading.Tasks.TaskContinuationOptions.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Threading.Tasks.TaskCreationOptions.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Threading.Tasks.TaskFactory.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Threading.Tasks.TaskFactory.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Threading.Tasks.TaskScheduler.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Threading.Tasks.TaskScheduler.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Threading.Tasks.TaskStatus.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Threading.Tasks.Task_x.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Threading.Tasks.Task_x.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Threading.Tasks.UnobservedTaskExceptionEventArgs.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Threading.Tasks.UnobservedTaskExceptionEventArgs.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Threading.WaitHandle.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Threading.WaitHandle.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.TimeSpan.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.TimeSpan.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.TypeCode.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.TypedReference.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.TypedReference.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Type_x.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Type_x.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.UInt16.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.UInt16.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.UInt32.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.UInt32.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.UInt64.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.UInt64.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.ValueType.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.ValueType.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Version.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Version.ads" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(CustomProjectExtensionsPath)Ada.targets" />
+  </ImportGroup>
+</Project>
