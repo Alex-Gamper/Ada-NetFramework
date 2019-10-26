@@ -54,6 +54,7 @@ artifacts/
 *.pidb
 *.svclog
 *.scc
+*.db
 
 # Visual C++ cache files
 ipch/
