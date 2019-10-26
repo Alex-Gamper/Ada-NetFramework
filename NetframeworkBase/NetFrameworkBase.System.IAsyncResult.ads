@@ -48,13 +48,13 @@ package NetFrameworkBase.System.IAsyncResult is
       function get_AsyncWaitHandle
       (
          this : in out IAsyncResult.Kind;
-         RetVal : access NetFrameworkBase.System.Threading.WaitHandle.Kind
+         RetVal : access NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr
       ) return HResult is abstract;
       
       function get_AsyncState
       (
          this : in out IAsyncResult.Kind;
-         RetVal : access NetFrameworkBase.System.Object.Kind
+         RetVal : access NetFrameworkBase.System.Object.Kind_Ptr
       ) return HResult is abstract;
       
       function get_CompletedSynchronously

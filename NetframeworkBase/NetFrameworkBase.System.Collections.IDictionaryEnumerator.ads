@@ -42,13 +42,13 @@ package NetFrameworkBase.System.Collections.IDictionaryEnumerator is
       function get_Key
       (
          this : in out IDictionaryEnumerator.Kind;
-         RetVal : access NetFrameworkBase.System.Object.Kind
+         RetVal : access NetFrameworkBase.System.Object.Kind_Ptr
       ) return HResult is abstract;
       
       function get_Value
       (
          this : in out IDictionaryEnumerator.Kind;
-         RetVal : access NetFrameworkBase.System.Object.Kind
+         RetVal : access NetFrameworkBase.System.Object.Kind_Ptr
       ) return HResult is abstract;
       
       function get_Entry

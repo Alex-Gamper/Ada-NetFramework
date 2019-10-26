@@ -42,27 +42,27 @@ package NetFrameworkBase.System.Collections.IList is
       (
          this : in out IList.Kind;
          index : NetFrameworkBase.Int32;
-         RetVal : access NetFrameworkBase.System.Object.Kind
+         RetVal : access NetFrameworkBase.System.Object.Kind_Ptr
       ) return HResult is abstract;
       
       function set_Item
       (
          this : in out IList.Kind;
          index : NetFrameworkBase.Int32;
-         value : NetFrameworkBase.System.Object.Kind
+         value : NetFrameworkBase.System.Object.Kind_Ptr
       ) return HResult is abstract;
       
       function Add
       (
          this : in out IList.Kind;
-         value : NetFrameworkBase.System.Object.Kind;
+         value : NetFrameworkBase.System.Object.Kind_Ptr;
          RetVal : access NetFrameworkBase.Int32
       ) return HResult is abstract;
       
       function Contains
       (
          this : in out IList.Kind;
-         value : NetFrameworkBase.System.Object.Kind;
+         value : NetFrameworkBase.System.Object.Kind_Ptr;
          RetVal : access NetFrameworkBase.Boolean
       ) return HResult is abstract;
       
@@ -86,7 +86,7 @@ package NetFrameworkBase.System.Collections.IList is
       function IndexOf
       (
          this : in out IList.Kind;
-         value : NetFrameworkBase.System.Object.Kind;
+         value : NetFrameworkBase.System.Object.Kind_Ptr;
          RetVal : access NetFrameworkBase.Int32
       ) return HResult is abstract;
       
@@ -94,13 +94,13 @@ package NetFrameworkBase.System.Collections.IList is
       (
          this : in out IList.Kind;
          index : NetFrameworkBase.Int32;
-         value : NetFrameworkBase.System.Object.Kind
+         value : NetFrameworkBase.System.Object.Kind_Ptr
       ) return HResult is abstract;
       
       function Remove
       (
          this : in out IList.Kind;
-         value : NetFrameworkBase.System.Object.Kind
+         value : NetFrameworkBase.System.Object.Kind_Ptr
       ) return HResult is abstract;
       
       function RemoveAt

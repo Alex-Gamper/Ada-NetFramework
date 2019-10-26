@@ -63,7 +63,7 @@ package NetFrameworkBase.System.Runtime.InteropServices.IAssembly is
       function Equals
       (
          this : in out IAssembly.Kind;
-         other : NetFrameworkBase.System.Object.Kind;
+         other : NetFrameworkBase.System.Object.Kind_Ptr;
          RetVal : access NetFrameworkBase.Boolean
       ) return HResult is abstract;
       
@@ -76,7 +76,7 @@ package NetFrameworkBase.System.Runtime.InteropServices.IAssembly is
       function GetType
       (
          this : in out IAssembly.Kind;
-         RetVal : access NetFrameworkBase.System.Type_x.Kind
+         RetVal : access NetFrameworkBase.System.Type_x.Kind_Ptr
       ) return HResult is abstract;
       
       function get_CodeBase
@@ -94,14 +94,14 @@ package NetFrameworkBase.System.Runtime.InteropServices.IAssembly is
       function GetName
       (
          this : in out IAssembly.Kind;
-         RetVal : access NetFrameworkBase.System.Reflection.AssemblyName.Kind
+         RetVal : access NetFrameworkBase.System.Reflection.AssemblyName.Kind_Ptr
       ) return HResult is abstract;
       
       function GetName
       (
          this : in out IAssembly.Kind;
          copiedName : NetFrameworkBase.Boolean;
-         RetVal : access NetFrameworkBase.System.Reflection.AssemblyName.Kind
+         RetVal : access NetFrameworkBase.System.Reflection.AssemblyName.Kind_Ptr
       ) return HResult is abstract;
       
       function get_FullName
@@ -113,14 +113,14 @@ package NetFrameworkBase.System.Runtime.InteropServices.IAssembly is
       function get_EntryPoint
       (
          this : in out IAssembly.Kind;
-         RetVal : access NetFrameworkBase.System.Reflection.MethodInfo.Kind
+         RetVal : access NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr
       ) return HResult is abstract;
       
       function GetType
       (
          this : in out IAssembly.Kind;
          name : NetFrameworkBase.BSTR;
-         RetVal : access NetFrameworkBase.System.Type_x.Kind
+         RetVal : access NetFrameworkBase.System.Type_x.Kind_Ptr
       ) return HResult is abstract;
       
       function GetType
@@ -128,7 +128,7 @@ package NetFrameworkBase.System.Runtime.InteropServices.IAssembly is
          this : in out IAssembly.Kind;
          name : NetFrameworkBase.BSTR;
          throwOnError : NetFrameworkBase.Boolean;
-         RetVal : access NetFrameworkBase.System.Type_x.Kind
+         RetVal : access NetFrameworkBase.System.Type_x.Kind_Ptr
       ) return HResult is abstract;
       
       function GetExportedTypes
@@ -146,23 +146,23 @@ package NetFrameworkBase.System.Runtime.InteropServices.IAssembly is
       function GetManifestResourceStream
       (
          this : in out IAssembly.Kind;
-         type_x : NetFrameworkBase.System.Type_x.Kind;
+         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
          name : NetFrameworkBase.BSTR;
-         RetVal : access NetFrameworkBase.System.IO.Stream.Kind
+         RetVal : access NetFrameworkBase.System.IO.Stream.Kind_Ptr
       ) return HResult is abstract;
       
       function GetManifestResourceStream
       (
          this : in out IAssembly.Kind;
          name : NetFrameworkBase.BSTR;
-         RetVal : access NetFrameworkBase.System.IO.Stream.Kind
+         RetVal : access NetFrameworkBase.System.IO.Stream.Kind_Ptr
       ) return HResult is abstract;
       
       function GetFile
       (
          this : in out IAssembly.Kind;
          name : NetFrameworkBase.BSTR;
-         RetVal : access NetFrameworkBase.System.IO.FileStream.Kind
+         RetVal : access NetFrameworkBase.System.IO.FileStream.Kind_Ptr
       ) return HResult is abstract;
       
       function GetFiles
@@ -188,7 +188,7 @@ package NetFrameworkBase.System.Runtime.InteropServices.IAssembly is
       (
          this : in out IAssembly.Kind;
          resourceName : NetFrameworkBase.BSTR;
-         RetVal : access NetFrameworkBase.System.Reflection.ManifestResourceInfo.Kind
+         RetVal : access NetFrameworkBase.System.Reflection.ManifestResourceInfo.Kind_Ptr
       ) return HResult is abstract;
       
       function get_Location
@@ -200,13 +200,13 @@ package NetFrameworkBase.System.Runtime.InteropServices.IAssembly is
       function get_Evidence
       (
          this : in out IAssembly.Kind;
-         RetVal : access NetFrameworkBase.System.Security.Policy.Evidence.Kind
+         RetVal : access NetFrameworkBase.System.Security.Policy.Evidence.Kind_Ptr
       ) return HResult is abstract;
       
       function GetCustomAttributes
       (
          this : in out IAssembly.Kind;
-         attributeType : NetFrameworkBase.System.Type_x.Kind;
+         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr;
          inherit : NetFrameworkBase.Boolean;
          RetVal : access NetFrameworkBase.System.Object.Kind_Array
       ) return HResult is abstract;
@@ -221,7 +221,7 @@ package NetFrameworkBase.System.Runtime.InteropServices.IAssembly is
       function IsDefined
       (
          this : in out IAssembly.Kind;
-         attributeType : NetFrameworkBase.System.Type_x.Kind;
+         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr;
          inherit : NetFrameworkBase.Boolean;
          RetVal : access NetFrameworkBase.Boolean
       ) return HResult is abstract;
@@ -229,7 +229,7 @@ package NetFrameworkBase.System.Runtime.InteropServices.IAssembly is
       function GetObjectData
       (
          this : in out IAssembly.Kind;
-         info : NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind;
+         info : NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr;
          context : NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind
       ) return HResult is abstract;
       
@@ -251,22 +251,22 @@ package NetFrameworkBase.System.Runtime.InteropServices.IAssembly is
          name : NetFrameworkBase.BSTR;
          throwOnError : NetFrameworkBase.Boolean;
          ignoreCase : NetFrameworkBase.Boolean;
-         RetVal : access NetFrameworkBase.System.Type_x.Kind
+         RetVal : access NetFrameworkBase.System.Type_x.Kind_Ptr
       ) return HResult is abstract;
       
       function GetSatelliteAssembly
       (
          this : in out IAssembly.Kind;
-         culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind;
-         RetVal : access NetFrameworkBase.System.Reflection.Assembly.Kind
+         culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr;
+         RetVal : access NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr
       ) return HResult is abstract;
       
       function GetSatelliteAssembly
       (
          this : in out IAssembly.Kind;
-         culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind;
-         version : NetFrameworkBase.System.Version.Kind;
-         RetVal : access NetFrameworkBase.System.Reflection.Assembly.Kind
+         culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr;
+         version : NetFrameworkBase.System.Version.Kind_Ptr;
+         RetVal : access NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr
       ) return HResult is abstract;
       
       function LoadModule
@@ -274,7 +274,7 @@ package NetFrameworkBase.System.Runtime.InteropServices.IAssembly is
          this : in out IAssembly.Kind;
          moduleName : NetFrameworkBase.BSTR;
          rawModule : NetFrameworkBase.Byte_Array;
-         RetVal : access NetFrameworkBase.System.Reflection.Module.Kind
+         RetVal : access NetFrameworkBase.System.Reflection.Module.Kind_Ptr
       ) return HResult is abstract;
       
       function LoadModule
@@ -283,14 +283,14 @@ package NetFrameworkBase.System.Runtime.InteropServices.IAssembly is
          moduleName : NetFrameworkBase.BSTR;
          rawModule : NetFrameworkBase.Byte_Array;
          rawSymbolStore : NetFrameworkBase.Byte_Array;
-         RetVal : access NetFrameworkBase.System.Reflection.Module.Kind
+         RetVal : access NetFrameworkBase.System.Reflection.Module.Kind_Ptr
       ) return HResult is abstract;
       
       function CreateInstance
       (
          this : in out IAssembly.Kind;
          typeName : NetFrameworkBase.BSTR;
-         RetVal : access NetFrameworkBase.System.Object.Kind
+         RetVal : access NetFrameworkBase.System.Object.Kind_Ptr
       ) return HResult is abstract;
       
       function CreateInstance
@@ -298,7 +298,7 @@ package NetFrameworkBase.System.Runtime.InteropServices.IAssembly is
          this : in out IAssembly.Kind;
          typeName : NetFrameworkBase.BSTR;
          ignoreCase : NetFrameworkBase.Boolean;
-         RetVal : access NetFrameworkBase.System.Object.Kind
+         RetVal : access NetFrameworkBase.System.Object.Kind_Ptr
       ) return HResult is abstract;
       
       function CreateInstance
@@ -307,11 +307,11 @@ package NetFrameworkBase.System.Runtime.InteropServices.IAssembly is
          typeName : NetFrameworkBase.BSTR;
          ignoreCase : NetFrameworkBase.Boolean;
          bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind;
-         binder : NetFrameworkBase.System.Reflection.Binder.Kind;
+         binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr;
          args : NetFrameworkBase.System.Object.Kind_Array;
-         culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind;
+         culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr;
          activationAttributes : NetFrameworkBase.System.Object.Kind_Array;
-         RetVal : access NetFrameworkBase.System.Object.Kind
+         RetVal : access NetFrameworkBase.System.Object.Kind_Ptr
       ) return HResult is abstract;
       
       function GetLoadedModules
@@ -344,7 +344,7 @@ package NetFrameworkBase.System.Runtime.InteropServices.IAssembly is
       (
          this : in out IAssembly.Kind;
          name : NetFrameworkBase.BSTR;
-         RetVal : access NetFrameworkBase.System.Reflection.Module.Kind
+         RetVal : access NetFrameworkBase.System.Reflection.Module.Kind_Ptr
       ) return HResult is abstract;
       
       function GetReferencedAssemblies

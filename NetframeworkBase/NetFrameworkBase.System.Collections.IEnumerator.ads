@@ -47,7 +47,7 @@ package NetFrameworkBase.System.Collections.IEnumerator is
       function get_Current
       (
          this : in out IEnumerator.Kind;
-         RetVal : access NetFrameworkBase.System.Object.Kind
+         RetVal : access NetFrameworkBase.System.Object.Kind_Ptr
       ) return HResult is abstract;
       
       function Reset

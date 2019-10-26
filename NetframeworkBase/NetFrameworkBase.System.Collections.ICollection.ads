@@ -42,7 +42,7 @@ package NetFrameworkBase.System.Collections.ICollection is
       function CopyTo
       (
          this : in out ICollection.Kind;
-         array_x : NetFrameworkBase.System.Array_x.Kind;
+         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr;
          index : NetFrameworkBase.Int32
       ) return HResult is abstract;
       
@@ -55,7 +55,7 @@ package NetFrameworkBase.System.Collections.ICollection is
       function get_SyncRoot
       (
          this : in out ICollection.Kind;
-         RetVal : access NetFrameworkBase.System.Object.Kind
+         RetVal : access NetFrameworkBase.System.Object.Kind_Ptr
       ) return HResult is abstract;
       
       function get_IsSynchronized

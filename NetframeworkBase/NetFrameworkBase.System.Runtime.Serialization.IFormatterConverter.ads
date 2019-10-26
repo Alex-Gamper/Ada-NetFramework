@@ -45,121 +45,121 @@ package NetFrameworkBase.System.Runtime.Serialization.IFormatterConverter is
       function Convert
       (
          this : in out IFormatterConverter.Kind;
-         value : NetFrameworkBase.System.Object.Kind;
-         type_x : NetFrameworkBase.System.Type_x.Kind;
-         RetVal : access NetFrameworkBase.System.Object.Kind
+         value : NetFrameworkBase.System.Object.Kind_Ptr;
+         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         RetVal : access NetFrameworkBase.System.Object.Kind_Ptr
       ) return HResult is abstract;
       
       function Convert
       (
          this : in out IFormatterConverter.Kind;
-         value : NetFrameworkBase.System.Object.Kind;
+         value : NetFrameworkBase.System.Object.Kind_Ptr;
          typeCode : NetFrameworkBase.System.TypeCode.Kind;
-         RetVal : access NetFrameworkBase.System.Object.Kind
+         RetVal : access NetFrameworkBase.System.Object.Kind_Ptr
       ) return HResult is abstract;
       
       function ToBoolean
       (
          this : in out IFormatterConverter.Kind;
-         value : NetFrameworkBase.System.Object.Kind;
+         value : NetFrameworkBase.System.Object.Kind_Ptr;
          RetVal : access NetFrameworkBase.Boolean
       ) return HResult is abstract;
       
       function ToChar
       (
          this : in out IFormatterConverter.Kind;
-         value : NetFrameworkBase.System.Object.Kind;
+         value : NetFrameworkBase.System.Object.Kind_Ptr;
          RetVal : access NetFrameworkBase.System.Char.Kind
       ) return HResult is abstract;
       
       function ToSByte
       (
          this : in out IFormatterConverter.Kind;
-         value : NetFrameworkBase.System.Object.Kind;
+         value : NetFrameworkBase.System.Object.Kind_Ptr;
          RetVal : access NetFrameworkBase.SByte
       ) return HResult is abstract;
       
       function ToByte
       (
          this : in out IFormatterConverter.Kind;
-         value : NetFrameworkBase.System.Object.Kind;
+         value : NetFrameworkBase.System.Object.Kind_Ptr;
          RetVal : access NetFrameworkBase.Byte
       ) return HResult is abstract;
       
       function ToInt16
       (
          this : in out IFormatterConverter.Kind;
-         value : NetFrameworkBase.System.Object.Kind;
+         value : NetFrameworkBase.System.Object.Kind_Ptr;
          RetVal : access NetFrameworkBase.Int16
       ) return HResult is abstract;
       
       function ToUInt16
       (
          this : in out IFormatterConverter.Kind;
-         value : NetFrameworkBase.System.Object.Kind;
+         value : NetFrameworkBase.System.Object.Kind_Ptr;
          RetVal : access NetFrameworkBase.UInt16
       ) return HResult is abstract;
       
       function ToInt32
       (
          this : in out IFormatterConverter.Kind;
-         value : NetFrameworkBase.System.Object.Kind;
+         value : NetFrameworkBase.System.Object.Kind_Ptr;
          RetVal : access NetFrameworkBase.Int32
       ) return HResult is abstract;
       
       function ToUInt32
       (
          this : in out IFormatterConverter.Kind;
-         value : NetFrameworkBase.System.Object.Kind;
+         value : NetFrameworkBase.System.Object.Kind_Ptr;
          RetVal : access NetFrameworkBase.UInt32
       ) return HResult is abstract;
       
       function ToInt64
       (
          this : in out IFormatterConverter.Kind;
-         value : NetFrameworkBase.System.Object.Kind;
+         value : NetFrameworkBase.System.Object.Kind_Ptr;
          RetVal : access NetFrameworkBase.Int64
       ) return HResult is abstract;
       
       function ToUInt64
       (
          this : in out IFormatterConverter.Kind;
-         value : NetFrameworkBase.System.Object.Kind;
+         value : NetFrameworkBase.System.Object.Kind_Ptr;
          RetVal : access NetFrameworkBase.UInt64
       ) return HResult is abstract;
       
       function ToSingle
       (
          this : in out IFormatterConverter.Kind;
-         value : NetFrameworkBase.System.Object.Kind;
+         value : NetFrameworkBase.System.Object.Kind_Ptr;
          RetVal : access NetFrameworkBase.Single
       ) return HResult is abstract;
       
       function ToDouble
       (
          this : in out IFormatterConverter.Kind;
-         value : NetFrameworkBase.System.Object.Kind;
+         value : NetFrameworkBase.System.Object.Kind_Ptr;
          RetVal : access NetFrameworkBase.Double
       ) return HResult is abstract;
       
       function ToDecimal
       (
          this : in out IFormatterConverter.Kind;
-         value : NetFrameworkBase.System.Object.Kind;
+         value : NetFrameworkBase.System.Object.Kind_Ptr;
          RetVal : access NetFrameworkBase.System.Decimal.Kind
       ) return HResult is abstract;
       
       function ToDateTime
       (
          this : in out IFormatterConverter.Kind;
-         value : NetFrameworkBase.System.Object.Kind;
+         value : NetFrameworkBase.System.Object.Kind_Ptr;
          RetVal : access NetFrameworkBase.Date
       ) return HResult is abstract;
       
       function ToString
       (
          this : in out IFormatterConverter.Kind;
-         value : NetFrameworkBase.System.Object.Kind;
+         value : NetFrameworkBase.System.Object.Kind_Ptr;
          RetVal : access NetFrameworkBase.BSTR
       ) return HResult is abstract;
       

@@ -42,8 +42,8 @@ package NetFrameworkBase.System.IFormatProvider is
       function GetFormat
       (
          this : in out IFormatProvider.Kind;
-         formatType : NetFrameworkBase.System.Type_x.Kind;
-         RetVal : access NetFrameworkBase.System.Object.Kind
+         formatType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         RetVal : access NetFrameworkBase.System.Object.Kind_Ptr
       ) return HResult is abstract;
       
    private

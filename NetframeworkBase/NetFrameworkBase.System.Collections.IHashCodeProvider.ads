@@ -41,7 +41,7 @@ package NetFrameworkBase.System.Collections.IHashCodeProvider is
       function GetHashCode
       (
          this : in out IHashCodeProvider.Kind;
-         obj : NetFrameworkBase.System.Object.Kind;
+         obj : NetFrameworkBase.System.Object.Kind_Ptr;
          RetVal : access NetFrameworkBase.Int32
       ) return HResult is abstract;
       

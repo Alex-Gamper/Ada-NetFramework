@@ -43,15 +43,15 @@ package NetFrameworkBase.System.Collections.IDictionary is
       function get_Item
       (
          this : in out IDictionary.Kind;
-         key : NetFrameworkBase.System.Object.Kind;
-         RetVal : access NetFrameworkBase.System.Object.Kind
+         key : NetFrameworkBase.System.Object.Kind_Ptr;
+         RetVal : access NetFrameworkBase.System.Object.Kind_Ptr
       ) return HResult is abstract;
       
       function set_Item
       (
          this : in out IDictionary.Kind;
-         key : NetFrameworkBase.System.Object.Kind;
-         value : NetFrameworkBase.System.Object.Kind
+         key : NetFrameworkBase.System.Object.Kind_Ptr;
+         value : NetFrameworkBase.System.Object.Kind_Ptr
       ) return HResult is abstract;
       
       function get_Keys
@@ -69,15 +69,15 @@ package NetFrameworkBase.System.Collections.IDictionary is
       function Contains
       (
          this : in out IDictionary.Kind;
-         key : NetFrameworkBase.System.Object.Kind;
+         key : NetFrameworkBase.System.Object.Kind_Ptr;
          RetVal : access NetFrameworkBase.Boolean
       ) return HResult is abstract;
       
       function Add
       (
          this : in out IDictionary.Kind;
-         key : NetFrameworkBase.System.Object.Kind;
-         value : NetFrameworkBase.System.Object.Kind
+         key : NetFrameworkBase.System.Object.Kind_Ptr;
+         value : NetFrameworkBase.System.Object.Kind_Ptr
       ) return HResult is abstract;
       
       function Clear
@@ -106,7 +106,7 @@ package NetFrameworkBase.System.Collections.IDictionary is
       function Remove
       (
          this : in out IDictionary.Kind;
-         key : NetFrameworkBase.System.Object.Kind
+         key : NetFrameworkBase.System.Object.Kind_Ptr
       ) return HResult is abstract;
       
    private

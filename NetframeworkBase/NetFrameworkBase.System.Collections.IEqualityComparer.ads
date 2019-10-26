@@ -41,15 +41,15 @@ package NetFrameworkBase.System.Collections.IEqualityComparer is
       function Equals
       (
          this : in out IEqualityComparer.Kind;
-         x : NetFrameworkBase.System.Object.Kind;
-         y : NetFrameworkBase.System.Object.Kind;
+         x : NetFrameworkBase.System.Object.Kind_Ptr;
+         y : NetFrameworkBase.System.Object.Kind_Ptr;
          RetVal : access NetFrameworkBase.Boolean
       ) return HResult is abstract;
       
       function GetHashCode
       (
          this : in out IEqualityComparer.Kind;
-         obj : NetFrameworkBase.System.Object.Kind;
+         obj : NetFrameworkBase.System.Object.Kind_Ptr;
          RetVal : access NetFrameworkBase.Int32
       ) return HResult is abstract;
       

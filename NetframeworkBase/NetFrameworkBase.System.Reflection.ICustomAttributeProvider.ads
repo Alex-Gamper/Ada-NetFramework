@@ -42,7 +42,7 @@ package NetFrameworkBase.System.Reflection.ICustomAttributeProvider is
       function GetCustomAttributes
       (
          this : in out ICustomAttributeProvider.Kind;
-         attributeType : NetFrameworkBase.System.Type_x.Kind;
+         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr;
          inherit : NetFrameworkBase.Boolean;
          RetVal : access NetFrameworkBase.System.Object.Kind_Array
       ) return HResult is abstract;
@@ -57,7 +57,7 @@ package NetFrameworkBase.System.Reflection.ICustomAttributeProvider is
       function IsDefined
       (
          this : in out ICustomAttributeProvider.Kind;
-         attributeType : NetFrameworkBase.System.Type_x.Kind;
+         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr;
          inherit : NetFrameworkBase.Boolean;
          RetVal : access NetFrameworkBase.Boolean
       ) return HResult is abstract;

@@ -54,8 +54,8 @@ package NetFrameworkBase.System.Runtime.Remoting.IRemotingTypeInfo is
       function CanCastTo
       (
          this : in out IRemotingTypeInfo.Kind;
-         fromType : NetFrameworkBase.System.Type_x.Kind;
-         o : NetFrameworkBase.System.Object.Kind;
+         fromType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         o : NetFrameworkBase.System.Object.Kind_Ptr;
          RetVal : access NetFrameworkBase.Boolean
       ) return HResult is abstract;
       

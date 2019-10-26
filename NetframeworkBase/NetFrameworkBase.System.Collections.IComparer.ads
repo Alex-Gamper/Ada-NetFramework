@@ -41,8 +41,8 @@ package NetFrameworkBase.System.Collections.IComparer is
       function Compare
       (
          this : in out IComparer.Kind;
-         x : NetFrameworkBase.System.Object.Kind;
-         y : NetFrameworkBase.System.Object.Kind;
+         x : NetFrameworkBase.System.Object.Kind_Ptr;
+         y : NetFrameworkBase.System.Object.Kind_Ptr;
          RetVal : access NetFrameworkBase.Int32
       ) return HResult is abstract;
       
