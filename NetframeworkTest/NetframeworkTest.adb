@@ -26,6 +26,8 @@ with NetframeworkBase.System.UInt64;
 with NetframeworkBase.System.Version;
 with NetframeworkBase.System.TypeCode;
 with NetframeworkBase.System.Environment;
+with NetFrameworkBase.System.ConsoleKey;
+with NetFrameworkBase.System.ConsoleKeyInfo;
 with NetFramework;
 with NetFramework.System;
 with NetFramework.System.Reflection; 
@@ -120,6 +122,14 @@ begin
             end if;
         end;
 
+        procedure Test_Constructors is
+            use NetFrameworkBase.System.ConsoleKey;
+            m_Key       : NetFramework.System.ConsoleKey  := NetFrameworkBase.System.ConsoleKey.Kind'(PageUp);--:= NetFrameworkBase.System.ConsoleKeyInfo.Constructor
+            m_KeyInfo   : NetFramework.System.ConsoleKeyInfo ;--:= NetFrameworkBase.System.ConsoleKeyInfo.Constructor
+        begin
+            null;
+        end;
+
     begin
 
         Test_ValueTypes_Builtin;
@@ -128,6 +138,7 @@ begin
         Test_Enum_ReturnType;
         Test_Enum_Out_Param;
         Test_RefenceType_Out_Param;
+        Test_Constructors;
 
     end;
 

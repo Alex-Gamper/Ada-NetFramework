@@ -68,6 +68,11 @@ package NetFrameworkWin32 is
    subtype Byte_Array is UInt8_Array;
    subtype Byte_Array_Ptr is UInt8_Array_Ptr;
    
+   subtype Char is UInt8;
+   subtype Char_Ptr is UInt8_Ptr;
+   subtype Char_Array is UInt8_Array;
+   subtype Char_Array_Ptr is UInt8_Array_Ptr;
+
    type UInt16 is mod 2 ** 16;
    type UInt16_Ptr is access all UInt16;
    type UInt16_Array is array (Standard.Natural range <>) of aliased UInt16;

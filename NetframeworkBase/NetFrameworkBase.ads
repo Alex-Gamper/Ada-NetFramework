@@ -71,6 +71,11 @@ package NetFrameworkBase is
    subtype Byte_Array is NetFrameworkWin32.Byte_Array;
    subtype Byte_Array_Ptr is NetFrameworkWin32.Byte_Array_Ptr;
    
+   subtype Char is NetFrameworkWin32.Char;
+   subtype Char_Ptr is NetFrameworkWin32.Char_Ptr;
+   subtype Char_Array is NetFrameworkWin32.Char_Array;
+   subtype Char_Array_Ptr is NetFrameworkWin32.Char_Array_Ptr;
+   
    subtype UInt16 is NetFrameworkWin32.UInt16;
    subtype UInt16_Ptr is NetFrameworkWin32.UInt16_Ptr;
    subtype UInt16_Array is NetFrameworkWin32.UInt16_Array;
