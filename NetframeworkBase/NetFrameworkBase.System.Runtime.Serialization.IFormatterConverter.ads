@@ -30,7 +30,6 @@
 limited with NetFrameworkBase.System.Object;
 limited with NetFrameworkBase.System.Type_x;
 limited with NetFrameworkBase.System.TypeCode;
-limited with NetFrameworkBase.System.Char;
 limited with NetFrameworkBase.System.Decimal;
 with NetFrameworkWin32;
 with NetFrameworkAdaRuntime;
@@ -69,7 +68,7 @@ package NetFrameworkBase.System.Runtime.Serialization.IFormatterConverter is
       (
          this : in out IFormatterConverter.Kind;
          value : NetFrameworkBase.System.Object.Kind_Ptr;
-         RetVal : access NetFrameworkBase.System.Char.Kind
+         RetVal : access NetFrameworkBase.Char
       ) return HResult is abstract;
       
       function ToSByte

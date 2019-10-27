@@ -33,7 +33,6 @@ with NetFrameworkBase.System.Type_x;
 with NetFrameworkBase.System.Globalization.Calendar;
 with NetFrameworkBase.System.DayOfWeek;
 with NetFrameworkBase.System.Globalization.CalendarWeekRule;
-with NetFrameworkBase.System.Char;
 with NetFrameworkWin32;              use NetFrameworkWin32;
 with NetFrameworkAdaRuntime;         use NetFrameworkAdaRuntime;
 with Ada.Unchecked_Conversion;
@@ -1833,7 +1832,7 @@ package body NetFrameworkBase.System.Globalization.DateTimeFormatInfo is
    (
       this : in out DateTimeFormatInfo.Kind;
       patterns : NetFrameworkBase.BSTR_Array;
-      format : NetFrameworkBase.System.Char.Kind_Ptr
+      format : NetFrameworkBase.Char
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
@@ -1857,7 +1856,7 @@ package body NetFrameworkBase.System.Globalization.DateTimeFormatInfo is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value := GetObject (format.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(format);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
@@ -2130,7 +2129,7 @@ package body NetFrameworkBase.System.Globalization.DateTimeFormatInfo is
    function GetAllDateTimePatterns
    (
       this : in out DateTimeFormatInfo.Kind;
-      format : NetFrameworkBase.System.Char.Kind_Ptr
+      format : NetFrameworkBase.Char
    )
    return NetFrameworkBase.BSTR_Array is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -2178,7 +2177,7 @@ package body NetFrameworkBase.System.Globalization.DateTimeFormatInfo is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value := GetObject (format.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(format);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);

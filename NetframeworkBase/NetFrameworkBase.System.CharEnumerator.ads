@@ -28,7 +28,6 @@
 --                                                                            --
 --------------------------------------------------------------------------------
 with NetFrameworkBase.System.Object;
-limited with NetFrameworkBase.System.Char;
 --------------------------------------------------------------------------------
 package NetFrameworkBase.System.CharEnumerator is
    
@@ -58,7 +57,7 @@ package NetFrameworkBase.System.CharEnumerator is
       (
          this : in out CharEnumerator.Kind
       )
-      return NetFrameworkBase.System.Char.Kind_Ptr;
+      return NetFrameworkBase.Char;
       
       procedure Reset
       (

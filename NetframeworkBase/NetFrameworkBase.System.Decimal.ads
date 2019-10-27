@@ -32,7 +32,6 @@ with NetFrameworkBase.System.Object;
 limited with NetFrameworkBase.System.IFormatProvider;
 limited with NetFrameworkBase.System.Globalization.NumberStyles;
 limited with NetFrameworkBase.System.MidpointRounding;
-limited with NetFrameworkBase.System.Char;
 limited with NetFrameworkBase.System.TypeCode;
 --------------------------------------------------------------------------------
 package NetFrameworkBase.System.Decimal is
@@ -335,7 +334,7 @@ package NetFrameworkBase.System.Decimal is
       
       function op_Implicit
       (
-         value : NetFrameworkBase.System.Char.Kind_Ptr
+         value : NetFrameworkBase.Char
       )
       return NetFrameworkBase.System.Decimal.Kind_Ptr;
       
@@ -391,7 +390,7 @@ package NetFrameworkBase.System.Decimal is
       (
          value : NetFrameworkBase.System.Decimal.Kind_Ptr
       )
-      return NetFrameworkBase.System.Char.Kind_Ptr;
+      return NetFrameworkBase.Char;
       
       function op_Explicit
       (

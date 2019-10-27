@@ -29,7 +29,6 @@
 --------------------------------------------------------------------------------
 with NetFrameworkBase.System.Object;
 limited with NetFrameworkBase.System.StringComparison;
-limited with NetFrameworkBase.System.Char;
 limited with NetFrameworkBase.System.StringSplitOptions;
 limited with NetFrameworkBase.System.Text.NormalizationForm;
 limited with NetFrameworkBase.System.Globalization.CultureInfo;
@@ -124,7 +123,7 @@ package NetFrameworkBase.System.String is
       (
          this : in out String.Kind;
          sourceIndex : NetFrameworkBase.Int32;
-         destination : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+         destination : NetFrameworkBase.Char_Array;
          destinationIndex : NetFrameworkBase.Int32;
          count : NetFrameworkBase.Int32
       );
@@ -133,7 +132,7 @@ package NetFrameworkBase.System.String is
       (
          this : in out String.Kind
       )
-      return NetFrameworkBase.System.Char.Kind_Array_Ptr;
+      return NetFrameworkBase.Char_Array;
       
       function ToCharArray
       (
@@ -141,7 +140,7 @@ package NetFrameworkBase.System.String is
          startIndex : NetFrameworkBase.Int32;
          length : NetFrameworkBase.Int32
       )
-      return NetFrameworkBase.System.Char.Kind_Array_Ptr;
+      return NetFrameworkBase.Char_Array;
       
       function IsNullOrEmpty
       (
@@ -164,14 +163,14 @@ package NetFrameworkBase.System.String is
       function Split
       (
          this : in out String.Kind;
-         separator : NetFrameworkBase.System.Char.Kind_Array_Ptr
+         separator : NetFrameworkBase.Char_Array
       )
       return NetFrameworkBase.BSTR_Array;
       
       function Split
       (
          this : in out String.Kind;
-         separator : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+         separator : NetFrameworkBase.Char_Array;
          count : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.BSTR_Array;
@@ -179,7 +178,7 @@ package NetFrameworkBase.System.String is
       function Split
       (
          this : in out String.Kind;
-         separator : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+         separator : NetFrameworkBase.Char_Array;
          options : NetFrameworkBase.System.StringSplitOptions.Kind
       )
       return NetFrameworkBase.BSTR_Array;
@@ -187,7 +186,7 @@ package NetFrameworkBase.System.String is
       function Split
       (
          this : in out String.Kind;
-         separator : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+         separator : NetFrameworkBase.Char_Array;
          count : NetFrameworkBase.Int32;
          options : NetFrameworkBase.System.StringSplitOptions.Kind
       )
@@ -228,21 +227,21 @@ package NetFrameworkBase.System.String is
       function Trim
       (
          this : in out String.Kind;
-         trimChars : NetFrameworkBase.System.Char.Kind_Array_Ptr
+         trimChars : NetFrameworkBase.Char_Array
       )
       return NetFrameworkBase.BSTR;
       
       function TrimStart
       (
          this : in out String.Kind;
-         trimChars : NetFrameworkBase.System.Char.Kind_Array_Ptr
+         trimChars : NetFrameworkBase.Char_Array
       )
       return NetFrameworkBase.BSTR;
       
       function TrimEnd
       (
          this : in out String.Kind;
-         trimChars : NetFrameworkBase.System.Char.Kind_Array_Ptr
+         trimChars : NetFrameworkBase.Char_Array
       )
       return NetFrameworkBase.BSTR;
       
@@ -434,14 +433,14 @@ package NetFrameworkBase.System.String is
       function IndexOf
       (
          this : in out String.Kind;
-         value : NetFrameworkBase.System.Char.Kind_Ptr
+         value : NetFrameworkBase.Char
       )
       return NetFrameworkBase.Int32;
       
       function IndexOf
       (
          this : in out String.Kind;
-         value : NetFrameworkBase.System.Char.Kind_Ptr;
+         value : NetFrameworkBase.Char;
          startIndex : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -449,14 +448,14 @@ package NetFrameworkBase.System.String is
       function IndexOfAny
       (
          this : in out String.Kind;
-         anyOf : NetFrameworkBase.System.Char.Kind_Array_Ptr
+         anyOf : NetFrameworkBase.Char_Array
       )
       return NetFrameworkBase.Int32;
       
       function IndexOfAny
       (
          this : in out String.Kind;
-         anyOf : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+         anyOf : NetFrameworkBase.Char_Array;
          startIndex : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -515,14 +514,14 @@ package NetFrameworkBase.System.String is
       function LastIndexOf
       (
          this : in out String.Kind;
-         value : NetFrameworkBase.System.Char.Kind_Ptr
+         value : NetFrameworkBase.Char
       )
       return NetFrameworkBase.Int32;
       
       function LastIndexOf
       (
          this : in out String.Kind;
-         value : NetFrameworkBase.System.Char.Kind_Ptr;
+         value : NetFrameworkBase.Char;
          startIndex : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -530,14 +529,14 @@ package NetFrameworkBase.System.String is
       function LastIndexOfAny
       (
          this : in out String.Kind;
-         anyOf : NetFrameworkBase.System.Char.Kind_Array_Ptr
+         anyOf : NetFrameworkBase.Char_Array
       )
       return NetFrameworkBase.Int32;
       
       function LastIndexOfAny
       (
          this : in out String.Kind;
-         anyOf : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+         anyOf : NetFrameworkBase.Char_Array;
          startIndex : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -604,7 +603,7 @@ package NetFrameworkBase.System.String is
       (
          this : in out String.Kind;
          totalWidth : NetFrameworkBase.Int32;
-         paddingChar : NetFrameworkBase.System.Char.Kind_Ptr
+         paddingChar : NetFrameworkBase.Char
       )
       return NetFrameworkBase.BSTR;
       
@@ -619,7 +618,7 @@ package NetFrameworkBase.System.String is
       (
          this : in out String.Kind;
          totalWidth : NetFrameworkBase.Int32;
-         paddingChar : NetFrameworkBase.System.Char.Kind_Ptr
+         paddingChar : NetFrameworkBase.Char
       )
       return NetFrameworkBase.BSTR;
       
@@ -721,8 +720,8 @@ package NetFrameworkBase.System.String is
       function Replace
       (
          this : in out String.Kind;
-         oldChar : NetFrameworkBase.System.Char.Kind_Ptr;
-         newChar : NetFrameworkBase.System.Char.Kind_Ptr
+         oldChar : NetFrameworkBase.Char;
+         newChar : NetFrameworkBase.Char
       )
       return NetFrameworkBase.BSTR;
       
@@ -901,7 +900,7 @@ package NetFrameworkBase.System.String is
          this : in out String.Kind;
          index : NetFrameworkBase.Int32
       )
-      return NetFrameworkBase.System.Char.Kind_Ptr;
+      return NetFrameworkBase.Char;
       
       function Length
       (
@@ -912,7 +911,7 @@ package NetFrameworkBase.System.String is
       function IndexOf
       (
          this : in out String.Kind;
-         value : NetFrameworkBase.System.Char.Kind_Ptr;
+         value : NetFrameworkBase.Char;
          startIndex : NetFrameworkBase.Int32;
          count : NetFrameworkBase.Int32
       )
@@ -921,7 +920,7 @@ package NetFrameworkBase.System.String is
       function IndexOfAny
       (
          this : in out String.Kind;
-         anyOf : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+         anyOf : NetFrameworkBase.Char_Array;
          startIndex : NetFrameworkBase.Int32;
          count : NetFrameworkBase.Int32
       )
@@ -930,7 +929,7 @@ package NetFrameworkBase.System.String is
       function LastIndexOf
       (
          this : in out String.Kind;
-         value : NetFrameworkBase.System.Char.Kind_Ptr;
+         value : NetFrameworkBase.Char;
          startIndex : NetFrameworkBase.Int32;
          count : NetFrameworkBase.Int32
       )
@@ -939,7 +938,7 @@ package NetFrameworkBase.System.String is
       function LastIndexOfAny
       (
          this : in out String.Kind;
-         anyOf : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+         anyOf : NetFrameworkBase.Char_Array;
          startIndex : NetFrameworkBase.Int32;
          count : NetFrameworkBase.Int32
       )
@@ -962,13 +961,13 @@ package NetFrameworkBase.System.String is
       
       function Constructor
       (
-         value : NetFrameworkBase.System.Char.Kind_Ptr
+         value : NetFrameworkBase.Char_Ptr
       )
       return NetFrameworkBase.System.String.Kind_Ptr;
       
       function Constructor
       (
-         value : NetFrameworkBase.System.Char.Kind_Ptr;
+         value : NetFrameworkBase.Char_Ptr;
          startIndex : NetFrameworkBase.Int32;
          length : NetFrameworkBase.Int32
       )
@@ -976,7 +975,7 @@ package NetFrameworkBase.System.String is
       
       function Constructor
       (
-         value : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+         value : NetFrameworkBase.Char_Array;
          startIndex : NetFrameworkBase.Int32;
          length : NetFrameworkBase.Int32
       )
@@ -984,13 +983,13 @@ package NetFrameworkBase.System.String is
       
       function Constructor
       (
-         value : NetFrameworkBase.System.Char.Kind_Array_Ptr
+         value : NetFrameworkBase.Char_Array
       )
       return NetFrameworkBase.System.String.Kind_Ptr;
       
       function Constructor
       (
-         c : NetFrameworkBase.System.Char.Kind_Ptr;
+         c : NetFrameworkBase.Char;
          count : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.System.String.Kind_Ptr;

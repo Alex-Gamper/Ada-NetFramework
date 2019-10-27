@@ -31,7 +31,6 @@ with NetFrameworkBase.System.Object;
 limited with NetFrameworkBase.System.Text.EncodingProvider;
 limited with NetFrameworkBase.System.Text.EncoderFallback;
 limited with NetFrameworkBase.System.Text.DecoderFallback;
-limited with NetFrameworkBase.System.Char;
 limited with NetFrameworkBase.System.Text.NormalizationForm;
 limited with NetFrameworkBase.System.Text.EncodingInfo;
 limited with NetFrameworkBase.System.Text.Decoder;
@@ -191,7 +190,7 @@ package NetFrameworkBase.System.Text.Encoding is
       function GetByteCount
       (
          this : in out Encoding.Kind;
-         chars : NetFrameworkBase.System.Char.Kind_Array_Ptr
+         chars : NetFrameworkBase.Char_Array
       )
       return NetFrameworkBase.Int32;
       
@@ -205,7 +204,7 @@ package NetFrameworkBase.System.Text.Encoding is
       function GetByteCount
       (
          this : in out Encoding.Kind;
-         chars : NetFrameworkBase.System.Char.Kind_Ptr;
+         chars : NetFrameworkBase.Char_Ptr;
          count : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -213,14 +212,14 @@ package NetFrameworkBase.System.Text.Encoding is
       function GetBytes
       (
          this : in out Encoding.Kind;
-         chars : NetFrameworkBase.System.Char.Kind_Array_Ptr
+         chars : NetFrameworkBase.Char_Array
       )
       return NetFrameworkBase.Byte_Array;
       
       function GetBytes
       (
          this : in out Encoding.Kind;
-         chars : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+         chars : NetFrameworkBase.Char_Array;
          index : NetFrameworkBase.Int32;
          count : NetFrameworkBase.Int32
       )
@@ -264,7 +263,7 @@ package NetFrameworkBase.System.Text.Encoding is
          this : in out Encoding.Kind;
          bytes : NetFrameworkBase.Byte_Array
       )
-      return NetFrameworkBase.System.Char.Kind_Array_Ptr;
+      return NetFrameworkBase.Char_Array;
       
       function GetChars
       (
@@ -273,7 +272,7 @@ package NetFrameworkBase.System.Text.Encoding is
          index : NetFrameworkBase.Int32;
          count : NetFrameworkBase.Int32
       )
-      return NetFrameworkBase.System.Char.Kind_Array_Ptr;
+      return NetFrameworkBase.Char_Array;
       
       function GetString
       (
@@ -380,7 +379,7 @@ package NetFrameworkBase.System.Text.Encoding is
       function GetByteCount
       (
          this : in out Encoding.Kind;
-         chars : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+         chars : NetFrameworkBase.Char_Array;
          index : NetFrameworkBase.Int32;
          count : NetFrameworkBase.Int32
       )
@@ -389,7 +388,7 @@ package NetFrameworkBase.System.Text.Encoding is
       function GetBytes
       (
          this : in out Encoding.Kind;
-         chars : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+         chars : NetFrameworkBase.Char_Array;
          charIndex : NetFrameworkBase.Int32;
          charCount : NetFrameworkBase.Int32;
          bytes : NetFrameworkBase.Byte_Array;
@@ -400,7 +399,7 @@ package NetFrameworkBase.System.Text.Encoding is
       function GetBytes
       (
          this : in out Encoding.Kind;
-         chars : NetFrameworkBase.System.Char.Kind_Ptr;
+         chars : NetFrameworkBase.Char_Ptr;
          charCount : NetFrameworkBase.Int32;
          bytes : NetFrameworkBase.Byte_Ptr;
          byteCount : NetFrameworkBase.Int32
@@ -422,7 +421,7 @@ package NetFrameworkBase.System.Text.Encoding is
          bytes : NetFrameworkBase.Byte_Array;
          byteIndex : NetFrameworkBase.Int32;
          byteCount : NetFrameworkBase.Int32;
-         chars : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+         chars : NetFrameworkBase.Char_Array;
          charIndex : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -432,7 +431,7 @@ package NetFrameworkBase.System.Text.Encoding is
          this : in out Encoding.Kind;
          bytes : NetFrameworkBase.Byte_Ptr;
          byteCount : NetFrameworkBase.Int32;
-         chars : NetFrameworkBase.System.Char.Kind_Ptr;
+         chars : NetFrameworkBase.Char_Ptr;
          charCount : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;

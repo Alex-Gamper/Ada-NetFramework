@@ -34,7 +34,6 @@ with NetFrameworkBase.System.Security.PermissionSet;
 with NetFrameworkBase.System.Security.SecureString;
 with NetFrameworkBase.System.Security.SecurityContextSource;
 with NetFrameworkBase.System.Security.Permissions.PermissionState;
-with NetFrameworkBase.System.Char;
 --------------------------------------------------------------------------------
 package NetFramework.System.Security is
    
@@ -81,7 +80,7 @@ package NetFramework.System.Security is
          
          function Constructor
          (
-            value : NetFrameworkBase.System.Char.Kind_Ptr;
+            value : NetFrameworkBase.Char_Ptr;
             length : NetFrameworkBase.Int32
          )
          return NetFrameworkBase.System.Security.SecureString.Kind_Ptr renames NetFrameworkBase.System.Security.SecureString.Constructor; 

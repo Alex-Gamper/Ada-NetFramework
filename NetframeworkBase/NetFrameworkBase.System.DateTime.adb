@@ -32,7 +32,6 @@ with NetFrameworkBase.System.TimeSpan;
 with NetFrameworkBase.System.Object;
 with NetFrameworkBase.System.DateTimeKind;
 with NetFrameworkBase.System.IFormatProvider;
-with NetFrameworkBase.System.Char;
 with NetFrameworkBase.System.Globalization.DateTimeStyles;
 with NetFrameworkBase.System.Globalization.Calendar;
 with NetFrameworkBase.System.DayOfWeek;
@@ -2339,7 +2338,7 @@ package body NetFrameworkBase.System.DateTime is
    function GetDateTimeFormats
    (
       this : in out DateTime.Kind;
-      format : NetFrameworkBase.System.Char.Kind_Ptr
+      format : NetFrameworkBase.Char
    )
    return NetFrameworkBase.BSTR_Array is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -2387,7 +2386,7 @@ package body NetFrameworkBase.System.DateTime is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value := GetObject (format.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(format);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -2401,7 +2400,7 @@ package body NetFrameworkBase.System.DateTime is
    function GetDateTimeFormats
    (
       this : in out DateTime.Kind;
-      format : NetFrameworkBase.System.Char.Kind_Ptr;
+      format : NetFrameworkBase.Char;
       provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
    )
    return NetFrameworkBase.BSTR_Array is
@@ -2450,7 +2449,7 @@ package body NetFrameworkBase.System.DateTime is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value := GetObject (format.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(format);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;

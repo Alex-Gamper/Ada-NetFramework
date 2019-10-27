@@ -28,7 +28,6 @@
 --                                                                            --
 --------------------------------------------------------------------------------
 with NetFrameworkBase.System.MarshalByRefObject;
-limited with NetFrameworkBase.System.Char;
 limited with NetFrameworkBase.System.Decimal;
 with NetFrameworkBase.System.Object;
 limited with NetFrameworkBase.System.IFormatProvider;
@@ -78,19 +77,19 @@ package NetFrameworkBase.System.IO.TextWriter is
       procedure Write
       (
          this : in out TextWriter.Kind;
-         value : NetFrameworkBase.System.Char.Kind_Ptr
+         value : NetFrameworkBase.Char
       );
       
       procedure Write
       (
          this : in out TextWriter.Kind;
-         buffer : NetFrameworkBase.System.Char.Kind_Array_Ptr
+         buffer : NetFrameworkBase.Char_Array
       );
       
       procedure Write
       (
          this : in out TextWriter.Kind;
-         buffer : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+         buffer : NetFrameworkBase.Char_Array;
          index : NetFrameworkBase.Int32;
          count : NetFrameworkBase.Int32
       );
@@ -188,19 +187,19 @@ package NetFrameworkBase.System.IO.TextWriter is
       procedure WriteLine
       (
          this : in out TextWriter.Kind;
-         value : NetFrameworkBase.System.Char.Kind_Ptr
+         value : NetFrameworkBase.Char
       );
       
       procedure WriteLine
       (
          this : in out TextWriter.Kind;
-         buffer : NetFrameworkBase.System.Char.Kind_Array_Ptr
+         buffer : NetFrameworkBase.Char_Array
       );
       
       procedure WriteLine
       (
          this : in out TextWriter.Kind;
-         buffer : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+         buffer : NetFrameworkBase.Char_Array;
          index : NetFrameworkBase.Int32;
          count : NetFrameworkBase.Int32
       );
@@ -299,7 +298,7 @@ package NetFrameworkBase.System.IO.TextWriter is
       function WriteAsync
       (
          this : in out TextWriter.Kind;
-         value : NetFrameworkBase.System.Char.Kind_Ptr
+         value : NetFrameworkBase.Char
       )
       return NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr;
       
@@ -313,7 +312,7 @@ package NetFrameworkBase.System.IO.TextWriter is
       function WriteAsync
       (
          this : in out TextWriter.Kind;
-         buffer : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+         buffer : NetFrameworkBase.Char_Array;
          index : NetFrameworkBase.Int32;
          count : NetFrameworkBase.Int32
       )
@@ -322,7 +321,7 @@ package NetFrameworkBase.System.IO.TextWriter is
       function WriteLineAsync
       (
          this : in out TextWriter.Kind;
-         value : NetFrameworkBase.System.Char.Kind_Ptr
+         value : NetFrameworkBase.Char
       )
       return NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr;
       
@@ -336,7 +335,7 @@ package NetFrameworkBase.System.IO.TextWriter is
       function WriteLineAsync
       (
          this : in out TextWriter.Kind;
-         buffer : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+         buffer : NetFrameworkBase.Char_Array;
          index : NetFrameworkBase.Int32;
          count : NetFrameworkBase.Int32
       )
@@ -375,14 +374,14 @@ package NetFrameworkBase.System.IO.TextWriter is
       function WriteAsync
       (
          this : in out TextWriter.Kind;
-         buffer : NetFrameworkBase.System.Char.Kind_Array_Ptr
+         buffer : NetFrameworkBase.Char_Array
       )
       return NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr;
       
       function WriteLineAsync
       (
          this : in out TextWriter.Kind;
-         buffer : NetFrameworkBase.System.Char.Kind_Array_Ptr
+         buffer : NetFrameworkBase.Char_Array
       )
       return NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr;
       

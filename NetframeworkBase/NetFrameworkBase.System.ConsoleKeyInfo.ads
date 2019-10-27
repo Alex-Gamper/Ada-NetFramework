@@ -29,7 +29,6 @@
 --------------------------------------------------------------------------------
 with NetFrameworkBase.System.ValueType;
 with NetFrameworkBase.System.Object;
-limited with NetFrameworkBase.System.Char;
 limited with NetFrameworkBase.System.ConsoleKey;
 limited with NetFrameworkBase.System.ConsoleModifiers;
 --------------------------------------------------------------------------------
@@ -44,7 +43,7 @@ package NetFrameworkBase.System.ConsoleKeyInfo is
       (
          this : in out ConsoleKeyInfo.Kind
       )
-      return NetFrameworkBase.System.Char.Kind_Ptr;
+      return NetFrameworkBase.Char;
       
       function Key
       (
@@ -94,7 +93,7 @@ package NetFrameworkBase.System.ConsoleKeyInfo is
       
       function Constructor
       (
-         keyChar : NetFrameworkBase.System.Char.Kind_Ptr;
+         keyChar : NetFrameworkBase.Char;
          key : NetFrameworkBase.System.ConsoleKey.Kind;
          shift : NetFrameworkBase.Boolean;
          alt : NetFrameworkBase.Boolean;

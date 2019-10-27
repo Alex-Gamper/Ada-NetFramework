@@ -28,7 +28,6 @@
 --                                                                            --
 --------------------------------------------------------------------------------
 with NetFrameworkBase.System.Object;
-with NetFrameworkBase.System.Char;
 with NetFrameworkWin32;              use NetFrameworkWin32;
 with NetFrameworkAdaRuntime;         use NetFrameworkAdaRuntime;
 with Ada.Unchecked_Conversion;
@@ -136,13 +135,13 @@ package body NetFrameworkBase.System.CharEnumerator is
    (
       this : in out CharEnumerator.Kind
    )
-   return NetFrameworkBase.System.Char.Kind_Ptr is
+   return NetFrameworkBase.Char is
       Hr            : HResult := 0;
       p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Current");
       p_RetVal      : aliased VARIANT;
-      RetVal        : NetFrameworkBase.System.Char.Kind_Ptr := new NetFrameworkBase.System.Char.Kind;
+      RetVal        : NetFrameworkBase.Char;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(GetProperty)'Enum_rep;
@@ -151,8 +150,8 @@ package body NetFrameworkBase.System.CharEnumerator is
       p_Target := GetObject (this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
-      SetObject (RetVal.m_Kind, p_RetVal);
       SysFreeString (p_MethodName);
+      RetVal := From_Variant (p_RetVal);
       return RetVal;
    end;
    

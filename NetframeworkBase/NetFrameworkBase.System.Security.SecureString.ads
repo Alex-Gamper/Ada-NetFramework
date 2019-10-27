@@ -28,7 +28,6 @@
 --                                                                            --
 --------------------------------------------------------------------------------
 with NetFrameworkBase.System.Object;
-limited with NetFrameworkBase.System.Char;
 --------------------------------------------------------------------------------
 package NetFrameworkBase.System.Security.SecureString is
    
@@ -73,14 +72,14 @@ package NetFrameworkBase.System.Security.SecureString is
       procedure AppendChar
       (
          this : in out SecureString.Kind;
-         c : NetFrameworkBase.System.Char.Kind_Ptr
+         c : NetFrameworkBase.Char
       );
       
       procedure InsertAt
       (
          this : in out SecureString.Kind;
          index : NetFrameworkBase.Int32;
-         c : NetFrameworkBase.System.Char.Kind_Ptr
+         c : NetFrameworkBase.Char
       );
       
       procedure RemoveAt
@@ -93,14 +92,14 @@ package NetFrameworkBase.System.Security.SecureString is
       (
          this : in out SecureString.Kind;
          index : NetFrameworkBase.Int32;
-         c : NetFrameworkBase.System.Char.Kind_Ptr
+         c : NetFrameworkBase.Char
       );
       
       function Constructor return NetFrameworkBase.System.Security.SecureString.Kind_Ptr;
       
       function Constructor
       (
-         value : NetFrameworkBase.System.Char.Kind_Ptr;
+         value : NetFrameworkBase.Char_Ptr;
          length : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.System.Security.SecureString.Kind_Ptr;

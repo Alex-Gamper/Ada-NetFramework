@@ -29,7 +29,6 @@
 --------------------------------------------------------------------------------
 with NetFrameworkBase.System.ValueType;
 with NetFrameworkBase.System.Object;
-with NetFrameworkBase.System.Char;
 with NetFrameworkBase.System.ConsoleKey;
 with NetFrameworkBase.System.ConsoleModifiers;
 with NetFrameworkWin32;              use NetFrameworkWin32;
@@ -71,13 +70,13 @@ package body NetFrameworkBase.System.ConsoleKeyInfo is
    (
       this : in out ConsoleKeyInfo.Kind
    )
-   return NetFrameworkBase.System.Char.Kind_Ptr is
+   return NetFrameworkBase.Char is
       Hr            : HResult := 0;
       p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("KeyChar");
       p_RetVal      : aliased VARIANT;
-      RetVal        : NetFrameworkBase.System.Char.Kind_Ptr := new NetFrameworkBase.System.Char.Kind;
+      RetVal        : NetFrameworkBase.Char;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(GetProperty)'Enum_rep;
@@ -86,8 +85,8 @@ package body NetFrameworkBase.System.ConsoleKeyInfo is
       p_Target := GetObject (this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
-      SetObject (RetVal.m_Kind, p_RetVal);
       SysFreeString (p_MethodName);
+      RetVal := From_Variant (p_RetVal);
       return RetVal;
    end;
    
@@ -323,7 +322,7 @@ package body NetFrameworkBase.System.ConsoleKeyInfo is
    
    function Constructor
    (
-      keyChar : NetFrameworkBase.System.Char.Kind_Ptr;
+      keyChar : NetFrameworkBase.Char;
       key : NetFrameworkBase.System.ConsoleKey.Kind;
       shift : NetFrameworkBase.Boolean;
       alt : NetFrameworkBase.Boolean;
@@ -346,7 +345,7 @@ package body NetFrameworkBase.System.ConsoleKeyInfo is
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
-         p_Value := GetObject (keyChar.m_Kind); -- Parameter Type = ValueType
+         p_Value := To_Variant(keyChar);
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 1;

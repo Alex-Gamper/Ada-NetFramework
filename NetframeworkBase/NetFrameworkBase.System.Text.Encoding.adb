@@ -31,7 +31,6 @@ with NetFrameworkBase.System.Object;
 with NetFrameworkBase.System.Text.EncodingProvider;
 with NetFrameworkBase.System.Text.EncoderFallback;
 with NetFrameworkBase.System.Text.DecoderFallback;
-with NetFrameworkBase.System.Char;
 with NetFrameworkBase.System.Text.NormalizationForm;
 with NetFrameworkBase.System.Text.EncodingInfo;
 with NetFrameworkBase.System.Text.Decoder;
@@ -844,7 +843,7 @@ package body NetFrameworkBase.System.Text.Encoding is
    function GetByteCount
    (
       this : in out Encoding.Kind;
-      chars : NetFrameworkBase.System.Char.Kind_Array_Ptr
+      chars : NetFrameworkBase.Char_Array
    )
    return NetFrameworkBase.Int32 is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -918,7 +917,7 @@ package body NetFrameworkBase.System.Text.Encoding is
    function GetByteCount
    (
       this : in out Encoding.Kind;
-      chars : NetFrameworkBase.System.Char.Kind_Ptr;
+      chars : NetFrameworkBase.Char_Ptr;
       count : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -941,7 +940,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := [in out] System.Char*
+      -- fixme parameter type := [builtin] [in out] System.Char*
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -960,7 +959,7 @@ package body NetFrameworkBase.System.Text.Encoding is
    function GetBytes
    (
       this : in out Encoding.Kind;
-      chars : NetFrameworkBase.System.Char.Kind_Array_Ptr
+      chars : NetFrameworkBase.Char_Array
    )
    return NetFrameworkBase.Byte_Array is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -1022,7 +1021,7 @@ package body NetFrameworkBase.System.Text.Encoding is
    function GetBytes
    (
       this : in out Encoding.Kind;
-      chars : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+      chars : NetFrameworkBase.Char_Array;
       index : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32
    )
@@ -1294,7 +1293,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       this : in out Encoding.Kind;
       bytes : NetFrameworkBase.Byte_Array
    )
-   return NetFrameworkBase.System.Char.Kind_Array_Ptr is
+   return NetFrameworkBase.Char_Array is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
       p_Parameters  : aliased LPSAFEARRAY := null;
@@ -1307,7 +1306,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_MethodName  : BSTR := To_BSTR("GetChars");
       p_RetVal      : aliased VARIANT;
    
-      function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.System.Char.Kind_Array_Ptr is
+      function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.Char_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
          LBound : aliased NetFrameworkWin32.LONG := 0;
          UBound : aliased NetFrameworkWin32.LONG := 0;
@@ -1318,8 +1317,8 @@ package body NetFrameworkBase.System.Text.Encoding is
          Hr := SafeArrayGetUBound (sa, 1, UBound'access);
          Index := UBound - LBound + 1;
          declare
-            RetVal : NetFrameworkBase.System.Char.Kind_Array_Ptr(1..integer(Index));
-            Value  : aliased NetFrameworkBase.System.Char.Kind_Ptr;
+            RetVal : NetFrameworkBase.Char_Array(1..integer(Index));
+            Value  : aliased NetFrameworkBase.Char;
             function Convert is new Ada.Unchecked_Conversion (NetFrameworkWin32.Address, PVOID);
          begin
             Index := 0;
@@ -1358,7 +1357,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       index : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32
    )
-   return NetFrameworkBase.System.Char.Kind_Array_Ptr is
+   return NetFrameworkBase.Char_Array is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
       p_Parameters  : aliased LPSAFEARRAY := null;
@@ -1371,7 +1370,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_MethodName  : BSTR := To_BSTR("GetChars");
       p_RetVal      : aliased VARIANT;
    
-      function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.System.Char.Kind_Array_Ptr is
+      function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.Char_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
          LBound : aliased NetFrameworkWin32.LONG := 0;
          UBound : aliased NetFrameworkWin32.LONG := 0;
@@ -1382,8 +1381,8 @@ package body NetFrameworkBase.System.Text.Encoding is
          Hr := SafeArrayGetUBound (sa, 1, UBound'access);
          Index := UBound - LBound + 1;
          declare
-            RetVal : NetFrameworkBase.System.Char.Kind_Array_Ptr(1..integer(Index));
-            Value  : aliased NetFrameworkBase.System.Char.Kind_Ptr;
+            RetVal : NetFrameworkBase.Char_Array(1..integer(Index));
+            Value  : aliased NetFrameworkBase.Char;
             function Convert is new Ada.Unchecked_Conversion (NetFrameworkWin32.Address, PVOID);
          begin
             Index := 0;
@@ -1978,7 +1977,7 @@ package body NetFrameworkBase.System.Text.Encoding is
    function GetByteCount
    (
       this : in out Encoding.Kind;
-      chars : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+      chars : NetFrameworkBase.Char_Array;
       index : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32
    )
@@ -2025,7 +2024,7 @@ package body NetFrameworkBase.System.Text.Encoding is
    function GetBytes
    (
       this : in out Encoding.Kind;
-      chars : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+      chars : NetFrameworkBase.Char_Array;
       charIndex : NetFrameworkBase.Int32;
       charCount : NetFrameworkBase.Int32;
       bytes : NetFrameworkBase.Byte_Array;
@@ -2082,7 +2081,7 @@ package body NetFrameworkBase.System.Text.Encoding is
    function GetBytes
    (
       this : in out Encoding.Kind;
-      chars : NetFrameworkBase.System.Char.Kind_Ptr;
+      chars : NetFrameworkBase.Char_Ptr;
       charCount : NetFrameworkBase.Int32;
       bytes : NetFrameworkBase.Byte_Ptr;
       byteCount : NetFrameworkBase.Int32
@@ -2107,7 +2106,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := [in out] System.Char*
+      -- fixme parameter type := [builtin] [in out] System.Char*
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -2184,7 +2183,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       bytes : NetFrameworkBase.Byte_Array;
       byteIndex : NetFrameworkBase.Int32;
       byteCount : NetFrameworkBase.Int32;
-      chars : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+      chars : NetFrameworkBase.Char_Array;
       charIndex : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -2240,7 +2239,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       this : in out Encoding.Kind;
       bytes : NetFrameworkBase.Byte_Ptr;
       byteCount : NetFrameworkBase.Int32;
-      chars : NetFrameworkBase.System.Char.Kind_Ptr;
+      chars : NetFrameworkBase.Char_Ptr;
       charCount : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -2271,7 +2270,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
-      -- fixme parameter type := [in out] System.Char*
+      -- fixme parameter type := [builtin] [in out] System.Char*
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 3;

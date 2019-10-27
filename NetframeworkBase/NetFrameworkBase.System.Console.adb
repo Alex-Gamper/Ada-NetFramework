@@ -30,7 +30,6 @@
 with NetFrameworkBase.System.Object;
 with NetFrameworkBase.System.Text.Encoding;
 with NetFrameworkBase.System.ConsoleColor;
-with NetFrameworkBase.System.Char;
 with NetFrameworkBase.System.ConsoleCancelEventHandler;
 with NetFrameworkBase.System.IO.TextReader;
 with NetFrameworkBase.System.IO.TextWriter;
@@ -576,7 +575,7 @@ package body NetFrameworkBase.System.Console is
       sourceHeight : NetFrameworkBase.Int32;
       targetLeft : NetFrameworkBase.Int32;
       targetTop : NetFrameworkBase.Int32;
-      sourceChar : NetFrameworkBase.System.Char.Kind_Ptr;
+      sourceChar : NetFrameworkBase.Char;
       sourceForeColor : NetFrameworkBase.System.ConsoleColor.Kind;
       sourceBackColor : NetFrameworkBase.System.ConsoleColor.Kind
    )
@@ -623,7 +622,7 @@ package body NetFrameworkBase.System.Console is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 6;
-      p_Value := GetObject (sourceChar.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(sourceChar);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 7;
@@ -2015,7 +2014,7 @@ package body NetFrameworkBase.System.Console is
    
    procedure WriteLine
    (
-      value : NetFrameworkBase.System.Char.Kind_Ptr
+      value : NetFrameworkBase.Char
    )
    is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -2036,7 +2035,7 @@ package body NetFrameworkBase.System.Console is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value := GetObject (value.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(value);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit (p_Target'access);
@@ -2048,7 +2047,7 @@ package body NetFrameworkBase.System.Console is
    
    procedure WriteLine
    (
-      buffer : NetFrameworkBase.System.Char.Kind_Array_Ptr
+      buffer : NetFrameworkBase.Char_Array
    )
    is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -2081,7 +2080,7 @@ package body NetFrameworkBase.System.Console is
    
    procedure WriteLine
    (
-      buffer : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+      buffer : NetFrameworkBase.Char_Array;
       index : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32
    )
@@ -2894,7 +2893,7 @@ package body NetFrameworkBase.System.Console is
    
    procedure Write
    (
-      value : NetFrameworkBase.System.Char.Kind_Ptr
+      value : NetFrameworkBase.Char
    )
    is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -2915,7 +2914,7 @@ package body NetFrameworkBase.System.Console is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value := GetObject (value.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(value);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit (p_Target'access);
@@ -2927,7 +2926,7 @@ package body NetFrameworkBase.System.Console is
    
    procedure Write
    (
-      buffer : NetFrameworkBase.System.Char.Kind_Array_Ptr
+      buffer : NetFrameworkBase.Char_Array
    )
    is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -2960,7 +2959,7 @@ package body NetFrameworkBase.System.Console is
    
    procedure Write
    (
-      buffer : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+      buffer : NetFrameworkBase.Char_Array;
       index : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32
    )

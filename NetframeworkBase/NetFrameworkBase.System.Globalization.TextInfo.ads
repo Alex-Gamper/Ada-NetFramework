@@ -28,7 +28,6 @@
 --                                                                            --
 --------------------------------------------------------------------------------
 with NetFrameworkBase.System.Object;
-limited with NetFrameworkBase.System.Char;
 --------------------------------------------------------------------------------
 package NetFrameworkBase.System.Globalization.TextInfo is
    
@@ -106,9 +105,9 @@ package NetFrameworkBase.System.Globalization.TextInfo is
       function ToLower
       (
          this : in out TextInfo.Kind;
-         c : NetFrameworkBase.System.Char.Kind_Ptr
+         c : NetFrameworkBase.Char
       )
-      return NetFrameworkBase.System.Char.Kind_Ptr;
+      return NetFrameworkBase.Char;
       
       function ToLower
       (
@@ -120,9 +119,9 @@ package NetFrameworkBase.System.Globalization.TextInfo is
       function ToUpper
       (
          this : in out TextInfo.Kind;
-         c : NetFrameworkBase.System.Char.Kind_Ptr
+         c : NetFrameworkBase.Char
       )
-      return NetFrameworkBase.System.Char.Kind_Ptr;
+      return NetFrameworkBase.Char;
       
       function ToUpper
       (

@@ -29,7 +29,6 @@
 --------------------------------------------------------------------------------
 with NetFrameworkBase.System.Object;
 with NetFrameworkBase.System.Reflection.Assembly;
-with NetFrameworkBase.System.Char;
 with NetFrameworkBase.System.Globalization.CompareOptions;
 with NetFrameworkBase.System.Globalization.SortKey;
 with NetFrameworkBase.System.Globalization.SortVersion;
@@ -183,7 +182,7 @@ package body NetFrameworkBase.System.Globalization.CompareInfo is
    
    function IsSortable
    (
-      ch : NetFrameworkBase.System.Char.Kind_Ptr
+      ch : NetFrameworkBase.Char
    )
    return NetFrameworkBase.Boolean is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -205,7 +204,7 @@ package body NetFrameworkBase.System.Globalization.CompareInfo is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value := GetObject (ch.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(ch);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
@@ -603,7 +602,7 @@ package body NetFrameworkBase.System.Globalization.CompareInfo is
    (
       this : in out CompareInfo.Kind;
       source : NetFrameworkBase.BSTR;
-      value : NetFrameworkBase.System.Char.Kind_Ptr
+      value : NetFrameworkBase.Char
    )
    return NetFrameworkBase.Int32 is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -629,7 +628,7 @@ package body NetFrameworkBase.System.Globalization.CompareInfo is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value := GetObject (value.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(value);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -687,7 +686,7 @@ package body NetFrameworkBase.System.Globalization.CompareInfo is
    (
       this : in out CompareInfo.Kind;
       source : NetFrameworkBase.BSTR;
-      value : NetFrameworkBase.System.Char.Kind_Ptr;
+      value : NetFrameworkBase.Char;
       options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
    )
    return NetFrameworkBase.Int32 is
@@ -714,7 +713,7 @@ package body NetFrameworkBase.System.Globalization.CompareInfo is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value := GetObject (value.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(value);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
@@ -783,54 +782,7 @@ package body NetFrameworkBase.System.Globalization.CompareInfo is
    (
       this : in out CompareInfo.Kind;
       source : NetFrameworkBase.BSTR;
-      value : NetFrameworkBase.System.Char.Kind_Ptr;
-      startIndex : NetFrameworkBase.Int32
-   )
-   return NetFrameworkBase.Int32 is
-      function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
-      Hr            : HResult := 0;
-      p_Parameters  : aliased LPSAFEARRAY := null;
-      p_Bounds      : aliased SAFEARRAYBOUND := (3 , 0);
-      p_Index       : aliased array(1..1) of aliased LONG := (others => 0);
-      p_Value       : aliased VARIANT;
-      p_Value_Ptr   : access VARIANT := p_Value'access;
-      p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
-      p_Target      : aliased VARIANT;
-      p_MethodName  : BSTR := To_BSTR("IndexOf");
-      p_RetVal      : aliased VARIANT;
-      RetVal        : NetFrameworkBase.Int32;
-   begin
-      p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
-      p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
-      p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
-      p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
-      ------------------------------------------------------------
-      p_Index(1) := 0;
-      p_Value := To_Variant(source);
-      Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-      ------------------------------------------------------------
-      p_Index(1) := 1;
-      p_Value := GetObject (value.m_Kind); -- Parameter Type = ValueType
-      Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-      ------------------------------------------------------------
-      p_Index(1) := 2;
-      p_Value := To_Variant(startIndex);
-      Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-   
-      p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
-   
-      Hr := SafeArrayDestroy (p_Parameters);
-      SysFreeString (p_MethodName);
-      RetVal := From_Variant (p_RetVal);
-      return RetVal;
-   end;
-   
-   function IndexOf
-   (
-      this : in out CompareInfo.Kind;
-      source : NetFrameworkBase.BSTR;
-      value : NetFrameworkBase.BSTR;
+      value : NetFrameworkBase.Char;
       startIndex : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -877,7 +829,54 @@ package body NetFrameworkBase.System.Globalization.CompareInfo is
    (
       this : in out CompareInfo.Kind;
       source : NetFrameworkBase.BSTR;
-      value : NetFrameworkBase.System.Char.Kind_Ptr;
+      value : NetFrameworkBase.BSTR;
+      startIndex : NetFrameworkBase.Int32
+   )
+   return NetFrameworkBase.Int32 is
+      function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
+      Hr            : HResult := 0;
+      p_Parameters  : aliased LPSAFEARRAY := null;
+      p_Bounds      : aliased SAFEARRAYBOUND := (3 , 0);
+      p_Index       : aliased array(1..1) of aliased LONG := (others => 0);
+      p_Value       : aliased VARIANT;
+      p_Value_Ptr   : access VARIANT := p_Value'access;
+      p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
+      p_Target      : aliased VARIANT;
+      p_MethodName  : BSTR := To_BSTR("IndexOf");
+      p_RetVal      : aliased VARIANT;
+      RetVal        : NetFrameworkBase.Int32;
+   begin
+      p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
+      p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
+      p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
+      p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
+      ------------------------------------------------------------
+      p_Index(1) := 0;
+      p_Value := To_Variant(source);
+      Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
+      ------------------------------------------------------------
+      p_Index(1) := 1;
+      p_Value := To_Variant(value);
+      Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
+      ------------------------------------------------------------
+      p_Index(1) := 2;
+      p_Value := To_Variant(startIndex);
+      Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
+   
+      p_Target := GetObject(this.m_kind);
+      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+   
+      Hr := SafeArrayDestroy (p_Parameters);
+      SysFreeString (p_MethodName);
+      RetVal := From_Variant (p_RetVal);
+      return RetVal;
+   end;
+   
+   function IndexOf
+   (
+      this : in out CompareInfo.Kind;
+      source : NetFrameworkBase.BSTR;
+      value : NetFrameworkBase.Char;
       startIndex : NetFrameworkBase.Int32;
       options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
    )
@@ -905,7 +904,7 @@ package body NetFrameworkBase.System.Globalization.CompareInfo is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value := GetObject (value.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(value);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
@@ -983,59 +982,7 @@ package body NetFrameworkBase.System.Globalization.CompareInfo is
    (
       this : in out CompareInfo.Kind;
       source : NetFrameworkBase.BSTR;
-      value : NetFrameworkBase.System.Char.Kind_Ptr;
-      startIndex : NetFrameworkBase.Int32;
-      count : NetFrameworkBase.Int32
-   )
-   return NetFrameworkBase.Int32 is
-      function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
-      Hr            : HResult := 0;
-      p_Parameters  : aliased LPSAFEARRAY := null;
-      p_Bounds      : aliased SAFEARRAYBOUND := (4 , 0);
-      p_Index       : aliased array(1..1) of aliased LONG := (others => 0);
-      p_Value       : aliased VARIANT;
-      p_Value_Ptr   : access VARIANT := p_Value'access;
-      p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
-      p_Target      : aliased VARIANT;
-      p_MethodName  : BSTR := To_BSTR("IndexOf");
-      p_RetVal      : aliased VARIANT;
-      RetVal        : NetFrameworkBase.Int32;
-   begin
-      p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
-      p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
-      p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
-      p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
-      ------------------------------------------------------------
-      p_Index(1) := 0;
-      p_Value := To_Variant(source);
-      Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-      ------------------------------------------------------------
-      p_Index(1) := 1;
-      p_Value := GetObject (value.m_Kind); -- Parameter Type = ValueType
-      Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-      ------------------------------------------------------------
-      p_Index(1) := 2;
-      p_Value := To_Variant(startIndex);
-      Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-      ------------------------------------------------------------
-      p_Index(1) := 3;
-      p_Value := To_Variant(count);
-      Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-   
-      p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
-   
-      Hr := SafeArrayDestroy (p_Parameters);
-      SysFreeString (p_MethodName);
-      RetVal := From_Variant (p_RetVal);
-      return RetVal;
-   end;
-   
-   function IndexOf
-   (
-      this : in out CompareInfo.Kind;
-      source : NetFrameworkBase.BSTR;
-      value : NetFrameworkBase.BSTR;
+      value : NetFrameworkBase.Char;
       startIndex : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32
    )
@@ -1087,7 +1034,59 @@ package body NetFrameworkBase.System.Globalization.CompareInfo is
    (
       this : in out CompareInfo.Kind;
       source : NetFrameworkBase.BSTR;
-      value : NetFrameworkBase.System.Char.Kind_Ptr;
+      value : NetFrameworkBase.BSTR;
+      startIndex : NetFrameworkBase.Int32;
+      count : NetFrameworkBase.Int32
+   )
+   return NetFrameworkBase.Int32 is
+      function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
+      Hr            : HResult := 0;
+      p_Parameters  : aliased LPSAFEARRAY := null;
+      p_Bounds      : aliased SAFEARRAYBOUND := (4 , 0);
+      p_Index       : aliased array(1..1) of aliased LONG := (others => 0);
+      p_Value       : aliased VARIANT;
+      p_Value_Ptr   : access VARIANT := p_Value'access;
+      p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
+      p_Target      : aliased VARIANT;
+      p_MethodName  : BSTR := To_BSTR("IndexOf");
+      p_RetVal      : aliased VARIANT;
+      RetVal        : NetFrameworkBase.Int32;
+   begin
+      p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
+      p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
+      p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
+      p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
+      ------------------------------------------------------------
+      p_Index(1) := 0;
+      p_Value := To_Variant(source);
+      Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
+      ------------------------------------------------------------
+      p_Index(1) := 1;
+      p_Value := To_Variant(value);
+      Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
+      ------------------------------------------------------------
+      p_Index(1) := 2;
+      p_Value := To_Variant(startIndex);
+      Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
+      ------------------------------------------------------------
+      p_Index(1) := 3;
+      p_Value := To_Variant(count);
+      Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
+   
+      p_Target := GetObject(this.m_kind);
+      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+   
+      Hr := SafeArrayDestroy (p_Parameters);
+      SysFreeString (p_MethodName);
+      RetVal := From_Variant (p_RetVal);
+      return RetVal;
+   end;
+   
+   function IndexOf
+   (
+      this : in out CompareInfo.Kind;
+      source : NetFrameworkBase.BSTR;
+      value : NetFrameworkBase.Char;
       startIndex : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32;
       options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
@@ -1116,7 +1115,7 @@ package body NetFrameworkBase.System.Globalization.CompareInfo is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value := GetObject (value.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(value);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
@@ -1203,7 +1202,7 @@ package body NetFrameworkBase.System.Globalization.CompareInfo is
    (
       this : in out CompareInfo.Kind;
       source : NetFrameworkBase.BSTR;
-      value : NetFrameworkBase.System.Char.Kind_Ptr
+      value : NetFrameworkBase.Char
    )
    return NetFrameworkBase.Int32 is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -1229,7 +1228,7 @@ package body NetFrameworkBase.System.Globalization.CompareInfo is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value := GetObject (value.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(value);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -1287,7 +1286,7 @@ package body NetFrameworkBase.System.Globalization.CompareInfo is
    (
       this : in out CompareInfo.Kind;
       source : NetFrameworkBase.BSTR;
-      value : NetFrameworkBase.System.Char.Kind_Ptr;
+      value : NetFrameworkBase.Char;
       options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
    )
    return NetFrameworkBase.Int32 is
@@ -1314,7 +1313,7 @@ package body NetFrameworkBase.System.Globalization.CompareInfo is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value := GetObject (value.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(value);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
@@ -1383,54 +1382,7 @@ package body NetFrameworkBase.System.Globalization.CompareInfo is
    (
       this : in out CompareInfo.Kind;
       source : NetFrameworkBase.BSTR;
-      value : NetFrameworkBase.System.Char.Kind_Ptr;
-      startIndex : NetFrameworkBase.Int32
-   )
-   return NetFrameworkBase.Int32 is
-      function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
-      Hr            : HResult := 0;
-      p_Parameters  : aliased LPSAFEARRAY := null;
-      p_Bounds      : aliased SAFEARRAYBOUND := (3 , 0);
-      p_Index       : aliased array(1..1) of aliased LONG := (others => 0);
-      p_Value       : aliased VARIANT;
-      p_Value_Ptr   : access VARIANT := p_Value'access;
-      p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
-      p_Target      : aliased VARIANT;
-      p_MethodName  : BSTR := To_BSTR("LastIndexOf");
-      p_RetVal      : aliased VARIANT;
-      RetVal        : NetFrameworkBase.Int32;
-   begin
-      p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
-      p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
-      p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
-      p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
-      ------------------------------------------------------------
-      p_Index(1) := 0;
-      p_Value := To_Variant(source);
-      Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-      ------------------------------------------------------------
-      p_Index(1) := 1;
-      p_Value := GetObject (value.m_Kind); -- Parameter Type = ValueType
-      Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-      ------------------------------------------------------------
-      p_Index(1) := 2;
-      p_Value := To_Variant(startIndex);
-      Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-   
-      p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
-   
-      Hr := SafeArrayDestroy (p_Parameters);
-      SysFreeString (p_MethodName);
-      RetVal := From_Variant (p_RetVal);
-      return RetVal;
-   end;
-   
-   function LastIndexOf
-   (
-      this : in out CompareInfo.Kind;
-      source : NetFrameworkBase.BSTR;
-      value : NetFrameworkBase.BSTR;
+      value : NetFrameworkBase.Char;
       startIndex : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -1477,7 +1429,54 @@ package body NetFrameworkBase.System.Globalization.CompareInfo is
    (
       this : in out CompareInfo.Kind;
       source : NetFrameworkBase.BSTR;
-      value : NetFrameworkBase.System.Char.Kind_Ptr;
+      value : NetFrameworkBase.BSTR;
+      startIndex : NetFrameworkBase.Int32
+   )
+   return NetFrameworkBase.Int32 is
+      function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
+      Hr            : HResult := 0;
+      p_Parameters  : aliased LPSAFEARRAY := null;
+      p_Bounds      : aliased SAFEARRAYBOUND := (3 , 0);
+      p_Index       : aliased array(1..1) of aliased LONG := (others => 0);
+      p_Value       : aliased VARIANT;
+      p_Value_Ptr   : access VARIANT := p_Value'access;
+      p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
+      p_Target      : aliased VARIANT;
+      p_MethodName  : BSTR := To_BSTR("LastIndexOf");
+      p_RetVal      : aliased VARIANT;
+      RetVal        : NetFrameworkBase.Int32;
+   begin
+      p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
+      p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
+      p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
+      p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
+      ------------------------------------------------------------
+      p_Index(1) := 0;
+      p_Value := To_Variant(source);
+      Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
+      ------------------------------------------------------------
+      p_Index(1) := 1;
+      p_Value := To_Variant(value);
+      Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
+      ------------------------------------------------------------
+      p_Index(1) := 2;
+      p_Value := To_Variant(startIndex);
+      Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
+   
+      p_Target := GetObject(this.m_kind);
+      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+   
+      Hr := SafeArrayDestroy (p_Parameters);
+      SysFreeString (p_MethodName);
+      RetVal := From_Variant (p_RetVal);
+      return RetVal;
+   end;
+   
+   function LastIndexOf
+   (
+      this : in out CompareInfo.Kind;
+      source : NetFrameworkBase.BSTR;
+      value : NetFrameworkBase.Char;
       startIndex : NetFrameworkBase.Int32;
       options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
    )
@@ -1505,7 +1504,7 @@ package body NetFrameworkBase.System.Globalization.CompareInfo is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value := GetObject (value.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(value);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
@@ -1583,59 +1582,7 @@ package body NetFrameworkBase.System.Globalization.CompareInfo is
    (
       this : in out CompareInfo.Kind;
       source : NetFrameworkBase.BSTR;
-      value : NetFrameworkBase.System.Char.Kind_Ptr;
-      startIndex : NetFrameworkBase.Int32;
-      count : NetFrameworkBase.Int32
-   )
-   return NetFrameworkBase.Int32 is
-      function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
-      Hr            : HResult := 0;
-      p_Parameters  : aliased LPSAFEARRAY := null;
-      p_Bounds      : aliased SAFEARRAYBOUND := (4 , 0);
-      p_Index       : aliased array(1..1) of aliased LONG := (others => 0);
-      p_Value       : aliased VARIANT;
-      p_Value_Ptr   : access VARIANT := p_Value'access;
-      p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
-      p_Target      : aliased VARIANT;
-      p_MethodName  : BSTR := To_BSTR("LastIndexOf");
-      p_RetVal      : aliased VARIANT;
-      RetVal        : NetFrameworkBase.Int32;
-   begin
-      p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
-      p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
-      p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
-      p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
-      ------------------------------------------------------------
-      p_Index(1) := 0;
-      p_Value := To_Variant(source);
-      Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-      ------------------------------------------------------------
-      p_Index(1) := 1;
-      p_Value := GetObject (value.m_Kind); -- Parameter Type = ValueType
-      Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-      ------------------------------------------------------------
-      p_Index(1) := 2;
-      p_Value := To_Variant(startIndex);
-      Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-      ------------------------------------------------------------
-      p_Index(1) := 3;
-      p_Value := To_Variant(count);
-      Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-   
-      p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
-   
-      Hr := SafeArrayDestroy (p_Parameters);
-      SysFreeString (p_MethodName);
-      RetVal := From_Variant (p_RetVal);
-      return RetVal;
-   end;
-   
-   function LastIndexOf
-   (
-      this : in out CompareInfo.Kind;
-      source : NetFrameworkBase.BSTR;
-      value : NetFrameworkBase.BSTR;
+      value : NetFrameworkBase.Char;
       startIndex : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32
    )
@@ -1687,7 +1634,59 @@ package body NetFrameworkBase.System.Globalization.CompareInfo is
    (
       this : in out CompareInfo.Kind;
       source : NetFrameworkBase.BSTR;
-      value : NetFrameworkBase.System.Char.Kind_Ptr;
+      value : NetFrameworkBase.BSTR;
+      startIndex : NetFrameworkBase.Int32;
+      count : NetFrameworkBase.Int32
+   )
+   return NetFrameworkBase.Int32 is
+      function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
+      Hr            : HResult := 0;
+      p_Parameters  : aliased LPSAFEARRAY := null;
+      p_Bounds      : aliased SAFEARRAYBOUND := (4 , 0);
+      p_Index       : aliased array(1..1) of aliased LONG := (others => 0);
+      p_Value       : aliased VARIANT;
+      p_Value_Ptr   : access VARIANT := p_Value'access;
+      p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
+      p_Target      : aliased VARIANT;
+      p_MethodName  : BSTR := To_BSTR("LastIndexOf");
+      p_RetVal      : aliased VARIANT;
+      RetVal        : NetFrameworkBase.Int32;
+   begin
+      p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
+      p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
+      p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
+      p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
+      ------------------------------------------------------------
+      p_Index(1) := 0;
+      p_Value := To_Variant(source);
+      Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
+      ------------------------------------------------------------
+      p_Index(1) := 1;
+      p_Value := To_Variant(value);
+      Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
+      ------------------------------------------------------------
+      p_Index(1) := 2;
+      p_Value := To_Variant(startIndex);
+      Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
+      ------------------------------------------------------------
+      p_Index(1) := 3;
+      p_Value := To_Variant(count);
+      Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
+   
+      p_Target := GetObject(this.m_kind);
+      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+   
+      Hr := SafeArrayDestroy (p_Parameters);
+      SysFreeString (p_MethodName);
+      RetVal := From_Variant (p_RetVal);
+      return RetVal;
+   end;
+   
+   function LastIndexOf
+   (
+      this : in out CompareInfo.Kind;
+      source : NetFrameworkBase.BSTR;
+      value : NetFrameworkBase.Char;
       startIndex : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32;
       options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
@@ -1716,7 +1715,7 @@ package body NetFrameworkBase.System.Globalization.CompareInfo is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value := GetObject (value.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(value);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;

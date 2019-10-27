@@ -28,7 +28,6 @@
 --                                                                            --
 --------------------------------------------------------------------------------
 with NetFrameworkBase.System.MarshalByRefObject;
-limited with NetFrameworkBase.System.Char;
 --------------------------------------------------------------------------------
 package NetFrameworkBase.System.IO.TextReader is
    
@@ -62,7 +61,7 @@ package NetFrameworkBase.System.IO.TextReader is
       function Read
       (
          this : in out TextReader.Kind;
-         buffer : in out NetFrameworkBase.System.Char.Kind_Array_Ptr;
+         buffer : in out NetFrameworkBase.Char_Array_Ptr;
          index : NetFrameworkBase.Int32;
          count : NetFrameworkBase.Int32
       )
@@ -77,7 +76,7 @@ package NetFrameworkBase.System.IO.TextReader is
       function ReadBlock
       (
          this : in out TextReader.Kind;
-         buffer : in out NetFrameworkBase.System.Char.Kind_Array_Ptr;
+         buffer : in out NetFrameworkBase.Char_Array_Ptr;
          index : NetFrameworkBase.Int32;
          count : NetFrameworkBase.Int32
       )

@@ -28,7 +28,6 @@
 --                                                                            --
 --------------------------------------------------------------------------------
 with NetFrameworkBase.System.MarshalByRefObject;
-with NetFrameworkBase.System.Char;
 with NetFrameworkWin32;              use NetFrameworkWin32;
 with NetFrameworkAdaRuntime;         use NetFrameworkAdaRuntime;
 with Ada.Unchecked_Conversion;
@@ -155,7 +154,7 @@ package body NetFrameworkBase.System.IO.TextReader is
    function Read
    (
       this : in out TextReader.Kind;
-      buffer : in out NetFrameworkBase.System.Char.Kind_Array_Ptr;
+      buffer : in out NetFrameworkBase.Char_Array_Ptr;
       index : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32
    )
@@ -196,7 +195,7 @@ package body NetFrameworkBase.System.IO.TextReader is
       -- set out parameter [buffer : System.Char]
       p_Index(1) := 0;
       Hr := SafeArrayGetElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-      -- fixme [buffer.all := From_Variant (p_Value);] [not builtin] [array]
+      -- fixme [buffer.all := From_Variant (p_Value);] [out] [array]
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -230,7 +229,7 @@ package body NetFrameworkBase.System.IO.TextReader is
    function ReadBlock
    (
       this : in out TextReader.Kind;
-      buffer : in out NetFrameworkBase.System.Char.Kind_Array_Ptr;
+      buffer : in out NetFrameworkBase.Char_Array_Ptr;
       index : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32
    )
@@ -271,7 +270,7 @@ package body NetFrameworkBase.System.IO.TextReader is
       -- set out parameter [buffer : System.Char]
       p_Index(1) := 0;
       Hr := SafeArrayGetElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-      -- fixme [buffer.all := From_Variant (p_Value);] [not builtin] [array]
+      -- fixme [buffer.all := From_Variant (p_Value);] [out] [array]
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);

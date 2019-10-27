@@ -89,7 +89,6 @@ with NetFrameworkBase.System.ValueType;
 with NetFrameworkBase.System.Version;
 with NetFrameworkBase.System.Exception_x;
 with NetFrameworkBase.System.Object;
-with NetFrameworkBase.System.Char;
 with NetFrameworkBase.System.Text.Encoding;
 with NetFrameworkBase.System.DateTimeKind;
 with NetFrameworkBase.System.Globalization.Calendar;
@@ -147,13 +146,13 @@ package NetFramework.System is
       
          function Constructor
          (
-            value : NetFrameworkBase.System.Char.Kind_Ptr
+            value : NetFrameworkBase.Char_Ptr
          )
          return NetFrameworkBase.System.String.Kind_Ptr renames NetFrameworkBase.System.String.Constructor; 
          
          function Constructor
          (
-            value : NetFrameworkBase.System.Char.Kind_Ptr;
+            value : NetFrameworkBase.Char_Ptr;
             startIndex : NetFrameworkBase.Int32;
             length : NetFrameworkBase.Int32
          )
@@ -161,7 +160,7 @@ package NetFramework.System is
          
          function Constructor
          (
-            value : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+            value : NetFrameworkBase.Char_Array;
             startIndex : NetFrameworkBase.Int32;
             length : NetFrameworkBase.Int32
          )
@@ -169,13 +168,13 @@ package NetFramework.System is
          
          function Constructor
          (
-            value : NetFrameworkBase.System.Char.Kind_Array_Ptr
+            value : NetFrameworkBase.Char_Array
          )
          return NetFrameworkBase.System.String.Kind_Ptr renames NetFrameworkBase.System.String.Constructor; 
          
          function Constructor
          (
-            c : NetFrameworkBase.System.Char.Kind_Ptr;
+            c : NetFrameworkBase.Char;
             count : NetFrameworkBase.Int32
          )
          return NetFrameworkBase.System.String.Kind_Ptr renames NetFrameworkBase.System.String.Constructor; 
@@ -407,7 +406,7 @@ package NetFramework.System is
       
          function Constructor
          (
-            keyChar : NetFrameworkBase.System.Char.Kind_Ptr;
+            keyChar : NetFrameworkBase.Char;
             key : NetFrameworkBase.System.ConsoleKey.Kind;
             shift : NetFrameworkBase.Boolean;
             alt : NetFrameworkBase.Boolean;

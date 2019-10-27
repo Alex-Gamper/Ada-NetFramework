@@ -29,7 +29,6 @@
 --------------------------------------------------------------------------------
 with NetFrameworkBase.System.Object;
 limited with NetFrameworkBase.System.Text.EncoderFallback;
-limited with NetFrameworkBase.System.Char;
 limited with NetFrameworkBase.System.Text.EncoderFallbackBuffer;
 --------------------------------------------------------------------------------
 package NetFrameworkBase.System.Text.Encoder is
@@ -65,7 +64,7 @@ package NetFrameworkBase.System.Text.Encoder is
       function GetByteCount
       (
          this : in out Encoder.Kind;
-         chars : NetFrameworkBase.System.Char.Kind_Ptr;
+         chars : NetFrameworkBase.Char_Ptr;
          count : NetFrameworkBase.Int32;
          flush : NetFrameworkBase.Boolean
       )
@@ -74,7 +73,7 @@ package NetFrameworkBase.System.Text.Encoder is
       function GetByteCount
       (
          this : in out Encoder.Kind;
-         chars : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+         chars : NetFrameworkBase.Char_Array;
          index : NetFrameworkBase.Int32;
          count : NetFrameworkBase.Int32;
          flush : NetFrameworkBase.Boolean
@@ -84,7 +83,7 @@ package NetFrameworkBase.System.Text.Encoder is
       function GetBytes
       (
          this : in out Encoder.Kind;
-         chars : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+         chars : NetFrameworkBase.Char_Array;
          charIndex : NetFrameworkBase.Int32;
          charCount : NetFrameworkBase.Int32;
          bytes : NetFrameworkBase.Byte_Array;
@@ -96,7 +95,7 @@ package NetFrameworkBase.System.Text.Encoder is
       function GetBytes
       (
          this : in out Encoder.Kind;
-         chars : NetFrameworkBase.System.Char.Kind_Ptr;
+         chars : NetFrameworkBase.Char_Ptr;
          charCount : NetFrameworkBase.Int32;
          bytes : NetFrameworkBase.Byte_Ptr;
          byteCount : NetFrameworkBase.Int32;
@@ -107,7 +106,7 @@ package NetFrameworkBase.System.Text.Encoder is
       procedure Convert
       (
          this : in out Encoder.Kind;
-         chars : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+         chars : NetFrameworkBase.Char_Array;
          charIndex : NetFrameworkBase.Int32;
          charCount : NetFrameworkBase.Int32;
          bytes : NetFrameworkBase.Byte_Array;
@@ -122,7 +121,7 @@ package NetFrameworkBase.System.Text.Encoder is
       procedure Convert
       (
          this : in out Encoder.Kind;
-         chars : NetFrameworkBase.System.Char.Kind_Ptr;
+         chars : NetFrameworkBase.Char_Ptr;
          charCount : NetFrameworkBase.Int32;
          bytes : NetFrameworkBase.Byte_Ptr;
          byteCount : NetFrameworkBase.Int32;

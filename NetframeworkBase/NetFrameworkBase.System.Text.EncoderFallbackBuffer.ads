@@ -28,7 +28,6 @@
 --                                                                            --
 --------------------------------------------------------------------------------
 with NetFrameworkBase.System.Object;
-limited with NetFrameworkBase.System.Char;
 --------------------------------------------------------------------------------
 package NetFrameworkBase.System.Text.EncoderFallbackBuffer is
    
@@ -45,7 +44,7 @@ package NetFrameworkBase.System.Text.EncoderFallbackBuffer is
       function Fallback
       (
          this : in out EncoderFallbackBuffer.Kind;
-         charUnknown : NetFrameworkBase.System.Char.Kind_Ptr;
+         charUnknown : NetFrameworkBase.Char;
          index : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Boolean;
@@ -53,8 +52,8 @@ package NetFrameworkBase.System.Text.EncoderFallbackBuffer is
       function Fallback
       (
          this : in out EncoderFallbackBuffer.Kind;
-         charUnknownHigh : NetFrameworkBase.System.Char.Kind_Ptr;
-         charUnknownLow : NetFrameworkBase.System.Char.Kind_Ptr;
+         charUnknownHigh : NetFrameworkBase.Char;
+         charUnknownLow : NetFrameworkBase.Char;
          index : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Boolean;
@@ -63,7 +62,7 @@ package NetFrameworkBase.System.Text.EncoderFallbackBuffer is
       (
          this : in out EncoderFallbackBuffer.Kind
       )
-      return NetFrameworkBase.System.Char.Kind_Ptr;
+      return NetFrameworkBase.Char;
       
       function MovePrevious
       (

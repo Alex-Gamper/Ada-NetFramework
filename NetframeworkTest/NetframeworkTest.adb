@@ -125,7 +125,7 @@ begin
         procedure Test_Constructors is
             use NetFrameworkBase.System.ConsoleKey;
             m_Key       : NetFramework.System.ConsoleKey := NetFrameworkBase.System.ConsoleKey.Kind'(PageUp);--:= NetFrameworkBase.System.ConsoleKeyInfo.Constructor
-            m_KeyInfo   : NetFramework.System.ConsoleKeyInfo; := NetFrameworkBase.System.ConsoleKeyInfo.Constructor()
+            m_KeyInfo   : NetFramework.System.ConsoleKeyInfo; --:= NetFrameworkBase.System.ConsoleKeyInfo.Constructor()
         begin
             null;
         end;

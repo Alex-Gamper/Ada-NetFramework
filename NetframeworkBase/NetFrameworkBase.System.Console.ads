@@ -30,7 +30,6 @@
 with NetFrameworkBase.System.Object;
 limited with NetFrameworkBase.System.Text.Encoding;
 limited with NetFrameworkBase.System.ConsoleColor;
-limited with NetFrameworkBase.System.Char;
 limited with NetFrameworkBase.System.ConsoleCancelEventHandler;
 limited with NetFrameworkBase.System.IO.TextReader;
 limited with NetFrameworkBase.System.IO.TextWriter;
@@ -134,7 +133,7 @@ package NetFrameworkBase.System.Console is
          sourceHeight : NetFrameworkBase.Int32;
          targetLeft : NetFrameworkBase.Int32;
          targetTop : NetFrameworkBase.Int32;
-         sourceChar : NetFrameworkBase.System.Char.Kind_Ptr;
+         sourceChar : NetFrameworkBase.Char;
          sourceForeColor : NetFrameworkBase.System.ConsoleColor.Kind;
          sourceBackColor : NetFrameworkBase.System.ConsoleColor.Kind
       )
@@ -371,19 +370,19 @@ package NetFrameworkBase.System.Console is
       
       procedure WriteLine
       (
-         value : NetFrameworkBase.System.Char.Kind_Ptr
+         value : NetFrameworkBase.Char
       )
       ;
       
       procedure WriteLine
       (
-         buffer : NetFrameworkBase.System.Char.Kind_Array_Ptr
+         buffer : NetFrameworkBase.Char_Array
       )
       ;
       
       procedure WriteLine
       (
-         buffer : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+         buffer : NetFrameworkBase.Char_Array;
          index : NetFrameworkBase.Int32;
          count : NetFrameworkBase.Int32
       )
@@ -533,19 +532,19 @@ package NetFrameworkBase.System.Console is
       
       procedure Write
       (
-         value : NetFrameworkBase.System.Char.Kind_Ptr
+         value : NetFrameworkBase.Char
       )
       ;
       
       procedure Write
       (
-         buffer : NetFrameworkBase.System.Char.Kind_Array_Ptr
+         buffer : NetFrameworkBase.Char_Array
       )
       ;
       
       procedure Write
       (
-         buffer : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+         buffer : NetFrameworkBase.Char_Array;
          index : NetFrameworkBase.Int32;
          count : NetFrameworkBase.Int32
       )

@@ -33,7 +33,6 @@ limited with NetFrameworkBase.System.Type_x;
 limited with NetFrameworkBase.System.Globalization.Calendar;
 limited with NetFrameworkBase.System.DayOfWeek;
 limited with NetFrameworkBase.System.Globalization.CalendarWeekRule;
-limited with NetFrameworkBase.System.Char;
 --------------------------------------------------------------------------------
 package NetFrameworkBase.System.Globalization.DateTimeFormatInfo is
    
@@ -373,7 +372,7 @@ package NetFrameworkBase.System.Globalization.DateTimeFormatInfo is
       (
          this : in out DateTimeFormatInfo.Kind;
          patterns : NetFrameworkBase.BSTR_Array;
-         format : NetFrameworkBase.System.Char.Kind_Ptr
+         format : NetFrameworkBase.Char
       );
       
       function AbbreviatedMonthGenitiveNames
@@ -427,7 +426,7 @@ package NetFrameworkBase.System.Globalization.DateTimeFormatInfo is
       function GetAllDateTimePatterns
       (
          this : in out DateTimeFormatInfo.Kind;
-         format : NetFrameworkBase.System.Char.Kind_Ptr
+         format : NetFrameworkBase.Char
       )
       return NetFrameworkBase.BSTR_Array;
       

@@ -29,7 +29,6 @@
 --------------------------------------------------------------------------------
 with NetFrameworkBase.System.Object;
 with NetFrameworkBase.System.StringComparison;
-with NetFrameworkBase.System.Char;
 with NetFrameworkBase.System.StringSplitOptions;
 with NetFrameworkBase.System.Text.NormalizationForm;
 with NetFrameworkBase.System.Globalization.CultureInfo;
@@ -497,7 +496,7 @@ package body NetFrameworkBase.System.String is
    (
       this : in out String.Kind;
       sourceIndex : NetFrameworkBase.Int32;
-      destination : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+      destination : NetFrameworkBase.Char_Array;
       destinationIndex : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32
    ) is
@@ -545,14 +544,14 @@ package body NetFrameworkBase.System.String is
    (
       this : in out String.Kind
    )
-   return NetFrameworkBase.System.Char.Kind_Array_Ptr is
+   return NetFrameworkBase.Char_Array is
       Hr            : HResult := 0;
       p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ToCharArray");
       p_RetVal      : aliased VARIANT;
    
-      function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.System.Char.Kind_Array_Ptr is
+      function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.Char_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
          LBound : aliased NetFrameworkWin32.LONG := 0;
          UBound : aliased NetFrameworkWin32.LONG := 0;
@@ -563,8 +562,8 @@ package body NetFrameworkBase.System.String is
          Hr := SafeArrayGetUBound (sa, 1, UBound'access);
          Index := UBound - LBound + 1;
          declare
-            RetVal : NetFrameworkBase.System.Char.Kind_Array_Ptr(1..integer(Index));
-            Value  : aliased NetFrameworkBase.System.Char.Kind_Ptr;
+            RetVal : NetFrameworkBase.Char_Array(1..integer(Index));
+            Value  : aliased NetFrameworkBase.Char;
             function Convert is new Ada.Unchecked_Conversion (NetFrameworkWin32.Address, PVOID);
          begin
             Index := 0;
@@ -596,7 +595,7 @@ package body NetFrameworkBase.System.String is
       startIndex : NetFrameworkBase.Int32;
       length : NetFrameworkBase.Int32
    )
-   return NetFrameworkBase.System.Char.Kind_Array_Ptr is
+   return NetFrameworkBase.Char_Array is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
       p_Parameters  : aliased LPSAFEARRAY := null;
@@ -609,7 +608,7 @@ package body NetFrameworkBase.System.String is
       p_MethodName  : BSTR := To_BSTR("ToCharArray");
       p_RetVal      : aliased VARIANT;
    
-      function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.System.Char.Kind_Array_Ptr is
+      function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.Char_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
          LBound : aliased NetFrameworkWin32.LONG := 0;
          UBound : aliased NetFrameworkWin32.LONG := 0;
@@ -620,8 +619,8 @@ package body NetFrameworkBase.System.String is
          Hr := SafeArrayGetUBound (sa, 1, UBound'access);
          Index := UBound - LBound + 1;
          declare
-            RetVal : NetFrameworkBase.System.Char.Kind_Array_Ptr(1..integer(Index));
-            Value  : aliased NetFrameworkBase.System.Char.Kind_Ptr;
+            RetVal : NetFrameworkBase.Char_Array(1..integer(Index));
+            Value  : aliased NetFrameworkBase.Char;
             function Convert is new Ada.Unchecked_Conversion (NetFrameworkWin32.Address, PVOID);
          begin
             Index := 0;
@@ -756,7 +755,7 @@ package body NetFrameworkBase.System.String is
    function Split
    (
       this : in out String.Kind;
-      separator : NetFrameworkBase.System.Char.Kind_Array_Ptr
+      separator : NetFrameworkBase.Char_Array
    )
    return NetFrameworkBase.BSTR_Array is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -818,7 +817,7 @@ package body NetFrameworkBase.System.String is
    function Split
    (
       this : in out String.Kind;
-      separator : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+      separator : NetFrameworkBase.Char_Array;
       count : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.BSTR_Array is
@@ -885,7 +884,7 @@ package body NetFrameworkBase.System.String is
    function Split
    (
       this : in out String.Kind;
-      separator : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+      separator : NetFrameworkBase.Char_Array;
       options : NetFrameworkBase.System.StringSplitOptions.Kind
    )
    return NetFrameworkBase.BSTR_Array is
@@ -953,7 +952,7 @@ package body NetFrameworkBase.System.String is
    function Split
    (
       this : in out String.Kind;
-      separator : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+      separator : NetFrameworkBase.Char_Array;
       count : NetFrameworkBase.Int32;
       options : NetFrameworkBase.System.StringSplitOptions.Kind
    )
@@ -1246,7 +1245,7 @@ package body NetFrameworkBase.System.String is
    function Trim
    (
       this : in out String.Kind;
-      trimChars : NetFrameworkBase.System.Char.Kind_Array_Ptr
+      trimChars : NetFrameworkBase.Char_Array
    )
    return NetFrameworkBase.BSTR is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -1283,7 +1282,7 @@ package body NetFrameworkBase.System.String is
    function TrimStart
    (
       this : in out String.Kind;
-      trimChars : NetFrameworkBase.System.Char.Kind_Array_Ptr
+      trimChars : NetFrameworkBase.Char_Array
    )
    return NetFrameworkBase.BSTR is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -1320,7 +1319,7 @@ package body NetFrameworkBase.System.String is
    function TrimEnd
    (
       this : in out String.Kind;
-      trimChars : NetFrameworkBase.System.Char.Kind_Array_Ptr
+      trimChars : NetFrameworkBase.Char_Array
    )
    return NetFrameworkBase.BSTR is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -2365,7 +2364,7 @@ package body NetFrameworkBase.System.String is
    function IndexOf
    (
       this : in out String.Kind;
-      value : NetFrameworkBase.System.Char.Kind_Ptr
+      value : NetFrameworkBase.Char
    )
    return NetFrameworkBase.Int32 is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -2387,7 +2386,7 @@ package body NetFrameworkBase.System.String is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value := GetObject (value.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(value);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -2402,7 +2401,7 @@ package body NetFrameworkBase.System.String is
    function IndexOf
    (
       this : in out String.Kind;
-      value : NetFrameworkBase.System.Char.Kind_Ptr;
+      value : NetFrameworkBase.Char;
       startIndex : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -2425,7 +2424,7 @@ package body NetFrameworkBase.System.String is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value := GetObject (value.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(value);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -2444,7 +2443,7 @@ package body NetFrameworkBase.System.String is
    function IndexOfAny
    (
       this : in out String.Kind;
-      anyOf : NetFrameworkBase.System.Char.Kind_Array_Ptr
+      anyOf : NetFrameworkBase.Char_Array
    )
    return NetFrameworkBase.Int32 is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -2481,7 +2480,7 @@ package body NetFrameworkBase.System.String is
    function IndexOfAny
    (
       this : in out String.Kind;
-      anyOf : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+      anyOf : NetFrameworkBase.Char_Array;
       startIndex : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -2793,7 +2792,7 @@ package body NetFrameworkBase.System.String is
    function LastIndexOf
    (
       this : in out String.Kind;
-      value : NetFrameworkBase.System.Char.Kind_Ptr
+      value : NetFrameworkBase.Char
    )
    return NetFrameworkBase.Int32 is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -2815,7 +2814,7 @@ package body NetFrameworkBase.System.String is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value := GetObject (value.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(value);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -2830,7 +2829,7 @@ package body NetFrameworkBase.System.String is
    function LastIndexOf
    (
       this : in out String.Kind;
-      value : NetFrameworkBase.System.Char.Kind_Ptr;
+      value : NetFrameworkBase.Char;
       startIndex : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -2853,7 +2852,7 @@ package body NetFrameworkBase.System.String is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value := GetObject (value.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(value);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -2872,7 +2871,7 @@ package body NetFrameworkBase.System.String is
    function LastIndexOfAny
    (
       this : in out String.Kind;
-      anyOf : NetFrameworkBase.System.Char.Kind_Array_Ptr
+      anyOf : NetFrameworkBase.Char_Array
    )
    return NetFrameworkBase.Int32 is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -2909,7 +2908,7 @@ package body NetFrameworkBase.System.String is
    function LastIndexOfAny
    (
       this : in out String.Kind;
-      anyOf : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+      anyOf : NetFrameworkBase.Char_Array;
       startIndex : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -3259,7 +3258,7 @@ package body NetFrameworkBase.System.String is
    (
       this : in out String.Kind;
       totalWidth : NetFrameworkBase.Int32;
-      paddingChar : NetFrameworkBase.System.Char.Kind_Ptr
+      paddingChar : NetFrameworkBase.Char
    )
    return NetFrameworkBase.BSTR is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -3285,7 +3284,7 @@ package body NetFrameworkBase.System.String is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value := GetObject (paddingChar.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(paddingChar);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -3338,7 +3337,7 @@ package body NetFrameworkBase.System.String is
    (
       this : in out String.Kind;
       totalWidth : NetFrameworkBase.Int32;
-      paddingChar : NetFrameworkBase.System.Char.Kind_Ptr
+      paddingChar : NetFrameworkBase.Char
    )
    return NetFrameworkBase.BSTR is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -3364,7 +3363,7 @@ package body NetFrameworkBase.System.String is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value := GetObject (paddingChar.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(paddingChar);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -3828,8 +3827,8 @@ package body NetFrameworkBase.System.String is
    function Replace
    (
       this : in out String.Kind;
-      oldChar : NetFrameworkBase.System.Char.Kind_Ptr;
-      newChar : NetFrameworkBase.System.Char.Kind_Ptr
+      oldChar : NetFrameworkBase.Char;
+      newChar : NetFrameworkBase.Char
    )
    return NetFrameworkBase.BSTR is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -3851,11 +3850,11 @@ package body NetFrameworkBase.System.String is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value := GetObject (oldChar.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(oldChar);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value := GetObject (newChar.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(newChar);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -4828,7 +4827,7 @@ package body NetFrameworkBase.System.String is
       this : in out String.Kind;
       index : NetFrameworkBase.Int32
    )
-   return NetFrameworkBase.System.Char.Kind_Ptr is
+   return NetFrameworkBase.Char is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
       p_Parameters  : aliased LPSAFEARRAY := null;
@@ -4840,7 +4839,7 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Chars");
       p_RetVal      : aliased VARIANT;
-      RetVal        : NetFrameworkBase.System.Char.Kind_Ptr := new NetFrameworkBase.System.Char.Kind;
+      RetVal        : NetFrameworkBase.Char;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(GetProperty)'Enum_rep;
@@ -4854,9 +4853,9 @@ package body NetFrameworkBase.System.String is
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
-      SetObject (RetVal.m_Kind, p_RetVal);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
+      RetVal := From_Variant (p_RetVal);
       return RetVal;
    end;
    
@@ -4887,7 +4886,7 @@ package body NetFrameworkBase.System.String is
    function IndexOf
    (
       this : in out String.Kind;
-      value : NetFrameworkBase.System.Char.Kind_Ptr;
+      value : NetFrameworkBase.Char;
       startIndex : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32
    )
@@ -4911,7 +4910,7 @@ package body NetFrameworkBase.System.String is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value := GetObject (value.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(value);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -4934,7 +4933,7 @@ package body NetFrameworkBase.System.String is
    function IndexOfAny
    (
       this : in out String.Kind;
-      anyOf : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+      anyOf : NetFrameworkBase.Char_Array;
       startIndex : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32
    )
@@ -4981,7 +4980,7 @@ package body NetFrameworkBase.System.String is
    function LastIndexOf
    (
       this : in out String.Kind;
-      value : NetFrameworkBase.System.Char.Kind_Ptr;
+      value : NetFrameworkBase.Char;
       startIndex : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32
    )
@@ -5005,7 +5004,7 @@ package body NetFrameworkBase.System.String is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value := GetObject (value.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(value);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -5028,7 +5027,7 @@ package body NetFrameworkBase.System.String is
    function LastIndexOfAny
    (
       this : in out String.Kind;
-      anyOf : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+      anyOf : NetFrameworkBase.Char_Array;
       startIndex : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32
    )
@@ -5162,7 +5161,7 @@ package body NetFrameworkBase.System.String is
    
    function Constructor
    (
-      value : NetFrameworkBase.System.Char.Kind_Ptr
+      value : NetFrameworkBase.Char_Ptr
    )
    return NetFrameworkBase.System.String.Kind_Ptr is
    begin
@@ -5181,7 +5180,7 @@ package body NetFrameworkBase.System.String is
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
-         -- fixme parameter type := [in out] System.Char*
+         -- fixme parameter type := [builtin] [in out] System.Char*
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
@@ -5191,7 +5190,7 @@ package body NetFrameworkBase.System.String is
    
    function Constructor
    (
-      value : NetFrameworkBase.System.Char.Kind_Ptr;
+      value : NetFrameworkBase.Char_Ptr;
       startIndex : NetFrameworkBase.Int32;
       length : NetFrameworkBase.Int32
    )
@@ -5212,7 +5211,7 @@ package body NetFrameworkBase.System.String is
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
-         -- fixme parameter type := [in out] System.Char*
+         -- fixme parameter type := [builtin] [in out] System.Char*
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 1;
@@ -5230,7 +5229,7 @@ package body NetFrameworkBase.System.String is
    
    function Constructor
    (
-      value : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+      value : NetFrameworkBase.Char_Array;
       startIndex : NetFrameworkBase.Int32;
       length : NetFrameworkBase.Int32
    )
@@ -5269,7 +5268,7 @@ package body NetFrameworkBase.System.String is
    
    function Constructor
    (
-      value : NetFrameworkBase.System.Char.Kind_Array_Ptr
+      value : NetFrameworkBase.Char_Array
    )
    return NetFrameworkBase.System.String.Kind_Ptr is
    begin
@@ -5298,7 +5297,7 @@ package body NetFrameworkBase.System.String is
    
    function Constructor
    (
-      c : NetFrameworkBase.System.Char.Kind_Ptr;
+      c : NetFrameworkBase.Char;
       count : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.System.String.Kind_Ptr is
@@ -5318,7 +5317,7 @@ package body NetFrameworkBase.System.String is
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
-         p_Value := GetObject (c.m_Kind); -- Parameter Type = ValueType
+         p_Value := To_Variant(c);
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 1;

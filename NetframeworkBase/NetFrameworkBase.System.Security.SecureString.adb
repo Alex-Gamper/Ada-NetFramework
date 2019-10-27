@@ -28,7 +28,6 @@
 --                                                                            --
 --------------------------------------------------------------------------------
 with NetFrameworkBase.System.Object;
-with NetFrameworkBase.System.Char;
 with NetFrameworkWin32;              use NetFrameworkWin32;
 with NetFrameworkAdaRuntime;         use NetFrameworkAdaRuntime;
 with Ada.Unchecked_Conversion;
@@ -199,7 +198,7 @@ package body NetFrameworkBase.System.Security.SecureString is
    procedure AppendChar
    (
       this : in out SecureString.Kind;
-      c : NetFrameworkBase.System.Char.Kind_Ptr
+      c : NetFrameworkBase.Char
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
@@ -219,7 +218,7 @@ package body NetFrameworkBase.System.Security.SecureString is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value := GetObject (c.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(c);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
@@ -233,7 +232,7 @@ package body NetFrameworkBase.System.Security.SecureString is
    (
       this : in out SecureString.Kind;
       index : NetFrameworkBase.Int32;
-      c : NetFrameworkBase.System.Char.Kind_Ptr
+      c : NetFrameworkBase.Char
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
@@ -257,7 +256,7 @@ package body NetFrameworkBase.System.Security.SecureString is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value := GetObject (c.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(c);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
@@ -304,7 +303,7 @@ package body NetFrameworkBase.System.Security.SecureString is
    (
       this : in out SecureString.Kind;
       index : NetFrameworkBase.Int32;
-      c : NetFrameworkBase.System.Char.Kind_Ptr
+      c : NetFrameworkBase.Char
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
@@ -328,7 +327,7 @@ package body NetFrameworkBase.System.Security.SecureString is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value := GetObject (c.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(c);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
@@ -347,7 +346,7 @@ package body NetFrameworkBase.System.Security.SecureString is
    
    function Constructor
    (
-      value : NetFrameworkBase.System.Char.Kind_Ptr;
+      value : NetFrameworkBase.Char_Ptr;
       length : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.System.Security.SecureString.Kind_Ptr is
@@ -367,7 +366,7 @@ package body NetFrameworkBase.System.Security.SecureString is
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
-         -- fixme parameter type := [in out] System.Char*
+         -- fixme parameter type := [builtin] [in out] System.Char*
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 1;

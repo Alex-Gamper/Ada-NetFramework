@@ -29,7 +29,6 @@
 --------------------------------------------------------------------------------
 with NetFrameworkBase.System.Object;
 with NetFrameworkBase.System.Text.EncoderFallback;
-with NetFrameworkBase.System.Char;
 with NetFrameworkBase.System.Text.EncoderFallbackBuffer;
 with NetFrameworkWin32;              use NetFrameworkWin32;
 with NetFrameworkAdaRuntime;         use NetFrameworkAdaRuntime;
@@ -170,7 +169,7 @@ package body NetFrameworkBase.System.Text.Encoder is
    function GetByteCount
    (
       this : in out Encoder.Kind;
-      chars : NetFrameworkBase.System.Char.Kind_Ptr;
+      chars : NetFrameworkBase.Char_Ptr;
       count : NetFrameworkBase.Int32;
       flush : NetFrameworkBase.Boolean
    )
@@ -194,7 +193,7 @@ package body NetFrameworkBase.System.Text.Encoder is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := [in out] System.Char*
+      -- fixme parameter type := [builtin] [in out] System.Char*
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -217,7 +216,7 @@ package body NetFrameworkBase.System.Text.Encoder is
    function GetByteCount
    (
       this : in out Encoder.Kind;
-      chars : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+      chars : NetFrameworkBase.Char_Array;
       index : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32;
       flush : NetFrameworkBase.Boolean
@@ -269,7 +268,7 @@ package body NetFrameworkBase.System.Text.Encoder is
    function GetBytes
    (
       this : in out Encoder.Kind;
-      chars : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+      chars : NetFrameworkBase.Char_Array;
       charIndex : NetFrameworkBase.Int32;
       charCount : NetFrameworkBase.Int32;
       bytes : NetFrameworkBase.Byte_Array;
@@ -331,7 +330,7 @@ package body NetFrameworkBase.System.Text.Encoder is
    function GetBytes
    (
       this : in out Encoder.Kind;
-      chars : NetFrameworkBase.System.Char.Kind_Ptr;
+      chars : NetFrameworkBase.Char_Ptr;
       charCount : NetFrameworkBase.Int32;
       bytes : NetFrameworkBase.Byte_Ptr;
       byteCount : NetFrameworkBase.Int32;
@@ -357,7 +356,7 @@ package body NetFrameworkBase.System.Text.Encoder is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := [in out] System.Char*
+      -- fixme parameter type := [builtin] [in out] System.Char*
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -388,7 +387,7 @@ package body NetFrameworkBase.System.Text.Encoder is
    procedure Convert
    (
       this : in out Encoder.Kind;
-      chars : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+      chars : NetFrameworkBase.Char_Array;
       charIndex : NetFrameworkBase.Int32;
       charCount : NetFrameworkBase.Int32;
       bytes : NetFrameworkBase.Byte_Array;
@@ -484,7 +483,7 @@ package body NetFrameworkBase.System.Text.Encoder is
    procedure Convert
    (
       this : in out Encoder.Kind;
-      chars : NetFrameworkBase.System.Char.Kind_Ptr;
+      chars : NetFrameworkBase.Char_Ptr;
       charCount : NetFrameworkBase.Int32;
       bytes : NetFrameworkBase.Byte_Ptr;
       byteCount : NetFrameworkBase.Int32;
@@ -511,7 +510,7 @@ package body NetFrameworkBase.System.Text.Encoder is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := [in out] System.Char*
+      -- fixme parameter type := [builtin] [in out] System.Char*
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;

@@ -28,7 +28,6 @@
 --                                                                            --
 --------------------------------------------------------------------------------
 with NetFrameworkBase.System.Object;
-with NetFrameworkBase.System.Char;
 with NetFrameworkWin32;              use NetFrameworkWin32;
 with NetFrameworkAdaRuntime;         use NetFrameworkAdaRuntime;
 with Ada.Unchecked_Conversion;
@@ -352,9 +351,9 @@ package body NetFrameworkBase.System.Globalization.TextInfo is
    function ToLower
    (
       this : in out TextInfo.Kind;
-      c : NetFrameworkBase.System.Char.Kind_Ptr
+      c : NetFrameworkBase.Char
    )
-   return NetFrameworkBase.System.Char.Kind_Ptr is
+   return NetFrameworkBase.Char is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
       p_Parameters  : aliased LPSAFEARRAY := null;
@@ -366,7 +365,7 @@ package body NetFrameworkBase.System.Globalization.TextInfo is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ToLower");
       p_RetVal      : aliased VARIANT;
-      RetVal        : NetFrameworkBase.System.Char.Kind_Ptr := new NetFrameworkBase.System.Char.Kind;
+      RetVal        : NetFrameworkBase.Char;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -374,15 +373,15 @@ package body NetFrameworkBase.System.Globalization.TextInfo is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value := GetObject (c.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(c);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
-      SetObject (RetVal.m_Kind, p_RetVal);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
+      RetVal := From_Variant (p_RetVal);
       return RetVal;
    end;
    
@@ -426,9 +425,9 @@ package body NetFrameworkBase.System.Globalization.TextInfo is
    function ToUpper
    (
       this : in out TextInfo.Kind;
-      c : NetFrameworkBase.System.Char.Kind_Ptr
+      c : NetFrameworkBase.Char
    )
-   return NetFrameworkBase.System.Char.Kind_Ptr is
+   return NetFrameworkBase.Char is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
       p_Parameters  : aliased LPSAFEARRAY := null;
@@ -440,7 +439,7 @@ package body NetFrameworkBase.System.Globalization.TextInfo is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ToUpper");
       p_RetVal      : aliased VARIANT;
-      RetVal        : NetFrameworkBase.System.Char.Kind_Ptr := new NetFrameworkBase.System.Char.Kind;
+      RetVal        : NetFrameworkBase.Char;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -448,15 +447,15 @@ package body NetFrameworkBase.System.Globalization.TextInfo is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value := GetObject (c.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(c);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
-      SetObject (RetVal.m_Kind, p_RetVal);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
+      RetVal := From_Variant (p_RetVal);
       return RetVal;
    end;
    

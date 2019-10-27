@@ -28,7 +28,6 @@
 --                                                                            --
 --------------------------------------------------------------------------------
 with NetFrameworkBase.System.Object;
-with NetFrameworkBase.System.Char;
 with NetFrameworkWin32;              use NetFrameworkWin32;
 with NetFrameworkAdaRuntime;         use NetFrameworkAdaRuntime;
 with Ada.Unchecked_Conversion;
@@ -87,7 +86,7 @@ package body NetFrameworkBase.System.Text.EncoderFallbackBuffer is
    function Fallback
    (
       this : in out EncoderFallbackBuffer.Kind;
-      charUnknown : NetFrameworkBase.System.Char.Kind_Ptr;
+      charUnknown : NetFrameworkBase.Char;
       index : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Boolean is
@@ -110,7 +109,7 @@ package body NetFrameworkBase.System.Text.EncoderFallbackBuffer is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value := GetObject (charUnknown.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(charUnknown);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -129,8 +128,8 @@ package body NetFrameworkBase.System.Text.EncoderFallbackBuffer is
    function Fallback
    (
       this : in out EncoderFallbackBuffer.Kind;
-      charUnknownHigh : NetFrameworkBase.System.Char.Kind_Ptr;
-      charUnknownLow : NetFrameworkBase.System.Char.Kind_Ptr;
+      charUnknownHigh : NetFrameworkBase.Char;
+      charUnknownLow : NetFrameworkBase.Char;
       index : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Boolean is
@@ -153,11 +152,11 @@ package body NetFrameworkBase.System.Text.EncoderFallbackBuffer is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value := GetObject (charUnknownHigh.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(charUnknownHigh);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value := GetObject (charUnknownLow.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(charUnknownLow);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
@@ -177,13 +176,13 @@ package body NetFrameworkBase.System.Text.EncoderFallbackBuffer is
    (
       this : in out EncoderFallbackBuffer.Kind
    )
-   return NetFrameworkBase.System.Char.Kind_Ptr is
+   return NetFrameworkBase.Char is
       Hr            : HResult := 0;
       p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetNextChar");
       p_RetVal      : aliased VARIANT;
-      RetVal        : NetFrameworkBase.System.Char.Kind_Ptr := new NetFrameworkBase.System.Char.Kind;
+      RetVal        : NetFrameworkBase.Char;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -192,8 +191,8 @@ package body NetFrameworkBase.System.Text.EncoderFallbackBuffer is
       p_Target := GetObject (this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
-      SetObject (RetVal.m_Kind, p_RetVal);
       SysFreeString (p_MethodName);
+      RetVal := From_Variant (p_RetVal);
       return RetVal;
    end;
    

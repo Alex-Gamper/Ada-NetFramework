@@ -32,7 +32,6 @@ limited with NetFrameworkBase.System.TimeSpan;
 with NetFrameworkBase.System.Object;
 limited with NetFrameworkBase.System.DateTimeKind;
 limited with NetFrameworkBase.System.IFormatProvider;
-limited with NetFrameworkBase.System.Char;
 limited with NetFrameworkBase.System.Globalization.DateTimeStyles;
 limited with NetFrameworkBase.System.Globalization.Calendar;
 limited with NetFrameworkBase.System.DayOfWeek;
@@ -478,14 +477,14 @@ package NetFrameworkBase.System.DateTime is
       function GetDateTimeFormats
       (
          this : in out DateTime.Kind;
-         format : NetFrameworkBase.System.Char.Kind_Ptr
+         format : NetFrameworkBase.Char
       )
       return NetFrameworkBase.BSTR_Array;
       
       function GetDateTimeFormats
       (
          this : in out DateTime.Kind;
-         format : NetFrameworkBase.System.Char.Kind_Ptr;
+         format : NetFrameworkBase.Char;
          provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
       )
       return NetFrameworkBase.BSTR_Array;

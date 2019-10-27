@@ -28,7 +28,6 @@
 --                                                                            --
 --------------------------------------------------------------------------------
 with NetFrameworkBase.System.MarshalByRefObject;
-with NetFrameworkBase.System.Char;
 with NetFrameworkBase.System.Decimal;
 with NetFrameworkBase.System.Object;
 with NetFrameworkBase.System.IFormatProvider;
@@ -216,7 +215,7 @@ package body NetFrameworkBase.System.IO.TextWriter is
    procedure Write
    (
       this : in out TextWriter.Kind;
-      value : NetFrameworkBase.System.Char.Kind_Ptr
+      value : NetFrameworkBase.Char
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
@@ -236,7 +235,7 @@ package body NetFrameworkBase.System.IO.TextWriter is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value := GetObject (value.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(value);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
@@ -249,7 +248,7 @@ package body NetFrameworkBase.System.IO.TextWriter is
    procedure Write
    (
       this : in out TextWriter.Kind;
-      buffer : NetFrameworkBase.System.Char.Kind_Array_Ptr
+      buffer : NetFrameworkBase.Char_Array
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
@@ -282,7 +281,7 @@ package body NetFrameworkBase.System.IO.TextWriter is
    procedure Write
    (
       this : in out TextWriter.Kind;
-      buffer : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+      buffer : NetFrameworkBase.Char_Array;
       index : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32
    ) is
@@ -809,7 +808,7 @@ package body NetFrameworkBase.System.IO.TextWriter is
    procedure WriteLine
    (
       this : in out TextWriter.Kind;
-      value : NetFrameworkBase.System.Char.Kind_Ptr
+      value : NetFrameworkBase.Char
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
@@ -829,7 +828,7 @@ package body NetFrameworkBase.System.IO.TextWriter is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value := GetObject (value.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(value);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
@@ -842,7 +841,7 @@ package body NetFrameworkBase.System.IO.TextWriter is
    procedure WriteLine
    (
       this : in out TextWriter.Kind;
-      buffer : NetFrameworkBase.System.Char.Kind_Array_Ptr
+      buffer : NetFrameworkBase.Char_Array
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
@@ -875,7 +874,7 @@ package body NetFrameworkBase.System.IO.TextWriter is
    procedure WriteLine
    (
       this : in out TextWriter.Kind;
-      buffer : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+      buffer : NetFrameworkBase.Char_Array;
       index : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32
    ) is
@@ -1415,7 +1414,7 @@ package body NetFrameworkBase.System.IO.TextWriter is
    function WriteAsync
    (
       this : in out TextWriter.Kind;
-      value : NetFrameworkBase.System.Char.Kind_Ptr
+      value : NetFrameworkBase.Char
    )
    return NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -1437,7 +1436,7 @@ package body NetFrameworkBase.System.IO.TextWriter is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value := GetObject (value.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(value);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -1489,7 +1488,7 @@ package body NetFrameworkBase.System.IO.TextWriter is
    function WriteAsync
    (
       this : in out TextWriter.Kind;
-      buffer : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+      buffer : NetFrameworkBase.Char_Array;
       index : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32
    )
@@ -1536,7 +1535,7 @@ package body NetFrameworkBase.System.IO.TextWriter is
    function WriteLineAsync
    (
       this : in out TextWriter.Kind;
-      value : NetFrameworkBase.System.Char.Kind_Ptr
+      value : NetFrameworkBase.Char
    )
    return NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -1558,7 +1557,7 @@ package body NetFrameworkBase.System.IO.TextWriter is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value := GetObject (value.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(value);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -1610,7 +1609,7 @@ package body NetFrameworkBase.System.IO.TextWriter is
    function WriteLineAsync
    (
       this : in out TextWriter.Kind;
-      buffer : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+      buffer : NetFrameworkBase.Char_Array;
       index : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32
    )
@@ -1795,7 +1794,7 @@ package body NetFrameworkBase.System.IO.TextWriter is
    function WriteAsync
    (
       this : in out TextWriter.Kind;
-      buffer : NetFrameworkBase.System.Char.Kind_Array_Ptr
+      buffer : NetFrameworkBase.Char_Array
    )
    return NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -1832,7 +1831,7 @@ package body NetFrameworkBase.System.IO.TextWriter is
    function WriteLineAsync
    (
       this : in out TextWriter.Kind;
-      buffer : NetFrameworkBase.System.Char.Kind_Array_Ptr
+      buffer : NetFrameworkBase.Char_Array
    )
    return NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);

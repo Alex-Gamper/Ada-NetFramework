@@ -32,7 +32,6 @@ with NetFrameworkBase.System.Object;
 with NetFrameworkBase.System.IFormatProvider;
 with NetFrameworkBase.System.Globalization.NumberStyles;
 with NetFrameworkBase.System.MidpointRounding;
-with NetFrameworkBase.System.Char;
 with NetFrameworkBase.System.TypeCode;
 with NetFrameworkWin32;              use NetFrameworkWin32;
 with NetFrameworkAdaRuntime;         use NetFrameworkAdaRuntime;
@@ -1799,7 +1798,7 @@ package body NetFrameworkBase.System.Decimal is
    
    function op_Implicit
    (
-      value : NetFrameworkBase.System.Char.Kind_Ptr
+      value : NetFrameworkBase.Char
    )
    return NetFrameworkBase.System.Decimal.Kind_Ptr is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -1821,7 +1820,7 @@ package body NetFrameworkBase.System.Decimal is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value := GetObject (value.m_Kind); -- Parameter Type = ValueType
+      p_Value := To_Variant(value);
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
@@ -2125,7 +2124,7 @@ package body NetFrameworkBase.System.Decimal is
    (
       value : NetFrameworkBase.System.Decimal.Kind_Ptr
    )
-   return NetFrameworkBase.System.Char.Kind_Ptr is
+   return NetFrameworkBase.Char is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
       p_Parameters  : aliased LPSAFEARRAY := null;
@@ -2137,7 +2136,7 @@ package body NetFrameworkBase.System.Decimal is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("op_Explicit");
       p_RetVal      : aliased VARIANT;
-      RetVal        : NetFrameworkBase.System.Char.Kind_Ptr := new NetFrameworkBase.System.Char.Kind;
+      RetVal        : NetFrameworkBase.Char;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -2151,9 +2150,9 @@ package body NetFrameworkBase.System.Decimal is
       VariantInit(p_Target'access);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
-      SetObject (RetVal.m_Kind, p_RetVal);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
+      RetVal := From_Variant (p_RetVal);
       return RetVal;
    end;
    

@@ -28,7 +28,6 @@
 --                                                                            --
 --------------------------------------------------------------------------------
 with NetFrameworkBase.System.Object;
-limited with NetFrameworkBase.System.Char;
 --------------------------------------------------------------------------------
 package NetFrameworkBase.System.Text.DecoderFallbackBuffer is
    
@@ -54,7 +53,7 @@ package NetFrameworkBase.System.Text.DecoderFallbackBuffer is
       (
          this : in out DecoderFallbackBuffer.Kind
       )
-      return NetFrameworkBase.System.Char.Kind_Ptr;
+      return NetFrameworkBase.Char;
       
       function MovePrevious
       (

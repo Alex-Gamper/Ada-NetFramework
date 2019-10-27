@@ -29,7 +29,6 @@
 --------------------------------------------------------------------------------
 with NetFrameworkBase.System.Object;
 limited with NetFrameworkBase.System.Type_x;
-limited with NetFrameworkBase.System.Char;
 limited with NetFrameworkBase.System.Decimal;
 limited with NetFrameworkBase.System.Runtime.Serialization.IFormatterConverter;
 limited with NetFrameworkBase.System.Runtime.Serialization.SerializationInfoEnumerator;
@@ -127,7 +126,7 @@ package NetFrameworkBase.System.Runtime.Serialization.SerializationInfo is
       (
          this : in out SerializationInfo.Kind;
          name : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.System.Char.Kind_Ptr
+         value : NetFrameworkBase.Char
       );
       
       procedure AddValue
@@ -234,7 +233,7 @@ package NetFrameworkBase.System.Runtime.Serialization.SerializationInfo is
          this : in out SerializationInfo.Kind;
          name : NetFrameworkBase.BSTR
       )
-      return NetFrameworkBase.System.Char.Kind_Ptr;
+      return NetFrameworkBase.Char;
       
       function GetSByte
       (

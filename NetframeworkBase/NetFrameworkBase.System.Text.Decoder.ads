@@ -29,7 +29,6 @@
 --------------------------------------------------------------------------------
 with NetFrameworkBase.System.Object;
 limited with NetFrameworkBase.System.Text.DecoderFallback;
-limited with NetFrameworkBase.System.Char;
 limited with NetFrameworkBase.System.Text.DecoderFallbackBuffer;
 --------------------------------------------------------------------------------
 package NetFrameworkBase.System.Text.Decoder is
@@ -87,7 +86,7 @@ package NetFrameworkBase.System.Text.Decoder is
          bytes : NetFrameworkBase.Byte_Array;
          byteIndex : NetFrameworkBase.Int32;
          byteCount : NetFrameworkBase.Int32;
-         chars : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+         chars : NetFrameworkBase.Char_Array;
          charIndex : NetFrameworkBase.Int32;
          flush : NetFrameworkBase.Boolean
       )
@@ -108,7 +107,7 @@ package NetFrameworkBase.System.Text.Decoder is
          bytes : NetFrameworkBase.Byte_Array;
          byteIndex : NetFrameworkBase.Int32;
          byteCount : NetFrameworkBase.Int32;
-         chars : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+         chars : NetFrameworkBase.Char_Array;
          charIndex : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -118,7 +117,7 @@ package NetFrameworkBase.System.Text.Decoder is
          this : in out Decoder.Kind;
          bytes : NetFrameworkBase.Byte_Ptr;
          byteCount : NetFrameworkBase.Int32;
-         chars : NetFrameworkBase.System.Char.Kind_Ptr;
+         chars : NetFrameworkBase.Char_Ptr;
          charCount : NetFrameworkBase.Int32;
          flush : NetFrameworkBase.Boolean
       )
@@ -130,7 +129,7 @@ package NetFrameworkBase.System.Text.Decoder is
          bytes : NetFrameworkBase.Byte_Array;
          byteIndex : NetFrameworkBase.Int32;
          byteCount : NetFrameworkBase.Int32;
-         chars : NetFrameworkBase.System.Char.Kind_Array_Ptr;
+         chars : NetFrameworkBase.Char_Array;
          charIndex : NetFrameworkBase.Int32;
          charCount : NetFrameworkBase.Int32;
          flush : NetFrameworkBase.Boolean;
@@ -144,7 +143,7 @@ package NetFrameworkBase.System.Text.Decoder is
          this : in out Decoder.Kind;
          bytes : NetFrameworkBase.Byte_Ptr;
          byteCount : NetFrameworkBase.Int32;
-         chars : NetFrameworkBase.System.Char.Kind_Ptr;
+         chars : NetFrameworkBase.Char_Ptr;
          charCount : NetFrameworkBase.Int32;
          flush : NetFrameworkBase.Boolean;
          bytesUsed : out NetFrameworkBase.Int32;
