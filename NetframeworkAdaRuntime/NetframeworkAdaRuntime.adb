@@ -650,6 +650,21 @@ package body NetFrameworkAdaRuntime is
         return RetVal;
     end;
    
+    function To_Variant (Value : Char; ByRef : Standard.Boolean := False) return VARIANT is
+        use Interfaces.C;
+        function Convert is new Ada.Unchecked_Conversion (NetFrameworkWin32.Char, NetFrameworkWin32.BYTE);
+        Hr          : HRESULT := 0;
+        RetVal      : aliased VARIANT;
+    begin
+        VariantInit(RetVal'access);
+        RetVal.field_1.field_1.vt := VT_UI1'Enum_rep ;
+        if ByRef = true then
+            RetVal.field_1.field_1.vt := RetVal.field_1.field_1.vt + VT_BYREF'Enum_rep;
+        end if;
+        RetVal.Field_1.field_1.field_1.bVal := Convert(Value);
+        return RetVal;
+    end;
+
     ----------------------------------------------------------------------------
     function From_Variant (Value : VARIANT) return IUnknown_Ptr is
         use Interfaces.C;
@@ -751,6 +766,12 @@ package body NetFrameworkAdaRuntime is
         function Convert is new Ada.Unchecked_Conversion (Interfaces.C.Extensions.unsigned_long_long, UIntPtr);
     begin
         return Convert(Value.Field_1.field_1.field_1.ullVal);
+    end;
+
+    function From_Variant (Value : VARIANT) return Char is
+        function Convert is new Ada.Unchecked_Conversion (UInt8, Standard.Character);
+    begin
+        return Convert(Value.Field_1.field_1.field_1.bVal);
     end;
 
     ----------------------------------------------------------------------------

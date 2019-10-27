@@ -70,7 +70,7 @@ package NetFrameworkWin32 is
    
    subtype Char is Character;
    type Char_Ptr is access all Char;
-   type Char_Array is array (Standard.Natural range <>) of aliased UInt8;
+   type Char_Array is array (Standard.Natural range <>) of aliased Char;
    type Char_Array_Ptr is access Char_Array;
 
    type UInt16 is mod 2 ** 16;
