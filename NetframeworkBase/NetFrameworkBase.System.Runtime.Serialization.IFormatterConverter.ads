@@ -68,7 +68,7 @@ package NetFrameworkBase.System.Runtime.Serialization.IFormatterConverter is
       (
          this : in out IFormatterConverter.Kind;
          value : NetFrameworkBase.System.Object.Kind_Ptr;
-         RetVal : access NetFrameworkBase.Char
+         RetVal : access NetFrameworkBase.Wide_Char
       ) return HResult is abstract;
       
       function ToSByte

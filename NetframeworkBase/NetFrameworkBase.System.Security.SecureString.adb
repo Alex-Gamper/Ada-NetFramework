@@ -198,7 +198,7 @@ package body NetFrameworkBase.System.Security.SecureString is
    procedure AppendChar
    (
       this : in out SecureString.Kind;
-      c : NetFrameworkBase.Char
+      c : NetFrameworkBase.Wide_Char
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
@@ -232,7 +232,7 @@ package body NetFrameworkBase.System.Security.SecureString is
    (
       this : in out SecureString.Kind;
       index : NetFrameworkBase.Int32;
-      c : NetFrameworkBase.Char
+      c : NetFrameworkBase.Wide_Char
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
@@ -303,7 +303,7 @@ package body NetFrameworkBase.System.Security.SecureString is
    (
       this : in out SecureString.Kind;
       index : NetFrameworkBase.Int32;
-      c : NetFrameworkBase.Char
+      c : NetFrameworkBase.Wide_Char
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
@@ -346,7 +346,7 @@ package body NetFrameworkBase.System.Security.SecureString is
    
    function Constructor
    (
-      value : NetFrameworkBase.Char_Ptr;
+      value : NetFrameworkBase.Wide_Char_Ptr;
       length : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.System.Security.SecureString.Kind_Ptr is

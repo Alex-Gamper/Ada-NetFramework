@@ -105,9 +105,9 @@ package NetFrameworkBase.System.Globalization.TextInfo is
       function ToLower
       (
          this : in out TextInfo.Kind;
-         c : NetFrameworkBase.Char
+         c : NetFrameworkBase.Wide_Char
       )
-      return NetFrameworkBase.Char;
+      return NetFrameworkBase.Wide_Char;
       
       function ToLower
       (
@@ -119,9 +119,9 @@ package NetFrameworkBase.System.Globalization.TextInfo is
       function ToUpper
       (
          this : in out TextInfo.Kind;
-         c : NetFrameworkBase.Char
+         c : NetFrameworkBase.Wide_Char
       )
-      return NetFrameworkBase.Char;
+      return NetFrameworkBase.Wide_Char;
       
       function ToUpper
       (

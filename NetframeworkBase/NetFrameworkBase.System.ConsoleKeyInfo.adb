@@ -70,13 +70,13 @@ package body NetFrameworkBase.System.ConsoleKeyInfo is
    (
       this : in out ConsoleKeyInfo.Kind
    )
-   return NetFrameworkBase.Char is
+   return NetFrameworkBase.Wide_Char is
       Hr            : HResult := 0;
       p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("KeyChar");
       p_RetVal      : aliased VARIANT;
-      RetVal        : NetFrameworkBase.Char;
+      RetVal        : NetFrameworkBase.Wide_Char;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(GetProperty)'Enum_rep;
@@ -322,7 +322,7 @@ package body NetFrameworkBase.System.ConsoleKeyInfo is
    
    function Constructor
    (
-      keyChar : NetFrameworkBase.Char;
+      keyChar : NetFrameworkBase.Wide_Char;
       key : NetFrameworkBase.System.ConsoleKey.Kind;
       shift : NetFrameworkBase.Boolean;
       alt : NetFrameworkBase.Boolean;

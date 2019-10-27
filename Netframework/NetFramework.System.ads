@@ -146,13 +146,13 @@ package NetFramework.System is
       
          function Constructor
          (
-            value : NetFrameworkBase.Char_Ptr
+            value : NetFrameworkBase.Wide_Char_Ptr
          )
          return NetFrameworkBase.System.String.Kind_Ptr renames NetFrameworkBase.System.String.Constructor; 
          
          function Constructor
          (
-            value : NetFrameworkBase.Char_Ptr;
+            value : NetFrameworkBase.Wide_Char_Ptr;
             startIndex : NetFrameworkBase.Int32;
             length : NetFrameworkBase.Int32
          )
@@ -160,7 +160,7 @@ package NetFramework.System is
          
          function Constructor
          (
-            value : NetFrameworkBase.Char_Array;
+            value : NetFrameworkBase.Wide_Char_Array;
             startIndex : NetFrameworkBase.Int32;
             length : NetFrameworkBase.Int32
          )
@@ -168,13 +168,13 @@ package NetFramework.System is
          
          function Constructor
          (
-            value : NetFrameworkBase.Char_Array
+            value : NetFrameworkBase.Wide_Char_Array
          )
          return NetFrameworkBase.System.String.Kind_Ptr renames NetFrameworkBase.System.String.Constructor; 
          
          function Constructor
          (
-            c : NetFrameworkBase.Char;
+            c : NetFrameworkBase.Wide_Char;
             count : NetFrameworkBase.Int32
          )
          return NetFrameworkBase.System.String.Kind_Ptr renames NetFrameworkBase.System.String.Constructor; 
@@ -406,7 +406,7 @@ package NetFramework.System is
       
          function Constructor
          (
-            keyChar : NetFrameworkBase.Char;
+            keyChar : NetFrameworkBase.Wide_Char;
             key : NetFrameworkBase.System.ConsoleKey.Kind;
             shift : NetFrameworkBase.Boolean;
             alt : NetFrameworkBase.Boolean;

@@ -1798,7 +1798,7 @@ package body NetFrameworkBase.System.Decimal is
    
    function op_Implicit
    (
-      value : NetFrameworkBase.Char
+      value : NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.System.Decimal.Kind_Ptr is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -2124,7 +2124,7 @@ package body NetFrameworkBase.System.Decimal is
    (
       value : NetFrameworkBase.System.Decimal.Kind_Ptr
    )
-   return NetFrameworkBase.Char is
+   return NetFrameworkBase.Wide_Char is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
       p_Parameters  : aliased LPSAFEARRAY := null;
@@ -2136,7 +2136,7 @@ package body NetFrameworkBase.System.Decimal is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("op_Explicit");
       p_RetVal      : aliased VARIANT;
-      RetVal        : NetFrameworkBase.Char;
+      RetVal        : NetFrameworkBase.Wide_Char;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;

@@ -43,7 +43,7 @@ package NetFrameworkBase.System.ConsoleKeyInfo is
       (
          this : in out ConsoleKeyInfo.Kind
       )
-      return NetFrameworkBase.Char;
+      return NetFrameworkBase.Wide_Char;
       
       function Key
       (
@@ -93,7 +93,7 @@ package NetFrameworkBase.System.ConsoleKeyInfo is
       
       function Constructor
       (
-         keyChar : NetFrameworkBase.Char;
+         keyChar : NetFrameworkBase.Wide_Char;
          key : NetFrameworkBase.System.ConsoleKey.Kind;
          shift : NetFrameworkBase.Boolean;
          alt : NetFrameworkBase.Boolean;

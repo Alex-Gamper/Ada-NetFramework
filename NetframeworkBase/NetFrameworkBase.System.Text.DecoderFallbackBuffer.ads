@@ -53,7 +53,7 @@ package NetFrameworkBase.System.Text.DecoderFallbackBuffer is
       (
          this : in out DecoderFallbackBuffer.Kind
       )
-      return NetFrameworkBase.Char;
+      return NetFrameworkBase.Wide_Char;
       
       function MovePrevious
       (

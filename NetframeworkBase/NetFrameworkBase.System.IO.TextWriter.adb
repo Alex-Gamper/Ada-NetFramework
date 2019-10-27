@@ -215,7 +215,7 @@ package body NetFrameworkBase.System.IO.TextWriter is
    procedure Write
    (
       this : in out TextWriter.Kind;
-      value : NetFrameworkBase.Char
+      value : NetFrameworkBase.Wide_Char
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
@@ -248,7 +248,7 @@ package body NetFrameworkBase.System.IO.TextWriter is
    procedure Write
    (
       this : in out TextWriter.Kind;
-      buffer : NetFrameworkBase.Char_Array
+      buffer : NetFrameworkBase.Wide_Char_Array
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
@@ -281,7 +281,7 @@ package body NetFrameworkBase.System.IO.TextWriter is
    procedure Write
    (
       this : in out TextWriter.Kind;
-      buffer : NetFrameworkBase.Char_Array;
+      buffer : NetFrameworkBase.Wide_Char_Array;
       index : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32
    ) is
@@ -808,7 +808,7 @@ package body NetFrameworkBase.System.IO.TextWriter is
    procedure WriteLine
    (
       this : in out TextWriter.Kind;
-      value : NetFrameworkBase.Char
+      value : NetFrameworkBase.Wide_Char
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
@@ -841,7 +841,7 @@ package body NetFrameworkBase.System.IO.TextWriter is
    procedure WriteLine
    (
       this : in out TextWriter.Kind;
-      buffer : NetFrameworkBase.Char_Array
+      buffer : NetFrameworkBase.Wide_Char_Array
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
@@ -874,7 +874,7 @@ package body NetFrameworkBase.System.IO.TextWriter is
    procedure WriteLine
    (
       this : in out TextWriter.Kind;
-      buffer : NetFrameworkBase.Char_Array;
+      buffer : NetFrameworkBase.Wide_Char_Array;
       index : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32
    ) is
@@ -1414,7 +1414,7 @@ package body NetFrameworkBase.System.IO.TextWriter is
    function WriteAsync
    (
       this : in out TextWriter.Kind;
-      value : NetFrameworkBase.Char
+      value : NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -1488,7 +1488,7 @@ package body NetFrameworkBase.System.IO.TextWriter is
    function WriteAsync
    (
       this : in out TextWriter.Kind;
-      buffer : NetFrameworkBase.Char_Array;
+      buffer : NetFrameworkBase.Wide_Char_Array;
       index : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32
    )
@@ -1535,7 +1535,7 @@ package body NetFrameworkBase.System.IO.TextWriter is
    function WriteLineAsync
    (
       this : in out TextWriter.Kind;
-      value : NetFrameworkBase.Char
+      value : NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -1609,7 +1609,7 @@ package body NetFrameworkBase.System.IO.TextWriter is
    function WriteLineAsync
    (
       this : in out TextWriter.Kind;
-      buffer : NetFrameworkBase.Char_Array;
+      buffer : NetFrameworkBase.Wide_Char_Array;
       index : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32
    )
@@ -1794,7 +1794,7 @@ package body NetFrameworkBase.System.IO.TextWriter is
    function WriteAsync
    (
       this : in out TextWriter.Kind;
-      buffer : NetFrameworkBase.Char_Array
+      buffer : NetFrameworkBase.Wide_Char_Array
    )
    return NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -1831,7 +1831,7 @@ package body NetFrameworkBase.System.IO.TextWriter is
    function WriteLineAsync
    (
       this : in out TextWriter.Kind;
-      buffer : NetFrameworkBase.Char_Array
+      buffer : NetFrameworkBase.Wide_Char_Array
    )
    return NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);

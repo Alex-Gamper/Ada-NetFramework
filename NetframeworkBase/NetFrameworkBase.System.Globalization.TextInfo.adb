@@ -351,9 +351,9 @@ package body NetFrameworkBase.System.Globalization.TextInfo is
    function ToLower
    (
       this : in out TextInfo.Kind;
-      c : NetFrameworkBase.Char
+      c : NetFrameworkBase.Wide_Char
    )
-   return NetFrameworkBase.Char is
+   return NetFrameworkBase.Wide_Char is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
       p_Parameters  : aliased LPSAFEARRAY := null;
@@ -365,7 +365,7 @@ package body NetFrameworkBase.System.Globalization.TextInfo is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ToLower");
       p_RetVal      : aliased VARIANT;
-      RetVal        : NetFrameworkBase.Char;
+      RetVal        : NetFrameworkBase.Wide_Char;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -425,9 +425,9 @@ package body NetFrameworkBase.System.Globalization.TextInfo is
    function ToUpper
    (
       this : in out TextInfo.Kind;
-      c : NetFrameworkBase.Char
+      c : NetFrameworkBase.Wide_Char
    )
-   return NetFrameworkBase.Char is
+   return NetFrameworkBase.Wide_Char is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
       p_Parameters  : aliased LPSAFEARRAY := null;
@@ -439,7 +439,7 @@ package body NetFrameworkBase.System.Globalization.TextInfo is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ToUpper");
       p_RetVal      : aliased VARIANT;
-      RetVal        : NetFrameworkBase.Char;
+      RetVal        : NetFrameworkBase.Wide_Char;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;

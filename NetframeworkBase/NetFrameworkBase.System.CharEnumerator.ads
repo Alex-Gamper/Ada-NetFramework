@@ -57,7 +57,7 @@ package NetFrameworkBase.System.CharEnumerator is
       (
          this : in out CharEnumerator.Kind
       )
-      return NetFrameworkBase.Char;
+      return NetFrameworkBase.Wide_Char;
       
       procedure Reset
       (

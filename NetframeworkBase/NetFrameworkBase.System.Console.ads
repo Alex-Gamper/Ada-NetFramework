@@ -133,7 +133,7 @@ package NetFrameworkBase.System.Console is
          sourceHeight : NetFrameworkBase.Int32;
          targetLeft : NetFrameworkBase.Int32;
          targetTop : NetFrameworkBase.Int32;
-         sourceChar : NetFrameworkBase.Char;
+         sourceChar : NetFrameworkBase.Wide_Char;
          sourceForeColor : NetFrameworkBase.System.ConsoleColor.Kind;
          sourceBackColor : NetFrameworkBase.System.ConsoleColor.Kind
       )
@@ -370,19 +370,19 @@ package NetFrameworkBase.System.Console is
       
       procedure WriteLine
       (
-         value : NetFrameworkBase.Char
+         value : NetFrameworkBase.Wide_Char
       )
       ;
       
       procedure WriteLine
       (
-         buffer : NetFrameworkBase.Char_Array
+         buffer : NetFrameworkBase.Wide_Char_Array
       )
       ;
       
       procedure WriteLine
       (
-         buffer : NetFrameworkBase.Char_Array;
+         buffer : NetFrameworkBase.Wide_Char_Array;
          index : NetFrameworkBase.Int32;
          count : NetFrameworkBase.Int32
       )
@@ -532,19 +532,19 @@ package NetFrameworkBase.System.Console is
       
       procedure Write
       (
-         value : NetFrameworkBase.Char
+         value : NetFrameworkBase.Wide_Char
       )
       ;
       
       procedure Write
       (
-         buffer : NetFrameworkBase.Char_Array
+         buffer : NetFrameworkBase.Wide_Char_Array
       )
       ;
       
       procedure Write
       (
-         buffer : NetFrameworkBase.Char_Array;
+         buffer : NetFrameworkBase.Wide_Char_Array;
          index : NetFrameworkBase.Int32;
          count : NetFrameworkBase.Int32
       )

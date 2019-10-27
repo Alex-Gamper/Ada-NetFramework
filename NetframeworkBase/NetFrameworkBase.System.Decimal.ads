@@ -334,7 +334,7 @@ package NetFrameworkBase.System.Decimal is
       
       function op_Implicit
       (
-         value : NetFrameworkBase.Char
+         value : NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.System.Decimal.Kind_Ptr;
       
@@ -390,7 +390,7 @@ package NetFrameworkBase.System.Decimal is
       (
          value : NetFrameworkBase.System.Decimal.Kind_Ptr
       )
-      return NetFrameworkBase.Char;
+      return NetFrameworkBase.Wide_Char;
       
       function op_Explicit
       (

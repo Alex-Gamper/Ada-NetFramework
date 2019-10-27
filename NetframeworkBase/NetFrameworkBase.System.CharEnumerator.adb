@@ -135,13 +135,13 @@ package body NetFrameworkBase.System.CharEnumerator is
    (
       this : in out CharEnumerator.Kind
    )
-   return NetFrameworkBase.Char is
+   return NetFrameworkBase.Wide_Char is
       Hr            : HResult := 0;
       p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Current");
       p_RetVal      : aliased VARIANT;
-      RetVal        : NetFrameworkBase.Char;
+      RetVal        : NetFrameworkBase.Wide_Char;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(GetProperty)'Enum_rep;

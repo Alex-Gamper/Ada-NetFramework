@@ -1832,7 +1832,7 @@ package body NetFrameworkBase.System.Globalization.DateTimeFormatInfo is
    (
       this : in out DateTimeFormatInfo.Kind;
       patterns : NetFrameworkBase.BSTR_Array;
-      format : NetFrameworkBase.Char
+      format : NetFrameworkBase.Wide_Char
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
@@ -2129,7 +2129,7 @@ package body NetFrameworkBase.System.Globalization.DateTimeFormatInfo is
    function GetAllDateTimePatterns
    (
       this : in out DateTimeFormatInfo.Kind;
-      format : NetFrameworkBase.Char
+      format : NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.BSTR_Array is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);

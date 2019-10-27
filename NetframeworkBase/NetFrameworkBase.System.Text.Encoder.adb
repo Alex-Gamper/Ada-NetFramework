@@ -169,7 +169,7 @@ package body NetFrameworkBase.System.Text.Encoder is
    function GetByteCount
    (
       this : in out Encoder.Kind;
-      chars : NetFrameworkBase.Char_Ptr;
+      chars : NetFrameworkBase.Wide_Char_Ptr;
       count : NetFrameworkBase.Int32;
       flush : NetFrameworkBase.Boolean
    )
@@ -216,7 +216,7 @@ package body NetFrameworkBase.System.Text.Encoder is
    function GetByteCount
    (
       this : in out Encoder.Kind;
-      chars : NetFrameworkBase.Char_Array;
+      chars : NetFrameworkBase.Wide_Char_Array;
       index : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32;
       flush : NetFrameworkBase.Boolean
@@ -268,7 +268,7 @@ package body NetFrameworkBase.System.Text.Encoder is
    function GetBytes
    (
       this : in out Encoder.Kind;
-      chars : NetFrameworkBase.Char_Array;
+      chars : NetFrameworkBase.Wide_Char_Array;
       charIndex : NetFrameworkBase.Int32;
       charCount : NetFrameworkBase.Int32;
       bytes : NetFrameworkBase.Byte_Array;
@@ -330,7 +330,7 @@ package body NetFrameworkBase.System.Text.Encoder is
    function GetBytes
    (
       this : in out Encoder.Kind;
-      chars : NetFrameworkBase.Char_Ptr;
+      chars : NetFrameworkBase.Wide_Char_Ptr;
       charCount : NetFrameworkBase.Int32;
       bytes : NetFrameworkBase.Byte_Ptr;
       byteCount : NetFrameworkBase.Int32;
@@ -387,7 +387,7 @@ package body NetFrameworkBase.System.Text.Encoder is
    procedure Convert
    (
       this : in out Encoder.Kind;
-      chars : NetFrameworkBase.Char_Array;
+      chars : NetFrameworkBase.Wide_Char_Array;
       charIndex : NetFrameworkBase.Int32;
       charCount : NetFrameworkBase.Int32;
       bytes : NetFrameworkBase.Byte_Array;
@@ -483,7 +483,7 @@ package body NetFrameworkBase.System.Text.Encoder is
    procedure Convert
    (
       this : in out Encoder.Kind;
-      chars : NetFrameworkBase.Char_Ptr;
+      chars : NetFrameworkBase.Wide_Char_Ptr;
       charCount : NetFrameworkBase.Int32;
       bytes : NetFrameworkBase.Byte_Ptr;
       byteCount : NetFrameworkBase.Int32;

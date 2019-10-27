@@ -61,7 +61,7 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       
       function IsSortable
       (
-         ch : NetFrameworkBase.Char
+         ch : NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.Boolean;
       
@@ -141,7 +141,7 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       (
          this : in out CompareInfo.Kind;
          source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.Char
+         value : NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.Int32;
       
@@ -157,7 +157,7 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       (
          this : in out CompareInfo.Kind;
          source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.Char;
+         value : NetFrameworkBase.Wide_Char;
          options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
       )
       return NetFrameworkBase.Int32;
@@ -175,7 +175,7 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       (
          this : in out CompareInfo.Kind;
          source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.Char;
+         value : NetFrameworkBase.Wide_Char;
          startIndex : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -193,7 +193,7 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       (
          this : in out CompareInfo.Kind;
          source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.Char;
+         value : NetFrameworkBase.Wide_Char;
          startIndex : NetFrameworkBase.Int32;
          options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
       )
@@ -213,7 +213,7 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       (
          this : in out CompareInfo.Kind;
          source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.Char;
+         value : NetFrameworkBase.Wide_Char;
          startIndex : NetFrameworkBase.Int32;
          count : NetFrameworkBase.Int32
       )
@@ -233,7 +233,7 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       (
          this : in out CompareInfo.Kind;
          source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.Char;
+         value : NetFrameworkBase.Wide_Char;
          startIndex : NetFrameworkBase.Int32;
          count : NetFrameworkBase.Int32;
          options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
@@ -255,7 +255,7 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       (
          this : in out CompareInfo.Kind;
          source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.Char
+         value : NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.Int32;
       
@@ -271,7 +271,7 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       (
          this : in out CompareInfo.Kind;
          source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.Char;
+         value : NetFrameworkBase.Wide_Char;
          options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
       )
       return NetFrameworkBase.Int32;
@@ -289,7 +289,7 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       (
          this : in out CompareInfo.Kind;
          source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.Char;
+         value : NetFrameworkBase.Wide_Char;
          startIndex : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -307,7 +307,7 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       (
          this : in out CompareInfo.Kind;
          source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.Char;
+         value : NetFrameworkBase.Wide_Char;
          startIndex : NetFrameworkBase.Int32;
          options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
       )
@@ -327,7 +327,7 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       (
          this : in out CompareInfo.Kind;
          source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.Char;
+         value : NetFrameworkBase.Wide_Char;
          startIndex : NetFrameworkBase.Int32;
          count : NetFrameworkBase.Int32
       )
@@ -347,7 +347,7 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       (
          this : in out CompareInfo.Kind;
          source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.Char;
+         value : NetFrameworkBase.Wide_Char;
          startIndex : NetFrameworkBase.Int32;
          count : NetFrameworkBase.Int32;
          options : NetFrameworkBase.System.Globalization.CompareOptions.Kind

@@ -68,10 +68,10 @@ package NetFrameworkWin32 is
    subtype Byte_Array is UInt8_Array;
    subtype Byte_Array_Ptr is UInt8_Array_Ptr;
    
-   subtype Char is Character;
-   type Char_Ptr is access all Char;
-   type Char_Array is array (Standard.Natural range <>) of aliased Char;
-   type Char_Array_Ptr is access Char_Array;
+   subtype Wide_Char is Wide_Character;
+   type Wide_Char_Ptr is access all Wide_Char;
+   type Wide_Char_Array is array (Standard.Natural range <>) of aliased Wide_Char;
+   type Wide_Char_Array_Ptr is access Wide_Char_Array;
 
    type UInt16 is mod 2 ** 16;
    type UInt16_Ptr is access all UInt16;
@@ -153,7 +153,7 @@ package NetFrameworkWin32 is
 
    subtype size_t is Interfaces.C.Extensions.unsigned_long_long;
 
---   subtype CHAR is Character;
+   subtype CHAR is Character;
    type LPSTR is access all CHAR;
    type LPCSTR is access constant CHAR;
 

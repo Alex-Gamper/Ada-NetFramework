@@ -126,7 +126,7 @@ package NetFrameworkBase.System.Runtime.Serialization.SerializationInfo is
       (
          this : in out SerializationInfo.Kind;
          name : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.Char
+         value : NetFrameworkBase.Wide_Char
       );
       
       procedure AddValue
@@ -233,7 +233,7 @@ package NetFrameworkBase.System.Runtime.Serialization.SerializationInfo is
          this : in out SerializationInfo.Kind;
          name : NetFrameworkBase.BSTR
       )
-      return NetFrameworkBase.Char;
+      return NetFrameworkBase.Wide_Char;
       
       function GetSByte
       (

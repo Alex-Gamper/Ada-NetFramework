@@ -843,7 +843,7 @@ package body NetFrameworkBase.System.Text.Encoding is
    function GetByteCount
    (
       this : in out Encoding.Kind;
-      chars : NetFrameworkBase.Char_Array
+      chars : NetFrameworkBase.Wide_Char_Array
    )
    return NetFrameworkBase.Int32 is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -917,7 +917,7 @@ package body NetFrameworkBase.System.Text.Encoding is
    function GetByteCount
    (
       this : in out Encoding.Kind;
-      chars : NetFrameworkBase.Char_Ptr;
+      chars : NetFrameworkBase.Wide_Char_Ptr;
       count : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -959,7 +959,7 @@ package body NetFrameworkBase.System.Text.Encoding is
    function GetBytes
    (
       this : in out Encoding.Kind;
-      chars : NetFrameworkBase.Char_Array
+      chars : NetFrameworkBase.Wide_Char_Array
    )
    return NetFrameworkBase.Byte_Array is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -1021,7 +1021,7 @@ package body NetFrameworkBase.System.Text.Encoding is
    function GetBytes
    (
       this : in out Encoding.Kind;
-      chars : NetFrameworkBase.Char_Array;
+      chars : NetFrameworkBase.Wide_Char_Array;
       index : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32
    )
@@ -1293,7 +1293,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       this : in out Encoding.Kind;
       bytes : NetFrameworkBase.Byte_Array
    )
-   return NetFrameworkBase.Char_Array is
+   return NetFrameworkBase.Wide_Char_Array is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
       p_Parameters  : aliased LPSAFEARRAY := null;
@@ -1306,7 +1306,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_MethodName  : BSTR := To_BSTR("GetChars");
       p_RetVal      : aliased VARIANT;
    
-      function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.Char_Array is
+      function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.Wide_Char_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
          LBound : aliased NetFrameworkWin32.LONG := 0;
          UBound : aliased NetFrameworkWin32.LONG := 0;
@@ -1317,8 +1317,8 @@ package body NetFrameworkBase.System.Text.Encoding is
          Hr := SafeArrayGetUBound (sa, 1, UBound'access);
          Index := UBound - LBound + 1;
          declare
-            RetVal : NetFrameworkBase.Char_Array(1..integer(Index));
-            Value  : aliased NetFrameworkBase.Char;
+            RetVal : NetFrameworkBase.Wide_Char_Array(1..integer(Index));
+            Value  : aliased NetFrameworkBase.Wide_Char;
             function Convert is new Ada.Unchecked_Conversion (NetFrameworkWin32.Address, PVOID);
          begin
             Index := 0;
@@ -1357,7 +1357,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       index : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32
    )
-   return NetFrameworkBase.Char_Array is
+   return NetFrameworkBase.Wide_Char_Array is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
       p_Parameters  : aliased LPSAFEARRAY := null;
@@ -1370,7 +1370,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_MethodName  : BSTR := To_BSTR("GetChars");
       p_RetVal      : aliased VARIANT;
    
-      function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.Char_Array is
+      function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.Wide_Char_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
          LBound : aliased NetFrameworkWin32.LONG := 0;
          UBound : aliased NetFrameworkWin32.LONG := 0;
@@ -1381,8 +1381,8 @@ package body NetFrameworkBase.System.Text.Encoding is
          Hr := SafeArrayGetUBound (sa, 1, UBound'access);
          Index := UBound - LBound + 1;
          declare
-            RetVal : NetFrameworkBase.Char_Array(1..integer(Index));
-            Value  : aliased NetFrameworkBase.Char;
+            RetVal : NetFrameworkBase.Wide_Char_Array(1..integer(Index));
+            Value  : aliased NetFrameworkBase.Wide_Char;
             function Convert is new Ada.Unchecked_Conversion (NetFrameworkWin32.Address, PVOID);
          begin
             Index := 0;
@@ -1977,7 +1977,7 @@ package body NetFrameworkBase.System.Text.Encoding is
    function GetByteCount
    (
       this : in out Encoding.Kind;
-      chars : NetFrameworkBase.Char_Array;
+      chars : NetFrameworkBase.Wide_Char_Array;
       index : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32
    )
@@ -2024,7 +2024,7 @@ package body NetFrameworkBase.System.Text.Encoding is
    function GetBytes
    (
       this : in out Encoding.Kind;
-      chars : NetFrameworkBase.Char_Array;
+      chars : NetFrameworkBase.Wide_Char_Array;
       charIndex : NetFrameworkBase.Int32;
       charCount : NetFrameworkBase.Int32;
       bytes : NetFrameworkBase.Byte_Array;
@@ -2081,7 +2081,7 @@ package body NetFrameworkBase.System.Text.Encoding is
    function GetBytes
    (
       this : in out Encoding.Kind;
-      chars : NetFrameworkBase.Char_Ptr;
+      chars : NetFrameworkBase.Wide_Char_Ptr;
       charCount : NetFrameworkBase.Int32;
       bytes : NetFrameworkBase.Byte_Ptr;
       byteCount : NetFrameworkBase.Int32
@@ -2183,7 +2183,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       bytes : NetFrameworkBase.Byte_Array;
       byteIndex : NetFrameworkBase.Int32;
       byteCount : NetFrameworkBase.Int32;
-      chars : NetFrameworkBase.Char_Array;
+      chars : NetFrameworkBase.Wide_Char_Array;
       charIndex : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -2239,7 +2239,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       this : in out Encoding.Kind;
       bytes : NetFrameworkBase.Byte_Ptr;
       byteCount : NetFrameworkBase.Int32;
-      chars : NetFrameworkBase.Char_Ptr;
+      chars : NetFrameworkBase.Wide_Char_Ptr;
       charCount : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is

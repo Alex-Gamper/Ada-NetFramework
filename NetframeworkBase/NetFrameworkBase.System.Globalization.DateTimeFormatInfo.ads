@@ -372,7 +372,7 @@ package NetFrameworkBase.System.Globalization.DateTimeFormatInfo is
       (
          this : in out DateTimeFormatInfo.Kind;
          patterns : NetFrameworkBase.BSTR_Array;
-         format : NetFrameworkBase.Char
+         format : NetFrameworkBase.Wide_Char
       );
       
       function AbbreviatedMonthGenitiveNames
@@ -426,7 +426,7 @@ package NetFrameworkBase.System.Globalization.DateTimeFormatInfo is
       function GetAllDateTimePatterns
       (
          this : in out DateTimeFormatInfo.Kind;
-         format : NetFrameworkBase.Char
+         format : NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.BSTR_Array;
       

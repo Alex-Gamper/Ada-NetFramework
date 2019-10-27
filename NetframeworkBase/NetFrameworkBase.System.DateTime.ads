@@ -477,14 +477,14 @@ package NetFrameworkBase.System.DateTime is
       function GetDateTimeFormats
       (
          this : in out DateTime.Kind;
-         format : NetFrameworkBase.Char
+         format : NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.BSTR_Array;
       
       function GetDateTimeFormats
       (
          this : in out DateTime.Kind;
-         format : NetFrameworkBase.Char;
+         format : NetFrameworkBase.Wide_Char;
          provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
       )
       return NetFrameworkBase.BSTR_Array;

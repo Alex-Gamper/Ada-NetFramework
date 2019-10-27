@@ -86,7 +86,7 @@ package body NetFrameworkBase.System.Text.EncoderFallbackBuffer is
    function Fallback
    (
       this : in out EncoderFallbackBuffer.Kind;
-      charUnknown : NetFrameworkBase.Char;
+      charUnknown : NetFrameworkBase.Wide_Char;
       index : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Boolean is
@@ -128,8 +128,8 @@ package body NetFrameworkBase.System.Text.EncoderFallbackBuffer is
    function Fallback
    (
       this : in out EncoderFallbackBuffer.Kind;
-      charUnknownHigh : NetFrameworkBase.Char;
-      charUnknownLow : NetFrameworkBase.Char;
+      charUnknownHigh : NetFrameworkBase.Wide_Char;
+      charUnknownLow : NetFrameworkBase.Wide_Char;
       index : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Boolean is
@@ -176,13 +176,13 @@ package body NetFrameworkBase.System.Text.EncoderFallbackBuffer is
    (
       this : in out EncoderFallbackBuffer.Kind
    )
-   return NetFrameworkBase.Char is
+   return NetFrameworkBase.Wide_Char is
       Hr            : HResult := 0;
       p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetNextChar");
       p_RetVal      : aliased VARIANT;
-      RetVal        : NetFrameworkBase.Char;
+      RetVal        : NetFrameworkBase.Wide_Char;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;

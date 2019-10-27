@@ -57,7 +57,7 @@ package NetFrameworkBase.System.Char is
       function Equals
       (
          this : in out Char.Kind;
-         obj : NetFrameworkBase.Char
+         obj : NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.Boolean;
       
@@ -71,7 +71,7 @@ package NetFrameworkBase.System.Char is
       function CompareTo
       (
          this : in out Char.Kind;
-         value : NetFrameworkBase.Char
+         value : NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.Int32;
       
@@ -90,7 +90,7 @@ package NetFrameworkBase.System.Char is
       
       function ToString
       (
-         c : NetFrameworkBase.Char
+         c : NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.BSTR;
       
@@ -98,94 +98,94 @@ package NetFrameworkBase.System.Char is
       (
          s : NetFrameworkBase.BSTR
       )
-      return NetFrameworkBase.Char;
+      return NetFrameworkBase.Wide_Char;
       
       function TryParse
       (
          s : NetFrameworkBase.BSTR;
-         result : out NetFrameworkBase.Char
+         result : out NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.Boolean;
       
       function IsDigit
       (
-         c : NetFrameworkBase.Char
+         c : NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.Boolean;
       
       function IsLetter
       (
-         c : NetFrameworkBase.Char
+         c : NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.Boolean;
       
       function IsWhiteSpace
       (
-         c : NetFrameworkBase.Char
+         c : NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.Boolean;
       
       function IsUpper
       (
-         c : NetFrameworkBase.Char
+         c : NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.Boolean;
       
       function IsLower
       (
-         c : NetFrameworkBase.Char
+         c : NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.Boolean;
       
       function IsPunctuation
       (
-         c : NetFrameworkBase.Char
+         c : NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.Boolean;
       
       function IsLetterOrDigit
       (
-         c : NetFrameworkBase.Char
+         c : NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.Boolean;
       
       function ToUpper
       (
-         c : NetFrameworkBase.Char;
+         c : NetFrameworkBase.Wide_Char;
          culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr
       )
-      return NetFrameworkBase.Char;
+      return NetFrameworkBase.Wide_Char;
       
       function ToUpper
       (
-         c : NetFrameworkBase.Char
+         c : NetFrameworkBase.Wide_Char
       )
-      return NetFrameworkBase.Char;
+      return NetFrameworkBase.Wide_Char;
       
       function ToUpperInvariant
       (
-         c : NetFrameworkBase.Char
+         c : NetFrameworkBase.Wide_Char
       )
-      return NetFrameworkBase.Char;
+      return NetFrameworkBase.Wide_Char;
       
       function ToLower
       (
-         c : NetFrameworkBase.Char;
+         c : NetFrameworkBase.Wide_Char;
          culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr
       )
-      return NetFrameworkBase.Char;
+      return NetFrameworkBase.Wide_Char;
       
       function ToLower
       (
-         c : NetFrameworkBase.Char
+         c : NetFrameworkBase.Wide_Char
       )
-      return NetFrameworkBase.Char;
+      return NetFrameworkBase.Wide_Char;
       
       function ToLowerInvariant
       (
-         c : NetFrameworkBase.Char
+         c : NetFrameworkBase.Wide_Char
       )
-      return NetFrameworkBase.Char;
+      return NetFrameworkBase.Wide_Char;
       
       function GetTypeCode
       (
@@ -195,7 +195,7 @@ package NetFrameworkBase.System.Char is
       
       function IsControl
       (
-         c : NetFrameworkBase.Char
+         c : NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.Boolean;
       
@@ -236,7 +236,7 @@ package NetFrameworkBase.System.Char is
       
       function IsNumber
       (
-         c : NetFrameworkBase.Char
+         c : NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.Boolean;
       
@@ -256,7 +256,7 @@ package NetFrameworkBase.System.Char is
       
       function IsSeparator
       (
-         c : NetFrameworkBase.Char
+         c : NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.Boolean;
       
@@ -269,7 +269,7 @@ package NetFrameworkBase.System.Char is
       
       function IsSurrogate
       (
-         c : NetFrameworkBase.Char
+         c : NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.Boolean;
       
@@ -282,7 +282,7 @@ package NetFrameworkBase.System.Char is
       
       function IsSymbol
       (
-         c : NetFrameworkBase.Char
+         c : NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.Boolean;
       
@@ -309,7 +309,7 @@ package NetFrameworkBase.System.Char is
       
       function GetUnicodeCategory
       (
-         c : NetFrameworkBase.Char
+         c : NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.System.Globalization.UnicodeCategory.Kind;
       
@@ -322,7 +322,7 @@ package NetFrameworkBase.System.Char is
       
       function GetNumericValue
       (
-         c : NetFrameworkBase.Char
+         c : NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.Double;
       
@@ -335,7 +335,7 @@ package NetFrameworkBase.System.Char is
       
       function IsHighSurrogate
       (
-         c : NetFrameworkBase.Char
+         c : NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.Boolean;
       
@@ -348,7 +348,7 @@ package NetFrameworkBase.System.Char is
       
       function IsLowSurrogate
       (
-         c : NetFrameworkBase.Char
+         c : NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.Boolean;
       
@@ -368,8 +368,8 @@ package NetFrameworkBase.System.Char is
       
       function IsSurrogatePair
       (
-         highSurrogate : NetFrameworkBase.Char;
-         lowSurrogate : NetFrameworkBase.Char
+         highSurrogate : NetFrameworkBase.Wide_Char;
+         lowSurrogate : NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.Boolean;
       
@@ -381,8 +381,8 @@ package NetFrameworkBase.System.Char is
       
       function ConvertToUtf32
       (
-         highSurrogate : NetFrameworkBase.Char;
-         lowSurrogate : NetFrameworkBase.Char
+         highSurrogate : NetFrameworkBase.Wide_Char;
+         lowSurrogate : NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.Int32;
       

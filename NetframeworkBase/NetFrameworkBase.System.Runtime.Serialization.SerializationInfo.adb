@@ -457,7 +457,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SerializationInfo is
    (
       this : in out SerializationInfo.Kind;
       name : NetFrameworkBase.BSTR;
-      value : NetFrameworkBase.Char
+      value : NetFrameworkBase.Wide_Char
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
@@ -1031,7 +1031,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SerializationInfo is
       this : in out SerializationInfo.Kind;
       name : NetFrameworkBase.BSTR
    )
-   return NetFrameworkBase.Char is
+   return NetFrameworkBase.Wide_Char is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
       p_Parameters  : aliased LPSAFEARRAY := null;
@@ -1043,7 +1043,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SerializationInfo is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetChar");
       p_RetVal      : aliased VARIANT;
-      RetVal        : NetFrameworkBase.Char;
+      RetVal        : NetFrameworkBase.Wide_Char;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;

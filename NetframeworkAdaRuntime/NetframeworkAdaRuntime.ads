@@ -73,7 +73,7 @@ package NetFrameworkAdaRuntime is
     function To_Variant (Value : Boolean; ByRef : Standard.Boolean := False) return VARIANT;
     function To_Variant (Value : IntPtr; ByRef : Standard.Boolean := False) return VARIANT;
     function To_Variant (Value : UIntPtr; ByRef : Standard.Boolean := False) return VARIANT;
-    function To_Variant (Value : Char; ByRef : Standard.Boolean := False) return VARIANT;
+    function To_Variant (Value : Wide_Char; ByRef : Standard.Boolean := False) return VARIANT;
 
     ----------------------------------------------------------------------------
 
@@ -93,7 +93,7 @@ package NetFrameworkAdaRuntime is
     function From_Variant (Value : VARIANT) return Boolean;
     function From_Variant (Value : VARIANT) return IntPtr;
     function From_Variant (Value : VARIANT) return UIntPtr;
-    function From_Variant (Value : VARIANT) return Char;
+    function From_Variant (Value : VARIANT) return Wide_Char;
 
 
 	function To_Ada (Value : BSTR) return Wide_String;

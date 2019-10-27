@@ -80,7 +80,7 @@ package NetFramework.System.Security is
          
          function Constructor
          (
-            value : NetFrameworkBase.Char_Ptr;
+            value : NetFrameworkBase.Wide_Char_Ptr;
             length : NetFrameworkBase.Int32
          )
          return NetFrameworkBase.System.Security.SecureString.Kind_Ptr renames NetFrameworkBase.System.Security.SecureString.Constructor; 

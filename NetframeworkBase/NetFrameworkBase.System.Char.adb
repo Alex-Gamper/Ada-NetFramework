@@ -132,7 +132,7 @@ package body NetFrameworkBase.System.Char is
    function Equals
    (
       this : in out Char.Kind;
-      obj : NetFrameworkBase.Char
+      obj : NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.Boolean is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -206,7 +206,7 @@ package body NetFrameworkBase.System.Char is
    function CompareTo
    (
       this : in out Char.Kind;
-      value : NetFrameworkBase.Char
+      value : NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.Int32 is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -304,7 +304,7 @@ package body NetFrameworkBase.System.Char is
    
    function ToString
    (
-      c : NetFrameworkBase.Char
+      c : NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.BSTR is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -342,7 +342,7 @@ package body NetFrameworkBase.System.Char is
    (
       s : NetFrameworkBase.BSTR
    )
-   return NetFrameworkBase.Char is
+   return NetFrameworkBase.Wide_Char is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
       p_Parameters  : aliased LPSAFEARRAY := null;
@@ -354,7 +354,7 @@ package body NetFrameworkBase.System.Char is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Parse");
       p_RetVal      : aliased VARIANT;
-      RetVal        : NetFrameworkBase.Char;
+      RetVal        : NetFrameworkBase.Wide_Char;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -377,7 +377,7 @@ package body NetFrameworkBase.System.Char is
    function TryParse
    (
       s : NetFrameworkBase.BSTR;
-      result : out NetFrameworkBase.Char
+      result : out NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.Boolean is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -423,7 +423,7 @@ package body NetFrameworkBase.System.Char is
    
    function IsDigit
    (
-      c : NetFrameworkBase.Char
+      c : NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.Boolean is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -459,7 +459,7 @@ package body NetFrameworkBase.System.Char is
    
    function IsLetter
    (
-      c : NetFrameworkBase.Char
+      c : NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.Boolean is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -495,7 +495,7 @@ package body NetFrameworkBase.System.Char is
    
    function IsWhiteSpace
    (
-      c : NetFrameworkBase.Char
+      c : NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.Boolean is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -531,7 +531,7 @@ package body NetFrameworkBase.System.Char is
    
    function IsUpper
    (
-      c : NetFrameworkBase.Char
+      c : NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.Boolean is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -567,7 +567,7 @@ package body NetFrameworkBase.System.Char is
    
    function IsLower
    (
-      c : NetFrameworkBase.Char
+      c : NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.Boolean is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -603,7 +603,7 @@ package body NetFrameworkBase.System.Char is
    
    function IsPunctuation
    (
-      c : NetFrameworkBase.Char
+      c : NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.Boolean is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -639,7 +639,7 @@ package body NetFrameworkBase.System.Char is
    
    function IsLetterOrDigit
    (
-      c : NetFrameworkBase.Char
+      c : NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.Boolean is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -675,10 +675,10 @@ package body NetFrameworkBase.System.Char is
    
    function ToUpper
    (
-      c : NetFrameworkBase.Char;
+      c : NetFrameworkBase.Wide_Char;
       culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr
    )
-   return NetFrameworkBase.Char is
+   return NetFrameworkBase.Wide_Char is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
       p_Parameters  : aliased LPSAFEARRAY := null;
@@ -690,7 +690,7 @@ package body NetFrameworkBase.System.Char is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ToUpper");
       p_RetVal      : aliased VARIANT;
-      RetVal        : NetFrameworkBase.Char;
+      RetVal        : NetFrameworkBase.Wide_Char;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -716,9 +716,9 @@ package body NetFrameworkBase.System.Char is
    
    function ToUpper
    (
-      c : NetFrameworkBase.Char
+      c : NetFrameworkBase.Wide_Char
    )
-   return NetFrameworkBase.Char is
+   return NetFrameworkBase.Wide_Char is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
       p_Parameters  : aliased LPSAFEARRAY := null;
@@ -730,7 +730,7 @@ package body NetFrameworkBase.System.Char is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ToUpper");
       p_RetVal      : aliased VARIANT;
-      RetVal        : NetFrameworkBase.Char;
+      RetVal        : NetFrameworkBase.Wide_Char;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -752,9 +752,9 @@ package body NetFrameworkBase.System.Char is
    
    function ToUpperInvariant
    (
-      c : NetFrameworkBase.Char
+      c : NetFrameworkBase.Wide_Char
    )
-   return NetFrameworkBase.Char is
+   return NetFrameworkBase.Wide_Char is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
       p_Parameters  : aliased LPSAFEARRAY := null;
@@ -766,7 +766,7 @@ package body NetFrameworkBase.System.Char is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ToUpperInvariant");
       p_RetVal      : aliased VARIANT;
-      RetVal        : NetFrameworkBase.Char;
+      RetVal        : NetFrameworkBase.Wide_Char;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -788,10 +788,10 @@ package body NetFrameworkBase.System.Char is
    
    function ToLower
    (
-      c : NetFrameworkBase.Char;
+      c : NetFrameworkBase.Wide_Char;
       culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr
    )
-   return NetFrameworkBase.Char is
+   return NetFrameworkBase.Wide_Char is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
       p_Parameters  : aliased LPSAFEARRAY := null;
@@ -803,7 +803,7 @@ package body NetFrameworkBase.System.Char is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ToLower");
       p_RetVal      : aliased VARIANT;
-      RetVal        : NetFrameworkBase.Char;
+      RetVal        : NetFrameworkBase.Wide_Char;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -829,9 +829,9 @@ package body NetFrameworkBase.System.Char is
    
    function ToLower
    (
-      c : NetFrameworkBase.Char
+      c : NetFrameworkBase.Wide_Char
    )
-   return NetFrameworkBase.Char is
+   return NetFrameworkBase.Wide_Char is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
       p_Parameters  : aliased LPSAFEARRAY := null;
@@ -843,7 +843,7 @@ package body NetFrameworkBase.System.Char is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ToLower");
       p_RetVal      : aliased VARIANT;
-      RetVal        : NetFrameworkBase.Char;
+      RetVal        : NetFrameworkBase.Wide_Char;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -865,9 +865,9 @@ package body NetFrameworkBase.System.Char is
    
    function ToLowerInvariant
    (
-      c : NetFrameworkBase.Char
+      c : NetFrameworkBase.Wide_Char
    )
-   return NetFrameworkBase.Char is
+   return NetFrameworkBase.Wide_Char is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
       Hr            : HResult := 0;
       p_Parameters  : aliased LPSAFEARRAY := null;
@@ -879,7 +879,7 @@ package body NetFrameworkBase.System.Char is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ToLowerInvariant");
       p_RetVal      : aliased VARIANT;
-      RetVal        : NetFrameworkBase.Char;
+      RetVal        : NetFrameworkBase.Wide_Char;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -926,7 +926,7 @@ package body NetFrameworkBase.System.Char is
    
    function IsControl
    (
-      c : NetFrameworkBase.Char
+      c : NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.Boolean is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -1167,7 +1167,7 @@ package body NetFrameworkBase.System.Char is
    
    function IsNumber
    (
-      c : NetFrameworkBase.Char
+      c : NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.Boolean is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -1285,7 +1285,7 @@ package body NetFrameworkBase.System.Char is
    
    function IsSeparator
    (
-      c : NetFrameworkBase.Char
+      c : NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.Boolean is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -1362,7 +1362,7 @@ package body NetFrameworkBase.System.Char is
    
    function IsSurrogate
    (
-      c : NetFrameworkBase.Char
+      c : NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.Boolean is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -1439,7 +1439,7 @@ package body NetFrameworkBase.System.Char is
    
    function IsSymbol
    (
-      c : NetFrameworkBase.Char
+      c : NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.Boolean is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -1598,7 +1598,7 @@ package body NetFrameworkBase.System.Char is
    
    function GetUnicodeCategory
    (
-      c : NetFrameworkBase.Char
+      c : NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.System.Globalization.UnicodeCategory.Kind is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -1677,7 +1677,7 @@ package body NetFrameworkBase.System.Char is
    
    function GetNumericValue
    (
-      c : NetFrameworkBase.Char
+      c : NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.Double is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -1754,7 +1754,7 @@ package body NetFrameworkBase.System.Char is
    
    function IsHighSurrogate
    (
-      c : NetFrameworkBase.Char
+      c : NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.Boolean is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -1831,7 +1831,7 @@ package body NetFrameworkBase.System.Char is
    
    function IsLowSurrogate
    (
-      c : NetFrameworkBase.Char
+      c : NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.Boolean is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -1949,8 +1949,8 @@ package body NetFrameworkBase.System.Char is
    
    function IsSurrogatePair
    (
-      highSurrogate : NetFrameworkBase.Char;
-      lowSurrogate : NetFrameworkBase.Char
+      highSurrogate : NetFrameworkBase.Wide_Char;
+      lowSurrogate : NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.Boolean is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -2026,8 +2026,8 @@ package body NetFrameworkBase.System.Char is
    
    function ConvertToUtf32
    (
-      highSurrogate : NetFrameworkBase.Char;
-      lowSurrogate : NetFrameworkBase.Char
+      highSurrogate : NetFrameworkBase.Wide_Char;
+      lowSurrogate : NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.Int32 is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);

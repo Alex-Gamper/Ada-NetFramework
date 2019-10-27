@@ -2338,7 +2338,7 @@ package body NetFrameworkBase.System.DateTime is
    function GetDateTimeFormats
    (
       this : in out DateTime.Kind;
-      format : NetFrameworkBase.Char
+      format : NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.BSTR_Array is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -2400,7 +2400,7 @@ package body NetFrameworkBase.System.DateTime is
    function GetDateTimeFormats
    (
       this : in out DateTime.Kind;
-      format : NetFrameworkBase.Char;
+      format : NetFrameworkBase.Wide_Char;
       provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
    )
    return NetFrameworkBase.BSTR_Array is

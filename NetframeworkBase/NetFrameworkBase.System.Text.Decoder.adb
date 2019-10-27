@@ -271,7 +271,7 @@ package body NetFrameworkBase.System.Text.Decoder is
       bytes : NetFrameworkBase.Byte_Array;
       byteIndex : NetFrameworkBase.Int32;
       byteCount : NetFrameworkBase.Int32;
-      chars : NetFrameworkBase.Char_Array;
+      chars : NetFrameworkBase.Wide_Char_Array;
       charIndex : NetFrameworkBase.Int32;
       flush : NetFrameworkBase.Boolean
    )
@@ -380,7 +380,7 @@ package body NetFrameworkBase.System.Text.Decoder is
       bytes : NetFrameworkBase.Byte_Array;
       byteIndex : NetFrameworkBase.Int32;
       byteCount : NetFrameworkBase.Int32;
-      chars : NetFrameworkBase.Char_Array;
+      chars : NetFrameworkBase.Wide_Char_Array;
       charIndex : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -436,7 +436,7 @@ package body NetFrameworkBase.System.Text.Decoder is
       this : in out Decoder.Kind;
       bytes : NetFrameworkBase.Byte_Ptr;
       byteCount : NetFrameworkBase.Int32;
-      chars : NetFrameworkBase.Char_Ptr;
+      chars : NetFrameworkBase.Wide_Char_Ptr;
       charCount : NetFrameworkBase.Int32;
       flush : NetFrameworkBase.Boolean
    )
@@ -494,7 +494,7 @@ package body NetFrameworkBase.System.Text.Decoder is
       bytes : NetFrameworkBase.Byte_Array;
       byteIndex : NetFrameworkBase.Int32;
       byteCount : NetFrameworkBase.Int32;
-      chars : NetFrameworkBase.Char_Array;
+      chars : NetFrameworkBase.Wide_Char_Array;
       charIndex : NetFrameworkBase.Int32;
       charCount : NetFrameworkBase.Int32;
       flush : NetFrameworkBase.Boolean;
@@ -589,7 +589,7 @@ package body NetFrameworkBase.System.Text.Decoder is
       this : in out Decoder.Kind;
       bytes : NetFrameworkBase.Byte_Ptr;
       byteCount : NetFrameworkBase.Int32;
-      chars : NetFrameworkBase.Char_Ptr;
+      chars : NetFrameworkBase.Wide_Char_Ptr;
       charCount : NetFrameworkBase.Int32;
       flush : NetFrameworkBase.Boolean;
       bytesUsed : out NetFrameworkBase.Int32;
