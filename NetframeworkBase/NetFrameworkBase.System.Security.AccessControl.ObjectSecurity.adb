@@ -489,6 +489,8 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetSecurityDescriptorSddlForm");
       p_RetVal      : aliased VARIANT;
+      p_includeSectionsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.AccessControl.AccessControlSections.Instance;
+      p_includeSectionsEnum : aliased VARIANT := To_Variant (CreateEnum (p_includeSectionsEnumType, includeSections'Enum_rep));
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -497,8 +499,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := includeSections'Enum_rep;
+      p_Value := p_includeSectionsEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -560,6 +561,8 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("SetSecurityDescriptorSddlForm");
       p_RetVal      : aliased VARIANT;
+      p_includeSectionsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.AccessControl.AccessControlSections.Instance;
+      p_includeSectionsEnum : aliased VARIANT := To_Variant (CreateEnum (p_includeSectionsEnumType, includeSections'Enum_rep));
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -571,8 +574,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := includeSections'Enum_rep;
+      p_Value := p_includeSectionsEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
@@ -681,6 +683,8 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("SetSecurityDescriptorBinaryForm");
       p_RetVal      : aliased VARIANT;
+      p_includeSectionsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.AccessControl.AccessControlSections.Instance;
+      p_includeSectionsEnum : aliased VARIANT := To_Variant (CreateEnum (p_includeSectionsEnumType, includeSections'Enum_rep));
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -692,8 +696,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := includeSections'Enum_rep;
+      p_Value := p_includeSectionsEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
@@ -722,6 +725,8 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ModifyAccessRule");
       p_RetVal      : aliased VARIANT;
+      p_modificationEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.AccessControl.AccessControlModification.Instance;
+      p_modificationEnum : aliased VARIANT := To_Variant (CreateEnum (p_modificationEnumType, modification'Enum_rep));
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -730,8 +735,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := modification'Enum_rep;
+      p_Value := p_modificationEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -776,6 +780,8 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ModifyAuditRule");
       p_RetVal      : aliased VARIANT;
+      p_modificationEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.AccessControl.AccessControlModification.Instance;
+      p_modificationEnum : aliased VARIANT := To_Variant (CreateEnum (p_modificationEnumType, modification'Enum_rep));
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -784,8 +790,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := modification'Enum_rep;
+      p_Value := p_modificationEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -905,6 +910,12 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("AccessRuleFactory");
       p_RetVal      : aliased VARIANT;
+      p_inheritanceFlagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.AccessControl.InheritanceFlags.Instance;
+      p_inheritanceFlagsEnum : aliased VARIANT := To_Variant (CreateEnum (p_inheritanceFlagsEnumType, inheritanceFlags'Enum_rep));
+      p_propagationFlagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.AccessControl.PropagationFlags.Instance;
+      p_propagationFlagsEnum : aliased VARIANT := To_Variant (CreateEnum (p_propagationFlagsEnumType, propagationFlags'Enum_rep));
+      p_type_xEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.AccessControl.AccessControlType.Instance;
+      p_type_xEnum : aliased VARIANT := To_Variant (CreateEnum (p_type_xEnumType, type_x'Enum_rep));
       RetVal        : NetFrameworkBase.System.Security.AccessControl.AccessRule.Kind_Ptr := new NetFrameworkBase.System.Security.AccessControl.AccessRule.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -925,18 +936,15 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 3;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := inheritanceFlags'Enum_rep;
+      p_Value := p_inheritanceFlagsEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 4;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := propagationFlags'Enum_rep;
+      p_Value := p_propagationFlagsEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 5;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := type_x'Enum_rep;
+      p_Value := p_type_xEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -970,6 +978,12 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("AuditRuleFactory");
       p_RetVal      : aliased VARIANT;
+      p_inheritanceFlagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.AccessControl.InheritanceFlags.Instance;
+      p_inheritanceFlagsEnum : aliased VARIANT := To_Variant (CreateEnum (p_inheritanceFlagsEnumType, inheritanceFlags'Enum_rep));
+      p_propagationFlagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.AccessControl.PropagationFlags.Instance;
+      p_propagationFlagsEnum : aliased VARIANT := To_Variant (CreateEnum (p_propagationFlagsEnumType, propagationFlags'Enum_rep));
+      p_flagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.AccessControl.AuditFlags.Instance;
+      p_flagsEnum : aliased VARIANT := To_Variant (CreateEnum (p_flagsEnumType, flags'Enum_rep));
       RetVal        : NetFrameworkBase.System.Security.AccessControl.AuditRule.Kind_Ptr := new NetFrameworkBase.System.Security.AccessControl.AuditRule.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -990,18 +1004,15 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 3;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := inheritanceFlags'Enum_rep;
+      p_Value := p_inheritanceFlagsEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 4;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := propagationFlags'Enum_rep;
+      p_Value := p_propagationFlagsEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 5;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := flags'Enum_rep;
+      p_Value := p_flagsEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);

@@ -1837,6 +1837,8 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ParseExact");
       p_RetVal      : aliased VARIANT;
+      p_stylesEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Globalization.TimeSpanStyles.Instance;
+      p_stylesEnum : aliased VARIANT := To_Variant (CreateEnum (p_stylesEnumType, styles'Enum_rep));
       RetVal        : NetFrameworkBase.System.TimeSpan.Kind_Ptr := new NetFrameworkBase.System.TimeSpan.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1858,8 +1860,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 3;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := styles'Enum_rep;
+      p_Value := p_stylesEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
@@ -1890,6 +1891,8 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ParseExact");
       p_RetVal      : aliased VARIANT;
+      p_stylesEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Globalization.TimeSpanStyles.Instance;
+      p_stylesEnum : aliased VARIANT := To_Variant (CreateEnum (p_stylesEnumType, styles'Enum_rep));
       RetVal        : NetFrameworkBase.System.TimeSpan.Kind_Ptr := new NetFrameworkBase.System.TimeSpan.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1911,8 +1914,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 3;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := styles'Enum_rep;
+      p_Value := p_stylesEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
@@ -1944,6 +1946,8 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("TryParseExact");
       p_RetVal      : aliased VARIANT;
+      p_stylesEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Globalization.TimeSpanStyles.Instance;
+      p_stylesEnum : aliased VARIANT := To_Variant (CreateEnum (p_stylesEnumType, styles'Enum_rep));
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1965,8 +1969,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 3;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := styles'Enum_rep;
+      p_Value := p_stylesEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 4;
@@ -2009,6 +2012,8 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("TryParseExact");
       p_RetVal      : aliased VARIANT;
+      p_stylesEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Globalization.TimeSpanStyles.Instance;
+      p_stylesEnum : aliased VARIANT := To_Variant (CreateEnum (p_stylesEnumType, styles'Enum_rep));
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -2030,8 +2035,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 3;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := styles'Enum_rep;
+      p_Value := p_stylesEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 4;

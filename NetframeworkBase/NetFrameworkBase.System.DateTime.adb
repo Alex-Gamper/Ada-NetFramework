@@ -860,6 +860,8 @@ package body NetFrameworkBase.System.DateTime is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("SpecifyKind");
       p_RetVal      : aliased VARIANT;
+      p_kindEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.DateTimeKind.Instance;
+      p_kindEnum : aliased VARIANT := To_Variant (CreateEnum (p_kindEnumType, kind'Enum_rep));
       RetVal        : NetFrameworkBase.Date;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -872,8 +874,7 @@ package body NetFrameworkBase.System.DateTime is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := kind'Enum_rep;
+      p_Value := p_kindEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
@@ -2508,6 +2509,8 @@ package body NetFrameworkBase.System.DateTime is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Parse");
       p_RetVal      : aliased VARIANT;
+      p_stylesEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Globalization.DateTimeStyles.Instance;
+      p_stylesEnum : aliased VARIANT := To_Variant (CreateEnum (p_stylesEnumType, styles'Enum_rep));
       RetVal        : NetFrameworkBase.Date;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -2525,8 +2528,7 @@ package body NetFrameworkBase.System.DateTime is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := styles'Enum_rep;
+      p_Value := p_stylesEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
@@ -2557,6 +2559,8 @@ package body NetFrameworkBase.System.DateTime is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ParseExact");
       p_RetVal      : aliased VARIANT;
+      p_styleEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Globalization.DateTimeStyles.Instance;
+      p_styleEnum : aliased VARIANT := To_Variant (CreateEnum (p_styleEnumType, style'Enum_rep));
       RetVal        : NetFrameworkBase.Date;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -2578,8 +2582,7 @@ package body NetFrameworkBase.System.DateTime is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 3;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := style'Enum_rep;
+      p_Value := p_styleEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
@@ -2683,6 +2686,8 @@ package body NetFrameworkBase.System.DateTime is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("TryParseExact");
       p_RetVal      : aliased VARIANT;
+      p_styleEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Globalization.DateTimeStyles.Instance;
+      p_styleEnum : aliased VARIANT := To_Variant (CreateEnum (p_styleEnumType, style'Enum_rep));
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -2704,8 +2709,7 @@ package body NetFrameworkBase.System.DateTime is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 3;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := style'Enum_rep;
+      p_Value := p_styleEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 4;
@@ -2747,6 +2751,8 @@ package body NetFrameworkBase.System.DateTime is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("TryParseExact");
       p_RetVal      : aliased VARIANT;
+      p_styleEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Globalization.DateTimeStyles.Instance;
+      p_styleEnum : aliased VARIANT := To_Variant (CreateEnum (p_styleEnumType, style'Enum_rep));
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -2768,8 +2774,7 @@ package body NetFrameworkBase.System.DateTime is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 3;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := style'Enum_rep;
+      p_Value := p_styleEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 4;
@@ -2810,6 +2815,8 @@ package body NetFrameworkBase.System.DateTime is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ParseExact");
       p_RetVal      : aliased VARIANT;
+      p_styleEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Globalization.DateTimeStyles.Instance;
+      p_styleEnum : aliased VARIANT := To_Variant (CreateEnum (p_styleEnumType, style'Enum_rep));
       RetVal        : NetFrameworkBase.Date;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -2831,8 +2838,7 @@ package body NetFrameworkBase.System.DateTime is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 3;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := style'Enum_rep;
+      p_Value := p_styleEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
@@ -2887,6 +2893,8 @@ package body NetFrameworkBase.System.DateTime is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("TryParse");
       p_RetVal      : aliased VARIANT;
+      p_stylesEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Globalization.DateTimeStyles.Instance;
+      p_stylesEnum : aliased VARIANT := To_Variant (CreateEnum (p_stylesEnumType, styles'Enum_rep));
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -2904,8 +2912,7 @@ package body NetFrameworkBase.System.DateTime is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := styles'Enum_rep;
+      p_Value := p_stylesEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 3;
@@ -2973,6 +2980,8 @@ package body NetFrameworkBase.System.DateTime is
          p_Value       : aliased VARIANT;
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
+         p_kindEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.DateTimeKind.Instance;
+         p_kindEnum : aliased VARIANT := To_Variant (CreateEnum (p_kindEnumType, kind'Enum_rep));
       begin
          p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
@@ -2982,8 +2991,7 @@ package body NetFrameworkBase.System.DateTime is
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 1;
-         p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-         p_Value.field_1.field_1.field_1.lval := kind'Enum_rep;
+         p_Value := p_kindEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
@@ -3150,6 +3158,8 @@ package body NetFrameworkBase.System.DateTime is
          p_Value       : aliased VARIANT;
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
+         p_kindEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.DateTimeKind.Instance;
+         p_kindEnum : aliased VARIANT := To_Variant (CreateEnum (p_kindEnumType, kind'Enum_rep));
       begin
          p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
@@ -3179,8 +3189,7 @@ package body NetFrameworkBase.System.DateTime is
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 6;
-         p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-         p_Value.field_1.field_1.field_1.lval := kind'Enum_rep;
+         p_Value := p_kindEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
@@ -3329,6 +3338,8 @@ package body NetFrameworkBase.System.DateTime is
          p_Value       : aliased VARIANT;
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
+         p_kindEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.DateTimeKind.Instance;
+         p_kindEnum : aliased VARIANT := To_Variant (CreateEnum (p_kindEnumType, kind'Enum_rep));
       begin
          p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
@@ -3362,8 +3373,7 @@ package body NetFrameworkBase.System.DateTime is
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 7;
-         p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-         p_Value.field_1.field_1.field_1.lval := kind'Enum_rep;
+         p_Value := p_kindEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
@@ -3459,6 +3469,8 @@ package body NetFrameworkBase.System.DateTime is
          p_Value       : aliased VARIANT;
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
+         p_kindEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.DateTimeKind.Instance;
+         p_kindEnum : aliased VARIANT := To_Variant (CreateEnum (p_kindEnumType, kind'Enum_rep));
       begin
          p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
@@ -3496,8 +3508,7 @@ package body NetFrameworkBase.System.DateTime is
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 8;
-         p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-         p_Value.field_1.field_1.field_1.lval := kind'Enum_rep;
+         p_Value := p_kindEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);

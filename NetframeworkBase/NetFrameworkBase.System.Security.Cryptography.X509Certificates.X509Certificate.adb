@@ -970,6 +970,8 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Import");
       p_RetVal      : aliased VARIANT;
+      p_keyStorageFlagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.Instance;
+      p_keyStorageFlagsEnum : aliased VARIANT := To_Variant (CreateEnum (p_keyStorageFlagsEnumType, keyStorageFlags'Enum_rep));
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -985,8 +987,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := keyStorageFlags'Enum_rep;
+      p_Value := p_keyStorageFlagsEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
@@ -1014,6 +1015,8 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Import");
       p_RetVal      : aliased VARIANT;
+      p_keyStorageFlagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.Instance;
+      p_keyStorageFlagsEnum : aliased VARIANT := To_Variant (CreateEnum (p_keyStorageFlagsEnumType, keyStorageFlags'Enum_rep));
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -1029,8 +1032,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := keyStorageFlags'Enum_rep;
+      p_Value := p_keyStorageFlagsEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
@@ -1091,6 +1093,8 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Import");
       p_RetVal      : aliased VARIANT;
+      p_keyStorageFlagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.Instance;
+      p_keyStorageFlagsEnum : aliased VARIANT := To_Variant (CreateEnum (p_keyStorageFlagsEnumType, keyStorageFlags'Enum_rep));
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -1106,8 +1110,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := keyStorageFlags'Enum_rep;
+      p_Value := p_keyStorageFlagsEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
@@ -1135,6 +1138,8 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Import");
       p_RetVal      : aliased VARIANT;
+      p_keyStorageFlagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.Instance;
+      p_keyStorageFlagsEnum : aliased VARIANT := To_Variant (CreateEnum (p_keyStorageFlagsEnumType, keyStorageFlags'Enum_rep));
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -1150,8 +1155,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := keyStorageFlags'Enum_rep;
+      p_Value := p_keyStorageFlagsEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
@@ -1178,6 +1182,8 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Export");
       p_RetVal      : aliased VARIANT;
+      p_contentTypeEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ContentType.Instance;
+      p_contentTypeEnum : aliased VARIANT := To_Variant (CreateEnum (p_contentTypeEnumType, contentType'Enum_rep));
    
       function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.Byte_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
@@ -1212,8 +1218,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := contentType'Enum_rep;
+      p_Value := p_contentTypeEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -1242,6 +1247,8 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Export");
       p_RetVal      : aliased VARIANT;
+      p_contentTypeEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ContentType.Instance;
+      p_contentTypeEnum : aliased VARIANT := To_Variant (CreateEnum (p_contentTypeEnumType, contentType'Enum_rep));
    
       function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.Byte_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
@@ -1276,8 +1283,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := contentType'Enum_rep;
+      p_Value := p_contentTypeEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -1310,6 +1316,8 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Export");
       p_RetVal      : aliased VARIANT;
+      p_contentTypeEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ContentType.Instance;
+      p_contentTypeEnum : aliased VARIANT := To_Variant (CreateEnum (p_contentTypeEnumType, contentType'Enum_rep));
    
       function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.Byte_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
@@ -1344,8 +1352,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := contentType'Enum_rep;
+      p_Value := p_contentTypeEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -1583,6 +1590,8 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          p_Value       : aliased VARIANT;
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
+         p_keyStorageFlagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.Instance;
+         p_keyStorageFlagsEnum : aliased VARIANT := To_Variant (CreateEnum (p_keyStorageFlagsEnumType, keyStorageFlags'Enum_rep));
       begin
          p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
@@ -1596,8 +1605,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 2;
-         p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-         p_Value.field_1.field_1.field_1.lval := keyStorageFlags'Enum_rep;
+         p_Value := p_keyStorageFlagsEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
@@ -1623,6 +1631,8 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          p_Value       : aliased VARIANT;
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
+         p_keyStorageFlagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.Instance;
+         p_keyStorageFlagsEnum : aliased VARIANT := To_Variant (CreateEnum (p_keyStorageFlagsEnumType, keyStorageFlags'Enum_rep));
       begin
          p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
@@ -1636,8 +1646,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 2;
-         p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-         p_Value.field_1.field_1.field_1.lval := keyStorageFlags'Enum_rep;
+         p_Value := p_keyStorageFlagsEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
@@ -1760,6 +1769,8 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          p_Value       : aliased VARIANT;
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
+         p_keyStorageFlagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.Instance;
+         p_keyStorageFlagsEnum : aliased VARIANT := To_Variant (CreateEnum (p_keyStorageFlagsEnumType, keyStorageFlags'Enum_rep));
       begin
          p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
@@ -1773,8 +1784,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 2;
-         p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-         p_Value.field_1.field_1.field_1.lval := keyStorageFlags'Enum_rep;
+         p_Value := p_keyStorageFlagsEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
@@ -1800,6 +1810,8 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          p_Value       : aliased VARIANT;
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
+         p_keyStorageFlagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.Instance;
+         p_keyStorageFlagsEnum : aliased VARIANT := To_Variant (CreateEnum (p_keyStorageFlagsEnumType, keyStorageFlags'Enum_rep));
       begin
          p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
@@ -1813,8 +1825,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 2;
-         p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-         p_Value.field_1.field_1.field_1.lval := keyStorageFlags'Enum_rep;
+         p_Value := p_keyStorageFlagsEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);

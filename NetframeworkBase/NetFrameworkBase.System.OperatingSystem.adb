@@ -267,13 +267,14 @@ package body NetFrameworkBase.System.OperatingSystem is
          p_Value       : aliased VARIANT;
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
+         p_platformEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.PlatformID.Instance;
+         p_platformEnum : aliased VARIANT := To_Variant (CreateEnum (p_platformEnumType, platform'Enum_rep));
       begin
          p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
-         p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-         p_Value.field_1.field_1.field_1.lval := platform'Enum_rep;
+         p_Value := p_platformEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 1;

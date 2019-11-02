@@ -111,6 +111,10 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemAuditRule 
          p_Value       : aliased VARIANT;
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
+         p_fileSystemRightsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.AccessControl.FileSystemRights.Instance;
+         p_fileSystemRightsEnum : aliased VARIANT := To_Variant (CreateEnum (p_fileSystemRightsEnumType, fileSystemRights'Enum_rep));
+         p_flagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.AccessControl.AuditFlags.Instance;
+         p_flagsEnum : aliased VARIANT := To_Variant (CreateEnum (p_flagsEnumType, flags'Enum_rep));
       begin
          p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
@@ -120,13 +124,11 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemAuditRule 
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 1;
-         p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-         p_Value.field_1.field_1.field_1.lval := fileSystemRights'Enum_rep;
+         p_Value := p_fileSystemRightsEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 2;
-         p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-         p_Value.field_1.field_1.field_1.lval := flags'Enum_rep;
+         p_Value := p_flagsEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
@@ -154,6 +156,14 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemAuditRule 
          p_Value       : aliased VARIANT;
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
+         p_fileSystemRightsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.AccessControl.FileSystemRights.Instance;
+         p_fileSystemRightsEnum : aliased VARIANT := To_Variant (CreateEnum (p_fileSystemRightsEnumType, fileSystemRights'Enum_rep));
+         p_inheritanceFlagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.AccessControl.InheritanceFlags.Instance;
+         p_inheritanceFlagsEnum : aliased VARIANT := To_Variant (CreateEnum (p_inheritanceFlagsEnumType, inheritanceFlags'Enum_rep));
+         p_propagationFlagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.AccessControl.PropagationFlags.Instance;
+         p_propagationFlagsEnum : aliased VARIANT := To_Variant (CreateEnum (p_propagationFlagsEnumType, propagationFlags'Enum_rep));
+         p_flagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.AccessControl.AuditFlags.Instance;
+         p_flagsEnum : aliased VARIANT := To_Variant (CreateEnum (p_flagsEnumType, flags'Enum_rep));
       begin
          p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
@@ -163,23 +173,19 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemAuditRule 
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 1;
-         p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-         p_Value.field_1.field_1.field_1.lval := fileSystemRights'Enum_rep;
+         p_Value := p_fileSystemRightsEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 2;
-         p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-         p_Value.field_1.field_1.field_1.lval := inheritanceFlags'Enum_rep;
+         p_Value := p_inheritanceFlagsEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 3;
-         p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-         p_Value.field_1.field_1.field_1.lval := propagationFlags'Enum_rep;
+         p_Value := p_propagationFlagsEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 4;
-         p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-         p_Value.field_1.field_1.field_1.lval := flags'Enum_rep;
+         p_Value := p_flagsEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
@@ -205,6 +211,10 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemAuditRule 
          p_Value       : aliased VARIANT;
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
+         p_fileSystemRightsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.AccessControl.FileSystemRights.Instance;
+         p_fileSystemRightsEnum : aliased VARIANT := To_Variant (CreateEnum (p_fileSystemRightsEnumType, fileSystemRights'Enum_rep));
+         p_flagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.AccessControl.AuditFlags.Instance;
+         p_flagsEnum : aliased VARIANT := To_Variant (CreateEnum (p_flagsEnumType, flags'Enum_rep));
       begin
          p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
@@ -214,13 +224,11 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemAuditRule 
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 1;
-         p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-         p_Value.field_1.field_1.field_1.lval := fileSystemRights'Enum_rep;
+         p_Value := p_fileSystemRightsEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 2;
-         p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-         p_Value.field_1.field_1.field_1.lval := flags'Enum_rep;
+         p_Value := p_flagsEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
@@ -248,6 +256,14 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemAuditRule 
          p_Value       : aliased VARIANT;
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
+         p_fileSystemRightsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.AccessControl.FileSystemRights.Instance;
+         p_fileSystemRightsEnum : aliased VARIANT := To_Variant (CreateEnum (p_fileSystemRightsEnumType, fileSystemRights'Enum_rep));
+         p_inheritanceFlagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.AccessControl.InheritanceFlags.Instance;
+         p_inheritanceFlagsEnum : aliased VARIANT := To_Variant (CreateEnum (p_inheritanceFlagsEnumType, inheritanceFlags'Enum_rep));
+         p_propagationFlagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.AccessControl.PropagationFlags.Instance;
+         p_propagationFlagsEnum : aliased VARIANT := To_Variant (CreateEnum (p_propagationFlagsEnumType, propagationFlags'Enum_rep));
+         p_flagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.AccessControl.AuditFlags.Instance;
+         p_flagsEnum : aliased VARIANT := To_Variant (CreateEnum (p_flagsEnumType, flags'Enum_rep));
       begin
          p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
@@ -257,23 +273,19 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemAuditRule 
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 1;
-         p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-         p_Value.field_1.field_1.field_1.lval := fileSystemRights'Enum_rep;
+         p_Value := p_fileSystemRightsEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 2;
-         p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-         p_Value.field_1.field_1.field_1.lval := inheritanceFlags'Enum_rep;
+         p_Value := p_inheritanceFlagsEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 3;
-         p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-         p_Value.field_1.field_1.field_1.lval := propagationFlags'Enum_rep;
+         p_Value := p_propagationFlagsEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 4;
-         p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-         p_Value.field_1.field_1.field_1.lval := flags'Enum_rep;
+         p_Value := p_flagsEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);

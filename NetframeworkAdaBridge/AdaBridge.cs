@@ -37,11 +37,22 @@ namespace NetFrameworkAdaBridge
     public interface IAdaMarshal
     {
         Delegate GetDelegateForFunctionPointer(IntPtr pUnmanagedFunction, Type type);
+
+        IntPtr GetFunctionPointerForDelegate(Delegate d);
+
         IntPtr AllocCoTaskMem(int cb);
+
         void FreeCoTaskMem(IntPtr ptr);
+
         object InvokeMethod(Type type, String name, BindingFlags invokeAtts, Binder binder, Object target, [In, Out] object[] args);
+
+        [return: MarshalAs(UnmanagedType.Interface)]
         object GetObjectForNativeVariant(IntPtr pSrcNativeVariant);
+
         void GetNativeVariantForObject([MarshalAs(UnmanagedType.Interface)] object obj, [In, Out] IntPtr pDstNativeVariant);
+
+        [return: MarshalAs(UnmanagedType.Interface)]
+        object CreateEnum(Type type, int value);
     }
 
     [ComVisible(true)]
@@ -52,6 +63,11 @@ namespace NetFrameworkAdaBridge
         public Delegate GetDelegateForFunctionPointer(IntPtr pUnmanagedFunction, Type type)
         {
             return Marshal.GetDelegateForFunctionPointer(pUnmanagedFunction, type);
+        }
+
+        public IntPtr GetFunctionPointerForDelegate(Delegate d)
+        {
+            return Marshal.GetFunctionPointerForDelegate(d);
         }
 
         public IntPtr AllocCoTaskMem(int cb)
@@ -79,6 +95,12 @@ namespace NetFrameworkAdaBridge
         public void GetNativeVariantForObject([MarshalAs(UnmanagedType.Interface)] object obj, [In, Out] IntPtr pDstNativeVariant)
         {
             Marshal.GetNativeVariantForObject(obj, pDstNativeVariant);
+        }
+
+        [return: MarshalAs(UnmanagedType.Interface)]
+        public object CreateEnum(Type type, int value)
+        {
+            return System.Enum.ToObject(type, value);
         }
     }
 }

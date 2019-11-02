@@ -297,6 +297,8 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Equals");
       p_RetVal      : aliased VARIANT;
+      p_comparisonTypeEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.StringComparison.Instance;
+      p_comparisonTypeEnum : aliased VARIANT := To_Variant (CreateEnum (p_comparisonTypeEnumType, comparisonType'Enum_rep));
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -309,8 +311,7 @@ package body NetFrameworkBase.System.String is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := comparisonType'Enum_rep;
+      p_Value := p_comparisonTypeEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -381,6 +382,8 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Equals");
       p_RetVal      : aliased VARIANT;
+      p_comparisonTypeEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.StringComparison.Instance;
+      p_comparisonTypeEnum : aliased VARIANT := To_Variant (CreateEnum (p_comparisonTypeEnumType, comparisonType'Enum_rep));
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -397,8 +400,7 @@ package body NetFrameworkBase.System.String is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := comparisonType'Enum_rep;
+      p_Value := p_comparisonTypeEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
@@ -899,6 +901,8 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Split");
       p_RetVal      : aliased VARIANT;
+      p_optionsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.StringSplitOptions.Instance;
+      p_optionsEnum : aliased VARIANT := To_Variant (CreateEnum (p_optionsEnumType, options'Enum_rep));
    
       function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.BSTR_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
@@ -937,8 +941,7 @@ package body NetFrameworkBase.System.String is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := options'Enum_rep;
+      p_Value := p_optionsEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -968,6 +971,8 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Split");
       p_RetVal      : aliased VARIANT;
+      p_optionsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.StringSplitOptions.Instance;
+      p_optionsEnum : aliased VARIANT := To_Variant (CreateEnum (p_optionsEnumType, options'Enum_rep));
    
       function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.BSTR_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
@@ -1010,8 +1015,7 @@ package body NetFrameworkBase.System.String is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := options'Enum_rep;
+      p_Value := p_optionsEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -1040,6 +1044,8 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Split");
       p_RetVal      : aliased VARIANT;
+      p_optionsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.StringSplitOptions.Instance;
+      p_optionsEnum : aliased VARIANT := To_Variant (CreateEnum (p_optionsEnumType, options'Enum_rep));
    
       function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.BSTR_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
@@ -1078,8 +1084,7 @@ package body NetFrameworkBase.System.String is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := options'Enum_rep;
+      p_Value := p_optionsEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -1109,6 +1114,8 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Split");
       p_RetVal      : aliased VARIANT;
+      p_optionsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.StringSplitOptions.Instance;
+      p_optionsEnum : aliased VARIANT := To_Variant (CreateEnum (p_optionsEnumType, options'Enum_rep));
    
       function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.BSTR_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
@@ -1151,8 +1158,7 @@ package body NetFrameworkBase.System.String is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := options'Enum_rep;
+      p_Value := p_optionsEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -1394,6 +1400,8 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("IsNormalized");
       p_RetVal      : aliased VARIANT;
+      p_normalizationFormEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Text.NormalizationForm.Instance;
+      p_normalizationFormEnum : aliased VARIANT := To_Variant (CreateEnum (p_normalizationFormEnumType, normalizationForm'Enum_rep));
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1402,8 +1410,7 @@ package body NetFrameworkBase.System.String is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := normalizationForm'Enum_rep;
+      p_Value := p_normalizationFormEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -1456,6 +1463,8 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Normalize");
       p_RetVal      : aliased VARIANT;
+      p_normalizationFormEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Text.NormalizationForm.Instance;
+      p_normalizationFormEnum : aliased VARIANT := To_Variant (CreateEnum (p_normalizationFormEnumType, normalizationForm'Enum_rep));
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1464,8 +1473,7 @@ package body NetFrameworkBase.System.String is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := normalizationForm'Enum_rep;
+      p_Value := p_normalizationFormEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -1582,6 +1590,8 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Compare");
       p_RetVal      : aliased VARIANT;
+      p_comparisonTypeEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.StringComparison.Instance;
+      p_comparisonTypeEnum : aliased VARIANT := To_Variant (CreateEnum (p_comparisonTypeEnumType, comparisonType'Enum_rep));
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1598,8 +1608,7 @@ package body NetFrameworkBase.System.String is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := comparisonType'Enum_rep;
+      p_Value := p_comparisonTypeEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
@@ -1630,6 +1639,8 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Compare");
       p_RetVal      : aliased VARIANT;
+      p_optionsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Globalization.CompareOptions.Instance;
+      p_optionsEnum : aliased VARIANT := To_Variant (CreateEnum (p_optionsEnumType, options'Enum_rep));
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1650,8 +1661,7 @@ package body NetFrameworkBase.System.String is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 3;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := options'Enum_rep;
+      p_Value := p_optionsEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
@@ -1919,6 +1929,8 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Compare");
       p_RetVal      : aliased VARIANT;
+      p_optionsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Globalization.CompareOptions.Instance;
+      p_optionsEnum : aliased VARIANT := To_Variant (CreateEnum (p_optionsEnumType, options'Enum_rep));
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1951,8 +1963,7 @@ package body NetFrameworkBase.System.String is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 6;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := options'Enum_rep;
+      p_Value := p_optionsEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
@@ -1985,6 +1996,8 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Compare");
       p_RetVal      : aliased VARIANT;
+      p_comparisonTypeEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.StringComparison.Instance;
+      p_comparisonTypeEnum : aliased VARIANT := To_Variant (CreateEnum (p_comparisonTypeEnumType, comparisonType'Enum_rep));
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -2013,8 +2026,7 @@ package body NetFrameworkBase.System.String is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 5;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := comparisonType'Enum_rep;
+      p_Value := p_comparisonTypeEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
@@ -2289,6 +2301,8 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("EndsWith");
       p_RetVal      : aliased VARIANT;
+      p_comparisonTypeEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.StringComparison.Instance;
+      p_comparisonTypeEnum : aliased VARIANT := To_Variant (CreateEnum (p_comparisonTypeEnumType, comparisonType'Enum_rep));
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -2301,8 +2315,7 @@ package body NetFrameworkBase.System.String is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := comparisonType'Enum_rep;
+      p_Value := p_comparisonTypeEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -2663,6 +2676,8 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("IndexOf");
       p_RetVal      : aliased VARIANT;
+      p_comparisonTypeEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.StringComparison.Instance;
+      p_comparisonTypeEnum : aliased VARIANT := To_Variant (CreateEnum (p_comparisonTypeEnumType, comparisonType'Enum_rep));
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -2675,8 +2690,7 @@ package body NetFrameworkBase.System.String is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := comparisonType'Enum_rep;
+      p_Value := p_comparisonTypeEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -2707,6 +2721,8 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("IndexOf");
       p_RetVal      : aliased VARIANT;
+      p_comparisonTypeEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.StringComparison.Instance;
+      p_comparisonTypeEnum : aliased VARIANT := To_Variant (CreateEnum (p_comparisonTypeEnumType, comparisonType'Enum_rep));
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -2723,8 +2739,7 @@ package body NetFrameworkBase.System.String is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := comparisonType'Enum_rep;
+      p_Value := p_comparisonTypeEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -2756,6 +2771,8 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("IndexOf");
       p_RetVal      : aliased VARIANT;
+      p_comparisonTypeEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.StringComparison.Instance;
+      p_comparisonTypeEnum : aliased VARIANT := To_Variant (CreateEnum (p_comparisonTypeEnumType, comparisonType'Enum_rep));
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -2776,8 +2793,7 @@ package body NetFrameworkBase.System.String is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 3;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := comparisonType'Enum_rep;
+      p_Value := p_comparisonTypeEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -3091,6 +3107,8 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("LastIndexOf");
       p_RetVal      : aliased VARIANT;
+      p_comparisonTypeEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.StringComparison.Instance;
+      p_comparisonTypeEnum : aliased VARIANT := To_Variant (CreateEnum (p_comparisonTypeEnumType, comparisonType'Enum_rep));
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -3103,8 +3121,7 @@ package body NetFrameworkBase.System.String is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := comparisonType'Enum_rep;
+      p_Value := p_comparisonTypeEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -3135,6 +3152,8 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("LastIndexOf");
       p_RetVal      : aliased VARIANT;
+      p_comparisonTypeEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.StringComparison.Instance;
+      p_comparisonTypeEnum : aliased VARIANT := To_Variant (CreateEnum (p_comparisonTypeEnumType, comparisonType'Enum_rep));
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -3151,8 +3170,7 @@ package body NetFrameworkBase.System.String is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := comparisonType'Enum_rep;
+      p_Value := p_comparisonTypeEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -3184,6 +3202,8 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("LastIndexOf");
       p_RetVal      : aliased VARIANT;
+      p_comparisonTypeEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.StringComparison.Instance;
+      p_comparisonTypeEnum : aliased VARIANT := To_Variant (CreateEnum (p_comparisonTypeEnumType, comparisonType'Enum_rep));
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -3204,8 +3224,7 @@ package body NetFrameworkBase.System.String is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 3;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := comparisonType'Enum_rep;
+      p_Value := p_comparisonTypeEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -3430,6 +3449,8 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("StartsWith");
       p_RetVal      : aliased VARIANT;
+      p_comparisonTypeEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.StringComparison.Instance;
+      p_comparisonTypeEnum : aliased VARIANT := To_Variant (CreateEnum (p_comparisonTypeEnumType, comparisonType'Enum_rep));
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -3442,8 +3463,7 @@ package body NetFrameworkBase.System.String is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := comparisonType'Enum_rep;
+      p_Value := p_comparisonTypeEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);

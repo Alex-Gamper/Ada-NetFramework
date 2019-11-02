@@ -46,6 +46,10 @@ package NetFrameworkAdaRuntime is
 
     ----------------------------------------------------------------------------
 
+    function CreateEnum (Kind : IType_Ptr; Value : Integer) return IUnknown_Ptr;
+
+    ----------------------------------------------------------------------------
+
     Runtime_Not_Initialized     : exception;
     Runtime_Already_Initialized : exception;
     Assembly_Not_Loaded         : exception;

@@ -292,6 +292,8 @@ package body NetFrameworkBase.System.Byte is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Parse");
       p_RetVal      : aliased VARIANT;
+      p_styleEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Globalization.NumberStyles.Instance;
+      p_styleEnum : aliased VARIANT := To_Variant (CreateEnum (p_styleEnumType, style'Enum_rep));
       RetVal        : NetFrameworkBase.Byte;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -304,8 +306,7 @@ package body NetFrameworkBase.System.Byte is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := style'Enum_rep;
+      p_Value := p_styleEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
@@ -377,6 +378,8 @@ package body NetFrameworkBase.System.Byte is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Parse");
       p_RetVal      : aliased VARIANT;
+      p_styleEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Globalization.NumberStyles.Instance;
+      p_styleEnum : aliased VARIANT := To_Variant (CreateEnum (p_styleEnumType, style'Enum_rep));
       RetVal        : NetFrameworkBase.Byte;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -389,8 +392,7 @@ package body NetFrameworkBase.System.Byte is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := style'Enum_rep;
+      p_Value := p_styleEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
@@ -473,6 +475,8 @@ package body NetFrameworkBase.System.Byte is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("TryParse");
       p_RetVal      : aliased VARIANT;
+      p_styleEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Globalization.NumberStyles.Instance;
+      p_styleEnum : aliased VARIANT := To_Variant (CreateEnum (p_styleEnumType, style'Enum_rep));
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -485,8 +489,7 @@ package body NetFrameworkBase.System.Byte is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := style'Enum_rep;
+      p_Value := p_styleEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;

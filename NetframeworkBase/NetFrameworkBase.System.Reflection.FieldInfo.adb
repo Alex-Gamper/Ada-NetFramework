@@ -1034,6 +1034,8 @@ package body NetFrameworkBase.System.Reflection.FieldInfo is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("SetValue");
       p_RetVal      : aliased VARIANT;
+      p_invokeAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
+      p_invokeAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_invokeAttrEnumType, invokeAttr'Enum_rep));
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -1049,8 +1051,7 @@ package body NetFrameworkBase.System.Reflection.FieldInfo is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := invokeAttr'Enum_rep;
+      p_Value := p_invokeAttrEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 3;

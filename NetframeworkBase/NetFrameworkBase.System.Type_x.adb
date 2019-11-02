@@ -895,6 +895,8 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("InvokeMember");
       p_RetVal      : aliased VARIANT;
+      p_invokeAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
+      p_invokeAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_invokeAttrEnumType, invokeAttr'Enum_rep));
       RetVal        : NetFrameworkBase.System.Object.Kind_Ptr := new NetFrameworkBase.System.Object.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -907,8 +909,7 @@ package body NetFrameworkBase.System.Type_x is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := invokeAttr'Enum_rep;
+      p_Value := p_invokeAttrEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
@@ -957,6 +958,8 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("InvokeMember");
       p_RetVal      : aliased VARIANT;
+      p_invokeAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
+      p_invokeAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_invokeAttrEnumType, invokeAttr'Enum_rep));
       RetVal        : NetFrameworkBase.System.Object.Kind_Ptr := new NetFrameworkBase.System.Object.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -969,8 +972,7 @@ package body NetFrameworkBase.System.Type_x is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := invokeAttr'Enum_rep;
+      p_Value := p_invokeAttrEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
@@ -1099,6 +1101,10 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetConstructor");
       p_RetVal      : aliased VARIANT;
+      p_bindingAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
+      p_bindingAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_bindingAttrEnumType, bindingAttr'Enum_rep));
+      p_callConventionEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.CallingConventions.Instance;
+      p_callConventionEnum : aliased VARIANT := To_Variant (CreateEnum (p_callConventionEnumType, callConvention'Enum_rep));
       RetVal        : NetFrameworkBase.System.Reflection.ConstructorInfo.Kind_Ptr := new NetFrameworkBase.System.Reflection.ConstructorInfo.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1107,8 +1113,7 @@ package body NetFrameworkBase.System.Type_x is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := bindingAttr'Enum_rep;
+      p_Value := p_bindingAttrEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -1116,8 +1121,7 @@ package body NetFrameworkBase.System.Type_x is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := callConvention'Enum_rep;
+      p_Value := p_callConventionEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 3;
@@ -1157,6 +1161,8 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetConstructor");
       p_RetVal      : aliased VARIANT;
+      p_bindingAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
+      p_bindingAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_bindingAttrEnumType, bindingAttr'Enum_rep));
       RetVal        : NetFrameworkBase.System.Reflection.ConstructorInfo.Kind_Ptr := new NetFrameworkBase.System.Reflection.ConstructorInfo.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1165,8 +1171,7 @@ package body NetFrameworkBase.System.Type_x is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := bindingAttr'Enum_rep;
+      p_Value := p_bindingAttrEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -1330,6 +1335,10 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetMethod");
       p_RetVal      : aliased VARIANT;
+      p_bindingAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
+      p_bindingAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_bindingAttrEnumType, bindingAttr'Enum_rep));
+      p_callConventionEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.CallingConventions.Instance;
+      p_callConventionEnum : aliased VARIANT := To_Variant (CreateEnum (p_callConventionEnumType, callConvention'Enum_rep));
       RetVal        : NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr := new NetFrameworkBase.System.Reflection.MethodInfo.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1342,8 +1351,7 @@ package body NetFrameworkBase.System.Type_x is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := bindingAttr'Enum_rep;
+      p_Value := p_bindingAttrEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
@@ -1351,8 +1359,7 @@ package body NetFrameworkBase.System.Type_x is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 3;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := callConvention'Enum_rep;
+      p_Value := p_callConventionEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 4;
@@ -1393,6 +1400,8 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetMethod");
       p_RetVal      : aliased VARIANT;
+      p_bindingAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
+      p_bindingAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_bindingAttrEnumType, bindingAttr'Enum_rep));
       RetVal        : NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr := new NetFrameworkBase.System.Reflection.MethodInfo.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1405,8 +1414,7 @@ package body NetFrameworkBase.System.Type_x is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := bindingAttr'Enum_rep;
+      p_Value := p_bindingAttrEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
@@ -1537,6 +1545,8 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetMethod");
       p_RetVal      : aliased VARIANT;
+      p_bindingAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
+      p_bindingAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_bindingAttrEnumType, bindingAttr'Enum_rep));
       RetVal        : NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr := new NetFrameworkBase.System.Reflection.MethodInfo.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1549,8 +1559,7 @@ package body NetFrameworkBase.System.Type_x is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := bindingAttr'Enum_rep;
+      p_Value := p_bindingAttrEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -1978,6 +1987,8 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetProperty");
       p_RetVal      : aliased VARIANT;
+      p_bindingAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
+      p_bindingAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_bindingAttrEnumType, bindingAttr'Enum_rep));
       RetVal        : NetFrameworkBase.System.Reflection.PropertyInfo.Kind_Ptr := new NetFrameworkBase.System.Reflection.PropertyInfo.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1990,8 +2001,7 @@ package body NetFrameworkBase.System.Type_x is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := bindingAttr'Enum_rep;
+      p_Value := p_bindingAttrEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
@@ -2089,6 +2099,8 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetProperty");
       p_RetVal      : aliased VARIANT;
+      p_bindingAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
+      p_bindingAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_bindingAttrEnumType, bindingAttr'Enum_rep));
       RetVal        : NetFrameworkBase.System.Reflection.PropertyInfo.Kind_Ptr := new NetFrameworkBase.System.Reflection.PropertyInfo.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -2101,8 +2113,7 @@ package body NetFrameworkBase.System.Type_x is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := bindingAttr'Enum_rep;
+      p_Value := p_bindingAttrEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -2521,6 +2532,8 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetMember");
       p_RetVal      : aliased VARIANT;
+      p_bindingAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
+      p_bindingAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_bindingAttrEnumType, bindingAttr'Enum_rep));
    
       function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.System.Reflection.MemberInfo.Kind_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
@@ -2567,8 +2580,7 @@ package body NetFrameworkBase.System.Type_x is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := bindingAttr'Enum_rep;
+      p_Value := p_bindingAttrEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -2598,6 +2610,10 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetMember");
       p_RetVal      : aliased VARIANT;
+      p_type_xEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.MemberTypes.Instance;
+      p_type_xEnum : aliased VARIANT := To_Variant (CreateEnum (p_type_xEnumType, type_x'Enum_rep));
+      p_bindingAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
+      p_bindingAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_bindingAttrEnumType, bindingAttr'Enum_rep));
    
       function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.System.Reflection.MemberInfo.Kind_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
@@ -2644,13 +2660,11 @@ package body NetFrameworkBase.System.Type_x is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := type_x'Enum_rep;
+      p_Value := p_type_xEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := bindingAttr'Enum_rep;
+      p_Value := p_bindingAttrEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -2795,6 +2809,10 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("FindMembers");
       p_RetVal      : aliased VARIANT;
+      p_memberTypeEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.MemberTypes.Instance;
+      p_memberTypeEnum : aliased VARIANT := To_Variant (CreateEnum (p_memberTypeEnumType, memberType'Enum_rep));
+      p_bindingAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
+      p_bindingAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_bindingAttrEnumType, bindingAttr'Enum_rep));
    
       function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.System.Reflection.MemberInfo.Kind_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
@@ -2837,13 +2855,11 @@ package body NetFrameworkBase.System.Type_x is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := memberType'Enum_rep;
+      p_Value := p_memberTypeEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := bindingAttr'Enum_rep;
+      p_Value := p_bindingAttrEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
@@ -4747,6 +4763,8 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("InvokeMember");
       p_RetVal      : aliased VARIANT;
+      p_invokeAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
+      p_invokeAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_invokeAttrEnumType, invokeAttr'Enum_rep));
       RetVal        : NetFrameworkBase.System.Object.Kind_Ptr := new NetFrameworkBase.System.Object.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -4759,8 +4777,7 @@ package body NetFrameworkBase.System.Type_x is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := invokeAttr'Enum_rep;
+      p_Value := p_invokeAttrEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
@@ -4957,6 +4974,8 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetConstructors");
       p_RetVal      : aliased VARIANT;
+      p_bindingAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
+      p_bindingAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_bindingAttrEnumType, bindingAttr'Enum_rep));
    
       function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.System.Reflection.ConstructorInfo.Kind_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
@@ -4999,8 +5018,7 @@ package body NetFrameworkBase.System.Type_x is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := bindingAttr'Enum_rep;
+      p_Value := p_bindingAttrEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -5028,6 +5046,8 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetMethods");
       p_RetVal      : aliased VARIANT;
+      p_bindingAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
+      p_bindingAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_bindingAttrEnumType, bindingAttr'Enum_rep));
    
       function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.System.Reflection.MethodInfo.Kind_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
@@ -5070,8 +5090,7 @@ package body NetFrameworkBase.System.Type_x is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := bindingAttr'Enum_rep;
+      p_Value := p_bindingAttrEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -5100,6 +5119,8 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetField");
       p_RetVal      : aliased VARIANT;
+      p_bindingAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
+      p_bindingAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_bindingAttrEnumType, bindingAttr'Enum_rep));
       RetVal        : NetFrameworkBase.System.Reflection.FieldInfo.Kind_Ptr := new NetFrameworkBase.System.Reflection.FieldInfo.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -5112,8 +5133,7 @@ package body NetFrameworkBase.System.Type_x is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := bindingAttr'Enum_rep;
+      p_Value := p_bindingAttrEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -5142,6 +5162,8 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetFields");
       p_RetVal      : aliased VARIANT;
+      p_bindingAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
+      p_bindingAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_bindingAttrEnumType, bindingAttr'Enum_rep));
    
       function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.System.Reflection.FieldInfo.Kind_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
@@ -5184,8 +5206,7 @@ package body NetFrameworkBase.System.Type_x is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := bindingAttr'Enum_rep;
+      p_Value := p_bindingAttrEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -5313,6 +5334,8 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetEvent");
       p_RetVal      : aliased VARIANT;
+      p_bindingAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
+      p_bindingAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_bindingAttrEnumType, bindingAttr'Enum_rep));
       RetVal        : NetFrameworkBase.System.Reflection.EventInfo.Kind_Ptr := new NetFrameworkBase.System.Reflection.EventInfo.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -5325,8 +5348,7 @@ package body NetFrameworkBase.System.Type_x is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := bindingAttr'Enum_rep;
+      p_Value := p_bindingAttrEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -5355,6 +5377,8 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetEvents");
       p_RetVal      : aliased VARIANT;
+      p_bindingAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
+      p_bindingAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_bindingAttrEnumType, bindingAttr'Enum_rep));
    
       function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.System.Reflection.EventInfo.Kind_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
@@ -5397,8 +5421,7 @@ package body NetFrameworkBase.System.Type_x is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := bindingAttr'Enum_rep;
+      p_Value := p_bindingAttrEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -5426,6 +5449,8 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetProperties");
       p_RetVal      : aliased VARIANT;
+      p_bindingAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
+      p_bindingAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_bindingAttrEnumType, bindingAttr'Enum_rep));
    
       function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.System.Reflection.PropertyInfo.Kind_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
@@ -5468,8 +5493,7 @@ package body NetFrameworkBase.System.Type_x is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := bindingAttr'Enum_rep;
+      p_Value := p_bindingAttrEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -5497,6 +5521,8 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetNestedTypes");
       p_RetVal      : aliased VARIANT;
+      p_bindingAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
+      p_bindingAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_bindingAttrEnumType, bindingAttr'Enum_rep));
    
       function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.System.Type_x.Kind_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
@@ -5539,8 +5565,7 @@ package body NetFrameworkBase.System.Type_x is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := bindingAttr'Enum_rep;
+      p_Value := p_bindingAttrEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -5569,6 +5594,8 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetNestedType");
       p_RetVal      : aliased VARIANT;
+      p_bindingAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
+      p_bindingAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_bindingAttrEnumType, bindingAttr'Enum_rep));
       RetVal        : NetFrameworkBase.System.Type_x.Kind_Ptr := new NetFrameworkBase.System.Type_x.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -5581,8 +5608,7 @@ package body NetFrameworkBase.System.Type_x is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := bindingAttr'Enum_rep;
+      p_Value := p_bindingAttrEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
@@ -5611,6 +5637,8 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetMembers");
       p_RetVal      : aliased VARIANT;
+      p_bindingAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
+      p_bindingAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_bindingAttrEnumType, bindingAttr'Enum_rep));
    
       function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.System.Reflection.MemberInfo.Kind_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
@@ -5653,8 +5681,7 @@ package body NetFrameworkBase.System.Type_x is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := bindingAttr'Enum_rep;
+      p_Value := p_bindingAttrEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);

@@ -1529,6 +1529,8 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("IsAlwaysNormalized");
       p_RetVal      : aliased VARIANT;
+      p_formEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Text.NormalizationForm.Instance;
+      p_formEnum : aliased VARIANT := To_Variant (CreateEnum (p_formEnumType, form'Enum_rep));
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1537,8 +1539,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := form'Enum_rep;
+      p_Value := p_formEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);

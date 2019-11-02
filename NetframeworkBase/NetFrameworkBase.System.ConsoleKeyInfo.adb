@@ -340,6 +340,8 @@ package body NetFrameworkBase.System.ConsoleKeyInfo is
          p_Value       : aliased VARIANT;
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
+         p_keyEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.ConsoleKey.Instance;
+         p_keyEnum : aliased VARIANT := To_Variant (CreateEnum (p_keyEnumType, key'Enum_rep));
       begin
          p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
@@ -349,8 +351,7 @@ package body NetFrameworkBase.System.ConsoleKeyInfo is
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 1;
-         p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-         p_Value.field_1.field_1.field_1.lval := key'Enum_rep;
+         p_Value := p_keyEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 2;

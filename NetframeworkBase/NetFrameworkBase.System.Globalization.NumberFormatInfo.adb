@@ -1889,6 +1889,8 @@ package body NetFrameworkBase.System.Globalization.NumberFormatInfo is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("DigitSubstitution");
       p_RetVal      : aliased VARIANT;
+      p_valueEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Globalization.DigitShapes.Instance;
+      p_valueEnum : aliased VARIANT := To_Variant (CreateEnum (p_valueEnumType, value'Enum_rep));
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or 8192;
@@ -1896,8 +1898,7 @@ package body NetFrameworkBase.System.Globalization.NumberFormatInfo is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := value'Enum_rep;
+      p_Value := p_valueEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);

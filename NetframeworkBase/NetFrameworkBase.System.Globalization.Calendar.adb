@@ -758,6 +758,10 @@ package body NetFrameworkBase.System.Globalization.Calendar is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetWeekOfYear");
       p_RetVal      : aliased VARIANT;
+      p_ruleEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Globalization.CalendarWeekRule.Instance;
+      p_ruleEnum : aliased VARIANT := To_Variant (CreateEnum (p_ruleEnumType, rule'Enum_rep));
+      p_firstDayOfWeekEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.DayOfWeek.Instance;
+      p_firstDayOfWeekEnum : aliased VARIANT := To_Variant (CreateEnum (p_firstDayOfWeekEnumType, firstDayOfWeek'Enum_rep));
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -770,13 +774,11 @@ package body NetFrameworkBase.System.Globalization.Calendar is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := rule'Enum_rep;
+      p_Value := p_ruleEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := firstDayOfWeek'Enum_rep;
+      p_Value := p_firstDayOfWeekEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);

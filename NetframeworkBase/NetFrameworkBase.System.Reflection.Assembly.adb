@@ -393,6 +393,8 @@ package body NetFrameworkBase.System.Reflection.Assembly is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("LoadFrom");
       p_RetVal      : aliased VARIANT;
+      p_hashAlgorithmEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Configuration.Assemblies.AssemblyHashAlgorithm.Instance;
+      p_hashAlgorithmEnum : aliased VARIANT := To_Variant (CreateEnum (p_hashAlgorithmEnumType, hashAlgorithm'Enum_rep));
       RetVal        : NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr := new NetFrameworkBase.System.Reflection.Assembly.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -413,8 +415,7 @@ package body NetFrameworkBase.System.Reflection.Assembly is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 3;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := hashAlgorithm'Enum_rep;
+      p_Value := p_hashAlgorithmEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
@@ -444,6 +445,8 @@ package body NetFrameworkBase.System.Reflection.Assembly is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("LoadFrom");
       p_RetVal      : aliased VARIANT;
+      p_hashAlgorithmEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Configuration.Assemblies.AssemblyHashAlgorithm.Instance;
+      p_hashAlgorithmEnum : aliased VARIANT := To_Variant (CreateEnum (p_hashAlgorithmEnumType, hashAlgorithm'Enum_rep));
       RetVal        : NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr := new NetFrameworkBase.System.Reflection.Assembly.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -460,8 +463,7 @@ package body NetFrameworkBase.System.Reflection.Assembly is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := hashAlgorithm'Enum_rep;
+      p_Value := p_hashAlgorithmEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
@@ -907,6 +909,8 @@ package body NetFrameworkBase.System.Reflection.Assembly is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Load");
       p_RetVal      : aliased VARIANT;
+      p_securityContextSourceEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.SecurityContextSource.Instance;
+      p_securityContextSourceEnum : aliased VARIANT := To_Variant (CreateEnum (p_securityContextSourceEnumType, securityContextSource'Enum_rep));
       RetVal        : NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr := new NetFrameworkBase.System.Reflection.Assembly.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -923,8 +927,7 @@ package body NetFrameworkBase.System.Reflection.Assembly is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := securityContextSource'Enum_rep;
+      p_Value := p_securityContextSourceEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
@@ -2304,6 +2307,8 @@ package body NetFrameworkBase.System.Reflection.Assembly is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("CreateInstance");
       p_RetVal      : aliased VARIANT;
+      p_bindingAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
+      p_bindingAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_bindingAttrEnumType, bindingAttr'Enum_rep));
       RetVal        : NetFrameworkBase.System.Object.Kind_Ptr := new NetFrameworkBase.System.Object.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -2320,8 +2325,7 @@ package body NetFrameworkBase.System.Reflection.Assembly is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := bindingAttr'Enum_rep;
+      p_Value := p_bindingAttrEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 3;

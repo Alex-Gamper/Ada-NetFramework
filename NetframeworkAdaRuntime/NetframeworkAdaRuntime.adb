@@ -295,7 +295,25 @@ package body NetFrameworkAdaRuntime is
             raise Runtime_Not_Initialized;
         end if;
     end;
-    
+
+    ----------------------------------------------------------------------------
+    function CreateEnum (Kind : IType_Ptr; Value : Integer) return IUnknown_Ptr is
+        Hr          : HRESULT := 0;
+        Runtime     : RuntimeHost := Instance;
+        RetVal      : aliased IUnknown_Ptr;
+    begin
+        if Runtime.m_Initialized = true then
+            if kind /= null then
+                Hr := Runtime.m_IAdaMarshal.CreateEnum(Kind, Interfaces.C.Int(Value), Retval'access);
+            else
+                raise Type_Not_Initialized;
+            end if;
+        else
+            raise Runtime_Not_Initialized;
+        end if;
+        return RetVal;
+    end;
+
 	----------------------------------------------------------------------------
     function CallMethod(kind : IType_ptr; Object : VARIANT; MethodName : BSTR ; Flags : UInt32 ; Parameters : access SAFEARRAY) return VARIANT is
         pragma suppress(all_checks);

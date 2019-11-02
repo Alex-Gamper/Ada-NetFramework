@@ -5077,18 +5077,27 @@ package NetFrameworkWin32 is
       function GetDelegateForFunctionPointer(
          This : access IAdaMarshal;
          pUnmanagedFunction : Interfaces.C.Extensions.long_long;
-         type_x : access Interfaces.C.Int;
+         type_x : access IUnknown'Class;
+         pRetVal : access IUnknown_Ptr
+      ) return HRESULT is abstract;
+
+      function GetFunctionPointerForDelegate(
+         This : access IAdaMarshal;
+         delegate : access IUnknown'Class;
          pRetVal : access PINT
       ) return HRESULT is abstract;
+
       function AllocCoTaskMem(
          This : access IAdaMarshal;
          cb : Interfaces.C.Long;
          pRetVal : access Interfaces.C.Extensions.long_long
       ) return HRESULT is abstract;
+
       function FreeCoTaskMem(
          This : access IAdaMarshal;
          ptr : Interfaces.C.Extensions.long_long
       ) return HRESULT is abstract;
+
       function InvokeMethod(
          This : access IAdaMarshal;
          type_x : access IType'Class;
@@ -5099,15 +5108,24 @@ package NetFrameworkWin32 is
          args : access SAFEARRAY;
          pRetVal : access VARIANT
       ) return HRESULT is abstract;
+
       function GetObjectForNativeVariant(
          This : access IAdaMarshal;
          pSrcNativeVariant : Interfaces.C.Extensions.long_long;
          pRetVal : access IUnknown_Ptr
       ) return HRESULT is abstract;
+
       function GetNativeVariantForObject(
          This : access IAdaMarshal;
          obj : VARIANT;
          pDstNativeVariant : Interfaces.C.Extensions.long_long
+      ) return HRESULT is abstract;
+
+      function CreateEnum(
+         This : access IAdaMarshal;
+         type_x : access IType'Class;
+         value : Interfaces.C.Int;
+         pRetVal : access IUnknown_Ptr
       ) return HRESULT is abstract;
 
    type IAdaMarshal_Ptr is access all IAdaMarshal'Class;

@@ -1512,6 +1512,8 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
          p_Value       : aliased VARIANT;
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
+         p_creationOptionsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Threading.Tasks.TaskCreationOptions.Instance;
+         p_creationOptionsEnum : aliased VARIANT := To_Variant (CreateEnum (p_creationOptionsEnumType, creationOptions'Enum_rep));
       begin
          p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
@@ -1521,8 +1523,7 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 1;
-         p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-         p_Value.field_1.field_1.field_1.lval := creationOptions'Enum_rep;
+         p_Value := p_creationOptionsEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
@@ -1548,6 +1549,8 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
          p_Value       : aliased VARIANT;
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
+         p_creationOptionsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Threading.Tasks.TaskCreationOptions.Instance;
+         p_creationOptionsEnum : aliased VARIANT := To_Variant (CreateEnum (p_creationOptionsEnumType, creationOptions'Enum_rep));
       begin
          p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
@@ -1561,8 +1564,7 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 2;
-         p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-         p_Value.field_1.field_1.field_1.lval := creationOptions'Enum_rep;
+         p_Value := p_creationOptionsEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);

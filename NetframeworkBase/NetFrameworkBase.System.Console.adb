@@ -417,6 +417,8 @@ package body NetFrameworkBase.System.Console is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("BackgroundColor");
       p_RetVal      : aliased VARIANT;
+      p_valueEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.ConsoleColor.Instance;
+      p_valueEnum : aliased VARIANT := To_Variant (CreateEnum (p_valueEnumType, value'Enum_rep));
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or 8192;
@@ -424,8 +426,7 @@ package body NetFrameworkBase.System.Console is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := value'Enum_rep;
+      p_Value := p_valueEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit (p_Target'access);
@@ -473,6 +474,8 @@ package body NetFrameworkBase.System.Console is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ForegroundColor");
       p_RetVal      : aliased VARIANT;
+      p_valueEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.ConsoleColor.Instance;
+      p_valueEnum : aliased VARIANT := To_Variant (CreateEnum (p_valueEnumType, value'Enum_rep));
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or 8192;
@@ -480,8 +483,7 @@ package body NetFrameworkBase.System.Console is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := value'Enum_rep;
+      p_Value := p_valueEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit (p_Target'access);
@@ -591,6 +593,10 @@ package body NetFrameworkBase.System.Console is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("MoveBufferArea");
       p_RetVal      : aliased VARIANT;
+      p_sourceForeColorEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.ConsoleColor.Instance;
+      p_sourceForeColorEnum : aliased VARIANT := To_Variant (CreateEnum (p_sourceForeColorEnumType, sourceForeColor'Enum_rep));
+      p_sourceBackColorEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.ConsoleColor.Instance;
+      p_sourceBackColorEnum : aliased VARIANT := To_Variant (CreateEnum (p_sourceBackColorEnumType, sourceBackColor'Enum_rep));
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -626,13 +632,11 @@ package body NetFrameworkBase.System.Console is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 7;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := sourceForeColor'Enum_rep;
+      p_Value := p_sourceForeColorEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 8;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := sourceBackColor'Enum_rep;
+      p_Value := p_sourceBackColorEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit (p_Target'access);

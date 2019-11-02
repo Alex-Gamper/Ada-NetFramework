@@ -56,10 +56,6 @@ package NetFrameworkBase.System.Globalization.CalendarAlgorithmType is
    type Kind_Array is array(Natural range<>) of Kind_Ptr;
    type Kind_Array_Ptr is access all Kind_Array;
    
-private
-
-   This_AssemblyFile : constant Standard.Wide_String := "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\mscorlib.dll";
-   This_AssemblyName : constant Standard.Wide_String := "mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089";
-   This_TypeName     : constant Standard.Wide_String := "System.Globalization.CalendarAlgorithmType";
+   function Instance return NetFrameworkWin32.IType_Ptr;
    
 end;

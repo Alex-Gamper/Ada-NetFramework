@@ -503,6 +503,8 @@ package body NetFrameworkBase.System.Environment is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetFolderPath");
       p_RetVal      : aliased VARIANT;
+      p_folderEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Environment.SpecialFolder.Instance;
+      p_folderEnum : aliased VARIANT := To_Variant (CreateEnum (p_folderEnumType, folder'Enum_rep));
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -511,8 +513,7 @@ package body NetFrameworkBase.System.Environment is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := folder'Enum_rep;
+      p_Value := p_folderEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
@@ -541,6 +542,10 @@ package body NetFrameworkBase.System.Environment is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetFolderPath");
       p_RetVal      : aliased VARIANT;
+      p_folderEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Environment.SpecialFolder.Instance;
+      p_folderEnum : aliased VARIANT := To_Variant (CreateEnum (p_folderEnumType, folder'Enum_rep));
+      p_optionEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Environment.SpecialFolderOption.Instance;
+      p_optionEnum : aliased VARIANT := To_Variant (CreateEnum (p_optionEnumType, option'Enum_rep));
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -549,13 +554,11 @@ package body NetFrameworkBase.System.Environment is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := folder'Enum_rep;
+      p_Value := p_folderEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := option'Enum_rep;
+      p_Value := p_optionEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
@@ -708,6 +711,8 @@ package body NetFrameworkBase.System.Environment is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetEnvironmentVariables");
       p_RetVal      : aliased VARIANT;
+      p_targetEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.EnvironmentVariableTarget.Instance;
+      p_targetEnum : aliased VARIANT := To_Variant (CreateEnum (p_targetEnumType, target'Enum_rep));
       RetVal        : NetFrameworkBase.System.Collections.IDictionary.Kind_Ptr;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -716,8 +721,7 @@ package body NetFrameworkBase.System.Environment is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := target'Enum_rep;
+      p_Value := p_targetEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
@@ -747,6 +751,8 @@ package body NetFrameworkBase.System.Environment is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("SetEnvironmentVariable");
       p_RetVal      : aliased VARIANT;
+      p_targetEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.EnvironmentVariableTarget.Instance;
+      p_targetEnum : aliased VARIANT := To_Variant (CreateEnum (p_targetEnumType, target'Enum_rep));
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -762,8 +768,7 @@ package body NetFrameworkBase.System.Environment is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := target'Enum_rep;
+      p_Value := p_targetEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit (p_Target'access);
@@ -977,6 +982,8 @@ package body NetFrameworkBase.System.Environment is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetEnvironmentVariable");
       p_RetVal      : aliased VARIANT;
+      p_targetEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.EnvironmentVariableTarget.Instance;
+      p_targetEnum : aliased VARIANT := To_Variant (CreateEnum (p_targetEnumType, target'Enum_rep));
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -989,8 +996,7 @@ package body NetFrameworkBase.System.Environment is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := target'Enum_rep;
+      p_Value := p_targetEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);

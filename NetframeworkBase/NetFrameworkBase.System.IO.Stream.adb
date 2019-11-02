@@ -1074,6 +1074,8 @@ package body NetFrameworkBase.System.IO.Stream is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Seek");
       p_RetVal      : aliased VARIANT;
+      p_originEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.IO.SeekOrigin.Instance;
+      p_originEnum : aliased VARIANT := To_Variant (CreateEnum (p_originEnumType, origin'Enum_rep));
       RetVal        : NetFrameworkBase.Int64;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1086,8 +1088,7 @@ package body NetFrameworkBase.System.IO.Stream is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := origin'Enum_rep;
+      p_Value := p_originEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);

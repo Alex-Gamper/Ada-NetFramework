@@ -452,6 +452,8 @@ package body NetFrameworkBase.System.Globalization.CultureInfo is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetCultures");
       p_RetVal      : aliased VARIANT;
+      p_typesEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Globalization.CultureTypes.Instance;
+      p_typesEnum : aliased VARIANT := To_Variant (CreateEnum (p_typesEnumType, types'Enum_rep));
    
       function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.System.Globalization.CultureInfo.Kind_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
@@ -494,8 +496,7 @@ package body NetFrameworkBase.System.Globalization.CultureInfo is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      p_Value.field_1.field_1.vt := VT_I4'Enum_rep;
-      p_Value.field_1.field_1.field_1.lval := types'Enum_rep;
+      p_Value := p_typesEnum;
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);

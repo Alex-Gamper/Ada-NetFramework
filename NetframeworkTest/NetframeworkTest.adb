@@ -28,6 +28,7 @@ with NetframeworkBase.System.TypeCode;
 with NetframeworkBase.System.Environment;
 with NetFrameworkBase.System.ConsoleKey;
 with NetFrameworkBase.System.ConsoleKeyInfo;
+with NetFrameworkBase.System.Environment.SpecialFolder;
 with NetFramework;
 with NetFramework.System;
 with NetFramework.System.Reflection; 
@@ -76,9 +77,8 @@ begin
             begin
                 for Method of m_DateMethods loop
                     declare
-                        m_ReturnType : NetFramework.System.Type_x;
+                        m_ReturnType : NetFramework.System.Type_x := Method.ReturnType;
                     begin
-                        m_ReturnType := Method.ReturnType;
                         Ada.Wide_Text_IO.Put_Line (To_Ada (Method.ToString) & " - return [" & To_Ada (m_ReturnType.ToString) & "]");
                     end;
                 end loop;
@@ -86,6 +86,28 @@ begin
                     Ada.Wide_Text_Io.Put_Line (To_Ada (Format));
                 end loop;
             end; 
+        end;
+
+        ------------------------------------------------------------------------
+        procedure Test_RefenceType_Out_Param is
+            m_Result    : NetFramework.System.Version;
+        begin
+            if NetframeworkBase.System.Version.TryParse (To_BSTR ("4.3.2.1") , m_Result) = true then
+                Ada.Wide_Text_IO.Put_Line ("Major :" & m_Result.Major'Wide_Image);
+                Ada.Wide_Text_IO.Put_Line ("Minor :" & m_Result.Minor'Wide_Image);
+                Ada.Wide_Text_IO.Put_Line ("Build :" & m_Result.Build'Wide_Image);
+                Ada.Wide_Text_IO.Put_Line ("Revision :" & m_Result.Revision'Wide_Image);
+            end if;
+        end;
+
+        ------------------------------------------------------------------------
+        procedure Test_Enum_In_Param is
+            use NetFrameworkBase.System.Environment.SpecialFolder;
+            m_DesktopPath   : NetFramework.BSTR := NetFrameworkBase.System.Environment.GetFolderPath (NetFrameworkBase.System.Environment.SpecialFolder.Kind'(Desktop));
+            m_SystemPath   : NetFramework.BSTR := NetFrameworkBase.System.Environment.GetFolderPath (NetFrameworkBase.System.Environment.SpecialFolder.Kind'(System));
+        begin
+            Ada.Wide_Text_IO.Put_Line ("DestopPath : " & To_Ada (m_DesktopPath));
+            Ada.Wide_Text_IO.Put_Line ("SystemPath : " & To_Ada (m_SystemPath));
         end;
 
         ------------------------------------------------------------------------
@@ -110,35 +132,17 @@ begin
             Ada.Wide_Text_IO.Put_Line ("Machine : " & m_Machine'Wide_Image);
         end;
 
-        ------------------------------------------------------------------------
-        procedure Test_RefenceType_Out_Param is
-            m_Result    : NetFramework.System.Version;
-        begin
-            if NetframeworkBase.System.Version.TryParse (To_BSTR ("4.3.2.1") , m_Result) = true then
-                Ada.Wide_Text_IO.Put_Line ("Major :" & m_Result.Major'Wide_Image);
-                Ada.Wide_Text_IO.Put_Line ("Minor :" & m_Result.Minor'Wide_Image);
-                Ada.Wide_Text_IO.Put_Line ("Build :" & m_Result.Build'Wide_Image);
-                Ada.Wide_Text_IO.Put_Line ("Revision :" & m_Result.Revision'Wide_Image);
-            end if;
-        end;
-
-        procedure Test_Constructors is
-            use NetFrameworkBase.System.ConsoleKey;
-            m_Key       : NetFramework.System.ConsoleKey := NetFrameworkBase.System.ConsoleKey.Kind'(PageUp);--:= NetFrameworkBase.System.ConsoleKeyInfo.Constructor
-            m_KeyInfo   : NetFramework.System.ConsoleKeyInfo; --:= NetFrameworkBase.System.ConsoleKeyInfo.Constructor()
-        begin
-            null;
-        end;
-
     begin
 
         Test_ValueTypes_Builtin;
         Test_ValueTypes_Instance;
         Test_ValueTypes_Arrays;
+
+        Test_RefenceType_Out_Param;
+
+        Test_Enum_In_Param;
         Test_Enum_ReturnType;
         Test_Enum_Out_Param;
-        Test_RefenceType_Out_Param;
-        Test_Constructors;
 
     end;
 
