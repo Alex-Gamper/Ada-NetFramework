@@ -60,7 +60,9 @@ begin
             m_Result    : Netframework.UInt64;
         begin
             if NetframeworkBase.System.UInt64.TryParse (To_BSTR ("1024"), m_Result) = true then
-                Ada.Wide_Text_IO.Put_Line ("Ok");
+                Ada.Wide_Text_IO.Put_Line (m_Result'Wide_Image);
+            else
+                raise PROGRAM_ERROR;
             end if;
         end;
 
@@ -72,7 +74,9 @@ begin
         begin
             NetframeworkBase.System.Console.WriteLine (m_DateTime.ToString);
             if NetframeworkBase.System.DateTime.TryParse (To_BSTR ("01/01/2019") , m_Result) = true then
-                Ada.Wide_Text_IO.Put_Line ("Ok");
+                Ada.Wide_Text_IO.Put_Line (m_Result'Wide_Image);
+            else
+                raise PROGRAM_ERROR;
             end if;
         end;
 
@@ -107,6 +111,8 @@ begin
                 Ada.Wide_Text_IO.Put_Line ("Minor :" & m_Result.Minor'Wide_Image);
                 Ada.Wide_Text_IO.Put_Line ("Build :" & m_Result.Build'Wide_Image);
                 Ada.Wide_Text_IO.Put_Line ("Revision :" & m_Result.Revision'Wide_Image);
+            else
+                raise PROGRAM_ERROR;
             end if;
         end;
 
@@ -142,6 +148,14 @@ begin
             Ada.Wide_Text_IO.Put_Line ("Machine : " & m_Machine'Wide_Image);
         end;
 
+        procedure Test_Constructors is
+            use NetFrameworkBase.System.ConsoleKey;
+            m_Key       : NetFramework.System.ConsoleKey  := NetFrameworkBase.System.ConsoleKey.Kind'(PageUp);
+            m_KeyInfo   : NetFramework.System.ConsoleKeyInfo := NetFrameworkBase.System.ConsoleKeyInfo.Constructor ('A', m_Key, true, false, false);
+        begin
+            null;
+        end;
+        
         x : Standard.Wide_String := "";
 
     begin
@@ -157,6 +171,8 @@ begin
         Test_Enum_In_Param;
         Test_Enum_ReturnType;
         Test_Enum_Out_Param;
+
+        Test_Constructors;
 
     end;
 
