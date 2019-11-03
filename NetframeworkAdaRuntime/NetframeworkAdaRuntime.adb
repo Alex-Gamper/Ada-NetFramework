@@ -227,11 +227,14 @@ package body NetFrameworkAdaRuntime is
     end;
 
     ----------------------------------------------------------------------------
-    procedure CreateInstance(this : in out Kind; AssemblyName : Wide_String; TypeName : Wide_String; Flags : UInt32; Parameters : access SAFEARRAY) is
+    procedure CreateInstance (this : in out Kind; AssemblyName : Wide_String; TypeName : Wide_String; Kind : IType_Ptr; Flags : UInt32; Parameters : access SAFEARRAY) is
         Hr          : HRESULT := 0;
         Runtime     : RuntimeHost := Instance;
-        Name        : BSTR := To_BSTR(TypeName);
+        Name        : BSTR := null; --To_BSTR(TypeName);
         Assembly    : aliased IAssembly_Ptr := null;
+        Binder      : IBinder_Ptr := null;
+        Target      : aliased VARIANT;
+        RetVal      : aliased IUnknown_Ptr := null;
         
         function Convert is new ada.Unchecked_conversion(UInt32,BindingFlags);
 
@@ -244,8 +247,12 @@ package body NetFrameworkAdaRuntime is
                 else
                     Assembly := LoadAssembly(Runtime, AssemblyName);
                 end if;
-                VariantInit(this.m_Object'access);
-                Hr := Assembly.CreateInstance_3(Name, 0, Convert(Flags), null, Parameters, null, null, this.m_Object'access);
+                VariantInit(Target'access);
+                Hr := Runtime.m_IAdaMarshal.InvokeMethod2 (Kind, Name, Convert(Flags) , Binder, Target, Parameters, Retval'access);
+                this.m_Object := To_Variant(RetVal);
+                this.m_NetObject := RetVal;
+--                VariantInit(this.m_Object'access);
+--                Hr := Assembly.CreateInstance_3(Name, 0, Convert(Flags), null, Parameters, null, null, this.m_Object'access);
             end if;
         else
             raise Runtime_Not_Initialized;
@@ -330,7 +337,7 @@ package body NetFrameworkAdaRuntime is
                 l_Flags := l_Flags or 64; --NetFrameworkWin32.BindingFlags'(FlattenHierarchy)'Enum_rep;
 
                 --Hr := kind.InvokeMember_3(MethodName, Convert(l_Flags) , null, Object, Parameters, Retval'access);
-                Hr := Runtime.m_IAdaMarshal.InvokeMethod(Kind, MethodName, Convert(l_Flags) , Binder, Object, Parameters, Retval'access);
+                Hr := Runtime.m_IAdaMarshal.InvokeMethod (Kind, MethodName, Convert(l_Flags) , Binder, Object, Parameters, Retval'access);
                 if Hr /= 0 then
                     raise CallMethod_Failed;
                 end if;

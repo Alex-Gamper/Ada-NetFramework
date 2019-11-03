@@ -46,6 +46,16 @@ begin
     declare
 
         ------------------------------------------------------------------------
+        procedure Test_Statics is
+            m_TimeSpan : Netframework.System.TimeSpan := Netframework.System.Constructor (NetFrameworkBase.Int64(0));
+            m_TimeSpanHMS : Netframework.System.TimeSpan := Netframework.System.Constructor (0,0,0);
+            m_TimeSpanDHMS : Netframework.System.TimeSpan := Netframework.System.Constructor (0,0,0,0);
+            m_TimeSpanDHMSms : Netframework.System.TimeSpan := Netframework.System.Constructor (0,0,0,0,0);
+        begin
+            null;
+        end;
+
+        ------------------------------------------------------------------------
         procedure Test_ValueTypes_Builtin is
             m_Result    : Netframework.UInt64;
         begin
@@ -132,7 +142,11 @@ begin
             Ada.Wide_Text_IO.Put_Line ("Machine : " & m_Machine'Wide_Image);
         end;
 
+        x : Standard.Wide_String := "";
+
     begin
+
+        Test_Statics;
 
         Test_ValueTypes_Builtin;
         Test_ValueTypes_Instance;

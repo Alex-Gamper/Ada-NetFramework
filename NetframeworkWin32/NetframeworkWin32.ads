@@ -5128,6 +5128,17 @@ package NetFrameworkWin32 is
          pRetVal : access IUnknown_Ptr
       ) return HRESULT is abstract;
 
+      function InvokeMethod2(
+         This : access IAdaMarshal;
+         type_x : access IType'Class;
+         name : BSTR;
+         invokeAtts : BindingFlags;
+         binder : access IBinder'Class;
+         target : VARIANT;
+         args : access SAFEARRAY;
+         pRetVal : access IUnknown_Ptr
+      ) return HRESULT is abstract;
+
    type IAdaMarshal_Ptr is access all IAdaMarshal'Class;
 
 end NetFrameworkWin32;

@@ -39,7 +39,7 @@ package NetFrameworkAdaRuntime is
 
     type Kind is private;
 
-        procedure CreateInstance (this : in out Kind; AssemblyName : Wide_String; TypeName : Wide_String ; Flags : UInt32 ; Parameters : access SAFEARRAY);
+        procedure CreateInstance (this : in out Kind; AssemblyName : Wide_String; TypeName : Wide_String; Kind : IType_Ptr; Flags : UInt32; Parameters : access SAFEARRAY);
         procedure SetObject (this : in out Kind; Object : VARIANT);
         function GetObject (this : in Kind) return VARIANT;
         procedure DestroyInstance (this : in out Kind);

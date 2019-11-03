@@ -1034,7 +1034,6 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_modeEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.IO.FileMode.Instance;
          p_modeEnum : aliased VARIANT := To_Variant (CreateEnum (p_modeEnumType, mode'Enum_rep));
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
@@ -1044,7 +1043,7 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_Index(1) := 1;
          p_Value := p_modeEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -1073,7 +1072,6 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_access_xEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.IO.FileAccess.Instance;
          p_access_xEnum : aliased VARIANT := To_Variant (CreateEnum (p_access_xEnumType, access_x'Enum_rep));
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
@@ -1087,7 +1085,7 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_Index(1) := 2;
          p_Value := p_access_xEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -1119,7 +1117,6 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_shareEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.IO.FileShare.Instance;
          p_shareEnum : aliased VARIANT := To_Variant (CreateEnum (p_shareEnumType, share'Enum_rep));
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
@@ -1137,7 +1134,7 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_Index(1) := 3;
          p_Value := p_shareEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -1170,7 +1167,6 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_shareEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.IO.FileShare.Instance;
          p_shareEnum : aliased VARIANT := To_Variant (CreateEnum (p_shareEnumType, share'Enum_rep));
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
@@ -1192,7 +1188,7 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_Index(1) := 4;
          p_Value := To_Variant(bufferSize);
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -1228,7 +1224,6 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_optionsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.IO.FileOptions.Instance;
          p_optionsEnum : aliased VARIANT := To_Variant (CreateEnum (p_optionsEnumType, options'Enum_rep));
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
@@ -1254,7 +1249,7 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_Index(1) := 5;
          p_Value := p_optionsEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -1288,7 +1283,6 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_shareEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.IO.FileShare.Instance;
          p_shareEnum : aliased VARIANT := To_Variant (CreateEnum (p_shareEnumType, share'Enum_rep));
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
@@ -1314,7 +1308,7 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_Index(1) := 5;
          p_Value := To_Variant(useAsync);
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -1351,7 +1345,6 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_optionsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.IO.FileOptions.Instance;
          p_optionsEnum : aliased VARIANT := To_Variant (CreateEnum (p_optionsEnumType, options'Enum_rep));
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
@@ -1381,7 +1374,7 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_Index(1) := 6;
          p_Value := GetObject (fileSecurity.m_Kind);
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -1417,7 +1410,6 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_optionsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.IO.FileOptions.Instance;
          p_optionsEnum : aliased VARIANT := To_Variant (CreateEnum (p_optionsEnumType, options'Enum_rep));
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
@@ -1443,7 +1435,7 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_Index(1) := 5;
          p_Value := p_optionsEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -1469,7 +1461,6 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_access_xEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.IO.FileAccess.Instance;
          p_access_xEnum : aliased VARIANT := To_Variant (CreateEnum (p_access_xEnumType, access_x'Enum_rep));
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
@@ -1479,7 +1470,7 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_Index(1) := 1;
          p_Value := p_access_xEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -1506,7 +1497,6 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_access_xEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.IO.FileAccess.Instance;
          p_access_xEnum : aliased VARIANT := To_Variant (CreateEnum (p_access_xEnumType, access_x'Enum_rep));
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
@@ -1520,7 +1510,7 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_Index(1) := 2;
          p_Value := To_Variant(ownsHandle);
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -1548,7 +1538,6 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_access_xEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.IO.FileAccess.Instance;
          p_access_xEnum : aliased VARIANT := To_Variant (CreateEnum (p_access_xEnumType, access_x'Enum_rep));
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
@@ -1566,7 +1555,7 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_Index(1) := 3;
          p_Value := To_Variant(bufferSize);
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -1595,7 +1584,6 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_access_xEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.IO.FileAccess.Instance;
          p_access_xEnum : aliased VARIANT := To_Variant (CreateEnum (p_access_xEnumType, access_x'Enum_rep));
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
@@ -1617,7 +1605,7 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_Index(1) := 4;
          p_Value := To_Variant(isAsync);
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -1643,7 +1631,6 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_access_xEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.IO.FileAccess.Instance;
          p_access_xEnum : aliased VARIANT := To_Variant (CreateEnum (p_access_xEnumType, access_x'Enum_rep));
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
@@ -1653,7 +1640,7 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_Index(1) := 1;
          p_Value := p_access_xEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -1680,7 +1667,6 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_access_xEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.IO.FileAccess.Instance;
          p_access_xEnum : aliased VARIANT := To_Variant (CreateEnum (p_access_xEnumType, access_x'Enum_rep));
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
@@ -1694,7 +1680,7 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_Index(1) := 2;
          p_Value := To_Variant(bufferSize);
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -1722,7 +1708,6 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_access_xEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.IO.FileAccess.Instance;
          p_access_xEnum : aliased VARIANT := To_Variant (CreateEnum (p_access_xEnumType, access_x'Enum_rep));
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
@@ -1740,7 +1725,7 @@ package body NetFrameworkBase.System.IO.FileStream is
          p_Index(1) := 3;
          p_Value := To_Variant(isAsync);
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;

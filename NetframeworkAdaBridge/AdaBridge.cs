@@ -53,6 +53,9 @@ namespace NetFrameworkAdaBridge
 
         [return: MarshalAs(UnmanagedType.Interface)]
         object CreateEnum(Type type, int value);
+
+        [return: MarshalAs(UnmanagedType.Interface)]
+        object InvokeMethod2(Type type, String name, BindingFlags invokeAtts, Binder binder, Object target, [In, Out] object[] args);
     }
 
     [ComVisible(true)]
@@ -101,6 +104,12 @@ namespace NetFrameworkAdaBridge
         public object CreateEnum(Type type, int value)
         {
             return System.Enum.ToObject(type, value);
+        }
+
+        [return: MarshalAs(UnmanagedType.Interface)]
+        public object InvokeMethod2(Type type, String name, BindingFlags invokeAtts, Binder binder, Object target, [In, Out] object[] args)
+        {
+            return type.InvokeMember(name, invokeAtts, binder, target, args);
         }
     }
 }

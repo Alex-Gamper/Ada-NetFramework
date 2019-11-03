@@ -40,6 +40,28 @@ package body NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeWaitHandle is
    This_AssemblyFile : constant Standard.Wide_String := "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\mscorlib.dll";
    This_AssemblyName : constant Standard.Wide_String := "mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089";
    This_TypeName     : constant Standard.Wide_String := "Microsoft.Win32.SafeHandles.SafeWaitHandle";
+   TypeInstance      : aliased IType_Ptr := null;
+   
+   function Instance return IType_Ptr is
+   begin
+      if TypeInstance = null then
+         declare
+            Hr          : HRESULT := 0;
+            Runtime     : RuntimeHost := Instance;
+            Assembly    : IAssembly_Ptr := null;
+            TypeName    : BSTR := To_BSTR(This_TypeName);
+         begin
+            if IsAssemblyLoaded (RunTime, This_AssemblyName) = false then
+               Assembly := LoadAssembly(Runtime, This_AssemblyName);
+            else
+               Assembly := GetAssembly(Runtime, This_AssemblyName);
+            end if;
+            Hr := Assembly.GetType_2(TypeName, TypeInstance'access);
+            SysFreeString(TypeName);
+         end;
+      end if;
+      return TypeInstance;
+   end;
    
    function Constructor
    (
@@ -59,7 +81,6 @@ package body NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeWaitHandle is
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
@@ -69,7 +90,7 @@ package body NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeWaitHandle is
          p_Index(1) := 1;
          p_Value := To_Variant(ownsHandle);
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;

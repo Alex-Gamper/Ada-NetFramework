@@ -159,7 +159,6 @@ package body NetFrameworkBase.System.Reflection.ManifestResourceInfo is
          p_resourceLocationEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.ResourceLocation.Instance;
          p_resourceLocationEnum : aliased VARIANT := To_Variant (CreateEnum (p_resourceLocationEnumType, resourceLocation'Enum_rep));
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
@@ -173,7 +172,7 @@ package body NetFrameworkBase.System.Reflection.ManifestResourceInfo is
          p_Index(1) := 2;
          p_Value := p_resourceLocationEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;

@@ -129,13 +129,12 @@ package body NetFrameworkBase.System.ResolveEventArgs is
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
          p_Value := To_Variant(name);
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -159,7 +158,6 @@ package body NetFrameworkBase.System.ResolveEventArgs is
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
@@ -169,7 +167,7 @@ package body NetFrameworkBase.System.ResolveEventArgs is
          p_Index(1) := 1;
          p_Value := GetObject (requestingAssembly.m_Kind);
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;

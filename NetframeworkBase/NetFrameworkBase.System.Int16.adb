@@ -686,7 +686,7 @@ package body NetFrameworkBase.System.Int16 is
    function Constructor return NetFrameworkBase.System.Int16.Kind_Ptr is
    begin
       return RetVal : NetFrameworkBase.System.Int16.Kind_Ptr := new NetFrameworkBase.System.Int16.Kind do
-          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, 0, null);
+          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, null);
       end return;
    end;
    

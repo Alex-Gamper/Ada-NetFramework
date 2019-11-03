@@ -175,7 +175,7 @@ package body NetFrameworkBase.System.Security.AccessControl.AuthorizationRuleCol
    function Constructor return NetFrameworkBase.System.Security.AccessControl.AuthorizationRuleCollection.Kind_Ptr is
    begin
       return RetVal : NetFrameworkBase.System.Security.AccessControl.AuthorizationRuleCollection.Kind_Ptr := new NetFrameworkBase.System.Security.AccessControl.AuthorizationRuleCollection.Kind do
-          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, 0, null);
+          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, null);
       end return;
    end;
    

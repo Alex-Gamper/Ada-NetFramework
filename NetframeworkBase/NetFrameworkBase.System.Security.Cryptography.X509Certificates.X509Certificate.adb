@@ -1471,7 +1471,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
    function Constructor return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate.Kind_Ptr is
    begin
       return RetVal : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate.Kind_Ptr := new NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate.Kind do
-          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, 0, null);
+          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, null);
       end return;
    end;
    
@@ -1492,13 +1492,12 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
          -- fixme parameter type := System.Byte[]
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -1522,7 +1521,6 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
@@ -1532,7 +1530,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          p_Index(1) := 1;
          p_Value := To_Variant(password);
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -1556,7 +1554,6 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
@@ -1566,7 +1563,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          p_Index(1) := 1;
          p_Value := GetObject (password.m_Kind);
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -1593,7 +1590,6 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          p_keyStorageFlagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.Instance;
          p_keyStorageFlagsEnum : aliased VARIANT := To_Variant (CreateEnum (p_keyStorageFlagsEnumType, keyStorageFlags'Enum_rep));
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
@@ -1607,7 +1603,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          p_Index(1) := 2;
          p_Value := p_keyStorageFlagsEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -1634,7 +1630,6 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          p_keyStorageFlagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.Instance;
          p_keyStorageFlagsEnum : aliased VARIANT := To_Variant (CreateEnum (p_keyStorageFlagsEnumType, keyStorageFlags'Enum_rep));
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
@@ -1648,7 +1643,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          p_Index(1) := 2;
          p_Value := p_keyStorageFlagsEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -1671,13 +1666,12 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
          p_Value := To_Variant(fileName);
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -1701,7 +1695,6 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
@@ -1711,7 +1704,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          p_Index(1) := 1;
          p_Value := To_Variant(password);
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -1735,7 +1728,6 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
@@ -1745,7 +1737,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          p_Index(1) := 1;
          p_Value := GetObject (password.m_Kind);
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -1772,7 +1764,6 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          p_keyStorageFlagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.Instance;
          p_keyStorageFlagsEnum : aliased VARIANT := To_Variant (CreateEnum (p_keyStorageFlagsEnumType, keyStorageFlags'Enum_rep));
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
@@ -1786,7 +1777,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          p_Index(1) := 2;
          p_Value := p_keyStorageFlagsEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -1813,7 +1804,6 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          p_keyStorageFlagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.Instance;
          p_keyStorageFlagsEnum : aliased VARIANT := To_Variant (CreateEnum (p_keyStorageFlagsEnumType, keyStorageFlags'Enum_rep));
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
@@ -1827,7 +1817,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          p_Index(1) := 2;
          p_Value := p_keyStorageFlagsEnum;
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -1850,13 +1840,12 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
          p_Value := To_Variant(handle);
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -1879,13 +1868,12 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
          p_Value := GetObject (cert.m_Kind);
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -1909,7 +1897,6 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
       begin
-         p_Flags := NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep or NetFrameworkWin32.BindingFlags'(Public)'Enum_rep or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
@@ -1919,7 +1906,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
          p_Index(1) := 1;
          p_Value := GetObject (context.m_Kind); -- Parameter Type = ValueType
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, p_Flags, p_Parameters);
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;

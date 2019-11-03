@@ -686,7 +686,7 @@ package body NetFrameworkBase.System.Byte is
    function Constructor return NetFrameworkBase.System.Byte.Kind_Ptr is
    begin
       return RetVal : NetFrameworkBase.System.Byte.Kind_Ptr := new NetFrameworkBase.System.Byte.Kind do
-          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, 0, null);
+          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, null);
       end return;
    end;
    

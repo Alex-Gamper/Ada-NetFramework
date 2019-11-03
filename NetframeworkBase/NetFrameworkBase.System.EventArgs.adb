@@ -40,11 +40,33 @@ package body NetFrameworkBase.System.EventArgs is
    This_AssemblyFile : constant Standard.Wide_String := "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\mscorlib.dll";
    This_AssemblyName : constant Standard.Wide_String := "mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089";
    This_TypeName     : constant Standard.Wide_String := "System.EventArgs";
+   TypeInstance      : aliased IType_Ptr := null;
+   
+   function Instance return IType_Ptr is
+   begin
+      if TypeInstance = null then
+         declare
+            Hr          : HRESULT := 0;
+            Runtime     : RuntimeHost := Instance;
+            Assembly    : IAssembly_Ptr := null;
+            TypeName    : BSTR := To_BSTR(This_TypeName);
+         begin
+            if IsAssemblyLoaded (RunTime, This_AssemblyName) = false then
+               Assembly := LoadAssembly(Runtime, This_AssemblyName);
+            else
+               Assembly := GetAssembly(Runtime, This_AssemblyName);
+            end if;
+            Hr := Assembly.GetType_2(TypeName, TypeInstance'access);
+            SysFreeString(TypeName);
+         end;
+      end if;
+      return TypeInstance;
+   end;
    
    function Constructor return NetFrameworkBase.System.EventArgs.Kind_Ptr is
    begin
       return RetVal : NetFrameworkBase.System.EventArgs.Kind_Ptr := new NetFrameworkBase.System.EventArgs.Kind do
-          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, 0, null);
+          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, null);
       end return;
    end;
    
