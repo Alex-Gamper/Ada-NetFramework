@@ -46,7 +46,7 @@ package NetFramework.System.Threading is
       
          function Constructor
          (
-            callback : NetFrameworkBase.System.Threading.TimerCallback.Kind;
+            callback : NetFrameworkBase.System.Threading.TimerCallback.Kind_Ptr;
             state : NetFrameworkBase.System.Object.Kind_Ptr;
             dueTime : NetFrameworkBase.Int32;
             period : NetFrameworkBase.Int32
@@ -55,7 +55,7 @@ package NetFramework.System.Threading is
          
          function Constructor
          (
-            callback : NetFrameworkBase.System.Threading.TimerCallback.Kind;
+            callback : NetFrameworkBase.System.Threading.TimerCallback.Kind_Ptr;
             state : NetFrameworkBase.System.Object.Kind_Ptr;
             dueTime : NetFrameworkBase.System.TimeSpan.Kind_Ptr;
             period : NetFrameworkBase.System.TimeSpan.Kind_Ptr
@@ -64,7 +64,7 @@ package NetFramework.System.Threading is
          
          function Constructor
          (
-            callback : NetFrameworkBase.System.Threading.TimerCallback.Kind;
+            callback : NetFrameworkBase.System.Threading.TimerCallback.Kind_Ptr;
             state : NetFrameworkBase.System.Object.Kind_Ptr;
             dueTime : NetFrameworkBase.UInt32;
             period : NetFrameworkBase.UInt32
@@ -73,7 +73,7 @@ package NetFramework.System.Threading is
          
          function Constructor
          (
-            callback : NetFrameworkBase.System.Threading.TimerCallback.Kind;
+            callback : NetFrameworkBase.System.Threading.TimerCallback.Kind_Ptr;
             state : NetFrameworkBase.System.Object.Kind_Ptr;
             dueTime : NetFrameworkBase.Int64;
             period : NetFrameworkBase.Int64
@@ -82,7 +82,7 @@ package NetFramework.System.Threading is
          
          function Constructor
          (
-            callback : NetFrameworkBase.System.Threading.TimerCallback.Kind
+            callback : NetFrameworkBase.System.Threading.TimerCallback.Kind_Ptr
          )
          return NetFrameworkBase.System.Threading.Timer.Kind_Ptr renames NetFrameworkBase.System.Threading.Timer.Constructor; 
          

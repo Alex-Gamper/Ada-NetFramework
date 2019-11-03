@@ -308,27 +308,27 @@ package NetFrameworkBase.System.Threading.Tasks.Task_x is
       
       function Constructor
       (
-         action : NetFrameworkBase.System.Action.Kind
+         action : NetFrameworkBase.System.Action.Kind_Ptr
       )
       return NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr;
       
       function Constructor
       (
-         action : NetFrameworkBase.System.Action.Kind;
+         action : NetFrameworkBase.System.Action.Kind_Ptr;
          cancellationToken : NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr
       )
       return NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr;
       
       function Constructor
       (
-         action : NetFrameworkBase.System.Action.Kind;
+         action : NetFrameworkBase.System.Action.Kind_Ptr;
          creationOptions : NetFrameworkBase.System.Threading.Tasks.TaskCreationOptions.Kind
       )
       return NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr;
       
       function Constructor
       (
-         action : NetFrameworkBase.System.Action.Kind;
+         action : NetFrameworkBase.System.Action.Kind_Ptr;
          cancellationToken : NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr;
          creationOptions : NetFrameworkBase.System.Threading.Tasks.TaskCreationOptions.Kind
       )

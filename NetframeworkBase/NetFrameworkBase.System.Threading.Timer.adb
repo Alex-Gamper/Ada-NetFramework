@@ -294,7 +294,7 @@ package body NetFrameworkBase.System.Threading.Timer is
    
    function Constructor
    (
-      callback : NetFrameworkBase.System.Threading.TimerCallback.Kind;
+      callback : NetFrameworkBase.System.Threading.TimerCallback.Kind_Ptr;
       state : NetFrameworkBase.System.Object.Kind_Ptr;
       dueTime : NetFrameworkBase.Int32;
       period : NetFrameworkBase.Int32
@@ -337,7 +337,7 @@ package body NetFrameworkBase.System.Threading.Timer is
    
    function Constructor
    (
-      callback : NetFrameworkBase.System.Threading.TimerCallback.Kind;
+      callback : NetFrameworkBase.System.Threading.TimerCallback.Kind_Ptr;
       state : NetFrameworkBase.System.Object.Kind_Ptr;
       dueTime : NetFrameworkBase.System.TimeSpan.Kind_Ptr;
       period : NetFrameworkBase.System.TimeSpan.Kind_Ptr
@@ -380,7 +380,7 @@ package body NetFrameworkBase.System.Threading.Timer is
    
    function Constructor
    (
-      callback : NetFrameworkBase.System.Threading.TimerCallback.Kind;
+      callback : NetFrameworkBase.System.Threading.TimerCallback.Kind_Ptr;
       state : NetFrameworkBase.System.Object.Kind_Ptr;
       dueTime : NetFrameworkBase.UInt32;
       period : NetFrameworkBase.UInt32
@@ -423,7 +423,7 @@ package body NetFrameworkBase.System.Threading.Timer is
    
    function Constructor
    (
-      callback : NetFrameworkBase.System.Threading.TimerCallback.Kind;
+      callback : NetFrameworkBase.System.Threading.TimerCallback.Kind_Ptr;
       state : NetFrameworkBase.System.Object.Kind_Ptr;
       dueTime : NetFrameworkBase.Int64;
       period : NetFrameworkBase.Int64
@@ -466,7 +466,7 @@ package body NetFrameworkBase.System.Threading.Timer is
    
    function Constructor
    (
-      callback : NetFrameworkBase.System.Threading.TimerCallback.Kind
+      callback : NetFrameworkBase.System.Threading.TimerCallback.Kind_Ptr
    )
    return NetFrameworkBase.System.Threading.Timer.Kind_Ptr is
    begin

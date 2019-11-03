@@ -236,13 +236,13 @@ package NetFrameworkBase.System.Runtime.InteropServices.IAssembly is
       function add_ModuleResolve
       (
          this : in out IAssembly.Kind;
-         value : NetFrameworkBase.System.Reflection.ModuleResolveEventHandler.Kind
+         value : NetFrameworkBase.System.Reflection.ModuleResolveEventHandler.Kind_Ptr
       ) return HResult is abstract;
       
       function remove_ModuleResolve
       (
          this : in out IAssembly.Kind;
-         value : NetFrameworkBase.System.Reflection.ModuleResolveEventHandler.Kind
+         value : NetFrameworkBase.System.Reflection.ModuleResolveEventHandler.Kind_Ptr
       ) return HResult is abstract;
       
       function GetType
