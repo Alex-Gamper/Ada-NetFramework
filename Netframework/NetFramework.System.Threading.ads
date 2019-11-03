@@ -27,12 +27,65 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.Threading.TimerCallback;
+with NetFrameworkBase.System.Threading.Timer;
 with NetFrameworkBase.System.Threading.WaitHandle;
 with NetFrameworkBase.System.Threading.CancellationTokenRegistration;
 with NetFrameworkBase.System.Threading.CancellationToken;
+with NetFrameworkBase.System.Object;
+with NetFrameworkBase.System.Threading.TimerCallback;
+with NetFrameworkBase.System.TimeSpan;
 --------------------------------------------------------------------------------
 package NetFramework.System.Threading is
    
+      subtype TimerCallback is NetFrameworkBase.System.Threading.TimerCallback.Kind_Ptr;
+      subtype TimerCallback_Array is NetFrameworkBase.System.Threading.TimerCallback.Kind_Array;
+      
+      subtype Timer is NetFrameworkBase.System.Threading.Timer.Kind_Ptr;
+      subtype Timer_Array is NetFrameworkBase.System.Threading.Timer.Kind_Array;
+      
+         function Constructor
+         (
+            callback : NetFrameworkBase.System.Threading.TimerCallback.Kind;
+            state : NetFrameworkBase.System.Object.Kind_Ptr;
+            dueTime : NetFrameworkBase.Int32;
+            period : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Threading.Timer.Kind_Ptr renames NetFrameworkBase.System.Threading.Timer.Constructor; 
+         
+         function Constructor
+         (
+            callback : NetFrameworkBase.System.Threading.TimerCallback.Kind;
+            state : NetFrameworkBase.System.Object.Kind_Ptr;
+            dueTime : NetFrameworkBase.System.TimeSpan.Kind_Ptr;
+            period : NetFrameworkBase.System.TimeSpan.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.Timer.Kind_Ptr renames NetFrameworkBase.System.Threading.Timer.Constructor; 
+         
+         function Constructor
+         (
+            callback : NetFrameworkBase.System.Threading.TimerCallback.Kind;
+            state : NetFrameworkBase.System.Object.Kind_Ptr;
+            dueTime : NetFrameworkBase.UInt32;
+            period : NetFrameworkBase.UInt32
+         )
+         return NetFrameworkBase.System.Threading.Timer.Kind_Ptr renames NetFrameworkBase.System.Threading.Timer.Constructor; 
+         
+         function Constructor
+         (
+            callback : NetFrameworkBase.System.Threading.TimerCallback.Kind;
+            state : NetFrameworkBase.System.Object.Kind_Ptr;
+            dueTime : NetFrameworkBase.Int64;
+            period : NetFrameworkBase.Int64
+         )
+         return NetFrameworkBase.System.Threading.Timer.Kind_Ptr renames NetFrameworkBase.System.Threading.Timer.Constructor; 
+         
+         function Constructor
+         (
+            callback : NetFrameworkBase.System.Threading.TimerCallback.Kind
+         )
+         return NetFrameworkBase.System.Threading.Timer.Kind_Ptr renames NetFrameworkBase.System.Threading.Timer.Constructor; 
+         
       subtype WaitHandle is NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr;
       subtype WaitHandle_Array is NetFrameworkBase.System.Threading.WaitHandle.Kind_Array;
       

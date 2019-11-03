@@ -608,6 +608,9 @@
     <AdaCompile Include="NetFrameworkBase.System.Threading.Tasks.Task_x.ads" />
     <AdaCompile Include="NetFrameworkBase.System.Threading.Tasks.UnobservedTaskExceptionEventArgs.adb" />
     <AdaCompile Include="NetFrameworkBase.System.Threading.Tasks.UnobservedTaskExceptionEventArgs.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Threading.Timer.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Threading.Timer.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Threading.TimerCallback.ads" />
     <AdaCompile Include="NetFrameworkBase.System.Threading.WaitHandle.adb" />
     <AdaCompile Include="NetFrameworkBase.System.Threading.WaitHandle.ads" />
     <AdaCompile Include="NetFrameworkBase.System.TimeSpan.adb" />
