@@ -32,6 +32,7 @@ with NetFrameworkBase.System.Environment.SpecialFolder;
 with NetFramework;
 with NetFramework.System;
 with NetFramework.System.Reflection; 
+with NetFramework.System.Threading;
 with Ada.Exceptions;
 with Ada.Wide_Text_IO;
 --------------------------------------------------------------------------------
@@ -156,7 +157,14 @@ begin
             null;
         end;
         
-        x : Standard.Wide_String := "";
+        procedure Test_Callbacks is
+            Callback    : NetFramework.System.Threading.TimerCallback; 
+            Timer       : NetFramework.System.Threading.Timer := NetFramework.System.Threading.Constructor(Callback,null,0,1000);
+        begin
+            null;
+        end;
+
+        x : Netframework.BSTR;
 
     begin
 
@@ -173,6 +181,9 @@ begin
         Test_Enum_Out_Param;
 
         Test_Constructors;
+        Test_Callbacks;
+        
+        x := NetFrameworkBase.System.Console.ReadLine;
 
     end;
 

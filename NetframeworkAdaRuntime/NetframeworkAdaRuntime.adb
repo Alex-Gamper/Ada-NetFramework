@@ -322,7 +322,7 @@ package body NetFrameworkAdaRuntime is
     end;
 
 	----------------------------------------------------------------------------
-    function CallMethod(kind : IType_ptr; Object : VARIANT; MethodName : BSTR ; Flags : UInt32 ; Parameters : access SAFEARRAY) return VARIANT is
+    function CallMethod (kind : IType_ptr; Object : VARIANT; MethodName : BSTR ; Flags : UInt32 ; Parameters : access SAFEARRAY) return VARIANT is
         pragma suppress(all_checks);
         Hr          : HRESULT := 0;
         Runtime     : RuntimeHost := Instance;
@@ -338,6 +338,27 @@ package body NetFrameworkAdaRuntime is
 
                 --Hr := kind.InvokeMember_3(MethodName, Convert(l_Flags) , null, Object, Parameters, Retval'access);
                 Hr := Runtime.m_IAdaMarshal.InvokeMethod (Kind, MethodName, Convert(l_Flags) , Binder, Object, Parameters, Retval'access);
+                if Hr /= 0 then
+                    raise CallMethod_Failed;
+                end if;
+            else
+                raise Type_Not_Initialized;
+            end if;
+        else
+            raise Runtime_Not_Initialized;
+        end if;
+        return RetVal;
+    end;
+
+    function CreateDelegate (Callback : System.Address; Kind : IType_Ptr) return IDelegate_Ptr is
+        pragma suppress(all_checks);
+        Hr          : HRESULT := 0;
+        Runtime     : RuntimeHost := Instance;
+        RetVal      : aliased IDelegate_Ptr := null;
+    begin
+        if Runtime.m_Initialized = true then
+            if kind /= null then
+                Hr := Runtime.m_IAdaMarshal.GetDelegateForFunctionPointer (Callback, Kind, Retval'access);
                 if Hr /= 0 then
                     raise CallMethod_Failed;
                 end if;

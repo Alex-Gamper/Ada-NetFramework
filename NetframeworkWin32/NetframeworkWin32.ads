@@ -5076,9 +5076,9 @@ package NetFrameworkWin32 is
 
       function GetDelegateForFunctionPointer(
          This : access IAdaMarshal;
-         pUnmanagedFunction : Interfaces.C.Extensions.long_long;
+         pUnmanagedFunction : System.Address;
          type_x : access IUnknown'Class;
-         pRetVal : access IUnknown_Ptr
+         pRetVal : access IDelegate_Ptr
       ) return HRESULT is abstract;
 
       function GetFunctionPointerForDelegate(

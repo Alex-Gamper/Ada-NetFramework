@@ -19,6 +19,7 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with System;
 with NetFrameworkWin32;                     use NetFrameworkWin32;
 --------------------------------------------------------------------------------
 package NetFrameworkAdaRuntime is
@@ -105,8 +106,9 @@ package NetFrameworkAdaRuntime is
     
     ----------------------------------------------------------------------------
 
-    function CallMethod(kind : IType_ptr; Object : VARIANT ; MethodName : BSTR ; Flags : UInt32 ; Parameters : access SAFEARRAY) return VARIANT;
-    procedure OutputDebugString(OutputString : Standard.String);
+    function CallMethod (kind : IType_ptr; Object : VARIANT ; MethodName : BSTR ; Flags : UInt32 ; Parameters : access SAFEARRAY) return VARIANT;
+    function CreateDelegate (Callback : System.Address; Kind : IType_Ptr) return IDelegate_Ptr;
+    procedure OutputDebugString (OutputString : Standard.String);
 
 --------------------------------------------------------------------------------
 private
