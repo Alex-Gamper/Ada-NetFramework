@@ -27,6 +27,8 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkWin32;
+with NetFrameworkAdaRuntime;
 with NetFrameworkBase.System.MulticastDelegate;
 limited with NetFrameworkBase.System.Reflection.MemberInfo;
 with NetFrameworkBase.System.Object;
@@ -35,40 +37,11 @@ limited with NetFrameworkBase.System.IAsyncResult;
 --------------------------------------------------------------------------------
 package NetFrameworkBase.System.Reflection.MemberFilter is
    
-   type Kind is abstract new NetFrameworkBase.System.MulticastDelegate.Kind with null record;
+   type Kind is new NetFrameworkBase.System.MulticastDelegate.Kind with null record;
    type Kind_Ptr is access all Kind;
    type Kind_Array is array(Natural range<>) of Kind_Ptr;
    type Kind_Array_Ptr is access all Kind_Array;
    
-      function Invoke
-      (
-         this : in out MemberFilter.Kind;
-         m : NetFrameworkBase.System.Reflection.MemberInfo.Kind_Ptr;
-         filterCriteria : NetFrameworkBase.System.Object.Kind_Ptr
-      )
-      return NetFrameworkBase.Boolean is abstract;
+      function Constructor (Callback : NetFrameworkWin32.Address) return Kind_Ptr;
       
-      function BeginInvoke
-      (
-         this : in out MemberFilter.Kind;
-         m : NetFrameworkBase.System.Reflection.MemberInfo.Kind_Ptr;
-         filterCriteria : NetFrameworkBase.System.Object.Kind_Ptr;
-         callback : NetFrameworkBase.System.AsyncCallback.Kind_Ptr;
-         object : NetFrameworkBase.System.Object.Kind_Ptr
-      )
-      return NetFrameworkBase.System.IAsyncResult.Kind_Ptr is abstract;
-      
-      function EndInvoke
-      (
-         this : in out MemberFilter.Kind;
-         result : NetFrameworkBase.System.IAsyncResult.Kind_Ptr
-      )
-      return NetFrameworkBase.Boolean is abstract;
-      
-   private
-   
-      This_AssemblyFile : constant Standard.Wide_String := "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\mscorlib.dll";
-      This_AssemblyName : constant Standard.Wide_String := "mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089";
-      This_TypeName     : constant Standard.Wide_String := "System.Reflection.MemberFilter";
-   
 end;

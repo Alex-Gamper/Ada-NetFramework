@@ -19,6 +19,7 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with AdaPackage;
 with NetFrameworkAdaRuntime;                    use NetFrameworkAdaRuntime;
 with NetframeworkBase.System.DateTime;
 with NetframeworkBase.System.Console;
@@ -29,12 +30,15 @@ with NetframeworkBase.System.Environment;
 with NetFrameworkBase.System.ConsoleKey;
 with NetFrameworkBase.System.ConsoleKeyInfo;
 with NetFrameworkBase.System.Environment.SpecialFolder;
+with NetFrameworkBase.System.Threading;
+with NetFrameworkBase.System.Threading.TimerCallback;
 with NetFramework;
 with NetFramework.System;
 with NetFramework.System.Reflection; 
 with NetFramework.System.Threading;
 with Ada.Exceptions;
 with Ada.Wide_Text_IO;
+
 --------------------------------------------------------------------------------
 procedure NetframeworkTest is
 
@@ -48,10 +52,10 @@ begin
 
         ------------------------------------------------------------------------
         procedure Test_Statics is
-            m_TimeSpan : Netframework.System.TimeSpan := Netframework.System.Constructor (NetFrameworkBase.Int64(0));
-            m_TimeSpanHMS : Netframework.System.TimeSpan := Netframework.System.Constructor (0,0,0);
-            m_TimeSpanDHMS : Netframework.System.TimeSpan := Netframework.System.Constructor (0,0,0,0);
-            m_TimeSpanDHMSms : Netframework.System.TimeSpan := Netframework.System.Constructor (0,0,0,0,0);
+            m_TimeSpan          : Netframework.System.TimeSpan := Netframework.System.Constructor (NetFrameworkBase.Int64(0));
+            m_TimeSpanHMS       : Netframework.System.TimeSpan := Netframework.System.Constructor (0,0,0);
+            m_TimeSpanDHMS      : Netframework.System.TimeSpan := Netframework.System.Constructor (0,0,0,0);
+            m_TimeSpanDHMSms    : Netframework.System.TimeSpan := Netframework.System.Constructor (0,0,0,0,0);
         begin
             null;
         end;
@@ -121,7 +125,7 @@ begin
         procedure Test_Enum_In_Param is
             use NetFrameworkBase.System.Environment.SpecialFolder;
             m_DesktopPath   : NetFramework.BSTR := NetFrameworkBase.System.Environment.GetFolderPath (NetFrameworkBase.System.Environment.SpecialFolder.Kind'(Desktop));
-            m_SystemPath   : NetFramework.BSTR := NetFrameworkBase.System.Environment.GetFolderPath (NetFrameworkBase.System.Environment.SpecialFolder.Kind'(System));
+            m_SystemPath    : NetFramework.BSTR := NetFrameworkBase.System.Environment.GetFolderPath (NetFrameworkBase.System.Environment.SpecialFolder.Kind'(System));
         begin
             Ada.Wide_Text_IO.Put_Line ("DestopPath : " & To_Ada (m_DesktopPath));
             Ada.Wide_Text_IO.Put_Line ("SystemPath : " & To_Ada (m_SystemPath));
@@ -149,17 +153,20 @@ begin
             Ada.Wide_Text_IO.Put_Line ("Machine : " & m_Machine'Wide_Image);
         end;
 
+        ------------------------------------------------------------------------
         procedure Test_Constructors is
             use NetFrameworkBase.System.ConsoleKey;
-            m_Key       : NetFramework.System.ConsoleKey  := NetFrameworkBase.System.ConsoleKey.Kind'(PageUp);
-            m_KeyInfo   : NetFramework.System.ConsoleKeyInfo := NetFrameworkBase.System.ConsoleKeyInfo.Constructor ('A', m_Key, true, false, false);
+            m_Key           : NetFramework.System.ConsoleKey  := NetFrameworkBase.System.ConsoleKey.Kind'(PageUp);
+            m_KeyInfo       : NetFramework.System.ConsoleKeyInfo := NetFrameworkBase.System.ConsoleKeyInfo.Constructor ('A', m_Key, true, false, false);
         begin
             null;
         end;
         
+        ------------------------------------------------------------------------
         procedure Test_Callbacks is
-            Callback    : NetFramework.System.Threading.TimerCallback; 
-            Timer       : NetFramework.System.Threading.Timer := NetFramework.System.Threading.Constructor(Callback,null,0,1000);
+            m_Object        : NetFramework.System.Object := NetFramework.System.Constructor;
+            m_Callback      : NetFramework.System.Threading.TimerCallback := NetFrameworkBase.System.Threading.TimerCallback.Constructor(AdaPackage.Callback'address);
+            m_Timer         : NetFramework.System.Threading.Timer := NetFramework.System.Threading.Constructor(m_Callback, m_Object, NetFramework.Int32(0), NetFramework.Int32(1000) );
         begin
             null;
         end;

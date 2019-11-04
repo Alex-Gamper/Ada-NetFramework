@@ -190,6 +190,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <AdaCompile Include="AdaPackage.adb" />
+    <AdaCompile Include="AdaPackage.ads" />
     <AdaCompile Include="NetframeworkTest.adb">
       <SubType>Code</SubType>
     </AdaCompile>

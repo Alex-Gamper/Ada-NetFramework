@@ -27,22 +27,50 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
-with NetFrameworkWin32;
-with NetFrameworkAdaRuntime;
-with NetFrameworkBase.System.MulticastDelegate;
-with NetFrameworkBase.System.Object;
-limited with NetFrameworkBase.System.ResolveEventArgs;
-limited with NetFrameworkBase.System.AsyncCallback;
-limited with NetFrameworkBase.System.IAsyncResult;
-limited with NetFrameworkBase.System.Reflection.Module;
+with NetFrameworkWin32;              use NetFrameworkWin32;
+with NetFrameworkAdaRuntime;         use NetFrameworkAdaRuntime;
+with Ada.Unchecked_Conversion;
+with Interfaces.C;
 --------------------------------------------------------------------------------
-package NetFrameworkBase.System.Reflection.ModuleResolveEventHandler is
+package body NetFrameworkBase.System.AsyncCallback is
    
-   type Kind is new NetFrameworkBase.System.MulticastDelegate.Kind with null record;
-   type Kind_Ptr is access all Kind;
-   type Kind_Array is array(Natural range<>) of Kind_Ptr;
-   type Kind_Array_Ptr is access all Kind_Array;
+   use type Interfaces.C.unsigned_short;
    
-      function Constructor (Callback : NetFrameworkWin32.Address) return Kind_Ptr;
-      
+   This_AssemblyFile : constant Standard.Wide_String := "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\mscorlib.dll";
+   This_AssemblyName : constant Standard.Wide_String := "mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089";
+   This_TypeName     : constant Standard.Wide_String := "System.AsyncCallback";
+   TypeInstance      : aliased NetFrameworkWin32.IType_Ptr := null;
+   
+   function Instance return IType_Ptr is
+   begin
+      if TypeInstance = null then
+         declare
+            Hr          : HRESULT := 0;
+            Runtime     : RuntimeHost := Instance;
+            Assembly    : IAssembly_Ptr := null;
+            TypeName    : BSTR := To_BSTR(This_TypeName);
+         begin
+            if IsAssemblyLoaded (RunTime, This_AssemblyName) = false then
+               Assembly := LoadAssembly(Runtime, This_AssemblyName);
+            else
+               Assembly := GetAssembly(Runtime, This_AssemblyName);
+            end if;
+            Hr := Assembly.GetType_2(TypeName, TypeInstance'access);
+            SysFreeString(TypeName);
+         end;
+      end if;
+      return TypeInstance;
+   end;
+   
+   function Constructor (Callback : NetFrameworkWin32.Address) return Kind_Ptr is
+   begin
+      return RetVal : Kind_Ptr := new Kind do
+         declare
+            Delegate      : IDelegate_Ptr := NetFrameworkAdaRuntime.CreateDelegate (RetVal.m_Kind, Callback, Instance);
+         begin
+            null;
+         end;
+      end return;
+   end;
+   
 end;

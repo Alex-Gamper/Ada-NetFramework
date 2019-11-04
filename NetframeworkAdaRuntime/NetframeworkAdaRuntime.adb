@@ -292,6 +292,29 @@ package body NetFrameworkAdaRuntime is
     end;
 
     ----------------------------------------------------------------------------
+    function CreateDelegate (this : in out Kind; Callback : System.Address; DelegateType : IType_Ptr) return IDelegate_Ptr is
+        pragma suppress(all_checks);
+        Hr          : HRESULT := 0;
+        Runtime     : RuntimeHost := Instance;
+        RetVal      : aliased IDelegate_Ptr := null;
+    begin
+        if Runtime.m_Initialized = true then
+            if this = null then
+                this := new Kind_Interface;
+                Hr := Runtime.m_IAdaMarshal.GetDelegateForFunctionPointer (Callback, DelegateType, Retval'access);
+                if Hr /= 0 then
+                    this.m_Object := To_Variant(IUnknown_Ptr(RetVal));
+                    this.m_NetObject := IUnknown_Ptr(RetVal);
+                    raise CallMethod_Failed;
+                end if;
+            end if;
+        else
+            raise Runtime_Not_Initialized;
+        end if;
+        return RetVal;
+    end;
+
+    ----------------------------------------------------------------------------
     procedure DestroyInstance(this : in out Kind) is
         Hr          : HRESULT := 0;
         Runtime     : RuntimeHost := Instance;
@@ -338,27 +361,6 @@ package body NetFrameworkAdaRuntime is
 
                 --Hr := kind.InvokeMember_3(MethodName, Convert(l_Flags) , null, Object, Parameters, Retval'access);
                 Hr := Runtime.m_IAdaMarshal.InvokeMethod (Kind, MethodName, Convert(l_Flags) , Binder, Object, Parameters, Retval'access);
-                if Hr /= 0 then
-                    raise CallMethod_Failed;
-                end if;
-            else
-                raise Type_Not_Initialized;
-            end if;
-        else
-            raise Runtime_Not_Initialized;
-        end if;
-        return RetVal;
-    end;
-
-    function CreateDelegate (Callback : System.Address; Kind : IType_Ptr) return IDelegate_Ptr is
-        pragma suppress(all_checks);
-        Hr          : HRESULT := 0;
-        Runtime     : RuntimeHost := Instance;
-        RetVal      : aliased IDelegate_Ptr := null;
-    begin
-        if Runtime.m_Initialized = true then
-            if kind /= null then
-                Hr := Runtime.m_IAdaMarshal.GetDelegateForFunctionPointer (Callback, Kind, Retval'access);
                 if Hr /= 0 then
                     raise CallMethod_Failed;
                 end if;

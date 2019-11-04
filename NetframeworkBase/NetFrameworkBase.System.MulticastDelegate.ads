@@ -27,6 +27,8 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkWin32;
+with NetFrameworkAdaRuntime;
 with NetFrameworkBase.System.Delegate;
 limited with NetFrameworkBase.System.Runtime.Serialization.SerializationInfo;
 limited with NetFrameworkBase.System.Runtime.Serialization.StreamingContext;
@@ -34,55 +36,11 @@ with NetFrameworkBase.System.Object;
 --------------------------------------------------------------------------------
 package NetFrameworkBase.System.MulticastDelegate is
    
-   type Kind is abstract new NetFrameworkBase.System.Delegate.Kind with null record;
+   type Kind is new NetFrameworkBase.System.Delegate.Kind with null record;
    type Kind_Ptr is access all Kind;
    type Kind_Array is array(Natural range<>) of Kind_Ptr;
    type Kind_Array_Ptr is access all Kind_Array;
    
-      procedure GetObjectData
-      (
-         this : in out MulticastDelegate.Kind;
-         info : NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr;
-         context : NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind_Ptr
-      ) is abstract;
+      function Constructor (Callback : NetFrameworkWin32.Address) return Kind_Ptr;
       
-      function Equals
-      (
-         this : in out MulticastDelegate.Kind;
-         obj : NetFrameworkBase.System.Object.Kind_Ptr
-      )
-      return NetFrameworkBase.Boolean is abstract;
-      
-      function GetInvocationList
-      (
-         this : in out MulticastDelegate.Kind
-      )
-      return NetFrameworkBase.System.Delegate.Kind_Array is abstract;
-      
-      function op_Equality
-      (
-         d1 : NetFrameworkBase.System.MulticastDelegate.Kind_Ptr;
-         d2 : NetFrameworkBase.System.MulticastDelegate.Kind_Ptr
-      )
-      return NetFrameworkBase.Boolean is abstract;
-      
-      function op_Inequality
-      (
-         d1 : NetFrameworkBase.System.MulticastDelegate.Kind_Ptr;
-         d2 : NetFrameworkBase.System.MulticastDelegate.Kind_Ptr
-      )
-      return NetFrameworkBase.Boolean is abstract;
-      
-      function GetHashCode
-      (
-         this : in out MulticastDelegate.Kind
-      )
-      return NetFrameworkBase.Int32 is abstract;
-      
-   private
-   
-      This_AssemblyFile : constant Standard.Wide_String := "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\mscorlib.dll";
-      This_AssemblyName : constant Standard.Wide_String := "mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089";
-      This_TypeName     : constant Standard.Wide_String := "System.MulticastDelegate";
-   
 end;

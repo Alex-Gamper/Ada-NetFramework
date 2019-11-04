@@ -36,6 +36,7 @@ namespace NetFrameworkAdaBridge
     [Guid("5FE6867E-DF2C-44A5-A2F6-7644BC1D2D85")]
     public interface IAdaMarshal
     {
+        [return: MarshalAs(UnmanagedType.Interface)]
         Delegate GetDelegateForFunctionPointer(IntPtr pUnmanagedFunction, Type type);
 
         IntPtr GetFunctionPointerForDelegate(Delegate d);
@@ -63,6 +64,7 @@ namespace NetFrameworkAdaBridge
     [ClassInterface(ClassInterfaceType.AutoDual)]
     public class AdaMarshal : IAdaMarshal
     {
+        [return: MarshalAs(UnmanagedType.Interface)]
         public Delegate GetDelegateForFunctionPointer(IntPtr pUnmanagedFunction, Type type)
         {
             return Marshal.GetDelegateForFunctionPointer(pUnmanagedFunction, type);

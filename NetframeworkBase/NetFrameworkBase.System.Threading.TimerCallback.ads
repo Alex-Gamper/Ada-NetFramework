@@ -27,6 +27,8 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkWin32;
+with NetFrameworkAdaRuntime;
 with NetFrameworkBase.System.MulticastDelegate;
 with NetFrameworkBase.System.Object;
 limited with NetFrameworkBase.System.AsyncCallback;
@@ -34,36 +36,11 @@ limited with NetFrameworkBase.System.IAsyncResult;
 --------------------------------------------------------------------------------
 package NetFrameworkBase.System.Threading.TimerCallback is
    
-   type Kind is abstract new NetFrameworkBase.System.MulticastDelegate.Kind with null record;
+   type Kind is new NetFrameworkBase.System.MulticastDelegate.Kind with null record;
    type Kind_Ptr is access all Kind;
    type Kind_Array is array(Natural range<>) of Kind_Ptr;
    type Kind_Array_Ptr is access all Kind_Array;
    
-      procedure Invoke
-      (
-         this : in out TimerCallback.Kind;
-         state : NetFrameworkBase.System.Object.Kind_Ptr
-      ) is abstract;
+      function Constructor (Callback : NetFrameworkWin32.Address) return Kind_Ptr;
       
-      function BeginInvoke
-      (
-         this : in out TimerCallback.Kind;
-         state : NetFrameworkBase.System.Object.Kind_Ptr;
-         callback : NetFrameworkBase.System.AsyncCallback.Kind_Ptr;
-         object : NetFrameworkBase.System.Object.Kind_Ptr
-      )
-      return NetFrameworkBase.System.IAsyncResult.Kind_Ptr is abstract;
-      
-      procedure EndInvoke
-      (
-         this : in out TimerCallback.Kind;
-         result : NetFrameworkBase.System.IAsyncResult.Kind_Ptr
-      ) is abstract;
-      
-   private
-   
-      This_AssemblyFile : constant Standard.Wide_String := "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\mscorlib.dll";
-      This_AssemblyName : constant Standard.Wide_String := "mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089";
-      This_TypeName     : constant Standard.Wide_String := "System.Threading.TimerCallback";
-   
 end;

@@ -189,12 +189,14 @@
     <AdaCompile Include="NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid.ads" />
     <AdaCompile Include="NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeWaitHandle.adb" />
     <AdaCompile Include="NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeWaitHandle.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Action.adb" />
     <AdaCompile Include="NetFrameworkBase.System.Action.ads" />
     <AdaCompile Include="NetFrameworkBase.System.ads" />
     <AdaCompile Include="NetFrameworkBase.System.AggregateException.adb" />
     <AdaCompile Include="NetFrameworkBase.System.AggregateException.ads" />
     <AdaCompile Include="NetFrameworkBase.System.Array_x.adb" />
     <AdaCompile Include="NetFrameworkBase.System.Array_x.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.AsyncCallback.adb" />
     <AdaCompile Include="NetFrameworkBase.System.AsyncCallback.ads" />
     <AdaCompile Include="NetFrameworkBase.System.Attribute.adb" />
     <AdaCompile Include="NetFrameworkBase.System.Attribute.ads" />
@@ -233,6 +235,7 @@
     <AdaCompile Include="NetFrameworkBase.System.Console.ads" />
     <AdaCompile Include="NetFrameworkBase.System.ConsoleCancelEventArgs.adb" />
     <AdaCompile Include="NetFrameworkBase.System.ConsoleCancelEventArgs.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.ConsoleCancelEventHandler.adb" />
     <AdaCompile Include="NetFrameworkBase.System.ConsoleCancelEventHandler.ads" />
     <AdaCompile Include="NetFrameworkBase.System.ConsoleColor.adb" />
     <AdaCompile Include="NetFrameworkBase.System.ConsoleColor.ads" />
@@ -342,6 +345,7 @@
     <AdaCompile Include="NetFrameworkBase.System.MidpointRounding.ads" />
     <AdaCompile Include="NetFrameworkBase.System.ModuleHandle.adb" />
     <AdaCompile Include="NetFrameworkBase.System.ModuleHandle.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.MulticastDelegate.adb" />
     <AdaCompile Include="NetFrameworkBase.System.MulticastDelegate.ads" />
     <AdaCompile Include="NetFrameworkBase.System.Object.adb" />
     <AdaCompile Include="NetFrameworkBase.System.Object.ads" />
@@ -394,6 +398,7 @@
     <AdaCompile Include="NetFrameworkBase.System.Reflection.LocalVariableInfo.ads" />
     <AdaCompile Include="NetFrameworkBase.System.Reflection.ManifestResourceInfo.adb" />
     <AdaCompile Include="NetFrameworkBase.System.Reflection.ManifestResourceInfo.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.MemberFilter.adb" />
     <AdaCompile Include="NetFrameworkBase.System.Reflection.MemberFilter.ads" />
     <AdaCompile Include="NetFrameworkBase.System.Reflection.MemberInfo.adb" />
     <AdaCompile Include="NetFrameworkBase.System.Reflection.MemberInfo.ads" />
@@ -411,6 +416,7 @@
     <AdaCompile Include="NetFrameworkBase.System.Reflection.MethodInfo.ads" />
     <AdaCompile Include="NetFrameworkBase.System.Reflection.Module.adb" />
     <AdaCompile Include="NetFrameworkBase.System.Reflection.Module.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.ModuleResolveEventHandler.adb" />
     <AdaCompile Include="NetFrameworkBase.System.Reflection.ModuleResolveEventHandler.ads" />
     <AdaCompile Include="NetFrameworkBase.System.Reflection.ParameterAttributes.adb" />
     <AdaCompile Include="NetFrameworkBase.System.Reflection.ParameterAttributes.ads" />
@@ -432,6 +438,7 @@
     <AdaCompile Include="NetFrameworkBase.System.Reflection.StrongNameKeyPair.ads" />
     <AdaCompile Include="NetFrameworkBase.System.Reflection.TypeAttributes.adb" />
     <AdaCompile Include="NetFrameworkBase.System.Reflection.TypeAttributes.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Reflection.TypeFilter.adb" />
     <AdaCompile Include="NetFrameworkBase.System.Reflection.TypeFilter.ads" />
     <AdaCompile Include="NetFrameworkBase.System.Reflection.TypeInfo.adb" />
     <AdaCompile Include="NetFrameworkBase.System.Reflection.TypeInfo.ads" />
@@ -610,6 +617,7 @@
     <AdaCompile Include="NetFrameworkBase.System.Threading.Tasks.UnobservedTaskExceptionEventArgs.ads" />
     <AdaCompile Include="NetFrameworkBase.System.Threading.Timer.adb" />
     <AdaCompile Include="NetFrameworkBase.System.Threading.Timer.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Threading.TimerCallback.adb" />
     <AdaCompile Include="NetFrameworkBase.System.Threading.TimerCallback.ads" />
     <AdaCompile Include="NetFrameworkBase.System.Threading.WaitHandle.adb" />
     <AdaCompile Include="NetFrameworkBase.System.Threading.WaitHandle.ads" />
