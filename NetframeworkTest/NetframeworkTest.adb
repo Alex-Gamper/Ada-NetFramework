@@ -164,9 +164,15 @@ begin
         
         ------------------------------------------------------------------------
         procedure Test_Callbacks is
+<<<<<<< HEAD
             m_Object        : NetFramework.System.Object := NetFramework.System.Constructor;
             m_Callback      : NetFramework.System.Threading.TimerCallback := NetFrameworkBase.System.Threading.TimerCallback.Constructor(AdaPackage.Callback'address);
             m_Timer         : NetFramework.System.Threading.Timer := NetFramework.System.Threading.Constructor(m_Callback, m_Object, NetFramework.Int32(0), NetFramework.Int32(1000) );
+=======
+            State       : NetFramework.System.Object := NetFramework.System.Constructor;
+            Callback    : NetFramework.System.Threading.TimerCallback; 
+            Timer       : NetFramework.System.Threading.Timer := NetFramework.System.Threading.Constructor(Callback,State,NetFramework.UInt32(0),1000);
+>>>>>>> e36bcf211c81a8a3b63aa6cc414ca2ea69b93309
         begin
             null;
         end;
