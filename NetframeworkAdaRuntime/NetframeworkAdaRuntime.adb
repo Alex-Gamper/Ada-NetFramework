@@ -297,14 +297,17 @@ package body NetFrameworkAdaRuntime is
         Hr          : HRESULT := 0;
         Runtime     : RuntimeHost := Instance;
         RetVal      : aliased IDelegate_Ptr := null;
+        IUnknown    : IUnknown_Ptr := null;
     begin
         if Runtime.m_Initialized = true then
             if this = null then
                 this := new Kind_Interface;
                 Hr := Runtime.m_IAdaMarshal.GetDelegateForFunctionPointer (Callback, DelegateType, Retval'access);
-                if Hr /= 0 then
-                    this.m_Object := To_Variant(IUnknown_Ptr(RetVal));
-                    this.m_NetObject := IUnknown_Ptr(RetVal);
+                if Hr = 0 then
+                    Hr := RetVal.QueryInterface (IID_IUnknown'Access, Convert (IUnknown'Address));
+                    this.m_Object := To_Variant(IUnknown);
+                    this.m_NetObject := IUnknown;
+                else
                     raise CallMethod_Failed;
                 end if;
             end if;
