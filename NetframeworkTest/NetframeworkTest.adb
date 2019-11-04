@@ -158,8 +158,9 @@ begin
         end;
         
         procedure Test_Callbacks is
+            State       : NetFramework.System.Object := NetFramework.System.Constructor;
             Callback    : NetFramework.System.Threading.TimerCallback; 
-            Timer       : NetFramework.System.Threading.Timer := NetFramework.System.Threading.Constructor(Callback,null,0,1000);
+            Timer       : NetFramework.System.Threading.Timer := NetFramework.System.Threading.Constructor(Callback,State,NetFramework.UInt32(0),1000);
         begin
             null;
         end;
