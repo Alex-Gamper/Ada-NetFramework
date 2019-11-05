@@ -46,12 +46,6 @@ with NetFrameworkBase.System.Security.AccessControl.AccessRule;
 with NetFrameworkBase.System.Security.AccessControl.AuditRule;
 with NetFrameworkBase.System.Security.AccessControl.AuthorizationRuleCollection;
 with NetFrameworkBase.System.Security.Principal.IdentityReference;
-with NetFrameworkBase.System.Security.AccessControl.FileSystemRights;
-with NetFrameworkBase.System.Security.AccessControl.AccessControlType;
-with NetFrameworkBase.System.Security.AccessControl.InheritanceFlags;
-with NetFrameworkBase.System.Security.AccessControl.PropagationFlags;
-with NetFrameworkBase.System.Security.AccessControl.AuditFlags;
-with NetFrameworkBase.System.Security.AccessControl.AccessControlSections;
 --------------------------------------------------------------------------------
 package NetFramework.System.Security.AccessControl is
    

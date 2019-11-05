@@ -33,7 +33,6 @@ with NetFrameworkBase.System.Threading.WaitHandle;
 with NetFrameworkBase.System.Threading.CancellationTokenRegistration;
 with NetFrameworkBase.System.Threading.CancellationToken;
 with NetFrameworkBase.System.Object;
-with NetFrameworkBase.System.Threading.TimerCallback;
 with NetFrameworkBase.System.TimeSpan;
 --------------------------------------------------------------------------------
 package NetFramework.System.Threading is

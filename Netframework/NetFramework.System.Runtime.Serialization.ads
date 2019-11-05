@@ -34,8 +34,6 @@ with NetFrameworkBase.System.Runtime.Serialization.SerializationInfoEnumerator;
 with NetFrameworkBase.System.Runtime.Serialization.StreamingContext;
 with NetFrameworkBase.System.Runtime.Serialization.StreamingContextStates;
 with NetFrameworkBase.System.Type_x;
-with NetFrameworkBase.System.Runtime.Serialization.IFormatterConverter;
-with NetFrameworkBase.System.Runtime.Serialization.StreamingContextStates;
 with NetFrameworkBase.System.Object;
 --------------------------------------------------------------------------------
 package NetFramework.System.Runtime.Serialization is

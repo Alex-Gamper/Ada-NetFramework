@@ -39,11 +39,6 @@ with NetFrameworkBase.System.Collections.IEnumerator;
 with NetFrameworkBase.System.Collections.IEqualityComparer;
 with NetFrameworkBase.System.Collections.IHashCodeProvider;
 with NetFrameworkBase.System.Collections.IList;
-with NetFrameworkBase.System.Collections.ICollection;
-with NetFrameworkBase.System.Collections.IHashCodeProvider;
-with NetFrameworkBase.System.Collections.IComparer;
-with NetFrameworkBase.System.Collections.IEqualityComparer;
-with NetFrameworkBase.System.Collections.IDictionary;
 with NetFrameworkBase.System.Object;
 --------------------------------------------------------------------------------
 package NetFramework.System.Collections is

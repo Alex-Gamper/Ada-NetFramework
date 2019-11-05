@@ -30,7 +30,6 @@
 with NetFrameworkBase.System.Security.Policy.Evidence;
 with NetFrameworkBase.System.Security.Policy.EvidenceBase;
 with NetFrameworkBase.System.Object;
-with NetFrameworkBase.System.Security.Policy.EvidenceBase;
 --------------------------------------------------------------------------------
 package NetFramework.System.Security.Policy is
    

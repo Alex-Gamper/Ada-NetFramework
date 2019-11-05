@@ -36,10 +36,7 @@ with NetFrameworkBase.System.Threading.Tasks.TaskScheduler;
 with NetFrameworkBase.System.Threading.Tasks.UnobservedTaskExceptionEventArgs;
 with NetFrameworkBase.System.Action;
 with NetFrameworkBase.System.Threading.CancellationToken;
-with NetFrameworkBase.System.Threading.Tasks.TaskCreationOptions;
 with NetFrameworkBase.System.Object;
-with NetFrameworkBase.System.Threading.Tasks.TaskScheduler;
-with NetFrameworkBase.System.Threading.Tasks.TaskContinuationOptions;
 with NetFrameworkBase.System.AggregateException;
 --------------------------------------------------------------------------------
 package NetFramework.System.Threading.Tasks is

@@ -32,7 +32,6 @@ with NetFrameworkBase.System.Runtime.InteropServices.IAssembly;
 with NetFrameworkBase.System.Runtime.InteropServices.StructLayoutAttribute;
 with NetFrameworkBase.System.Runtime.InteropServices.LayoutKind;
 with NetFrameworkBase.System.Runtime.InteropServices.SafeHandle;
-with NetFrameworkBase.System.Runtime.InteropServices.LayoutKind;
 --------------------------------------------------------------------------------
 package NetFramework.System.Runtime.InteropServices is
    

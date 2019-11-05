@@ -87,15 +87,9 @@ with NetFrameworkBase.System.UInt32;
 with NetFrameworkBase.System.UInt64;
 with NetFrameworkBase.System.ValueType;
 with NetFrameworkBase.System.Version;
-with NetFrameworkBase.System.Exception_x;
-with NetFrameworkBase.System.Object;
 with NetFrameworkBase.System.Text.Encoding;
-with NetFrameworkBase.System.DateTimeKind;
 with NetFrameworkBase.System.Globalization.Calendar;
 with NetFrameworkBase.System.Reflection.Assembly;
-with NetFrameworkBase.System.ConsoleKey;
-with NetFrameworkBase.System.PlatformID;
-with NetFrameworkBase.System.Version;
 --------------------------------------------------------------------------------
 package NetFramework.System is
    

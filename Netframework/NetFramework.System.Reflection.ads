@@ -73,11 +73,7 @@ with NetFrameworkBase.System.Reflection.TypeAttributes;
 with NetFrameworkBase.System.Reflection.TypeFilter;
 with NetFrameworkBase.System.Reflection.TypeInfo;
 with NetFrameworkBase.System.Object;
-with NetFrameworkBase.System.Reflection.MemberInfo;
-with NetFrameworkBase.System.Reflection.CustomAttributeTypedArgument;
 with NetFrameworkBase.System.Type_x;
-with NetFrameworkBase.System.Reflection.Assembly;
-with NetFrameworkBase.System.Reflection.ResourceLocation;
 with NetFrameworkBase.System.IO.FileStream;
 --------------------------------------------------------------------------------
 package NetFramework.System.Reflection is
