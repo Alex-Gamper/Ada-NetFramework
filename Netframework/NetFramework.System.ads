@@ -96,6 +96,8 @@ package NetFramework.System is
       subtype AggregateException is NetFrameworkBase.System.AggregateException.Kind_Ptr;
       subtype AggregateException_Array is NetFrameworkBase.System.AggregateException.Kind_Array;
       
+         function Constructor return NetFrameworkBase.System.AggregateException.Kind_Ptr renames NetFrameworkBase.System.AggregateException.Constructor;
+         
          function Constructor
          (
             message : NetFrameworkBase.BSTR
@@ -111,15 +113,13 @@ package NetFramework.System is
          
          function Constructor
          (
-            message : NetFrameworkBase.BSTR;
             innerExceptions : NetFrameworkBase.System.Exception_x.Kind_Array
          )
          return NetFrameworkBase.System.AggregateException.Kind_Ptr renames NetFrameworkBase.System.AggregateException.Constructor; 
          
-         function Constructor return NetFrameworkBase.System.AggregateException.Kind_Ptr renames NetFrameworkBase.System.AggregateException.Constructor;
-         
          function Constructor
          (
+            message : NetFrameworkBase.BSTR;
             innerExceptions : NetFrameworkBase.System.Exception_x.Kind_Array
          )
          return NetFrameworkBase.System.AggregateException.Kind_Ptr renames NetFrameworkBase.System.AggregateException.Constructor; 
@@ -154,27 +154,6 @@ package NetFramework.System is
          
          function Constructor
          (
-            value : NetFrameworkBase.Wide_Char_Array;
-            startIndex : NetFrameworkBase.Int32;
-            length : NetFrameworkBase.Int32
-         )
-         return NetFrameworkBase.System.String.Kind_Ptr renames NetFrameworkBase.System.String.Constructor; 
-         
-         function Constructor
-         (
-            value : NetFrameworkBase.Wide_Char_Array
-         )
-         return NetFrameworkBase.System.String.Kind_Ptr renames NetFrameworkBase.System.String.Constructor; 
-         
-         function Constructor
-         (
-            c : NetFrameworkBase.Wide_Char;
-            count : NetFrameworkBase.Int32
-         )
-         return NetFrameworkBase.System.String.Kind_Ptr renames NetFrameworkBase.System.String.Constructor; 
-         
-         function Constructor
-         (
             value : NetFrameworkBase.SByte_Ptr
          )
          return NetFrameworkBase.System.String.Kind_Ptr renames NetFrameworkBase.System.String.Constructor; 
@@ -193,6 +172,27 @@ package NetFramework.System is
             startIndex : NetFrameworkBase.Int32;
             length : NetFrameworkBase.Int32;
             enc : NetFrameworkBase.System.Text.Encoding.Kind_Ptr
+         )
+         return NetFrameworkBase.System.String.Kind_Ptr renames NetFrameworkBase.System.String.Constructor; 
+         
+         function Constructor
+         (
+            value : NetFrameworkBase.Wide_Char_Array;
+            startIndex : NetFrameworkBase.Int32;
+            length : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.String.Kind_Ptr renames NetFrameworkBase.System.String.Constructor; 
+         
+         function Constructor
+         (
+            value : NetFrameworkBase.Wide_Char_Array
+         )
+         return NetFrameworkBase.System.String.Kind_Ptr renames NetFrameworkBase.System.String.Constructor; 
+         
+         function Constructor
+         (
+            c : NetFrameworkBase.Wide_Char;
+            count : NetFrameworkBase.Int32
          )
          return NetFrameworkBase.System.String.Kind_Ptr renames NetFrameworkBase.System.String.Constructor; 
          
@@ -443,6 +443,18 @@ package NetFramework.System is
          
          function Constructor
          (
+            value : NetFrameworkBase.Single
+         )
+         return NetFrameworkBase.System.Decimal.Kind_Ptr renames NetFrameworkBase.System.Decimal.Constructor; 
+         
+         function Constructor
+         (
+            value : NetFrameworkBase.Double
+         )
+         return NetFrameworkBase.System.Decimal.Kind_Ptr renames NetFrameworkBase.System.Decimal.Constructor; 
+         
+         function Constructor
+         (
             bits : NetFrameworkBase.Int32_Array
          )
          return NetFrameworkBase.System.Decimal.Kind_Ptr renames NetFrameworkBase.System.Decimal.Constructor; 
@@ -454,18 +466,6 @@ package NetFramework.System is
             hi : NetFrameworkBase.Int32;
             isNegative : NetFrameworkBase.Boolean;
             scale : NetFrameworkBase.Byte
-         )
-         return NetFrameworkBase.System.Decimal.Kind_Ptr renames NetFrameworkBase.System.Decimal.Constructor; 
-         
-         function Constructor
-         (
-            value : NetFrameworkBase.Single
-         )
-         return NetFrameworkBase.System.Decimal.Kind_Ptr renames NetFrameworkBase.System.Decimal.Constructor; 
-         
-         function Constructor
-         (
-            value : NetFrameworkBase.Double
          )
          return NetFrameworkBase.System.Decimal.Kind_Ptr renames NetFrameworkBase.System.Decimal.Constructor; 
          

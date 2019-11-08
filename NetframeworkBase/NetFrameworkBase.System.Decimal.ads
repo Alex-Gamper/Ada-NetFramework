@@ -591,6 +591,18 @@ package NetFrameworkBase.System.Decimal is
       
       function Constructor
       (
+         value : NetFrameworkBase.Single
+      )
+      return NetFrameworkBase.System.Decimal.Kind_Ptr;
+      
+      function Constructor
+      (
+         value : NetFrameworkBase.Double
+      )
+      return NetFrameworkBase.System.Decimal.Kind_Ptr;
+      
+      function Constructor
+      (
          bits : NetFrameworkBase.Int32_Array
       )
       return NetFrameworkBase.System.Decimal.Kind_Ptr;
@@ -602,18 +614,6 @@ package NetFrameworkBase.System.Decimal is
          hi : NetFrameworkBase.Int32;
          isNegative : NetFrameworkBase.Boolean;
          scale : NetFrameworkBase.Byte
-      )
-      return NetFrameworkBase.System.Decimal.Kind_Ptr;
-      
-      function Constructor
-      (
-         value : NetFrameworkBase.Single
-      )
-      return NetFrameworkBase.System.Decimal.Kind_Ptr;
-      
-      function Constructor
-      (
-         value : NetFrameworkBase.Double
       )
       return NetFrameworkBase.System.Decimal.Kind_Ptr;
       

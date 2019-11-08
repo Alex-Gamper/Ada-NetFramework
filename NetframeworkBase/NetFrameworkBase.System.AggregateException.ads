@@ -63,6 +63,8 @@ package NetFrameworkBase.System.AggregateException is
       )
       return NetFrameworkBase.BSTR;
       
+      function Constructor return NetFrameworkBase.System.AggregateException.Kind_Ptr;
+      
       function Constructor
       (
          message : NetFrameworkBase.BSTR
@@ -78,15 +80,13 @@ package NetFrameworkBase.System.AggregateException is
       
       function Constructor
       (
-         message : NetFrameworkBase.BSTR;
          innerExceptions : NetFrameworkBase.System.Exception_x.Kind_Array
       )
       return NetFrameworkBase.System.AggregateException.Kind_Ptr;
       
-      function Constructor return NetFrameworkBase.System.AggregateException.Kind_Ptr;
-      
       function Constructor
       (
+         message : NetFrameworkBase.BSTR;
          innerExceptions : NetFrameworkBase.System.Exception_x.Kind_Array
       )
       return NetFrameworkBase.System.AggregateException.Kind_Ptr;

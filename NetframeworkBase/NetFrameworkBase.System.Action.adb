@@ -62,11 +62,12 @@ package body NetFrameworkBase.System.Action is
       return TypeInstance;
    end;
    
-   function Constructor (Callback : NetFrameworkWin32.Address) return Kind_Ptr is
+   function Constructor (Callback : Kind_Callback) return Kind_Ptr is
+      function Convert is new Ada.Unchecked_Conversion (Kind_Callback, NetFrameworkWin32.Address);
    begin
       return RetVal : Kind_Ptr := new Kind do
          declare
-            Delegate      : IDelegate_Ptr := NetFrameworkAdaRuntime.CreateDelegate (RetVal.m_Kind, Callback, Instance);
+            Delegate : IDelegate_Ptr := NetFrameworkAdaRuntime.CreateDelegate (RetVal.m_Kind, Convert (Callback), Instance);
          begin
             null;
          end;

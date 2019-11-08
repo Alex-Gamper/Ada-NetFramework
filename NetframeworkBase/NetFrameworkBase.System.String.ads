@@ -975,27 +975,6 @@ package NetFrameworkBase.System.String is
       
       function Constructor
       (
-         value : NetFrameworkBase.Wide_Char_Array;
-         startIndex : NetFrameworkBase.Int32;
-         length : NetFrameworkBase.Int32
-      )
-      return NetFrameworkBase.System.String.Kind_Ptr;
-      
-      function Constructor
-      (
-         value : NetFrameworkBase.Wide_Char_Array
-      )
-      return NetFrameworkBase.System.String.Kind_Ptr;
-      
-      function Constructor
-      (
-         c : NetFrameworkBase.Wide_Char;
-         count : NetFrameworkBase.Int32
-      )
-      return NetFrameworkBase.System.String.Kind_Ptr;
-      
-      function Constructor
-      (
          value : NetFrameworkBase.SByte_Ptr
       )
       return NetFrameworkBase.System.String.Kind_Ptr;
@@ -1014,6 +993,27 @@ package NetFrameworkBase.System.String is
          startIndex : NetFrameworkBase.Int32;
          length : NetFrameworkBase.Int32;
          enc : NetFrameworkBase.System.Text.Encoding.Kind_Ptr
+      )
+      return NetFrameworkBase.System.String.Kind_Ptr;
+      
+      function Constructor
+      (
+         value : NetFrameworkBase.Wide_Char_Array;
+         startIndex : NetFrameworkBase.Int32;
+         length : NetFrameworkBase.Int32
+      )
+      return NetFrameworkBase.System.String.Kind_Ptr;
+      
+      function Constructor
+      (
+         value : NetFrameworkBase.Wide_Char_Array
+      )
+      return NetFrameworkBase.System.String.Kind_Ptr;
+      
+      function Constructor
+      (
+         c : NetFrameworkBase.Wide_Char;
+         count : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.System.String.Kind_Ptr;
       

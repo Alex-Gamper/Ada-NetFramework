@@ -175,6 +175,13 @@ package body NetFrameworkBase.System.AggregateException is
       return RetVal;
    end;
    
+   function Constructor return NetFrameworkBase.System.AggregateException.Kind_Ptr is
+   begin
+      return RetVal : NetFrameworkBase.System.AggregateException.Kind_Ptr := new NetFrameworkBase.System.AggregateException.Kind do
+          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, null);
+      end return;
+   end;
+   
    function Constructor
    (
       message : NetFrameworkBase.BSTR
@@ -238,6 +245,34 @@ package body NetFrameworkBase.System.AggregateException is
    
    function Constructor
    (
+      innerExceptions : NetFrameworkBase.System.Exception_x.Kind_Array
+   )
+   return NetFrameworkBase.System.AggregateException.Kind_Ptr is
+   begin
+      return RetVal : NetFrameworkBase.System.AggregateException.Kind_Ptr := new NetFrameworkBase.System.AggregateException.Kind do
+      declare
+         function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
+         Hr            : HResult := 0;
+         p_Parameters  : aliased LPSAFEARRAY := null;
+         p_Bounds      : aliased SAFEARRAYBOUND := (1 , 0);
+         p_Index       : aliased array(1..1) of aliased LONG := (others => 0);
+         p_Value       : aliased VARIANT;
+         p_Value_Ptr   : access VARIANT := p_Value'access;
+         p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
+      begin
+         p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
+         ------------------------------------------------------------
+         p_Index(1) := 0;
+         -- fixme parameter type := System.Exception[]
+         Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
+         Hr := SafeArrayDestroy(p_Parameters);
+      end;
+      end return;
+   end;
+   
+   function Constructor
+   (
       message : NetFrameworkBase.BSTR;
       innerExceptions : NetFrameworkBase.System.Exception_x.Kind_Array
    )
@@ -261,41 +296,6 @@ package body NetFrameworkBase.System.AggregateException is
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 1;
-         -- fixme parameter type := System.Exception[]
-         Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
-         Hr := SafeArrayDestroy(p_Parameters);
-      end;
-      end return;
-   end;
-   
-   function Constructor return NetFrameworkBase.System.AggregateException.Kind_Ptr is
-   begin
-      return RetVal : NetFrameworkBase.System.AggregateException.Kind_Ptr := new NetFrameworkBase.System.AggregateException.Kind do
-          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, null);
-      end return;
-   end;
-   
-   function Constructor
-   (
-      innerExceptions : NetFrameworkBase.System.Exception_x.Kind_Array
-   )
-   return NetFrameworkBase.System.AggregateException.Kind_Ptr is
-   begin
-      return RetVal : NetFrameworkBase.System.AggregateException.Kind_Ptr := new NetFrameworkBase.System.AggregateException.Kind do
-      declare
-         function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
-         Hr            : HResult := 0;
-         p_Parameters  : aliased LPSAFEARRAY := null;
-         p_Bounds      : aliased SAFEARRAYBOUND := (1 , 0);
-         p_Index       : aliased array(1..1) of aliased LONG := (others => 0);
-         p_Value       : aliased VARIANT;
-         p_Value_Ptr   : access VARIANT := p_Value'access;
-         p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
-      begin
-         p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
-         ------------------------------------------------------------
-         p_Index(1) := 0;
          -- fixme parameter type := System.Exception[]
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);

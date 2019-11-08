@@ -3279,6 +3279,62 @@ package body NetFrameworkBase.System.Decimal is
    
    function Constructor
    (
+      value : NetFrameworkBase.Single
+   )
+   return NetFrameworkBase.System.Decimal.Kind_Ptr is
+   begin
+      return RetVal : NetFrameworkBase.System.Decimal.Kind_Ptr := new NetFrameworkBase.System.Decimal.Kind do
+      declare
+         function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
+         Hr            : HResult := 0;
+         p_Parameters  : aliased LPSAFEARRAY := null;
+         p_Bounds      : aliased SAFEARRAYBOUND := (1 , 0);
+         p_Index       : aliased array(1..1) of aliased LONG := (others => 0);
+         p_Value       : aliased VARIANT;
+         p_Value_Ptr   : access VARIANT := p_Value'access;
+         p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
+      begin
+         p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
+         ------------------------------------------------------------
+         p_Index(1) := 0;
+         p_Value := To_Variant(value);
+         Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
+         Hr := SafeArrayDestroy(p_Parameters);
+      end;
+      end return;
+   end;
+   
+   function Constructor
+   (
+      value : NetFrameworkBase.Double
+   )
+   return NetFrameworkBase.System.Decimal.Kind_Ptr is
+   begin
+      return RetVal : NetFrameworkBase.System.Decimal.Kind_Ptr := new NetFrameworkBase.System.Decimal.Kind do
+      declare
+         function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
+         Hr            : HResult := 0;
+         p_Parameters  : aliased LPSAFEARRAY := null;
+         p_Bounds      : aliased SAFEARRAYBOUND := (1 , 0);
+         p_Index       : aliased array(1..1) of aliased LONG := (others => 0);
+         p_Value       : aliased VARIANT;
+         p_Value_Ptr   : access VARIANT := p_Value'access;
+         p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
+      begin
+         p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
+         ------------------------------------------------------------
+         p_Index(1) := 0;
+         p_Value := To_Variant(value);
+         Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
+         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
+         Hr := SafeArrayDestroy(p_Parameters);
+      end;
+      end return;
+   end;
+   
+   function Constructor
+   (
       bits : NetFrameworkBase.Int32_Array
    )
    return NetFrameworkBase.System.Decimal.Kind_Ptr is
@@ -3346,62 +3402,6 @@ package body NetFrameworkBase.System.Decimal is
          ------------------------------------------------------------
          p_Index(1) := 4;
          p_Value := To_Variant(scale);
-         Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
-         Hr := SafeArrayDestroy(p_Parameters);
-      end;
-      end return;
-   end;
-   
-   function Constructor
-   (
-      value : NetFrameworkBase.Single
-   )
-   return NetFrameworkBase.System.Decimal.Kind_Ptr is
-   begin
-      return RetVal : NetFrameworkBase.System.Decimal.Kind_Ptr := new NetFrameworkBase.System.Decimal.Kind do
-      declare
-         function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
-         Hr            : HResult := 0;
-         p_Parameters  : aliased LPSAFEARRAY := null;
-         p_Bounds      : aliased SAFEARRAYBOUND := (1 , 0);
-         p_Index       : aliased array(1..1) of aliased LONG := (others => 0);
-         p_Value       : aliased VARIANT;
-         p_Value_Ptr   : access VARIANT := p_Value'access;
-         p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
-      begin
-         p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
-         ------------------------------------------------------------
-         p_Index(1) := 0;
-         p_Value := To_Variant(value);
-         Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
-         NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
-         Hr := SafeArrayDestroy(p_Parameters);
-      end;
-      end return;
-   end;
-   
-   function Constructor
-   (
-      value : NetFrameworkBase.Double
-   )
-   return NetFrameworkBase.System.Decimal.Kind_Ptr is
-   begin
-      return RetVal : NetFrameworkBase.System.Decimal.Kind_Ptr := new NetFrameworkBase.System.Decimal.Kind do
-      declare
-         function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
-         Hr            : HResult := 0;
-         p_Parameters  : aliased LPSAFEARRAY := null;
-         p_Bounds      : aliased SAFEARRAYBOUND := (1 , 0);
-         p_Index       : aliased array(1..1) of aliased LONG := (others => 0);
-         p_Value       : aliased VARIANT;
-         p_Value_Ptr   : access VARIANT := p_Value'access;
-         p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
-      begin
-         p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
-         ------------------------------------------------------------
-         p_Index(1) := 0;
-         p_Value := To_Variant(value);
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);

@@ -40,7 +40,8 @@ package NetFrameworkBase.System.Threading.TimerCallback is
    type Kind_Ptr is access all Kind;
    type Kind_Array is array(Natural range<>) of Kind_Ptr;
    type Kind_Array_Ptr is access all Kind_Array;
+   type Kind_Callback is access procedure (state : NetFrameworkBase.System.Object.Kind_Ptr) ;
    
-      function Constructor (Callback : NetFrameworkWin32.Address) return Kind_Ptr;
-      
+   function Constructor (Callback : Kind_Callback) return Kind_Ptr;
+   
 end;
