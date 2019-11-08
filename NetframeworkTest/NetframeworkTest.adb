@@ -176,17 +176,13 @@ begin
     begin
 
         Test_Statics;
-
         Test_ValueTypes_Builtin;
         Test_ValueTypes_Instance;
         Test_ValueTypes_Arrays;
-
         Test_RefenceType_Out_Param;
-
         Test_Enum_In_Param;
         Test_Enum_ReturnType;
         Test_Enum_Out_Param;
-
         Test_Constructors;
         Test_Callbacks;
         
