@@ -8,7 +8,7 @@
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --                                                                            --
---    Copyright(c) 2018 Alexander Gamper, All Rights Reserved.                --
+--    Copyright(c) 2019 Alexander Gamper, All Rights Reserved.                --
 --                                                                            --
 --    Ada-NetFramework                                                        --
 --    Version   : 1.0.0.0                                                     --

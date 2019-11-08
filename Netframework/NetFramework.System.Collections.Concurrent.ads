@@ -27,6 +27,15 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.Collections.Concurrent.EnumerablePartitionerOptions;
+with NetFrameworkBase.System.Collections.Concurrent.Partitioner;
 --------------------------------------------------------------------------------
-package NetFrameworkBase.System.Runtime.Serialization is
+package NetFramework.System.Collections.Concurrent is
+   
+      subtype EnumerablePartitionerOptions is NetFrameworkBase.System.Collections.Concurrent.EnumerablePartitionerOptions.Kind;
+      
+      subtype Partitioner is NetFrameworkBase.System.Collections.Concurrent.Partitioner.Kind_Ptr;
+      subtype Partitioner_Array is NetFrameworkBase.System.Collections.Concurrent.Partitioner.Kind_Array;
+      
+   
 end;

@@ -28,5 +28,5 @@
 --                                                                            --
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
-package NetFrameworkBase.System.Runtime.Serialization is
+package NetFramework.System.Deployment is
 end;

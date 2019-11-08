@@ -27,6 +27,12 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.Diagnostics.Contracts.Internal.ContractHelper;
 --------------------------------------------------------------------------------
-package NetFrameworkBase.System.Runtime.Serialization is
+package NetFramework.System.Diagnostics.Contracts.Internal is
+   
+      subtype ContractHelper is NetFrameworkBase.System.Diagnostics.Contracts.Internal.ContractHelper.Kind_Ptr;
+      subtype ContractHelper_Array is NetFrameworkBase.System.Diagnostics.Contracts.Internal.ContractHelper.Kind_Array;
+      
+   
 end;

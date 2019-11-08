@@ -27,6 +27,38 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.Runtime.Remoting.Lifetime.ClientSponsor;
+with NetFrameworkBase.System.Runtime.Remoting.Lifetime.ILease;
+with NetFrameworkBase.System.Runtime.Remoting.Lifetime.ISponsor;
+with NetFrameworkBase.System.Runtime.Remoting.Lifetime.LeaseState;
+with NetFrameworkBase.System.Runtime.Remoting.Lifetime.LifetimeServices;
+with NetFrameworkBase.System.TimeSpan;
 --------------------------------------------------------------------------------
-package NetFrameworkBase.System.Runtime.Serialization is
+package NetFramework.System.Runtime.Remoting.Lifetime is
+   
+      subtype ClientSponsor is NetFrameworkBase.System.Runtime.Remoting.Lifetime.ClientSponsor.Kind_Ptr;
+      subtype ClientSponsor_Array is NetFrameworkBase.System.Runtime.Remoting.Lifetime.ClientSponsor.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.Remoting.Lifetime.ClientSponsor.Kind_Ptr renames NetFrameworkBase.System.Runtime.Remoting.Lifetime.ClientSponsor.Constructor;
+         
+         function Constructor
+         (
+            renewalTime : NetFrameworkBase.System.TimeSpan.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.Remoting.Lifetime.ClientSponsor.Kind_Ptr renames NetFrameworkBase.System.Runtime.Remoting.Lifetime.ClientSponsor.Constructor; 
+         
+      subtype ILease is NetFrameworkBase.System.Runtime.Remoting.Lifetime.ILease.Kind_Ptr;
+      subtype ILease_Array is NetFrameworkBase.System.Runtime.Remoting.Lifetime.ILease.Kind_Array;
+      
+      subtype ISponsor is NetFrameworkBase.System.Runtime.Remoting.Lifetime.ISponsor.Kind_Ptr;
+      subtype ISponsor_Array is NetFrameworkBase.System.Runtime.Remoting.Lifetime.ISponsor.Kind_Array;
+      
+      subtype LeaseState is NetFrameworkBase.System.Runtime.Remoting.Lifetime.LeaseState.Kind;
+      
+      subtype LifetimeServices is NetFrameworkBase.System.Runtime.Remoting.Lifetime.LifetimeServices.Kind_Ptr;
+      subtype LifetimeServices_Array is NetFrameworkBase.System.Runtime.Remoting.Lifetime.LifetimeServices.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.Remoting.Lifetime.LifetimeServices.Kind_Ptr renames NetFrameworkBase.System.Runtime.Remoting.Lifetime.LifetimeServices.Constructor;
+         
+   
 end;

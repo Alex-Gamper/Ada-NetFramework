@@ -27,6 +27,33 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.Runtime.Remoting.Activation.IActivator;
+with NetFrameworkBase.System.Runtime.Remoting.Activation.ActivatorLevel;
+with NetFrameworkBase.System.Runtime.Remoting.Activation.IConstructionCallMessage;
+with NetFrameworkBase.System.Runtime.Remoting.Activation.IConstructionReturnMessage;
+with NetFrameworkBase.System.Runtime.Remoting.Activation.UrlAttribute;
 --------------------------------------------------------------------------------
-package NetFrameworkBase.System.Runtime.Serialization is
+package NetFramework.System.Runtime.Remoting.Activation is
+   
+      subtype IActivator is NetFrameworkBase.System.Runtime.Remoting.Activation.IActivator.Kind_Ptr;
+      subtype IActivator_Array is NetFrameworkBase.System.Runtime.Remoting.Activation.IActivator.Kind_Array;
+      
+      subtype ActivatorLevel is NetFrameworkBase.System.Runtime.Remoting.Activation.ActivatorLevel.Kind;
+      
+      subtype IConstructionCallMessage is NetFrameworkBase.System.Runtime.Remoting.Activation.IConstructionCallMessage.Kind_Ptr;
+      subtype IConstructionCallMessage_Array is NetFrameworkBase.System.Runtime.Remoting.Activation.IConstructionCallMessage.Kind_Array;
+      
+      subtype IConstructionReturnMessage is NetFrameworkBase.System.Runtime.Remoting.Activation.IConstructionReturnMessage.Kind_Ptr;
+      subtype IConstructionReturnMessage_Array is NetFrameworkBase.System.Runtime.Remoting.Activation.IConstructionReturnMessage.Kind_Array;
+      
+      subtype UrlAttribute is NetFrameworkBase.System.Runtime.Remoting.Activation.UrlAttribute.Kind_Ptr;
+      subtype UrlAttribute_Array is NetFrameworkBase.System.Runtime.Remoting.Activation.UrlAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            callsiteURL : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.Remoting.Activation.UrlAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.Remoting.Activation.UrlAttribute.Constructor; 
+         
+   
 end;

@@ -27,6 +27,29 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.Runtime.ExceptionServices.HandleProcessCorruptedStateExceptionsAttribute;
+with NetFrameworkBase.System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs;
+with NetFrameworkBase.System.Runtime.ExceptionServices.ExceptionDispatchInfo;
+with NetFrameworkBase.System.Exception_x;
 --------------------------------------------------------------------------------
-package NetFrameworkBase.System.Runtime.Serialization is
+package NetFramework.System.Runtime.ExceptionServices is
+   
+      subtype HandleProcessCorruptedStateExceptionsAttribute is NetFrameworkBase.System.Runtime.ExceptionServices.HandleProcessCorruptedStateExceptionsAttribute.Kind_Ptr;
+      subtype HandleProcessCorruptedStateExceptionsAttribute_Array is NetFrameworkBase.System.Runtime.ExceptionServices.HandleProcessCorruptedStateExceptionsAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.ExceptionServices.HandleProcessCorruptedStateExceptionsAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.ExceptionServices.HandleProcessCorruptedStateExceptionsAttribute.Constructor;
+         
+      subtype FirstChanceExceptionEventArgs is NetFrameworkBase.System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs.Kind_Ptr;
+      subtype FirstChanceExceptionEventArgs_Array is NetFrameworkBase.System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs.Kind_Array;
+      
+         function Constructor
+         (
+            exception_x : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs.Kind_Ptr renames NetFrameworkBase.System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs.Constructor; 
+         
+      subtype ExceptionDispatchInfo is NetFrameworkBase.System.Runtime.ExceptionServices.ExceptionDispatchInfo.Kind_Ptr;
+      subtype ExceptionDispatchInfo_Array is NetFrameworkBase.System.Runtime.ExceptionServices.ExceptionDispatchInfo.Kind_Array;
+      
+   
 end;

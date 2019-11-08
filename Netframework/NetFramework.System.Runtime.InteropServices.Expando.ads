@@ -27,6 +27,12 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.Runtime.InteropServices.Expando.IExpando;
 --------------------------------------------------------------------------------
-package NetFrameworkBase.System.Runtime.Serialization is
+package NetFramework.System.Runtime.InteropServices.Expando is
+   
+      subtype IExpando is NetFrameworkBase.System.Runtime.InteropServices.Expando.IExpando.Kind_Ptr;
+      subtype IExpando_Array is NetFrameworkBase.System.Runtime.InteropServices.Expando.IExpando.Kind_Array;
+      
+   
 end;

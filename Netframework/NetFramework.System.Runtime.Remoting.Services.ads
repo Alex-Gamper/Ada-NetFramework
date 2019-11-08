@@ -27,6 +27,24 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.Runtime.Remoting.Services.EnterpriseServicesHelper;
+with NetFrameworkBase.System.Runtime.Remoting.Services.ITrackingHandler;
+with NetFrameworkBase.System.Runtime.Remoting.Services.TrackingServices;
 --------------------------------------------------------------------------------
-package NetFrameworkBase.System.Runtime.Serialization is
+package NetFramework.System.Runtime.Remoting.Services is
+   
+      subtype EnterpriseServicesHelper is NetFrameworkBase.System.Runtime.Remoting.Services.EnterpriseServicesHelper.Kind_Ptr;
+      subtype EnterpriseServicesHelper_Array is NetFrameworkBase.System.Runtime.Remoting.Services.EnterpriseServicesHelper.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.Remoting.Services.EnterpriseServicesHelper.Kind_Ptr renames NetFrameworkBase.System.Runtime.Remoting.Services.EnterpriseServicesHelper.Constructor;
+         
+      subtype ITrackingHandler is NetFrameworkBase.System.Runtime.Remoting.Services.ITrackingHandler.Kind_Ptr;
+      subtype ITrackingHandler_Array is NetFrameworkBase.System.Runtime.Remoting.Services.ITrackingHandler.Kind_Array;
+      
+      subtype TrackingServices is NetFrameworkBase.System.Runtime.Remoting.Services.TrackingServices.Kind_Ptr;
+      subtype TrackingServices_Array is NetFrameworkBase.System.Runtime.Remoting.Services.TrackingServices.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.Remoting.Services.TrackingServices.Kind_Ptr renames NetFrameworkBase.System.Runtime.Remoting.Services.TrackingServices.Constructor;
+         
+   
 end;

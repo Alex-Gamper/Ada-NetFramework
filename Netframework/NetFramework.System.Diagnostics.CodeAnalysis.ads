@@ -27,6 +27,19 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.Diagnostics.CodeAnalysis.SuppressMessageAttribute;
 --------------------------------------------------------------------------------
-package NetFrameworkBase.System.Runtime.Serialization is
+package NetFramework.System.Diagnostics.CodeAnalysis is
+   
+      subtype SuppressMessageAttribute is NetFrameworkBase.System.Diagnostics.CodeAnalysis.SuppressMessageAttribute.Kind_Ptr;
+      subtype SuppressMessageAttribute_Array is NetFrameworkBase.System.Diagnostics.CodeAnalysis.SuppressMessageAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            category : NetFrameworkBase.BSTR;
+            checkId : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.CodeAnalysis.SuppressMessageAttribute.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.CodeAnalysis.SuppressMessageAttribute.Constructor; 
+         
+   
 end;

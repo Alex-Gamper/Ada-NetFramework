@@ -27,6 +27,12 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.Runtime.DesignerServices.WindowsRuntimeDesignerContext;
 --------------------------------------------------------------------------------
-package NetFrameworkBase.System.Runtime.Serialization is
+package NetFramework.System.Runtime.DesignerServices is
+   
+      subtype WindowsRuntimeDesignerContext is NetFrameworkBase.System.Runtime.DesignerServices.WindowsRuntimeDesignerContext.Kind_Ptr;
+      subtype WindowsRuntimeDesignerContext_Array is NetFrameworkBase.System.Runtime.DesignerServices.WindowsRuntimeDesignerContext.Kind_Array;
+      
+   
 end;

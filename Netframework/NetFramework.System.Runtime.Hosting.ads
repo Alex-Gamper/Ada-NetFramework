@@ -27,6 +27,46 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.Runtime.Hosting.ApplicationActivator;
+with NetFrameworkBase.System.Runtime.Hosting.ActivationArguments;
+with NetFrameworkBase.System.ApplicationIdentity;
+with NetFrameworkBase.System.ActivationContext;
 --------------------------------------------------------------------------------
-package NetFrameworkBase.System.Runtime.Serialization is
+package NetFramework.System.Runtime.Hosting is
+   
+      subtype ApplicationActivator is NetFrameworkBase.System.Runtime.Hosting.ApplicationActivator.Kind_Ptr;
+      subtype ApplicationActivator_Array is NetFrameworkBase.System.Runtime.Hosting.ApplicationActivator.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.Hosting.ApplicationActivator.Kind_Ptr renames NetFrameworkBase.System.Runtime.Hosting.ApplicationActivator.Constructor;
+         
+      subtype ActivationArguments is NetFrameworkBase.System.Runtime.Hosting.ActivationArguments.Kind_Ptr;
+      subtype ActivationArguments_Array is NetFrameworkBase.System.Runtime.Hosting.ActivationArguments.Kind_Array;
+      
+         function Constructor
+         (
+            applicationIdentity : NetFrameworkBase.System.ApplicationIdentity.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.Hosting.ActivationArguments.Kind_Ptr renames NetFrameworkBase.System.Runtime.Hosting.ActivationArguments.Constructor; 
+         
+         function Constructor
+         (
+            applicationIdentity : NetFrameworkBase.System.ApplicationIdentity.Kind_Ptr;
+            activationData : NetFrameworkBase.BSTR_Array
+         )
+         return NetFrameworkBase.System.Runtime.Hosting.ActivationArguments.Kind_Ptr renames NetFrameworkBase.System.Runtime.Hosting.ActivationArguments.Constructor; 
+         
+         function Constructor
+         (
+            activationData : NetFrameworkBase.System.ActivationContext.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.Hosting.ActivationArguments.Kind_Ptr renames NetFrameworkBase.System.Runtime.Hosting.ActivationArguments.Constructor; 
+         
+         function Constructor
+         (
+            activationContext : NetFrameworkBase.System.ActivationContext.Kind_Ptr;
+            activationData : NetFrameworkBase.BSTR_Array
+         )
+         return NetFrameworkBase.System.Runtime.Hosting.ActivationArguments.Kind_Ptr renames NetFrameworkBase.System.Runtime.Hosting.ActivationArguments.Constructor; 
+         
+   
 end;

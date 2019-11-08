@@ -27,6 +27,16 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.Deployment.Internal.InternalApplicationIdentityHelper;
+with NetFrameworkBase.System.Deployment.Internal.InternalActivationContextHelper;
 --------------------------------------------------------------------------------
-package NetFrameworkBase.System.Runtime.Serialization is
+package NetFramework.System.Deployment.Internal is
+   
+      subtype InternalApplicationIdentityHelper is NetFrameworkBase.System.Deployment.Internal.InternalApplicationIdentityHelper.Kind_Ptr;
+      subtype InternalApplicationIdentityHelper_Array is NetFrameworkBase.System.Deployment.Internal.InternalApplicationIdentityHelper.Kind_Array;
+      
+      subtype InternalActivationContextHelper is NetFrameworkBase.System.Deployment.Internal.InternalActivationContextHelper.Kind_Ptr;
+      subtype InternalActivationContextHelper_Array is NetFrameworkBase.System.Deployment.Internal.InternalActivationContextHelper.Kind_Array;
+      
+   
 end;

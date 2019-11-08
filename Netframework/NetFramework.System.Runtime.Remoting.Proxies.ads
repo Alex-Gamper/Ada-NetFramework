@@ -27,6 +27,18 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.Runtime.Remoting.Proxies.ProxyAttribute;
+with NetFrameworkBase.System.Runtime.Remoting.Proxies.RealProxy;
 --------------------------------------------------------------------------------
-package NetFrameworkBase.System.Runtime.Serialization is
+package NetFramework.System.Runtime.Remoting.Proxies is
+   
+      subtype ProxyAttribute is NetFrameworkBase.System.Runtime.Remoting.Proxies.ProxyAttribute.Kind_Ptr;
+      subtype ProxyAttribute_Array is NetFrameworkBase.System.Runtime.Remoting.Proxies.ProxyAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.Remoting.Proxies.ProxyAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.Remoting.Proxies.ProxyAttribute.Constructor;
+         
+      subtype RealProxy is NetFrameworkBase.System.Runtime.Remoting.Proxies.RealProxy.Kind_Ptr;
+      subtype RealProxy_Array is NetFrameworkBase.System.Runtime.Remoting.Proxies.RealProxy.Kind_Array;
+      
+   
 end;

@@ -27,6 +27,23 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.Runtime.Serialization.Formatters.Binary.BinaryFormatter;
+with NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector;
+with NetFrameworkBase.System.Runtime.Serialization.StreamingContext;
 --------------------------------------------------------------------------------
-package NetFrameworkBase.System.Runtime.Serialization is
+package NetFramework.System.Runtime.Serialization.Formatters.Binary is
+   
+      subtype BinaryFormatter is NetFrameworkBase.System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Kind_Ptr;
+      subtype BinaryFormatter_Array is NetFrameworkBase.System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Kind_Ptr renames NetFrameworkBase.System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Constructor;
+         
+         function Constructor
+         (
+            selector : NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector.Kind_Ptr;
+            context : NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Kind_Ptr renames NetFrameworkBase.System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Constructor; 
+         
+   
 end;

@@ -27,6 +27,28 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.Collections.Generic.KeyNotFoundException;
+with NetFrameworkBase.System.Exception_x;
 --------------------------------------------------------------------------------
-package NetFrameworkBase.System.Runtime.Serialization is
+package NetFramework.System.Collections.Generic is
+   
+      subtype KeyNotFoundException is NetFrameworkBase.System.Collections.Generic.KeyNotFoundException.Kind_Ptr;
+      subtype KeyNotFoundException_Array is NetFrameworkBase.System.Collections.Generic.KeyNotFoundException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Collections.Generic.KeyNotFoundException.Kind_Ptr renames NetFrameworkBase.System.Collections.Generic.KeyNotFoundException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Collections.Generic.KeyNotFoundException.Kind_Ptr renames NetFrameworkBase.System.Collections.Generic.KeyNotFoundException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Collections.Generic.KeyNotFoundException.Kind_Ptr renames NetFrameworkBase.System.Collections.Generic.KeyNotFoundException.Constructor; 
+         
+   
 end;
