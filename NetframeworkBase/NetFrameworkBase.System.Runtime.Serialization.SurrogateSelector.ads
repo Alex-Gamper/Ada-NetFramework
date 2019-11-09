@@ -27,16 +27,55 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
-with NetFrameworkBase.System.Deployment.Internal.InternalApplicationIdentityHelper;
-with NetFrameworkBase.System.Deployment.Internal.InternalActivationContextHelper;
+with NetFrameworkBase.System.Object;
+limited with NetFrameworkBase.System.Type_x;
+limited with NetFrameworkBase.System.Runtime.Serialization.StreamingContext;
+limited with NetFrameworkBase.System.Runtime.Serialization.ISerializationSurrogate;
+limited with NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector;
 --------------------------------------------------------------------------------
-package NetFramework.System.Deployment.Internal is
+package NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector is
    
-      subtype InternalApplicationIdentityHelper is NetFrameworkBase.System.Deployment.Internal.InternalApplicationIdentityHelper.Kind_Ptr;
-      subtype InternalApplicationIdentityHelper_Array is NetFrameworkBase.System.Deployment.Internal.InternalApplicationIdentityHelper.Kind_Array;
-      
-      subtype InternalActivationContextHelper is NetFrameworkBase.System.Deployment.Internal.InternalActivationContextHelper.Kind_Ptr;
-      subtype InternalActivationContextHelper_Array is NetFrameworkBase.System.Deployment.Internal.InternalActivationContextHelper.Kind_Array;
-      
+   type Kind is new NetFrameworkBase.System.Object.Kind with null record;
+   type Kind_Ptr is access all Kind;
+   type Kind_Array is array(Natural range<>) of Kind_Ptr;
+   type Kind_Array_Ptr is access all Kind_Array;
    
+      procedure AddSurrogate
+      (
+         this : in out SurrogateSelector.Kind;
+         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         context : NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind_Ptr;
+         surrogate : NetFrameworkBase.System.Runtime.Serialization.ISerializationSurrogate.Kind_Ptr
+      );
+      
+      procedure ChainSelector
+      (
+         this : in out SurrogateSelector.Kind;
+         selector : NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector.Kind_Ptr
+      );
+      
+      function GetNextSelector
+      (
+         this : in out SurrogateSelector.Kind
+      )
+      return NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector.Kind_Ptr;
+      
+      function GetSurrogate
+      (
+         this : in out SurrogateSelector.Kind;
+         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         context : NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind_Ptr;
+         selector : out NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector.Kind_Ptr
+      )
+      return NetFrameworkBase.System.Runtime.Serialization.ISerializationSurrogate.Kind_Ptr;
+      
+      procedure RemoveSurrogate
+      (
+         this : in out SurrogateSelector.Kind;
+         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         context : NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind_Ptr
+      );
+      
+      function Constructor return NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector.Kind_Ptr;
+      
 end;

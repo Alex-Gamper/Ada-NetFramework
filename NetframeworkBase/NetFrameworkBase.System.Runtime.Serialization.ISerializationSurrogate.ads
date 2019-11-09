@@ -27,46 +27,42 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
-with NetFrameworkBase.System.Runtime.Hosting.ApplicationActivator;
-with NetFrameworkBase.System.Runtime.Hosting.ActivationArguments;
-with NetFrameworkBase.System.ApplicationIdentity;
-with NetFrameworkBase.System.ActivationContext;
+limited with NetFrameworkBase.System.Object;
+limited with NetFrameworkBase.System.Runtime.Serialization.SerializationInfo;
+limited with NetFrameworkBase.System.Runtime.Serialization.StreamingContext;
+limited with NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector;
+with NetFrameworkWin32;
+with NetFrameworkAdaRuntime;
 --------------------------------------------------------------------------------
-package NetFramework.System.Runtime.Hosting is
+package NetFrameworkBase.System.Runtime.Serialization.ISerializationSurrogate is
    
-      subtype ApplicationActivator is NetFrameworkBase.System.Runtime.Hosting.ApplicationActivator.Kind_Ptr;
-      subtype ApplicationActivator_Array is NetFrameworkBase.System.Runtime.Hosting.ApplicationActivator.Kind_Array;
+   type Kind is interface and NetFrameworkWin32.IUnknown;
+   type Kind_Ptr is access all Kind;
+   type Kind_Array is array (Natural range <>) of Kind_Ptr;
+   type Kind_Array_Ptr is access all Kind_Array;
+   
+      function GetObjectData
+      (
+         this : in out ISerializationSurrogate.Kind;
+         obj : NetFrameworkBase.System.Object.Kind_Ptr;
+         info : NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr;
+         context : NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind
+      ) return HResult is abstract;
       
-         function Constructor return NetFrameworkBase.System.Runtime.Hosting.ApplicationActivator.Kind_Ptr renames NetFrameworkBase.System.Runtime.Hosting.ApplicationActivator.Constructor;
-         
-      subtype ActivationArguments is NetFrameworkBase.System.Runtime.Hosting.ActivationArguments.Kind_Ptr;
-      subtype ActivationArguments_Array is NetFrameworkBase.System.Runtime.Hosting.ActivationArguments.Kind_Array;
+      function SetObjectData
+      (
+         this : in out ISerializationSurrogate.Kind;
+         obj : NetFrameworkBase.System.Object.Kind_Ptr;
+         info : NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr;
+         context : NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind;
+         selector : NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector.Kind_Ptr;
+         RetVal : access NetFrameworkBase.System.Object.Kind_Ptr
+      ) return HResult is abstract;
       
-         function Constructor
-         (
-            applicationIdentity : NetFrameworkBase.System.ApplicationIdentity.Kind_Ptr
-         )
-         return NetFrameworkBase.System.Runtime.Hosting.ActivationArguments.Kind_Ptr renames NetFrameworkBase.System.Runtime.Hosting.ActivationArguments.Constructor; 
-         
-         function Constructor
-         (
-            applicationIdentity : NetFrameworkBase.System.ApplicationIdentity.Kind_Ptr;
-            activationData : NetFrameworkBase.BSTR_Array
-         )
-         return NetFrameworkBase.System.Runtime.Hosting.ActivationArguments.Kind_Ptr renames NetFrameworkBase.System.Runtime.Hosting.ActivationArguments.Constructor; 
-         
-         function Constructor
-         (
-            activationData : NetFrameworkBase.System.ActivationContext.Kind_Ptr
-         )
-         return NetFrameworkBase.System.Runtime.Hosting.ActivationArguments.Kind_Ptr renames NetFrameworkBase.System.Runtime.Hosting.ActivationArguments.Constructor; 
-         
-         function Constructor
-         (
-            activationContext : NetFrameworkBase.System.ActivationContext.Kind_Ptr;
-            activationData : NetFrameworkBase.BSTR_Array
-         )
-         return NetFrameworkBase.System.Runtime.Hosting.ActivationArguments.Kind_Ptr renames NetFrameworkBase.System.Runtime.Hosting.ActivationArguments.Constructor; 
-         
+   private
+   
+      This_AssemblyFile : constant Standard.Wide_String := "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\mscorlib.dll";
+      This_AssemblyName : constant Standard.Wide_String := "mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089";
+      This_TypeName     : constant Standard.Wide_String := "System.Runtime.Serialization.ISerializationSurrogate";
    
 end;

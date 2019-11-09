@@ -27,12 +27,44 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
-with NetFrameworkBase.System.Diagnostics.Contracts.Internal.ContractHelper;
+limited with NetFrameworkBase.System.Type_x;
+limited with NetFrameworkBase.System.Runtime.Serialization.StreamingContext;
+limited with NetFrameworkBase.System.Runtime.Serialization.ISerializationSurrogate;
+with NetFrameworkWin32;
+with NetFrameworkAdaRuntime;
 --------------------------------------------------------------------------------
-package NetFramework.System.Diagnostics.Contracts.Internal is
+package NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector is
    
-      subtype ContractHelper is NetFrameworkBase.System.Diagnostics.Contracts.Internal.ContractHelper.Kind_Ptr;
-      subtype ContractHelper_Array is NetFrameworkBase.System.Diagnostics.Contracts.Internal.ContractHelper.Kind_Array;
+   type Kind is interface and NetFrameworkWin32.IUnknown;
+   type Kind_Ptr is access all Kind;
+   type Kind_Array is array (Natural range <>) of Kind_Ptr;
+   type Kind_Array_Ptr is access all Kind_Array;
+   
+      function ChainSelector
+      (
+         this : in out ISurrogateSelector.Kind;
+         selector : NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector.Kind_Ptr
+      ) return HResult is abstract;
       
+      function GetSurrogate
+      (
+         this : in out ISurrogateSelector.Kind;
+         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         context : NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind;
+         selector : NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector.Kind_Ptr;
+         RetVal : access NetFrameworkBase.System.Runtime.Serialization.ISerializationSurrogate.Kind_Ptr
+      ) return HResult is abstract;
+      
+      function GetNextSelector
+      (
+         this : in out ISurrogateSelector.Kind;
+         RetVal : access NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector.Kind_Ptr
+      ) return HResult is abstract;
+      
+   private
+   
+      This_AssemblyFile : constant Standard.Wide_String := "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\mscorlib.dll";
+      This_AssemblyName : constant Standard.Wide_String := "mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089";
+      This_TypeName     : constant Standard.Wide_String := "System.Runtime.Serialization.ISurrogateSelector";
    
 end;

@@ -482,6 +482,8 @@
     <AdaCompile Include="NetFrameworkBase.System.Runtime.Remoting.ObjRef.ads" />
     <AdaCompile Include="NetFrameworkBase.System.Runtime.Serialization.ads" />
     <AdaCompile Include="NetFrameworkBase.System.Runtime.Serialization.IFormatterConverter.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.Serialization.ISerializationSurrogate.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector.ads" />
     <AdaCompile Include="NetFrameworkBase.System.Runtime.Serialization.SerializationEntry.adb" />
     <AdaCompile Include="NetFrameworkBase.System.Runtime.Serialization.SerializationEntry.ads" />
     <AdaCompile Include="NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.adb" />
@@ -492,6 +494,8 @@
     <AdaCompile Include="NetFrameworkBase.System.Runtime.Serialization.StreamingContext.ads" />
     <AdaCompile Include="NetFrameworkBase.System.Runtime.Serialization.StreamingContextStates.adb" />
     <AdaCompile Include="NetFrameworkBase.System.Runtime.Serialization.StreamingContextStates.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector.ads" />
     <AdaCompile Include="NetFrameworkBase.System.RuntimeFieldHandle.adb" />
     <AdaCompile Include="NetFrameworkBase.System.RuntimeFieldHandle.ads" />
     <AdaCompile Include="NetFrameworkBase.System.RuntimeMethodHandle.adb" />

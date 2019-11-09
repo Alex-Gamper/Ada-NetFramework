@@ -28,11 +28,14 @@
 --                                                                            --
 --------------------------------------------------------------------------------
 with NetFrameworkBase.System.Runtime.Serialization.IFormatterConverter;
+with NetFrameworkBase.System.Runtime.Serialization.ISerializationSurrogate;
+with NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector;
 with NetFrameworkBase.System.Runtime.Serialization.SerializationInfo;
 with NetFrameworkBase.System.Runtime.Serialization.SerializationEntry;
 with NetFrameworkBase.System.Runtime.Serialization.SerializationInfoEnumerator;
 with NetFrameworkBase.System.Runtime.Serialization.StreamingContext;
 with NetFrameworkBase.System.Runtime.Serialization.StreamingContextStates;
+with NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector;
 with NetFrameworkBase.System.Type_x;
 with NetFrameworkBase.System.Object;
 --------------------------------------------------------------------------------
@@ -40,6 +43,12 @@ package NetFramework.System.Runtime.Serialization is
    
       subtype IFormatterConverter is NetFrameworkBase.System.Runtime.Serialization.IFormatterConverter.Kind_Ptr;
       subtype IFormatterConverter_Array is NetFrameworkBase.System.Runtime.Serialization.IFormatterConverter.Kind_Array;
+      
+      subtype ISerializationSurrogate is NetFrameworkBase.System.Runtime.Serialization.ISerializationSurrogate.Kind_Ptr;
+      subtype ISerializationSurrogate_Array is NetFrameworkBase.System.Runtime.Serialization.ISerializationSurrogate.Kind_Array;
+      
+      subtype ISurrogateSelector is NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector.Kind_Ptr;
+      subtype ISurrogateSelector_Array is NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector.Kind_Array;
       
       subtype SerializationInfo is NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr;
       subtype SerializationInfo_Array is NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Array;
@@ -83,5 +92,10 @@ package NetFramework.System.Runtime.Serialization is
          
       subtype StreamingContextStates is NetFrameworkBase.System.Runtime.Serialization.StreamingContextStates.Kind;
       
+      subtype SurrogateSelector is NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector.Kind_Ptr;
+      subtype SurrogateSelector_Array is NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector.Kind_Ptr renames NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector.Constructor;
+         
    
 end;
