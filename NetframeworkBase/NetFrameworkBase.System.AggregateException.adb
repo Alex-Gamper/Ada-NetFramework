@@ -259,13 +259,19 @@ package body NetFrameworkBase.System.AggregateException is
          p_Value       : aliased VARIANT;
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
+         p0_Parameters : aliased LPSAFEARRAY := null;
+         p0_Bounds     : aliased SAFEARRAYBOUND := (innerExceptions'Length , 0);
+         p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+         p0_Tmp        : aliased NetFrameworkBase.System.Exception_x.Kind_Ptr;
+         p0_Tmp_Ptr    : access NetFrameworkBase.System.Exception_x.Kind_Ptr := p0_Tmp'access;
       begin
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
-         -- fixme parameter type := System.Exception[]
+         -- fixme parameter type := [array] System.Exception[]
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
+         Hr := SafeArrayDestroy (p0_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -288,6 +294,11 @@ package body NetFrameworkBase.System.AggregateException is
          p_Value       : aliased VARIANT;
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
+         p1_Parameters : aliased LPSAFEARRAY := null;
+         p1_Bounds     : aliased SAFEARRAYBOUND := (innerExceptions'Length , 0);
+         p1_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+         p1_Tmp        : aliased NetFrameworkBase.System.Exception_x.Kind_Ptr;
+         p1_Tmp_Ptr    : access NetFrameworkBase.System.Exception_x.Kind_Ptr := p1_Tmp'access;
       begin
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
@@ -296,9 +307,10 @@ package body NetFrameworkBase.System.AggregateException is
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 1;
-         -- fixme parameter type := System.Exception[]
+         -- fixme parameter type := [array] System.Exception[]
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
+         Hr := SafeArrayDestroy (p1_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;

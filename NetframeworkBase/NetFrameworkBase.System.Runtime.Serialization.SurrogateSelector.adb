@@ -217,8 +217,9 @@ package body NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector is
       Hr := SafeArrayGetElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       declare
          p_Interface : IUnknown_Ptr := From_Variant (p_Value);
+         function Convert is new Ada.Unchecked_Conversion (IUnknown_Ptr, NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector.Kind_Ptr);
       begin
-         selector := NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector.Kind_Ptr (p_Interface);
+         selector := Convert (p_Interface);
       end;
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);

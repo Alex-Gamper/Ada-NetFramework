@@ -558,17 +558,29 @@ package body NetFrameworkBase.System.Security.Policy.Evidence is
          p_Value       : aliased VARIANT;
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
+         p0_Parameters : aliased LPSAFEARRAY := null;
+         p0_Bounds     : aliased SAFEARRAYBOUND := (hostEvidence'Length , 0);
+         p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+         p0_Tmp        : aliased NetFrameworkBase.System.Object.Kind_Ptr;
+         p0_Tmp_Ptr    : access NetFrameworkBase.System.Object.Kind_Ptr := p0_Tmp'access;
+         p1_Parameters : aliased LPSAFEARRAY := null;
+         p1_Bounds     : aliased SAFEARRAYBOUND := (assemblyEvidence'Length , 0);
+         p1_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+         p1_Tmp        : aliased NetFrameworkBase.System.Object.Kind_Ptr;
+         p1_Tmp_Ptr    : access NetFrameworkBase.System.Object.Kind_Ptr := p1_Tmp'access;
       begin
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
-         -- fixme parameter type := System.Object[]
+         -- fixme parameter type := [array] System.Object[]
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 1;
-         -- fixme parameter type := System.Object[]
+         -- fixme parameter type := [array] System.Object[]
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
+         Hr := SafeArrayDestroy (p0_Parameters);
+         Hr := SafeArrayDestroy (p1_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -591,17 +603,29 @@ package body NetFrameworkBase.System.Security.Policy.Evidence is
          p_Value       : aliased VARIANT;
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
+         p0_Parameters : aliased LPSAFEARRAY := null;
+         p0_Bounds     : aliased SAFEARRAYBOUND := (hostEvidence'Length , 0);
+         p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+         p0_Tmp        : aliased NetFrameworkBase.System.Security.Policy.EvidenceBase.Kind_Ptr;
+         p0_Tmp_Ptr    : access NetFrameworkBase.System.Security.Policy.EvidenceBase.Kind_Ptr := p0_Tmp'access;
+         p1_Parameters : aliased LPSAFEARRAY := null;
+         p1_Bounds     : aliased SAFEARRAYBOUND := (assemblyEvidence'Length , 0);
+         p1_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+         p1_Tmp        : aliased NetFrameworkBase.System.Security.Policy.EvidenceBase.Kind_Ptr;
+         p1_Tmp_Ptr    : access NetFrameworkBase.System.Security.Policy.EvidenceBase.Kind_Ptr := p1_Tmp'access;
       begin
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
-         -- fixme parameter type := System.Security.Policy.EvidenceBase[]
+         -- fixme parameter type := [array] System.Security.Policy.EvidenceBase[]
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 1;
-         -- fixme parameter type := System.Security.Policy.EvidenceBase[]
+         -- fixme parameter type := [array] System.Security.Policy.EvidenceBase[]
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
+         Hr := SafeArrayDestroy (p0_Parameters);
+         Hr := SafeArrayDestroy (p1_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;

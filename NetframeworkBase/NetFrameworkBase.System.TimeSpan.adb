@@ -1065,6 +1065,11 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ParseExact");
       p_RetVal      : aliased VARIANT;
+      p1_Parameters : aliased LPSAFEARRAY := null;
+      p1_Bounds     : aliased SAFEARRAYBOUND := (formats'Length , 0);
+      p1_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p1_Tmp        : aliased NetFrameworkBase.BSTR;
+      p1_Tmp_Ptr    : access NetFrameworkBase.BSTR := p1_Tmp'access;
       RetVal        : NetFrameworkBase.System.TimeSpan.Kind_Ptr := new NetFrameworkBase.System.TimeSpan.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1077,7 +1082,20 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      -- fixme parameter type := System.String[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.BSTR_Ptr, LPVOID);
+      begin
+         p1_Parameters := SafeArrayCreate (VT_BSTR'enum_rep, 1, p1_Bounds'access);
+         for i in formats'range loop
+            p1_Index(1) := Interfaces.C.long(i) - 1;
+            p1_Tmp := formats(i);
+            Hr := SafeArrayPutElement (p1_Parameters, p1_Index (p1_Index'first)'access, Convert (p1_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p1_Parameters, VT_BSTR);
+      end;
+      -- fixme parameter type := [array] [builtin] System.String[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
@@ -1089,6 +1107,7 @@ package body NetFrameworkBase.System.TimeSpan is
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      Hr := SafeArrayDestroy (p1_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;
@@ -1274,6 +1293,11 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("TryParseExact");
       p_RetVal      : aliased VARIANT;
+      p1_Parameters : aliased LPSAFEARRAY := null;
+      p1_Bounds     : aliased SAFEARRAYBOUND := (formats'Length , 0);
+      p1_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p1_Tmp        : aliased NetFrameworkBase.BSTR;
+      p1_Tmp_Ptr    : access NetFrameworkBase.BSTR := p1_Tmp'access;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1286,7 +1310,20 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      -- fixme parameter type := System.String[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.BSTR_Ptr, LPVOID);
+      begin
+         p1_Parameters := SafeArrayCreate (VT_BSTR'enum_rep, 1, p1_Bounds'access);
+         for i in formats'range loop
+            p1_Index(1) := Interfaces.C.long(i) - 1;
+            p1_Tmp := formats(i);
+            Hr := SafeArrayPutElement (p1_Parameters, p1_Index (p1_Index'first)'access, Convert (p1_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p1_Parameters, VT_BSTR);
+      end;
+      -- fixme parameter type := [array] [builtin] System.String[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
@@ -1308,6 +1345,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayGetElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       result := new NetFrameworkBase.System.TimeSpan.Kind;
       SetObject (result.m_Kind, p_Value);
+      Hr := SafeArrayDestroy (p1_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -1891,6 +1929,11 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ParseExact");
       p_RetVal      : aliased VARIANT;
+      p1_Parameters : aliased LPSAFEARRAY := null;
+      p1_Bounds     : aliased SAFEARRAYBOUND := (formats'Length , 0);
+      p1_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p1_Tmp        : aliased NetFrameworkBase.BSTR;
+      p1_Tmp_Ptr    : access NetFrameworkBase.BSTR := p1_Tmp'access;
       p_stylesEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Globalization.TimeSpanStyles.Instance;
       p_stylesEnum : aliased VARIANT := To_Variant (CreateEnum (p_stylesEnumType, styles'Enum_rep));
       RetVal        : NetFrameworkBase.System.TimeSpan.Kind_Ptr := new NetFrameworkBase.System.TimeSpan.Kind;
@@ -1905,7 +1948,20 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      -- fixme parameter type := System.String[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.BSTR_Ptr, LPVOID);
+      begin
+         p1_Parameters := SafeArrayCreate (VT_BSTR'enum_rep, 1, p1_Bounds'access);
+         for i in formats'range loop
+            p1_Index(1) := Interfaces.C.long(i) - 1;
+            p1_Tmp := formats(i);
+            Hr := SafeArrayPutElement (p1_Parameters, p1_Index (p1_Index'first)'access, Convert (p1_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p1_Parameters, VT_BSTR);
+      end;
+      -- fixme parameter type := [array] [builtin] System.String[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
@@ -1921,6 +1977,7 @@ package body NetFrameworkBase.System.TimeSpan is
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      Hr := SafeArrayDestroy (p1_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;
@@ -2012,6 +2069,11 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("TryParseExact");
       p_RetVal      : aliased VARIANT;
+      p1_Parameters : aliased LPSAFEARRAY := null;
+      p1_Bounds     : aliased SAFEARRAYBOUND := (formats'Length , 0);
+      p1_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p1_Tmp        : aliased NetFrameworkBase.BSTR;
+      p1_Tmp_Ptr    : access NetFrameworkBase.BSTR := p1_Tmp'access;
       p_stylesEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Globalization.TimeSpanStyles.Instance;
       p_stylesEnum : aliased VARIANT := To_Variant (CreateEnum (p_stylesEnumType, styles'Enum_rep));
       RetVal        : NetFrameworkBase.Boolean;
@@ -2026,7 +2088,20 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      -- fixme parameter type := System.String[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.BSTR_Ptr, LPVOID);
+      begin
+         p1_Parameters := SafeArrayCreate (VT_BSTR'enum_rep, 1, p1_Bounds'access);
+         for i in formats'range loop
+            p1_Index(1) := Interfaces.C.long(i) - 1;
+            p1_Tmp := formats(i);
+            Hr := SafeArrayPutElement (p1_Parameters, p1_Index (p1_Index'first)'access, Convert (p1_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p1_Parameters, VT_BSTR);
+      end;
+      -- fixme parameter type := [array] [builtin] System.String[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
@@ -2052,6 +2127,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayGetElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       result := new NetFrameworkBase.System.TimeSpan.Kind;
       SetObject (result.m_Kind, p_Value);
+      Hr := SafeArrayDestroy (p1_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);

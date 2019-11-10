@@ -21,6 +21,7 @@
 --------------------------------------------------------------------------------
 with AdaPackage;
 with NetFrameworkAdaRuntime;                    use NetFrameworkAdaRuntime;
+with NetframeworkBase.System.Array_x;
 with NetframeworkBase.System.DateTime;
 with NetframeworkBase.System.Console;
 with NetframeworkBase.System.UInt64;
@@ -32,10 +33,14 @@ with NetFrameworkBase.System.ConsoleKeyInfo;
 with NetFrameworkBase.System.Environment.SpecialFolder;
 with NetFrameworkBase.System.Threading;
 with NetFrameworkBase.System.Threading.TimerCallback;
+with NetFrameworkBase.System.Runtime.Serialization.StreamingContextStates;
+with NetFrameworkBase.System.Runtime.Serialization.ISerializationSurrogate;
+with NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector;
 with NetFramework;
 with NetFramework.System;
 with NetFramework.System.Reflection; 
 with NetFramework.System.Threading;
+with NetFramework.System.Runtime.Serialization;
 with Ada.Exceptions;
 with Ada.Wide_Text_IO;
 
@@ -171,6 +176,42 @@ begin
             null;
         end;
 
+        ------------------------------------------------------------------------
+        procedure Test_Interface_Out_Param is
+            use NetFrameworkBase.System.Runtime.Serialization.StreamingContextStates;
+            use NetFrameworkBase.System.Runtime.Serialization.ISerializationSurrogate;
+            use NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector;
+            m_State         : NetFramework.System.Runtime.Serialization.StreamingContextStates := NetFrameworkBase.System.Runtime.Serialization.StreamingContextStates.Kind'(All_x);
+            m_Context       : NetFramework.System.Runtime.Serialization.StreamingContext := NetFramework.System.Runtime.Serialization.Constructor (m_State);
+            m_Surrogate     : NetFramework.System.Runtime.Serialization.SurrogateSelector := NetFramework.System.Runtime.Serialization.Constructor;
+            m_Object        : NetFramework.System.Object := NetFramework.System.Constructor;
+            m_Type          : NetFramework.System.Type_x := m_Object.GetType;
+            m_ISurrogate    : NetFramework.System.Runtime.Serialization.ISurrogateSelector := null;         -- Out Interface
+            m_Iss           : NetFramework.System.Runtime.Serialization.ISerializationSurrogate := null;
+        begin
+            m_Iss := m_Surrogate.GetSurrogate(m_Type, m_Context, m_ISurrogate);
+            if m_Iss = null then
+                if m_ISurrogate = null then
+                    raise PROGRAM_ERROR;
+                end if;
+            end if;
+        end;
+
+        ------------------------------------------------------------------------
+        procedure Test_Builtin_Array is
+            m_Object        : NetFramework.System.Object := NetFramework.System.Constructor;
+            m_Type          : NetFramework.System.Type_x := m_Object.GetType;
+            m_Lengths       : NetFrameworkBase.Int32_array(1..1) := (others => 16);
+            m_Array         : NetFramework.System.Array_x := NetFrameworkBase.System.Array_x.CreateInstance (m_Type, m_Lengths);
+
+--            m_Value     : NetFrameworkBase.Wide_Char_Array(1..16) := (others => 'x');
+--            m_String    : NetFramework.System.String := NetFramework.System.Constructor (m_Value); --method not found ??
+--            m_Length    : NetFramework.Int32;
+        begin
+            -- NetFrameworkBase.System.Console.Write (m_Value, 0, 8);
+            null;
+        end;
+
         x : Netframework.BSTR;
 
     begin
@@ -185,7 +226,9 @@ begin
         Test_Enum_Out_Param;
         Test_Constructors;
         Test_Callbacks;
-        
+        Test_Interface_Out_Param;
+        Test_Builtin_Array;
+
         x := NetFrameworkBase.System.Console.ReadLine;
 
     end;

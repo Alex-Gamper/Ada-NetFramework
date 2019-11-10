@@ -230,7 +230,7 @@ package body NetFrameworkAdaRuntime is
     procedure CreateInstance (this : in out Kind; AssemblyName : Wide_String; TypeName : Wide_String; Kind : IType_Ptr; Flags : UInt32; Parameters : access SAFEARRAY) is
         Hr          : HRESULT := 0;
         Runtime     : RuntimeHost := Instance;
-        Name        : BSTR := null; --To_BSTR(TypeName);
+        Name        : BSTR := To_BSTR(TypeName);
         Assembly    : aliased IAssembly_Ptr := null;
         Binder      : IBinder_Ptr := null;
         Target      : aliased VARIANT;
@@ -242,17 +242,21 @@ package body NetFrameworkAdaRuntime is
         if Runtime.m_Initialized = true then
             if this = null then
                 this := new Kind_Interface;
-                if IsAssemblyLoaded(Runtime, AssemblyName) = true then
-                    Assembly := GetAssembly(Runtime, AssemblyName);
-                else
-                    Assembly := LoadAssembly(Runtime, AssemblyName);
-                end if;
                 VariantInit(Target'access);
-                Hr := Runtime.m_IAdaMarshal.InvokeMethod2 (Kind, Name, Convert(Flags) , Binder, Target, Parameters, Retval'access);
-                this.m_Object := To_Variant(RetVal);
-                this.m_NetObject := RetVal;
---                VariantInit(this.m_Object'access);
---                Hr := Assembly.CreateInstance_3(Name, 0, Convert(Flags), null, Parameters, null, null, this.m_Object'access);
+                Hr := Runtime.m_IAdaMarshal.InvokeMethod2 (Kind, null, Convert(Flags) , Binder, Target, Parameters, Retval'access);
+                if  Hr = 0 then
+                    this.m_Object := To_Variant(RetVal);
+                    this.m_NetObject := RetVal;
+                else
+                    if IsAssemblyLoaded(Runtime, AssemblyName) = true then
+                        Assembly := GetAssembly(Runtime, AssemblyName);
+                    else
+                        Assembly := LoadAssembly(Runtime, AssemblyName);
+                    end if;
+                    VariantInit(this.m_Object'access);
+                    Hr := Assembly.CreateInstance_3(Name, 0, Convert(Flags), null, Parameters, null, null, this.m_Object'access);
+                    SysFreeString (Name);
+                end if;
             end if;
         else
             raise Runtime_Not_Initialized;
@@ -472,6 +476,21 @@ package body NetFrameworkAdaRuntime is
     begin
         VariantInit(RetVal'access);
         RetVal.field_1.field_1.vt := VT_UNKNOWN'Enum_rep ;
+        if ByRef = true then
+            RetVal.field_1.field_1.vt := RetVal.field_1.field_1.vt + VT_BYREF'Enum_rep;
+        end if;
+        RetVal.Field_1.field_1.field_1.llVal := Convert(Value);
+        return RetVal;
+    end;
+
+    function To_Variant (Value : IDispatch_Ptr; ByRef : Standard.Boolean := False) return VARIANT is
+        use Interfaces.C;
+        function Convert is new Ada.Unchecked_Conversion (IDispatch_Ptr, LONGLONG);
+        Hr          : HRESULT := 0;
+        RetVal      : aliased VARIANT;
+    begin
+        VariantInit(RetVal'access);
+        RetVal.field_1.field_1.vt := VT_DISPATCH'Enum_rep ;
         if ByRef = true then
             RetVal.field_1.field_1.vt := RetVal.field_1.field_1.vt + VT_BYREF'Enum_rep;
         end if;
@@ -716,6 +735,18 @@ package body NetFrameworkAdaRuntime is
         return RetVal;
     end;
 
+    function To_Variant (Value : LPSAFEARRAY; MemberType : VARENUM) return VARIANT is
+        use Interfaces.C;
+        Hr          : HRESULT := 0;
+        RetVal      : aliased VARIANT;
+    begin
+        VariantInit(RetVal'access);
+        RetVal.field_1.field_1.vt := VT_ARRAY'Enum_rep ;
+        RetVal.field_1.field_1.vt := RetVal.field_1.field_1.vt or MemberType'Enum_rep ;
+        RetVal.Field_1.field_1.field_1.parray := Value;
+        return RetVal;
+    end;
+
     ----------------------------------------------------------------------------
     function From_Variant (Value : VARIANT) return IUnknown_Ptr is
         use Interfaces.C;
@@ -723,8 +754,20 @@ package body NetFrameworkAdaRuntime is
         Hr          : HRESULT := 0;
         RetVal      : IUnknown_Ptr := null;
     begin
-        if Value.field_1.field_1.vt = 13 then
+        if Value.field_1.field_1.vt = 13 or Value.field_1.field_1.vt = 9 then
             Hr := Value.Field_1.field_1.field_1.pUnkVal.QueryInterface(IID_IUnknown'access, Convert(RetVal'Address));
+        end if;
+        return RetVal;
+    end;
+
+    function From_Variant (Value : VARIANT) return IDispatch_Ptr is
+        use Interfaces.C;
+
+        Hr          : HRESULT := 0;
+        RetVal      : IDispatch_Ptr := null;
+    begin
+        if Value.field_1.field_1.vt = 13 or Value.field_1.field_1.vt = 9 then
+            Hr := Value.Field_1.field_1.field_1.pdispVal.QueryInterface(IID_IDispatch'access, Convert(RetVal'Address));
         end if;
         return RetVal;
     end;
@@ -823,6 +866,11 @@ package body NetFrameworkAdaRuntime is
         function Convert is new Ada.Unchecked_Conversion (Interfaces.C.unsigned_short, Standard.Wide_Character);
     begin
         return Convert(Value.Field_1.field_1.field_1.uiVal);
+    end;
+
+    function From_Variant (Value : VARIANT) return LPSAFEARRAY is
+    begin
+        return Value.Field_1.field_1.field_1.parray;
     end;
 
     ----------------------------------------------------------------------------

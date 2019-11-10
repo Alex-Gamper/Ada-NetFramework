@@ -340,6 +340,16 @@ package body NetFrameworkBase.System.ModuleHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ResolveTypeHandle");
       p_RetVal      : aliased VARIANT;
+      p1_Parameters : aliased LPSAFEARRAY := null;
+      p1_Bounds     : aliased SAFEARRAYBOUND := (typeInstantiationContext'Length , 0);
+      p1_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p1_Tmp        : aliased NetFrameworkBase.System.RuntimeTypeHandle.Kind_Ptr;
+      p1_Tmp_Ptr    : access NetFrameworkBase.System.RuntimeTypeHandle.Kind_Ptr := p1_Tmp'access;
+      p2_Parameters : aliased LPSAFEARRAY := null;
+      p2_Bounds     : aliased SAFEARRAYBOUND := (methodInstantiationContext'Length , 0);
+      p2_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p2_Tmp        : aliased NetFrameworkBase.System.RuntimeTypeHandle.Kind_Ptr;
+      p2_Tmp_Ptr    : access NetFrameworkBase.System.RuntimeTypeHandle.Kind_Ptr := p2_Tmp'access;
       RetVal        : NetFrameworkBase.System.RuntimeTypeHandle.Kind_Ptr := new NetFrameworkBase.System.RuntimeTypeHandle.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -352,17 +362,19 @@ package body NetFrameworkBase.System.ModuleHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      -- fixme parameter type := System.RuntimeTypeHandle[]
+      -- fixme parameter type := [array] System.RuntimeTypeHandle[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
-      -- fixme parameter type := System.RuntimeTypeHandle[]
+      -- fixme parameter type := [array] System.RuntimeTypeHandle[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      Hr := SafeArrayDestroy (p1_Parameters);
+      Hr := SafeArrayDestroy (p2_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;
@@ -461,6 +473,16 @@ package body NetFrameworkBase.System.ModuleHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ResolveMethodHandle");
       p_RetVal      : aliased VARIANT;
+      p1_Parameters : aliased LPSAFEARRAY := null;
+      p1_Bounds     : aliased SAFEARRAYBOUND := (typeInstantiationContext'Length , 0);
+      p1_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p1_Tmp        : aliased NetFrameworkBase.System.RuntimeTypeHandle.Kind_Ptr;
+      p1_Tmp_Ptr    : access NetFrameworkBase.System.RuntimeTypeHandle.Kind_Ptr := p1_Tmp'access;
+      p2_Parameters : aliased LPSAFEARRAY := null;
+      p2_Bounds     : aliased SAFEARRAYBOUND := (methodInstantiationContext'Length , 0);
+      p2_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p2_Tmp        : aliased NetFrameworkBase.System.RuntimeTypeHandle.Kind_Ptr;
+      p2_Tmp_Ptr    : access NetFrameworkBase.System.RuntimeTypeHandle.Kind_Ptr := p2_Tmp'access;
       RetVal        : NetFrameworkBase.System.RuntimeMethodHandle.Kind_Ptr := new NetFrameworkBase.System.RuntimeMethodHandle.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -473,17 +495,19 @@ package body NetFrameworkBase.System.ModuleHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      -- fixme parameter type := System.RuntimeTypeHandle[]
+      -- fixme parameter type := [array] System.RuntimeTypeHandle[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
-      -- fixme parameter type := System.RuntimeTypeHandle[]
+      -- fixme parameter type := [array] System.RuntimeTypeHandle[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      Hr := SafeArrayDestroy (p1_Parameters);
+      Hr := SafeArrayDestroy (p2_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;
@@ -582,6 +606,16 @@ package body NetFrameworkBase.System.ModuleHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ResolveFieldHandle");
       p_RetVal      : aliased VARIANT;
+      p1_Parameters : aliased LPSAFEARRAY := null;
+      p1_Bounds     : aliased SAFEARRAYBOUND := (typeInstantiationContext'Length , 0);
+      p1_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p1_Tmp        : aliased NetFrameworkBase.System.RuntimeTypeHandle.Kind_Ptr;
+      p1_Tmp_Ptr    : access NetFrameworkBase.System.RuntimeTypeHandle.Kind_Ptr := p1_Tmp'access;
+      p2_Parameters : aliased LPSAFEARRAY := null;
+      p2_Bounds     : aliased SAFEARRAYBOUND := (methodInstantiationContext'Length , 0);
+      p2_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p2_Tmp        : aliased NetFrameworkBase.System.RuntimeTypeHandle.Kind_Ptr;
+      p2_Tmp_Ptr    : access NetFrameworkBase.System.RuntimeTypeHandle.Kind_Ptr := p2_Tmp'access;
       RetVal        : NetFrameworkBase.System.RuntimeFieldHandle.Kind_Ptr := new NetFrameworkBase.System.RuntimeFieldHandle.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -594,17 +628,19 @@ package body NetFrameworkBase.System.ModuleHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      -- fixme parameter type := System.RuntimeTypeHandle[]
+      -- fixme parameter type := [array] System.RuntimeTypeHandle[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
-      -- fixme parameter type := System.RuntimeTypeHandle[]
+      -- fixme parameter type := [array] System.RuntimeTypeHandle[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      Hr := SafeArrayDestroy (p1_Parameters);
+      Hr := SafeArrayDestroy (p2_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;

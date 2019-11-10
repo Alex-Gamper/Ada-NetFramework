@@ -1592,6 +1592,11 @@ package body NetFrameworkBase.System.Globalization.NumberFormatInfo is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("CurrencyGroupSizes");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (value'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.Int32;
+      p0_Tmp_Ptr    : access NetFrameworkBase.Int32 := p0_Tmp'access;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or 8192;
@@ -1599,12 +1604,26 @@ package body NetFrameworkBase.System.Globalization.NumberFormatInfo is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Int32[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.Int32_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_I4'enum_rep, 1, p0_Bounds'access);
+         for i in value'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := value(i);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_I4);
+      end;
+      -- fixme parameter type := [array] [builtin] System.Int32[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
    end;
@@ -1625,6 +1644,11 @@ package body NetFrameworkBase.System.Globalization.NumberFormatInfo is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("NumberGroupSizes");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (value'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.Int32;
+      p0_Tmp_Ptr    : access NetFrameworkBase.Int32 := p0_Tmp'access;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or 8192;
@@ -1632,12 +1656,26 @@ package body NetFrameworkBase.System.Globalization.NumberFormatInfo is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Int32[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.Int32_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_I4'enum_rep, 1, p0_Bounds'access);
+         for i in value'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := value(i);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_I4);
+      end;
+      -- fixme parameter type := [array] [builtin] System.Int32[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
    end;
@@ -1658,6 +1696,11 @@ package body NetFrameworkBase.System.Globalization.NumberFormatInfo is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("PercentGroupSizes");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (value'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.Int32;
+      p0_Tmp_Ptr    : access NetFrameworkBase.Int32 := p0_Tmp'access;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or 8192;
@@ -1665,12 +1708,26 @@ package body NetFrameworkBase.System.Globalization.NumberFormatInfo is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Int32[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.Int32_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_I4'enum_rep, 1, p0_Bounds'access);
+         for i in value'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := value(i);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_I4);
+      end;
+      -- fixme parameter type := [array] [builtin] System.Int32[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
    end;
@@ -1856,6 +1913,11 @@ package body NetFrameworkBase.System.Globalization.NumberFormatInfo is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("NativeDigits");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (value'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.BSTR;
+      p0_Tmp_Ptr    : access NetFrameworkBase.BSTR := p0_Tmp'access;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or 8192;
@@ -1863,12 +1925,26 @@ package body NetFrameworkBase.System.Globalization.NumberFormatInfo is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.String[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.BSTR_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_BSTR'enum_rep, 1, p0_Bounds'access);
+         for i in value'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := value(i);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_BSTR);
+      end;
+      -- fixme parameter type := [array] [builtin] System.String[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
    end;

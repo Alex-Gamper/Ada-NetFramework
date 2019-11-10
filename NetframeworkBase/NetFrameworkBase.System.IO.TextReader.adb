@@ -154,7 +154,7 @@ package body NetFrameworkBase.System.IO.TextReader is
    function Read
    (
       this : in out TextReader.Kind;
-      buffer : in out NetFrameworkBase.Wide_Char_Array_Ptr;
+      buffer : in out NetFrameworkBase.Wide_Char_Array;
       index : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32
    )
@@ -170,6 +170,12 @@ package body NetFrameworkBase.System.IO.TextReader is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Read");
       p_RetVal      : aliased VARIANT;
+   -- check out array
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (buffer'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.Wide_Char;
+      p0_Tmp_Ptr    : access NetFrameworkBase.Wide_Char := p0_Tmp'access;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -178,7 +184,20 @@ package body NetFrameworkBase.System.IO.TextReader is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Char[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.Wide_Char_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_UI2'enum_rep, 1, p0_Bounds'access);
+         for i in buffer'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := buffer(i);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_UI2);
+      end;
+      -- fixme parameter type := [array] [builtin] System.Char[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -196,6 +215,7 @@ package body NetFrameworkBase.System.IO.TextReader is
       p_Index(1) := 0;
       Hr := SafeArrayGetElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       -- fixme [buffer.all := From_Variant (p_Value);] [out] [array]
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -229,7 +249,7 @@ package body NetFrameworkBase.System.IO.TextReader is
    function ReadBlock
    (
       this : in out TextReader.Kind;
-      buffer : in out NetFrameworkBase.Wide_Char_Array_Ptr;
+      buffer : in out NetFrameworkBase.Wide_Char_Array;
       index : NetFrameworkBase.Int32;
       count : NetFrameworkBase.Int32
    )
@@ -245,6 +265,12 @@ package body NetFrameworkBase.System.IO.TextReader is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ReadBlock");
       p_RetVal      : aliased VARIANT;
+   -- check out array
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (buffer'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.Wide_Char;
+      p0_Tmp_Ptr    : access NetFrameworkBase.Wide_Char := p0_Tmp'access;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -253,7 +279,20 @@ package body NetFrameworkBase.System.IO.TextReader is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Char[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.Wide_Char_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_UI2'enum_rep, 1, p0_Bounds'access);
+         for i in buffer'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := buffer(i);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_UI2);
+      end;
+      -- fixme parameter type := [array] [builtin] System.Char[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -271,6 +310,7 @@ package body NetFrameworkBase.System.IO.TextReader is
       p_Index(1) := 0;
       Hr := SafeArrayGetElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       -- fixme [buffer.all := From_Variant (p_Value);] [out] [array]
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);

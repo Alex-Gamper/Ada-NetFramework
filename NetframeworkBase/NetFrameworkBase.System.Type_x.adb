@@ -897,6 +897,11 @@ package body NetFrameworkBase.System.Type_x is
       p_RetVal      : aliased VARIANT;
       p_invokeAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
       p_invokeAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_invokeAttrEnumType, invokeAttr'Enum_rep));
+      p4_Parameters : aliased LPSAFEARRAY := null;
+      p4_Bounds     : aliased SAFEARRAYBOUND := (args'Length , 0);
+      p4_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p4_Tmp        : aliased NetFrameworkBase.System.Object.Kind_Ptr;
+      p4_Tmp_Ptr    : access NetFrameworkBase.System.Object.Kind_Ptr := p4_Tmp'access;
       RetVal        : NetFrameworkBase.System.Object.Kind_Ptr := new NetFrameworkBase.System.Object.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -921,7 +926,7 @@ package body NetFrameworkBase.System.Type_x is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 4;
-      -- fixme parameter type := System.Object[]
+      -- fixme parameter type := [array] System.Object[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 5;
@@ -932,6 +937,7 @@ package body NetFrameworkBase.System.Type_x is
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      Hr := SafeArrayDestroy (p4_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;
@@ -960,6 +966,11 @@ package body NetFrameworkBase.System.Type_x is
       p_RetVal      : aliased VARIANT;
       p_invokeAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
       p_invokeAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_invokeAttrEnumType, invokeAttr'Enum_rep));
+      p4_Parameters : aliased LPSAFEARRAY := null;
+      p4_Bounds     : aliased SAFEARRAYBOUND := (args'Length , 0);
+      p4_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p4_Tmp        : aliased NetFrameworkBase.System.Object.Kind_Ptr;
+      p4_Tmp_Ptr    : access NetFrameworkBase.System.Object.Kind_Ptr := p4_Tmp'access;
       RetVal        : NetFrameworkBase.System.Object.Kind_Ptr := new NetFrameworkBase.System.Object.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -984,13 +995,14 @@ package body NetFrameworkBase.System.Type_x is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 4;
-      -- fixme parameter type := System.Object[]
+      -- fixme parameter type := [array] System.Object[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      Hr := SafeArrayDestroy (p4_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;
@@ -1105,6 +1117,16 @@ package body NetFrameworkBase.System.Type_x is
       p_bindingAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_bindingAttrEnumType, bindingAttr'Enum_rep));
       p_callConventionEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.CallingConventions.Instance;
       p_callConventionEnum : aliased VARIANT := To_Variant (CreateEnum (p_callConventionEnumType, callConvention'Enum_rep));
+      p3_Parameters : aliased LPSAFEARRAY := null;
+      p3_Bounds     : aliased SAFEARRAYBOUND := (types'Length , 0);
+      p3_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p3_Tmp        : aliased NetFrameworkBase.System.Type_x.Kind_Ptr;
+      p3_Tmp_Ptr    : access NetFrameworkBase.System.Type_x.Kind_Ptr := p3_Tmp'access;
+      p4_Parameters : aliased LPSAFEARRAY := null;
+      p4_Bounds     : aliased SAFEARRAYBOUND := (modifiers'Length , 0);
+      p4_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p4_Tmp        : aliased NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Ptr;
+      p4_Tmp_Ptr    : access NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Ptr := p4_Tmp'access;
       RetVal        : NetFrameworkBase.System.Reflection.ConstructorInfo.Kind_Ptr := new NetFrameworkBase.System.Reflection.ConstructorInfo.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1125,17 +1147,19 @@ package body NetFrameworkBase.System.Type_x is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 3;
-      -- fixme parameter type := System.Type[]
+      -- fixme parameter type := [array] System.Type[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 4;
-      -- fixme parameter type := System.Reflection.ParameterModifier[]
+      -- fixme parameter type := [array] System.Reflection.ParameterModifier[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      Hr := SafeArrayDestroy (p3_Parameters);
+      Hr := SafeArrayDestroy (p4_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;
@@ -1163,6 +1187,16 @@ package body NetFrameworkBase.System.Type_x is
       p_RetVal      : aliased VARIANT;
       p_bindingAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
       p_bindingAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_bindingAttrEnumType, bindingAttr'Enum_rep));
+      p2_Parameters : aliased LPSAFEARRAY := null;
+      p2_Bounds     : aliased SAFEARRAYBOUND := (types'Length , 0);
+      p2_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p2_Tmp        : aliased NetFrameworkBase.System.Type_x.Kind_Ptr;
+      p2_Tmp_Ptr    : access NetFrameworkBase.System.Type_x.Kind_Ptr := p2_Tmp'access;
+      p3_Parameters : aliased LPSAFEARRAY := null;
+      p3_Bounds     : aliased SAFEARRAYBOUND := (modifiers'Length , 0);
+      p3_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p3_Tmp        : aliased NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Ptr;
+      p3_Tmp_Ptr    : access NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Ptr := p3_Tmp'access;
       RetVal        : NetFrameworkBase.System.Reflection.ConstructorInfo.Kind_Ptr := new NetFrameworkBase.System.Reflection.ConstructorInfo.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1179,17 +1213,19 @@ package body NetFrameworkBase.System.Type_x is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
-      -- fixme parameter type := System.Type[]
+      -- fixme parameter type := [array] System.Type[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 3;
-      -- fixme parameter type := System.Reflection.ParameterModifier[]
+      -- fixme parameter type := [array] System.Reflection.ParameterModifier[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      Hr := SafeArrayDestroy (p2_Parameters);
+      Hr := SafeArrayDestroy (p3_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;
@@ -1212,6 +1248,11 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetConstructor");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (types'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.System.Type_x.Kind_Ptr;
+      p0_Tmp_Ptr    : access NetFrameworkBase.System.Type_x.Kind_Ptr := p0_Tmp'access;
       RetVal        : NetFrameworkBase.System.Reflection.ConstructorInfo.Kind_Ptr := new NetFrameworkBase.System.Reflection.ConstructorInfo.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1220,13 +1261,14 @@ package body NetFrameworkBase.System.Type_x is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Type[]
+      -- fixme parameter type := [array] System.Type[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;
@@ -1339,6 +1381,16 @@ package body NetFrameworkBase.System.Type_x is
       p_bindingAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_bindingAttrEnumType, bindingAttr'Enum_rep));
       p_callConventionEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.CallingConventions.Instance;
       p_callConventionEnum : aliased VARIANT := To_Variant (CreateEnum (p_callConventionEnumType, callConvention'Enum_rep));
+      p4_Parameters : aliased LPSAFEARRAY := null;
+      p4_Bounds     : aliased SAFEARRAYBOUND := (types'Length , 0);
+      p4_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p4_Tmp        : aliased NetFrameworkBase.System.Type_x.Kind_Ptr;
+      p4_Tmp_Ptr    : access NetFrameworkBase.System.Type_x.Kind_Ptr := p4_Tmp'access;
+      p5_Parameters : aliased LPSAFEARRAY := null;
+      p5_Bounds     : aliased SAFEARRAYBOUND := (modifiers'Length , 0);
+      p5_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p5_Tmp        : aliased NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Ptr;
+      p5_Tmp_Ptr    : access NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Ptr := p5_Tmp'access;
       RetVal        : NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr := new NetFrameworkBase.System.Reflection.MethodInfo.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1363,17 +1415,19 @@ package body NetFrameworkBase.System.Type_x is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 4;
-      -- fixme parameter type := System.Type[]
+      -- fixme parameter type := [array] System.Type[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 5;
-      -- fixme parameter type := System.Reflection.ParameterModifier[]
+      -- fixme parameter type := [array] System.Reflection.ParameterModifier[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      Hr := SafeArrayDestroy (p4_Parameters);
+      Hr := SafeArrayDestroy (p5_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;
@@ -1402,6 +1456,16 @@ package body NetFrameworkBase.System.Type_x is
       p_RetVal      : aliased VARIANT;
       p_bindingAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
       p_bindingAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_bindingAttrEnumType, bindingAttr'Enum_rep));
+      p3_Parameters : aliased LPSAFEARRAY := null;
+      p3_Bounds     : aliased SAFEARRAYBOUND := (types'Length , 0);
+      p3_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p3_Tmp        : aliased NetFrameworkBase.System.Type_x.Kind_Ptr;
+      p3_Tmp_Ptr    : access NetFrameworkBase.System.Type_x.Kind_Ptr := p3_Tmp'access;
+      p4_Parameters : aliased LPSAFEARRAY := null;
+      p4_Bounds     : aliased SAFEARRAYBOUND := (modifiers'Length , 0);
+      p4_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p4_Tmp        : aliased NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Ptr;
+      p4_Tmp_Ptr    : access NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Ptr := p4_Tmp'access;
       RetVal        : NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr := new NetFrameworkBase.System.Reflection.MethodInfo.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1422,17 +1486,19 @@ package body NetFrameworkBase.System.Type_x is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 3;
-      -- fixme parameter type := System.Type[]
+      -- fixme parameter type := [array] System.Type[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 4;
-      -- fixme parameter type := System.Reflection.ParameterModifier[]
+      -- fixme parameter type := [array] System.Reflection.ParameterModifier[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      Hr := SafeArrayDestroy (p3_Parameters);
+      Hr := SafeArrayDestroy (p4_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;
@@ -1457,6 +1523,16 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetMethod");
       p_RetVal      : aliased VARIANT;
+      p1_Parameters : aliased LPSAFEARRAY := null;
+      p1_Bounds     : aliased SAFEARRAYBOUND := (types'Length , 0);
+      p1_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p1_Tmp        : aliased NetFrameworkBase.System.Type_x.Kind_Ptr;
+      p1_Tmp_Ptr    : access NetFrameworkBase.System.Type_x.Kind_Ptr := p1_Tmp'access;
+      p2_Parameters : aliased LPSAFEARRAY := null;
+      p2_Bounds     : aliased SAFEARRAYBOUND := (modifiers'Length , 0);
+      p2_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p2_Tmp        : aliased NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Ptr;
+      p2_Tmp_Ptr    : access NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Ptr := p2_Tmp'access;
       RetVal        : NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr := new NetFrameworkBase.System.Reflection.MethodInfo.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1469,17 +1545,19 @@ package body NetFrameworkBase.System.Type_x is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      -- fixme parameter type := System.Type[]
+      -- fixme parameter type := [array] System.Type[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
-      -- fixme parameter type := System.Reflection.ParameterModifier[]
+      -- fixme parameter type := [array] System.Reflection.ParameterModifier[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      Hr := SafeArrayDestroy (p1_Parameters);
+      Hr := SafeArrayDestroy (p2_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;
@@ -1503,6 +1581,11 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetMethod");
       p_RetVal      : aliased VARIANT;
+      p1_Parameters : aliased LPSAFEARRAY := null;
+      p1_Bounds     : aliased SAFEARRAYBOUND := (types'Length , 0);
+      p1_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p1_Tmp        : aliased NetFrameworkBase.System.Type_x.Kind_Ptr;
+      p1_Tmp_Ptr    : access NetFrameworkBase.System.Type_x.Kind_Ptr := p1_Tmp'access;
       RetVal        : NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr := new NetFrameworkBase.System.Reflection.MethodInfo.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1515,13 +1598,14 @@ package body NetFrameworkBase.System.Type_x is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      -- fixme parameter type := System.Type[]
+      -- fixme parameter type := [array] System.Type[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      Hr := SafeArrayDestroy (p1_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;
@@ -1989,6 +2073,16 @@ package body NetFrameworkBase.System.Type_x is
       p_RetVal      : aliased VARIANT;
       p_bindingAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
       p_bindingAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_bindingAttrEnumType, bindingAttr'Enum_rep));
+      p4_Parameters : aliased LPSAFEARRAY := null;
+      p4_Bounds     : aliased SAFEARRAYBOUND := (types'Length , 0);
+      p4_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p4_Tmp        : aliased NetFrameworkBase.System.Type_x.Kind_Ptr;
+      p4_Tmp_Ptr    : access NetFrameworkBase.System.Type_x.Kind_Ptr := p4_Tmp'access;
+      p5_Parameters : aliased LPSAFEARRAY := null;
+      p5_Bounds     : aliased SAFEARRAYBOUND := (modifiers'Length , 0);
+      p5_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p5_Tmp        : aliased NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Ptr;
+      p5_Tmp_Ptr    : access NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Ptr := p5_Tmp'access;
       RetVal        : NetFrameworkBase.System.Reflection.PropertyInfo.Kind_Ptr := new NetFrameworkBase.System.Reflection.PropertyInfo.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -2013,17 +2107,19 @@ package body NetFrameworkBase.System.Type_x is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 4;
-      -- fixme parameter type := System.Type[]
+      -- fixme parameter type := [array] System.Type[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 5;
-      -- fixme parameter type := System.Reflection.ParameterModifier[]
+      -- fixme parameter type := [array] System.Reflection.ParameterModifier[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      Hr := SafeArrayDestroy (p4_Parameters);
+      Hr := SafeArrayDestroy (p5_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;
@@ -2049,6 +2145,16 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetProperty");
       p_RetVal      : aliased VARIANT;
+      p2_Parameters : aliased LPSAFEARRAY := null;
+      p2_Bounds     : aliased SAFEARRAYBOUND := (types'Length , 0);
+      p2_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p2_Tmp        : aliased NetFrameworkBase.System.Type_x.Kind_Ptr;
+      p2_Tmp_Ptr    : access NetFrameworkBase.System.Type_x.Kind_Ptr := p2_Tmp'access;
+      p3_Parameters : aliased LPSAFEARRAY := null;
+      p3_Bounds     : aliased SAFEARRAYBOUND := (modifiers'Length , 0);
+      p3_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p3_Tmp        : aliased NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Ptr;
+      p3_Tmp_Ptr    : access NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Ptr := p3_Tmp'access;
       RetVal        : NetFrameworkBase.System.Reflection.PropertyInfo.Kind_Ptr := new NetFrameworkBase.System.Reflection.PropertyInfo.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -2065,17 +2171,19 @@ package body NetFrameworkBase.System.Type_x is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
-      -- fixme parameter type := System.Type[]
+      -- fixme parameter type := [array] System.Type[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 3;
-      -- fixme parameter type := System.Reflection.ParameterModifier[]
+      -- fixme parameter type := [array] System.Reflection.ParameterModifier[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      Hr := SafeArrayDestroy (p2_Parameters);
+      Hr := SafeArrayDestroy (p3_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;
@@ -2144,6 +2252,11 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetProperty");
       p_RetVal      : aliased VARIANT;
+      p2_Parameters : aliased LPSAFEARRAY := null;
+      p2_Bounds     : aliased SAFEARRAYBOUND := (types'Length , 0);
+      p2_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p2_Tmp        : aliased NetFrameworkBase.System.Type_x.Kind_Ptr;
+      p2_Tmp_Ptr    : access NetFrameworkBase.System.Type_x.Kind_Ptr := p2_Tmp'access;
       RetVal        : NetFrameworkBase.System.Reflection.PropertyInfo.Kind_Ptr := new NetFrameworkBase.System.Reflection.PropertyInfo.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -2160,13 +2273,14 @@ package body NetFrameworkBase.System.Type_x is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
-      -- fixme parameter type := System.Type[]
+      -- fixme parameter type := [array] System.Type[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      Hr := SafeArrayDestroy (p2_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;
@@ -2190,6 +2304,11 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetProperty");
       p_RetVal      : aliased VARIANT;
+      p1_Parameters : aliased LPSAFEARRAY := null;
+      p1_Bounds     : aliased SAFEARRAYBOUND := (types'Length , 0);
+      p1_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p1_Tmp        : aliased NetFrameworkBase.System.Type_x.Kind_Ptr;
+      p1_Tmp_Ptr    : access NetFrameworkBase.System.Type_x.Kind_Ptr := p1_Tmp'access;
       RetVal        : NetFrameworkBase.System.Reflection.PropertyInfo.Kind_Ptr := new NetFrameworkBase.System.Reflection.PropertyInfo.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -2202,13 +2321,14 @@ package body NetFrameworkBase.System.Type_x is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      -- fixme parameter type := System.Type[]
+      -- fixme parameter type := [array] System.Type[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      Hr := SafeArrayDestroy (p1_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;
@@ -3938,6 +4058,11 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("MakeGenericType");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (typeArguments'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.System.Type_x.Kind_Ptr;
+      p0_Tmp_Ptr    : access NetFrameworkBase.System.Type_x.Kind_Ptr := p0_Tmp'access;
       RetVal        : NetFrameworkBase.System.Type_x.Kind_Ptr := new NetFrameworkBase.System.Type_x.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -3946,13 +4071,14 @@ package body NetFrameworkBase.System.Type_x is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Type[]
+      -- fixme parameter type := [array] System.Type[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;
@@ -4503,6 +4629,11 @@ package body NetFrameworkBase.System.Type_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetTypeArray");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (args'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.System.Object.Kind_Ptr;
+      p0_Tmp_Ptr    : access NetFrameworkBase.System.Object.Kind_Ptr := p0_Tmp'access;
    
       function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.System.Type_x.Kind_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
@@ -4545,12 +4676,13 @@ package body NetFrameworkBase.System.Type_x is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Object[]
+      -- fixme parameter type := [array] System.Object[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return GetArray (p_RetVal.field_1.field_1.field_1.parray);
@@ -4765,6 +4897,21 @@ package body NetFrameworkBase.System.Type_x is
       p_RetVal      : aliased VARIANT;
       p_invokeAttrEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Reflection.BindingFlags.Instance;
       p_invokeAttrEnum : aliased VARIANT := To_Variant (CreateEnum (p_invokeAttrEnumType, invokeAttr'Enum_rep));
+      p4_Parameters : aliased LPSAFEARRAY := null;
+      p4_Bounds     : aliased SAFEARRAYBOUND := (args'Length , 0);
+      p4_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p4_Tmp        : aliased NetFrameworkBase.System.Object.Kind_Ptr;
+      p4_Tmp_Ptr    : access NetFrameworkBase.System.Object.Kind_Ptr := p4_Tmp'access;
+      p5_Parameters : aliased LPSAFEARRAY := null;
+      p5_Bounds     : aliased SAFEARRAYBOUND := (modifiers'Length , 0);
+      p5_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p5_Tmp        : aliased NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Ptr;
+      p5_Tmp_Ptr    : access NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Ptr := p5_Tmp'access;
+      p7_Parameters : aliased LPSAFEARRAY := null;
+      p7_Bounds     : aliased SAFEARRAYBOUND := (namedParameters'Length , 0);
+      p7_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p7_Tmp        : aliased NetFrameworkBase.BSTR;
+      p7_Tmp_Ptr    : access NetFrameworkBase.BSTR := p7_Tmp'access;
       RetVal        : NetFrameworkBase.System.Object.Kind_Ptr := new NetFrameworkBase.System.Object.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -4789,11 +4936,11 @@ package body NetFrameworkBase.System.Type_x is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 4;
-      -- fixme parameter type := System.Object[]
+      -- fixme parameter type := [array] System.Object[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 5;
-      -- fixme parameter type := System.Reflection.ParameterModifier[]
+      -- fixme parameter type := [array] System.Reflection.ParameterModifier[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 6;
@@ -4801,13 +4948,29 @@ package body NetFrameworkBase.System.Type_x is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 7;
-      -- fixme parameter type := System.String[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.BSTR_Ptr, LPVOID);
+      begin
+         p7_Parameters := SafeArrayCreate (VT_BSTR'enum_rep, 1, p7_Bounds'access);
+         for i in namedParameters'range loop
+            p7_Index(1) := Interfaces.C.long(i) - 1;
+            p7_Tmp := namedParameters(i);
+            Hr := SafeArrayPutElement (p7_Parameters, p7_Index (p7_Index'first)'access, Convert (p7_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p7_Parameters, VT_BSTR);
+      end;
+      -- fixme parameter type := [array] [builtin] System.String[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      Hr := SafeArrayDestroy (p4_Parameters);
+      Hr := SafeArrayDestroy (p5_Parameters);
+      Hr := SafeArrayDestroy (p7_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;

@@ -404,7 +404,7 @@ package body NetFrameworkBase.System.Char is
       ------------------------------------------------------------
       p_Index(1) := 1;
       VariantInit (p_Value'access);
-      p_Value.field_1.field_1.vt := VT_UI1'Enum_rep;
+      p_Value.field_1.field_1.vt := VT_UI2'Enum_rep;
       -- parameter type := [out] [builtin] System.Char&
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    

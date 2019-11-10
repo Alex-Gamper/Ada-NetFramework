@@ -705,6 +705,11 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAll");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (tasks'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr;
+      p0_Tmp_Ptr    : access NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr := p0_Tmp'access;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -712,12 +717,13 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Threading.Tasks.Task[]
+      -- fixme parameter type := [array] System.Threading.Tasks.Task[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit (p_Target'access);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
    end;
@@ -739,6 +745,11 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAll");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (tasks'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr;
+      p0_Tmp_Ptr    : access NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr := p0_Tmp'access;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -747,7 +758,7 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Threading.Tasks.Task[]
+      -- fixme parameter type := [array] System.Threading.Tasks.Task[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -757,6 +768,7 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       VariantInit(p_Target'access);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -780,6 +792,11 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAll");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (tasks'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr;
+      p0_Tmp_Ptr    : access NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr := p0_Tmp'access;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -788,7 +805,7 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Threading.Tasks.Task[]
+      -- fixme parameter type := [array] System.Threading.Tasks.Task[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -798,6 +815,7 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       VariantInit(p_Target'access);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -821,6 +839,11 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAll");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (tasks'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr;
+      p0_Tmp_Ptr    : access NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr := p0_Tmp'access;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -828,7 +851,7 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Threading.Tasks.Task[]
+      -- fixme parameter type := [array] System.Threading.Tasks.Task[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -838,6 +861,7 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       VariantInit (p_Target'access);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
    end;
@@ -860,6 +884,11 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAll");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (tasks'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr;
+      p0_Tmp_Ptr    : access NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr := p0_Tmp'access;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -868,7 +897,7 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Threading.Tasks.Task[]
+      -- fixme parameter type := [array] System.Threading.Tasks.Task[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -882,6 +911,7 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       VariantInit(p_Target'access);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -904,6 +934,11 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAny");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (tasks'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr;
+      p0_Tmp_Ptr    : access NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr := p0_Tmp'access;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -912,12 +947,13 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Threading.Tasks.Task[]
+      -- fixme parameter type := [array] System.Threading.Tasks.Task[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -941,6 +977,11 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAny");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (tasks'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr;
+      p0_Tmp_Ptr    : access NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr := p0_Tmp'access;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -949,7 +990,7 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Threading.Tasks.Task[]
+      -- fixme parameter type := [array] System.Threading.Tasks.Task[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -959,6 +1000,7 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       VariantInit(p_Target'access);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -982,6 +1024,11 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAny");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (tasks'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr;
+      p0_Tmp_Ptr    : access NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr := p0_Tmp'access;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -990,7 +1037,7 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Threading.Tasks.Task[]
+      -- fixme parameter type := [array] System.Threading.Tasks.Task[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -1000,6 +1047,7 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       VariantInit(p_Target'access);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -1023,6 +1071,11 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAny");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (tasks'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr;
+      p0_Tmp_Ptr    : access NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr := p0_Tmp'access;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1031,7 +1084,7 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Threading.Tasks.Task[]
+      -- fixme parameter type := [array] System.Threading.Tasks.Task[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -1041,6 +1094,7 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       VariantInit(p_Target'access);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -1065,6 +1119,11 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAny");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (tasks'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr;
+      p0_Tmp_Ptr    : access NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr := p0_Tmp'access;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1073,7 +1132,7 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Threading.Tasks.Task[]
+      -- fixme parameter type := [array] System.Threading.Tasks.Task[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -1087,6 +1146,7 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       VariantInit(p_Target'access);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -1371,6 +1431,11 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WhenAll");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (tasks'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr;
+      p0_Tmp_Ptr    : access NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr := p0_Tmp'access;
       RetVal        : NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr := new NetFrameworkBase.System.Threading.Tasks.Task_x.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1379,13 +1444,14 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Threading.Tasks.Task[]
+      -- fixme parameter type := [array] System.Threading.Tasks.Task[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;

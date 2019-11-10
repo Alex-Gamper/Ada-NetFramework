@@ -123,7 +123,7 @@ package NetFrameworkBase.System.IO.FileStream is
       function Read
       (
          this : in out FileStream.Kind;
-         array_x : in out NetFrameworkBase.Byte_Array_Ptr;
+         array_x : in out NetFrameworkBase.Byte_Array;
          offset : NetFrameworkBase.Int32;
          count : NetFrameworkBase.Int32
       )

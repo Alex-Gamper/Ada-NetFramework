@@ -64,6 +64,7 @@ package NetFrameworkAdaRuntime is
     ----------------------------------------------------------------------------
 
     function To_Variant (Value : IUnknown_Ptr; ByRef : Standard.Boolean := False) return VARIANT;
+    function To_Variant (Value : IDispatch_Ptr; ByRef : Standard.Boolean := False) return VARIANT;
     function To_Variant (Value : UInt8; ByRef : Standard.Boolean := False) return VARIANT;
     function To_Variant (Value : UInt16; ByRef : Standard.Boolean := False) return VARIANT;
     function To_Variant (Value : UInt32; ByRef : Standard.Boolean := False) return VARIANT;
@@ -80,10 +81,12 @@ package NetFrameworkAdaRuntime is
     function To_Variant (Value : IntPtr; ByRef : Standard.Boolean := False) return VARIANT;
     function To_Variant (Value : UIntPtr; ByRef : Standard.Boolean := False) return VARIANT;
     function To_Variant (Value : Wide_Char; ByRef : Standard.Boolean := False) return VARIANT;
+    function To_Variant (Value : LPSAFEARRAY; MemberType : VARENUM) return VARIANT;
 
     ----------------------------------------------------------------------------
 
     function From_Variant (Value : VARIANT) return IUnknown_Ptr;
+    function From_Variant (Value : VARIANT) return IDispatch_Ptr;
     function From_Variant (Value : VARIANT) return UInt8;
     function From_Variant (Value : VARIANT) return UInt16;
     function From_Variant (Value : VARIANT) return UInt32;
@@ -100,6 +103,7 @@ package NetFrameworkAdaRuntime is
     function From_Variant (Value : VARIANT) return IntPtr;
     function From_Variant (Value : VARIANT) return UIntPtr;
     function From_Variant (Value : VARIANT) return Wide_Char;
+    function From_Variant (Value : VARIANT) return LPSAFEARRAY;
 
 
 	function To_Ada (Value : BSTR) return Wide_String;

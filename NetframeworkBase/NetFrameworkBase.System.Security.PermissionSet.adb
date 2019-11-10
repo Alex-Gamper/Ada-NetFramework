@@ -702,6 +702,11 @@ package body NetFrameworkBase.System.Security.PermissionSet is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ConvertPermissionSet");
       p_RetVal      : aliased VARIANT;
+      p1_Parameters : aliased LPSAFEARRAY := null;
+      p1_Bounds     : aliased SAFEARRAYBOUND := (inData'Length , 0);
+      p1_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p1_Tmp        : aliased NetFrameworkBase.Byte;
+      p1_Tmp_Ptr    : access NetFrameworkBase.Byte := p1_Tmp'access;
    
       function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.Byte_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
@@ -740,7 +745,20 @@ package body NetFrameworkBase.System.Security.PermissionSet is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      -- fixme parameter type := System.Byte[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.Byte_Ptr, LPVOID);
+      begin
+         p1_Parameters := SafeArrayCreate (VT_UI1'enum_rep, 1, p1_Bounds'access);
+         for i in inData'range loop
+            p1_Index(1) := Interfaces.C.long(i) - 1;
+            p1_Tmp := inData(i);
+            Hr := SafeArrayPutElement (p1_Parameters, p1_Index (p1_Index'first)'access, Convert (p1_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p1_Parameters, VT_UI1);
+      end;
+      -- fixme parameter type := [array] [builtin] System.Byte[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
@@ -750,6 +768,7 @@ package body NetFrameworkBase.System.Security.PermissionSet is
       VariantInit(p_Target'access);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p1_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return GetArray (p_RetVal.field_1.field_1.field_1.parray);

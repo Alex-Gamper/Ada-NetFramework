@@ -89,6 +89,11 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Join");
       p_RetVal      : aliased VARIANT;
+      p1_Parameters : aliased LPSAFEARRAY := null;
+      p1_Bounds     : aliased SAFEARRAYBOUND := (value'Length , 0);
+      p1_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p1_Tmp        : aliased NetFrameworkBase.BSTR;
+      p1_Tmp_Ptr    : access NetFrameworkBase.BSTR := p1_Tmp'access;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -101,12 +106,26 @@ package body NetFrameworkBase.System.String is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      -- fixme parameter type := System.String[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.BSTR_Ptr, LPVOID);
+      begin
+         p1_Parameters := SafeArrayCreate (VT_BSTR'enum_rep, 1, p1_Bounds'access);
+         for i in value'range loop
+            p1_Index(1) := Interfaces.C.long(i) - 1;
+            p1_Tmp := value(i);
+            Hr := SafeArrayPutElement (p1_Parameters, p1_Index (p1_Index'first)'access, Convert (p1_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p1_Parameters, VT_BSTR);
+      end;
+      -- fixme parameter type := [array] [builtin] System.String[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p1_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -130,6 +149,11 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Join");
       p_RetVal      : aliased VARIANT;
+      p1_Parameters : aliased LPSAFEARRAY := null;
+      p1_Bounds     : aliased SAFEARRAYBOUND := (values'Length , 0);
+      p1_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p1_Tmp        : aliased NetFrameworkBase.System.Object.Kind_Ptr;
+      p1_Tmp_Ptr    : access NetFrameworkBase.System.Object.Kind_Ptr := p1_Tmp'access;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -142,12 +166,13 @@ package body NetFrameworkBase.System.String is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      -- fixme parameter type := System.Object[]
+      -- fixme parameter type := [array] System.Object[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p1_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -173,6 +198,11 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Join");
       p_RetVal      : aliased VARIANT;
+      p1_Parameters : aliased LPSAFEARRAY := null;
+      p1_Bounds     : aliased SAFEARRAYBOUND := (value'Length , 0);
+      p1_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p1_Tmp        : aliased NetFrameworkBase.BSTR;
+      p1_Tmp_Ptr    : access NetFrameworkBase.BSTR := p1_Tmp'access;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -185,7 +215,20 @@ package body NetFrameworkBase.System.String is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      -- fixme parameter type := System.String[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.BSTR_Ptr, LPVOID);
+      begin
+         p1_Parameters := SafeArrayCreate (VT_BSTR'enum_rep, 1, p1_Bounds'access);
+         for i in value'range loop
+            p1_Index(1) := Interfaces.C.long(i) - 1;
+            p1_Tmp := value(i);
+            Hr := SafeArrayPutElement (p1_Parameters, p1_Index (p1_Index'first)'access, Convert (p1_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p1_Parameters, VT_BSTR);
+      end;
+      -- fixme parameter type := [array] [builtin] System.String[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
@@ -199,6 +242,7 @@ package body NetFrameworkBase.System.String is
       VariantInit(p_Target'access);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p1_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -513,6 +557,11 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("CopyTo");
       p_RetVal      : aliased VARIANT;
+      p1_Parameters : aliased LPSAFEARRAY := null;
+      p1_Bounds     : aliased SAFEARRAYBOUND := (destination'Length , 0);
+      p1_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p1_Tmp        : aliased NetFrameworkBase.Wide_Char;
+      p1_Tmp_Ptr    : access NetFrameworkBase.Wide_Char := p1_Tmp'access;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -524,7 +573,20 @@ package body NetFrameworkBase.System.String is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      -- fixme parameter type := System.Char[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.Wide_Char_Ptr, LPVOID);
+      begin
+         p1_Parameters := SafeArrayCreate (VT_UI2'enum_rep, 1, p1_Bounds'access);
+         for i in destination'range loop
+            p1_Index(1) := Interfaces.C.long(i) - 1;
+            p1_Tmp := destination(i);
+            Hr := SafeArrayPutElement (p1_Parameters, p1_Index (p1_Index'first)'access, Convert (p1_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p1_Parameters, VT_UI2);
+      end;
+      -- fixme parameter type := [array] [builtin] System.Char[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
@@ -538,6 +600,7 @@ package body NetFrameworkBase.System.String is
       p_Target := GetObject (this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p1_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
    end;
@@ -771,6 +834,11 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Split");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (separator'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.Wide_Char;
+      p0_Tmp_Ptr    : access NetFrameworkBase.Wide_Char := p0_Tmp'access;
    
       function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.BSTR_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
@@ -805,12 +873,26 @@ package body NetFrameworkBase.System.String is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Char[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.Wide_Char_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_UI2'enum_rep, 1, p0_Bounds'access);
+         for i in separator'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := separator(i);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_UI2);
+      end;
+      -- fixme parameter type := [array] [builtin] System.Char[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return GetArray (p_RetVal.field_1.field_1.field_1.parray);
@@ -834,6 +916,11 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Split");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (separator'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.Wide_Char;
+      p0_Tmp_Ptr    : access NetFrameworkBase.Wide_Char := p0_Tmp'access;
    
       function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.BSTR_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
@@ -868,7 +955,20 @@ package body NetFrameworkBase.System.String is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Char[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.Wide_Char_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_UI2'enum_rep, 1, p0_Bounds'access);
+         for i in separator'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := separator(i);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_UI2);
+      end;
+      -- fixme parameter type := [array] [builtin] System.Char[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -878,6 +978,7 @@ package body NetFrameworkBase.System.String is
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return GetArray (p_RetVal.field_1.field_1.field_1.parray);
@@ -901,6 +1002,11 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Split");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (separator'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.Wide_Char;
+      p0_Tmp_Ptr    : access NetFrameworkBase.Wide_Char := p0_Tmp'access;
       p_optionsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.StringSplitOptions.Instance;
       p_optionsEnum : aliased VARIANT := To_Variant (CreateEnum (p_optionsEnumType, options'Enum_rep));
    
@@ -937,7 +1043,20 @@ package body NetFrameworkBase.System.String is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Char[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.Wide_Char_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_UI2'enum_rep, 1, p0_Bounds'access);
+         for i in separator'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := separator(i);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_UI2);
+      end;
+      -- fixme parameter type := [array] [builtin] System.Char[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -947,6 +1066,7 @@ package body NetFrameworkBase.System.String is
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return GetArray (p_RetVal.field_1.field_1.field_1.parray);
@@ -971,6 +1091,11 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Split");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (separator'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.Wide_Char;
+      p0_Tmp_Ptr    : access NetFrameworkBase.Wide_Char := p0_Tmp'access;
       p_optionsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.StringSplitOptions.Instance;
       p_optionsEnum : aliased VARIANT := To_Variant (CreateEnum (p_optionsEnumType, options'Enum_rep));
    
@@ -1007,7 +1132,20 @@ package body NetFrameworkBase.System.String is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Char[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.Wide_Char_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_UI2'enum_rep, 1, p0_Bounds'access);
+         for i in separator'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := separator(i);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_UI2);
+      end;
+      -- fixme parameter type := [array] [builtin] System.Char[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -1021,6 +1159,7 @@ package body NetFrameworkBase.System.String is
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return GetArray (p_RetVal.field_1.field_1.field_1.parray);
@@ -1044,6 +1183,11 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Split");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (separator'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.BSTR;
+      p0_Tmp_Ptr    : access NetFrameworkBase.BSTR := p0_Tmp'access;
       p_optionsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.StringSplitOptions.Instance;
       p_optionsEnum : aliased VARIANT := To_Variant (CreateEnum (p_optionsEnumType, options'Enum_rep));
    
@@ -1080,7 +1224,20 @@ package body NetFrameworkBase.System.String is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.String[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.BSTR_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_BSTR'enum_rep, 1, p0_Bounds'access);
+         for i in separator'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := separator(i);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_BSTR);
+      end;
+      -- fixme parameter type := [array] [builtin] System.String[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -1090,6 +1247,7 @@ package body NetFrameworkBase.System.String is
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return GetArray (p_RetVal.field_1.field_1.field_1.parray);
@@ -1114,6 +1272,11 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Split");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (separator'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.BSTR;
+      p0_Tmp_Ptr    : access NetFrameworkBase.BSTR := p0_Tmp'access;
       p_optionsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.StringSplitOptions.Instance;
       p_optionsEnum : aliased VARIANT := To_Variant (CreateEnum (p_optionsEnumType, options'Enum_rep));
    
@@ -1150,7 +1313,20 @@ package body NetFrameworkBase.System.String is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.String[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.BSTR_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_BSTR'enum_rep, 1, p0_Bounds'access);
+         for i in separator'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := separator(i);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_BSTR);
+      end;
+      -- fixme parameter type := [array] [builtin] System.String[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -1164,6 +1340,7 @@ package body NetFrameworkBase.System.String is
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return GetArray (p_RetVal.field_1.field_1.field_1.parray);
@@ -1265,6 +1442,11 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Trim");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (trimChars'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.Wide_Char;
+      p0_Tmp_Ptr    : access NetFrameworkBase.Wide_Char := p0_Tmp'access;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1273,12 +1455,26 @@ package body NetFrameworkBase.System.String is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Char[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.Wide_Char_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_UI2'enum_rep, 1, p0_Bounds'access);
+         for i in trimChars'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := trimChars(i);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_UI2);
+      end;
+      -- fixme parameter type := [array] [builtin] System.Char[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -1302,6 +1498,11 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("TrimStart");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (trimChars'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.Wide_Char;
+      p0_Tmp_Ptr    : access NetFrameworkBase.Wide_Char := p0_Tmp'access;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1310,12 +1511,26 @@ package body NetFrameworkBase.System.String is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Char[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.Wide_Char_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_UI2'enum_rep, 1, p0_Bounds'access);
+         for i in trimChars'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := trimChars(i);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_UI2);
+      end;
+      -- fixme parameter type := [array] [builtin] System.Char[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -1339,6 +1554,11 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("TrimEnd");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (trimChars'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.Wide_Char;
+      p0_Tmp_Ptr    : access NetFrameworkBase.Wide_Char := p0_Tmp'access;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1347,12 +1567,26 @@ package body NetFrameworkBase.System.String is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Char[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.Wide_Char_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_UI2'enum_rep, 1, p0_Bounds'access);
+         for i in trimChars'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := trimChars(i);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_UI2);
+      end;
+      -- fixme parameter type := [array] [builtin] System.Char[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -2470,6 +2704,11 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("IndexOfAny");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (anyOf'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.Wide_Char;
+      p0_Tmp_Ptr    : access NetFrameworkBase.Wide_Char := p0_Tmp'access;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -2478,12 +2717,26 @@ package body NetFrameworkBase.System.String is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Char[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.Wide_Char_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_UI2'enum_rep, 1, p0_Bounds'access);
+         for i in anyOf'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := anyOf(i);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_UI2);
+      end;
+      -- fixme parameter type := [array] [builtin] System.Char[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -2508,6 +2761,11 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("IndexOfAny");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (anyOf'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.Wide_Char;
+      p0_Tmp_Ptr    : access NetFrameworkBase.Wide_Char := p0_Tmp'access;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -2516,7 +2774,20 @@ package body NetFrameworkBase.System.String is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Char[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.Wide_Char_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_UI2'enum_rep, 1, p0_Bounds'access);
+         for i in anyOf'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := anyOf(i);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_UI2);
+      end;
+      -- fixme parameter type := [array] [builtin] System.Char[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -2526,6 +2797,7 @@ package body NetFrameworkBase.System.String is
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -2901,6 +3173,11 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("LastIndexOfAny");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (anyOf'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.Wide_Char;
+      p0_Tmp_Ptr    : access NetFrameworkBase.Wide_Char := p0_Tmp'access;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -2909,12 +3186,26 @@ package body NetFrameworkBase.System.String is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Char[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.Wide_Char_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_UI2'enum_rep, 1, p0_Bounds'access);
+         for i in anyOf'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := anyOf(i);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_UI2);
+      end;
+      -- fixme parameter type := [array] [builtin] System.Char[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -2939,6 +3230,11 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("LastIndexOfAny");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (anyOf'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.Wide_Char;
+      p0_Tmp_Ptr    : access NetFrameworkBase.Wide_Char := p0_Tmp'access;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -2947,7 +3243,20 @@ package body NetFrameworkBase.System.String is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Char[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.Wide_Char_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_UI2'enum_rep, 1, p0_Bounds'access);
+         for i in anyOf'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := anyOf(i);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_UI2);
+      end;
+      -- fixme parameter type := [array] [builtin] System.Char[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -2957,6 +3266,7 @@ package body NetFrameworkBase.System.String is
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -4527,6 +4837,11 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Concat");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (args'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.System.Object.Kind_Ptr;
+      p0_Tmp_Ptr    : access NetFrameworkBase.System.Object.Kind_Ptr := p0_Tmp'access;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -4535,12 +4850,13 @@ package body NetFrameworkBase.System.String is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Object[]
+      -- fixme parameter type := [array] System.Object[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -4701,6 +5017,11 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Concat");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (values'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.BSTR;
+      p0_Tmp_Ptr    : access NetFrameworkBase.BSTR := p0_Tmp'access;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -4709,12 +5030,26 @@ package body NetFrameworkBase.System.String is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.String[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.BSTR_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_BSTR'enum_rep, 1, p0_Bounds'access);
+         for i in values'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := values(i);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_BSTR);
+      end;
+      -- fixme parameter type := [array] [builtin] System.String[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -4969,6 +5304,11 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("IndexOfAny");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (anyOf'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.Wide_Char;
+      p0_Tmp_Ptr    : access NetFrameworkBase.Wide_Char := p0_Tmp'access;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -4977,7 +5317,20 @@ package body NetFrameworkBase.System.String is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Char[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.Wide_Char_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_UI2'enum_rep, 1, p0_Bounds'access);
+         for i in anyOf'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := anyOf(i);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_UI2);
+      end;
+      -- fixme parameter type := [array] [builtin] System.Char[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -4991,6 +5344,7 @@ package body NetFrameworkBase.System.String is
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -5063,6 +5417,11 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("LastIndexOfAny");
       p_RetVal      : aliased VARIANT;
+      p0_Parameters : aliased LPSAFEARRAY := null;
+      p0_Bounds     : aliased SAFEARRAYBOUND := (anyOf'Length , 0);
+      p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p0_Tmp        : aliased NetFrameworkBase.Wide_Char;
+      p0_Tmp_Ptr    : access NetFrameworkBase.Wide_Char := p0_Tmp'access;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -5071,7 +5430,20 @@ package body NetFrameworkBase.System.String is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
-      -- fixme parameter type := System.Char[]
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.Wide_Char_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_UI2'enum_rep, 1, p0_Bounds'access);
+         for i in anyOf'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := anyOf(i);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp_Ptr));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_UI2);
+      end;
+      -- fixme parameter type := [array] [builtin] System.Char[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -5085,6 +5457,7 @@ package body NetFrameworkBase.System.String is
       p_Target := GetObject(this.m_kind);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -5108,6 +5481,11 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Format");
       p_RetVal      : aliased VARIANT;
+      p1_Parameters : aliased LPSAFEARRAY := null;
+      p1_Bounds     : aliased SAFEARRAYBOUND := (args'Length , 0);
+      p1_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p1_Tmp        : aliased NetFrameworkBase.System.Object.Kind_Ptr;
+      p1_Tmp_Ptr    : access NetFrameworkBase.System.Object.Kind_Ptr := p1_Tmp'access;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -5120,12 +5498,13 @@ package body NetFrameworkBase.System.String is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
-      -- fixme parameter type := System.Object[]
+      -- fixme parameter type := [array] System.Object[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p1_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -5150,6 +5529,11 @@ package body NetFrameworkBase.System.String is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Format");
       p_RetVal      : aliased VARIANT;
+      p2_Parameters : aliased LPSAFEARRAY := null;
+      p2_Bounds     : aliased SAFEARRAYBOUND := (args'Length , 0);
+      p2_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+      p2_Tmp        : aliased NetFrameworkBase.System.Object.Kind_Ptr;
+      p2_Tmp_Ptr    : access NetFrameworkBase.System.Object.Kind_Ptr := p2_Tmp'access;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -5167,12 +5551,13 @@ package body NetFrameworkBase.System.String is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 2;
-      -- fixme parameter type := System.Object[]
+      -- fixme parameter type := [array] System.Object[]
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
       p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
+      Hr := SafeArrayDestroy (p2_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -5372,11 +5757,29 @@ package body NetFrameworkBase.System.String is
          p_Value       : aliased VARIANT;
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
+         p0_Parameters : aliased LPSAFEARRAY := null;
+         p0_Bounds     : aliased SAFEARRAYBOUND := (value'Length , 0);
+         p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+         p0_Tmp        : aliased NetFrameworkBase.Wide_Char;
+         p0_Tmp_Ptr    : access NetFrameworkBase.Wide_Char := p0_Tmp'access;
       begin
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
-         -- fixme parameter type := System.Char[]
+         declare
+            use Interfaces.C;
+            function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.Wide_Char_Ptr, LPVOID);
+         begin
+            p0_Parameters := SafeArrayCreate (VT_UI2'enum_rep, 1, p0_Bounds'access);
+            for i in value'range loop
+               p0_Index(1) := Interfaces.C.long(i) - 1;
+               p0_Tmp := value(i);
+               Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp_Ptr));
+            end loop;
+            p_Value := To_Variant (p0_Parameters, VT_UI2);
+         end;
+         -- fixme parameter type := [array] [builtin] System.Char[]
+      
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 1;
@@ -5387,6 +5790,7 @@ package body NetFrameworkBase.System.String is
          p_Value := To_Variant(length);
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
+         Hr := SafeArrayDestroy (p0_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;
@@ -5408,13 +5812,32 @@ package body NetFrameworkBase.System.String is
          p_Value       : aliased VARIANT;
          p_Value_Ptr   : access VARIANT := p_Value'access;
          p_Flags       : aliased NetFrameworkBase.UInt32 := 0;
+         p0_Parameters : aliased LPSAFEARRAY := null;
+         p0_Bounds     : aliased SAFEARRAYBOUND := (value'Length , 0);
+         p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
+         p0_Tmp        : aliased NetFrameworkBase.Wide_Char;
+         p0_Tmp_Ptr    : access NetFrameworkBase.Wide_Char := p0_Tmp'access;
       begin
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
-         -- fixme parameter type := System.Char[]
+         declare
+            use Interfaces.C;
+            function Convert is new Ada.Unchecked_Conversion (NetFrameworkBase.Wide_Char_Ptr, LPVOID);
+         begin
+            p0_Parameters := SafeArrayCreate (VT_UI2'enum_rep, 1, p0_Bounds'access);
+            for i in value'range loop
+               p0_Index(1) := Interfaces.C.long(i) - 1;
+               p0_Tmp := value(i);
+               Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp_Ptr));
+            end loop;
+            p_Value := To_Variant (p0_Parameters, VT_UI2);
+         end;
+         -- fixme parameter type := [array] [builtin] System.Char[]
+      
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
+         Hr := SafeArrayDestroy (p0_Parameters);
          Hr := SafeArrayDestroy(p_Parameters);
       end;
       end return;

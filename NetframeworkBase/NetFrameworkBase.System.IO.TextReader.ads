@@ -61,7 +61,7 @@ package NetFrameworkBase.System.IO.TextReader is
       function Read
       (
          this : in out TextReader.Kind;
-         buffer : in out NetFrameworkBase.Wide_Char_Array_Ptr;
+         buffer : in out NetFrameworkBase.Wide_Char_Array;
          index : NetFrameworkBase.Int32;
          count : NetFrameworkBase.Int32
       )
@@ -76,7 +76,7 @@ package NetFrameworkBase.System.IO.TextReader is
       function ReadBlock
       (
          this : in out TextReader.Kind;
-         buffer : in out NetFrameworkBase.Wide_Char_Array_Ptr;
+         buffer : in out NetFrameworkBase.Wide_Char_Array;
          index : NetFrameworkBase.Int32;
          count : NetFrameworkBase.Int32
       )

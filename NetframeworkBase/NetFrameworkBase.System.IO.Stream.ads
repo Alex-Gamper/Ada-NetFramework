@@ -262,7 +262,7 @@ package NetFrameworkBase.System.IO.Stream is
       function Read
       (
          this : in out Stream.Kind;
-         buffer : in out NetFrameworkBase.Byte_Array_Ptr;
+         buffer : in out NetFrameworkBase.Byte_Array;
          offset : NetFrameworkBase.Int32;
          count : NetFrameworkBase.Int32
       )

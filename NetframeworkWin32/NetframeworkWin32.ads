@@ -244,6 +244,8 @@ package NetFrameworkWin32 is
 
    type IDispatch;
    type IDispatch_Ptr is access all IDispatch'Class;
+   IID_IDispatch : aliased constant IID;
+   pragma import (C,IID_IDispatch,"IID_IDispatch");
 
    type IRecordInfo;
    type IRecordInfo_Ptr is access all IRecordInfo'Class;
