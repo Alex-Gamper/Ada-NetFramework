@@ -80,7 +80,7 @@ package body NetFrameworkBase.System.Reflection.MethodBody is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -104,7 +104,7 @@ package body NetFrameworkBase.System.Reflection.MethodBody is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -128,7 +128,7 @@ package body NetFrameworkBase.System.Reflection.MethodBody is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -178,7 +178,7 @@ package body NetFrameworkBase.System.Reflection.MethodBody is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       return GetArray (p_RetVal.field_1.field_1.field_1.parray);

@@ -48,6 +48,7 @@ package NetFrameworkAdaRuntime is
 
     ----------------------------------------------------------------------------
 
+    function InvokeMethod (kind : IType_ptr; Object : VARIANT ; MethodName : BSTR ; Flags : UInt32 ; Parameters : access SAFEARRAY) return VARIANT;
     function CreateEnum (Kind : IType_Ptr; Value : Integer) return IUnknown_Ptr;
 
     ----------------------------------------------------------------------------
@@ -58,8 +59,8 @@ package NetFrameworkAdaRuntime is
     Assembly_Already_Loaded     : exception;
     Type_Not_Initialized        : exception;
     Type_Already_Initialized    : exception;
-
-    CallMethod_Failed           : exception;
+    CreateInstance_Failed       : exception;
+    InvokeMethod_Failed         : exception;
 
     ----------------------------------------------------------------------------
 
@@ -111,7 +112,6 @@ package NetFrameworkAdaRuntime is
     
     ----------------------------------------------------------------------------
 
-    function CallMethod (kind : IType_ptr; Object : VARIANT ; MethodName : BSTR ; Flags : UInt32 ; Parameters : access SAFEARRAY) return VARIANT;
     procedure OutputDebugString (OutputString : Standard.String);
 
 --------------------------------------------------------------------------------

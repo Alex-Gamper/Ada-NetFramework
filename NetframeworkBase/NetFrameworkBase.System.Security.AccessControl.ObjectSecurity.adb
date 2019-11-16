@@ -102,7 +102,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -137,7 +137,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -172,7 +172,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -207,7 +207,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -240,7 +240,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -273,7 +273,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -296,7 +296,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -335,7 +335,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -358,7 +358,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -397,7 +397,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -420,7 +420,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -444,7 +444,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -465,7 +465,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Static)'Enum_rep;
    
       VariantInit (p_Target'access);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -503,7 +503,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -538,7 +538,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -578,7 +578,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -627,7 +627,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       return GetArray (p_RetVal.field_1.field_1.field_1.parray);
@@ -673,12 +673,11 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
          end loop;
          p_Value := To_Variant (p0_Parameters, VT_UI1);
       end;
-      -- fixme parameter type := [array] [builtin] System.Byte[]
    
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -728,7 +727,6 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
          end loop;
          p_Value := To_Variant (p0_Parameters, VT_UI1);
       end;
-      -- fixme parameter type := [array] [builtin] System.Byte[]
    
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
@@ -737,7 +735,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -787,7 +785,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       -- set out parameter [modified : System.Boolean]
       p_Index(1) := 2;
@@ -842,7 +840,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       -- set out parameter [modified : System.Boolean]
       p_Index(1) := 2;
@@ -871,7 +869,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SysFreeString (p_MethodName);
@@ -895,7 +893,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SysFreeString (p_MethodName);
@@ -919,7 +917,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SysFreeString (p_MethodName);
@@ -986,7 +984,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -1054,7 +1052,7 @@ package body NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       Hr := SafeArrayDestroy (p_Parameters);

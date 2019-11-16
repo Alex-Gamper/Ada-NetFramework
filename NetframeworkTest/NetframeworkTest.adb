@@ -198,17 +198,23 @@ begin
         end;
 
         ------------------------------------------------------------------------
-        procedure Test_Builtin_Array is
+        procedure Test_Array is
             m_Object        : NetFramework.System.Object := NetFramework.System.Constructor;
             m_Type          : NetFramework.System.Type_x := m_Object.GetType;
             m_Lengths       : NetFrameworkBase.Int32_array(1..1) := (others => 16);
             m_Array         : NetFramework.System.Array_x := NetFrameworkBase.System.Array_x.CreateInstance (m_Type, m_Lengths);
-
---            m_Value     : NetFrameworkBase.Wide_Char_Array(1..16) := (others => 'x');
---            m_String    : NetFramework.System.String := NetFramework.System.Constructor (m_Value); --method not found ??
---            m_Length    : NetFramework.Int32;
         begin
-            -- NetFrameworkBase.System.Console.Write (m_Value, 0, 8);
+            NetFrameworkBase.System.Console.WriteLine (m_Object.ToString);
+            NetFrameworkBase.System.Console.WriteLine (m_Type.ToString);
+            NetFrameworkBase.System.Console.WriteLine (m_Array.ToString);
+        end;
+
+        ------------------------------------------------------------------------
+        procedure Test_Builtin_Array is
+            m_Value     : NetFrameworkBase.Wide_Char_Array(1..16) := (others => 'x');
+            m_String    : NetFramework.System.String := NetFramework.System.Constructor (m_Value); --method not found ??
+            m_Length    : NetFramework.Int32;
+        begin
             null;
         end;
 
@@ -216,17 +222,18 @@ begin
 
     begin
 
-        Test_Statics;
-        Test_ValueTypes_Builtin;
-        Test_ValueTypes_Instance;
-        Test_ValueTypes_Arrays;
-        Test_RefenceType_Out_Param;
-        Test_Enum_In_Param;
-        Test_Enum_ReturnType;
-        Test_Enum_Out_Param;
-        Test_Constructors;
-        Test_Callbacks;
-        Test_Interface_Out_Param;
+--        Test_Statics;
+--        Test_ValueTypes_Builtin;
+--        Test_ValueTypes_Instance;
+--        Test_ValueTypes_Arrays;
+--        Test_RefenceType_Out_Param;
+--        Test_Enum_In_Param;
+--        Test_Enum_ReturnType;
+--        Test_Enum_Out_Param;
+--        Test_Constructors;
+--        Test_Callbacks;
+--        Test_Interface_Out_Param;
+--        Test_Array;
         Test_Builtin_Array;
 
         x := NetFrameworkBase.System.Console.ReadLine;

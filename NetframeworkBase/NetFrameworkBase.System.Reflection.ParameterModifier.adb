@@ -92,7 +92,7 @@ package body NetFrameworkBase.System.Reflection.ParameterModifier is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -132,7 +132,7 @@ package body NetFrameworkBase.System.Reflection.ParameterModifier is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);

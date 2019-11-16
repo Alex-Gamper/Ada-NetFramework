@@ -147,12 +147,11 @@ package body NetFrameworkBase.System.Text.Encoding is
          end loop;
          p_Value := To_Variant (p2_Parameters, VT_UI1);
       end;
-      -- fixme parameter type := [array] [builtin] System.Byte[]
    
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p2_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -187,7 +186,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit (p_Target'access);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -221,7 +220,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -267,7 +266,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -303,7 +302,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -349,7 +348,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -405,7 +404,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Static)'Enum_rep;
    
       VariantInit (p_Target'access);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       return GetArray (p_RetVal.field_1.field_1.field_1.parray);
@@ -454,7 +453,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       return GetArray (p_RetVal.field_1.field_1.field_1.parray);
@@ -477,7 +476,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -501,7 +500,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -525,7 +524,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -549,7 +548,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -573,7 +572,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -597,7 +596,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -621,7 +620,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -645,7 +644,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -669,7 +668,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -693,7 +692,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SysFreeString (p_MethodName);
@@ -727,7 +726,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -750,7 +749,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SysFreeString (p_MethodName);
@@ -784,7 +783,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -807,7 +806,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SysFreeString (p_MethodName);
@@ -831,7 +830,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -852,7 +851,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Static)'Enum_rep;
    
       VariantInit (p_Target'access);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SysFreeString (p_MethodName);
@@ -901,12 +900,11 @@ package body NetFrameworkBase.System.Text.Encoding is
          end loop;
          p_Value := To_Variant (p0_Parameters, VT_UI2);
       end;
-      -- fixme parameter type := [array] [builtin] System.Char[]
    
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -944,7 +942,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -986,7 +984,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1062,12 +1060,11 @@ package body NetFrameworkBase.System.Text.Encoding is
          end loop;
          p_Value := To_Variant (p0_Parameters, VT_UI2);
       end;
-      -- fixme parameter type := [array] [builtin] System.Char[]
    
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -1145,7 +1142,6 @@ package body NetFrameworkBase.System.Text.Encoding is
          end loop;
          p_Value := To_Variant (p0_Parameters, VT_UI2);
       end;
-      -- fixme parameter type := [array] [builtin] System.Char[]
    
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
@@ -1158,7 +1154,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -1221,7 +1217,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1286,7 +1282,6 @@ package body NetFrameworkBase.System.Text.Encoding is
          end loop;
          p_Value := To_Variant (p3_Parameters, VT_UI1);
       end;
-      -- fixme parameter type := [array] [builtin] System.Byte[]
    
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
@@ -1295,7 +1290,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p3_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -1346,12 +1341,11 @@ package body NetFrameworkBase.System.Text.Encoding is
          end loop;
          p_Value := To_Variant (p0_Parameters, VT_UI1);
       end;
-      -- fixme parameter type := [array] [builtin] System.Byte[]
    
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -1394,7 +1388,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1470,12 +1464,11 @@ package body NetFrameworkBase.System.Text.Encoding is
          end loop;
          p_Value := To_Variant (p0_Parameters, VT_UI1);
       end;
-      -- fixme parameter type := [array] [builtin] System.Byte[]
    
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -1553,7 +1546,6 @@ package body NetFrameworkBase.System.Text.Encoding is
          end loop;
          p_Value := To_Variant (p0_Parameters, VT_UI1);
       end;
-      -- fixme parameter type := [array] [builtin] System.Byte[]
    
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
@@ -1566,7 +1558,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -1608,7 +1600,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1633,7 +1625,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -1657,7 +1649,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -1695,7 +1687,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1720,7 +1712,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SysFreeString (p_MethodName);
@@ -1741,7 +1733,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Static)'Enum_rep;
    
       VariantInit (p_Target'access);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SysFreeString (p_MethodName);
@@ -1765,7 +1757,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SysFreeString (p_MethodName);
@@ -1814,12 +1806,11 @@ package body NetFrameworkBase.System.Text.Encoding is
          end loop;
          p_Value := To_Variant (p0_Parameters, VT_UI1);
       end;
-      -- fixme parameter type := [array] [builtin] System.Byte[]
    
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -1872,7 +1863,6 @@ package body NetFrameworkBase.System.Text.Encoding is
          end loop;
          p_Value := To_Variant (p0_Parameters, VT_UI1);
       end;
-      -- fixme parameter type := [array] [builtin] System.Byte[]
    
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
@@ -1885,7 +1875,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -1908,7 +1898,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Static)'Enum_rep;
    
       VariantInit (p_Target'access);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SysFreeString (p_MethodName);
@@ -1929,7 +1919,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Static)'Enum_rep;
    
       VariantInit (p_Target'access);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SysFreeString (p_MethodName);
@@ -1950,7 +1940,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Static)'Enum_rep;
    
       VariantInit (p_Target'access);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SysFreeString (p_MethodName);
@@ -1971,7 +1961,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Static)'Enum_rep;
    
       VariantInit (p_Target'access);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SysFreeString (p_MethodName);
@@ -1992,7 +1982,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Static)'Enum_rep;
    
       VariantInit (p_Target'access);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SysFreeString (p_MethodName);
@@ -2028,7 +2018,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -2053,7 +2043,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -2139,7 +2129,6 @@ package body NetFrameworkBase.System.Text.Encoding is
          end loop;
          p_Value := To_Variant (p2_Parameters, VT_UI1);
       end;
-      -- fixme parameter type := [array] [builtin] System.Byte[]
    
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
@@ -2152,7 +2141,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p2_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -2177,7 +2166,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -2228,7 +2217,6 @@ package body NetFrameworkBase.System.Text.Encoding is
          end loop;
          p_Value := To_Variant (p0_Parameters, VT_UI2);
       end;
-      -- fixme parameter type := [array] [builtin] System.Char[]
    
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
@@ -2241,7 +2229,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -2301,7 +2289,6 @@ package body NetFrameworkBase.System.Text.Encoding is
          end loop;
          p_Value := To_Variant (p0_Parameters, VT_UI2);
       end;
-      -- fixme parameter type := [array] [builtin] System.Char[]
    
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
@@ -2326,7 +2313,6 @@ package body NetFrameworkBase.System.Text.Encoding is
          end loop;
          p_Value := To_Variant (p3_Parameters, VT_UI1);
       end;
-      -- fixme parameter type := [array] [builtin] System.Byte[]
    
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
@@ -2335,7 +2321,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p3_Parameters);
@@ -2389,7 +2375,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -2441,7 +2427,6 @@ package body NetFrameworkBase.System.Text.Encoding is
          end loop;
          p_Value := To_Variant (p0_Parameters, VT_UI1);
       end;
-      -- fixme parameter type := [array] [builtin] System.Byte[]
    
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
@@ -2454,7 +2439,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -2514,7 +2499,6 @@ package body NetFrameworkBase.System.Text.Encoding is
          end loop;
          p_Value := To_Variant (p0_Parameters, VT_UI1);
       end;
-      -- fixme parameter type := [array] [builtin] System.Byte[]
    
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
@@ -2539,7 +2523,6 @@ package body NetFrameworkBase.System.Text.Encoding is
          end loop;
          p_Value := To_Variant (p3_Parameters, VT_UI2);
       end;
-      -- fixme parameter type := [array] [builtin] System.Char[]
    
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
@@ -2548,7 +2531,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p3_Parameters);
@@ -2602,7 +2585,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -2639,7 +2622,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -2676,7 +2659,7 @@ package body NetFrameworkBase.System.Text.Encoding is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);

@@ -107,7 +107,7 @@ package body NetFrameworkBase.System.Reflection.StrongNameKeyPair is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := CallMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       return GetArray (p_RetVal.field_1.field_1.field_1.parray);
@@ -178,7 +178,6 @@ package body NetFrameworkBase.System.Reflection.StrongNameKeyPair is
             end loop;
             p_Value := To_Variant (p0_Parameters, VT_UI1);
          end;
-         -- fixme parameter type := [array] [builtin] System.Byte[]
       
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);

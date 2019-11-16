@@ -30,14 +30,14 @@ with Ada.Unchecked_Conversion;
 --------------------------------------------------------------------------------
 package body NetFrameworkAdaRuntime is
 
-	----------------------------------------------------------------------------
+    ----------------------------------------------------------------------------
 
     function Addr (S : Wide_String) return LPWSTR;
     function Addr (S : Wide_String) return LPCWSTR;
     function Addr (S : Wide_String) return LPOLESTR;
     
-	function From_String (Value : Wide_String) return GUID;
-	function To_String (Value : GUID) return Wide_String;
+    function From_String (Value : Wide_String) return GUID;
+    function To_String (Value : GUID) return Wide_String;
     function Convert is new Ada.Unchecked_Conversion(System.Address, LPVOID_Ptr);
 
     ----------------------------------------------------------------------------
@@ -235,27 +235,19 @@ package body NetFrameworkAdaRuntime is
         Binder      : IBinder_Ptr := null;
         Target      : aliased VARIANT;
         RetVal      : aliased IUnknown_Ptr := null;
-        
         function Convert is new ada.Unchecked_conversion(UInt32,BindingFlags);
-
     begin
         if Runtime.m_Initialized = true then
             if this = null then
                 this := new Kind_Interface;
                 VariantInit(Target'access);
                 Hr := Runtime.m_IAdaMarshal.InvokeMethod2 (Kind, null, Convert(Flags) , Binder, Target, Parameters, Retval'access);
+                SysFreeString (Name);
                 if  Hr = 0 then
                     this.m_Object := To_Variant(RetVal);
                     this.m_NetObject := RetVal;
                 else
-                    if IsAssemblyLoaded(Runtime, AssemblyName) = true then
-                        Assembly := GetAssembly(Runtime, AssemblyName);
-                    else
-                        Assembly := LoadAssembly(Runtime, AssemblyName);
-                    end if;
-                    VariantInit(this.m_Object'access);
-                    Hr := Assembly.CreateInstance_3(Name, 0, Convert(Flags), null, Parameters, null, null, this.m_Object'access);
-                    SysFreeString (Name);
+                    raise CreateInstance_Failed;
                 end if;
             end if;
         else
@@ -312,7 +304,7 @@ package body NetFrameworkAdaRuntime is
                     this.m_Object := To_Variant(IUnknown);
                     this.m_NetObject := IUnknown;
                 else
-                    raise CallMethod_Failed;
+                    raise InvokeMethod_Failed;
                 end if;
             end if;
         else
@@ -351,8 +343,8 @@ package body NetFrameworkAdaRuntime is
         return RetVal;
     end;
 
-	----------------------------------------------------------------------------
-    function CallMethod (kind : IType_ptr; Object : VARIANT; MethodName : BSTR ; Flags : UInt32 ; Parameters : access SAFEARRAY) return VARIANT is
+    ----------------------------------------------------------------------------
+    function InvokeMethod (kind : IType_ptr; Object : VARIANT; MethodName : BSTR ; Flags : UInt32 ; Parameters : access SAFEARRAY) return VARIANT is
         pragma suppress(all_checks);
         Hr          : HRESULT := 0;
         Runtime     : RuntimeHost := Instance;
@@ -364,12 +356,11 @@ package body NetFrameworkAdaRuntime is
         if Runtime.m_Initialized = true then
             if kind /= null then
                 VariantInit(RetVal'access);
-                l_Flags := l_Flags or 64; --NetFrameworkWin32.BindingFlags'(FlattenHierarchy)'Enum_rep;
+                l_Flags := l_Flags or FlattenHierarchy'Enum_rep;
 
-                --Hr := kind.InvokeMember_3(MethodName, Convert(l_Flags) , null, Object, Parameters, Retval'access);
                 Hr := Runtime.m_IAdaMarshal.InvokeMethod (Kind, MethodName, Convert(l_Flags) , Binder, Object, Parameters, Retval'access);
                 if Hr /= 0 then
-                    raise CallMethod_Failed;
+                    raise InvokeMethod_Failed;
                 end if;
             else
                 raise Type_Not_Initialized;
@@ -380,7 +371,7 @@ package body NetFrameworkAdaRuntime is
         return RetVal;
     end;
 
-	----------------------------------------------------------------------------
+    ----------------------------------------------------------------------------
     function Addr (S : Wide_String) return LPWSTR is
         function To_LPWSTR is new Ada.Unchecked_Conversion (System.Address, LPWSTR);
     begin
@@ -394,25 +385,25 @@ package body NetFrameworkAdaRuntime is
         return To_LPCWSTR (S (S'First)'Address);
     end;
 
-	----------------------------------------------------------------------------
+    ----------------------------------------------------------------------------
     function Addr (S : Wide_String) return LPOLESTR is
         function To_LPOLESTR is new Ada.Unchecked_Conversion (System.Address, LPOLESTR);
     begin
         return To_LPOLESTR (S (S'First)'Address);
     end;
 
-	----------------------------------------------------------------------------
-	function To_BSTR (Value : Wide_String) return BSTR is
-		Hr		: HRESULT := 0;
+    ----------------------------------------------------------------------------
+    function To_BSTR (Value : Wide_String) return BSTR is
+        Hr		: HRESULT := 0;
         Buffer  : LPOLESTR := Addr(Value);
-		RetVal	: aliased BSTR;
-	begin
-		RetVal := SysAllocStringLen(Buffer, Value'Length);
-		return RetVal;
-	end;
+        RetVal	: aliased BSTR;
+    begin
+        RetVal := SysAllocStringLen(Buffer, Value'Length);
+        return RetVal;
+    end;
 
-	----------------------------------------------------------------------------
-	function To_Ada (Value : BSTR) return Wide_String is
+    ----------------------------------------------------------------------------
+    function To_Ada (Value : BSTR) return Wide_String is
         
         use Interfaces.C;
 
@@ -425,7 +416,7 @@ package body NetFrameworkAdaRuntime is
             return Wide_Character (Item.all);
         end;
 
-	begin
+    begin
         if Value = null then
             return "";
         end if;
@@ -446,26 +437,26 @@ package body NetFrameworkAdaRuntime is
                 return "";
             end if;
         end;
-	end;
+    end;
 
-	----------------------------------------------------------------------------
-	function From_String (Value : Wide_String) return GUID is
-		Hr		: HRESULT := 0;
-		Buffer	: BSTR := To_BSTR(Value);
-		RetVal	: aliased GUID;
-	begin
-		Hr := CLSIDFromString (LPCOLESTR(Buffer), RetVal'unchecked_access);
-		SysFreeString(Buffer);
-		return RetVal;
-	end;
+    ----------------------------------------------------------------------------
+    function From_String (Value : Wide_String) return GUID is
+        Hr		: HRESULT := 0;
+        Buffer	: BSTR := To_BSTR(Value);
+        RetVal	: aliased GUID;
+    begin
+        Hr := CLSIDFromString (LPCOLESTR(Buffer), RetVal'unchecked_access);
+        SysFreeString(Buffer);
+        return RetVal;
+    end;
 
-	----------------------------------------------------------------------------
-	function To_String (Value : GUID) return Wide_String is
-		Hr		: HRESULT := 0;
-		RetVal	: Wide_String := "";
-	begin
-		return RetVal;
-	end;
+    ----------------------------------------------------------------------------
+    function To_String (Value : GUID) return Wide_String is
+        Hr		: HRESULT := 0;
+        RetVal	: Wide_String := "";
+    begin
+        return RetVal;
+    end;
 
     ----------------------------------------------------------------------------
     function To_Variant (Value : IUnknown_Ptr; ByRef : Standard.Boolean := False) return VARIANT is
