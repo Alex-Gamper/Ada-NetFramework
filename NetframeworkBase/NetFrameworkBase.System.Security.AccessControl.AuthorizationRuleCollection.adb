@@ -80,6 +80,7 @@ package body NetFrameworkBase.System.Security.AccessControl.AuthorizationRuleCol
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("AddRule");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -91,7 +92,7 @@ package body NetFrameworkBase.System.Security.AccessControl.AuthorizationRuleCol
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -114,11 +115,12 @@ package body NetFrameworkBase.System.Security.AccessControl.AuthorizationRuleCol
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("CopyTo");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p0_Parameters : aliased LPSAFEARRAY := null;
       p0_Bounds     : aliased SAFEARRAYBOUND := (rules'Length , 0);
       p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
-      p0_Tmp        : aliased NetFrameworkBase.System.Security.AccessControl.AuthorizationRule.Kind_Ptr;
-      p0_Tmp_Ptr    : access NetFrameworkBase.System.Security.AccessControl.AuthorizationRule.Kind_Ptr := p0_Tmp'access;
+      p0_Tmp        : aliased IUnknown_Ptr;
+      p0_Tmp_Ptr    : access IUnknown_Ptr := p0_Tmp'access;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -126,7 +128,20 @@ package body NetFrameworkBase.System.Security.AccessControl.AuthorizationRuleCol
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (IUnknown_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_UNKNOWN'enum_rep, 1, p0_Bounds'access);
+         for i in rules'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := GetObject (rules(i).m_Kind);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_UNKNOWN);
+      end;
       -- fixme parameter type := [array] System.Security.AccessControl.AuthorizationRule[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -134,7 +149,7 @@ package body NetFrameworkBase.System.Security.AccessControl.AuthorizationRuleCol
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -158,6 +173,7 @@ package body NetFrameworkBase.System.Security.AccessControl.AuthorizationRuleCol
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Item");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.System.Security.AccessControl.AuthorizationRule.Kind_Ptr := new NetFrameworkBase.System.Security.AccessControl.AuthorizationRule.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -170,9 +186,10 @@ package body NetFrameworkBase.System.Security.AccessControl.AuthorizationRuleCol
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      SetObject (RetVal.m_Kind, p_NetRetVal);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;

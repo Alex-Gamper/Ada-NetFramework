@@ -85,6 +85,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("CreateFromCertFile");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate.Kind_Ptr := new NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -97,9 +98,10 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      SetObject (RetVal.m_Kind, p_NetRetVal);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;
@@ -121,6 +123,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("CreateFromSignedFile");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate.Kind_Ptr := new NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -133,9 +136,10 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      SetObject (RetVal.m_Kind, p_NetRetVal);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;
@@ -151,6 +155,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Handle");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.IntPtr;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -158,7 +163,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -175,6 +180,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetName");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -182,7 +188,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -199,6 +205,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetIssuerName");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -206,7 +213,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -223,6 +230,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetSerialNumber");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
    
       function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.Byte_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
@@ -256,7 +264,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       return GetArray (p_RetVal.field_1.field_1.field_1.parray);
@@ -272,6 +280,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetSerialNumberString");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -279,7 +288,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -296,6 +305,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetKeyAlgorithmParameters");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
    
       function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.Byte_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
@@ -329,7 +339,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       return GetArray (p_RetVal.field_1.field_1.field_1.parray);
@@ -345,6 +355,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetKeyAlgorithmParametersString");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -352,7 +363,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -369,6 +380,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetKeyAlgorithm");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -376,7 +388,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -393,6 +405,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetPublicKey");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
    
       function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.Byte_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
@@ -426,7 +439,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       return GetArray (p_RetVal.field_1.field_1.field_1.parray);
@@ -442,6 +455,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetPublicKeyString");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -449,7 +463,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -466,6 +480,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetRawCertData");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
    
       function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.Byte_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
@@ -499,7 +514,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       return GetArray (p_RetVal.field_1.field_1.field_1.parray);
@@ -515,6 +530,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetRawCertDataString");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -522,7 +538,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -539,6 +555,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetCertHash");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
    
       function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.Byte_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
@@ -572,7 +589,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       return GetArray (p_RetVal.field_1.field_1.field_1.parray);
@@ -595,6 +612,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetCertHash");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
    
       function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.Byte_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
@@ -633,7 +651,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -650,6 +668,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetCertHashString");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -657,7 +676,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -681,6 +700,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetCertHashString");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -693,7 +713,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -711,6 +731,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetEffectiveDateString");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -718,7 +739,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -735,6 +756,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetExpirationDateString");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -742,7 +764,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -766,6 +788,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Equals");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -778,7 +801,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -803,6 +826,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Equals");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -815,7 +839,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -833,6 +857,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetHashCode");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -840,7 +865,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -857,6 +882,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ToString");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -864,7 +890,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -881,6 +907,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Issuer");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -888,7 +915,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -905,6 +932,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Subject");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -912,7 +940,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -935,6 +963,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Import");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p0_Parameters : aliased LPSAFEARRAY := null;
       p0_Bounds     : aliased SAFEARRAYBOUND := (rawData'Length , 0);
       p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
@@ -963,7 +992,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -988,6 +1017,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Import");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p0_Parameters : aliased LPSAFEARRAY := null;
       p0_Bounds     : aliased SAFEARRAYBOUND := (rawData'Length , 0);
       p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
@@ -1026,7 +1056,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -1051,6 +1081,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Import");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p0_Parameters : aliased LPSAFEARRAY := null;
       p0_Bounds     : aliased SAFEARRAYBOUND := (rawData'Length , 0);
       p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
@@ -1089,7 +1120,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -1112,6 +1143,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Import");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -1123,7 +1155,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1147,6 +1179,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Import");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p_keyStorageFlagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.Instance;
       p_keyStorageFlagsEnum : aliased VARIANT := To_Variant (CreateEnum (p_keyStorageFlagsEnumType, keyStorageFlags'Enum_rep));
    begin
@@ -1168,7 +1201,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1192,6 +1225,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Import");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p_keyStorageFlagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.Instance;
       p_keyStorageFlagsEnum : aliased VARIANT := To_Variant (CreateEnum (p_keyStorageFlagsEnumType, keyStorageFlags'Enum_rep));
    begin
@@ -1213,7 +1247,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1236,6 +1270,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Export");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p_contentTypeEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ContentType.Instance;
       p_contentTypeEnum : aliased VARIANT := To_Variant (CreateEnum (p_contentTypeEnumType, contentType'Enum_rep));
    
@@ -1276,7 +1311,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1301,6 +1336,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Export");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p_contentTypeEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ContentType.Instance;
       p_contentTypeEnum : aliased VARIANT := To_Variant (CreateEnum (p_contentTypeEnumType, contentType'Enum_rep));
    
@@ -1345,7 +1381,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1370,6 +1406,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Export");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p_contentTypeEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ContentType.Instance;
       p_contentTypeEnum : aliased VARIANT := To_Variant (CreateEnum (p_contentTypeEnumType, contentType'Enum_rep));
    
@@ -1414,7 +1451,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1430,13 +1467,14 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Reset");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
    end;
@@ -1450,13 +1488,14 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Dispose");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
    end;
@@ -1478,6 +1517,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ToString");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1490,7 +1530,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1508,6 +1548,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetFormat");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1515,7 +1556,7 @@ package body NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);

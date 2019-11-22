@@ -74,6 +74,7 @@ package body NetFrameworkBase.System.Reflection.StrongNameKeyPair is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("PublicKey");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
    
       function GetArray (sa : access NetFrameworkWin32.SAFEARRAY) return NetFrameworkBase.Byte_Array is
          Hr     : NetFrameworkWin32.HRESULT := 0;
@@ -107,7 +108,7 @@ package body NetFrameworkBase.System.Reflection.StrongNameKeyPair is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       return GetArray (p_RetVal.field_1.field_1.field_1.parray);

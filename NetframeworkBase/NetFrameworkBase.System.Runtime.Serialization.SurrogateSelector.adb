@@ -85,6 +85,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("AddSurrogate");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -105,7 +106,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -127,6 +128,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ChainSelector");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -139,7 +141,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -155,6 +157,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetNextSelector");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector.Kind_Ptr;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -162,7 +165,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       RetVal := p_RetVal.field_1.field_1.field_1.punkval;
@@ -188,6 +191,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetSurrogate");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.System.Runtime.Serialization.ISerializationSurrogate.Kind_Ptr;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -210,7 +214,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       -- set out parameter [selector : System.Runtime.Serialization.ISurrogateSelector]
       p_Index(1) := 2;
@@ -244,6 +248,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("RemoveSurrogate");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -259,7 +264,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);

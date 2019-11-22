@@ -42,13 +42,15 @@ package NetFrameworkAdaRuntime is
 
         procedure CreateInstance (this : in out Kind; AssemblyName : Wide_String; TypeName : Wide_String; Kind : IType_Ptr; Flags : UInt32; Parameters : access SAFEARRAY);
         procedure SetObject (this : in out Kind; Object : VARIANT);
+        procedure SetObject (this : in out Kind; Object : IUnknown_Ptr);
         function GetObject (this : in Kind) return VARIANT;
+        function GetObject (this : in Kind) return IUnknown_Ptr;
         function CreateDelegate (this : in out Kind; Callback : System.Address; DelegateType : IType_Ptr) return IDelegate_Ptr;
         procedure DestroyInstance (this : in out Kind);
 
     ----------------------------------------------------------------------------
 
-    function InvokeMethod (kind : IType_ptr; Object : VARIANT ; MethodName : BSTR ; Flags : UInt32 ; Parameters : access SAFEARRAY) return VARIANT;
+    function InvokeMethod (kind : IType_ptr; Object : VARIANT ; MethodName : BSTR ; Flags : UInt32 ; Parameters : access SAFEARRAY; NetRetVal : in out IUnknown_Ptr) return VARIANT;
     function CreateEnum (Kind : IType_Ptr; Value : Integer) return IUnknown_Ptr;
 
     ----------------------------------------------------------------------------

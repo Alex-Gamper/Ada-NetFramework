@@ -95,6 +95,7 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("AccessRuleFactory");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p_inheritanceFlagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.AccessControl.InheritanceFlags.Instance;
       p_inheritanceFlagsEnum : aliased VARIANT := To_Variant (CreateEnum (p_inheritanceFlagsEnumType, inheritanceFlags'Enum_rep));
       p_propagationFlagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.AccessControl.PropagationFlags.Instance;
@@ -133,9 +134,10 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      SetObject (RetVal.m_Kind, p_NetRetVal);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;
@@ -163,6 +165,7 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("AuditRuleFactory");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p_inheritanceFlagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.AccessControl.InheritanceFlags.Instance;
       p_inheritanceFlagsEnum : aliased VARIANT := To_Variant (CreateEnum (p_inheritanceFlagsEnumType, inheritanceFlags'Enum_rep));
       p_propagationFlagsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Security.AccessControl.PropagationFlags.Instance;
@@ -201,9 +204,10 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      SetObject (RetVal.m_Kind, p_NetRetVal);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;
@@ -225,6 +229,7 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("AddAccessRule");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -236,7 +241,7 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -258,6 +263,7 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("SetAccessRule");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -269,7 +275,7 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -291,6 +297,7 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ResetAccessRule");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -302,7 +309,7 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -325,6 +332,7 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("RemoveAccessRule");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -337,7 +345,7 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -361,6 +369,7 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("RemoveAccessRuleAll");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -372,7 +381,7 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -394,6 +403,7 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("RemoveAccessRuleSpecific");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -405,7 +415,7 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -427,6 +437,7 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("AddAuditRule");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -438,7 +449,7 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -460,6 +471,7 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("SetAuditRule");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -471,7 +483,7 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -494,6 +506,7 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("RemoveAuditRule");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -506,7 +519,7 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -530,6 +543,7 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("RemoveAuditRuleAll");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -541,7 +555,7 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -563,6 +577,7 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("RemoveAuditRuleSpecific");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -574,7 +589,7 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -590,6 +605,7 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("AccessRightType");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.System.Type_x.Kind_Ptr := new NetFrameworkBase.System.Type_x.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -597,9 +613,10 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      SetObject (RetVal.m_Kind, p_NetRetVal);
       SysFreeString (p_MethodName);
       return RetVal;
    end;
@@ -614,6 +631,7 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("AccessRuleType");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.System.Type_x.Kind_Ptr := new NetFrameworkBase.System.Type_x.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -621,9 +639,10 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      SetObject (RetVal.m_Kind, p_NetRetVal);
       SysFreeString (p_MethodName);
       return RetVal;
    end;
@@ -638,6 +657,7 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("AuditRuleType");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.System.Type_x.Kind_Ptr := new NetFrameworkBase.System.Type_x.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -645,9 +665,10 @@ package body NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity i
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      SetObject (RetVal.m_Kind, p_NetRetVal);
       SysFreeString (p_MethodName);
       return RetVal;
    end;

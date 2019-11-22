@@ -45,18 +45,18 @@ namespace NetFrameworkAdaBridge
 
         void FreeCoTaskMem(IntPtr ptr);
 
-        object InvokeMethod(Type type, String name, BindingFlags invokeAtts, Binder binder, Object target, [In, Out] object[] args);
+        Object InvokeMethod(Type type, String name, BindingFlags invokeAtts, Binder binder, Object target, [In, Out] Object[] args);
 
         [return: MarshalAs(UnmanagedType.Interface)]
-        object GetObjectForNativeVariant(IntPtr pSrcNativeVariant);
+        Object GetObjectForNativeVariant(IntPtr pSrcNativeVariant);
 
-        void GetNativeVariantForObject([MarshalAs(UnmanagedType.Interface)] object obj, [In, Out] IntPtr pDstNativeVariant);
-
-        [return: MarshalAs(UnmanagedType.Interface)]
-        object CreateEnum(Type type, int value);
+        void GetNativeVariantForObject([MarshalAs(UnmanagedType.Interface)] Object obj, [In, Out] IntPtr pDstNativeVariant);
 
         [return: MarshalAs(UnmanagedType.Interface)]
-        object InvokeMethod2(Type type, String name, BindingFlags invokeAtts, Binder binder, Object target, [In, Out] object[] args);
+        Object CreateEnum(Type type, int value);
+
+        [return: MarshalAs(UnmanagedType.Interface)]
+        Object InvokeMethod2(Type type, String name, BindingFlags invokeAtts, Binder binder, Object target, [In, Out] Object[] args);
     }
 
     [ComVisible(true)]
@@ -86,32 +86,33 @@ namespace NetFrameworkAdaBridge
             return;
         }
 
-        public object InvokeMethod(Type type, String name, BindingFlags invokeAtts, Binder binder, Object target, [In, Out] object[] args)
+        public Object InvokeMethod(Type type, String name, BindingFlags invokeAtts, Binder binder, Object target, [In, Out] Object[] args)
         {
             return type.InvokeMember(name, invokeAtts, binder, target, args);
         }
 
         [return: MarshalAs(UnmanagedType.Interface)]
-        public object GetObjectForNativeVariant(IntPtr pSrcNativeVariant)
+        public Object GetObjectForNativeVariant(IntPtr pSrcNativeVariant)
         {
             return Marshal.GetObjectForNativeVariant(pSrcNativeVariant);
         }
 
-        public void GetNativeVariantForObject([MarshalAs(UnmanagedType.Interface)] object obj, [In, Out] IntPtr pDstNativeVariant)
+        public void GetNativeVariantForObject([MarshalAs(UnmanagedType.Interface)] Object obj, [In, Out] IntPtr pDstNativeVariant)
         {
             Marshal.GetNativeVariantForObject(obj, pDstNativeVariant);
         }
 
         [return: MarshalAs(UnmanagedType.Interface)]
-        public object CreateEnum(Type type, int value)
+        public Object CreateEnum(Type type, int value)
         {
             return System.Enum.ToObject(type, value);
         }
 
         [return: MarshalAs(UnmanagedType.Interface)]
-        public object InvokeMethod2(Type type, String name, BindingFlags invokeAtts, Binder binder, Object target, [In, Out] object[] args)
+        public Object InvokeMethod2(Type type, String name, BindingFlags invokeAtts, Binder binder, Object target, [In, Out] Object[] args)
         {
-            return type.InvokeMember(name, invokeAtts, binder, target, args);
+            object Retval = type.InvokeMember(name, invokeAtts, binder, target, args);
+            return Retval;
         }
     }
 }

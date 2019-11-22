@@ -75,6 +75,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Handle");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.IntPtr;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -82,7 +83,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -105,6 +106,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Handle");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or 8192;
@@ -116,7 +118,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -140,6 +142,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitOne");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -156,7 +159,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -182,6 +185,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitOne");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -198,7 +202,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -216,6 +220,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitOne");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -223,7 +228,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -247,6 +252,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitOne");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -259,7 +265,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -284,6 +290,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitOne");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -296,7 +303,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -322,11 +329,12 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAll");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p0_Parameters : aliased LPSAFEARRAY := null;
       p0_Bounds     : aliased SAFEARRAYBOUND := (waitHandles'Length , 0);
       p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
-      p0_Tmp        : aliased NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr;
-      p0_Tmp_Ptr    : access NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr := p0_Tmp'access;
+      p0_Tmp        : aliased IUnknown_Ptr;
+      p0_Tmp_Ptr    : access IUnknown_Ptr := p0_Tmp'access;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -335,7 +343,20 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (IUnknown_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_UNKNOWN'enum_rep, 1, p0_Bounds'access);
+         for i in waitHandles'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := GetObject (waitHandles(i).m_Kind);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_UNKNOWN);
+      end;
       -- fixme parameter type := [array] System.Threading.WaitHandle[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -347,7 +368,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -374,11 +395,12 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAll");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p0_Parameters : aliased LPSAFEARRAY := null;
       p0_Bounds     : aliased SAFEARRAYBOUND := (waitHandles'Length , 0);
       p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
-      p0_Tmp        : aliased NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr;
-      p0_Tmp_Ptr    : access NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr := p0_Tmp'access;
+      p0_Tmp        : aliased IUnknown_Ptr;
+      p0_Tmp_Ptr    : access IUnknown_Ptr := p0_Tmp'access;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -387,7 +409,20 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (IUnknown_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_UNKNOWN'enum_rep, 1, p0_Bounds'access);
+         for i in waitHandles'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := GetObject (waitHandles(i).m_Kind);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_UNKNOWN);
+      end;
       -- fixme parameter type := [array] System.Threading.WaitHandle[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -399,7 +434,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -424,11 +459,12 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAll");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p0_Parameters : aliased LPSAFEARRAY := null;
       p0_Bounds     : aliased SAFEARRAYBOUND := (waitHandles'Length , 0);
       p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
-      p0_Tmp        : aliased NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr;
-      p0_Tmp_Ptr    : access NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr := p0_Tmp'access;
+      p0_Tmp        : aliased IUnknown_Ptr;
+      p0_Tmp_Ptr    : access IUnknown_Ptr := p0_Tmp'access;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -437,11 +473,24 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (IUnknown_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_UNKNOWN'enum_rep, 1, p0_Bounds'access);
+         for i in waitHandles'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := GetObject (waitHandles(i).m_Kind);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_UNKNOWN);
+      end;
       -- fixme parameter type := [array] System.Threading.WaitHandle[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -467,11 +516,12 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAll");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p0_Parameters : aliased LPSAFEARRAY := null;
       p0_Bounds     : aliased SAFEARRAYBOUND := (waitHandles'Length , 0);
       p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
-      p0_Tmp        : aliased NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr;
-      p0_Tmp_Ptr    : access NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr := p0_Tmp'access;
+      p0_Tmp        : aliased IUnknown_Ptr;
+      p0_Tmp_Ptr    : access IUnknown_Ptr := p0_Tmp'access;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -480,7 +530,20 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (IUnknown_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_UNKNOWN'enum_rep, 1, p0_Bounds'access);
+         for i in waitHandles'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := GetObject (waitHandles(i).m_Kind);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_UNKNOWN);
+      end;
       -- fixme parameter type := [array] System.Threading.WaitHandle[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -488,7 +551,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -514,11 +577,12 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAll");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p0_Parameters : aliased LPSAFEARRAY := null;
       p0_Bounds     : aliased SAFEARRAYBOUND := (waitHandles'Length , 0);
       p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
-      p0_Tmp        : aliased NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr;
-      p0_Tmp_Ptr    : access NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr := p0_Tmp'access;
+      p0_Tmp        : aliased IUnknown_Ptr;
+      p0_Tmp_Ptr    : access IUnknown_Ptr := p0_Tmp'access;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -527,7 +591,20 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (IUnknown_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_UNKNOWN'enum_rep, 1, p0_Bounds'access);
+         for i in waitHandles'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := GetObject (waitHandles(i).m_Kind);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_UNKNOWN);
+      end;
       -- fixme parameter type := [array] System.Threading.WaitHandle[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -535,7 +612,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -562,11 +639,12 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAny");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p0_Parameters : aliased LPSAFEARRAY := null;
       p0_Bounds     : aliased SAFEARRAYBOUND := (waitHandles'Length , 0);
       p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
-      p0_Tmp        : aliased NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr;
-      p0_Tmp_Ptr    : access NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr := p0_Tmp'access;
+      p0_Tmp        : aliased IUnknown_Ptr;
+      p0_Tmp_Ptr    : access IUnknown_Ptr := p0_Tmp'access;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -575,7 +653,20 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (IUnknown_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_UNKNOWN'enum_rep, 1, p0_Bounds'access);
+         for i in waitHandles'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := GetObject (waitHandles(i).m_Kind);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_UNKNOWN);
+      end;
       -- fixme parameter type := [array] System.Threading.WaitHandle[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -587,7 +678,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -614,11 +705,12 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAny");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p0_Parameters : aliased LPSAFEARRAY := null;
       p0_Bounds     : aliased SAFEARRAYBOUND := (waitHandles'Length , 0);
       p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
-      p0_Tmp        : aliased NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr;
-      p0_Tmp_Ptr    : access NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr := p0_Tmp'access;
+      p0_Tmp        : aliased IUnknown_Ptr;
+      p0_Tmp_Ptr    : access IUnknown_Ptr := p0_Tmp'access;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -627,7 +719,20 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (IUnknown_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_UNKNOWN'enum_rep, 1, p0_Bounds'access);
+         for i in waitHandles'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := GetObject (waitHandles(i).m_Kind);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_UNKNOWN);
+      end;
       -- fixme parameter type := [array] System.Threading.WaitHandle[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -639,7 +744,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -665,11 +770,12 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAny");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p0_Parameters : aliased LPSAFEARRAY := null;
       p0_Bounds     : aliased SAFEARRAYBOUND := (waitHandles'Length , 0);
       p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
-      p0_Tmp        : aliased NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr;
-      p0_Tmp_Ptr    : access NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr := p0_Tmp'access;
+      p0_Tmp        : aliased IUnknown_Ptr;
+      p0_Tmp_Ptr    : access IUnknown_Ptr := p0_Tmp'access;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -678,7 +784,20 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (IUnknown_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_UNKNOWN'enum_rep, 1, p0_Bounds'access);
+         for i in waitHandles'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := GetObject (waitHandles(i).m_Kind);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_UNKNOWN);
+      end;
       -- fixme parameter type := [array] System.Threading.WaitHandle[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -686,7 +805,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -711,11 +830,12 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAny");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p0_Parameters : aliased LPSAFEARRAY := null;
       p0_Bounds     : aliased SAFEARRAYBOUND := (waitHandles'Length , 0);
       p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
-      p0_Tmp        : aliased NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr;
-      p0_Tmp_Ptr    : access NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr := p0_Tmp'access;
+      p0_Tmp        : aliased IUnknown_Ptr;
+      p0_Tmp_Ptr    : access IUnknown_Ptr := p0_Tmp'access;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -724,11 +844,24 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (IUnknown_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_UNKNOWN'enum_rep, 1, p0_Bounds'access);
+         for i in waitHandles'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := GetObject (waitHandles(i).m_Kind);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_UNKNOWN);
+      end;
       -- fixme parameter type := [array] System.Threading.WaitHandle[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -754,11 +887,12 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAny");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p0_Parameters : aliased LPSAFEARRAY := null;
       p0_Bounds     : aliased SAFEARRAYBOUND := (waitHandles'Length , 0);
       p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
-      p0_Tmp        : aliased NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr;
-      p0_Tmp_Ptr    : access NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr := p0_Tmp'access;
+      p0_Tmp        : aliased IUnknown_Ptr;
+      p0_Tmp_Ptr    : access IUnknown_Ptr := p0_Tmp'access;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -767,7 +901,20 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
       ------------------------------------------------------------
       p_Index(1) := 0;
+      declare
+         use Interfaces.C;
+         function Convert is new Ada.Unchecked_Conversion (IUnknown_Ptr, LPVOID);
+      begin
+         p0_Parameters := SafeArrayCreate (VT_UNKNOWN'enum_rep, 1, p0_Bounds'access);
+         for i in waitHandles'range loop
+            p0_Index(1) := Interfaces.C.long(i) - 1;
+            p0_Tmp := GetObject (waitHandles(i).m_Kind);
+            Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp));
+         end loop;
+         p_Value := To_Variant (p0_Parameters, VT_UNKNOWN);
+      end;
       -- fixme parameter type := [array] System.Threading.WaitHandle[]
+   
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
       ------------------------------------------------------------
       p_Index(1) := 1;
@@ -775,7 +922,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -801,6 +948,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("SignalAndWait");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -817,7 +965,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -844,6 +992,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("SignalAndWait");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -868,7 +1017,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -895,6 +1044,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("SignalAndWait");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -919,7 +1069,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -936,13 +1086,14 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Close");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
    end;
@@ -956,13 +1107,14 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Dispose");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
    end;
@@ -977,6 +1129,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("SafeWaitHandle");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeWaitHandle.Kind_Ptr := new NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeWaitHandle.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -984,9 +1137,10 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      SetObject (RetVal.m_Kind, p_NetRetVal);
       SysFreeString (p_MethodName);
       return RetVal;
    end;
@@ -1007,6 +1161,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("SafeWaitHandle");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or 8192;
@@ -1018,7 +1173,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);

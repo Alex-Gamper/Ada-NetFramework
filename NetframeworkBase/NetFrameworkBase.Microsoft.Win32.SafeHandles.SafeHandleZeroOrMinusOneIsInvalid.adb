@@ -73,6 +73,7 @@ package body NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusO
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("IsInvalid");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -80,7 +81,7 @@ package body NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusO
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);

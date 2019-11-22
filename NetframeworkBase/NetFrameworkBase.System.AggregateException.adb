@@ -75,6 +75,7 @@ package body NetFrameworkBase.System.AggregateException is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetBaseException");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.System.Exception_x.Kind_Ptr := new NetFrameworkBase.System.Exception_x.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -82,9 +83,10 @@ package body NetFrameworkBase.System.AggregateException is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      SetObject (RetVal.m_Kind, p_NetRetVal);
       SysFreeString (p_MethodName);
       return RetVal;
    end;
@@ -99,6 +101,7 @@ package body NetFrameworkBase.System.AggregateException is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Flatten");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.System.AggregateException.Kind_Ptr := new NetFrameworkBase.System.AggregateException.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -106,9 +109,10 @@ package body NetFrameworkBase.System.AggregateException is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      SetObject (RetVal.m_Kind, p_NetRetVal);
       SysFreeString (p_MethodName);
       return RetVal;
    end;
@@ -130,6 +134,7 @@ package body NetFrameworkBase.System.AggregateException is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetObjectData");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(InvokeMethod)'Enum_rep;
@@ -145,7 +150,7 @@ package body NetFrameworkBase.System.AggregateException is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -161,6 +166,7 @@ package body NetFrameworkBase.System.AggregateException is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ToString");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -168,7 +174,7 @@ package body NetFrameworkBase.System.AggregateException is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -262,13 +268,26 @@ package body NetFrameworkBase.System.AggregateException is
          p0_Parameters : aliased LPSAFEARRAY := null;
          p0_Bounds     : aliased SAFEARRAYBOUND := (innerExceptions'Length , 0);
          p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
-         p0_Tmp        : aliased NetFrameworkBase.System.Exception_x.Kind_Ptr;
-         p0_Tmp_Ptr    : access NetFrameworkBase.System.Exception_x.Kind_Ptr := p0_Tmp'access;
+         p0_Tmp        : aliased IUnknown_Ptr;
+         p0_Tmp_Ptr    : access IUnknown_Ptr := p0_Tmp'access;
       begin
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
          p_Index(1) := 0;
+         declare
+            use Interfaces.C;
+            function Convert is new Ada.Unchecked_Conversion (IUnknown_Ptr, LPVOID);
+         begin
+            p0_Parameters := SafeArrayCreate (VT_UNKNOWN'enum_rep, 1, p0_Bounds'access);
+            for i in innerExceptions'range loop
+               p0_Index(1) := Interfaces.C.long(i) - 1;
+               p0_Tmp := GetObject (innerExceptions(i).m_Kind);
+               Hr := SafeArrayPutElement (p0_Parameters, p0_Index (p0_Index'first)'access, Convert (p0_Tmp));
+            end loop;
+            p_Value := To_Variant (p0_Parameters, VT_UNKNOWN);
+         end;
          -- fixme parameter type := [array] System.Exception[]
+      
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy (p0_Parameters);
@@ -297,8 +316,8 @@ package body NetFrameworkBase.System.AggregateException is
          p1_Parameters : aliased LPSAFEARRAY := null;
          p1_Bounds     : aliased SAFEARRAYBOUND := (innerExceptions'Length , 0);
          p1_Index      : aliased array(1..1) of aliased LONG := (others => 0);
-         p1_Tmp        : aliased NetFrameworkBase.System.Exception_x.Kind_Ptr;
-         p1_Tmp_Ptr    : access NetFrameworkBase.System.Exception_x.Kind_Ptr := p1_Tmp'access;
+         p1_Tmp        : aliased IUnknown_Ptr;
+         p1_Tmp_Ptr    : access IUnknown_Ptr := p1_Tmp'access;
       begin
          p_Parameters := SafeArrayCreate (VT_VARIANT'enum_rep, 1, p_Bounds'access);
          ------------------------------------------------------------
@@ -307,7 +326,20 @@ package body NetFrameworkBase.System.AggregateException is
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          ------------------------------------------------------------
          p_Index(1) := 1;
+         declare
+            use Interfaces.C;
+            function Convert is new Ada.Unchecked_Conversion (IUnknown_Ptr, LPVOID);
+         begin
+            p1_Parameters := SafeArrayCreate (VT_UNKNOWN'enum_rep, 1, p1_Bounds'access);
+            for i in innerExceptions'range loop
+               p1_Index(1) := Interfaces.C.long(i) - 1;
+               p1_Tmp := GetObject (innerExceptions(i).m_Kind);
+               Hr := SafeArrayPutElement (p1_Parameters, p1_Index (p1_Index'first)'access, Convert (p1_Tmp));
+            end loop;
+            p_Value := To_Variant (p1_Parameters, VT_UNKNOWN);
+         end;
          -- fixme parameter type := [array] System.Exception[]
+      
          Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
          NetFrameworkAdaRuntime.CreateInstance (RetVal.m_Kind, This_AssemblyName, This_TypeName, Instance, NetFrameworkWin32.BindingFlags'(CreateInstance)'Enum_rep, p_Parameters);
          Hr := SafeArrayDestroy (p1_Parameters);

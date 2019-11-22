@@ -234,18 +234,18 @@ package body NetFrameworkAdaRuntime is
         Assembly    : aliased IAssembly_Ptr := null;
         Binder      : IBinder_Ptr := null;
         Target      : aliased VARIANT;
-        RetVal      : aliased IUnknown_Ptr := null;
+        NetRetVal   : aliased IUnknown_Ptr := null;
         function Convert is new ada.Unchecked_conversion(UInt32,BindingFlags);
     begin
         if Runtime.m_Initialized = true then
             if this = null then
                 this := new Kind_Interface;
-                VariantInit(Target'access);
-                Hr := Runtime.m_IAdaMarshal.InvokeMethod2 (Kind, null, Convert(Flags) , Binder, Target, Parameters, Retval'access);
+                VariantInit (Target'access);
+                Hr := Runtime.m_IAdaMarshal.InvokeMethod2 (Kind, null, Convert(Flags) , Binder, Target, Parameters, NetRetval'access);
                 SysFreeString (Name);
                 if  Hr = 0 then
-                    this.m_Object := To_Variant(RetVal);
-                    this.m_NetObject := RetVal;
+                    this.m_Object := To_Variant(NetRetval);
+                    this.m_NetObject := NetRetVal;
                 else
                     raise CreateInstance_Failed;
                 end if;
@@ -256,17 +256,30 @@ package body NetFrameworkAdaRuntime is
     end;
 
     ----------------------------------------------------------------------------
-    procedure SetObject(this : in out Kind; Object : VARIANT) is
+    procedure SetObject (this : in out Kind; Object : VARIANT) is
         Hr          : HRESULT := 0;
         Runtime     : RuntimeHost := Instance;
     begin
         if Runtime.m_Initialized = true then
             if this = null then
                 this := new Kind_Interface;
-                this.m_Object := Object;
-            else
-                raise Type_Already_Initialized;
             end if;
+            this.m_Object := Object;
+        else
+            raise Runtime_Not_Initialized;
+        end if;
+    end;
+
+    ----------------------------------------------------------------------------
+    procedure SetObject (this : in out Kind; Object : IUnknown_Ptr) is
+        Hr          : HRESULT := 0;
+        Runtime     : RuntimeHost := Instance;
+    begin
+        if Runtime.m_Initialized = true then
+            if this = null then
+                this := new Kind_Interface;
+            end if;
+            this.m_NetObject := Object;
         else
             raise Runtime_Not_Initialized;
         end if;
@@ -279,6 +292,21 @@ package body NetFrameworkAdaRuntime is
         if Runtime.m_Initialized = true then
             if this /= null then
                 return this.m_Object;
+            else
+                raise Type_Not_Initialized;
+            end if;
+        else
+            raise Runtime_Not_Initialized;
+        end if;
+    end;
+
+    ----------------------------------------------------------------------------
+    function GetObject(this : in Kind) return IUnknown_Ptr is
+        Runtime     : RuntimeHost := Instance;
+    begin
+        if Runtime.m_Initialized = true then
+            if this /= null then
+                return this.m_NetObject;
             else
                 raise Type_Not_Initialized;
             end if;
@@ -344,24 +372,32 @@ package body NetFrameworkAdaRuntime is
     end;
 
     ----------------------------------------------------------------------------
-    function InvokeMethod (kind : IType_ptr; Object : VARIANT; MethodName : BSTR ; Flags : UInt32 ; Parameters : access SAFEARRAY) return VARIANT is
+    function InvokeMethod (kind : IType_ptr; Object : VARIANT; MethodName : BSTR ; Flags : UInt32 ; Parameters : access SAFEARRAY; NetRetVal : in out IUnknown_Ptr) return VARIANT is
         pragma suppress(all_checks);
         Hr          : HRESULT := 0;
         Runtime     : RuntimeHost := Instance;
+        p_NetRetVal : aliased IUnknown_Ptr := null;
+        p_Flags     : UInt32 := Flags;
+        p_Binder    : access IBinder := null;
         RetVal      : aliased VARIANT;
-        l_Flags     : UInt32 := Flags;
-        Binder      : access IBinder := null;
         function Convert is new Ada.Unchecked_Conversion (UINT32 , BindingFlags);
     begin
         if Runtime.m_Initialized = true then
             if kind /= null then
-                VariantInit(RetVal'access);
-                l_Flags := l_Flags or FlattenHierarchy'Enum_rep;
-
-                Hr := Runtime.m_IAdaMarshal.InvokeMethod (Kind, MethodName, Convert(l_Flags) , Binder, Object, Parameters, Retval'access);
-                if Hr /= 0 then
+                VariantInit (RetVal'access);
+                p_Flags := p_Flags or FlattenHierarchy'Enum_rep;
+                Hr := Runtime.m_IAdaMarshal.InvokeMethod2 (Kind, MethodName, Convert(p_Flags), p_Binder, Object, Parameters, p_NetRetval'access);
+                if Hr = 0 then
+                    Hr := Runtime.m_IAdaMarshal.GetNativeVariantForObject (p_NetRetVal, RetVal'access);
+                    if Hr = 0 then
+                        NetRetVal := p_NetRetVal;
+                    else
+                        raise InvokeMethod_Failed;
+                    end if;
+                else
                     raise InvokeMethod_Failed;
                 end if;
+
             else
                 raise Type_Not_Initialized;
             end if;

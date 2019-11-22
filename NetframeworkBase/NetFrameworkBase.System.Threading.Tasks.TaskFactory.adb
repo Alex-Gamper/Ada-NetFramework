@@ -80,6 +80,7 @@ package body NetFrameworkBase.System.Threading.Tasks.TaskFactory is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("CancellationToken");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr := new NetFrameworkBase.System.Threading.CancellationToken.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -87,9 +88,10 @@ package body NetFrameworkBase.System.Threading.Tasks.TaskFactory is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      SetObject (RetVal.m_Kind, p_NetRetVal);
       SysFreeString (p_MethodName);
       return RetVal;
    end;
@@ -104,6 +106,7 @@ package body NetFrameworkBase.System.Threading.Tasks.TaskFactory is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Scheduler");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.System.Threading.Tasks.TaskScheduler.Kind_Ptr := new NetFrameworkBase.System.Threading.Tasks.TaskScheduler.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -111,9 +114,10 @@ package body NetFrameworkBase.System.Threading.Tasks.TaskFactory is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      SetObject (RetVal.m_Kind, p_NetRetVal);
       SysFreeString (p_MethodName);
       return RetVal;
    end;
@@ -129,6 +133,7 @@ package body NetFrameworkBase.System.Threading.Tasks.TaskFactory is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("CreationOptions");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.System.Threading.Tasks.TaskCreationOptions.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -136,7 +141,7 @@ package body NetFrameworkBase.System.Threading.Tasks.TaskFactory is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       RetVal := ConvertEnum (p_RetVal.field_1.field_1.field_1.lVal);
@@ -154,6 +159,7 @@ package body NetFrameworkBase.System.Threading.Tasks.TaskFactory is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ContinuationOptions");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.System.Threading.Tasks.TaskContinuationOptions.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -161,7 +167,7 @@ package body NetFrameworkBase.System.Threading.Tasks.TaskFactory is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       RetVal := ConvertEnum (p_RetVal.field_1.field_1.field_1.lVal);
@@ -185,6 +191,7 @@ package body NetFrameworkBase.System.Threading.Tasks.TaskFactory is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("StartNew");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr := new NetFrameworkBase.System.Threading.Tasks.Task_x.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -197,9 +204,10 @@ package body NetFrameworkBase.System.Threading.Tasks.TaskFactory is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      SetObject (RetVal.m_Kind, p_NetRetVal);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;
@@ -223,6 +231,7 @@ package body NetFrameworkBase.System.Threading.Tasks.TaskFactory is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("StartNew");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr := new NetFrameworkBase.System.Threading.Tasks.Task_x.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -239,9 +248,10 @@ package body NetFrameworkBase.System.Threading.Tasks.TaskFactory is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      SetObject (RetVal.m_Kind, p_NetRetVal);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;
@@ -265,6 +275,7 @@ package body NetFrameworkBase.System.Threading.Tasks.TaskFactory is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("StartNew");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p_creationOptionsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Threading.Tasks.TaskCreationOptions.Instance;
       p_creationOptionsEnum : aliased VARIANT := To_Variant (CreateEnum (p_creationOptionsEnumType, creationOptions'Enum_rep));
       RetVal        : NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr := new NetFrameworkBase.System.Threading.Tasks.Task_x.Kind;
@@ -283,9 +294,10 @@ package body NetFrameworkBase.System.Threading.Tasks.TaskFactory is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      SetObject (RetVal.m_Kind, p_NetRetVal);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;
@@ -311,6 +323,7 @@ package body NetFrameworkBase.System.Threading.Tasks.TaskFactory is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("StartNew");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p_creationOptionsEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Threading.Tasks.TaskCreationOptions.Instance;
       p_creationOptionsEnum : aliased VARIANT := To_Variant (CreateEnum (p_creationOptionsEnumType, creationOptions'Enum_rep));
       RetVal        : NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr := new NetFrameworkBase.System.Threading.Tasks.Task_x.Kind;
@@ -337,9 +350,10 @@ package body NetFrameworkBase.System.Threading.Tasks.TaskFactory is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      SetObject (RetVal.m_Kind, p_NetRetVal);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;

@@ -5119,8 +5119,8 @@ package NetFrameworkWin32 is
 
       function GetNativeVariantForObject(
          This : access IAdaMarshal;
-         obj : VARIANT;
-         pDstNativeVariant : Interfaces.C.Extensions.long_long
+         obj : access IUnknown'Class;
+         pDstNativeVariant : access VARIANT
       ) return HRESULT is abstract;
 
       function CreateEnum(

@@ -84,6 +84,7 @@ package body NetFrameworkBase.System.Security.AccessControl.CommonObjectSecurity
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetAccessRules");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.System.Security.AccessControl.AuthorizationRuleCollection.Kind_Ptr := new NetFrameworkBase.System.Security.AccessControl.AuthorizationRuleCollection.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -104,9 +105,10 @@ package body NetFrameworkBase.System.Security.AccessControl.CommonObjectSecurity
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      SetObject (RetVal.m_Kind, p_NetRetVal);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;
@@ -131,6 +133,7 @@ package body NetFrameworkBase.System.Security.AccessControl.CommonObjectSecurity
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetAuditRules");
       p_RetVal      : aliased VARIANT;
+      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.System.Security.AccessControl.AuthorizationRuleCollection.Kind_Ptr := new NetFrameworkBase.System.Security.AccessControl.AuthorizationRuleCollection.Kind;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -151,9 +154,10 @@ package body NetFrameworkBase.System.Security.AccessControl.CommonObjectSecurity
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
+      SetObject (RetVal.m_Kind, p_NetRetVal);
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
       return RetVal;
