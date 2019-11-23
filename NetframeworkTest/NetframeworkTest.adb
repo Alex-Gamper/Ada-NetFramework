@@ -31,6 +31,7 @@ with NetframeworkBase.System.Environment;
 with NetFrameworkBase.System.ConsoleKey;
 with NetFrameworkBase.System.ConsoleKeyInfo;
 with NetFrameworkBase.System.Environment.SpecialFolder;
+with NetFrameworkBase.System.String;
 with NetFrameworkBase.System.Threading;
 with NetFrameworkBase.System.Threading.TimerCallback;
 with NetFrameworkBase.System.Runtime.Serialization.StreamingContextStates;
@@ -221,35 +222,29 @@ begin
         ------------------------------------------------------------------------
         procedure Test_In_Array is
             m_DateTime          : NetFramework.System.DateTime := NetFramework.System.Constructor(2018, 1, 1);
-            m_Type              : NetFramework.System.Type_x := m_DateTime.GetType;
-            m_Int32             : NetFrameWork.System.Int32 := NetFramework.System.Constructor;
-            m_Int32Type         : NetFrameWork.System.Type_x := m_Int32.GetType;
-            m_Types             : NetFramework.System.Type_x_Array (1..3) := (others => m_Int32.GetType);
-            m_ConstructorInfo   : NetFramework.System.Reflection.ConstructorInfo := m_Type.GetConstructor (m_Types);
-
---            m_Lengths       : NetFrameworkBase.Int32_array(1..1) := (others => 16);
---            m_Array         : NetFramework.System.Array_x := NetFrameworkBase.System.Array_x.CreateInstance (m_Type, m_Lengths);
+            m_Objects           : NetFramework.System.Object_Array (1..3) := (others => Netframework.System.Object(m_DateTime));
+            m_String            : NetFramework.BSTR := NetFrameworkBase.System.String.Format(To_BStr("{0:d} {0:d} {0:d}"), m_Objects);
         begin
             NetFrameworkBase.System.Console.WriteLine (m_DateTime.ToString);
-            NetFrameworkBase.System.Console.WriteLine (m_Type.ToString);
+            Ada.Wide_Text_IO.Put_Line (To_Ada(m_String));
         end;
 
         x : Netframework.BSTR;
 
     begin
 
---        Test_Statics;
---        Test_ValueTypes_Builtin;
---        Test_ValueTypes_Instance;
---        Test_ValueTypes_Arrays;
---        Test_RefenceType_Out_Param;
---        Test_Enum_In_Param;
---        Test_Enum_ReturnType;
---        Test_Enum_Out_Param;
---        Test_Constructors;
---        Test_Callbacks;
---        Test_Interface_Out_Param;
---        Test_Out_Array;
+        Test_Statics;
+        Test_ValueTypes_Builtin;
+        Test_ValueTypes_Instance;
+        Test_ValueTypes_Arrays;
+        Test_RefenceType_Out_Param;
+        Test_Enum_In_Param;
+        Test_Enum_ReturnType;
+        Test_Enum_Out_Param;
+        Test_Constructors;
+        Test_Callbacks;
+        Test_Interface_Out_Param;
+        Test_Out_Array;
 --        Test_Builtin_Array;
         Test_In_Array;
 
