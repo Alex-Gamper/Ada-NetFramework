@@ -37,6 +37,7 @@ with NetFrameworkBase.System.StringComparison;
 with NetFrameworkBase.System.Exception_x;
 with NetFrameworkBase.System.DateTime;
 with NetFrameworkBase.System.DateTimeKind;
+with NetFrameworkBase.System.DateTimeOffset;
 with NetFrameworkBase.System.Delegate;
 with NetFrameworkBase.System.MulticastDelegate;
 with NetFrameworkBase.System.ResolveEventArgs;
@@ -87,6 +88,7 @@ with NetFrameworkBase.System.UInt32;
 with NetFrameworkBase.System.UInt64;
 with NetFrameworkBase.System.ValueType;
 with NetFrameworkBase.System.Version;
+with NetFrameworkBase.System.Void;
 with NetFrameworkBase.System.Text.Encoding;
 with NetFrameworkBase.System.Globalization.Calendar;
 with NetFrameworkBase.System.Reflection.Assembly;
@@ -340,6 +342,68 @@ package NetFramework.System is
          
       subtype DateTimeKind is NetFrameworkBase.System.DateTimeKind.Kind;
       
+      subtype DateTimeOffset is NetFrameworkBase.System.DateTimeOffset.Kind_Ptr;
+      subtype DateTimeOffset_Array is NetFrameworkBase.System.DateTimeOffset.Kind_Array;
+      
+         function Constructor
+         (
+            ticks : NetFrameworkBase.Int64;
+            offset : NetFrameworkBase.System.TimeSpan.Kind_Ptr
+         )
+         return NetFrameworkBase.System.DateTimeOffset.Kind_Ptr renames NetFrameworkBase.System.DateTimeOffset.Constructor; 
+         
+         function Constructor
+         (
+            dateTime : NetFrameworkBase.Date
+         )
+         return NetFrameworkBase.System.DateTimeOffset.Kind_Ptr renames NetFrameworkBase.System.DateTimeOffset.Constructor; 
+         
+         function Constructor
+         (
+            dateTime : NetFrameworkBase.Date;
+            offset : NetFrameworkBase.System.TimeSpan.Kind_Ptr
+         )
+         return NetFrameworkBase.System.DateTimeOffset.Kind_Ptr renames NetFrameworkBase.System.DateTimeOffset.Constructor; 
+         
+         function Constructor
+         (
+            year : NetFrameworkBase.Int32;
+            month : NetFrameworkBase.Int32;
+            day : NetFrameworkBase.Int32;
+            hour : NetFrameworkBase.Int32;
+            minute : NetFrameworkBase.Int32;
+            second : NetFrameworkBase.Int32;
+            offset : NetFrameworkBase.System.TimeSpan.Kind_Ptr
+         )
+         return NetFrameworkBase.System.DateTimeOffset.Kind_Ptr renames NetFrameworkBase.System.DateTimeOffset.Constructor; 
+         
+         function Constructor
+         (
+            year : NetFrameworkBase.Int32;
+            month : NetFrameworkBase.Int32;
+            day : NetFrameworkBase.Int32;
+            hour : NetFrameworkBase.Int32;
+            minute : NetFrameworkBase.Int32;
+            second : NetFrameworkBase.Int32;
+            millisecond : NetFrameworkBase.Int32;
+            offset : NetFrameworkBase.System.TimeSpan.Kind_Ptr
+         )
+         return NetFrameworkBase.System.DateTimeOffset.Kind_Ptr renames NetFrameworkBase.System.DateTimeOffset.Constructor; 
+         
+         function Constructor
+         (
+            year : NetFrameworkBase.Int32;
+            month : NetFrameworkBase.Int32;
+            day : NetFrameworkBase.Int32;
+            hour : NetFrameworkBase.Int32;
+            minute : NetFrameworkBase.Int32;
+            second : NetFrameworkBase.Int32;
+            millisecond : NetFrameworkBase.Int32;
+            calendar : NetFrameworkBase.System.Globalization.Calendar.Kind_Ptr;
+            offset : NetFrameworkBase.System.TimeSpan.Kind_Ptr
+         )
+         return NetFrameworkBase.System.DateTimeOffset.Kind_Ptr renames NetFrameworkBase.System.DateTimeOffset.Constructor; 
+         
       subtype Delegate is NetFrameworkBase.System.Delegate.Kind_Ptr;
       subtype Delegate_Array is NetFrameworkBase.System.Delegate.Kind_Array;
       
@@ -718,6 +782,11 @@ package NetFramework.System is
          return NetFrameworkBase.System.Version.Kind_Ptr renames NetFrameworkBase.System.Version.Constructor; 
          
          function Constructor return NetFrameworkBase.System.Version.Kind_Ptr renames NetFrameworkBase.System.Version.Constructor;
+         
+      subtype Void is NetFrameworkBase.System.Void.Kind_Ptr;
+      subtype Void_Array is NetFrameworkBase.System.Void.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Void.Kind_Ptr renames NetFrameworkBase.System.Void.Constructor;
          
    
 end;

@@ -189,6 +189,7 @@
     <AdaCompile Include="NetFramework.System.Configuration.Assemblies.ads" />
     <AdaCompile Include="NetFramework.System.Globalization.ads" />
     <AdaCompile Include="NetFramework.System.IO.ads" />
+    <AdaCompile Include="NetFramework.System.IO.IsolatedStorage.ads" />
     <AdaCompile Include="NetFramework.System.Reflection.ads" />
     <AdaCompile Include="NetFramework.System.Runtime.ads" />
     <AdaCompile Include="NetFramework.System.Runtime.CompilerServices.ads" />

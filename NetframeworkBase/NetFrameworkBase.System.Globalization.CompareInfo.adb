@@ -53,7 +53,7 @@ package body NetFrameworkBase.System.Globalization.CompareInfo is
             Hr          : HRESULT := 0;
             Runtime     : RuntimeHost := Instance;
             Assembly    : IAssembly_Ptr := null;
-            TypeName    : BSTR := To_BSTR(This_TypeName);
+            TypeName    : NetFrameworkBase.BSTR := To_BSTR(This_TypeName);
          begin
             if IsAssemblyLoaded (RunTime, This_AssemblyName) = false then
                Assembly := LoadAssembly(Runtime, This_AssemblyName);

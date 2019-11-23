@@ -254,6 +254,8 @@
     <AdaCompile Include="NetFrameworkBase.System.DateTime.ads" />
     <AdaCompile Include="NetFrameworkBase.System.DateTimeKind.adb" />
     <AdaCompile Include="NetFrameworkBase.System.DateTimeKind.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.DateTimeOffset.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.DateTimeOffset.ads" />
     <AdaCompile Include="NetFrameworkBase.System.DayOfWeek.adb" />
     <AdaCompile Include="NetFrameworkBase.System.DayOfWeek.ads" />
     <AdaCompile Include="NetFrameworkBase.System.Decimal.adb" />
@@ -334,6 +336,15 @@
     <AdaCompile Include="NetFrameworkBase.System.IO.FileShare.ads" />
     <AdaCompile Include="NetFrameworkBase.System.IO.FileStream.adb" />
     <AdaCompile Include="NetFrameworkBase.System.IO.FileStream.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.IO.IsolatedStorage.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorage.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorage.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFile.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFile.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFileStream.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFileStream.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageScope.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageScope.ads" />
     <AdaCompile Include="NetFrameworkBase.System.IO.SeekOrigin.adb" />
     <AdaCompile Include="NetFrameworkBase.System.IO.SeekOrigin.ads" />
     <AdaCompile Include="NetFrameworkBase.System.IO.Stream.adb" />
@@ -646,6 +657,8 @@
     <AdaCompile Include="NetFrameworkBase.System.ValueType.ads" />
     <AdaCompile Include="NetFrameworkBase.System.Version.adb" />
     <AdaCompile Include="NetFrameworkBase.System.Version.ads" />
+    <AdaCompile Include="NetFrameworkBase.System.Void.adb" />
+    <AdaCompile Include="NetFrameworkBase.System.Void.ads" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
