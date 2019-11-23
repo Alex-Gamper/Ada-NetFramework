@@ -84,7 +84,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Static)'Enum_rep;
    
       VariantInit (p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -107,7 +107,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Static)'Enum_rep;
    
       VariantInit (p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -125,7 +125,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("DateTime");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Date;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -133,7 +132,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -150,7 +149,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("UtcDateTime");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Date;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -158,7 +156,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -175,7 +173,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("LocalDateTime");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Date;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -183,7 +180,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -220,7 +217,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -239,7 +236,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Date");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Date;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -247,7 +243,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -264,7 +260,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Day");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -272,7 +267,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -298,7 +293,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
       RetVal := ConvertEnum (p_RetVal.field_1.field_1.field_1.lVal);
@@ -315,7 +310,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("DayOfYear");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -323,7 +317,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -340,7 +334,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Hour");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -348,7 +341,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -365,7 +358,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Millisecond");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -373,7 +365,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -390,7 +382,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Minute");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -398,7 +389,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -415,7 +406,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Month");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -423,7 +413,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -448,7 +438,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -466,7 +456,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Second");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -474,7 +463,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -491,7 +480,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Ticks");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Int64;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -499,7 +487,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -516,7 +504,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("UtcTicks");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Int64;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -524,7 +511,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -549,7 +536,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -567,7 +554,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Year");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -575,7 +561,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -612,7 +598,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -651,7 +637,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -690,7 +676,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -729,7 +715,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -768,7 +754,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -807,7 +793,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -846,7 +832,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -885,7 +871,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -924,7 +910,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -950,7 +936,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Compare");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -967,7 +952,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -992,7 +977,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("CompareTo");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1005,7 +989,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1030,7 +1014,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Equals");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1043,7 +1026,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1068,7 +1051,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Equals");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1081,7 +1063,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1106,7 +1088,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("EqualsExact");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1119,7 +1100,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1144,7 +1125,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Equals");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1161,7 +1141,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1198,7 +1178,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -1236,7 +1216,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -1274,7 +1254,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -1293,7 +1273,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetHashCode");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1301,7 +1280,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -1337,7 +1316,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -1381,7 +1360,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -1430,7 +1409,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -1469,7 +1448,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -1508,7 +1487,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -1527,7 +1506,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ToFileTime");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Int64;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1535,7 +1513,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -1552,7 +1530,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ToUnixTimeSeconds");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Int64;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1560,7 +1537,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -1577,7 +1554,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ToUnixTimeMilliseconds");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Int64;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1585,7 +1561,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -1610,7 +1586,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -1628,7 +1604,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ToString");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1636,7 +1611,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -1660,7 +1635,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ToString");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1673,7 +1647,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1698,7 +1672,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ToString");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1712,7 +1685,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1738,7 +1711,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ToString");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1756,7 +1728,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1782,7 +1754,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -1807,7 +1779,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("TryParse");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1826,7 +1797,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       -- set out parameter [result : System.DateTimeOffset]
       p_Index(1) := 1;
@@ -1868,7 +1839,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -1911,7 +1882,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -1954,7 +1925,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -1997,7 +1968,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -2023,7 +1994,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("op_Equality");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -2040,7 +2010,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -2065,7 +2035,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("op_Inequality");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -2082,7 +2051,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -2107,7 +2076,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("op_LessThan");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -2124,7 +2092,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -2149,7 +2117,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("op_LessThanOrEqual");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -2166,7 +2133,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -2191,7 +2158,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("op_GreaterThan");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -2208,7 +2174,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -2233,7 +2199,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("op_GreaterThanOrEqual");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -2250,7 +2215,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -2300,7 +2265,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -2356,7 +2321,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -2429,7 +2394,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -2458,7 +2423,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("TryParse");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p_stylesEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Globalization.DateTimeStyles.Instance;
       p_stylesEnum : aliased VARIANT := To_Variant (CreateEnum (p_stylesEnumType, styles'Enum_rep));
       RetVal        : NetFrameworkBase.Boolean;
@@ -2488,7 +2452,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       -- set out parameter [result : System.DateTimeOffset]
       p_Index(1) := 3;
@@ -2521,7 +2485,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("TryParseExact");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p1_Parameters : aliased LPSAFEARRAY := null;
       p1_Bounds     : aliased SAFEARRAYBOUND := (formats'Length , 0);
       p1_Index      : aliased array(1..1) of aliased LONG := (others => 0);
@@ -2572,7 +2535,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       -- set out parameter [result : System.DateTimeOffset]
       p_Index(1) := 4;
@@ -2606,7 +2569,6 @@ package body NetFrameworkBase.System.DateTimeOffset is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("TryParseExact");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p_stylesEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Globalization.DateTimeStyles.Instance;
       p_stylesEnum : aliased VARIANT := To_Variant (CreateEnum (p_stylesEnumType, styles'Enum_rep));
       RetVal        : NetFrameworkBase.Boolean;
@@ -2640,7 +2602,7 @@ package body NetFrameworkBase.System.DateTimeOffset is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       -- set out parameter [result : System.DateTimeOffset]
       p_Index(1) := 4;

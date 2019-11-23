@@ -75,7 +75,6 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Handle");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.IntPtr;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -83,7 +82,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -118,7 +117,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -142,7 +141,6 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitOne");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -159,7 +157,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -185,7 +183,6 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitOne");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -202,7 +199,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -220,7 +217,6 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitOne");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -228,7 +224,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -252,7 +248,6 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitOne");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -265,7 +260,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -290,7 +285,6 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitOne");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -303,7 +297,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -329,7 +323,6 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAll");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p0_Parameters : aliased LPSAFEARRAY := null;
       p0_Bounds     : aliased SAFEARRAYBOUND := (waitHandles'Length , 0);
       p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
@@ -368,7 +361,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -395,7 +388,6 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAll");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p0_Parameters : aliased LPSAFEARRAY := null;
       p0_Bounds     : aliased SAFEARRAYBOUND := (waitHandles'Length , 0);
       p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
@@ -434,7 +426,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -459,7 +451,6 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAll");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p0_Parameters : aliased LPSAFEARRAY := null;
       p0_Bounds     : aliased SAFEARRAYBOUND := (waitHandles'Length , 0);
       p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
@@ -490,7 +481,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -516,7 +507,6 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAll");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p0_Parameters : aliased LPSAFEARRAY := null;
       p0_Bounds     : aliased SAFEARRAYBOUND := (waitHandles'Length , 0);
       p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
@@ -551,7 +541,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -577,7 +567,6 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAll");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p0_Parameters : aliased LPSAFEARRAY := null;
       p0_Bounds     : aliased SAFEARRAYBOUND := (waitHandles'Length , 0);
       p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
@@ -612,7 +601,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -639,7 +628,6 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAny");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p0_Parameters : aliased LPSAFEARRAY := null;
       p0_Bounds     : aliased SAFEARRAYBOUND := (waitHandles'Length , 0);
       p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
@@ -678,7 +666,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -705,7 +693,6 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAny");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p0_Parameters : aliased LPSAFEARRAY := null;
       p0_Bounds     : aliased SAFEARRAYBOUND := (waitHandles'Length , 0);
       p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
@@ -744,7 +731,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -770,7 +757,6 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAny");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p0_Parameters : aliased LPSAFEARRAY := null;
       p0_Bounds     : aliased SAFEARRAYBOUND := (waitHandles'Length , 0);
       p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
@@ -805,7 +791,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -830,7 +816,6 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAny");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p0_Parameters : aliased LPSAFEARRAY := null;
       p0_Bounds     : aliased SAFEARRAYBOUND := (waitHandles'Length , 0);
       p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
@@ -861,7 +846,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -887,7 +872,6 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("WaitAny");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p0_Parameters : aliased LPSAFEARRAY := null;
       p0_Bounds     : aliased SAFEARRAYBOUND := (waitHandles'Length , 0);
       p0_Index      : aliased array(1..1) of aliased LONG := (others => 0);
@@ -922,7 +906,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p0_Parameters);
       Hr := SafeArrayDestroy (p_Parameters);
@@ -948,7 +932,6 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("SignalAndWait");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -965,7 +948,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -992,7 +975,6 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("SignalAndWait");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1017,7 +999,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1044,7 +1026,6 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("SignalAndWait");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1069,7 +1050,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1093,7 +1074,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
    end;
@@ -1114,7 +1095,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SysFreeString (p_MethodName);
    end;
@@ -1137,7 +1118,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -1173,7 +1154,7 @@ package body NetFrameworkBase.System.Threading.WaitHandle is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);

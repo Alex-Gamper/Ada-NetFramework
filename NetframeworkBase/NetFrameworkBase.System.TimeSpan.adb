@@ -76,7 +76,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Ticks");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Int64;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -84,7 +83,7 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -101,7 +100,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Days");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -109,7 +107,7 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -126,7 +124,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Hours");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -134,7 +131,7 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -151,7 +148,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Milliseconds");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -159,7 +155,7 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -176,7 +172,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Minutes");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -184,7 +179,7 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -201,7 +196,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Seconds");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -209,7 +203,7 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -226,7 +220,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("TotalDays");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Double;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -234,7 +227,7 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -251,7 +244,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("TotalHours");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Double;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -259,7 +251,7 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -276,7 +268,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("TotalMilliseconds");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Double;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -284,7 +275,7 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -301,7 +292,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("TotalMinutes");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Double;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -309,7 +299,7 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -326,7 +316,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("TotalSeconds");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Double;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -334,7 +323,7 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -371,7 +360,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -397,7 +386,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Compare");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -414,7 +402,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -439,7 +427,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("CompareTo");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -452,7 +439,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -477,7 +464,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("CompareTo");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -490,7 +476,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -527,7 +513,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -554,7 +540,7 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -579,7 +565,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Equals");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -592,7 +577,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -617,7 +602,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Equals");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -630,7 +614,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -655,7 +639,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("Equals");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -672,7 +655,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -690,7 +673,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("GetHashCode");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Int32;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -698,7 +680,7 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -734,7 +716,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -772,7 +754,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -810,7 +792,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -837,7 +819,7 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -874,7 +856,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -913,7 +895,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -951,7 +933,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -989,7 +971,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -1033,7 +1015,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -1082,7 +1064,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -1148,7 +1130,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -1175,7 +1157,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("TryParse");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1194,7 +1175,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       -- set out parameter [result : System.TimeSpan]
       p_Index(1) := 1;
@@ -1225,7 +1206,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("TryParse");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1249,7 +1229,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       -- set out parameter [result : System.TimeSpan]
       p_Index(1) := 2;
@@ -1281,7 +1261,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("TryParseExact");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1309,7 +1288,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       -- set out parameter [result : System.TimeSpan]
       p_Index(1) := 3;
@@ -1341,7 +1320,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("TryParseExact");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p1_Parameters : aliased LPSAFEARRAY := null;
       p1_Bounds     : aliased SAFEARRAYBOUND := (formats'Length , 0);
       p1_Index      : aliased array(1..1) of aliased LONG := (others => 0);
@@ -1386,7 +1364,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       -- set out parameter [result : System.TimeSpan]
       p_Index(1) := 3;
@@ -1410,7 +1388,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ToString");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1418,7 +1395,7 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -1442,7 +1419,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ToString");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1455,7 +1431,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1481,7 +1457,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("ToString");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.BSTR;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1499,7 +1474,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1536,7 +1511,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -1579,7 +1554,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -1617,7 +1592,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -1660,7 +1635,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -1686,7 +1661,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("op_Equality");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1703,7 +1677,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1728,7 +1702,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("op_Inequality");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1745,7 +1718,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1770,7 +1743,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("op_LessThan");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1787,7 +1759,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1812,7 +1784,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("op_LessThanOrEqual");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1829,7 +1800,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1854,7 +1825,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("op_GreaterThan");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1871,7 +1841,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1896,7 +1866,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("op_GreaterThanOrEqual");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       RetVal        : NetFrameworkBase.Boolean;
    begin
       p_Flags := NetFrameworkWin32.BindingFlags'(Public)'Enum_rep;
@@ -1913,7 +1882,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -1968,7 +1937,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -2041,7 +2010,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -2071,7 +2040,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("TryParseExact");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p_stylesEnumType : NetFrameworkWin32.IType_Ptr := NetFrameworkBase.System.Globalization.TimeSpanStyles.Instance;
       p_stylesEnum : aliased VARIANT := To_Variant (CreateEnum (p_stylesEnumType, styles'Enum_rep));
       RetVal        : NetFrameworkBase.Boolean;
@@ -2105,7 +2073,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       -- set out parameter [result : System.TimeSpan]
       p_Index(1) := 4;
@@ -2138,7 +2106,6 @@ package body NetFrameworkBase.System.TimeSpan is
       p_Target      : aliased VARIANT;
       p_MethodName  : BSTR := To_BSTR("TryParseExact");
       p_RetVal      : aliased VARIANT;
-      p_NetRetVal   : aliased IUnknown_Ptr := null;
       p1_Parameters : aliased LPSAFEARRAY := null;
       p1_Bounds     : aliased SAFEARRAYBOUND := (formats'Length , 0);
       p1_Index      : aliased array(1..1) of aliased LONG := (others => 0);
@@ -2189,7 +2156,7 @@ package body NetFrameworkBase.System.TimeSpan is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
    
       -- set out parameter [result : System.TimeSpan]
       p_Index(1) := 4;

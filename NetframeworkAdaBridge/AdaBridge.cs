@@ -88,7 +88,8 @@ namespace NetFrameworkAdaBridge
 
         public Object InvokeMethod(Type type, String name, BindingFlags invokeAtts, Binder binder, Object target, [In, Out] Object[] args)
         {
-            return type.InvokeMember(name, invokeAtts, binder, target, args);
+            object Retval = type.InvokeMember(name, invokeAtts, binder, target, args);
+            return Retval;
         }
 
         [return: MarshalAs(UnmanagedType.Interface)]

@@ -50,7 +50,8 @@ package NetFrameworkAdaRuntime is
 
     ----------------------------------------------------------------------------
 
-    function InvokeMethod (kind : IType_ptr; Object : VARIANT ; MethodName : BSTR ; Flags : UInt32 ; Parameters : access SAFEARRAY; NetRetVal : in out IUnknown_Ptr) return VARIANT;
+    function InvokeMethod (kind : IType_ptr; Object : VARIANT ; MethodName : BSTR ; Flags : UInt32 ; Parameters : access SAFEARRAY) return VARIANT;
+    function InvokeMethod2 (kind : IType_ptr; Object : VARIANT ; MethodName : BSTR ; Flags : UInt32 ; Parameters : access SAFEARRAY; NetRetVal : in out IUnknown_Ptr) return VARIANT;
     function CreateEnum (Kind : IType_Ptr; Value : Integer) return IUnknown_Ptr;
 
     ----------------------------------------------------------------------------

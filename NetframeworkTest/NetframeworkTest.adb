@@ -34,6 +34,7 @@ with NetFrameworkBase.System.Environment.SpecialFolder;
 with NetFrameworkBase.System.String;
 with NetFrameworkBase.System.Threading;
 with NetFrameworkBase.System.Threading.TimerCallback;
+with NetframeworkBase.System.TimeSpan;
 with NetFrameworkBase.System.Runtime.Serialization.StreamingContextStates;
 with NetFrameworkBase.System.Runtime.Serialization.ISerializationSurrogate;
 with NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector;
@@ -62,6 +63,7 @@ begin
             m_TimeSpanHMS       : Netframework.System.TimeSpan := Netframework.System.Constructor (0,0,0);
             m_TimeSpanDHMS      : Netframework.System.TimeSpan := Netframework.System.Constructor (0,0,0,0);
             m_TimeSpanDHMSms    : Netframework.System.TimeSpan := Netframework.System.Constructor (0,0,0,0,0);
+            m_Ok                : Netframework.Boolean := NetframeworkBase.System.Console.IsOutputRedirected;
         begin
             null;
         end;
@@ -229,6 +231,23 @@ begin
             Ada.Wide_Text_IO.Put_Line (To_Ada(m_String));
         end;
 
+        procedure Test_Operators is
+            use NetframeworkBase.System.TimeSpan;
+            m_TimeSpan1         : Netframework.System.TimeSpan := Netframework.System.Constructor (1, 0, 0);
+            m_TimeSpan2         : Netframework.System.TimeSpan := Netframework.System.Constructor (1, 0, 0);
+--            m_Ok                : Netframework.Boolean := NetframeworkBase.System.TimeSpan.Op_Equality (m_TimeSpan1, m_TimeSpan2);
+        begin
+--            if m_TimeSpan1 = m_TimeSpan2 then
+--                m_TimeSpan1 := m_TimeSpan1 + m_TimeSpan2;
+--                if m_TimeSpan1 /= m_TimeSpan2 then
+--                    m_TimeSpan1 := m_TimeSpan1 - m_TimeSpan2;
+--                end if;
+--            else
+--                raise PROGRAM_ERROR;
+--            end if;
+            null;
+        end;
+
         x : Netframework.BSTR;
 
     begin
@@ -247,6 +266,7 @@ begin
         Test_Out_Array;
 --        Test_Builtin_Array;
         Test_In_Array;
+        Test_Operators;
 
         x := NetFrameworkBase.System.Console.ReadLine;
 
