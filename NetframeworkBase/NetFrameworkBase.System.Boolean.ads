@@ -100,7 +100,7 @@ package NetFrameworkBase.System.Boolean is
       
       function TryParse
       (
-         value : NetFrameworkBase.BSTR;
+         value : NetFrameworkBase.BSTR; 
          result : out NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.Boolean;

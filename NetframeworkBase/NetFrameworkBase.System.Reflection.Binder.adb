@@ -73,12 +73,12 @@ package body NetFrameworkBase.System.Reflection.Binder is
    function BindToMethod
    (
       this : in out Binder.Kind;
-      bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind;
-      match : NetFrameworkBase.System.Reflection.MethodBase.Kind_Array;
-      args : NetFrameworkBase.System.Object.Kind_Array;
-      modifiers : NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Array_Ptr;
-      culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr;
-      names : NetFrameworkBase.BSTR_Array;
+      bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind; 
+      match : NetFrameworkBase.System.Reflection.MethodBase.Kind_Array; 
+      args : NetFrameworkBase.System.Object.Kind_Array; 
+      modifiers : NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Array_Ptr; 
+      culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr; 
+      names : NetFrameworkBase.BSTR_Array; 
       state : out NetFrameworkBase.System.Object.Kind_Ptr
    )
    return NetFrameworkBase.System.Reflection.MethodBase.Kind_Ptr is
@@ -227,9 +227,9 @@ package body NetFrameworkBase.System.Reflection.Binder is
    function BindToField
    (
       this : in out Binder.Kind;
-      bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind;
-      match : NetFrameworkBase.System.Reflection.FieldInfo.Kind_Array;
-      value : NetFrameworkBase.System.Object.Kind_Ptr;
+      bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind; 
+      match : NetFrameworkBase.System.Reflection.FieldInfo.Kind_Array; 
+      value : NetFrameworkBase.System.Object.Kind_Ptr; 
       culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr
    )
    return NetFrameworkBase.System.Reflection.FieldInfo.Kind_Ptr is
@@ -302,9 +302,9 @@ package body NetFrameworkBase.System.Reflection.Binder is
    function SelectMethod
    (
       this : in out Binder.Kind;
-      bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind;
-      match : NetFrameworkBase.System.Reflection.MethodBase.Kind_Array;
-      types : NetFrameworkBase.System.Type_x.Kind_Array;
+      bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind; 
+      match : NetFrameworkBase.System.Reflection.MethodBase.Kind_Array; 
+      types : NetFrameworkBase.System.Type_x.Kind_Array; 
       modifiers : NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Array_Ptr
    )
    return NetFrameworkBase.System.Reflection.MethodBase.Kind_Ptr is
@@ -415,10 +415,10 @@ package body NetFrameworkBase.System.Reflection.Binder is
    function SelectProperty
    (
       this : in out Binder.Kind;
-      bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind;
-      match : NetFrameworkBase.System.Reflection.PropertyInfo.Kind_Array;
-      returnType : NetFrameworkBase.System.Type_x.Kind_Ptr;
-      indexes : NetFrameworkBase.System.Type_x.Kind_Array;
+      bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind; 
+      match : NetFrameworkBase.System.Reflection.PropertyInfo.Kind_Array; 
+      returnType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
+      indexes : NetFrameworkBase.System.Type_x.Kind_Array; 
       modifiers : NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Array_Ptr
    )
    return NetFrameworkBase.System.Reflection.PropertyInfo.Kind_Ptr is
@@ -533,8 +533,8 @@ package body NetFrameworkBase.System.Reflection.Binder is
    function ChangeType
    (
       this : in out Binder.Kind;
-      value : NetFrameworkBase.System.Object.Kind_Ptr;
-      type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
+      value : NetFrameworkBase.System.Object.Kind_Ptr; 
+      type_x : NetFrameworkBase.System.Type_x.Kind_Ptr; 
       culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr
    )
    return NetFrameworkBase.System.Object.Kind_Ptr is
@@ -582,7 +582,7 @@ package body NetFrameworkBase.System.Reflection.Binder is
    procedure ReorderArgumentArray
    (
       this : in out Binder.Kind;
-      args : NetFrameworkBase.System.Object.Kind_Array;
+      args : NetFrameworkBase.System.Object.Kind_Array; 
       state : NetFrameworkBase.System.Object.Kind_Ptr
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);

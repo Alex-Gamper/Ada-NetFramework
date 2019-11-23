@@ -41,7 +41,7 @@ package NetFrameworkBase.System.Security.SecurityElement is
       procedure AddAttribute
       (
          this : in out SecurityElement.Kind;
-         name : NetFrameworkBase.BSTR;
+         name : NetFrameworkBase.BSTR; 
          value : NetFrameworkBase.BSTR
       );
       

@@ -97,7 +97,7 @@ package NetFrameworkBase.System.UInt64 is
       function ToString
       (
          this : in out UInt64.Kind;
-         format : NetFrameworkBase.BSTR;
+         format : NetFrameworkBase.BSTR; 
          provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
       )
       return NetFrameworkBase.BSTR;
@@ -110,38 +110,38 @@ package NetFrameworkBase.System.UInt64 is
       
       function Parse
       (
-         s : NetFrameworkBase.BSTR;
+         s : NetFrameworkBase.BSTR; 
          style : NetFrameworkBase.System.Globalization.NumberStyles.Kind
       )
       return NetFrameworkBase.UInt64;
       
       function Parse
       (
-         s : NetFrameworkBase.BSTR;
+         s : NetFrameworkBase.BSTR; 
          provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
       )
       return NetFrameworkBase.UInt64;
       
       function Parse
       (
-         s : NetFrameworkBase.BSTR;
-         style : NetFrameworkBase.System.Globalization.NumberStyles.Kind;
+         s : NetFrameworkBase.BSTR; 
+         style : NetFrameworkBase.System.Globalization.NumberStyles.Kind; 
          provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
       )
       return NetFrameworkBase.UInt64;
       
       function TryParse
       (
-         s : NetFrameworkBase.BSTR;
+         s : NetFrameworkBase.BSTR; 
          result : out NetFrameworkBase.UInt64
       )
       return NetFrameworkBase.Boolean;
       
       function TryParse
       (
-         s : NetFrameworkBase.BSTR;
-         style : NetFrameworkBase.System.Globalization.NumberStyles.Kind;
-         provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
+         s : NetFrameworkBase.BSTR; 
+         style : NetFrameworkBase.System.Globalization.NumberStyles.Kind; 
+         provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr; 
          result : out NetFrameworkBase.UInt64
       )
       return NetFrameworkBase.Boolean;

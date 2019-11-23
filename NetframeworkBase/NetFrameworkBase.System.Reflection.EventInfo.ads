@@ -44,14 +44,14 @@ package NetFrameworkBase.System.Reflection.EventInfo is
    
       function op_Equality
       (
-         left : NetFrameworkBase.System.Reflection.EventInfo.Kind_Ptr;
+         left : NetFrameworkBase.System.Reflection.EventInfo.Kind_Ptr; 
          right : NetFrameworkBase.System.Reflection.EventInfo.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function op_Inequality
       (
-         left : NetFrameworkBase.System.Reflection.EventInfo.Kind_Ptr;
+         left : NetFrameworkBase.System.Reflection.EventInfo.Kind_Ptr; 
          right : NetFrameworkBase.System.Reflection.EventInfo.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
@@ -127,14 +127,14 @@ package NetFrameworkBase.System.Reflection.EventInfo is
       procedure AddEventHandler
       (
          this : in out EventInfo.Kind;
-         target : NetFrameworkBase.System.Object.Kind_Ptr;
+         target : NetFrameworkBase.System.Object.Kind_Ptr; 
          handler : NetFrameworkBase.System.Delegate.Kind_Ptr
       );
       
       procedure RemoveEventHandler
       (
          this : in out EventInfo.Kind;
-         target : NetFrameworkBase.System.Object.Kind_Ptr;
+         target : NetFrameworkBase.System.Object.Kind_Ptr; 
          handler : NetFrameworkBase.System.Delegate.Kind_Ptr
       );
       

@@ -43,15 +43,15 @@ package NetFrameworkBase.System.Enum is
    
       function Parse
       (
-         enumType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         enumType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          value : NetFrameworkBase.BSTR
       )
       return NetFrameworkBase.System.Object.Kind_Ptr;
       
       function Parse
       (
-         enumType : NetFrameworkBase.System.Type_x.Kind_Ptr;
-         value : NetFrameworkBase.BSTR;
+         enumType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
+         value : NetFrameworkBase.BSTR; 
          ignoreCase : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.System.Object.Kind_Ptr;
@@ -70,7 +70,7 @@ package NetFrameworkBase.System.Enum is
       
       function GetName
       (
-         enumType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         enumType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          value : NetFrameworkBase.System.Object.Kind_Ptr
       )
       return NetFrameworkBase.BSTR;
@@ -83,22 +83,22 @@ package NetFrameworkBase.System.Enum is
       
       function ToObject
       (
-         enumType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         enumType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          value : NetFrameworkBase.System.Object.Kind_Ptr
       )
       return NetFrameworkBase.System.Object.Kind_Ptr;
       
       function IsDefined
       (
-         enumType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         enumType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          value : NetFrameworkBase.System.Object.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function Format
       (
-         enumType : NetFrameworkBase.System.Type_x.Kind_Ptr;
-         value : NetFrameworkBase.System.Object.Kind_Ptr;
+         enumType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
+         value : NetFrameworkBase.System.Object.Kind_Ptr; 
          format : NetFrameworkBase.BSTR
       )
       return NetFrameworkBase.BSTR;
@@ -118,7 +118,7 @@ package NetFrameworkBase.System.Enum is
       function ToString
       (
          this : in out Enum.Kind;
-         format : NetFrameworkBase.BSTR;
+         format : NetFrameworkBase.BSTR; 
          provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
       )
       return NetFrameworkBase.BSTR;
@@ -152,56 +152,56 @@ package NetFrameworkBase.System.Enum is
       
       function ToObject
       (
-         enumType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         enumType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          value : NetFrameworkBase.SByte
       )
       return NetFrameworkBase.System.Object.Kind_Ptr;
       
       function ToObject
       (
-         enumType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         enumType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          value : NetFrameworkBase.Int16
       )
       return NetFrameworkBase.System.Object.Kind_Ptr;
       
       function ToObject
       (
-         enumType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         enumType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          value : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.System.Object.Kind_Ptr;
       
       function ToObject
       (
-         enumType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         enumType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          value : NetFrameworkBase.Byte
       )
       return NetFrameworkBase.System.Object.Kind_Ptr;
       
       function ToObject
       (
-         enumType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         enumType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          value : NetFrameworkBase.UInt16
       )
       return NetFrameworkBase.System.Object.Kind_Ptr;
       
       function ToObject
       (
-         enumType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         enumType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          value : NetFrameworkBase.UInt32
       )
       return NetFrameworkBase.System.Object.Kind_Ptr;
       
       function ToObject
       (
-         enumType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         enumType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          value : NetFrameworkBase.Int64
       )
       return NetFrameworkBase.System.Object.Kind_Ptr;
       
       function ToObject
       (
-         enumType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         enumType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          value : NetFrameworkBase.UInt64
       )
       return NetFrameworkBase.System.Object.Kind_Ptr;

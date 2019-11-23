@@ -77,7 +77,7 @@ package NetFrameworkBase.System.Threading.Tasks.TaskFactory is
       function StartNew
       (
          this : in out TaskFactory.Kind;
-         action : NetFrameworkBase.System.Action.Kind_Ptr;
+         action : NetFrameworkBase.System.Action.Kind_Ptr; 
          cancellationToken : NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr
       )
       return NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr;
@@ -85,7 +85,7 @@ package NetFrameworkBase.System.Threading.Tasks.TaskFactory is
       function StartNew
       (
          this : in out TaskFactory.Kind;
-         action : NetFrameworkBase.System.Action.Kind_Ptr;
+         action : NetFrameworkBase.System.Action.Kind_Ptr; 
          creationOptions : NetFrameworkBase.System.Threading.Tasks.TaskCreationOptions.Kind
       )
       return NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr;
@@ -93,9 +93,9 @@ package NetFrameworkBase.System.Threading.Tasks.TaskFactory is
       function StartNew
       (
          this : in out TaskFactory.Kind;
-         action : NetFrameworkBase.System.Action.Kind_Ptr;
-         cancellationToken : NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr;
-         creationOptions : NetFrameworkBase.System.Threading.Tasks.TaskCreationOptions.Kind;
+         action : NetFrameworkBase.System.Action.Kind_Ptr; 
+         cancellationToken : NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr; 
+         creationOptions : NetFrameworkBase.System.Threading.Tasks.TaskCreationOptions.Kind; 
          scheduler : NetFrameworkBase.System.Threading.Tasks.TaskScheduler.Kind_Ptr
       )
       return NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr;

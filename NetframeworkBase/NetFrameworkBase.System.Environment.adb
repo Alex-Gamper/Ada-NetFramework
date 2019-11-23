@@ -287,7 +287,7 @@ package body NetFrameworkBase.System.Environment is
    
    procedure SetEnvironmentVariable
    (
-      variable : NetFrameworkBase.BSTR;
+      variable : NetFrameworkBase.BSTR; 
       value : NetFrameworkBase.BSTR
    )
    is
@@ -546,7 +546,7 @@ package body NetFrameworkBase.System.Environment is
    
    function GetFolderPath
    (
-      folder : NetFrameworkBase.System.Environment.SpecialFolder.Kind;
+      folder : NetFrameworkBase.System.Environment.SpecialFolder.Kind; 
       option : NetFrameworkBase.System.Environment.SpecialFolderOption.Kind
    )
    return NetFrameworkBase.BSTR is
@@ -682,7 +682,7 @@ package body NetFrameworkBase.System.Environment is
    
    procedure FailFast
    (
-      message : NetFrameworkBase.BSTR;
+      message : NetFrameworkBase.BSTR; 
       exception_x : NetFrameworkBase.System.Exception_x.Kind_Ptr
    )
    is
@@ -760,8 +760,8 @@ package body NetFrameworkBase.System.Environment is
    
    procedure SetEnvironmentVariable
    (
-      variable : NetFrameworkBase.BSTR;
-      value : NetFrameworkBase.BSTR;
+      variable : NetFrameworkBase.BSTR; 
+      value : NetFrameworkBase.BSTR; 
       target : NetFrameworkBase.System.EnvironmentVariableTarget.Kind
    )
    is
@@ -1000,7 +1000,7 @@ package body NetFrameworkBase.System.Environment is
    
    function GetEnvironmentVariable
    (
-      variable : NetFrameworkBase.BSTR;
+      variable : NetFrameworkBase.BSTR; 
       target : NetFrameworkBase.System.EnvironmentVariableTarget.Kind
    )
    return NetFrameworkBase.BSTR is

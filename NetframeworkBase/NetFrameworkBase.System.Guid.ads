@@ -46,22 +46,22 @@ package NetFrameworkBase.System.Guid is
       
       function TryParse
       (
-         input : NetFrameworkBase.BSTR;
+         input : NetFrameworkBase.BSTR; 
          result : out NetFrameworkBase.System.Guid.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function ParseExact
       (
-         input : NetFrameworkBase.BSTR;
+         input : NetFrameworkBase.BSTR; 
          format : NetFrameworkBase.BSTR
       )
       return NetFrameworkBase.System.Guid.Kind_Ptr;
       
       function TryParseExact
       (
-         input : NetFrameworkBase.BSTR;
-         format : NetFrameworkBase.BSTR;
+         input : NetFrameworkBase.BSTR; 
+         format : NetFrameworkBase.BSTR; 
          result : out NetFrameworkBase.System.Guid.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
@@ -108,14 +108,14 @@ package NetFrameworkBase.System.Guid is
       
       function op_Equality
       (
-         a : NetFrameworkBase.System.Guid.Kind_Ptr;
+         a : NetFrameworkBase.System.Guid.Kind_Ptr; 
          b : NetFrameworkBase.System.Guid.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function op_Inequality
       (
-         a : NetFrameworkBase.System.Guid.Kind_Ptr;
+         a : NetFrameworkBase.System.Guid.Kind_Ptr; 
          b : NetFrameworkBase.System.Guid.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
@@ -139,7 +139,7 @@ package NetFrameworkBase.System.Guid is
       function ToString
       (
          this : in out Guid.Kind;
-         format : NetFrameworkBase.BSTR;
+         format : NetFrameworkBase.BSTR; 
          provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
       )
       return NetFrameworkBase.BSTR;

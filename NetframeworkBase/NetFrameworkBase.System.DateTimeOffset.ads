@@ -222,7 +222,7 @@ package NetFrameworkBase.System.DateTimeOffset is
       
       function Compare
       (
-         first : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr;
+         first : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr; 
          second : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr
       )
       return NetFrameworkBase.Int32;
@@ -257,7 +257,7 @@ package NetFrameworkBase.System.DateTimeOffset is
       
       function Equals
       (
-         first : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr;
+         first : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr; 
          second : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
@@ -294,15 +294,15 @@ package NetFrameworkBase.System.DateTimeOffset is
       
       function Parse
       (
-         input : NetFrameworkBase.BSTR;
+         input : NetFrameworkBase.BSTR; 
          formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
       )
       return NetFrameworkBase.System.DateTimeOffset.Kind_Ptr;
       
       function ParseExact
       (
-         input : NetFrameworkBase.BSTR;
-         format : NetFrameworkBase.BSTR;
+         input : NetFrameworkBase.BSTR; 
+         format : NetFrameworkBase.BSTR; 
          formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
       )
       return NetFrameworkBase.System.DateTimeOffset.Kind_Ptr;
@@ -368,7 +368,7 @@ package NetFrameworkBase.System.DateTimeOffset is
       function ToString
       (
          this : in out DateTimeOffset.Kind;
-         format : NetFrameworkBase.BSTR;
+         format : NetFrameworkBase.BSTR; 
          formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
       )
       return NetFrameworkBase.BSTR;
@@ -381,7 +381,7 @@ package NetFrameworkBase.System.DateTimeOffset is
       
       function TryParse
       (
-         input : NetFrameworkBase.BSTR;
+         input : NetFrameworkBase.BSTR; 
          result : out NetFrameworkBase.System.DateTimeOffset.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
@@ -394,118 +394,125 @@ package NetFrameworkBase.System.DateTimeOffset is
       
       function op_Addition
       (
-         dateTimeOffset : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr;
+         dateTimeOffset : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr; 
          timeSpan : NetFrameworkBase.System.TimeSpan.Kind_Ptr
       )
       return NetFrameworkBase.System.DateTimeOffset.Kind_Ptr;
+      function "+"(dateTimeOffset : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr; timeSpan : NetFrameworkBase.System.TimeSpan.Kind_Ptr) return NetFrameworkBase.System.DateTimeOffset.Kind_Ptr renames op_Addition;
       
       function op_Subtraction
       (
-         dateTimeOffset : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr;
+         dateTimeOffset : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr; 
          timeSpan : NetFrameworkBase.System.TimeSpan.Kind_Ptr
       )
       return NetFrameworkBase.System.DateTimeOffset.Kind_Ptr;
+      function "-"(dateTimeOffset : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr; timeSpan : NetFrameworkBase.System.TimeSpan.Kind_Ptr) return NetFrameworkBase.System.DateTimeOffset.Kind_Ptr renames op_Subtraction;
       
       function op_Subtraction
       (
-         left : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr;
+         left : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr; 
          right : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr
       )
       return NetFrameworkBase.System.TimeSpan.Kind_Ptr;
+      function "-"(left : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr; right : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr) return NetFrameworkBase.System.TimeSpan.Kind_Ptr renames op_Subtraction;
       
       function op_Equality
       (
-         left : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr;
+         left : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr; 
          right : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function op_Inequality
       (
-         left : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr;
+         left : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr; 
          right : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function op_LessThan
       (
-         left : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr;
+         left : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr; 
          right : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
+      function "<"(left : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr; right : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr) return NetFrameworkBase.Boolean renames op_LessThan;
       
       function op_LessThanOrEqual
       (
-         left : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr;
+         left : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr; 
          right : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
+      function "<="(left : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr; right : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr) return NetFrameworkBase.Boolean renames op_LessThanOrEqual;
       
       function op_GreaterThan
       (
-         left : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr;
+         left : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr; 
          right : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
+      function ">"(left : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr; right : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr) return NetFrameworkBase.Boolean renames op_GreaterThan;
       
       function op_GreaterThanOrEqual
       (
-         left : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr;
+         left : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr; 
          right : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
+      function ">="(left : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr; right : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr) return NetFrameworkBase.Boolean renames op_GreaterThanOrEqual;
       
       function Parse
       (
-         input : NetFrameworkBase.BSTR;
-         formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
+         input : NetFrameworkBase.BSTR; 
+         formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr; 
          styles : NetFrameworkBase.System.Globalization.DateTimeStyles.Kind
       )
       return NetFrameworkBase.System.DateTimeOffset.Kind_Ptr;
       
       function ParseExact
       (
-         input : NetFrameworkBase.BSTR;
-         format : NetFrameworkBase.BSTR;
-         formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
+         input : NetFrameworkBase.BSTR; 
+         format : NetFrameworkBase.BSTR; 
+         formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr; 
          styles : NetFrameworkBase.System.Globalization.DateTimeStyles.Kind
       )
       return NetFrameworkBase.System.DateTimeOffset.Kind_Ptr;
       
       function ParseExact
       (
-         input : NetFrameworkBase.BSTR;
-         formats : NetFrameworkBase.BSTR_Array;
-         formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
+         input : NetFrameworkBase.BSTR; 
+         formats : NetFrameworkBase.BSTR_Array; 
+         formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr; 
          styles : NetFrameworkBase.System.Globalization.DateTimeStyles.Kind
       )
       return NetFrameworkBase.System.DateTimeOffset.Kind_Ptr;
       
       function TryParse
       (
-         input : NetFrameworkBase.BSTR;
-         formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
-         styles : NetFrameworkBase.System.Globalization.DateTimeStyles.Kind;
+         input : NetFrameworkBase.BSTR; 
+         formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr; 
+         styles : NetFrameworkBase.System.Globalization.DateTimeStyles.Kind; 
          result : out NetFrameworkBase.System.DateTimeOffset.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function TryParseExact
       (
-         input : NetFrameworkBase.BSTR;
-         formats : NetFrameworkBase.BSTR_Array;
-         formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
-         styles : NetFrameworkBase.System.Globalization.DateTimeStyles.Kind;
+         input : NetFrameworkBase.BSTR; 
+         formats : NetFrameworkBase.BSTR_Array; 
+         formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr; 
+         styles : NetFrameworkBase.System.Globalization.DateTimeStyles.Kind; 
          result : out NetFrameworkBase.System.DateTimeOffset.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function TryParseExact
       (
-         input : NetFrameworkBase.BSTR;
-         format : NetFrameworkBase.BSTR;
-         formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
-         styles : NetFrameworkBase.System.Globalization.DateTimeStyles.Kind;
+         input : NetFrameworkBase.BSTR; 
+         format : NetFrameworkBase.BSTR; 
+         formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr; 
+         styles : NetFrameworkBase.System.Globalization.DateTimeStyles.Kind; 
          result : out NetFrameworkBase.System.DateTimeOffset.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;

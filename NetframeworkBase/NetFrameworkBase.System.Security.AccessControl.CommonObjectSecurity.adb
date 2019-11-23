@@ -68,8 +68,8 @@ package body NetFrameworkBase.System.Security.AccessControl.CommonObjectSecurity
    function GetAccessRules
    (
       this : in out CommonObjectSecurity.Kind;
-      includeExplicit : NetFrameworkBase.Boolean;
-      includeInherited : NetFrameworkBase.Boolean;
+      includeExplicit : NetFrameworkBase.Boolean; 
+      includeInherited : NetFrameworkBase.Boolean; 
       targetType : NetFrameworkBase.System.Type_x.Kind_Ptr
    )
    return NetFrameworkBase.System.Security.AccessControl.AuthorizationRuleCollection.Kind_Ptr is
@@ -117,8 +117,8 @@ package body NetFrameworkBase.System.Security.AccessControl.CommonObjectSecurity
    function GetAuditRules
    (
       this : in out CommonObjectSecurity.Kind;
-      includeExplicit : NetFrameworkBase.Boolean;
-      includeInherited : NetFrameworkBase.Boolean;
+      includeExplicit : NetFrameworkBase.Boolean; 
+      includeInherited : NetFrameworkBase.Boolean; 
       targetType : NetFrameworkBase.System.Type_x.Kind_Ptr
    )
    return NetFrameworkBase.System.Security.AccessControl.AuthorizationRuleCollection.Kind_Ptr is

@@ -41,84 +41,84 @@ package NetFrameworkBase.System.Array_x is
    
       function CreateInstance
       (
-         elementType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         elementType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          length : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.System.Array_x.Kind_Ptr;
       
       function CreateInstance
       (
-         elementType : NetFrameworkBase.System.Type_x.Kind_Ptr;
-         length1 : NetFrameworkBase.Int32;
-         length2 : NetFrameworkBase.Int32;
+         elementType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
+         length1 : NetFrameworkBase.Int32; 
+         length2 : NetFrameworkBase.Int32; 
          length3 : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.System.Array_x.Kind_Ptr;
       
       function CreateInstance
       (
-         elementType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         elementType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          lengths : NetFrameworkBase.Int32_Array
       )
       return NetFrameworkBase.System.Array_x.Kind_Ptr;
       
       function CreateInstance
       (
-         elementType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         elementType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          lengths : NetFrameworkBase.Int64_Array
       )
       return NetFrameworkBase.System.Array_x.Kind_Ptr;
       
       function CreateInstance
       (
-         elementType : NetFrameworkBase.System.Type_x.Kind_Ptr;
-         lengths : NetFrameworkBase.Int32_Array;
+         elementType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
+         lengths : NetFrameworkBase.Int32_Array; 
          lowerBounds : NetFrameworkBase.Int32_Array
       )
       return NetFrameworkBase.System.Array_x.Kind_Ptr;
       
       procedure Copy
       (
-         sourceArray : NetFrameworkBase.System.Array_x.Kind_Ptr;
-         destinationArray : NetFrameworkBase.System.Array_x.Kind_Ptr;
+         sourceArray : NetFrameworkBase.System.Array_x.Kind_Ptr; 
+         destinationArray : NetFrameworkBase.System.Array_x.Kind_Ptr; 
          length : NetFrameworkBase.Int32
       )
       ;
       
       procedure Copy
       (
-         sourceArray : NetFrameworkBase.System.Array_x.Kind_Ptr;
-         sourceIndex : NetFrameworkBase.Int32;
-         destinationArray : NetFrameworkBase.System.Array_x.Kind_Ptr;
-         destinationIndex : NetFrameworkBase.Int32;
+         sourceArray : NetFrameworkBase.System.Array_x.Kind_Ptr; 
+         sourceIndex : NetFrameworkBase.Int32; 
+         destinationArray : NetFrameworkBase.System.Array_x.Kind_Ptr; 
+         destinationIndex : NetFrameworkBase.Int32; 
          length : NetFrameworkBase.Int32
       )
       ;
       
       procedure ConstrainedCopy
       (
-         sourceArray : NetFrameworkBase.System.Array_x.Kind_Ptr;
-         sourceIndex : NetFrameworkBase.Int32;
-         destinationArray : NetFrameworkBase.System.Array_x.Kind_Ptr;
-         destinationIndex : NetFrameworkBase.Int32;
+         sourceArray : NetFrameworkBase.System.Array_x.Kind_Ptr; 
+         sourceIndex : NetFrameworkBase.Int32; 
+         destinationArray : NetFrameworkBase.System.Array_x.Kind_Ptr; 
+         destinationIndex : NetFrameworkBase.Int32; 
          length : NetFrameworkBase.Int32
       )
       ;
       
       procedure Copy
       (
-         sourceArray : NetFrameworkBase.System.Array_x.Kind_Ptr;
-         destinationArray : NetFrameworkBase.System.Array_x.Kind_Ptr;
+         sourceArray : NetFrameworkBase.System.Array_x.Kind_Ptr; 
+         destinationArray : NetFrameworkBase.System.Array_x.Kind_Ptr; 
          length : NetFrameworkBase.Int64
       )
       ;
       
       procedure Copy
       (
-         sourceArray : NetFrameworkBase.System.Array_x.Kind_Ptr;
-         sourceIndex : NetFrameworkBase.Int64;
-         destinationArray : NetFrameworkBase.System.Array_x.Kind_Ptr;
-         destinationIndex : NetFrameworkBase.Int64;
+         sourceArray : NetFrameworkBase.System.Array_x.Kind_Ptr; 
+         sourceIndex : NetFrameworkBase.Int64; 
+         destinationArray : NetFrameworkBase.System.Array_x.Kind_Ptr; 
+         destinationIndex : NetFrameworkBase.Int64; 
          length : NetFrameworkBase.Int64
       )
       ;
@@ -140,7 +140,7 @@ package NetFrameworkBase.System.Array_x is
       function GetValue
       (
          this : in out Array_x.Kind;
-         index1 : NetFrameworkBase.Int32;
+         index1 : NetFrameworkBase.Int32; 
          index2 : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.System.Object.Kind_Ptr;
@@ -148,8 +148,8 @@ package NetFrameworkBase.System.Array_x is
       function GetValue
       (
          this : in out Array_x.Kind;
-         index1 : NetFrameworkBase.Int32;
-         index2 : NetFrameworkBase.Int32;
+         index1 : NetFrameworkBase.Int32; 
+         index2 : NetFrameworkBase.Int32; 
          index3 : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.System.Object.Kind_Ptr;
@@ -164,7 +164,7 @@ package NetFrameworkBase.System.Array_x is
       function GetValue
       (
          this : in out Array_x.Kind;
-         index1 : NetFrameworkBase.Int64;
+         index1 : NetFrameworkBase.Int64; 
          index2 : NetFrameworkBase.Int64
       )
       return NetFrameworkBase.System.Object.Kind_Ptr;
@@ -172,8 +172,8 @@ package NetFrameworkBase.System.Array_x is
       function GetValue
       (
          this : in out Array_x.Kind;
-         index1 : NetFrameworkBase.Int64;
-         index2 : NetFrameworkBase.Int64;
+         index1 : NetFrameworkBase.Int64; 
+         index2 : NetFrameworkBase.Int64; 
          index3 : NetFrameworkBase.Int64
       )
       return NetFrameworkBase.System.Object.Kind_Ptr;
@@ -188,62 +188,62 @@ package NetFrameworkBase.System.Array_x is
       procedure SetValue
       (
          this : in out Array_x.Kind;
-         value : NetFrameworkBase.System.Object.Kind_Ptr;
+         value : NetFrameworkBase.System.Object.Kind_Ptr; 
          index : NetFrameworkBase.Int32
       );
       
       procedure SetValue
       (
          this : in out Array_x.Kind;
-         value : NetFrameworkBase.System.Object.Kind_Ptr;
-         index1 : NetFrameworkBase.Int32;
+         value : NetFrameworkBase.System.Object.Kind_Ptr; 
+         index1 : NetFrameworkBase.Int32; 
          index2 : NetFrameworkBase.Int32
       );
       
       procedure SetValue
       (
          this : in out Array_x.Kind;
-         value : NetFrameworkBase.System.Object.Kind_Ptr;
-         index1 : NetFrameworkBase.Int32;
-         index2 : NetFrameworkBase.Int32;
+         value : NetFrameworkBase.System.Object.Kind_Ptr; 
+         index1 : NetFrameworkBase.Int32; 
+         index2 : NetFrameworkBase.Int32; 
          index3 : NetFrameworkBase.Int32
       );
       
       procedure SetValue
       (
          this : in out Array_x.Kind;
-         value : NetFrameworkBase.System.Object.Kind_Ptr;
+         value : NetFrameworkBase.System.Object.Kind_Ptr; 
          indices : NetFrameworkBase.Int32_Array
       );
       
       procedure SetValue
       (
          this : in out Array_x.Kind;
-         value : NetFrameworkBase.System.Object.Kind_Ptr;
+         value : NetFrameworkBase.System.Object.Kind_Ptr; 
          index : NetFrameworkBase.Int64
       );
       
       procedure SetValue
       (
          this : in out Array_x.Kind;
-         value : NetFrameworkBase.System.Object.Kind_Ptr;
-         index1 : NetFrameworkBase.Int64;
+         value : NetFrameworkBase.System.Object.Kind_Ptr; 
+         index1 : NetFrameworkBase.Int64; 
          index2 : NetFrameworkBase.Int64
       );
       
       procedure SetValue
       (
          this : in out Array_x.Kind;
-         value : NetFrameworkBase.System.Object.Kind_Ptr;
-         index1 : NetFrameworkBase.Int64;
-         index2 : NetFrameworkBase.Int64;
+         value : NetFrameworkBase.System.Object.Kind_Ptr; 
+         index1 : NetFrameworkBase.Int64; 
+         index2 : NetFrameworkBase.Int64; 
          index3 : NetFrameworkBase.Int64
       );
       
       procedure SetValue
       (
          this : in out Array_x.Kind;
-         value : NetFrameworkBase.System.Object.Kind_Ptr;
+         value : NetFrameworkBase.System.Object.Kind_Ptr; 
          indices : NetFrameworkBase.Int64_Array
       );
       
@@ -286,24 +286,24 @@ package NetFrameworkBase.System.Array_x is
       
       function BinarySearch
       (
-         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr;
+         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr; 
          value : NetFrameworkBase.System.Object.Kind_Ptr
       )
       return NetFrameworkBase.Int32;
       
       function BinarySearch
       (
-         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr;
-         index : NetFrameworkBase.Int32;
-         length : NetFrameworkBase.Int32;
+         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr; 
+         index : NetFrameworkBase.Int32; 
+         length : NetFrameworkBase.Int32; 
          value : NetFrameworkBase.System.Object.Kind_Ptr
       )
       return NetFrameworkBase.Int32;
       
       function BinarySearch
       (
-         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr;
-         value : NetFrameworkBase.System.Object.Kind_Ptr;
+         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr; 
+         value : NetFrameworkBase.System.Object.Kind_Ptr; 
          comparer : NetFrameworkBase.System.Collections.IComparer.Kind_Ptr
       )
       return NetFrameworkBase.Int32;
@@ -311,14 +311,14 @@ package NetFrameworkBase.System.Array_x is
       procedure CopyTo
       (
          this : in out Array_x.Kind;
-         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr;
+         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr; 
          index : NetFrameworkBase.Int32
       );
       
       procedure CopyTo
       (
          this : in out Array_x.Kind;
-         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr;
+         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr; 
          index : NetFrameworkBase.Int64
       );
       
@@ -330,48 +330,48 @@ package NetFrameworkBase.System.Array_x is
       
       function IndexOf
       (
-         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr;
+         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr; 
          value : NetFrameworkBase.System.Object.Kind_Ptr
       )
       return NetFrameworkBase.Int32;
       
       function IndexOf
       (
-         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr;
-         value : NetFrameworkBase.System.Object.Kind_Ptr;
+         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr; 
+         value : NetFrameworkBase.System.Object.Kind_Ptr; 
          startIndex : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
       
       function IndexOf
       (
-         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr;
-         value : NetFrameworkBase.System.Object.Kind_Ptr;
-         startIndex : NetFrameworkBase.Int32;
+         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr; 
+         value : NetFrameworkBase.System.Object.Kind_Ptr; 
+         startIndex : NetFrameworkBase.Int32; 
          count : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
       
       function LastIndexOf
       (
-         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr;
+         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr; 
          value : NetFrameworkBase.System.Object.Kind_Ptr
       )
       return NetFrameworkBase.Int32;
       
       function LastIndexOf
       (
-         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr;
-         value : NetFrameworkBase.System.Object.Kind_Ptr;
+         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr; 
+         value : NetFrameworkBase.System.Object.Kind_Ptr; 
          startIndex : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
       
       function LastIndexOf
       (
-         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr;
-         value : NetFrameworkBase.System.Object.Kind_Ptr;
-         startIndex : NetFrameworkBase.Int32;
+         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr; 
+         value : NetFrameworkBase.System.Object.Kind_Ptr; 
+         startIndex : NetFrameworkBase.Int32; 
          count : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -390,56 +390,56 @@ package NetFrameworkBase.System.Array_x is
       
       procedure Sort
       (
-         keys : NetFrameworkBase.System.Array_x.Kind_Ptr;
+         keys : NetFrameworkBase.System.Array_x.Kind_Ptr; 
          items : NetFrameworkBase.System.Array_x.Kind_Ptr
       )
       ;
       
       procedure Sort
       (
-         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr;
-         index : NetFrameworkBase.Int32;
+         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr; 
+         index : NetFrameworkBase.Int32; 
          length : NetFrameworkBase.Int32
       )
       ;
       
       procedure Sort
       (
-         keys : NetFrameworkBase.System.Array_x.Kind_Ptr;
-         items : NetFrameworkBase.System.Array_x.Kind_Ptr;
-         index : NetFrameworkBase.Int32;
+         keys : NetFrameworkBase.System.Array_x.Kind_Ptr; 
+         items : NetFrameworkBase.System.Array_x.Kind_Ptr; 
+         index : NetFrameworkBase.Int32; 
          length : NetFrameworkBase.Int32
       )
       ;
       
       procedure Sort
       (
-         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr;
+         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr; 
          comparer : NetFrameworkBase.System.Collections.IComparer.Kind_Ptr
       )
       ;
       
       procedure Sort
       (
-         keys : NetFrameworkBase.System.Array_x.Kind_Ptr;
-         items : NetFrameworkBase.System.Array_x.Kind_Ptr;
+         keys : NetFrameworkBase.System.Array_x.Kind_Ptr; 
+         items : NetFrameworkBase.System.Array_x.Kind_Ptr; 
          comparer : NetFrameworkBase.System.Collections.IComparer.Kind_Ptr
       )
       ;
       
       procedure Sort
       (
-         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr;
-         index : NetFrameworkBase.Int32;
-         length : NetFrameworkBase.Int32;
+         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr; 
+         index : NetFrameworkBase.Int32; 
+         length : NetFrameworkBase.Int32; 
          comparer : NetFrameworkBase.System.Collections.IComparer.Kind_Ptr
       )
       ;
       
       function CreateInstance
       (
-         elementType : NetFrameworkBase.System.Type_x.Kind_Ptr;
-         length1 : NetFrameworkBase.Int32;
+         elementType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
+         length1 : NetFrameworkBase.Int32; 
          length2 : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.System.Array_x.Kind_Ptr;
@@ -457,8 +457,8 @@ package NetFrameworkBase.System.Array_x is
       
       procedure Clear
       (
-         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr;
-         index : NetFrameworkBase.Int32;
+         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr; 
+         index : NetFrameworkBase.Int32; 
          length : NetFrameworkBase.Int32
       )
       ;
@@ -498,28 +498,28 @@ package NetFrameworkBase.System.Array_x is
       
       function BinarySearch
       (
-         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr;
-         index : NetFrameworkBase.Int32;
-         length : NetFrameworkBase.Int32;
-         value : NetFrameworkBase.System.Object.Kind_Ptr;
+         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr; 
+         index : NetFrameworkBase.Int32; 
+         length : NetFrameworkBase.Int32; 
+         value : NetFrameworkBase.System.Object.Kind_Ptr; 
          comparer : NetFrameworkBase.System.Collections.IComparer.Kind_Ptr
       )
       return NetFrameworkBase.Int32;
       
       procedure Reverse_x
       (
-         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr;
-         index : NetFrameworkBase.Int32;
+         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr; 
+         index : NetFrameworkBase.Int32; 
          length : NetFrameworkBase.Int32
       )
       ;
       
       procedure Sort
       (
-         keys : NetFrameworkBase.System.Array_x.Kind_Ptr;
-         items : NetFrameworkBase.System.Array_x.Kind_Ptr;
-         index : NetFrameworkBase.Int32;
-         length : NetFrameworkBase.Int32;
+         keys : NetFrameworkBase.System.Array_x.Kind_Ptr; 
+         items : NetFrameworkBase.System.Array_x.Kind_Ptr; 
+         index : NetFrameworkBase.Int32; 
+         length : NetFrameworkBase.Int32; 
          comparer : NetFrameworkBase.System.Collections.IComparer.Kind_Ptr
       )
       ;

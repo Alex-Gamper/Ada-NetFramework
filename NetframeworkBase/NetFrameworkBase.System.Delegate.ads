@@ -62,7 +62,7 @@ package NetFrameworkBase.System.Delegate is
       
       function Combine
       (
-         a : NetFrameworkBase.System.Delegate.Kind_Ptr;
+         a : NetFrameworkBase.System.Delegate.Kind_Ptr; 
          b : NetFrameworkBase.System.Delegate.Kind_Ptr
       )
       return NetFrameworkBase.System.Delegate.Kind_Ptr;
@@ -93,14 +93,14 @@ package NetFrameworkBase.System.Delegate is
       
       function Remove
       (
-         source : NetFrameworkBase.System.Delegate.Kind_Ptr;
+         source : NetFrameworkBase.System.Delegate.Kind_Ptr; 
          value : NetFrameworkBase.System.Delegate.Kind_Ptr
       )
       return NetFrameworkBase.System.Delegate.Kind_Ptr;
       
       function RemoveAll
       (
-         source : NetFrameworkBase.System.Delegate.Kind_Ptr;
+         source : NetFrameworkBase.System.Delegate.Kind_Ptr; 
          value : NetFrameworkBase.System.Delegate.Kind_Ptr
       )
       return NetFrameworkBase.System.Delegate.Kind_Ptr;
@@ -113,85 +113,85 @@ package NetFrameworkBase.System.Delegate is
       
       function CreateDelegate
       (
-         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
-         target : NetFrameworkBase.System.Object.Kind_Ptr;
+         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr; 
+         target : NetFrameworkBase.System.Object.Kind_Ptr; 
          method : NetFrameworkBase.BSTR
       )
       return NetFrameworkBase.System.Delegate.Kind_Ptr;
       
       function CreateDelegate
       (
-         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
-         target : NetFrameworkBase.System.Object.Kind_Ptr;
-         method : NetFrameworkBase.BSTR;
+         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr; 
+         target : NetFrameworkBase.System.Object.Kind_Ptr; 
+         method : NetFrameworkBase.BSTR; 
          ignoreCase : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.System.Delegate.Kind_Ptr;
       
       function CreateDelegate
       (
-         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
-         target : NetFrameworkBase.System.Object.Kind_Ptr;
-         method : NetFrameworkBase.BSTR;
-         ignoreCase : NetFrameworkBase.Boolean;
+         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr; 
+         target : NetFrameworkBase.System.Object.Kind_Ptr; 
+         method : NetFrameworkBase.BSTR; 
+         ignoreCase : NetFrameworkBase.Boolean; 
          throwOnBindFailure : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.System.Delegate.Kind_Ptr;
       
       function CreateDelegate
       (
-         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
-         target : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr; 
+         target : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          method : NetFrameworkBase.BSTR
       )
       return NetFrameworkBase.System.Delegate.Kind_Ptr;
       
       function CreateDelegate
       (
-         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
-         target : NetFrameworkBase.System.Type_x.Kind_Ptr;
-         method : NetFrameworkBase.BSTR;
+         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr; 
+         target : NetFrameworkBase.System.Type_x.Kind_Ptr; 
+         method : NetFrameworkBase.BSTR; 
          ignoreCase : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.System.Delegate.Kind_Ptr;
       
       function CreateDelegate
       (
-         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
-         target : NetFrameworkBase.System.Type_x.Kind_Ptr;
-         method : NetFrameworkBase.BSTR;
-         ignoreCase : NetFrameworkBase.Boolean;
+         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr; 
+         target : NetFrameworkBase.System.Type_x.Kind_Ptr; 
+         method : NetFrameworkBase.BSTR; 
+         ignoreCase : NetFrameworkBase.Boolean; 
          throwOnBindFailure : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.System.Delegate.Kind_Ptr;
       
       function CreateDelegate
       (
-         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
-         method : NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr;
+         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr; 
+         method : NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr; 
          throwOnBindFailure : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.System.Delegate.Kind_Ptr;
       
       function CreateDelegate
       (
-         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
-         firstArgument : NetFrameworkBase.System.Object.Kind_Ptr;
-         method : NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr;
+         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr; 
+         firstArgument : NetFrameworkBase.System.Object.Kind_Ptr; 
+         method : NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr; 
          throwOnBindFailure : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.System.Delegate.Kind_Ptr;
       
       function op_Equality
       (
-         d1 : NetFrameworkBase.System.Delegate.Kind_Ptr;
+         d1 : NetFrameworkBase.System.Delegate.Kind_Ptr; 
          d2 : NetFrameworkBase.System.Delegate.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function op_Inequality
       (
-         d1 : NetFrameworkBase.System.Delegate.Kind_Ptr;
+         d1 : NetFrameworkBase.System.Delegate.Kind_Ptr; 
          d2 : NetFrameworkBase.System.Delegate.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
@@ -199,21 +199,21 @@ package NetFrameworkBase.System.Delegate is
       procedure GetObjectData
       (
          this : in out Delegate.Kind;
-         info : NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr;
+         info : NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr; 
          context : NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind_Ptr
       );
       
       function CreateDelegate
       (
-         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          method : NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr
       )
       return NetFrameworkBase.System.Delegate.Kind_Ptr;
       
       function CreateDelegate
       (
-         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
-         firstArgument : NetFrameworkBase.System.Object.Kind_Ptr;
+         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr; 
+         firstArgument : NetFrameworkBase.System.Object.Kind_Ptr; 
          method : NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr
       )
       return NetFrameworkBase.System.Delegate.Kind_Ptr;

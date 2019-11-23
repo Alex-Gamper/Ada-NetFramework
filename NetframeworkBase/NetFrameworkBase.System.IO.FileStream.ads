@@ -123,8 +123,8 @@ package NetFrameworkBase.System.IO.FileStream is
       function Read
       (
          this : in out FileStream.Kind;
-         array_x : in out NetFrameworkBase.Byte_Array;
-         offset : NetFrameworkBase.Int32;
+         array_x : in out NetFrameworkBase.Byte_Array; 
+         offset : NetFrameworkBase.Int32; 
          count : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -132,7 +132,7 @@ package NetFrameworkBase.System.IO.FileStream is
       function Seek
       (
          this : in out FileStream.Kind;
-         offset : NetFrameworkBase.Int64;
+         offset : NetFrameworkBase.Int64; 
          origin : NetFrameworkBase.System.IO.SeekOrigin.Kind
       )
       return NetFrameworkBase.Int64;
@@ -140,18 +140,18 @@ package NetFrameworkBase.System.IO.FileStream is
       procedure Write
       (
          this : in out FileStream.Kind;
-         array_x : NetFrameworkBase.Byte_Array;
-         offset : NetFrameworkBase.Int32;
+         array_x : NetFrameworkBase.Byte_Array; 
+         offset : NetFrameworkBase.Int32; 
          count : NetFrameworkBase.Int32
       );
       
       function BeginRead
       (
          this : in out FileStream.Kind;
-         array_x : NetFrameworkBase.Byte_Array;
-         offset : NetFrameworkBase.Int32;
-         numBytes : NetFrameworkBase.Int32;
-         userCallback : NetFrameworkBase.System.AsyncCallback.Kind_Ptr;
+         array_x : NetFrameworkBase.Byte_Array; 
+         offset : NetFrameworkBase.Int32; 
+         numBytes : NetFrameworkBase.Int32; 
+         userCallback : NetFrameworkBase.System.AsyncCallback.Kind_Ptr; 
          stateObject : NetFrameworkBase.System.Object.Kind_Ptr
       )
       return NetFrameworkBase.System.IAsyncResult.Kind_Ptr;
@@ -172,10 +172,10 @@ package NetFrameworkBase.System.IO.FileStream is
       function BeginWrite
       (
          this : in out FileStream.Kind;
-         array_x : NetFrameworkBase.Byte_Array;
-         offset : NetFrameworkBase.Int32;
-         numBytes : NetFrameworkBase.Int32;
-         userCallback : NetFrameworkBase.System.AsyncCallback.Kind_Ptr;
+         array_x : NetFrameworkBase.Byte_Array; 
+         offset : NetFrameworkBase.Int32; 
+         numBytes : NetFrameworkBase.Int32; 
+         userCallback : NetFrameworkBase.System.AsyncCallback.Kind_Ptr; 
          stateObject : NetFrameworkBase.System.Object.Kind_Ptr
       )
       return NetFrameworkBase.System.IAsyncResult.Kind_Ptr;
@@ -213,23 +213,23 @@ package NetFrameworkBase.System.IO.FileStream is
       procedure Lock
       (
          this : in out FileStream.Kind;
-         position : NetFrameworkBase.Int64;
+         position : NetFrameworkBase.Int64; 
          length : NetFrameworkBase.Int64
       );
       
       procedure Unlock
       (
          this : in out FileStream.Kind;
-         position : NetFrameworkBase.Int64;
+         position : NetFrameworkBase.Int64; 
          length : NetFrameworkBase.Int64
       );
       
       function WriteAsync
       (
          this : in out FileStream.Kind;
-         buffer : NetFrameworkBase.Byte_Array;
-         offset : NetFrameworkBase.Int32;
-         count : NetFrameworkBase.Int32;
+         buffer : NetFrameworkBase.Byte_Array; 
+         offset : NetFrameworkBase.Int32; 
+         count : NetFrameworkBase.Int32; 
          cancellationToken : NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr
       )
       return NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr;

@@ -43,15 +43,15 @@ package NetFrameworkBase.System.Attribute is
    
       function GetCustomAttributes
       (
-         element : NetFrameworkBase.System.Reflection.MemberInfo.Kind_Ptr;
+         element : NetFrameworkBase.System.Reflection.MemberInfo.Kind_Ptr; 
          type_x : NetFrameworkBase.System.Type_x.Kind_Ptr
       )
       return NetFrameworkBase.System.Attribute.Kind_Array;
       
       function GetCustomAttributes
       (
-         element : NetFrameworkBase.System.Reflection.MemberInfo.Kind_Ptr;
-         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         element : NetFrameworkBase.System.Reflection.MemberInfo.Kind_Ptr; 
+         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          inherit : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.System.Attribute.Kind_Array;
@@ -64,37 +64,37 @@ package NetFrameworkBase.System.Attribute is
       
       function GetCustomAttributes
       (
-         element : NetFrameworkBase.System.Reflection.MemberInfo.Kind_Ptr;
+         element : NetFrameworkBase.System.Reflection.MemberInfo.Kind_Ptr; 
          inherit : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.System.Attribute.Kind_Array;
       
       function IsDefined
       (
-         element : NetFrameworkBase.System.Reflection.MemberInfo.Kind_Ptr;
+         element : NetFrameworkBase.System.Reflection.MemberInfo.Kind_Ptr; 
          attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function IsDefined
       (
-         element : NetFrameworkBase.System.Reflection.MemberInfo.Kind_Ptr;
-         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         element : NetFrameworkBase.System.Reflection.MemberInfo.Kind_Ptr; 
+         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          inherit : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.Boolean;
       
       function GetCustomAttribute
       (
-         element : NetFrameworkBase.System.Reflection.MemberInfo.Kind_Ptr;
+         element : NetFrameworkBase.System.Reflection.MemberInfo.Kind_Ptr; 
          attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr
       )
       return NetFrameworkBase.System.Attribute.Kind_Ptr;
       
       function GetCustomAttribute
       (
-         element : NetFrameworkBase.System.Reflection.MemberInfo.Kind_Ptr;
-         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         element : NetFrameworkBase.System.Reflection.MemberInfo.Kind_Ptr; 
+         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          inherit : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.System.Attribute.Kind_Ptr;
@@ -107,59 +107,59 @@ package NetFrameworkBase.System.Attribute is
       
       function GetCustomAttributes
       (
-         element : NetFrameworkBase.System.Reflection.ParameterInfo.Kind_Ptr;
+         element : NetFrameworkBase.System.Reflection.ParameterInfo.Kind_Ptr; 
          attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr
       )
       return NetFrameworkBase.System.Attribute.Kind_Array;
       
       function GetCustomAttributes
       (
-         element : NetFrameworkBase.System.Reflection.ParameterInfo.Kind_Ptr;
-         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         element : NetFrameworkBase.System.Reflection.ParameterInfo.Kind_Ptr; 
+         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          inherit : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.System.Attribute.Kind_Array;
       
       function GetCustomAttributes
       (
-         element : NetFrameworkBase.System.Reflection.ParameterInfo.Kind_Ptr;
+         element : NetFrameworkBase.System.Reflection.ParameterInfo.Kind_Ptr; 
          inherit : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.System.Attribute.Kind_Array;
       
       function IsDefined
       (
-         element : NetFrameworkBase.System.Reflection.ParameterInfo.Kind_Ptr;
+         element : NetFrameworkBase.System.Reflection.ParameterInfo.Kind_Ptr; 
          attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function IsDefined
       (
-         element : NetFrameworkBase.System.Reflection.ParameterInfo.Kind_Ptr;
-         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         element : NetFrameworkBase.System.Reflection.ParameterInfo.Kind_Ptr; 
+         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          inherit : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.Boolean;
       
       function GetCustomAttribute
       (
-         element : NetFrameworkBase.System.Reflection.ParameterInfo.Kind_Ptr;
+         element : NetFrameworkBase.System.Reflection.ParameterInfo.Kind_Ptr; 
          attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr
       )
       return NetFrameworkBase.System.Attribute.Kind_Ptr;
       
       function GetCustomAttribute
       (
-         element : NetFrameworkBase.System.Reflection.ParameterInfo.Kind_Ptr;
-         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         element : NetFrameworkBase.System.Reflection.ParameterInfo.Kind_Ptr; 
+         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          inherit : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.System.Attribute.Kind_Ptr;
       
       function GetCustomAttributes
       (
-         element : NetFrameworkBase.System.Reflection.Module.Kind_Ptr;
+         element : NetFrameworkBase.System.Reflection.Module.Kind_Ptr; 
          attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr
       )
       return NetFrameworkBase.System.Attribute.Kind_Array;
@@ -172,60 +172,60 @@ package NetFrameworkBase.System.Attribute is
       
       function GetCustomAttributes
       (
-         element : NetFrameworkBase.System.Reflection.Module.Kind_Ptr;
+         element : NetFrameworkBase.System.Reflection.Module.Kind_Ptr; 
          inherit : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.System.Attribute.Kind_Array;
       
       function GetCustomAttributes
       (
-         element : NetFrameworkBase.System.Reflection.Module.Kind_Ptr;
-         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         element : NetFrameworkBase.System.Reflection.Module.Kind_Ptr; 
+         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          inherit : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.System.Attribute.Kind_Array;
       
       function IsDefined
       (
-         element : NetFrameworkBase.System.Reflection.Module.Kind_Ptr;
+         element : NetFrameworkBase.System.Reflection.Module.Kind_Ptr; 
          attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function IsDefined
       (
-         element : NetFrameworkBase.System.Reflection.Module.Kind_Ptr;
-         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         element : NetFrameworkBase.System.Reflection.Module.Kind_Ptr; 
+         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          inherit : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.Boolean;
       
       function GetCustomAttribute
       (
-         element : NetFrameworkBase.System.Reflection.Module.Kind_Ptr;
+         element : NetFrameworkBase.System.Reflection.Module.Kind_Ptr; 
          attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr
       )
       return NetFrameworkBase.System.Attribute.Kind_Ptr;
       
       function GetCustomAttribute
       (
-         element : NetFrameworkBase.System.Reflection.Module.Kind_Ptr;
-         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         element : NetFrameworkBase.System.Reflection.Module.Kind_Ptr; 
+         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          inherit : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.System.Attribute.Kind_Ptr;
       
       function GetCustomAttributes
       (
-         element : NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr;
+         element : NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr; 
          attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr
       )
       return NetFrameworkBase.System.Attribute.Kind_Array;
       
       function GetCustomAttributes
       (
-         element : NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr;
-         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         element : NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr; 
+         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          inherit : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.System.Attribute.Kind_Array;
@@ -238,37 +238,37 @@ package NetFrameworkBase.System.Attribute is
       
       function GetCustomAttributes
       (
-         element : NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr;
+         element : NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr; 
          inherit : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.System.Attribute.Kind_Array;
       
       function IsDefined
       (
-         element : NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr;
+         element : NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr; 
          attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function IsDefined
       (
-         element : NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr;
-         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         element : NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr; 
+         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          inherit : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.Boolean;
       
       function GetCustomAttribute
       (
-         element : NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr;
+         element : NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr; 
          attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr
       )
       return NetFrameworkBase.System.Attribute.Kind_Ptr;
       
       function GetCustomAttribute
       (
-         element : NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr;
-         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         element : NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr; 
+         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          inherit : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.System.Attribute.Kind_Ptr;

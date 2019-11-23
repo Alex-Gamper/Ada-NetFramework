@@ -74,7 +74,7 @@ package body NetFrameworkBase.System.String is
    
    function Join
    (
-      separator : NetFrameworkBase.BSTR;
+      separator : NetFrameworkBase.BSTR; 
       value : NetFrameworkBase.BSTR_Array
    )
    return NetFrameworkBase.BSTR is
@@ -134,7 +134,7 @@ package body NetFrameworkBase.System.String is
    
    function Join
    (
-      separator : NetFrameworkBase.BSTR;
+      separator : NetFrameworkBase.BSTR; 
       values : NetFrameworkBase.System.Object.Kind_Array
    )
    return NetFrameworkBase.BSTR is
@@ -195,9 +195,9 @@ package body NetFrameworkBase.System.String is
    
    function Join
    (
-      separator : NetFrameworkBase.BSTR;
-      value : NetFrameworkBase.BSTR_Array;
-      startIndex : NetFrameworkBase.Int32;
+      separator : NetFrameworkBase.BSTR; 
+      value : NetFrameworkBase.BSTR_Array; 
+      startIndex : NetFrameworkBase.Int32; 
       count : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.BSTR is
@@ -342,7 +342,7 @@ package body NetFrameworkBase.System.String is
    function Equals
    (
       this : in out String.Kind;
-      value : NetFrameworkBase.BSTR;
+      value : NetFrameworkBase.BSTR; 
       comparisonType : NetFrameworkBase.System.StringComparison.Kind
    )
    return NetFrameworkBase.Boolean is
@@ -386,7 +386,7 @@ package body NetFrameworkBase.System.String is
    
    function Equals
    (
-      a : NetFrameworkBase.BSTR;
+      a : NetFrameworkBase.BSTR; 
       b : NetFrameworkBase.BSTR
    )
    return NetFrameworkBase.Boolean is
@@ -428,8 +428,8 @@ package body NetFrameworkBase.System.String is
    
    function Equals
    (
-      a : NetFrameworkBase.BSTR;
-      b : NetFrameworkBase.BSTR;
+      a : NetFrameworkBase.BSTR; 
+      b : NetFrameworkBase.BSTR; 
       comparisonType : NetFrameworkBase.System.StringComparison.Kind
    )
    return NetFrameworkBase.Boolean is
@@ -477,7 +477,7 @@ package body NetFrameworkBase.System.String is
    
    function op_Equality
    (
-      a : NetFrameworkBase.BSTR;
+      a : NetFrameworkBase.BSTR; 
       b : NetFrameworkBase.BSTR
    )
    return NetFrameworkBase.Boolean is
@@ -519,7 +519,7 @@ package body NetFrameworkBase.System.String is
    
    function op_Inequality
    (
-      a : NetFrameworkBase.BSTR;
+      a : NetFrameworkBase.BSTR; 
       b : NetFrameworkBase.BSTR
    )
    return NetFrameworkBase.Boolean is
@@ -562,9 +562,9 @@ package body NetFrameworkBase.System.String is
    procedure CopyTo
    (
       this : in out String.Kind;
-      sourceIndex : NetFrameworkBase.Int32;
-      destination : NetFrameworkBase.Wide_Char_Array;
-      destinationIndex : NetFrameworkBase.Int32;
+      sourceIndex : NetFrameworkBase.Int32; 
+      destination : NetFrameworkBase.Wide_Char_Array; 
+      destinationIndex : NetFrameworkBase.Int32; 
       count : NetFrameworkBase.Int32
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -679,7 +679,7 @@ package body NetFrameworkBase.System.String is
    function ToCharArray
    (
       this : in out String.Kind;
-      startIndex : NetFrameworkBase.Int32;
+      startIndex : NetFrameworkBase.Int32; 
       length : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Wide_Char_Array is
@@ -927,7 +927,7 @@ package body NetFrameworkBase.System.String is
    function Split
    (
       this : in out String.Kind;
-      separator : NetFrameworkBase.Wide_Char_Array;
+      separator : NetFrameworkBase.Wide_Char_Array; 
       count : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.BSTR_Array is
@@ -1013,7 +1013,7 @@ package body NetFrameworkBase.System.String is
    function Split
    (
       this : in out String.Kind;
-      separator : NetFrameworkBase.Wide_Char_Array;
+      separator : NetFrameworkBase.Wide_Char_Array; 
       options : NetFrameworkBase.System.StringSplitOptions.Kind
    )
    return NetFrameworkBase.BSTR_Array is
@@ -1101,8 +1101,8 @@ package body NetFrameworkBase.System.String is
    function Split
    (
       this : in out String.Kind;
-      separator : NetFrameworkBase.Wide_Char_Array;
-      count : NetFrameworkBase.Int32;
+      separator : NetFrameworkBase.Wide_Char_Array; 
+      count : NetFrameworkBase.Int32; 
       options : NetFrameworkBase.System.StringSplitOptions.Kind
    )
    return NetFrameworkBase.BSTR_Array is
@@ -1194,7 +1194,7 @@ package body NetFrameworkBase.System.String is
    function Split
    (
       this : in out String.Kind;
-      separator : NetFrameworkBase.BSTR_Array;
+      separator : NetFrameworkBase.BSTR_Array; 
       options : NetFrameworkBase.System.StringSplitOptions.Kind
    )
    return NetFrameworkBase.BSTR_Array is
@@ -1282,8 +1282,8 @@ package body NetFrameworkBase.System.String is
    function Split
    (
       this : in out String.Kind;
-      separator : NetFrameworkBase.BSTR_Array;
-      count : NetFrameworkBase.Int32;
+      separator : NetFrameworkBase.BSTR_Array; 
+      count : NetFrameworkBase.Int32; 
       options : NetFrameworkBase.System.StringSplitOptions.Kind
    )
    return NetFrameworkBase.BSTR_Array is
@@ -1413,7 +1413,7 @@ package body NetFrameworkBase.System.String is
    function Substring
    (
       this : in out String.Kind;
-      startIndex : NetFrameworkBase.Int32;
+      startIndex : NetFrameworkBase.Int32; 
       length : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.BSTR is
@@ -1753,7 +1753,7 @@ package body NetFrameworkBase.System.String is
    
    function Compare
    (
-      strA : NetFrameworkBase.BSTR;
+      strA : NetFrameworkBase.BSTR; 
       strB : NetFrameworkBase.BSTR
    )
    return NetFrameworkBase.Int32 is
@@ -1795,8 +1795,8 @@ package body NetFrameworkBase.System.String is
    
    function Compare
    (
-      strA : NetFrameworkBase.BSTR;
-      strB : NetFrameworkBase.BSTR;
+      strA : NetFrameworkBase.BSTR; 
+      strB : NetFrameworkBase.BSTR; 
       ignoreCase : NetFrameworkBase.Boolean
    )
    return NetFrameworkBase.Int32 is
@@ -1842,8 +1842,8 @@ package body NetFrameworkBase.System.String is
    
    function Compare
    (
-      strA : NetFrameworkBase.BSTR;
-      strB : NetFrameworkBase.BSTR;
+      strA : NetFrameworkBase.BSTR; 
+      strB : NetFrameworkBase.BSTR; 
       comparisonType : NetFrameworkBase.System.StringComparison.Kind
    )
    return NetFrameworkBase.Int32 is
@@ -1891,9 +1891,9 @@ package body NetFrameworkBase.System.String is
    
    function Compare
    (
-      strA : NetFrameworkBase.BSTR;
-      strB : NetFrameworkBase.BSTR;
-      culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr;
+      strA : NetFrameworkBase.BSTR; 
+      strB : NetFrameworkBase.BSTR; 
+      culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr; 
       options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
    )
    return NetFrameworkBase.Int32 is
@@ -1945,9 +1945,9 @@ package body NetFrameworkBase.System.String is
    
    function Compare
    (
-      strA : NetFrameworkBase.BSTR;
-      strB : NetFrameworkBase.BSTR;
-      ignoreCase : NetFrameworkBase.Boolean;
+      strA : NetFrameworkBase.BSTR; 
+      strB : NetFrameworkBase.BSTR; 
+      ignoreCase : NetFrameworkBase.Boolean; 
       culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr
    )
    return NetFrameworkBase.Int32 is
@@ -1997,10 +1997,10 @@ package body NetFrameworkBase.System.String is
    
    function Compare
    (
-      strA : NetFrameworkBase.BSTR;
-      indexA : NetFrameworkBase.Int32;
-      strB : NetFrameworkBase.BSTR;
-      indexB : NetFrameworkBase.Int32;
+      strA : NetFrameworkBase.BSTR; 
+      indexA : NetFrameworkBase.Int32; 
+      strB : NetFrameworkBase.BSTR; 
+      indexB : NetFrameworkBase.Int32; 
       length : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -2054,11 +2054,11 @@ package body NetFrameworkBase.System.String is
    
    function Compare
    (
-      strA : NetFrameworkBase.BSTR;
-      indexA : NetFrameworkBase.Int32;
-      strB : NetFrameworkBase.BSTR;
-      indexB : NetFrameworkBase.Int32;
-      length : NetFrameworkBase.Int32;
+      strA : NetFrameworkBase.BSTR; 
+      indexA : NetFrameworkBase.Int32; 
+      strB : NetFrameworkBase.BSTR; 
+      indexB : NetFrameworkBase.Int32; 
+      length : NetFrameworkBase.Int32; 
       ignoreCase : NetFrameworkBase.Boolean
    )
    return NetFrameworkBase.Int32 is
@@ -2116,12 +2116,12 @@ package body NetFrameworkBase.System.String is
    
    function Compare
    (
-      strA : NetFrameworkBase.BSTR;
-      indexA : NetFrameworkBase.Int32;
-      strB : NetFrameworkBase.BSTR;
-      indexB : NetFrameworkBase.Int32;
-      length : NetFrameworkBase.Int32;
-      ignoreCase : NetFrameworkBase.Boolean;
+      strA : NetFrameworkBase.BSTR; 
+      indexA : NetFrameworkBase.Int32; 
+      strB : NetFrameworkBase.BSTR; 
+      indexB : NetFrameworkBase.Int32; 
+      length : NetFrameworkBase.Int32; 
+      ignoreCase : NetFrameworkBase.Boolean; 
       culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr
    )
    return NetFrameworkBase.Int32 is
@@ -2183,12 +2183,12 @@ package body NetFrameworkBase.System.String is
    
    function Compare
    (
-      strA : NetFrameworkBase.BSTR;
-      indexA : NetFrameworkBase.Int32;
-      strB : NetFrameworkBase.BSTR;
-      indexB : NetFrameworkBase.Int32;
-      length : NetFrameworkBase.Int32;
-      culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr;
+      strA : NetFrameworkBase.BSTR; 
+      indexA : NetFrameworkBase.Int32; 
+      strB : NetFrameworkBase.BSTR; 
+      indexB : NetFrameworkBase.Int32; 
+      length : NetFrameworkBase.Int32; 
+      culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr; 
       options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
    )
    return NetFrameworkBase.Int32 is
@@ -2252,11 +2252,11 @@ package body NetFrameworkBase.System.String is
    
    function Compare
    (
-      strA : NetFrameworkBase.BSTR;
-      indexA : NetFrameworkBase.Int32;
-      strB : NetFrameworkBase.BSTR;
-      indexB : NetFrameworkBase.Int32;
-      length : NetFrameworkBase.Int32;
+      strA : NetFrameworkBase.BSTR; 
+      indexA : NetFrameworkBase.Int32; 
+      strB : NetFrameworkBase.BSTR; 
+      indexB : NetFrameworkBase.Int32; 
+      length : NetFrameworkBase.Int32; 
       comparisonType : NetFrameworkBase.System.StringComparison.Kind
    )
    return NetFrameworkBase.Int32 is
@@ -2392,7 +2392,7 @@ package body NetFrameworkBase.System.String is
    
    function CompareOrdinal
    (
-      strA : NetFrameworkBase.BSTR;
+      strA : NetFrameworkBase.BSTR; 
       strB : NetFrameworkBase.BSTR
    )
    return NetFrameworkBase.Int32 is
@@ -2434,10 +2434,10 @@ package body NetFrameworkBase.System.String is
    
    function CompareOrdinal
    (
-      strA : NetFrameworkBase.BSTR;
-      indexA : NetFrameworkBase.Int32;
-      strB : NetFrameworkBase.BSTR;
-      indexB : NetFrameworkBase.Int32;
+      strA : NetFrameworkBase.BSTR; 
+      indexA : NetFrameworkBase.Int32; 
+      strB : NetFrameworkBase.BSTR; 
+      indexB : NetFrameworkBase.Int32; 
       length : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -2568,7 +2568,7 @@ package body NetFrameworkBase.System.String is
    function EndsWith
    (
       this : in out String.Kind;
-      value : NetFrameworkBase.BSTR;
+      value : NetFrameworkBase.BSTR; 
       comparisonType : NetFrameworkBase.System.StringComparison.Kind
    )
    return NetFrameworkBase.Boolean is
@@ -2613,8 +2613,8 @@ package body NetFrameworkBase.System.String is
    function EndsWith
    (
       this : in out String.Kind;
-      value : NetFrameworkBase.BSTR;
-      ignoreCase : NetFrameworkBase.Boolean;
+      value : NetFrameworkBase.BSTR; 
+      ignoreCase : NetFrameworkBase.Boolean; 
       culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -2699,7 +2699,7 @@ package body NetFrameworkBase.System.String is
    function IndexOf
    (
       this : in out String.Kind;
-      value : NetFrameworkBase.Wide_Char;
+      value : NetFrameworkBase.Wide_Char; 
       startIndex : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -2798,7 +2798,7 @@ package body NetFrameworkBase.System.String is
    function IndexOfAny
    (
       this : in out String.Kind;
-      anyOf : NetFrameworkBase.Wide_Char_Array;
+      anyOf : NetFrameworkBase.Wide_Char_Array; 
       startIndex : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -2897,7 +2897,7 @@ package body NetFrameworkBase.System.String is
    function IndexOf
    (
       this : in out String.Kind;
-      value : NetFrameworkBase.BSTR;
+      value : NetFrameworkBase.BSTR; 
       startIndex : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -2940,8 +2940,8 @@ package body NetFrameworkBase.System.String is
    function IndexOf
    (
       this : in out String.Kind;
-      value : NetFrameworkBase.BSTR;
-      startIndex : NetFrameworkBase.Int32;
+      value : NetFrameworkBase.BSTR; 
+      startIndex : NetFrameworkBase.Int32; 
       count : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -2988,7 +2988,7 @@ package body NetFrameworkBase.System.String is
    function IndexOf
    (
       this : in out String.Kind;
-      value : NetFrameworkBase.BSTR;
+      value : NetFrameworkBase.BSTR; 
       comparisonType : NetFrameworkBase.System.StringComparison.Kind
    )
    return NetFrameworkBase.Int32 is
@@ -3033,8 +3033,8 @@ package body NetFrameworkBase.System.String is
    function IndexOf
    (
       this : in out String.Kind;
-      value : NetFrameworkBase.BSTR;
-      startIndex : NetFrameworkBase.Int32;
+      value : NetFrameworkBase.BSTR; 
+      startIndex : NetFrameworkBase.Int32; 
       comparisonType : NetFrameworkBase.System.StringComparison.Kind
    )
    return NetFrameworkBase.Int32 is
@@ -3083,9 +3083,9 @@ package body NetFrameworkBase.System.String is
    function IndexOf
    (
       this : in out String.Kind;
-      value : NetFrameworkBase.BSTR;
-      startIndex : NetFrameworkBase.Int32;
-      count : NetFrameworkBase.Int32;
+      value : NetFrameworkBase.BSTR; 
+      startIndex : NetFrameworkBase.Int32; 
+      count : NetFrameworkBase.Int32; 
       comparisonType : NetFrameworkBase.System.StringComparison.Kind
    )
    return NetFrameworkBase.Int32 is
@@ -3176,7 +3176,7 @@ package body NetFrameworkBase.System.String is
    function LastIndexOf
    (
       this : in out String.Kind;
-      value : NetFrameworkBase.Wide_Char;
+      value : NetFrameworkBase.Wide_Char; 
       startIndex : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -3275,7 +3275,7 @@ package body NetFrameworkBase.System.String is
    function LastIndexOfAny
    (
       this : in out String.Kind;
-      anyOf : NetFrameworkBase.Wide_Char_Array;
+      anyOf : NetFrameworkBase.Wide_Char_Array; 
       startIndex : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -3374,7 +3374,7 @@ package body NetFrameworkBase.System.String is
    function LastIndexOf
    (
       this : in out String.Kind;
-      value : NetFrameworkBase.BSTR;
+      value : NetFrameworkBase.BSTR; 
       startIndex : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -3417,8 +3417,8 @@ package body NetFrameworkBase.System.String is
    function LastIndexOf
    (
       this : in out String.Kind;
-      value : NetFrameworkBase.BSTR;
-      startIndex : NetFrameworkBase.Int32;
+      value : NetFrameworkBase.BSTR; 
+      startIndex : NetFrameworkBase.Int32; 
       count : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -3465,7 +3465,7 @@ package body NetFrameworkBase.System.String is
    function LastIndexOf
    (
       this : in out String.Kind;
-      value : NetFrameworkBase.BSTR;
+      value : NetFrameworkBase.BSTR; 
       comparisonType : NetFrameworkBase.System.StringComparison.Kind
    )
    return NetFrameworkBase.Int32 is
@@ -3510,8 +3510,8 @@ package body NetFrameworkBase.System.String is
    function LastIndexOf
    (
       this : in out String.Kind;
-      value : NetFrameworkBase.BSTR;
-      startIndex : NetFrameworkBase.Int32;
+      value : NetFrameworkBase.BSTR; 
+      startIndex : NetFrameworkBase.Int32; 
       comparisonType : NetFrameworkBase.System.StringComparison.Kind
    )
    return NetFrameworkBase.Int32 is
@@ -3560,9 +3560,9 @@ package body NetFrameworkBase.System.String is
    function LastIndexOf
    (
       this : in out String.Kind;
-      value : NetFrameworkBase.BSTR;
-      startIndex : NetFrameworkBase.Int32;
-      count : NetFrameworkBase.Int32;
+      value : NetFrameworkBase.BSTR; 
+      startIndex : NetFrameworkBase.Int32; 
+      count : NetFrameworkBase.Int32; 
       comparisonType : NetFrameworkBase.System.StringComparison.Kind
    )
    return NetFrameworkBase.Int32 is
@@ -3653,7 +3653,7 @@ package body NetFrameworkBase.System.String is
    function PadLeft
    (
       this : in out String.Kind;
-      totalWidth : NetFrameworkBase.Int32;
+      totalWidth : NetFrameworkBase.Int32; 
       paddingChar : NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.BSTR is
@@ -3734,7 +3734,7 @@ package body NetFrameworkBase.System.String is
    function PadRight
    (
       this : in out String.Kind;
-      totalWidth : NetFrameworkBase.Int32;
+      totalWidth : NetFrameworkBase.Int32; 
       paddingChar : NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.BSTR is
@@ -3815,7 +3815,7 @@ package body NetFrameworkBase.System.String is
    function StartsWith
    (
       this : in out String.Kind;
-      value : NetFrameworkBase.BSTR;
+      value : NetFrameworkBase.BSTR; 
       comparisonType : NetFrameworkBase.System.StringComparison.Kind
    )
    return NetFrameworkBase.Boolean is
@@ -3860,8 +3860,8 @@ package body NetFrameworkBase.System.String is
    function StartsWith
    (
       this : in out String.Kind;
-      value : NetFrameworkBase.BSTR;
-      ignoreCase : NetFrameworkBase.Boolean;
+      value : NetFrameworkBase.BSTR; 
+      ignoreCase : NetFrameworkBase.Boolean; 
       culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -4199,7 +4199,7 @@ package body NetFrameworkBase.System.String is
    function Insert
    (
       this : in out String.Kind;
-      startIndex : NetFrameworkBase.Int32;
+      startIndex : NetFrameworkBase.Int32; 
       value : NetFrameworkBase.BSTR
    )
    return NetFrameworkBase.BSTR is
@@ -4242,7 +4242,7 @@ package body NetFrameworkBase.System.String is
    function Replace
    (
       this : in out String.Kind;
-      oldChar : NetFrameworkBase.Wide_Char;
+      oldChar : NetFrameworkBase.Wide_Char; 
       newChar : NetFrameworkBase.Wide_Char
    )
    return NetFrameworkBase.BSTR is
@@ -4285,7 +4285,7 @@ package body NetFrameworkBase.System.String is
    function Replace
    (
       this : in out String.Kind;
-      oldValue : NetFrameworkBase.BSTR;
+      oldValue : NetFrameworkBase.BSTR; 
       newValue : NetFrameworkBase.BSTR
    )
    return NetFrameworkBase.BSTR is
@@ -4328,7 +4328,7 @@ package body NetFrameworkBase.System.String is
    function Remove
    (
       this : in out String.Kind;
-      startIndex : NetFrameworkBase.Int32;
+      startIndex : NetFrameworkBase.Int32; 
       count : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.BSTR is
@@ -4408,7 +4408,7 @@ package body NetFrameworkBase.System.String is
    
    function Format
    (
-      format : NetFrameworkBase.BSTR;
+      format : NetFrameworkBase.BSTR; 
       arg0 : NetFrameworkBase.System.Object.Kind_Ptr
    )
    return NetFrameworkBase.BSTR is
@@ -4450,8 +4450,8 @@ package body NetFrameworkBase.System.String is
    
    function Format
    (
-      format : NetFrameworkBase.BSTR;
-      arg0 : NetFrameworkBase.System.Object.Kind_Ptr;
+      format : NetFrameworkBase.BSTR; 
+      arg0 : NetFrameworkBase.System.Object.Kind_Ptr; 
       arg1 : NetFrameworkBase.System.Object.Kind_Ptr
    )
    return NetFrameworkBase.BSTR is
@@ -4497,9 +4497,9 @@ package body NetFrameworkBase.System.String is
    
    function Format
    (
-      format : NetFrameworkBase.BSTR;
-      arg0 : NetFrameworkBase.System.Object.Kind_Ptr;
-      arg1 : NetFrameworkBase.System.Object.Kind_Ptr;
+      format : NetFrameworkBase.BSTR; 
+      arg0 : NetFrameworkBase.System.Object.Kind_Ptr; 
+      arg1 : NetFrameworkBase.System.Object.Kind_Ptr; 
       arg2 : NetFrameworkBase.System.Object.Kind_Ptr
    )
    return NetFrameworkBase.BSTR is
@@ -4549,8 +4549,8 @@ package body NetFrameworkBase.System.String is
    
    function Format
    (
-      provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
-      format : NetFrameworkBase.BSTR;
+      provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr; 
+      format : NetFrameworkBase.BSTR; 
       arg0 : NetFrameworkBase.System.Object.Kind_Ptr
    )
    return NetFrameworkBase.BSTR is
@@ -4597,9 +4597,9 @@ package body NetFrameworkBase.System.String is
    
    function Format
    (
-      provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
-      format : NetFrameworkBase.BSTR;
-      arg0 : NetFrameworkBase.System.Object.Kind_Ptr;
+      provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr; 
+      format : NetFrameworkBase.BSTR; 
+      arg0 : NetFrameworkBase.System.Object.Kind_Ptr; 
       arg1 : NetFrameworkBase.System.Object.Kind_Ptr
    )
    return NetFrameworkBase.BSTR is
@@ -4650,10 +4650,10 @@ package body NetFrameworkBase.System.String is
    
    function Format
    (
-      provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
-      format : NetFrameworkBase.BSTR;
-      arg0 : NetFrameworkBase.System.Object.Kind_Ptr;
-      arg1 : NetFrameworkBase.System.Object.Kind_Ptr;
+      provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr; 
+      format : NetFrameworkBase.BSTR; 
+      arg0 : NetFrameworkBase.System.Object.Kind_Ptr; 
+      arg1 : NetFrameworkBase.System.Object.Kind_Ptr; 
       arg2 : NetFrameworkBase.System.Object.Kind_Ptr
    )
    return NetFrameworkBase.BSTR is
@@ -4782,7 +4782,7 @@ package body NetFrameworkBase.System.String is
    
    function Concat
    (
-      arg0 : NetFrameworkBase.System.Object.Kind_Ptr;
+      arg0 : NetFrameworkBase.System.Object.Kind_Ptr; 
       arg1 : NetFrameworkBase.System.Object.Kind_Ptr
    )
    return NetFrameworkBase.BSTR is
@@ -4824,8 +4824,8 @@ package body NetFrameworkBase.System.String is
    
    function Concat
    (
-      arg0 : NetFrameworkBase.System.Object.Kind_Ptr;
-      arg1 : NetFrameworkBase.System.Object.Kind_Ptr;
+      arg0 : NetFrameworkBase.System.Object.Kind_Ptr; 
+      arg1 : NetFrameworkBase.System.Object.Kind_Ptr; 
       arg2 : NetFrameworkBase.System.Object.Kind_Ptr
    )
    return NetFrameworkBase.BSTR is
@@ -4871,9 +4871,9 @@ package body NetFrameworkBase.System.String is
    
    function Concat
    (
-      arg0 : NetFrameworkBase.System.Object.Kind_Ptr;
-      arg1 : NetFrameworkBase.System.Object.Kind_Ptr;
-      arg2 : NetFrameworkBase.System.Object.Kind_Ptr;
+      arg0 : NetFrameworkBase.System.Object.Kind_Ptr; 
+      arg1 : NetFrameworkBase.System.Object.Kind_Ptr; 
+      arg2 : NetFrameworkBase.System.Object.Kind_Ptr; 
       arg3 : NetFrameworkBase.System.Object.Kind_Ptr
    )
    return NetFrameworkBase.BSTR is
@@ -4979,7 +4979,7 @@ package body NetFrameworkBase.System.String is
    
    function Concat
    (
-      str0 : NetFrameworkBase.BSTR;
+      str0 : NetFrameworkBase.BSTR; 
       str1 : NetFrameworkBase.BSTR
    )
    return NetFrameworkBase.BSTR is
@@ -5021,8 +5021,8 @@ package body NetFrameworkBase.System.String is
    
    function Concat
    (
-      str0 : NetFrameworkBase.BSTR;
-      str1 : NetFrameworkBase.BSTR;
+      str0 : NetFrameworkBase.BSTR; 
+      str1 : NetFrameworkBase.BSTR; 
       str2 : NetFrameworkBase.BSTR
    )
    return NetFrameworkBase.BSTR is
@@ -5068,9 +5068,9 @@ package body NetFrameworkBase.System.String is
    
    function Concat
    (
-      str0 : NetFrameworkBase.BSTR;
-      str1 : NetFrameworkBase.BSTR;
-      str2 : NetFrameworkBase.BSTR;
+      str0 : NetFrameworkBase.BSTR; 
+      str1 : NetFrameworkBase.BSTR; 
+      str2 : NetFrameworkBase.BSTR; 
       str3 : NetFrameworkBase.BSTR
    )
    return NetFrameworkBase.BSTR is
@@ -5365,8 +5365,8 @@ package body NetFrameworkBase.System.String is
    function IndexOf
    (
       this : in out String.Kind;
-      value : NetFrameworkBase.Wide_Char;
-      startIndex : NetFrameworkBase.Int32;
+      value : NetFrameworkBase.Wide_Char; 
+      startIndex : NetFrameworkBase.Int32; 
       count : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -5413,8 +5413,8 @@ package body NetFrameworkBase.System.String is
    function IndexOfAny
    (
       this : in out String.Kind;
-      anyOf : NetFrameworkBase.Wide_Char_Array;
-      startIndex : NetFrameworkBase.Int32;
+      anyOf : NetFrameworkBase.Wide_Char_Array; 
+      startIndex : NetFrameworkBase.Int32; 
       count : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -5479,8 +5479,8 @@ package body NetFrameworkBase.System.String is
    function LastIndexOf
    (
       this : in out String.Kind;
-      value : NetFrameworkBase.Wide_Char;
-      startIndex : NetFrameworkBase.Int32;
+      value : NetFrameworkBase.Wide_Char; 
+      startIndex : NetFrameworkBase.Int32; 
       count : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -5527,8 +5527,8 @@ package body NetFrameworkBase.System.String is
    function LastIndexOfAny
    (
       this : in out String.Kind;
-      anyOf : NetFrameworkBase.Wide_Char_Array;
-      startIndex : NetFrameworkBase.Int32;
+      anyOf : NetFrameworkBase.Wide_Char_Array; 
+      startIndex : NetFrameworkBase.Int32; 
       count : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -5592,7 +5592,7 @@ package body NetFrameworkBase.System.String is
    
    function Format
    (
-      format : NetFrameworkBase.BSTR;
+      format : NetFrameworkBase.BSTR; 
       args : NetFrameworkBase.System.Object.Kind_Array
    )
    return NetFrameworkBase.BSTR is
@@ -5653,8 +5653,8 @@ package body NetFrameworkBase.System.String is
    
    function Format
    (
-      provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
-      format : NetFrameworkBase.BSTR;
+      provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr; 
+      format : NetFrameworkBase.BSTR; 
       args : NetFrameworkBase.System.Object.Kind_Array
    )
    return NetFrameworkBase.BSTR is

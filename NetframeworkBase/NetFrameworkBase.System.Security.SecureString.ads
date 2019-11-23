@@ -78,7 +78,7 @@ package NetFrameworkBase.System.Security.SecureString is
       procedure InsertAt
       (
          this : in out SecureString.Kind;
-         index : NetFrameworkBase.Int32;
+         index : NetFrameworkBase.Int32; 
          c : NetFrameworkBase.Wide_Char
       );
       
@@ -91,7 +91,7 @@ package NetFrameworkBase.System.Security.SecureString is
       procedure SetAt
       (
          this : in out SecureString.Kind;
-         index : NetFrameworkBase.Int32;
+         index : NetFrameworkBase.Int32; 
          c : NetFrameworkBase.Wide_Char
       );
       

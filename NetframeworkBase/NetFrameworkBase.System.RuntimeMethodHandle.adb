@@ -156,7 +156,7 @@ package body NetFrameworkBase.System.RuntimeMethodHandle is
    
    function op_Equality
    (
-      left : NetFrameworkBase.System.RuntimeMethodHandle.Kind_Ptr;
+      left : NetFrameworkBase.System.RuntimeMethodHandle.Kind_Ptr; 
       right : NetFrameworkBase.System.RuntimeMethodHandle.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -198,7 +198,7 @@ package body NetFrameworkBase.System.RuntimeMethodHandle is
    
    function op_Inequality
    (
-      left : NetFrameworkBase.System.RuntimeMethodHandle.Kind_Ptr;
+      left : NetFrameworkBase.System.RuntimeMethodHandle.Kind_Ptr; 
       right : NetFrameworkBase.System.RuntimeMethodHandle.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -304,7 +304,7 @@ package body NetFrameworkBase.System.RuntimeMethodHandle is
    procedure GetObjectData
    (
       this : in out RuntimeMethodHandle.Kind;
-      info : NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr;
+      info : NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr; 
       context : NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind_Ptr
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);

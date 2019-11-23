@@ -120,7 +120,7 @@ package body NetFrameworkBase.System.AggregateException is
    procedure GetObjectData
    (
       this : in out AggregateException.Kind;
-      info : NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr;
+      info : NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr; 
       context : NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind_Ptr
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);

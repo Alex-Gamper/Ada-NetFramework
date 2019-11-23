@@ -93,7 +93,7 @@ package NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       procedure SetAccessRuleProtection
       (
          this : in out ObjectSecurity.Kind;
-         isProtected : NetFrameworkBase.Boolean;
+         isProtected : NetFrameworkBase.Boolean; 
          preserveInheritance : NetFrameworkBase.Boolean
       );
       
@@ -106,7 +106,7 @@ package NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       procedure SetAuditRuleProtection
       (
          this : in out ObjectSecurity.Kind;
-         isProtected : NetFrameworkBase.Boolean;
+         isProtected : NetFrameworkBase.Boolean; 
          preserveInheritance : NetFrameworkBase.Boolean
       );
       
@@ -141,7 +141,7 @@ package NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       procedure SetSecurityDescriptorSddlForm
       (
          this : in out ObjectSecurity.Kind;
-         sddlForm : NetFrameworkBase.BSTR;
+         sddlForm : NetFrameworkBase.BSTR; 
          includeSections : NetFrameworkBase.System.Security.AccessControl.AccessControlSections.Kind
       );
       
@@ -160,15 +160,15 @@ package NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       procedure SetSecurityDescriptorBinaryForm
       (
          this : in out ObjectSecurity.Kind;
-         binaryForm : NetFrameworkBase.Byte_Array;
+         binaryForm : NetFrameworkBase.Byte_Array; 
          includeSections : NetFrameworkBase.System.Security.AccessControl.AccessControlSections.Kind
       );
       
       function ModifyAccessRule
       (
          this : in out ObjectSecurity.Kind;
-         modification : NetFrameworkBase.System.Security.AccessControl.AccessControlModification.Kind;
-         rule : NetFrameworkBase.System.Security.AccessControl.AccessRule.Kind_Ptr;
+         modification : NetFrameworkBase.System.Security.AccessControl.AccessControlModification.Kind; 
+         rule : NetFrameworkBase.System.Security.AccessControl.AccessRule.Kind_Ptr; 
          modified : out NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.Boolean;
@@ -176,8 +176,8 @@ package NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       function ModifyAuditRule
       (
          this : in out ObjectSecurity.Kind;
-         modification : NetFrameworkBase.System.Security.AccessControl.AccessControlModification.Kind;
-         rule : NetFrameworkBase.System.Security.AccessControl.AuditRule.Kind_Ptr;
+         modification : NetFrameworkBase.System.Security.AccessControl.AccessControlModification.Kind; 
+         rule : NetFrameworkBase.System.Security.AccessControl.AuditRule.Kind_Ptr; 
          modified : out NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.Boolean;
@@ -203,11 +203,11 @@ package NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       function AccessRuleFactory
       (
          this : in out ObjectSecurity.Kind;
-         identityReference : NetFrameworkBase.System.Security.Principal.IdentityReference.Kind_Ptr;
-         accessMask : NetFrameworkBase.Int32;
-         isInherited : NetFrameworkBase.Boolean;
-         inheritanceFlags : NetFrameworkBase.System.Security.AccessControl.InheritanceFlags.Kind;
-         propagationFlags : NetFrameworkBase.System.Security.AccessControl.PropagationFlags.Kind;
+         identityReference : NetFrameworkBase.System.Security.Principal.IdentityReference.Kind_Ptr; 
+         accessMask : NetFrameworkBase.Int32; 
+         isInherited : NetFrameworkBase.Boolean; 
+         inheritanceFlags : NetFrameworkBase.System.Security.AccessControl.InheritanceFlags.Kind; 
+         propagationFlags : NetFrameworkBase.System.Security.AccessControl.PropagationFlags.Kind; 
          type_x : NetFrameworkBase.System.Security.AccessControl.AccessControlType.Kind
       )
       return NetFrameworkBase.System.Security.AccessControl.AccessRule.Kind_Ptr;
@@ -215,11 +215,11 @@ package NetFrameworkBase.System.Security.AccessControl.ObjectSecurity is
       function AuditRuleFactory
       (
          this : in out ObjectSecurity.Kind;
-         identityReference : NetFrameworkBase.System.Security.Principal.IdentityReference.Kind_Ptr;
-         accessMask : NetFrameworkBase.Int32;
-         isInherited : NetFrameworkBase.Boolean;
-         inheritanceFlags : NetFrameworkBase.System.Security.AccessControl.InheritanceFlags.Kind;
-         propagationFlags : NetFrameworkBase.System.Security.AccessControl.PropagationFlags.Kind;
+         identityReference : NetFrameworkBase.System.Security.Principal.IdentityReference.Kind_Ptr; 
+         accessMask : NetFrameworkBase.Int32; 
+         isInherited : NetFrameworkBase.Boolean; 
+         inheritanceFlags : NetFrameworkBase.System.Security.AccessControl.InheritanceFlags.Kind; 
+         propagationFlags : NetFrameworkBase.System.Security.AccessControl.PropagationFlags.Kind; 
          flags : NetFrameworkBase.System.Security.AccessControl.AuditFlags.Kind
       )
       return NetFrameworkBase.System.Security.AccessControl.AuditRule.Kind_Ptr;

@@ -63,14 +63,14 @@ package NetFrameworkBase.System.Reflection.Assembly is
       
       function op_Equality
       (
-         left : NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr;
+         left : NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr; 
          right : NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function op_Inequality
       (
-         left : NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr;
+         left : NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr; 
          right : NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
@@ -102,24 +102,24 @@ package NetFrameworkBase.System.Reflection.Assembly is
       
       function LoadFrom
       (
-         assemblyFile : NetFrameworkBase.BSTR;
+         assemblyFile : NetFrameworkBase.BSTR; 
          securityEvidence : NetFrameworkBase.System.Security.Policy.Evidence.Kind_Ptr
       )
       return NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr;
       
       function LoadFrom
       (
-         assemblyFile : NetFrameworkBase.BSTR;
-         securityEvidence : NetFrameworkBase.System.Security.Policy.Evidence.Kind_Ptr;
-         hashValue : NetFrameworkBase.Byte_Array;
+         assemblyFile : NetFrameworkBase.BSTR; 
+         securityEvidence : NetFrameworkBase.System.Security.Policy.Evidence.Kind_Ptr; 
+         hashValue : NetFrameworkBase.Byte_Array; 
          hashAlgorithm : NetFrameworkBase.System.Configuration.Assemblies.AssemblyHashAlgorithm.Kind
       )
       return NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr;
       
       function LoadFrom
       (
-         assemblyFile : NetFrameworkBase.BSTR;
-         hashValue : NetFrameworkBase.Byte_Array;
+         assemblyFile : NetFrameworkBase.BSTR; 
+         hashValue : NetFrameworkBase.Byte_Array; 
          hashAlgorithm : NetFrameworkBase.System.Configuration.Assemblies.AssemblyHashAlgorithm.Kind
       )
       return NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr;
@@ -144,7 +144,7 @@ package NetFrameworkBase.System.Reflection.Assembly is
       
       function Load
       (
-         assemblyString : NetFrameworkBase.BSTR;
+         assemblyString : NetFrameworkBase.BSTR; 
          assemblySecurity : NetFrameworkBase.System.Security.Policy.Evidence.Kind_Ptr
       )
       return NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr;
@@ -157,7 +157,7 @@ package NetFrameworkBase.System.Reflection.Assembly is
       
       function Load
       (
-         assemblyRef : NetFrameworkBase.System.Reflection.AssemblyName.Kind_Ptr;
+         assemblyRef : NetFrameworkBase.System.Reflection.AssemblyName.Kind_Ptr; 
          assemblySecurity : NetFrameworkBase.System.Security.Policy.Evidence.Kind_Ptr
       )
       return NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr;
@@ -170,7 +170,7 @@ package NetFrameworkBase.System.Reflection.Assembly is
       
       function LoadWithPartialName
       (
-         partialName : NetFrameworkBase.BSTR;
+         partialName : NetFrameworkBase.BSTR; 
          securityEvidence : NetFrameworkBase.System.Security.Policy.Evidence.Kind_Ptr
       )
       return NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr;
@@ -189,23 +189,23 @@ package NetFrameworkBase.System.Reflection.Assembly is
       
       function Load
       (
-         rawAssembly : NetFrameworkBase.Byte_Array;
+         rawAssembly : NetFrameworkBase.Byte_Array; 
          rawSymbolStore : NetFrameworkBase.Byte_Array
       )
       return NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr;
       
       function Load
       (
-         rawAssembly : NetFrameworkBase.Byte_Array;
-         rawSymbolStore : NetFrameworkBase.Byte_Array;
+         rawAssembly : NetFrameworkBase.Byte_Array; 
+         rawSymbolStore : NetFrameworkBase.Byte_Array; 
          securityContextSource : NetFrameworkBase.System.Security.SecurityContextSource.Kind
       )
       return NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr;
       
       function Load
       (
-         rawAssembly : NetFrameworkBase.Byte_Array;
-         rawSymbolStore : NetFrameworkBase.Byte_Array;
+         rawAssembly : NetFrameworkBase.Byte_Array; 
+         rawSymbolStore : NetFrameworkBase.Byte_Array; 
          securityEvidence : NetFrameworkBase.System.Security.Policy.Evidence.Kind_Ptr
       )
       return NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr;
@@ -218,7 +218,7 @@ package NetFrameworkBase.System.Reflection.Assembly is
       
       function LoadFile
       (
-         path : NetFrameworkBase.BSTR;
+         path : NetFrameworkBase.BSTR; 
          securityEvidence : NetFrameworkBase.System.Security.Policy.Evidence.Kind_Ptr
       )
       return NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr;
@@ -291,7 +291,7 @@ package NetFrameworkBase.System.Reflection.Assembly is
       function GetType
       (
          this : in out Assembly.Kind;
-         name : NetFrameworkBase.BSTR;
+         name : NetFrameworkBase.BSTR; 
          throwOnError : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.System.Type_x.Kind_Ptr;
@@ -299,8 +299,8 @@ package NetFrameworkBase.System.Reflection.Assembly is
       function GetType
       (
          this : in out Assembly.Kind;
-         name : NetFrameworkBase.BSTR;
-         throwOnError : NetFrameworkBase.Boolean;
+         name : NetFrameworkBase.BSTR; 
+         throwOnError : NetFrameworkBase.Boolean; 
          ignoreCase : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.System.Type_x.Kind_Ptr;
@@ -320,7 +320,7 @@ package NetFrameworkBase.System.Reflection.Assembly is
       function GetManifestResourceStream
       (
          this : in out Assembly.Kind;
-         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          name : NetFrameworkBase.BSTR
       )
       return NetFrameworkBase.System.IO.Stream.Kind_Ptr;
@@ -342,7 +342,7 @@ package NetFrameworkBase.System.Reflection.Assembly is
       function GetSatelliteAssembly
       (
          this : in out Assembly.Kind;
-         culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr;
+         culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr; 
          version : NetFrameworkBase.System.Version.Kind_Ptr
       )
       return NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr;
@@ -374,7 +374,7 @@ package NetFrameworkBase.System.Reflection.Assembly is
       procedure GetObjectData
       (
          this : in out Assembly.Kind;
-         info : NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr;
+         info : NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr; 
          context : NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind_Ptr
       );
       
@@ -394,7 +394,7 @@ package NetFrameworkBase.System.Reflection.Assembly is
       function GetCustomAttributes
       (
          this : in out Assembly.Kind;
-         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          inherit : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.System.Object.Kind_Array;
@@ -402,7 +402,7 @@ package NetFrameworkBase.System.Reflection.Assembly is
       function IsDefined
       (
          this : in out Assembly.Kind;
-         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          inherit : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.Boolean;
@@ -416,7 +416,7 @@ package NetFrameworkBase.System.Reflection.Assembly is
       function LoadModule
       (
          this : in out Assembly.Kind;
-         moduleName : NetFrameworkBase.BSTR;
+         moduleName : NetFrameworkBase.BSTR; 
          rawModule : NetFrameworkBase.Byte_Array
       )
       return NetFrameworkBase.System.Reflection.Module.Kind_Ptr;
@@ -424,8 +424,8 @@ package NetFrameworkBase.System.Reflection.Assembly is
       function LoadModule
       (
          this : in out Assembly.Kind;
-         moduleName : NetFrameworkBase.BSTR;
-         rawModule : NetFrameworkBase.Byte_Array;
+         moduleName : NetFrameworkBase.BSTR; 
+         rawModule : NetFrameworkBase.Byte_Array; 
          rawSymbolStore : NetFrameworkBase.Byte_Array
       )
       return NetFrameworkBase.System.Reflection.Module.Kind_Ptr;
@@ -440,7 +440,7 @@ package NetFrameworkBase.System.Reflection.Assembly is
       function CreateInstance
       (
          this : in out Assembly.Kind;
-         typeName : NetFrameworkBase.BSTR;
+         typeName : NetFrameworkBase.BSTR; 
          ignoreCase : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.System.Object.Kind_Ptr;
@@ -448,12 +448,12 @@ package NetFrameworkBase.System.Reflection.Assembly is
       function CreateInstance
       (
          this : in out Assembly.Kind;
-         typeName : NetFrameworkBase.BSTR;
-         ignoreCase : NetFrameworkBase.Boolean;
-         bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind;
-         binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr;
-         args : NetFrameworkBase.System.Object.Kind_Array;
-         culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr;
+         typeName : NetFrameworkBase.BSTR; 
+         ignoreCase : NetFrameworkBase.Boolean; 
+         bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind; 
+         binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr; 
+         args : NetFrameworkBase.System.Object.Kind_Array; 
+         culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr; 
          activationAttributes : NetFrameworkBase.System.Object.Kind_Array
       )
       return NetFrameworkBase.System.Object.Kind_Ptr;
@@ -568,7 +568,7 @@ package NetFrameworkBase.System.Reflection.Assembly is
       
       function CreateQualifiedName
       (
-         assemblyName : NetFrameworkBase.BSTR;
+         assemblyName : NetFrameworkBase.BSTR; 
          typeName : NetFrameworkBase.BSTR
       )
       return NetFrameworkBase.BSTR;

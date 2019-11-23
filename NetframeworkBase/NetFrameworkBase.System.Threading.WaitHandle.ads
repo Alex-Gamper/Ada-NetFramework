@@ -53,7 +53,7 @@ package NetFrameworkBase.System.Threading.WaitHandle is
       function WaitOne
       (
          this : in out WaitHandle.Kind;
-         millisecondsTimeout : NetFrameworkBase.Int32;
+         millisecondsTimeout : NetFrameworkBase.Int32; 
          exitContext : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.Boolean;
@@ -61,7 +61,7 @@ package NetFrameworkBase.System.Threading.WaitHandle is
       function WaitOne
       (
          this : in out WaitHandle.Kind;
-         timeout : NetFrameworkBase.System.TimeSpan.Kind_Ptr;
+         timeout : NetFrameworkBase.System.TimeSpan.Kind_Ptr; 
          exitContext : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.Boolean;
@@ -88,16 +88,16 @@ package NetFrameworkBase.System.Threading.WaitHandle is
       
       function WaitAll
       (
-         waitHandles : NetFrameworkBase.System.Threading.WaitHandle.Kind_Array;
-         millisecondsTimeout : NetFrameworkBase.Int32;
+         waitHandles : NetFrameworkBase.System.Threading.WaitHandle.Kind_Array; 
+         millisecondsTimeout : NetFrameworkBase.Int32; 
          exitContext : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.Boolean;
       
       function WaitAll
       (
-         waitHandles : NetFrameworkBase.System.Threading.WaitHandle.Kind_Array;
-         timeout : NetFrameworkBase.System.TimeSpan.Kind_Ptr;
+         waitHandles : NetFrameworkBase.System.Threading.WaitHandle.Kind_Array; 
+         timeout : NetFrameworkBase.System.TimeSpan.Kind_Ptr; 
          exitContext : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.Boolean;
@@ -110,37 +110,37 @@ package NetFrameworkBase.System.Threading.WaitHandle is
       
       function WaitAll
       (
-         waitHandles : NetFrameworkBase.System.Threading.WaitHandle.Kind_Array;
+         waitHandles : NetFrameworkBase.System.Threading.WaitHandle.Kind_Array; 
          millisecondsTimeout : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Boolean;
       
       function WaitAll
       (
-         waitHandles : NetFrameworkBase.System.Threading.WaitHandle.Kind_Array;
+         waitHandles : NetFrameworkBase.System.Threading.WaitHandle.Kind_Array; 
          timeout : NetFrameworkBase.System.TimeSpan.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function WaitAny
       (
-         waitHandles : NetFrameworkBase.System.Threading.WaitHandle.Kind_Array;
-         millisecondsTimeout : NetFrameworkBase.Int32;
+         waitHandles : NetFrameworkBase.System.Threading.WaitHandle.Kind_Array; 
+         millisecondsTimeout : NetFrameworkBase.Int32; 
          exitContext : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.Int32;
       
       function WaitAny
       (
-         waitHandles : NetFrameworkBase.System.Threading.WaitHandle.Kind_Array;
-         timeout : NetFrameworkBase.System.TimeSpan.Kind_Ptr;
+         waitHandles : NetFrameworkBase.System.Threading.WaitHandle.Kind_Array; 
+         timeout : NetFrameworkBase.System.TimeSpan.Kind_Ptr; 
          exitContext : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.Int32;
       
       function WaitAny
       (
-         waitHandles : NetFrameworkBase.System.Threading.WaitHandle.Kind_Array;
+         waitHandles : NetFrameworkBase.System.Threading.WaitHandle.Kind_Array; 
          timeout : NetFrameworkBase.System.TimeSpan.Kind_Ptr
       )
       return NetFrameworkBase.Int32;
@@ -153,32 +153,32 @@ package NetFrameworkBase.System.Threading.WaitHandle is
       
       function WaitAny
       (
-         waitHandles : NetFrameworkBase.System.Threading.WaitHandle.Kind_Array;
+         waitHandles : NetFrameworkBase.System.Threading.WaitHandle.Kind_Array; 
          millisecondsTimeout : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
       
       function SignalAndWait
       (
-         toSignal : NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr;
+         toSignal : NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr; 
          toWaitOn : NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function SignalAndWait
       (
-         toSignal : NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr;
-         toWaitOn : NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr;
-         timeout : NetFrameworkBase.System.TimeSpan.Kind_Ptr;
+         toSignal : NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr; 
+         toWaitOn : NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr; 
+         timeout : NetFrameworkBase.System.TimeSpan.Kind_Ptr; 
          exitContext : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.Boolean;
       
       function SignalAndWait
       (
-         toSignal : NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr;
-         toWaitOn : NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr;
-         millisecondsTimeout : NetFrameworkBase.Int32;
+         toSignal : NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr; 
+         toWaitOn : NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr; 
+         millisecondsTimeout : NetFrameworkBase.Int32; 
          exitContext : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.Boolean;

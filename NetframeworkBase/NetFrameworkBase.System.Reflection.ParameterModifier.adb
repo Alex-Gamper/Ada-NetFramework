@@ -104,7 +104,7 @@ package body NetFrameworkBase.System.Reflection.ParameterModifier is
    procedure Item
    (
       this : in out ParameterModifier.Kind;
-      index : NetFrameworkBase.Int32;
+      index : NetFrameworkBase.Int32; 
       value : NetFrameworkBase.Boolean
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);

@@ -1378,7 +1378,7 @@ package body NetFrameworkBase.System.Globalization.CultureInfo is
    
    function GetCultureInfo
    (
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       altName : NetFrameworkBase.BSTR
    )
    return NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr is

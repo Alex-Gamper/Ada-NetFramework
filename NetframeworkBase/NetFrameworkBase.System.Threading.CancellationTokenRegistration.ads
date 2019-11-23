@@ -44,14 +44,14 @@ package NetFrameworkBase.System.Threading.CancellationTokenRegistration is
       
       function op_Equality
       (
-         left : NetFrameworkBase.System.Threading.CancellationTokenRegistration.Kind_Ptr;
+         left : NetFrameworkBase.System.Threading.CancellationTokenRegistration.Kind_Ptr; 
          right : NetFrameworkBase.System.Threading.CancellationTokenRegistration.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function op_Inequality
       (
-         left : NetFrameworkBase.System.Threading.CancellationTokenRegistration.Kind_Ptr;
+         left : NetFrameworkBase.System.Threading.CancellationTokenRegistration.Kind_Ptr; 
          right : NetFrameworkBase.System.Threading.CancellationTokenRegistration.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;

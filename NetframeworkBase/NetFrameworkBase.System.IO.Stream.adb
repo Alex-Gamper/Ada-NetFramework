@@ -215,8 +215,8 @@ package body NetFrameworkBase.System.IO.Stream is
    function CopyToAsync
    (
       this : in out Stream.Kind;
-      destination : NetFrameworkBase.System.IO.Stream.Kind_Ptr;
-      bufferSize : NetFrameworkBase.Int32;
+      destination : NetFrameworkBase.System.IO.Stream.Kind_Ptr; 
+      bufferSize : NetFrameworkBase.Int32; 
       cancellationToken : NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr
    )
    return NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr is
@@ -306,10 +306,10 @@ package body NetFrameworkBase.System.IO.Stream is
    function BeginRead
    (
       this : in out Stream.Kind;
-      buffer : NetFrameworkBase.Byte_Array;
-      offset : NetFrameworkBase.Int32;
-      count : NetFrameworkBase.Int32;
-      callback : NetFrameworkBase.System.AsyncCallback.Kind_Ptr;
+      buffer : NetFrameworkBase.Byte_Array; 
+      offset : NetFrameworkBase.Int32; 
+      count : NetFrameworkBase.Int32; 
+      callback : NetFrameworkBase.System.AsyncCallback.Kind_Ptr; 
       state : NetFrameworkBase.System.Object.Kind_Ptr
    )
    return NetFrameworkBase.System.IAsyncResult.Kind_Ptr is
@@ -421,10 +421,10 @@ package body NetFrameworkBase.System.IO.Stream is
    function BeginWrite
    (
       this : in out Stream.Kind;
-      buffer : NetFrameworkBase.Byte_Array;
-      offset : NetFrameworkBase.Int32;
-      count : NetFrameworkBase.Int32;
-      callback : NetFrameworkBase.System.AsyncCallback.Kind_Ptr;
+      buffer : NetFrameworkBase.Byte_Array; 
+      offset : NetFrameworkBase.Int32; 
+      count : NetFrameworkBase.Int32; 
+      callback : NetFrameworkBase.System.AsyncCallback.Kind_Ptr; 
       state : NetFrameworkBase.System.Object.Kind_Ptr
    )
    return NetFrameworkBase.System.IAsyncResult.Kind_Ptr is
@@ -532,9 +532,9 @@ package body NetFrameworkBase.System.IO.Stream is
    function WriteAsync
    (
       this : in out Stream.Kind;
-      buffer : NetFrameworkBase.Byte_Array;
-      offset : NetFrameworkBase.Int32;
-      count : NetFrameworkBase.Int32;
+      buffer : NetFrameworkBase.Byte_Array; 
+      offset : NetFrameworkBase.Int32; 
+      count : NetFrameworkBase.Int32; 
       cancellationToken : NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr
    )
    return NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr is
@@ -899,7 +899,7 @@ package body NetFrameworkBase.System.IO.Stream is
    function CopyToAsync
    (
       this : in out Stream.Kind;
-      destination : NetFrameworkBase.System.IO.Stream.Kind_Ptr;
+      destination : NetFrameworkBase.System.IO.Stream.Kind_Ptr; 
       bufferSize : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr is
@@ -977,7 +977,7 @@ package body NetFrameworkBase.System.IO.Stream is
    procedure CopyTo
    (
       this : in out Stream.Kind;
-      destination : NetFrameworkBase.System.IO.Stream.Kind_Ptr;
+      destination : NetFrameworkBase.System.IO.Stream.Kind_Ptr; 
       bufferSize : NetFrameworkBase.Int32
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -1102,8 +1102,8 @@ package body NetFrameworkBase.System.IO.Stream is
    function WriteAsync
    (
       this : in out Stream.Kind;
-      buffer : NetFrameworkBase.Byte_Array;
-      offset : NetFrameworkBase.Int32;
+      buffer : NetFrameworkBase.Byte_Array; 
+      offset : NetFrameworkBase.Int32; 
       count : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr is
@@ -1169,7 +1169,7 @@ package body NetFrameworkBase.System.IO.Stream is
    function Seek
    (
       this : in out Stream.Kind;
-      offset : NetFrameworkBase.Int64;
+      offset : NetFrameworkBase.Int64; 
       origin : NetFrameworkBase.System.IO.SeekOrigin.Kind
    )
    return NetFrameworkBase.Int64 is
@@ -1248,8 +1248,8 @@ package body NetFrameworkBase.System.IO.Stream is
    function Read
    (
       this : in out Stream.Kind;
-      buffer : in out NetFrameworkBase.Byte_Array;
-      offset : NetFrameworkBase.Int32;
+      buffer : in out NetFrameworkBase.Byte_Array; 
+      offset : NetFrameworkBase.Int32; 
       count : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -1319,8 +1319,8 @@ package body NetFrameworkBase.System.IO.Stream is
    procedure Write
    (
       this : in out Stream.Kind;
-      buffer : NetFrameworkBase.Byte_Array;
-      offset : NetFrameworkBase.Int32;
+      buffer : NetFrameworkBase.Byte_Array; 
+      offset : NetFrameworkBase.Int32; 
       count : NetFrameworkBase.Int32
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);

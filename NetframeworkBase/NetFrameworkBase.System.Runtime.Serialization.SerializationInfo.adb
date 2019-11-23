@@ -349,8 +349,8 @@ package body NetFrameworkBase.System.Runtime.Serialization.SerializationInfo is
    procedure AddValue
    (
       this : in out SerializationInfo.Kind;
-      name : NetFrameworkBase.BSTR;
-      value : NetFrameworkBase.System.Object.Kind_Ptr;
+      name : NetFrameworkBase.BSTR; 
+      value : NetFrameworkBase.System.Object.Kind_Ptr; 
       type_x : NetFrameworkBase.System.Type_x.Kind_Ptr
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -393,7 +393,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SerializationInfo is
    procedure AddValue
    (
       this : in out SerializationInfo.Kind;
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       value : NetFrameworkBase.System.Object.Kind_Ptr
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -432,7 +432,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SerializationInfo is
    procedure AddValue
    (
       this : in out SerializationInfo.Kind;
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       value : NetFrameworkBase.Boolean
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -471,7 +471,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SerializationInfo is
    procedure AddValue
    (
       this : in out SerializationInfo.Kind;
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       value : NetFrameworkBase.Wide_Char
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -510,7 +510,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SerializationInfo is
    procedure AddValue
    (
       this : in out SerializationInfo.Kind;
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       value : NetFrameworkBase.SByte
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -549,7 +549,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SerializationInfo is
    procedure AddValue
    (
       this : in out SerializationInfo.Kind;
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       value : NetFrameworkBase.Byte
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -588,7 +588,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SerializationInfo is
    procedure AddValue
    (
       this : in out SerializationInfo.Kind;
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       value : NetFrameworkBase.Int16
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -627,7 +627,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SerializationInfo is
    procedure AddValue
    (
       this : in out SerializationInfo.Kind;
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       value : NetFrameworkBase.UInt16
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -666,7 +666,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SerializationInfo is
    procedure AddValue
    (
       this : in out SerializationInfo.Kind;
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       value : NetFrameworkBase.Int32
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -705,7 +705,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SerializationInfo is
    procedure AddValue
    (
       this : in out SerializationInfo.Kind;
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       value : NetFrameworkBase.UInt32
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -744,7 +744,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SerializationInfo is
    procedure AddValue
    (
       this : in out SerializationInfo.Kind;
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       value : NetFrameworkBase.Int64
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -783,7 +783,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SerializationInfo is
    procedure AddValue
    (
       this : in out SerializationInfo.Kind;
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       value : NetFrameworkBase.UInt64
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -822,7 +822,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SerializationInfo is
    procedure AddValue
    (
       this : in out SerializationInfo.Kind;
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       value : NetFrameworkBase.Single
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -861,7 +861,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SerializationInfo is
    procedure AddValue
    (
       this : in out SerializationInfo.Kind;
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       value : NetFrameworkBase.Double
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -900,7 +900,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SerializationInfo is
    procedure AddValue
    (
       this : in out SerializationInfo.Kind;
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       value : NetFrameworkBase.System.Decimal.Kind_Ptr
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -939,7 +939,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SerializationInfo is
    procedure AddValue
    (
       this : in out SerializationInfo.Kind;
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       value : NetFrameworkBase.Date
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -978,7 +978,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SerializationInfo is
    function GetValue
    (
       this : in out SerializationInfo.Kind;
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       type_x : NetFrameworkBase.System.Type_x.Kind_Ptr
    )
    return NetFrameworkBase.System.Object.Kind_Ptr is

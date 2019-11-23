@@ -679,7 +679,7 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
    function Wait
    (
       this : in out Task_x.Kind;
-      millisecondsTimeout : NetFrameworkBase.Int32;
+      millisecondsTimeout : NetFrameworkBase.Int32; 
       cancellationToken : NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -774,7 +774,7 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
    
    function WaitAll
    (
-      tasks : NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Array;
+      tasks : NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Array; 
       timeout : NetFrameworkBase.System.TimeSpan.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -835,7 +835,7 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
    
    function WaitAll
    (
-      tasks : NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Array;
+      tasks : NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Array; 
       millisecondsTimeout : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Boolean is
@@ -896,7 +896,7 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
    
    procedure WaitAll
    (
-      tasks : NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Array;
+      tasks : NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Array; 
       cancellationToken : NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr
    )
    is
@@ -954,8 +954,8 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
    
    function WaitAll
    (
-      tasks : NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Array;
-      millisecondsTimeout : NetFrameworkBase.Int32;
+      tasks : NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Array; 
+      millisecondsTimeout : NetFrameworkBase.Int32; 
       cancellationToken : NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -1076,7 +1076,7 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
    
    function WaitAny
    (
-      tasks : NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Array;
+      tasks : NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Array; 
       timeout : NetFrameworkBase.System.TimeSpan.Kind_Ptr
    )
    return NetFrameworkBase.Int32 is
@@ -1137,7 +1137,7 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
    
    function WaitAny
    (
-      tasks : NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Array;
+      tasks : NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Array; 
       cancellationToken : NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr
    )
    return NetFrameworkBase.Int32 is
@@ -1198,7 +1198,7 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
    
    function WaitAny
    (
-      tasks : NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Array;
+      tasks : NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Array; 
       millisecondsTimeout : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -1259,8 +1259,8 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
    
    function WaitAny
    (
-      tasks : NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Array;
-      millisecondsTimeout : NetFrameworkBase.Int32;
+      tasks : NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Array; 
+      millisecondsTimeout : NetFrameworkBase.Int32; 
       cancellationToken : NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr
    )
    return NetFrameworkBase.Int32 is
@@ -1439,7 +1439,7 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
    
    function Run
    (
-      action : NetFrameworkBase.System.Action.Kind_Ptr;
+      action : NetFrameworkBase.System.Action.Kind_Ptr; 
       cancellationToken : NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr
    )
    return NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr is
@@ -1520,7 +1520,7 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
    
    function Delay_x
    (
-      delay_x : NetFrameworkBase.System.TimeSpan.Kind_Ptr;
+      delay_x : NetFrameworkBase.System.TimeSpan.Kind_Ptr; 
       cancellationToken : NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr
    )
    return NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr is
@@ -1658,7 +1658,7 @@ package body NetFrameworkBase.System.Threading.Tasks.Task_x is
    
    function Delay_x
    (
-      millisecondsDelay : NetFrameworkBase.Int32;
+      millisecondsDelay : NetFrameworkBase.Int32; 
       cancellationToken : NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr
    )
    return NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr is

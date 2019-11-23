@@ -481,7 +481,7 @@ package body NetFrameworkBase.System.Version is
    
    function op_Equality
    (
-      v1 : NetFrameworkBase.System.Version.Kind_Ptr;
+      v1 : NetFrameworkBase.System.Version.Kind_Ptr; 
       v2 : NetFrameworkBase.System.Version.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -523,7 +523,7 @@ package body NetFrameworkBase.System.Version is
    
    function op_Inequality
    (
-      v1 : NetFrameworkBase.System.Version.Kind_Ptr;
+      v1 : NetFrameworkBase.System.Version.Kind_Ptr; 
       v2 : NetFrameworkBase.System.Version.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -565,7 +565,7 @@ package body NetFrameworkBase.System.Version is
    
    function op_LessThan
    (
-      v1 : NetFrameworkBase.System.Version.Kind_Ptr;
+      v1 : NetFrameworkBase.System.Version.Kind_Ptr; 
       v2 : NetFrameworkBase.System.Version.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -607,7 +607,7 @@ package body NetFrameworkBase.System.Version is
    
    function op_LessThanOrEqual
    (
-      v1 : NetFrameworkBase.System.Version.Kind_Ptr;
+      v1 : NetFrameworkBase.System.Version.Kind_Ptr; 
       v2 : NetFrameworkBase.System.Version.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -649,7 +649,7 @@ package body NetFrameworkBase.System.Version is
    
    function op_GreaterThan
    (
-      v1 : NetFrameworkBase.System.Version.Kind_Ptr;
+      v1 : NetFrameworkBase.System.Version.Kind_Ptr; 
       v2 : NetFrameworkBase.System.Version.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -691,7 +691,7 @@ package body NetFrameworkBase.System.Version is
    
    function op_GreaterThanOrEqual
    (
-      v1 : NetFrameworkBase.System.Version.Kind_Ptr;
+      v1 : NetFrameworkBase.System.Version.Kind_Ptr; 
       v2 : NetFrameworkBase.System.Version.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -771,7 +771,7 @@ package body NetFrameworkBase.System.Version is
    
    function TryParse
    (
-      input : NetFrameworkBase.BSTR;
+      input : NetFrameworkBase.BSTR; 
       result : out NetFrameworkBase.System.Version.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is

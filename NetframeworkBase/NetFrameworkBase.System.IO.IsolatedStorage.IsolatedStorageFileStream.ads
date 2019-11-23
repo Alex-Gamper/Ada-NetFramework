@@ -113,8 +113,8 @@ package NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFileStream is
       function Read
       (
          this : in out IsolatedStorageFileStream.Kind;
-         buffer : in out NetFrameworkBase.Byte_Array;
-         offset : NetFrameworkBase.Int32;
+         buffer : in out NetFrameworkBase.Byte_Array; 
+         offset : NetFrameworkBase.Int32; 
          count : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -128,10 +128,10 @@ package NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFileStream is
       function BeginRead
       (
          this : in out IsolatedStorageFileStream.Kind;
-         buffer : NetFrameworkBase.Byte_Array;
-         offset : NetFrameworkBase.Int32;
-         numBytes : NetFrameworkBase.Int32;
-         userCallback : NetFrameworkBase.System.AsyncCallback.Kind_Ptr;
+         buffer : NetFrameworkBase.Byte_Array; 
+         offset : NetFrameworkBase.Int32; 
+         numBytes : NetFrameworkBase.Int32; 
+         userCallback : NetFrameworkBase.System.AsyncCallback.Kind_Ptr; 
          stateObject : NetFrameworkBase.System.Object.Kind_Ptr
       )
       return NetFrameworkBase.System.IAsyncResult.Kind_Ptr;
@@ -158,21 +158,21 @@ package NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFileStream is
       procedure Lock
       (
          this : in out IsolatedStorageFileStream.Kind;
-         position : NetFrameworkBase.Int64;
+         position : NetFrameworkBase.Int64; 
          length : NetFrameworkBase.Int64
       );
       
       procedure Unlock
       (
          this : in out IsolatedStorageFileStream.Kind;
-         position : NetFrameworkBase.Int64;
+         position : NetFrameworkBase.Int64; 
          length : NetFrameworkBase.Int64
       );
       
       function Seek
       (
          this : in out IsolatedStorageFileStream.Kind;
-         offset : NetFrameworkBase.Int64;
+         offset : NetFrameworkBase.Int64; 
          origin : NetFrameworkBase.System.IO.SeekOrigin.Kind
       )
       return NetFrameworkBase.Int64;
@@ -180,8 +180,8 @@ package NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFileStream is
       procedure Write
       (
          this : in out IsolatedStorageFileStream.Kind;
-         buffer : NetFrameworkBase.Byte_Array;
-         offset : NetFrameworkBase.Int32;
+         buffer : NetFrameworkBase.Byte_Array; 
+         offset : NetFrameworkBase.Int32; 
          count : NetFrameworkBase.Int32
       );
       
@@ -194,10 +194,10 @@ package NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFileStream is
       function BeginWrite
       (
          this : in out IsolatedStorageFileStream.Kind;
-         buffer : NetFrameworkBase.Byte_Array;
-         offset : NetFrameworkBase.Int32;
-         numBytes : NetFrameworkBase.Int32;
-         userCallback : NetFrameworkBase.System.AsyncCallback.Kind_Ptr;
+         buffer : NetFrameworkBase.Byte_Array; 
+         offset : NetFrameworkBase.Int32; 
+         numBytes : NetFrameworkBase.Int32; 
+         userCallback : NetFrameworkBase.System.AsyncCallback.Kind_Ptr; 
          stateObject : NetFrameworkBase.System.Object.Kind_Ptr
       )
       return NetFrameworkBase.System.IAsyncResult.Kind_Ptr;

@@ -75,7 +75,7 @@ package body NetFrameworkBase.System.Collections.Hashtable is
    procedure Add
    (
       this : in out Hashtable.Kind;
-      key : NetFrameworkBase.System.Object.Kind_Ptr;
+      key : NetFrameworkBase.System.Object.Kind_Ptr; 
       value : NetFrameworkBase.System.Object.Kind_Ptr
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -275,7 +275,7 @@ package body NetFrameworkBase.System.Collections.Hashtable is
    procedure CopyTo
    (
       this : in out Hashtable.Kind;
-      array_x : NetFrameworkBase.System.Array_x.Kind_Ptr;
+      array_x : NetFrameworkBase.System.Array_x.Kind_Ptr; 
       arrayIndex : NetFrameworkBase.Int32
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -353,7 +353,7 @@ package body NetFrameworkBase.System.Collections.Hashtable is
    procedure Item
    (
       this : in out Hashtable.Kind;
-      key : NetFrameworkBase.System.Object.Kind_Ptr;
+      key : NetFrameworkBase.System.Object.Kind_Ptr; 
       value : NetFrameworkBase.System.Object.Kind_Ptr
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -665,7 +665,7 @@ package body NetFrameworkBase.System.Collections.Hashtable is
    procedure GetObjectData
    (
       this : in out Hashtable.Kind;
-      info : NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr;
+      info : NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr; 
       context : NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind_Ptr
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);

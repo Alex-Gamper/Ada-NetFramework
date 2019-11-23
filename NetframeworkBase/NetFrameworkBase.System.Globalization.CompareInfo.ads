@@ -42,7 +42,7 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
    
       function GetCompareInfo
       (
-         culture : NetFrameworkBase.Int32;
+         culture : NetFrameworkBase.Int32; 
          assembly : NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr
       )
       return NetFrameworkBase.System.Globalization.CompareInfo.Kind_Ptr;
@@ -74,7 +74,7 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function Compare
       (
          this : in out CompareInfo.Kind;
-         string1 : NetFrameworkBase.BSTR;
+         string1 : NetFrameworkBase.BSTR; 
          string2 : NetFrameworkBase.BSTR
       )
       return NetFrameworkBase.Int32;
@@ -82,8 +82,8 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function Compare
       (
          this : in out CompareInfo.Kind;
-         string1 : NetFrameworkBase.BSTR;
-         string2 : NetFrameworkBase.BSTR;
+         string1 : NetFrameworkBase.BSTR; 
+         string2 : NetFrameworkBase.BSTR; 
          options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
       )
       return NetFrameworkBase.Int32;
@@ -91,11 +91,11 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function Compare
       (
          this : in out CompareInfo.Kind;
-         string1 : NetFrameworkBase.BSTR;
-         offset1 : NetFrameworkBase.Int32;
-         length1 : NetFrameworkBase.Int32;
-         string2 : NetFrameworkBase.BSTR;
-         offset2 : NetFrameworkBase.Int32;
+         string1 : NetFrameworkBase.BSTR; 
+         offset1 : NetFrameworkBase.Int32; 
+         length1 : NetFrameworkBase.Int32; 
+         string2 : NetFrameworkBase.BSTR; 
+         offset2 : NetFrameworkBase.Int32; 
          length2 : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -103,10 +103,10 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function Compare
       (
          this : in out CompareInfo.Kind;
-         string1 : NetFrameworkBase.BSTR;
-         offset1 : NetFrameworkBase.Int32;
-         string2 : NetFrameworkBase.BSTR;
-         offset2 : NetFrameworkBase.Int32;
+         string1 : NetFrameworkBase.BSTR; 
+         offset1 : NetFrameworkBase.Int32; 
+         string2 : NetFrameworkBase.BSTR; 
+         offset2 : NetFrameworkBase.Int32; 
          options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
       )
       return NetFrameworkBase.Int32;
@@ -114,9 +114,9 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function Compare
       (
          this : in out CompareInfo.Kind;
-         string1 : NetFrameworkBase.BSTR;
-         offset1 : NetFrameworkBase.Int32;
-         string2 : NetFrameworkBase.BSTR;
+         string1 : NetFrameworkBase.BSTR; 
+         offset1 : NetFrameworkBase.Int32; 
+         string2 : NetFrameworkBase.BSTR; 
          offset2 : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -124,7 +124,7 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function IsPrefix
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
+         source : NetFrameworkBase.BSTR; 
          prefix : NetFrameworkBase.BSTR
       )
       return NetFrameworkBase.Boolean;
@@ -132,7 +132,7 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function IsSuffix
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
+         source : NetFrameworkBase.BSTR; 
          suffix : NetFrameworkBase.BSTR
       )
       return NetFrameworkBase.Boolean;
@@ -140,7 +140,7 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function IndexOf
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
+         source : NetFrameworkBase.BSTR; 
          value : NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.Int32;
@@ -148,7 +148,7 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function IndexOf
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
+         source : NetFrameworkBase.BSTR; 
          value : NetFrameworkBase.BSTR
       )
       return NetFrameworkBase.Int32;
@@ -156,8 +156,8 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function IndexOf
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.Wide_Char;
+         source : NetFrameworkBase.BSTR; 
+         value : NetFrameworkBase.Wide_Char; 
          options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
       )
       return NetFrameworkBase.Int32;
@@ -165,8 +165,8 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function IndexOf
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.BSTR;
+         source : NetFrameworkBase.BSTR; 
+         value : NetFrameworkBase.BSTR; 
          options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
       )
       return NetFrameworkBase.Int32;
@@ -174,8 +174,8 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function IndexOf
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.Wide_Char;
+         source : NetFrameworkBase.BSTR; 
+         value : NetFrameworkBase.Wide_Char; 
          startIndex : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -183,8 +183,8 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function IndexOf
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.BSTR;
+         source : NetFrameworkBase.BSTR; 
+         value : NetFrameworkBase.BSTR; 
          startIndex : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -192,9 +192,9 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function IndexOf
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.Wide_Char;
-         startIndex : NetFrameworkBase.Int32;
+         source : NetFrameworkBase.BSTR; 
+         value : NetFrameworkBase.Wide_Char; 
+         startIndex : NetFrameworkBase.Int32; 
          options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
       )
       return NetFrameworkBase.Int32;
@@ -202,9 +202,9 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function IndexOf
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.BSTR;
-         startIndex : NetFrameworkBase.Int32;
+         source : NetFrameworkBase.BSTR; 
+         value : NetFrameworkBase.BSTR; 
+         startIndex : NetFrameworkBase.Int32; 
          options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
       )
       return NetFrameworkBase.Int32;
@@ -212,9 +212,9 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function IndexOf
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.Wide_Char;
-         startIndex : NetFrameworkBase.Int32;
+         source : NetFrameworkBase.BSTR; 
+         value : NetFrameworkBase.Wide_Char; 
+         startIndex : NetFrameworkBase.Int32; 
          count : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -222,9 +222,9 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function IndexOf
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.BSTR;
-         startIndex : NetFrameworkBase.Int32;
+         source : NetFrameworkBase.BSTR; 
+         value : NetFrameworkBase.BSTR; 
+         startIndex : NetFrameworkBase.Int32; 
          count : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -232,10 +232,10 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function IndexOf
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.Wide_Char;
-         startIndex : NetFrameworkBase.Int32;
-         count : NetFrameworkBase.Int32;
+         source : NetFrameworkBase.BSTR; 
+         value : NetFrameworkBase.Wide_Char; 
+         startIndex : NetFrameworkBase.Int32; 
+         count : NetFrameworkBase.Int32; 
          options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
       )
       return NetFrameworkBase.Int32;
@@ -243,10 +243,10 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function IndexOf
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.BSTR;
-         startIndex : NetFrameworkBase.Int32;
-         count : NetFrameworkBase.Int32;
+         source : NetFrameworkBase.BSTR; 
+         value : NetFrameworkBase.BSTR; 
+         startIndex : NetFrameworkBase.Int32; 
+         count : NetFrameworkBase.Int32; 
          options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
       )
       return NetFrameworkBase.Int32;
@@ -254,7 +254,7 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function LastIndexOf
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
+         source : NetFrameworkBase.BSTR; 
          value : NetFrameworkBase.Wide_Char
       )
       return NetFrameworkBase.Int32;
@@ -262,7 +262,7 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function LastIndexOf
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
+         source : NetFrameworkBase.BSTR; 
          value : NetFrameworkBase.BSTR
       )
       return NetFrameworkBase.Int32;
@@ -270,8 +270,8 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function LastIndexOf
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.Wide_Char;
+         source : NetFrameworkBase.BSTR; 
+         value : NetFrameworkBase.Wide_Char; 
          options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
       )
       return NetFrameworkBase.Int32;
@@ -279,8 +279,8 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function LastIndexOf
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.BSTR;
+         source : NetFrameworkBase.BSTR; 
+         value : NetFrameworkBase.BSTR; 
          options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
       )
       return NetFrameworkBase.Int32;
@@ -288,8 +288,8 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function LastIndexOf
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.Wide_Char;
+         source : NetFrameworkBase.BSTR; 
+         value : NetFrameworkBase.Wide_Char; 
          startIndex : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -297,8 +297,8 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function LastIndexOf
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.BSTR;
+         source : NetFrameworkBase.BSTR; 
+         value : NetFrameworkBase.BSTR; 
          startIndex : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -306,9 +306,9 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function LastIndexOf
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.Wide_Char;
-         startIndex : NetFrameworkBase.Int32;
+         source : NetFrameworkBase.BSTR; 
+         value : NetFrameworkBase.Wide_Char; 
+         startIndex : NetFrameworkBase.Int32; 
          options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
       )
       return NetFrameworkBase.Int32;
@@ -316,9 +316,9 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function LastIndexOf
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.BSTR;
-         startIndex : NetFrameworkBase.Int32;
+         source : NetFrameworkBase.BSTR; 
+         value : NetFrameworkBase.BSTR; 
+         startIndex : NetFrameworkBase.Int32; 
          options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
       )
       return NetFrameworkBase.Int32;
@@ -326,9 +326,9 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function LastIndexOf
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.Wide_Char;
-         startIndex : NetFrameworkBase.Int32;
+         source : NetFrameworkBase.BSTR; 
+         value : NetFrameworkBase.Wide_Char; 
+         startIndex : NetFrameworkBase.Int32; 
          count : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -336,9 +336,9 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function LastIndexOf
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.BSTR;
-         startIndex : NetFrameworkBase.Int32;
+         source : NetFrameworkBase.BSTR; 
+         value : NetFrameworkBase.BSTR; 
+         startIndex : NetFrameworkBase.Int32; 
          count : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -346,10 +346,10 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function LastIndexOf
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.Wide_Char;
-         startIndex : NetFrameworkBase.Int32;
-         count : NetFrameworkBase.Int32;
+         source : NetFrameworkBase.BSTR; 
+         value : NetFrameworkBase.Wide_Char; 
+         startIndex : NetFrameworkBase.Int32; 
+         count : NetFrameworkBase.Int32; 
          options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
       )
       return NetFrameworkBase.Int32;
@@ -357,10 +357,10 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function LastIndexOf
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.BSTR;
-         startIndex : NetFrameworkBase.Int32;
-         count : NetFrameworkBase.Int32;
+         source : NetFrameworkBase.BSTR; 
+         value : NetFrameworkBase.BSTR; 
+         startIndex : NetFrameworkBase.Int32; 
+         count : NetFrameworkBase.Int32; 
          options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
       )
       return NetFrameworkBase.Int32;
@@ -368,7 +368,7 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function GetSortKey
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
+         source : NetFrameworkBase.BSTR; 
          options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
       )
       return NetFrameworkBase.System.Globalization.SortKey.Kind_Ptr;
@@ -396,7 +396,7 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function GetHashCode
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
+         source : NetFrameworkBase.BSTR; 
          options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
       )
       return NetFrameworkBase.Int32;
@@ -415,7 +415,7 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       
       function GetCompareInfo
       (
-         name : NetFrameworkBase.BSTR;
+         name : NetFrameworkBase.BSTR; 
          assembly : NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr
       )
       return NetFrameworkBase.System.Globalization.CompareInfo.Kind_Ptr;
@@ -429,12 +429,12 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function Compare
       (
          this : in out CompareInfo.Kind;
-         string1 : NetFrameworkBase.BSTR;
-         offset1 : NetFrameworkBase.Int32;
-         length1 : NetFrameworkBase.Int32;
-         string2 : NetFrameworkBase.BSTR;
-         offset2 : NetFrameworkBase.Int32;
-         length2 : NetFrameworkBase.Int32;
+         string1 : NetFrameworkBase.BSTR; 
+         offset1 : NetFrameworkBase.Int32; 
+         length1 : NetFrameworkBase.Int32; 
+         string2 : NetFrameworkBase.BSTR; 
+         offset2 : NetFrameworkBase.Int32; 
+         length2 : NetFrameworkBase.Int32; 
          options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
       )
       return NetFrameworkBase.Int32;
@@ -442,8 +442,8 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function IsPrefix
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
-         prefix : NetFrameworkBase.BSTR;
+         source : NetFrameworkBase.BSTR; 
+         prefix : NetFrameworkBase.BSTR; 
          options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
       )
       return NetFrameworkBase.Boolean;
@@ -451,8 +451,8 @@ package NetFrameworkBase.System.Globalization.CompareInfo is
       function IsSuffix
       (
          this : in out CompareInfo.Kind;
-         source : NetFrameworkBase.BSTR;
-         suffix : NetFrameworkBase.BSTR;
+         source : NetFrameworkBase.BSTR; 
+         suffix : NetFrameworkBase.BSTR; 
          options : NetFrameworkBase.System.Globalization.CompareOptions.Kind
       )
       return NetFrameworkBase.Boolean;

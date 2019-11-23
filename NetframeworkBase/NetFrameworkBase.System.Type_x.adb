@@ -194,8 +194,8 @@ package body NetFrameworkBase.System.Type_x is
    
    function GetType
    (
-      typeName : NetFrameworkBase.BSTR;
-      throwOnError : NetFrameworkBase.Boolean;
+      typeName : NetFrameworkBase.BSTR; 
+      throwOnError : NetFrameworkBase.Boolean; 
       ignoreCase : NetFrameworkBase.Boolean
    )
    return NetFrameworkBase.System.Type_x.Kind_Ptr is
@@ -242,7 +242,7 @@ package body NetFrameworkBase.System.Type_x is
    
    function GetType
    (
-      typeName : NetFrameworkBase.BSTR;
+      typeName : NetFrameworkBase.BSTR; 
       throwOnError : NetFrameworkBase.Boolean
    )
    return NetFrameworkBase.System.Type_x.Kind_Ptr is
@@ -323,8 +323,8 @@ package body NetFrameworkBase.System.Type_x is
    
    function ReflectionOnlyGetType
    (
-      typeName : NetFrameworkBase.BSTR;
-      throwIfNotFound : NetFrameworkBase.Boolean;
+      typeName : NetFrameworkBase.BSTR; 
+      throwIfNotFound : NetFrameworkBase.Boolean; 
       ignoreCase : NetFrameworkBase.Boolean
    )
    return NetFrameworkBase.System.Type_x.Kind_Ptr is
@@ -552,7 +552,7 @@ package body NetFrameworkBase.System.Type_x is
    
    function GetTypeFromProgID
    (
-      progID : NetFrameworkBase.BSTR;
+      progID : NetFrameworkBase.BSTR; 
       throwOnError : NetFrameworkBase.Boolean
    )
    return NetFrameworkBase.System.Type_x.Kind_Ptr is
@@ -595,7 +595,7 @@ package body NetFrameworkBase.System.Type_x is
    
    function GetTypeFromProgID
    (
-      progID : NetFrameworkBase.BSTR;
+      progID : NetFrameworkBase.BSTR; 
       server : NetFrameworkBase.BSTR
    )
    return NetFrameworkBase.System.Type_x.Kind_Ptr is
@@ -638,8 +638,8 @@ package body NetFrameworkBase.System.Type_x is
    
    function GetTypeFromProgID
    (
-      progID : NetFrameworkBase.BSTR;
-      server : NetFrameworkBase.BSTR;
+      progID : NetFrameworkBase.BSTR; 
+      server : NetFrameworkBase.BSTR; 
       throwOnError : NetFrameworkBase.Boolean
    )
    return NetFrameworkBase.System.Type_x.Kind_Ptr is
@@ -724,7 +724,7 @@ package body NetFrameworkBase.System.Type_x is
    
    function GetTypeFromCLSID
    (
-      clsid : NetFrameworkBase.System.Guid.Kind_Ptr;
+      clsid : NetFrameworkBase.System.Guid.Kind_Ptr; 
       throwOnError : NetFrameworkBase.Boolean
    )
    return NetFrameworkBase.System.Type_x.Kind_Ptr is
@@ -767,7 +767,7 @@ package body NetFrameworkBase.System.Type_x is
    
    function GetTypeFromCLSID
    (
-      clsid : NetFrameworkBase.System.Guid.Kind_Ptr;
+      clsid : NetFrameworkBase.System.Guid.Kind_Ptr; 
       server : NetFrameworkBase.BSTR
    )
    return NetFrameworkBase.System.Type_x.Kind_Ptr is
@@ -810,8 +810,8 @@ package body NetFrameworkBase.System.Type_x is
    
    function GetTypeFromCLSID
    (
-      clsid : NetFrameworkBase.System.Guid.Kind_Ptr;
-      server : NetFrameworkBase.BSTR;
+      clsid : NetFrameworkBase.System.Guid.Kind_Ptr; 
+      server : NetFrameworkBase.BSTR; 
       throwOnError : NetFrameworkBase.Boolean
    )
    return NetFrameworkBase.System.Type_x.Kind_Ptr is
@@ -920,11 +920,11 @@ package body NetFrameworkBase.System.Type_x is
    function InvokeMember
    (
       this : in out Type_x.Kind;
-      name : NetFrameworkBase.BSTR;
-      invokeAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind;
-      binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr;
-      target : NetFrameworkBase.System.Object.Kind_Ptr;
-      args : NetFrameworkBase.System.Object.Kind_Array;
+      name : NetFrameworkBase.BSTR; 
+      invokeAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind; 
+      binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr; 
+      target : NetFrameworkBase.System.Object.Kind_Ptr; 
+      args : NetFrameworkBase.System.Object.Kind_Array; 
       culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr
    )
    return NetFrameworkBase.System.Object.Kind_Ptr is
@@ -1005,10 +1005,10 @@ package body NetFrameworkBase.System.Type_x is
    function InvokeMember
    (
       this : in out Type_x.Kind;
-      name : NetFrameworkBase.BSTR;
-      invokeAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind;
-      binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr;
-      target : NetFrameworkBase.System.Object.Kind_Ptr;
+      name : NetFrameworkBase.BSTR; 
+      invokeAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind; 
+      binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr; 
+      target : NetFrameworkBase.System.Object.Kind_Ptr; 
       args : NetFrameworkBase.System.Object.Kind_Array
    )
    return NetFrameworkBase.System.Object.Kind_Ptr is
@@ -1174,10 +1174,10 @@ package body NetFrameworkBase.System.Type_x is
    function GetConstructor
    (
       this : in out Type_x.Kind;
-      bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind;
-      binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr;
-      callConvention : NetFrameworkBase.System.Reflection.CallingConventions.Kind;
-      types : NetFrameworkBase.System.Type_x.Kind_Array;
+      bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind; 
+      binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr; 
+      callConvention : NetFrameworkBase.System.Reflection.CallingConventions.Kind; 
+      types : NetFrameworkBase.System.Type_x.Kind_Array; 
       modifiers : NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Array_Ptr
    )
    return NetFrameworkBase.System.Reflection.ConstructorInfo.Kind_Ptr is
@@ -1275,9 +1275,9 @@ package body NetFrameworkBase.System.Type_x is
    function GetConstructor
    (
       this : in out Type_x.Kind;
-      bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind;
-      binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr;
-      types : NetFrameworkBase.System.Type_x.Kind_Array;
+      bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind; 
+      binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr; 
+      types : NetFrameworkBase.System.Type_x.Kind_Array; 
       modifiers : NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Array_Ptr
    )
    return NetFrameworkBase.System.Reflection.ConstructorInfo.Kind_Ptr is
@@ -1511,11 +1511,11 @@ package body NetFrameworkBase.System.Type_x is
    function GetMethod
    (
       this : in out Type_x.Kind;
-      name : NetFrameworkBase.BSTR;
-      bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind;
-      binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr;
-      callConvention : NetFrameworkBase.System.Reflection.CallingConventions.Kind;
-      types : NetFrameworkBase.System.Type_x.Kind_Array;
+      name : NetFrameworkBase.BSTR; 
+      bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind; 
+      binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr; 
+      callConvention : NetFrameworkBase.System.Reflection.CallingConventions.Kind; 
+      types : NetFrameworkBase.System.Type_x.Kind_Array; 
       modifiers : NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Array_Ptr
    )
    return NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr is
@@ -1617,10 +1617,10 @@ package body NetFrameworkBase.System.Type_x is
    function GetMethod
    (
       this : in out Type_x.Kind;
-      name : NetFrameworkBase.BSTR;
-      bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind;
-      binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr;
-      types : NetFrameworkBase.System.Type_x.Kind_Array;
+      name : NetFrameworkBase.BSTR; 
+      bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind; 
+      binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr; 
+      types : NetFrameworkBase.System.Type_x.Kind_Array; 
       modifiers : NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Array_Ptr
    )
    return NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr is
@@ -1716,8 +1716,8 @@ package body NetFrameworkBase.System.Type_x is
    function GetMethod
    (
       this : in out Type_x.Kind;
-      name : NetFrameworkBase.BSTR;
-      types : NetFrameworkBase.System.Type_x.Kind_Array;
+      name : NetFrameworkBase.BSTR; 
+      types : NetFrameworkBase.System.Type_x.Kind_Array; 
       modifiers : NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Array_Ptr
    )
    return NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr is
@@ -1803,7 +1803,7 @@ package body NetFrameworkBase.System.Type_x is
    function GetMethod
    (
       this : in out Type_x.Kind;
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       types : NetFrameworkBase.System.Type_x.Kind_Array
    )
    return NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr is
@@ -1866,7 +1866,7 @@ package body NetFrameworkBase.System.Type_x is
    function GetMethod
    (
       this : in out Type_x.Kind;
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind
    )
    return NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr is
@@ -2145,7 +2145,7 @@ package body NetFrameworkBase.System.Type_x is
    function FindInterfaces
    (
       this : in out Type_x.Kind;
-      filter : NetFrameworkBase.System.Reflection.TypeFilter.Kind_Ptr;
+      filter : NetFrameworkBase.System.Reflection.TypeFilter.Kind_Ptr; 
       filterCriteria : NetFrameworkBase.System.Object.Kind_Ptr
    )
    return NetFrameworkBase.System.Type_x.Kind_Array is
@@ -2318,11 +2318,11 @@ package body NetFrameworkBase.System.Type_x is
    function GetProperty
    (
       this : in out Type_x.Kind;
-      name : NetFrameworkBase.BSTR;
-      bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind;
-      binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr;
-      returnType : NetFrameworkBase.System.Type_x.Kind_Ptr;
-      types : NetFrameworkBase.System.Type_x.Kind_Array;
+      name : NetFrameworkBase.BSTR; 
+      bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind; 
+      binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr; 
+      returnType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
+      types : NetFrameworkBase.System.Type_x.Kind_Array; 
       modifiers : NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Array_Ptr
    )
    return NetFrameworkBase.System.Reflection.PropertyInfo.Kind_Ptr is
@@ -2422,9 +2422,9 @@ package body NetFrameworkBase.System.Type_x is
    function GetProperty
    (
       this : in out Type_x.Kind;
-      name : NetFrameworkBase.BSTR;
-      returnType : NetFrameworkBase.System.Type_x.Kind_Ptr;
-      types : NetFrameworkBase.System.Type_x.Kind_Array;
+      name : NetFrameworkBase.BSTR; 
+      returnType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
+      types : NetFrameworkBase.System.Type_x.Kind_Array; 
       modifiers : NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Array_Ptr
    )
    return NetFrameworkBase.System.Reflection.PropertyInfo.Kind_Ptr is
@@ -2514,7 +2514,7 @@ package body NetFrameworkBase.System.Type_x is
    function GetProperty
    (
       this : in out Type_x.Kind;
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind
    )
    return NetFrameworkBase.System.Reflection.PropertyInfo.Kind_Ptr is
@@ -2560,8 +2560,8 @@ package body NetFrameworkBase.System.Type_x is
    function GetProperty
    (
       this : in out Type_x.Kind;
-      name : NetFrameworkBase.BSTR;
-      returnType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+      name : NetFrameworkBase.BSTR; 
+      returnType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
       types : NetFrameworkBase.System.Type_x.Kind_Array
    )
    return NetFrameworkBase.System.Reflection.PropertyInfo.Kind_Ptr is
@@ -2628,7 +2628,7 @@ package body NetFrameworkBase.System.Type_x is
    function GetProperty
    (
       this : in out Type_x.Kind;
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       types : NetFrameworkBase.System.Type_x.Kind_Array
    )
    return NetFrameworkBase.System.Reflection.PropertyInfo.Kind_Ptr is
@@ -2691,7 +2691,7 @@ package body NetFrameworkBase.System.Type_x is
    function GetProperty
    (
       this : in out Type_x.Kind;
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       returnType : NetFrameworkBase.System.Type_x.Kind_Ptr
    )
    return NetFrameworkBase.System.Reflection.PropertyInfo.Kind_Ptr is
@@ -3000,7 +3000,7 @@ package body NetFrameworkBase.System.Type_x is
    function GetMember
    (
       this : in out Type_x.Kind;
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind
    )
    return NetFrameworkBase.System.Reflection.MemberInfo.Kind_Array is
@@ -3078,8 +3078,8 @@ package body NetFrameworkBase.System.Type_x is
    function GetMember
    (
       this : in out Type_x.Kind;
-      name : NetFrameworkBase.BSTR;
-      type_x : NetFrameworkBase.System.Reflection.MemberTypes.Kind;
+      name : NetFrameworkBase.BSTR; 
+      type_x : NetFrameworkBase.System.Reflection.MemberTypes.Kind; 
       bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind
    )
    return NetFrameworkBase.System.Reflection.MemberInfo.Kind_Array is
@@ -3279,9 +3279,9 @@ package body NetFrameworkBase.System.Type_x is
    function FindMembers
    (
       this : in out Type_x.Kind;
-      memberType : NetFrameworkBase.System.Reflection.MemberTypes.Kind;
-      bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind;
-      filter : NetFrameworkBase.System.Reflection.MemberFilter.Kind_Ptr;
+      memberType : NetFrameworkBase.System.Reflection.MemberTypes.Kind; 
+      bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind; 
+      filter : NetFrameworkBase.System.Reflection.MemberFilter.Kind_Ptr; 
       filterCriteria : NetFrameworkBase.System.Object.Kind_Ptr
    )
    return NetFrameworkBase.System.Reflection.MemberInfo.Kind_Array is
@@ -5340,13 +5340,13 @@ package body NetFrameworkBase.System.Type_x is
    function InvokeMember
    (
       this : in out Type_x.Kind;
-      name : NetFrameworkBase.BSTR;
-      invokeAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind;
-      binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr;
-      target : NetFrameworkBase.System.Object.Kind_Ptr;
-      args : NetFrameworkBase.System.Object.Kind_Array;
-      modifiers : NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Array_Ptr;
-      culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr;
+      name : NetFrameworkBase.BSTR; 
+      invokeAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind; 
+      binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr; 
+      target : NetFrameworkBase.System.Object.Kind_Ptr; 
+      args : NetFrameworkBase.System.Object.Kind_Array; 
+      modifiers : NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Array_Ptr; 
+      culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr; 
       namedParameters : NetFrameworkBase.BSTR_Array
    )
    return NetFrameworkBase.System.Object.Kind_Ptr is
@@ -5771,7 +5771,7 @@ package body NetFrameworkBase.System.Type_x is
    function GetField
    (
       this : in out Type_x.Kind;
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind
    )
    return NetFrameworkBase.System.Reflection.FieldInfo.Kind_Ptr is
@@ -5890,7 +5890,7 @@ package body NetFrameworkBase.System.Type_x is
    function GetInterface
    (
       this : in out Type_x.Kind;
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       ignoreCase : NetFrameworkBase.Boolean
    )
    return NetFrameworkBase.System.Type_x.Kind_Ptr is
@@ -5992,7 +5992,7 @@ package body NetFrameworkBase.System.Type_x is
    function GetEvent
    (
       this : in out Type_x.Kind;
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind
    )
    return NetFrameworkBase.System.Reflection.EventInfo.Kind_Ptr is
@@ -6257,7 +6257,7 @@ package body NetFrameworkBase.System.Type_x is
    function GetNestedType
    (
       this : in out Type_x.Kind;
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind
    )
    return NetFrameworkBase.System.Type_x.Kind_Ptr is
@@ -6490,7 +6490,7 @@ package body NetFrameworkBase.System.Type_x is
    
    function op_Equality
    (
-      left : NetFrameworkBase.System.Type_x.Kind_Ptr;
+      left : NetFrameworkBase.System.Type_x.Kind_Ptr; 
       right : NetFrameworkBase.System.Type_x.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -6532,7 +6532,7 @@ package body NetFrameworkBase.System.Type_x is
    
    function op_Inequality
    (
-      left : NetFrameworkBase.System.Type_x.Kind_Ptr;
+      left : NetFrameworkBase.System.Type_x.Kind_Ptr; 
       right : NetFrameworkBase.System.Type_x.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is

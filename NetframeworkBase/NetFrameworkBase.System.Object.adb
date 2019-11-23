@@ -103,7 +103,7 @@ package body NetFrameworkBase.System.Object is
    
    function Equals
    (
-      objA : NetFrameworkBase.System.Object.Kind_Ptr;
+      objA : NetFrameworkBase.System.Object.Kind_Ptr; 
       objB : NetFrameworkBase.System.Object.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -145,7 +145,7 @@ package body NetFrameworkBase.System.Object is
    
    function ReferenceEquals
    (
-      objA : NetFrameworkBase.System.Object.Kind_Ptr;
+      objA : NetFrameworkBase.System.Object.Kind_Ptr; 
       objB : NetFrameworkBase.System.Object.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is

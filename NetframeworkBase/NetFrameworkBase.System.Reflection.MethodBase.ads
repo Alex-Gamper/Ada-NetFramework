@@ -56,7 +56,7 @@ package NetFrameworkBase.System.Reflection.MethodBase is
       
       function GetMethodFromHandle
       (
-         handle : NetFrameworkBase.System.RuntimeMethodHandle.Kind_Ptr;
+         handle : NetFrameworkBase.System.RuntimeMethodHandle.Kind_Ptr; 
          declaringType : NetFrameworkBase.System.RuntimeTypeHandle.Kind_Ptr
       )
       return NetFrameworkBase.System.Reflection.MethodBase.Kind_Ptr;
@@ -66,14 +66,14 @@ package NetFrameworkBase.System.Reflection.MethodBase is
       
       function op_Equality
       (
-         left : NetFrameworkBase.System.Reflection.MethodBase.Kind_Ptr;
+         left : NetFrameworkBase.System.Reflection.MethodBase.Kind_Ptr; 
          right : NetFrameworkBase.System.Reflection.MethodBase.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function op_Inequality
       (
-         left : NetFrameworkBase.System.Reflection.MethodBase.Kind_Ptr;
+         left : NetFrameworkBase.System.Reflection.MethodBase.Kind_Ptr; 
          right : NetFrameworkBase.System.Reflection.MethodBase.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
@@ -148,7 +148,7 @@ package NetFrameworkBase.System.Reflection.MethodBase is
       function Invoke
       (
          this : in out MethodBase.Kind;
-         obj : NetFrameworkBase.System.Object.Kind_Ptr;
+         obj : NetFrameworkBase.System.Object.Kind_Ptr; 
          parameters : NetFrameworkBase.System.Object.Kind_Array
       )
       return NetFrameworkBase.System.Object.Kind_Ptr;
@@ -264,10 +264,10 @@ package NetFrameworkBase.System.Reflection.MethodBase is
       function Invoke
       (
          this : in out MethodBase.Kind;
-         obj : NetFrameworkBase.System.Object.Kind_Ptr;
-         invokeAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind;
-         binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr;
-         parameters : NetFrameworkBase.System.Object.Kind_Array;
+         obj : NetFrameworkBase.System.Object.Kind_Ptr; 
+         invokeAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind; 
+         binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr; 
+         parameters : NetFrameworkBase.System.Object.Kind_Array; 
          culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr
       )
       return NetFrameworkBase.System.Object.Kind_Ptr;

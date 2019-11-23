@@ -239,7 +239,7 @@ package body NetFrameworkBase.System.Security.SecureString is
    procedure InsertAt
    (
       this : in out SecureString.Kind;
-      index : NetFrameworkBase.Int32;
+      index : NetFrameworkBase.Int32; 
       c : NetFrameworkBase.Wide_Char
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -312,7 +312,7 @@ package body NetFrameworkBase.System.Security.SecureString is
    procedure SetAt
    (
       this : in out SecureString.Kind;
-      index : NetFrameworkBase.Int32;
+      index : NetFrameworkBase.Int32; 
       c : NetFrameworkBase.Wide_Char
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);

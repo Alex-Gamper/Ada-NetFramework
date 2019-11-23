@@ -113,7 +113,7 @@ package body NetFrameworkBase.System.Reflection.FieldInfo is
    
    function GetFieldFromHandle
    (
-      handle : NetFrameworkBase.System.RuntimeFieldHandle.Kind_Ptr;
+      handle : NetFrameworkBase.System.RuntimeFieldHandle.Kind_Ptr; 
       declaringType : NetFrameworkBase.System.RuntimeTypeHandle.Kind_Ptr
    )
    return NetFrameworkBase.System.Reflection.FieldInfo.Kind_Ptr is
@@ -156,7 +156,7 @@ package body NetFrameworkBase.System.Reflection.FieldInfo is
    
    function op_Equality
    (
-      left : NetFrameworkBase.System.Reflection.FieldInfo.Kind_Ptr;
+      left : NetFrameworkBase.System.Reflection.FieldInfo.Kind_Ptr; 
       right : NetFrameworkBase.System.Reflection.FieldInfo.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -198,7 +198,7 @@ package body NetFrameworkBase.System.Reflection.FieldInfo is
    
    function op_Inequality
    (
-      left : NetFrameworkBase.System.Reflection.FieldInfo.Kind_Ptr;
+      left : NetFrameworkBase.System.Reflection.FieldInfo.Kind_Ptr; 
       right : NetFrameworkBase.System.Reflection.FieldInfo.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -446,7 +446,7 @@ package body NetFrameworkBase.System.Reflection.FieldInfo is
    procedure SetValueDirect
    (
       this : in out FieldInfo.Kind;
-      obj : NetFrameworkBase.System.TypedReference.Kind_Ptr;
+      obj : NetFrameworkBase.System.TypedReference.Kind_Ptr; 
       value : NetFrameworkBase.System.Object.Kind_Ptr
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -550,7 +550,7 @@ package body NetFrameworkBase.System.Reflection.FieldInfo is
    procedure SetValue
    (
       this : in out FieldInfo.Kind;
-      obj : NetFrameworkBase.System.Object.Kind_Ptr;
+      obj : NetFrameworkBase.System.Object.Kind_Ptr; 
       value : NetFrameworkBase.System.Object.Kind_Ptr
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -1055,10 +1055,10 @@ package body NetFrameworkBase.System.Reflection.FieldInfo is
    procedure SetValue
    (
       this : in out FieldInfo.Kind;
-      obj : NetFrameworkBase.System.Object.Kind_Ptr;
-      value : NetFrameworkBase.System.Object.Kind_Ptr;
-      invokeAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind;
-      binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr;
+      obj : NetFrameworkBase.System.Object.Kind_Ptr; 
+      value : NetFrameworkBase.System.Object.Kind_Ptr; 
+      invokeAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind; 
+      binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr; 
       culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);

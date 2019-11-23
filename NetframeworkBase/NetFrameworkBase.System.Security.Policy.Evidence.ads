@@ -73,7 +73,7 @@ package NetFrameworkBase.System.Security.Policy.Evidence is
       procedure CopyTo
       (
          this : in out Evidence.Kind;
-         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr;
+         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr; 
          index : NetFrameworkBase.Int32
       );
       

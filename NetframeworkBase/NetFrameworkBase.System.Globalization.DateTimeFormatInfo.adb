@@ -1987,7 +1987,7 @@ package body NetFrameworkBase.System.Globalization.DateTimeFormatInfo is
    procedure SetAllDateTimePatterns
    (
       this : in out DateTimeFormatInfo.Kind;
-      patterns : NetFrameworkBase.BSTR_Array;
+      patterns : NetFrameworkBase.BSTR_Array; 
       format : NetFrameworkBase.Wide_Char
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);

@@ -415,7 +415,7 @@ package body NetFrameworkBase.System.DateTime is
    
    function Compare
    (
-      t1 : NetFrameworkBase.Date;
+      t1 : NetFrameworkBase.Date; 
       t2 : NetFrameworkBase.Date
    )
    return NetFrameworkBase.Int32 is
@@ -533,7 +533,7 @@ package body NetFrameworkBase.System.DateTime is
    
    function DaysInMonth
    (
-      year : NetFrameworkBase.Int32;
+      year : NetFrameworkBase.Int32; 
       month : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -651,7 +651,7 @@ package body NetFrameworkBase.System.DateTime is
    
    function Equals
    (
-      t1 : NetFrameworkBase.Date;
+      t1 : NetFrameworkBase.Date; 
       t2 : NetFrameworkBase.Date
    )
    return NetFrameworkBase.Boolean is
@@ -866,7 +866,7 @@ package body NetFrameworkBase.System.DateTime is
    
    function SpecifyKind
    (
-      value : NetFrameworkBase.Date;
+      value : NetFrameworkBase.Date; 
       kind : NetFrameworkBase.System.DateTimeKind.Kind
    )
    return NetFrameworkBase.Date is
@@ -1428,7 +1428,7 @@ package body NetFrameworkBase.System.DateTime is
    
    function Parse
    (
-      s : NetFrameworkBase.BSTR;
+      s : NetFrameworkBase.BSTR; 
       provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
    )
    return NetFrameworkBase.Date is
@@ -1471,8 +1471,8 @@ package body NetFrameworkBase.System.DateTime is
    
    function ParseExact
    (
-      s : NetFrameworkBase.BSTR;
-      format : NetFrameworkBase.BSTR;
+      s : NetFrameworkBase.BSTR; 
+      format : NetFrameworkBase.BSTR; 
       provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
    )
    return NetFrameworkBase.Date is
@@ -1799,7 +1799,7 @@ package body NetFrameworkBase.System.DateTime is
    function ToString
    (
       this : in out DateTime.Kind;
-      format : NetFrameworkBase.BSTR;
+      format : NetFrameworkBase.BSTR; 
       provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
    )
    return NetFrameworkBase.BSTR is
@@ -1867,7 +1867,7 @@ package body NetFrameworkBase.System.DateTime is
    
    function TryParse
    (
-      s : NetFrameworkBase.BSTR;
+      s : NetFrameworkBase.BSTR; 
       result : out NetFrameworkBase.Date
    )
    return NetFrameworkBase.Boolean is
@@ -1915,7 +1915,7 @@ package body NetFrameworkBase.System.DateTime is
    
    function op_Addition
    (
-      d : NetFrameworkBase.Date;
+      d : NetFrameworkBase.Date; 
       t : NetFrameworkBase.System.TimeSpan.Kind_Ptr
    )
    return NetFrameworkBase.Date is
@@ -1957,7 +1957,7 @@ package body NetFrameworkBase.System.DateTime is
    
    function op_Subtraction
    (
-      d : NetFrameworkBase.Date;
+      d : NetFrameworkBase.Date; 
       t : NetFrameworkBase.System.TimeSpan.Kind_Ptr
    )
    return NetFrameworkBase.Date is
@@ -1999,7 +1999,7 @@ package body NetFrameworkBase.System.DateTime is
    
    function op_Subtraction
    (
-      d1 : NetFrameworkBase.Date;
+      d1 : NetFrameworkBase.Date; 
       d2 : NetFrameworkBase.Date
    )
    return NetFrameworkBase.System.TimeSpan.Kind_Ptr is
@@ -2042,7 +2042,7 @@ package body NetFrameworkBase.System.DateTime is
    
    function op_Equality
    (
-      d1 : NetFrameworkBase.Date;
+      d1 : NetFrameworkBase.Date; 
       d2 : NetFrameworkBase.Date
    )
    return NetFrameworkBase.Boolean is
@@ -2084,7 +2084,7 @@ package body NetFrameworkBase.System.DateTime is
    
    function op_Inequality
    (
-      d1 : NetFrameworkBase.Date;
+      d1 : NetFrameworkBase.Date; 
       d2 : NetFrameworkBase.Date
    )
    return NetFrameworkBase.Boolean is
@@ -2126,7 +2126,7 @@ package body NetFrameworkBase.System.DateTime is
    
    function op_LessThan
    (
-      t1 : NetFrameworkBase.Date;
+      t1 : NetFrameworkBase.Date; 
       t2 : NetFrameworkBase.Date
    )
    return NetFrameworkBase.Boolean is
@@ -2168,7 +2168,7 @@ package body NetFrameworkBase.System.DateTime is
    
    function op_LessThanOrEqual
    (
-      t1 : NetFrameworkBase.Date;
+      t1 : NetFrameworkBase.Date; 
       t2 : NetFrameworkBase.Date
    )
    return NetFrameworkBase.Boolean is
@@ -2210,7 +2210,7 @@ package body NetFrameworkBase.System.DateTime is
    
    function op_GreaterThan
    (
-      t1 : NetFrameworkBase.Date;
+      t1 : NetFrameworkBase.Date; 
       t2 : NetFrameworkBase.Date
    )
    return NetFrameworkBase.Boolean is
@@ -2252,7 +2252,7 @@ package body NetFrameworkBase.System.DateTime is
    
    function op_GreaterThanOrEqual
    (
-      t1 : NetFrameworkBase.Date;
+      t1 : NetFrameworkBase.Date; 
       t2 : NetFrameworkBase.Date
    )
    return NetFrameworkBase.Boolean is
@@ -2472,7 +2472,7 @@ package body NetFrameworkBase.System.DateTime is
    function GetDateTimeFormats
    (
       this : in out DateTime.Kind;
-      format : NetFrameworkBase.Wide_Char;
+      format : NetFrameworkBase.Wide_Char; 
       provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
    )
    return NetFrameworkBase.BSTR_Array is
@@ -2566,8 +2566,8 @@ package body NetFrameworkBase.System.DateTime is
    
    function Parse
    (
-      s : NetFrameworkBase.BSTR;
-      provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
+      s : NetFrameworkBase.BSTR; 
+      provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr; 
       styles : NetFrameworkBase.System.Globalization.DateTimeStyles.Kind
    )
    return NetFrameworkBase.Date is
@@ -2616,9 +2616,9 @@ package body NetFrameworkBase.System.DateTime is
    
    function ParseExact
    (
-      s : NetFrameworkBase.BSTR;
-      format : NetFrameworkBase.BSTR;
-      provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
+      s : NetFrameworkBase.BSTR; 
+      format : NetFrameworkBase.BSTR; 
+      provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr; 
       style : NetFrameworkBase.System.Globalization.DateTimeStyles.Kind
    )
    return NetFrameworkBase.Date is
@@ -2746,10 +2746,10 @@ package body NetFrameworkBase.System.DateTime is
    
    function TryParseExact
    (
-      s : NetFrameworkBase.BSTR;
-      format : NetFrameworkBase.BSTR;
-      provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
-      style : NetFrameworkBase.System.Globalization.DateTimeStyles.Kind;
+      s : NetFrameworkBase.BSTR; 
+      format : NetFrameworkBase.BSTR; 
+      provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr; 
+      style : NetFrameworkBase.System.Globalization.DateTimeStyles.Kind; 
       result : out NetFrameworkBase.Date
    )
    return NetFrameworkBase.Boolean is
@@ -2812,10 +2812,10 @@ package body NetFrameworkBase.System.DateTime is
    
    function TryParseExact
    (
-      s : NetFrameworkBase.BSTR;
-      formats : NetFrameworkBase.BSTR_Array;
-      provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
-      style : NetFrameworkBase.System.Globalization.DateTimeStyles.Kind;
+      s : NetFrameworkBase.BSTR; 
+      formats : NetFrameworkBase.BSTR_Array; 
+      provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr; 
+      style : NetFrameworkBase.System.Globalization.DateTimeStyles.Kind; 
       result : out NetFrameworkBase.Date
    )
    return NetFrameworkBase.Boolean is
@@ -2896,9 +2896,9 @@ package body NetFrameworkBase.System.DateTime is
    
    function ParseExact
    (
-      s : NetFrameworkBase.BSTR;
-      formats : NetFrameworkBase.BSTR_Array;
-      provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
+      s : NetFrameworkBase.BSTR; 
+      formats : NetFrameworkBase.BSTR_Array; 
+      provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr; 
       style : NetFrameworkBase.System.Globalization.DateTimeStyles.Kind
    )
    return NetFrameworkBase.Date is
@@ -2994,9 +2994,9 @@ package body NetFrameworkBase.System.DateTime is
    
    function TryParse
    (
-      s : NetFrameworkBase.BSTR;
-      provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
-      styles : NetFrameworkBase.System.Globalization.DateTimeStyles.Kind;
+      s : NetFrameworkBase.BSTR; 
+      provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr; 
+      styles : NetFrameworkBase.System.Globalization.DateTimeStyles.Kind; 
       result : out NetFrameworkBase.Date
    )
    return NetFrameworkBase.Boolean is

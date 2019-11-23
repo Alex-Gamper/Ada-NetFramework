@@ -87,7 +87,7 @@ package body NetFrameworkBase.System.Text.DecoderFallbackBuffer is
    function Fallback
    (
       this : in out DecoderFallbackBuffer.Kind;
-      bytesUnknown : NetFrameworkBase.Byte_Array;
+      bytesUnknown : NetFrameworkBase.Byte_Array; 
       index : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Boolean is

@@ -341,7 +341,7 @@ package body NetFrameworkBase.System.Console is
    
    procedure Beep
    (
-      frequency : NetFrameworkBase.Int32;
+      frequency : NetFrameworkBase.Int32; 
       duration : NetFrameworkBase.Int32
    )
    is
@@ -536,11 +536,11 @@ package body NetFrameworkBase.System.Console is
    
    procedure MoveBufferArea
    (
-      sourceLeft : NetFrameworkBase.Int32;
-      sourceTop : NetFrameworkBase.Int32;
-      sourceWidth : NetFrameworkBase.Int32;
-      sourceHeight : NetFrameworkBase.Int32;
-      targetLeft : NetFrameworkBase.Int32;
+      sourceLeft : NetFrameworkBase.Int32; 
+      sourceTop : NetFrameworkBase.Int32; 
+      sourceWidth : NetFrameworkBase.Int32; 
+      sourceHeight : NetFrameworkBase.Int32; 
+      targetLeft : NetFrameworkBase.Int32; 
       targetTop : NetFrameworkBase.Int32
    )
    is
@@ -595,14 +595,14 @@ package body NetFrameworkBase.System.Console is
    
    procedure MoveBufferArea
    (
-      sourceLeft : NetFrameworkBase.Int32;
-      sourceTop : NetFrameworkBase.Int32;
-      sourceWidth : NetFrameworkBase.Int32;
-      sourceHeight : NetFrameworkBase.Int32;
-      targetLeft : NetFrameworkBase.Int32;
-      targetTop : NetFrameworkBase.Int32;
-      sourceChar : NetFrameworkBase.Wide_Char;
-      sourceForeColor : NetFrameworkBase.System.ConsoleColor.Kind;
+      sourceLeft : NetFrameworkBase.Int32; 
+      sourceTop : NetFrameworkBase.Int32; 
+      sourceWidth : NetFrameworkBase.Int32; 
+      sourceHeight : NetFrameworkBase.Int32; 
+      targetLeft : NetFrameworkBase.Int32; 
+      targetTop : NetFrameworkBase.Int32; 
+      sourceChar : NetFrameworkBase.Wide_Char; 
+      sourceForeColor : NetFrameworkBase.System.ConsoleColor.Kind; 
       sourceBackColor : NetFrameworkBase.System.ConsoleColor.Kind
    )
    is
@@ -785,7 +785,7 @@ package body NetFrameworkBase.System.Console is
    
    procedure SetBufferSize
    (
-      width : NetFrameworkBase.Int32;
+      width : NetFrameworkBase.Int32; 
       height : NetFrameworkBase.Int32
    )
    is
@@ -936,7 +936,7 @@ package body NetFrameworkBase.System.Console is
    
    procedure SetWindowSize
    (
-      width : NetFrameworkBase.Int32;
+      width : NetFrameworkBase.Int32; 
       height : NetFrameworkBase.Int32
    )
    is
@@ -1131,7 +1131,7 @@ package body NetFrameworkBase.System.Console is
    
    procedure SetWindowPosition
    (
-      left : NetFrameworkBase.Int32;
+      left : NetFrameworkBase.Int32; 
       top : NetFrameworkBase.Int32
    )
    is
@@ -1282,7 +1282,7 @@ package body NetFrameworkBase.System.Console is
    
    procedure SetCursorPosition
    (
-      left : NetFrameworkBase.Int32;
+      left : NetFrameworkBase.Int32; 
       top : NetFrameworkBase.Int32
    )
    is
@@ -2186,8 +2186,8 @@ package body NetFrameworkBase.System.Console is
    
    procedure WriteLine
    (
-      buffer : NetFrameworkBase.Wide_Char_Array;
-      index : NetFrameworkBase.Int32;
+      buffer : NetFrameworkBase.Wide_Char_Array; 
+      index : NetFrameworkBase.Int32; 
       count : NetFrameworkBase.Int32
    )
    is
@@ -2554,7 +2554,7 @@ package body NetFrameworkBase.System.Console is
    
    procedure WriteLine
    (
-      format : NetFrameworkBase.BSTR;
+      format : NetFrameworkBase.BSTR; 
       arg0 : NetFrameworkBase.System.Object.Kind_Ptr
    )
    is
@@ -2593,8 +2593,8 @@ package body NetFrameworkBase.System.Console is
    
    procedure WriteLine
    (
-      format : NetFrameworkBase.BSTR;
-      arg0 : NetFrameworkBase.System.Object.Kind_Ptr;
+      format : NetFrameworkBase.BSTR; 
+      arg0 : NetFrameworkBase.System.Object.Kind_Ptr; 
       arg1 : NetFrameworkBase.System.Object.Kind_Ptr
    )
    is
@@ -2637,9 +2637,9 @@ package body NetFrameworkBase.System.Console is
    
    procedure WriteLine
    (
-      format : NetFrameworkBase.BSTR;
-      arg0 : NetFrameworkBase.System.Object.Kind_Ptr;
-      arg1 : NetFrameworkBase.System.Object.Kind_Ptr;
+      format : NetFrameworkBase.BSTR; 
+      arg0 : NetFrameworkBase.System.Object.Kind_Ptr; 
+      arg1 : NetFrameworkBase.System.Object.Kind_Ptr; 
       arg2 : NetFrameworkBase.System.Object.Kind_Ptr
    )
    is
@@ -2686,10 +2686,10 @@ package body NetFrameworkBase.System.Console is
    
    procedure WriteLine
    (
-      format : NetFrameworkBase.BSTR;
-      arg0 : NetFrameworkBase.System.Object.Kind_Ptr;
-      arg1 : NetFrameworkBase.System.Object.Kind_Ptr;
-      arg2 : NetFrameworkBase.System.Object.Kind_Ptr;
+      format : NetFrameworkBase.BSTR; 
+      arg0 : NetFrameworkBase.System.Object.Kind_Ptr; 
+      arg1 : NetFrameworkBase.System.Object.Kind_Ptr; 
+      arg2 : NetFrameworkBase.System.Object.Kind_Ptr; 
       arg3 : NetFrameworkBase.System.Object.Kind_Ptr
    )
    is
@@ -2740,7 +2740,7 @@ package body NetFrameworkBase.System.Console is
    
    procedure WriteLine
    (
-      format : NetFrameworkBase.BSTR;
+      format : NetFrameworkBase.BSTR; 
       arg : NetFrameworkBase.System.Object.Kind_Array
    )
    is
@@ -2798,7 +2798,7 @@ package body NetFrameworkBase.System.Console is
    
    procedure Write
    (
-      format : NetFrameworkBase.BSTR;
+      format : NetFrameworkBase.BSTR; 
       arg0 : NetFrameworkBase.System.Object.Kind_Ptr
    )
    is
@@ -2837,8 +2837,8 @@ package body NetFrameworkBase.System.Console is
    
    procedure Write
    (
-      format : NetFrameworkBase.BSTR;
-      arg0 : NetFrameworkBase.System.Object.Kind_Ptr;
+      format : NetFrameworkBase.BSTR; 
+      arg0 : NetFrameworkBase.System.Object.Kind_Ptr; 
       arg1 : NetFrameworkBase.System.Object.Kind_Ptr
    )
    is
@@ -2881,9 +2881,9 @@ package body NetFrameworkBase.System.Console is
    
    procedure Write
    (
-      format : NetFrameworkBase.BSTR;
-      arg0 : NetFrameworkBase.System.Object.Kind_Ptr;
-      arg1 : NetFrameworkBase.System.Object.Kind_Ptr;
+      format : NetFrameworkBase.BSTR; 
+      arg0 : NetFrameworkBase.System.Object.Kind_Ptr; 
+      arg1 : NetFrameworkBase.System.Object.Kind_Ptr; 
       arg2 : NetFrameworkBase.System.Object.Kind_Ptr
    )
    is
@@ -2930,10 +2930,10 @@ package body NetFrameworkBase.System.Console is
    
    procedure Write
    (
-      format : NetFrameworkBase.BSTR;
-      arg0 : NetFrameworkBase.System.Object.Kind_Ptr;
-      arg1 : NetFrameworkBase.System.Object.Kind_Ptr;
-      arg2 : NetFrameworkBase.System.Object.Kind_Ptr;
+      format : NetFrameworkBase.BSTR; 
+      arg0 : NetFrameworkBase.System.Object.Kind_Ptr; 
+      arg1 : NetFrameworkBase.System.Object.Kind_Ptr; 
+      arg2 : NetFrameworkBase.System.Object.Kind_Ptr; 
       arg3 : NetFrameworkBase.System.Object.Kind_Ptr
    )
    is
@@ -2984,7 +2984,7 @@ package body NetFrameworkBase.System.Console is
    
    procedure Write
    (
-      format : NetFrameworkBase.BSTR;
+      format : NetFrameworkBase.BSTR; 
       arg : NetFrameworkBase.System.Object.Kind_Array
    )
    is
@@ -3162,8 +3162,8 @@ package body NetFrameworkBase.System.Console is
    
    procedure Write
    (
-      buffer : NetFrameworkBase.Wide_Char_Array;
-      index : NetFrameworkBase.Int32;
+      buffer : NetFrameworkBase.Wide_Char_Array; 
+      index : NetFrameworkBase.Int32; 
       count : NetFrameworkBase.Int32
    )
    is

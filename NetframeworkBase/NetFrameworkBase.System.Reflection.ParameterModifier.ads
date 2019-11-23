@@ -46,7 +46,7 @@ package NetFrameworkBase.System.Reflection.ParameterModifier is
       procedure Item
       (
          this : in out ParameterModifier.Kind;
-         index : NetFrameworkBase.Int32;
+         index : NetFrameworkBase.Int32; 
          value : NetFrameworkBase.Boolean
       );
       

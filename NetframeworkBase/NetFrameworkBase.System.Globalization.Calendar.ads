@@ -78,7 +78,7 @@ package NetFrameworkBase.System.Globalization.Calendar is
       function AddMilliseconds
       (
          this : in out Calendar.Kind;
-         time : NetFrameworkBase.Date;
+         time : NetFrameworkBase.Date; 
          milliseconds : NetFrameworkBase.Double
       )
       return NetFrameworkBase.Date;
@@ -86,7 +86,7 @@ package NetFrameworkBase.System.Globalization.Calendar is
       function AddDays
       (
          this : in out Calendar.Kind;
-         time : NetFrameworkBase.Date;
+         time : NetFrameworkBase.Date; 
          days : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Date;
@@ -94,7 +94,7 @@ package NetFrameworkBase.System.Globalization.Calendar is
       function AddHours
       (
          this : in out Calendar.Kind;
-         time : NetFrameworkBase.Date;
+         time : NetFrameworkBase.Date; 
          hours : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Date;
@@ -102,7 +102,7 @@ package NetFrameworkBase.System.Globalization.Calendar is
       function AddMinutes
       (
          this : in out Calendar.Kind;
-         time : NetFrameworkBase.Date;
+         time : NetFrameworkBase.Date; 
          minutes : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Date;
@@ -110,7 +110,7 @@ package NetFrameworkBase.System.Globalization.Calendar is
       function AddSeconds
       (
          this : in out Calendar.Kind;
-         time : NetFrameworkBase.Date;
+         time : NetFrameworkBase.Date; 
          seconds : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Date;
@@ -118,7 +118,7 @@ package NetFrameworkBase.System.Globalization.Calendar is
       function AddWeeks
       (
          this : in out Calendar.Kind;
-         time : NetFrameworkBase.Date;
+         time : NetFrameworkBase.Date; 
          weeks : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Date;
@@ -126,7 +126,7 @@ package NetFrameworkBase.System.Globalization.Calendar is
       function GetDaysInMonth
       (
          this : in out Calendar.Kind;
-         year : NetFrameworkBase.Int32;
+         year : NetFrameworkBase.Int32; 
          month : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -176,8 +176,8 @@ package NetFrameworkBase.System.Globalization.Calendar is
       function GetWeekOfYear
       (
          this : in out Calendar.Kind;
-         time : NetFrameworkBase.Date;
-         rule : NetFrameworkBase.System.Globalization.CalendarWeekRule.Kind;
+         time : NetFrameworkBase.Date; 
+         rule : NetFrameworkBase.System.Globalization.CalendarWeekRule.Kind; 
          firstDayOfWeek : NetFrameworkBase.System.DayOfWeek.Kind
       )
       return NetFrameworkBase.Int32;
@@ -185,8 +185,8 @@ package NetFrameworkBase.System.Globalization.Calendar is
       function IsLeapDay
       (
          this : in out Calendar.Kind;
-         year : NetFrameworkBase.Int32;
-         month : NetFrameworkBase.Int32;
+         year : NetFrameworkBase.Int32; 
+         month : NetFrameworkBase.Int32; 
          day : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Boolean;
@@ -194,7 +194,7 @@ package NetFrameworkBase.System.Globalization.Calendar is
       function IsLeapMonth
       (
          this : in out Calendar.Kind;
-         year : NetFrameworkBase.Int32;
+         year : NetFrameworkBase.Int32; 
          month : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Boolean;
@@ -209,7 +209,7 @@ package NetFrameworkBase.System.Globalization.Calendar is
       function GetLeapMonth
       (
          this : in out Calendar.Kind;
-         year : NetFrameworkBase.Int32;
+         year : NetFrameworkBase.Int32; 
          era : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -224,12 +224,12 @@ package NetFrameworkBase.System.Globalization.Calendar is
       function ToDateTime
       (
          this : in out Calendar.Kind;
-         year : NetFrameworkBase.Int32;
-         month : NetFrameworkBase.Int32;
-         day : NetFrameworkBase.Int32;
-         hour : NetFrameworkBase.Int32;
-         minute : NetFrameworkBase.Int32;
-         second : NetFrameworkBase.Int32;
+         year : NetFrameworkBase.Int32; 
+         month : NetFrameworkBase.Int32; 
+         day : NetFrameworkBase.Int32; 
+         hour : NetFrameworkBase.Int32; 
+         minute : NetFrameworkBase.Int32; 
+         second : NetFrameworkBase.Int32; 
          millisecond : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Date;
@@ -256,7 +256,7 @@ package NetFrameworkBase.System.Globalization.Calendar is
       function AddMonths
       (
          this : in out Calendar.Kind;
-         time : NetFrameworkBase.Date;
+         time : NetFrameworkBase.Date; 
          months : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Date;
@@ -264,7 +264,7 @@ package NetFrameworkBase.System.Globalization.Calendar is
       function AddYears
       (
          this : in out Calendar.Kind;
-         time : NetFrameworkBase.Date;
+         time : NetFrameworkBase.Date; 
          years : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Date;
@@ -293,8 +293,8 @@ package NetFrameworkBase.System.Globalization.Calendar is
       function GetDaysInMonth
       (
          this : in out Calendar.Kind;
-         year : NetFrameworkBase.Int32;
-         month : NetFrameworkBase.Int32;
+         year : NetFrameworkBase.Int32; 
+         month : NetFrameworkBase.Int32; 
          era : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -302,7 +302,7 @@ package NetFrameworkBase.System.Globalization.Calendar is
       function GetDaysInYear
       (
          this : in out Calendar.Kind;
-         year : NetFrameworkBase.Int32;
+         year : NetFrameworkBase.Int32; 
          era : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -330,7 +330,7 @@ package NetFrameworkBase.System.Globalization.Calendar is
       function GetMonthsInYear
       (
          this : in out Calendar.Kind;
-         year : NetFrameworkBase.Int32;
+         year : NetFrameworkBase.Int32; 
          era : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -345,9 +345,9 @@ package NetFrameworkBase.System.Globalization.Calendar is
       function IsLeapDay
       (
          this : in out Calendar.Kind;
-         year : NetFrameworkBase.Int32;
-         month : NetFrameworkBase.Int32;
-         day : NetFrameworkBase.Int32;
+         year : NetFrameworkBase.Int32; 
+         month : NetFrameworkBase.Int32; 
+         day : NetFrameworkBase.Int32; 
          era : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Boolean;
@@ -355,8 +355,8 @@ package NetFrameworkBase.System.Globalization.Calendar is
       function IsLeapMonth
       (
          this : in out Calendar.Kind;
-         year : NetFrameworkBase.Int32;
-         month : NetFrameworkBase.Int32;
+         year : NetFrameworkBase.Int32; 
+         month : NetFrameworkBase.Int32; 
          era : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Boolean;
@@ -364,7 +364,7 @@ package NetFrameworkBase.System.Globalization.Calendar is
       function IsLeapYear
       (
          this : in out Calendar.Kind;
-         year : NetFrameworkBase.Int32;
+         year : NetFrameworkBase.Int32; 
          era : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Boolean;
@@ -372,13 +372,13 @@ package NetFrameworkBase.System.Globalization.Calendar is
       function ToDateTime
       (
          this : in out Calendar.Kind;
-         year : NetFrameworkBase.Int32;
-         month : NetFrameworkBase.Int32;
-         day : NetFrameworkBase.Int32;
-         hour : NetFrameworkBase.Int32;
-         minute : NetFrameworkBase.Int32;
-         second : NetFrameworkBase.Int32;
-         millisecond : NetFrameworkBase.Int32;
+         year : NetFrameworkBase.Int32; 
+         month : NetFrameworkBase.Int32; 
+         day : NetFrameworkBase.Int32; 
+         hour : NetFrameworkBase.Int32; 
+         minute : NetFrameworkBase.Int32; 
+         second : NetFrameworkBase.Int32; 
+         millisecond : NetFrameworkBase.Int32; 
          era : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Date;

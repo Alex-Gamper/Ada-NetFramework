@@ -80,45 +80,49 @@ package NetFrameworkBase.System.Single is
       
       function op_Equality
       (
-         left : NetFrameworkBase.Single;
+         left : NetFrameworkBase.Single; 
          right : NetFrameworkBase.Single
       )
       return NetFrameworkBase.Boolean;
       
       function op_Inequality
       (
-         left : NetFrameworkBase.Single;
+         left : NetFrameworkBase.Single; 
          right : NetFrameworkBase.Single
       )
       return NetFrameworkBase.Boolean;
       
       function op_LessThan
       (
-         left : NetFrameworkBase.Single;
+         left : NetFrameworkBase.Single; 
          right : NetFrameworkBase.Single
       )
       return NetFrameworkBase.Boolean;
+      function "<"(left : NetFrameworkBase.Single; right : NetFrameworkBase.Single) return NetFrameworkBase.Boolean renames op_LessThan;
       
       function op_GreaterThan
       (
-         left : NetFrameworkBase.Single;
+         left : NetFrameworkBase.Single; 
          right : NetFrameworkBase.Single
       )
       return NetFrameworkBase.Boolean;
+      function ">"(left : NetFrameworkBase.Single; right : NetFrameworkBase.Single) return NetFrameworkBase.Boolean renames op_GreaterThan;
       
       function op_LessThanOrEqual
       (
-         left : NetFrameworkBase.Single;
+         left : NetFrameworkBase.Single; 
          right : NetFrameworkBase.Single
       )
       return NetFrameworkBase.Boolean;
+      function "<="(left : NetFrameworkBase.Single; right : NetFrameworkBase.Single) return NetFrameworkBase.Boolean renames op_LessThanOrEqual;
       
       function op_GreaterThanOrEqual
       (
-         left : NetFrameworkBase.Single;
+         left : NetFrameworkBase.Single; 
          right : NetFrameworkBase.Single
       )
       return NetFrameworkBase.Boolean;
+      function ">="(left : NetFrameworkBase.Single; right : NetFrameworkBase.Single) return NetFrameworkBase.Boolean renames op_GreaterThanOrEqual;
       
       function Equals
       (
@@ -163,7 +167,7 @@ package NetFrameworkBase.System.Single is
       function ToString
       (
          this : in out Single.Kind;
-         format : NetFrameworkBase.BSTR;
+         format : NetFrameworkBase.BSTR; 
          provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
       )
       return NetFrameworkBase.BSTR;
@@ -176,38 +180,38 @@ package NetFrameworkBase.System.Single is
       
       function Parse
       (
-         s : NetFrameworkBase.BSTR;
+         s : NetFrameworkBase.BSTR; 
          style : NetFrameworkBase.System.Globalization.NumberStyles.Kind
       )
       return NetFrameworkBase.Single;
       
       function Parse
       (
-         s : NetFrameworkBase.BSTR;
+         s : NetFrameworkBase.BSTR; 
          provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
       )
       return NetFrameworkBase.Single;
       
       function Parse
       (
-         s : NetFrameworkBase.BSTR;
-         style : NetFrameworkBase.System.Globalization.NumberStyles.Kind;
+         s : NetFrameworkBase.BSTR; 
+         style : NetFrameworkBase.System.Globalization.NumberStyles.Kind; 
          provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
       )
       return NetFrameworkBase.Single;
       
       function TryParse
       (
-         s : NetFrameworkBase.BSTR;
+         s : NetFrameworkBase.BSTR; 
          result : out NetFrameworkBase.Single
       )
       return NetFrameworkBase.Boolean;
       
       function TryParse
       (
-         s : NetFrameworkBase.BSTR;
-         style : NetFrameworkBase.System.Globalization.NumberStyles.Kind;
-         provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
+         s : NetFrameworkBase.BSTR; 
+         style : NetFrameworkBase.System.Globalization.NumberStyles.Kind; 
+         provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr; 
          result : out NetFrameworkBase.Single
       )
       return NetFrameworkBase.Boolean;

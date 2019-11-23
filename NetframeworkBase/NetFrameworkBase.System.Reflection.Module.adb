@@ -83,7 +83,7 @@ package body NetFrameworkBase.System.Reflection.Module is
    
    function op_Equality
    (
-      left : NetFrameworkBase.System.Reflection.Module.Kind_Ptr;
+      left : NetFrameworkBase.System.Reflection.Module.Kind_Ptr; 
       right : NetFrameworkBase.System.Reflection.Module.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -125,7 +125,7 @@ package body NetFrameworkBase.System.Reflection.Module is
    
    function op_Inequality
    (
-      left : NetFrameworkBase.System.Reflection.Module.Kind_Ptr;
+      left : NetFrameworkBase.System.Reflection.Module.Kind_Ptr; 
       right : NetFrameworkBase.System.Reflection.Module.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -327,7 +327,7 @@ package body NetFrameworkBase.System.Reflection.Module is
    function GetCustomAttributes
    (
       this : in out Module.Kind;
-      attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+      attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
       inherit : NetFrameworkBase.Boolean
    )
    return NetFrameworkBase.System.Object.Kind_Array is
@@ -403,7 +403,7 @@ package body NetFrameworkBase.System.Reflection.Module is
    function IsDefined
    (
       this : in out Module.Kind;
-      attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+      attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
       inherit : NetFrameworkBase.Boolean
    )
    return NetFrameworkBase.Boolean is
@@ -485,8 +485,8 @@ package body NetFrameworkBase.System.Reflection.Module is
    function ResolveMethod
    (
       this : in out Module.Kind;
-      metadataToken : NetFrameworkBase.Int32;
-      genericTypeArguments : NetFrameworkBase.System.Type_x.Kind_Array;
+      metadataToken : NetFrameworkBase.Int32; 
+      genericTypeArguments : NetFrameworkBase.System.Type_x.Kind_Array; 
       genericMethodArguments : NetFrameworkBase.System.Type_x.Kind_Array
    )
    return NetFrameworkBase.System.Reflection.MethodBase.Kind_Ptr is
@@ -611,8 +611,8 @@ package body NetFrameworkBase.System.Reflection.Module is
    function ResolveField
    (
       this : in out Module.Kind;
-      metadataToken : NetFrameworkBase.Int32;
-      genericTypeArguments : NetFrameworkBase.System.Type_x.Kind_Array;
+      metadataToken : NetFrameworkBase.Int32; 
+      genericTypeArguments : NetFrameworkBase.System.Type_x.Kind_Array; 
       genericMethodArguments : NetFrameworkBase.System.Type_x.Kind_Array
    )
    return NetFrameworkBase.System.Reflection.FieldInfo.Kind_Ptr is
@@ -737,8 +737,8 @@ package body NetFrameworkBase.System.Reflection.Module is
    function ResolveType
    (
       this : in out Module.Kind;
-      metadataToken : NetFrameworkBase.Int32;
-      genericTypeArguments : NetFrameworkBase.System.Type_x.Kind_Array;
+      metadataToken : NetFrameworkBase.Int32; 
+      genericTypeArguments : NetFrameworkBase.System.Type_x.Kind_Array; 
       genericMethodArguments : NetFrameworkBase.System.Type_x.Kind_Array
    )
    return NetFrameworkBase.System.Type_x.Kind_Ptr is
@@ -863,8 +863,8 @@ package body NetFrameworkBase.System.Reflection.Module is
    function ResolveMember
    (
       this : in out Module.Kind;
-      metadataToken : NetFrameworkBase.Int32;
-      genericTypeArguments : NetFrameworkBase.System.Type_x.Kind_Array;
+      metadataToken : NetFrameworkBase.Int32; 
+      genericTypeArguments : NetFrameworkBase.System.Type_x.Kind_Array; 
       genericMethodArguments : NetFrameworkBase.System.Type_x.Kind_Array
    )
    return NetFrameworkBase.System.Reflection.MemberInfo.Kind_Ptr is
@@ -1051,7 +1051,7 @@ package body NetFrameworkBase.System.Reflection.Module is
    procedure GetPEKind
    (
       this : in out Module.Kind;
-      peKind : out NetFrameworkBase.System.Reflection.PortableExecutableKinds.Kind;
+      peKind : out NetFrameworkBase.System.Reflection.PortableExecutableKinds.Kind; 
       machine : out NetFrameworkBase.System.Reflection.ImageFileMachine.Kind
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -1133,7 +1133,7 @@ package body NetFrameworkBase.System.Reflection.Module is
    procedure GetObjectData
    (
       this : in out Module.Kind;
-      info : NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr;
+      info : NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr; 
       context : NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind_Ptr
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -1172,7 +1172,7 @@ package body NetFrameworkBase.System.Reflection.Module is
    function GetType
    (
       this : in out Module.Kind;
-      className : NetFrameworkBase.BSTR;
+      className : NetFrameworkBase.BSTR; 
       ignoreCase : NetFrameworkBase.Boolean
    )
    return NetFrameworkBase.System.Type_x.Kind_Ptr is
@@ -1255,8 +1255,8 @@ package body NetFrameworkBase.System.Reflection.Module is
    function GetType
    (
       this : in out Module.Kind;
-      className : NetFrameworkBase.BSTR;
-      throwOnError : NetFrameworkBase.Boolean;
+      className : NetFrameworkBase.BSTR; 
+      throwOnError : NetFrameworkBase.Boolean; 
       ignoreCase : NetFrameworkBase.Boolean
    )
    return NetFrameworkBase.System.Type_x.Kind_Ptr is
@@ -1329,7 +1329,7 @@ package body NetFrameworkBase.System.Reflection.Module is
    function FindTypes
    (
       this : in out Module.Kind;
-      filter : NetFrameworkBase.System.Reflection.TypeFilter.Kind_Ptr;
+      filter : NetFrameworkBase.System.Reflection.TypeFilter.Kind_Ptr; 
       filterCriteria : NetFrameworkBase.System.Object.Kind_Ptr
    )
    return NetFrameworkBase.System.Type_x.Kind_Array is
@@ -1709,7 +1709,7 @@ package body NetFrameworkBase.System.Reflection.Module is
    function GetField
    (
       this : in out Module.Kind;
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind
    )
    return NetFrameworkBase.System.Reflection.FieldInfo.Kind_Ptr is
@@ -1886,11 +1886,11 @@ package body NetFrameworkBase.System.Reflection.Module is
    function GetMethod
    (
       this : in out Module.Kind;
-      name : NetFrameworkBase.BSTR;
-      bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind;
-      binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr;
-      callConvention : NetFrameworkBase.System.Reflection.CallingConventions.Kind;
-      types : NetFrameworkBase.System.Type_x.Kind_Array;
+      name : NetFrameworkBase.BSTR; 
+      bindingAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind; 
+      binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr; 
+      callConvention : NetFrameworkBase.System.Reflection.CallingConventions.Kind; 
+      types : NetFrameworkBase.System.Type_x.Kind_Array; 
       modifiers : NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Array_Ptr
    )
    return NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr is
@@ -1992,7 +1992,7 @@ package body NetFrameworkBase.System.Reflection.Module is
    function GetMethod
    (
       this : in out Module.Kind;
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       types : NetFrameworkBase.System.Type_x.Kind_Array
    )
    return NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr is

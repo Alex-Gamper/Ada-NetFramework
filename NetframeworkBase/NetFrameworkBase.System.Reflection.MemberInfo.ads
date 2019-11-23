@@ -53,14 +53,14 @@ package NetFrameworkBase.System.Reflection.MemberInfo is
       
       function op_Equality
       (
-         left : NetFrameworkBase.System.Reflection.MemberInfo.Kind_Ptr;
+         left : NetFrameworkBase.System.Reflection.MemberInfo.Kind_Ptr; 
          right : NetFrameworkBase.System.Reflection.MemberInfo.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function op_Inequality
       (
-         left : NetFrameworkBase.System.Reflection.MemberInfo.Kind_Ptr;
+         left : NetFrameworkBase.System.Reflection.MemberInfo.Kind_Ptr; 
          right : NetFrameworkBase.System.Reflection.MemberInfo.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
@@ -112,7 +112,7 @@ package NetFrameworkBase.System.Reflection.MemberInfo is
       function GetCustomAttributes
       (
          this : in out MemberInfo.Kind;
-         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          inherit : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.System.Object.Kind_Array;
@@ -120,7 +120,7 @@ package NetFrameworkBase.System.Reflection.MemberInfo is
       function IsDefined
       (
          this : in out MemberInfo.Kind;
-         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          inherit : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.Boolean;

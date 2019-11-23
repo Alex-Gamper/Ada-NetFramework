@@ -113,45 +113,47 @@ package NetFrameworkBase.System.IntPtr is
       
       function op_Equality
       (
-         value1 : NetFrameworkBase.IntPtr;
+         value1 : NetFrameworkBase.IntPtr; 
          value2 : NetFrameworkBase.IntPtr
       )
       return NetFrameworkBase.Boolean;
       
       function op_Inequality
       (
-         value1 : NetFrameworkBase.IntPtr;
+         value1 : NetFrameworkBase.IntPtr; 
          value2 : NetFrameworkBase.IntPtr
       )
       return NetFrameworkBase.Boolean;
       
       function Add
       (
-         pointer : NetFrameworkBase.IntPtr;
+         pointer : NetFrameworkBase.IntPtr; 
          offset : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.IntPtr;
       
       function op_Addition
       (
-         pointer : NetFrameworkBase.IntPtr;
+         pointer : NetFrameworkBase.IntPtr; 
          offset : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.IntPtr;
+      function "+"(pointer : NetFrameworkBase.IntPtr; offset : NetFrameworkBase.Int32) return NetFrameworkBase.IntPtr renames op_Addition;
       
       function Subtract
       (
-         pointer : NetFrameworkBase.IntPtr;
+         pointer : NetFrameworkBase.IntPtr; 
          offset : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.IntPtr;
       
       function op_Subtraction
       (
-         pointer : NetFrameworkBase.IntPtr;
+         pointer : NetFrameworkBase.IntPtr; 
          offset : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.IntPtr;
+      function "-"(pointer : NetFrameworkBase.IntPtr; offset : NetFrameworkBase.Int32) return NetFrameworkBase.IntPtr renames op_Subtraction;
       
       function Size
       return NetFrameworkBase.Int32;

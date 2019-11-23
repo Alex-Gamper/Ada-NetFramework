@@ -69,8 +69,8 @@ package body NetFrameworkBase.System.Text.EncodingProvider is
    function GetEncoding
    (
       this : in out EncodingProvider.Kind;
-      name : NetFrameworkBase.BSTR;
-      encoderFallback : NetFrameworkBase.System.Text.EncoderFallback.Kind_Ptr;
+      name : NetFrameworkBase.BSTR; 
+      encoderFallback : NetFrameworkBase.System.Text.EncoderFallback.Kind_Ptr; 
       decoderFallback : NetFrameworkBase.System.Text.DecoderFallback.Kind_Ptr
    )
    return NetFrameworkBase.System.Text.Encoding.Kind_Ptr is
@@ -118,8 +118,8 @@ package body NetFrameworkBase.System.Text.EncodingProvider is
    function GetEncoding
    (
       this : in out EncodingProvider.Kind;
-      codepage : NetFrameworkBase.Int32;
-      encoderFallback : NetFrameworkBase.System.Text.EncoderFallback.Kind_Ptr;
+      codepage : NetFrameworkBase.Int32; 
+      encoderFallback : NetFrameworkBase.System.Text.EncoderFallback.Kind_Ptr; 
       decoderFallback : NetFrameworkBase.System.Text.DecoderFallback.Kind_Ptr
    )
    return NetFrameworkBase.System.Text.Encoding.Kind_Ptr is

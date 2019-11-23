@@ -331,7 +331,7 @@ package body NetFrameworkBase.System.Double is
    
    function op_Equality
    (
-      left : NetFrameworkBase.Double;
+      left : NetFrameworkBase.Double; 
       right : NetFrameworkBase.Double
    )
    return NetFrameworkBase.Boolean is
@@ -373,7 +373,7 @@ package body NetFrameworkBase.System.Double is
    
    function op_Inequality
    (
-      left : NetFrameworkBase.Double;
+      left : NetFrameworkBase.Double; 
       right : NetFrameworkBase.Double
    )
    return NetFrameworkBase.Boolean is
@@ -415,7 +415,7 @@ package body NetFrameworkBase.System.Double is
    
    function op_LessThan
    (
-      left : NetFrameworkBase.Double;
+      left : NetFrameworkBase.Double; 
       right : NetFrameworkBase.Double
    )
    return NetFrameworkBase.Boolean is
@@ -457,7 +457,7 @@ package body NetFrameworkBase.System.Double is
    
    function op_GreaterThan
    (
-      left : NetFrameworkBase.Double;
+      left : NetFrameworkBase.Double; 
       right : NetFrameworkBase.Double
    )
    return NetFrameworkBase.Boolean is
@@ -499,7 +499,7 @@ package body NetFrameworkBase.System.Double is
    
    function op_LessThanOrEqual
    (
-      left : NetFrameworkBase.Double;
+      left : NetFrameworkBase.Double; 
       right : NetFrameworkBase.Double
    )
    return NetFrameworkBase.Boolean is
@@ -541,7 +541,7 @@ package body NetFrameworkBase.System.Double is
    
    function op_GreaterThanOrEqual
    (
-      left : NetFrameworkBase.Double;
+      left : NetFrameworkBase.Double; 
       right : NetFrameworkBase.Double
    )
    return NetFrameworkBase.Boolean is
@@ -749,7 +749,7 @@ package body NetFrameworkBase.System.Double is
    function ToString
    (
       this : in out Double.Kind;
-      format : NetFrameworkBase.BSTR;
+      format : NetFrameworkBase.BSTR; 
       provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
    )
    return NetFrameworkBase.BSTR is
@@ -829,7 +829,7 @@ package body NetFrameworkBase.System.Double is
    
    function Parse
    (
-      s : NetFrameworkBase.BSTR;
+      s : NetFrameworkBase.BSTR; 
       style : NetFrameworkBase.System.Globalization.NumberStyles.Kind
    )
    return NetFrameworkBase.Double is
@@ -873,7 +873,7 @@ package body NetFrameworkBase.System.Double is
    
    function Parse
    (
-      s : NetFrameworkBase.BSTR;
+      s : NetFrameworkBase.BSTR; 
       provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
    )
    return NetFrameworkBase.Double is
@@ -916,8 +916,8 @@ package body NetFrameworkBase.System.Double is
    
    function Parse
    (
-      s : NetFrameworkBase.BSTR;
-      style : NetFrameworkBase.System.Globalization.NumberStyles.Kind;
+      s : NetFrameworkBase.BSTR; 
+      style : NetFrameworkBase.System.Globalization.NumberStyles.Kind; 
       provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
    )
    return NetFrameworkBase.Double is
@@ -966,7 +966,7 @@ package body NetFrameworkBase.System.Double is
    
    function TryParse
    (
-      s : NetFrameworkBase.BSTR;
+      s : NetFrameworkBase.BSTR; 
       result : out NetFrameworkBase.Double
    )
    return NetFrameworkBase.Boolean is
@@ -1014,9 +1014,9 @@ package body NetFrameworkBase.System.Double is
    
    function TryParse
    (
-      s : NetFrameworkBase.BSTR;
-      style : NetFrameworkBase.System.Globalization.NumberStyles.Kind;
-      provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
+      s : NetFrameworkBase.BSTR; 
+      style : NetFrameworkBase.System.Globalization.NumberStyles.Kind; 
+      provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr; 
       result : out NetFrameworkBase.Double
    )
    return NetFrameworkBase.Boolean is

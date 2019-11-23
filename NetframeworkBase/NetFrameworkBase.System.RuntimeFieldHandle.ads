@@ -67,14 +67,14 @@ package NetFrameworkBase.System.RuntimeFieldHandle is
       
       function op_Equality
       (
-         left : NetFrameworkBase.System.RuntimeFieldHandle.Kind_Ptr;
+         left : NetFrameworkBase.System.RuntimeFieldHandle.Kind_Ptr; 
          right : NetFrameworkBase.System.RuntimeFieldHandle.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function op_Inequality
       (
-         left : NetFrameworkBase.System.RuntimeFieldHandle.Kind_Ptr;
+         left : NetFrameworkBase.System.RuntimeFieldHandle.Kind_Ptr; 
          right : NetFrameworkBase.System.RuntimeFieldHandle.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
@@ -82,7 +82,7 @@ package NetFrameworkBase.System.RuntimeFieldHandle is
       procedure GetObjectData
       (
          this : in out RuntimeFieldHandle.Kind;
-         info : NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr;
+         info : NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr; 
          context : NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind_Ptr
       );
       

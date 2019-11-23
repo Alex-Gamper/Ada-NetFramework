@@ -68,7 +68,7 @@ package body NetFrameworkBase.System.Security.SecurityElement is
    procedure AddAttribute
    (
       this : in out SecurityElement.Kind;
-      name : NetFrameworkBase.BSTR;
+      name : NetFrameworkBase.BSTR; 
       value : NetFrameworkBase.BSTR
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);

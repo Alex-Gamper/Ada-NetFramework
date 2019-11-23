@@ -103,120 +103,120 @@ package NetFrameworkBase.System.Runtime.Serialization.SerializationInfo is
       procedure AddValue
       (
          this : in out SerializationInfo.Kind;
-         name : NetFrameworkBase.BSTR;
-         value : NetFrameworkBase.System.Object.Kind_Ptr;
+         name : NetFrameworkBase.BSTR; 
+         value : NetFrameworkBase.System.Object.Kind_Ptr; 
          type_x : NetFrameworkBase.System.Type_x.Kind_Ptr
       );
       
       procedure AddValue
       (
          this : in out SerializationInfo.Kind;
-         name : NetFrameworkBase.BSTR;
+         name : NetFrameworkBase.BSTR; 
          value : NetFrameworkBase.System.Object.Kind_Ptr
       );
       
       procedure AddValue
       (
          this : in out SerializationInfo.Kind;
-         name : NetFrameworkBase.BSTR;
+         name : NetFrameworkBase.BSTR; 
          value : NetFrameworkBase.Boolean
       );
       
       procedure AddValue
       (
          this : in out SerializationInfo.Kind;
-         name : NetFrameworkBase.BSTR;
+         name : NetFrameworkBase.BSTR; 
          value : NetFrameworkBase.Wide_Char
       );
       
       procedure AddValue
       (
          this : in out SerializationInfo.Kind;
-         name : NetFrameworkBase.BSTR;
+         name : NetFrameworkBase.BSTR; 
          value : NetFrameworkBase.SByte
       );
       
       procedure AddValue
       (
          this : in out SerializationInfo.Kind;
-         name : NetFrameworkBase.BSTR;
+         name : NetFrameworkBase.BSTR; 
          value : NetFrameworkBase.Byte
       );
       
       procedure AddValue
       (
          this : in out SerializationInfo.Kind;
-         name : NetFrameworkBase.BSTR;
+         name : NetFrameworkBase.BSTR; 
          value : NetFrameworkBase.Int16
       );
       
       procedure AddValue
       (
          this : in out SerializationInfo.Kind;
-         name : NetFrameworkBase.BSTR;
+         name : NetFrameworkBase.BSTR; 
          value : NetFrameworkBase.UInt16
       );
       
       procedure AddValue
       (
          this : in out SerializationInfo.Kind;
-         name : NetFrameworkBase.BSTR;
+         name : NetFrameworkBase.BSTR; 
          value : NetFrameworkBase.Int32
       );
       
       procedure AddValue
       (
          this : in out SerializationInfo.Kind;
-         name : NetFrameworkBase.BSTR;
+         name : NetFrameworkBase.BSTR; 
          value : NetFrameworkBase.UInt32
       );
       
       procedure AddValue
       (
          this : in out SerializationInfo.Kind;
-         name : NetFrameworkBase.BSTR;
+         name : NetFrameworkBase.BSTR; 
          value : NetFrameworkBase.Int64
       );
       
       procedure AddValue
       (
          this : in out SerializationInfo.Kind;
-         name : NetFrameworkBase.BSTR;
+         name : NetFrameworkBase.BSTR; 
          value : NetFrameworkBase.UInt64
       );
       
       procedure AddValue
       (
          this : in out SerializationInfo.Kind;
-         name : NetFrameworkBase.BSTR;
+         name : NetFrameworkBase.BSTR; 
          value : NetFrameworkBase.Single
       );
       
       procedure AddValue
       (
          this : in out SerializationInfo.Kind;
-         name : NetFrameworkBase.BSTR;
+         name : NetFrameworkBase.BSTR; 
          value : NetFrameworkBase.Double
       );
       
       procedure AddValue
       (
          this : in out SerializationInfo.Kind;
-         name : NetFrameworkBase.BSTR;
+         name : NetFrameworkBase.BSTR; 
          value : NetFrameworkBase.System.Decimal.Kind_Ptr
       );
       
       procedure AddValue
       (
          this : in out SerializationInfo.Kind;
-         name : NetFrameworkBase.BSTR;
+         name : NetFrameworkBase.BSTR; 
          value : NetFrameworkBase.Date
       );
       
       function GetValue
       (
          this : in out SerializationInfo.Kind;
-         name : NetFrameworkBase.BSTR;
+         name : NetFrameworkBase.BSTR; 
          type_x : NetFrameworkBase.System.Type_x.Kind_Ptr
       )
       return NetFrameworkBase.System.Object.Kind_Ptr;

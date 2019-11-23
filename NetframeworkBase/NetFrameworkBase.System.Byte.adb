@@ -283,7 +283,7 @@ package body NetFrameworkBase.System.Byte is
    
    function Parse
    (
-      s : NetFrameworkBase.BSTR;
+      s : NetFrameworkBase.BSTR; 
       style : NetFrameworkBase.System.Globalization.NumberStyles.Kind
    )
    return NetFrameworkBase.Byte is
@@ -327,7 +327,7 @@ package body NetFrameworkBase.System.Byte is
    
    function Parse
    (
-      s : NetFrameworkBase.BSTR;
+      s : NetFrameworkBase.BSTR; 
       provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
    )
    return NetFrameworkBase.Byte is
@@ -370,8 +370,8 @@ package body NetFrameworkBase.System.Byte is
    
    function Parse
    (
-      s : NetFrameworkBase.BSTR;
-      style : NetFrameworkBase.System.Globalization.NumberStyles.Kind;
+      s : NetFrameworkBase.BSTR; 
+      style : NetFrameworkBase.System.Globalization.NumberStyles.Kind; 
       provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
    )
    return NetFrameworkBase.Byte is
@@ -420,7 +420,7 @@ package body NetFrameworkBase.System.Byte is
    
    function TryParse
    (
-      s : NetFrameworkBase.BSTR;
+      s : NetFrameworkBase.BSTR; 
       result : out NetFrameworkBase.Byte
    )
    return NetFrameworkBase.Boolean is
@@ -468,9 +468,9 @@ package body NetFrameworkBase.System.Byte is
    
    function TryParse
    (
-      s : NetFrameworkBase.BSTR;
-      style : NetFrameworkBase.System.Globalization.NumberStyles.Kind;
-      provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
+      s : NetFrameworkBase.BSTR; 
+      style : NetFrameworkBase.System.Globalization.NumberStyles.Kind; 
+      provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr; 
       result : out NetFrameworkBase.Byte
    )
    return NetFrameworkBase.Boolean is
@@ -632,7 +632,7 @@ package body NetFrameworkBase.System.Byte is
    function ToString
    (
       this : in out Byte.Kind;
-      format : NetFrameworkBase.BSTR;
+      format : NetFrameworkBase.BSTR; 
       provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
    )
    return NetFrameworkBase.BSTR is

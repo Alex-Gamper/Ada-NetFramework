@@ -69,7 +69,7 @@ package body NetFrameworkBase.System.RuntimeTypeHandle is
    
    function op_Equality
    (
-      left : NetFrameworkBase.System.RuntimeTypeHandle.Kind_Ptr;
+      left : NetFrameworkBase.System.RuntimeTypeHandle.Kind_Ptr; 
       right : NetFrameworkBase.System.Object.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -111,7 +111,7 @@ package body NetFrameworkBase.System.RuntimeTypeHandle is
    
    function op_Equality
    (
-      left : NetFrameworkBase.System.Object.Kind_Ptr;
+      left : NetFrameworkBase.System.Object.Kind_Ptr; 
       right : NetFrameworkBase.System.RuntimeTypeHandle.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -153,7 +153,7 @@ package body NetFrameworkBase.System.RuntimeTypeHandle is
    
    function op_Inequality
    (
-      left : NetFrameworkBase.System.RuntimeTypeHandle.Kind_Ptr;
+      left : NetFrameworkBase.System.RuntimeTypeHandle.Kind_Ptr; 
       right : NetFrameworkBase.System.Object.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -195,7 +195,7 @@ package body NetFrameworkBase.System.RuntimeTypeHandle is
    
    function op_Inequality
    (
-      left : NetFrameworkBase.System.Object.Kind_Ptr;
+      left : NetFrameworkBase.System.Object.Kind_Ptr; 
       right : NetFrameworkBase.System.RuntimeTypeHandle.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -390,7 +390,7 @@ package body NetFrameworkBase.System.RuntimeTypeHandle is
    procedure GetObjectData
    (
       this : in out RuntimeTypeHandle.Kind;
-      info : NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr;
+      info : NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr; 
       context : NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind_Ptr
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);

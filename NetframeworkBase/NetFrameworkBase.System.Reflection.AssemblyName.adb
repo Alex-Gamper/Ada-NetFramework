@@ -1085,7 +1085,7 @@ package body NetFrameworkBase.System.Reflection.AssemblyName is
    
    function ReferenceMatchesDefinition
    (
-      reference : NetFrameworkBase.System.Reflection.AssemblyName.Kind_Ptr;
+      reference : NetFrameworkBase.System.Reflection.AssemblyName.Kind_Ptr; 
       definition : NetFrameworkBase.System.Reflection.AssemblyName.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -1128,7 +1128,7 @@ package body NetFrameworkBase.System.Reflection.AssemblyName is
    procedure GetObjectData
    (
       this : in out AssemblyName.Kind;
-      info : NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr;
+      info : NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr; 
       context : NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind_Ptr
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);

@@ -46,7 +46,7 @@ package NetFrameworkBase.System.Security.AccessControl.AuthorizationRuleCollecti
       procedure CopyTo
       (
          this : in out AuthorizationRuleCollection.Kind;
-         rules : NetFrameworkBase.System.Security.AccessControl.AuthorizationRule.Kind_Array;
+         rules : NetFrameworkBase.System.Security.AccessControl.AuthorizationRule.Kind_Array; 
          index : NetFrameworkBase.Int32
       );
       

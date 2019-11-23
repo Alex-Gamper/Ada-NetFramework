@@ -69,7 +69,7 @@ package body NetFrameworkBase.System.TypedReference is
    
    function MakeTypedReference
    (
-      target : NetFrameworkBase.System.Object.Kind_Ptr;
+      target : NetFrameworkBase.System.Object.Kind_Ptr; 
       flds : NetFrameworkBase.System.Reflection.FieldInfo.Kind_Array
    )
    return NetFrameworkBase.System.TypedReference.Kind_Ptr is
@@ -308,7 +308,7 @@ package body NetFrameworkBase.System.TypedReference is
    
    procedure SetTypedReference
    (
-      target : NetFrameworkBase.System.TypedReference.Kind_Ptr;
+      target : NetFrameworkBase.System.TypedReference.Kind_Ptr; 
       value : NetFrameworkBase.System.Object.Kind_Ptr
    )
    is

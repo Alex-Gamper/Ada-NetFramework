@@ -44,14 +44,14 @@ package NetFrameworkBase.System.Reflection.MethodInfo is
    
       function op_Equality
       (
-         left : NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr;
+         left : NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr; 
          right : NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function op_Inequality
       (
-         left : NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr;
+         left : NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr; 
          right : NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
@@ -116,7 +116,7 @@ package NetFrameworkBase.System.Reflection.MethodInfo is
       function CreateDelegate
       (
          this : in out MethodInfo.Kind;
-         delegateType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         delegateType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          target : NetFrameworkBase.System.Object.Kind_Ptr
       )
       return NetFrameworkBase.System.Delegate.Kind_Ptr;

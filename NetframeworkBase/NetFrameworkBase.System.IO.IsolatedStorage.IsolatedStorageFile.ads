@@ -69,40 +69,40 @@ package NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFile is
       
       function GetStore
       (
-         scope : NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageScope.Kind;
-         domainEvidenceType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         scope : NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageScope.Kind; 
+         domainEvidenceType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          assemblyEvidenceType : NetFrameworkBase.System.Type_x.Kind_Ptr
       )
       return NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFile.Kind_Ptr;
       
       function GetStore
       (
-         scope : NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageScope.Kind;
-         domainIdentity : NetFrameworkBase.System.Object.Kind_Ptr;
+         scope : NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageScope.Kind; 
+         domainIdentity : NetFrameworkBase.System.Object.Kind_Ptr; 
          assemblyIdentity : NetFrameworkBase.System.Object.Kind_Ptr
       )
       return NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFile.Kind_Ptr;
       
       function GetStore
       (
-         scope : NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageScope.Kind;
-         domainEvidence : NetFrameworkBase.System.Security.Policy.Evidence.Kind_Ptr;
-         domainEvidenceType : NetFrameworkBase.System.Type_x.Kind_Ptr;
-         assemblyEvidence : NetFrameworkBase.System.Security.Policy.Evidence.Kind_Ptr;
+         scope : NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageScope.Kind; 
+         domainEvidence : NetFrameworkBase.System.Security.Policy.Evidence.Kind_Ptr; 
+         domainEvidenceType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
+         assemblyEvidence : NetFrameworkBase.System.Security.Policy.Evidence.Kind_Ptr; 
          assemblyEvidenceType : NetFrameworkBase.System.Type_x.Kind_Ptr
       )
       return NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFile.Kind_Ptr;
       
       function GetStore
       (
-         scope : NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageScope.Kind;
+         scope : NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageScope.Kind; 
          applicationEvidenceType : NetFrameworkBase.System.Type_x.Kind_Ptr
       )
       return NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFile.Kind_Ptr;
       
       function GetStore
       (
-         scope : NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageScope.Kind;
+         scope : NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageScope.Kind; 
          applicationIdentity : NetFrameworkBase.System.Object.Kind_Ptr
       )
       return NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFile.Kind_Ptr;
@@ -219,29 +219,29 @@ package NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFile is
       procedure CopyFile
       (
          this : in out IsolatedStorageFile.Kind;
-         sourceFileName : NetFrameworkBase.BSTR;
+         sourceFileName : NetFrameworkBase.BSTR; 
          destinationFileName : NetFrameworkBase.BSTR
       );
       
       procedure CopyFile
       (
          this : in out IsolatedStorageFile.Kind;
-         sourceFileName : NetFrameworkBase.BSTR;
-         destinationFileName : NetFrameworkBase.BSTR;
+         sourceFileName : NetFrameworkBase.BSTR; 
+         destinationFileName : NetFrameworkBase.BSTR; 
          overwrite : NetFrameworkBase.Boolean
       );
       
       procedure MoveFile
       (
          this : in out IsolatedStorageFile.Kind;
-         sourceFileName : NetFrameworkBase.BSTR;
+         sourceFileName : NetFrameworkBase.BSTR; 
          destinationFileName : NetFrameworkBase.BSTR
       );
       
       procedure MoveDirectory
       (
          this : in out IsolatedStorageFile.Kind;
-         sourceDirectoryName : NetFrameworkBase.BSTR;
+         sourceDirectoryName : NetFrameworkBase.BSTR; 
          destinationDirectoryName : NetFrameworkBase.BSTR
       );
       
@@ -280,7 +280,7 @@ package NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFile is
       function OpenFile
       (
          this : in out IsolatedStorageFile.Kind;
-         path : NetFrameworkBase.BSTR;
+         path : NetFrameworkBase.BSTR; 
          mode : NetFrameworkBase.System.IO.FileMode.Kind
       )
       return NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFileStream.Kind_Ptr;
@@ -288,8 +288,8 @@ package NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFile is
       function OpenFile
       (
          this : in out IsolatedStorageFile.Kind;
-         path : NetFrameworkBase.BSTR;
-         mode : NetFrameworkBase.System.IO.FileMode.Kind;
+         path : NetFrameworkBase.BSTR; 
+         mode : NetFrameworkBase.System.IO.FileMode.Kind; 
          access_x : NetFrameworkBase.System.IO.FileAccess.Kind
       )
       return NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFileStream.Kind_Ptr;
@@ -297,9 +297,9 @@ package NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFile is
       function OpenFile
       (
          this : in out IsolatedStorageFile.Kind;
-         path : NetFrameworkBase.BSTR;
-         mode : NetFrameworkBase.System.IO.FileMode.Kind;
-         access_x : NetFrameworkBase.System.IO.FileAccess.Kind;
+         path : NetFrameworkBase.BSTR; 
+         mode : NetFrameworkBase.System.IO.FileMode.Kind; 
+         access_x : NetFrameworkBase.System.IO.FileAccess.Kind; 
          share : NetFrameworkBase.System.IO.FileShare.Kind
       )
       return NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFileStream.Kind_Ptr;

@@ -63,7 +63,7 @@ package NetFrameworkBase.System.Globalization.SortKey is
       
       function Compare
       (
-         sortkey1 : NetFrameworkBase.System.Globalization.SortKey.Kind_Ptr;
+         sortkey1 : NetFrameworkBase.System.Globalization.SortKey.Kind_Ptr; 
          sortkey2 : NetFrameworkBase.System.Globalization.SortKey.Kind_Ptr
       )
       return NetFrameworkBase.Int32;

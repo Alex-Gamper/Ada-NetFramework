@@ -49,14 +49,14 @@ package NetFrameworkBase.System.Object is
       
       function Equals
       (
-         objA : NetFrameworkBase.System.Object.Kind_Ptr;
+         objA : NetFrameworkBase.System.Object.Kind_Ptr; 
          objB : NetFrameworkBase.System.Object.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function ReferenceEquals
       (
-         objA : NetFrameworkBase.System.Object.Kind_Ptr;
+         objA : NetFrameworkBase.System.Object.Kind_Ptr; 
          objB : NetFrameworkBase.System.Object.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;

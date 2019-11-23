@@ -211,16 +211,16 @@ package NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certi
       procedure Import
       (
          this : in out X509Certificate.Kind;
-         rawData : NetFrameworkBase.Byte_Array;
-         password : NetFrameworkBase.BSTR;
+         rawData : NetFrameworkBase.Byte_Array; 
+         password : NetFrameworkBase.BSTR; 
          keyStorageFlags : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.Kind
       );
       
       procedure Import
       (
          this : in out X509Certificate.Kind;
-         rawData : NetFrameworkBase.Byte_Array;
-         password : NetFrameworkBase.System.Security.SecureString.Kind_Ptr;
+         rawData : NetFrameworkBase.Byte_Array; 
+         password : NetFrameworkBase.System.Security.SecureString.Kind_Ptr; 
          keyStorageFlags : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.Kind
       );
       
@@ -233,16 +233,16 @@ package NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certi
       procedure Import
       (
          this : in out X509Certificate.Kind;
-         fileName : NetFrameworkBase.BSTR;
-         password : NetFrameworkBase.BSTR;
+         fileName : NetFrameworkBase.BSTR; 
+         password : NetFrameworkBase.BSTR; 
          keyStorageFlags : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.Kind
       );
       
       procedure Import
       (
          this : in out X509Certificate.Kind;
-         fileName : NetFrameworkBase.BSTR;
-         password : NetFrameworkBase.System.Security.SecureString.Kind_Ptr;
+         fileName : NetFrameworkBase.BSTR; 
+         password : NetFrameworkBase.System.Security.SecureString.Kind_Ptr; 
          keyStorageFlags : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.Kind
       );
       
@@ -256,7 +256,7 @@ package NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certi
       function Export
       (
          this : in out X509Certificate.Kind;
-         contentType : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ContentType.Kind;
+         contentType : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ContentType.Kind; 
          password : NetFrameworkBase.BSTR
       )
       return NetFrameworkBase.Byte_Array;
@@ -264,7 +264,7 @@ package NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certi
       function Export
       (
          this : in out X509Certificate.Kind;
-         contentType : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ContentType.Kind;
+         contentType : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ContentType.Kind; 
          password : NetFrameworkBase.System.Security.SecureString.Kind_Ptr
       )
       return NetFrameworkBase.Byte_Array;

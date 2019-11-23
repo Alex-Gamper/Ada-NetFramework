@@ -89,8 +89,8 @@ package NetFrameworkBase.System.IO.TextWriter is
       procedure Write
       (
          this : in out TextWriter.Kind;
-         buffer : NetFrameworkBase.Wide_Char_Array;
-         index : NetFrameworkBase.Int32;
+         buffer : NetFrameworkBase.Wide_Char_Array; 
+         index : NetFrameworkBase.Int32; 
          count : NetFrameworkBase.Int32
       );
       
@@ -151,31 +151,31 @@ package NetFrameworkBase.System.IO.TextWriter is
       procedure Write
       (
          this : in out TextWriter.Kind;
-         format : NetFrameworkBase.BSTR;
+         format : NetFrameworkBase.BSTR; 
          arg0 : NetFrameworkBase.System.Object.Kind_Ptr
       );
       
       procedure Write
       (
          this : in out TextWriter.Kind;
-         format : NetFrameworkBase.BSTR;
-         arg0 : NetFrameworkBase.System.Object.Kind_Ptr;
+         format : NetFrameworkBase.BSTR; 
+         arg0 : NetFrameworkBase.System.Object.Kind_Ptr; 
          arg1 : NetFrameworkBase.System.Object.Kind_Ptr
       );
       
       procedure Write
       (
          this : in out TextWriter.Kind;
-         format : NetFrameworkBase.BSTR;
-         arg0 : NetFrameworkBase.System.Object.Kind_Ptr;
-         arg1 : NetFrameworkBase.System.Object.Kind_Ptr;
+         format : NetFrameworkBase.BSTR; 
+         arg0 : NetFrameworkBase.System.Object.Kind_Ptr; 
+         arg1 : NetFrameworkBase.System.Object.Kind_Ptr; 
          arg2 : NetFrameworkBase.System.Object.Kind_Ptr
       );
       
       procedure Write
       (
          this : in out TextWriter.Kind;
-         format : NetFrameworkBase.BSTR;
+         format : NetFrameworkBase.BSTR; 
          arg : NetFrameworkBase.System.Object.Kind_Array
       );
       
@@ -199,8 +199,8 @@ package NetFrameworkBase.System.IO.TextWriter is
       procedure WriteLine
       (
          this : in out TextWriter.Kind;
-         buffer : NetFrameworkBase.Wide_Char_Array;
-         index : NetFrameworkBase.Int32;
+         buffer : NetFrameworkBase.Wide_Char_Array; 
+         index : NetFrameworkBase.Int32; 
          count : NetFrameworkBase.Int32
       );
       
@@ -267,31 +267,31 @@ package NetFrameworkBase.System.IO.TextWriter is
       procedure WriteLine
       (
          this : in out TextWriter.Kind;
-         format : NetFrameworkBase.BSTR;
+         format : NetFrameworkBase.BSTR; 
          arg0 : NetFrameworkBase.System.Object.Kind_Ptr
       );
       
       procedure WriteLine
       (
          this : in out TextWriter.Kind;
-         format : NetFrameworkBase.BSTR;
-         arg0 : NetFrameworkBase.System.Object.Kind_Ptr;
+         format : NetFrameworkBase.BSTR; 
+         arg0 : NetFrameworkBase.System.Object.Kind_Ptr; 
          arg1 : NetFrameworkBase.System.Object.Kind_Ptr
       );
       
       procedure WriteLine
       (
          this : in out TextWriter.Kind;
-         format : NetFrameworkBase.BSTR;
-         arg0 : NetFrameworkBase.System.Object.Kind_Ptr;
-         arg1 : NetFrameworkBase.System.Object.Kind_Ptr;
+         format : NetFrameworkBase.BSTR; 
+         arg0 : NetFrameworkBase.System.Object.Kind_Ptr; 
+         arg1 : NetFrameworkBase.System.Object.Kind_Ptr; 
          arg2 : NetFrameworkBase.System.Object.Kind_Ptr
       );
       
       procedure WriteLine
       (
          this : in out TextWriter.Kind;
-         format : NetFrameworkBase.BSTR;
+         format : NetFrameworkBase.BSTR; 
          arg : NetFrameworkBase.System.Object.Kind_Array
       );
       
@@ -312,8 +312,8 @@ package NetFrameworkBase.System.IO.TextWriter is
       function WriteAsync
       (
          this : in out TextWriter.Kind;
-         buffer : NetFrameworkBase.Wide_Char_Array;
-         index : NetFrameworkBase.Int32;
+         buffer : NetFrameworkBase.Wide_Char_Array; 
+         index : NetFrameworkBase.Int32; 
          count : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr;
@@ -335,8 +335,8 @@ package NetFrameworkBase.System.IO.TextWriter is
       function WriteLineAsync
       (
          this : in out TextWriter.Kind;
-         buffer : NetFrameworkBase.Wide_Char_Array;
-         index : NetFrameworkBase.Int32;
+         buffer : NetFrameworkBase.Wide_Char_Array; 
+         index : NetFrameworkBase.Int32; 
          count : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr;

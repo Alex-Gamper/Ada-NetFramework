@@ -73,7 +73,7 @@ package NetFrameworkBase.System.OperatingSystem is
       procedure GetObjectData
       (
          this : in out OperatingSystem.Kind;
-         info : NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr;
+         info : NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr; 
          context : NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind_Ptr
       );
       

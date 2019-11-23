@@ -101,7 +101,7 @@ package body NetFrameworkBase.System.Security.AccessControl.AuthorizationRuleCol
    procedure CopyTo
    (
       this : in out AuthorizationRuleCollection.Kind;
-      rules : NetFrameworkBase.System.Security.AccessControl.AuthorizationRule.Kind_Array;
+      rules : NetFrameworkBase.System.Security.AccessControl.AuthorizationRule.Kind_Array; 
       index : NetFrameworkBase.Int32
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);

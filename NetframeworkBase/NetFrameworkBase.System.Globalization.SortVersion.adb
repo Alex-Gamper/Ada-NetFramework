@@ -218,7 +218,7 @@ package body NetFrameworkBase.System.Globalization.SortVersion is
    
    function op_Equality
    (
-      left : NetFrameworkBase.System.Globalization.SortVersion.Kind_Ptr;
+      left : NetFrameworkBase.System.Globalization.SortVersion.Kind_Ptr; 
       right : NetFrameworkBase.System.Globalization.SortVersion.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -260,7 +260,7 @@ package body NetFrameworkBase.System.Globalization.SortVersion is
    
    function op_Inequality
    (
-      left : NetFrameworkBase.System.Globalization.SortVersion.Kind_Ptr;
+      left : NetFrameworkBase.System.Globalization.SortVersion.Kind_Ptr; 
       right : NetFrameworkBase.System.Globalization.SortVersion.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is

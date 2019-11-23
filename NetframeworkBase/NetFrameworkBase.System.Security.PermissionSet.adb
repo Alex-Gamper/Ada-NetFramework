@@ -72,7 +72,7 @@ package body NetFrameworkBase.System.Security.PermissionSet is
    procedure CopyTo
    (
       this : in out PermissionSet.Kind;
-      array_x : NetFrameworkBase.System.Array_x.Kind_Ptr;
+      array_x : NetFrameworkBase.System.Array_x.Kind_Ptr; 
       index : NetFrameworkBase.Int32
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -710,8 +710,8 @@ package body NetFrameworkBase.System.Security.PermissionSet is
    
    function ConvertPermissionSet
    (
-      inFormat : NetFrameworkBase.BSTR;
-      inData : NetFrameworkBase.Byte_Array;
+      inFormat : NetFrameworkBase.BSTR; 
+      inData : NetFrameworkBase.Byte_Array; 
       outFormat : NetFrameworkBase.BSTR
    )
    return NetFrameworkBase.Byte_Array is

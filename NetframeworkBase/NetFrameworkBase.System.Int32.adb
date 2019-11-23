@@ -349,7 +349,7 @@ package body NetFrameworkBase.System.Int32 is
    function ToString
    (
       this : in out Int32.Kind;
-      format : NetFrameworkBase.BSTR;
+      format : NetFrameworkBase.BSTR; 
       provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
    )
    return NetFrameworkBase.BSTR is
@@ -429,7 +429,7 @@ package body NetFrameworkBase.System.Int32 is
    
    function Parse
    (
-      s : NetFrameworkBase.BSTR;
+      s : NetFrameworkBase.BSTR; 
       style : NetFrameworkBase.System.Globalization.NumberStyles.Kind
    )
    return NetFrameworkBase.Int32 is
@@ -473,7 +473,7 @@ package body NetFrameworkBase.System.Int32 is
    
    function Parse
    (
-      s : NetFrameworkBase.BSTR;
+      s : NetFrameworkBase.BSTR; 
       provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
    )
    return NetFrameworkBase.Int32 is
@@ -516,8 +516,8 @@ package body NetFrameworkBase.System.Int32 is
    
    function Parse
    (
-      s : NetFrameworkBase.BSTR;
-      style : NetFrameworkBase.System.Globalization.NumberStyles.Kind;
+      s : NetFrameworkBase.BSTR; 
+      style : NetFrameworkBase.System.Globalization.NumberStyles.Kind; 
       provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
    )
    return NetFrameworkBase.Int32 is
@@ -566,7 +566,7 @@ package body NetFrameworkBase.System.Int32 is
    
    function TryParse
    (
-      s : NetFrameworkBase.BSTR;
+      s : NetFrameworkBase.BSTR; 
       result : out NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Boolean is
@@ -614,9 +614,9 @@ package body NetFrameworkBase.System.Int32 is
    
    function TryParse
    (
-      s : NetFrameworkBase.BSTR;
-      style : NetFrameworkBase.System.Globalization.NumberStyles.Kind;
-      provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
+      s : NetFrameworkBase.BSTR; 
+      style : NetFrameworkBase.System.Globalization.NumberStyles.Kind; 
+      provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr; 
       result : out NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Boolean is

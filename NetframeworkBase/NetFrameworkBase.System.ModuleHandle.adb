@@ -170,7 +170,7 @@ package body NetFrameworkBase.System.ModuleHandle is
    
    function op_Equality
    (
-      left : NetFrameworkBase.System.ModuleHandle.Kind_Ptr;
+      left : NetFrameworkBase.System.ModuleHandle.Kind_Ptr; 
       right : NetFrameworkBase.System.ModuleHandle.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -212,7 +212,7 @@ package body NetFrameworkBase.System.ModuleHandle is
    
    function op_Inequality
    (
-      left : NetFrameworkBase.System.ModuleHandle.Kind_Ptr;
+      left : NetFrameworkBase.System.ModuleHandle.Kind_Ptr; 
       right : NetFrameworkBase.System.ModuleHandle.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -333,8 +333,8 @@ package body NetFrameworkBase.System.ModuleHandle is
    function ResolveTypeHandle
    (
       this : in out ModuleHandle.Kind;
-      typeToken : NetFrameworkBase.Int32;
-      typeInstantiationContext : NetFrameworkBase.System.RuntimeTypeHandle.Kind_Array_Ptr;
+      typeToken : NetFrameworkBase.Int32; 
+      typeInstantiationContext : NetFrameworkBase.System.RuntimeTypeHandle.Kind_Array_Ptr; 
       methodInstantiationContext : NetFrameworkBase.System.RuntimeTypeHandle.Kind_Array_Ptr
    )
    return NetFrameworkBase.System.RuntimeTypeHandle.Kind_Ptr is
@@ -498,8 +498,8 @@ package body NetFrameworkBase.System.ModuleHandle is
    function ResolveMethodHandle
    (
       this : in out ModuleHandle.Kind;
-      methodToken : NetFrameworkBase.Int32;
-      typeInstantiationContext : NetFrameworkBase.System.RuntimeTypeHandle.Kind_Array_Ptr;
+      methodToken : NetFrameworkBase.Int32; 
+      typeInstantiationContext : NetFrameworkBase.System.RuntimeTypeHandle.Kind_Array_Ptr; 
       methodInstantiationContext : NetFrameworkBase.System.RuntimeTypeHandle.Kind_Array_Ptr
    )
    return NetFrameworkBase.System.RuntimeMethodHandle.Kind_Ptr is
@@ -663,8 +663,8 @@ package body NetFrameworkBase.System.ModuleHandle is
    function ResolveFieldHandle
    (
       this : in out ModuleHandle.Kind;
-      fieldToken : NetFrameworkBase.Int32;
-      typeInstantiationContext : NetFrameworkBase.System.RuntimeTypeHandle.Kind_Array_Ptr;
+      fieldToken : NetFrameworkBase.Int32; 
+      typeInstantiationContext : NetFrameworkBase.System.RuntimeTypeHandle.Kind_Array_Ptr; 
       methodInstantiationContext : NetFrameworkBase.System.RuntimeTypeHandle.Kind_Array_Ptr
    )
    return NetFrameworkBase.System.RuntimeFieldHandle.Kind_Ptr is

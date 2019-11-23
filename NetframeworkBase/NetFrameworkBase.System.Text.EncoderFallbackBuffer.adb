@@ -87,7 +87,7 @@ package body NetFrameworkBase.System.Text.EncoderFallbackBuffer is
    function Fallback
    (
       this : in out EncoderFallbackBuffer.Kind;
-      charUnknown : NetFrameworkBase.Wide_Char;
+      charUnknown : NetFrameworkBase.Wide_Char; 
       index : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Boolean is
@@ -130,8 +130,8 @@ package body NetFrameworkBase.System.Text.EncoderFallbackBuffer is
    function Fallback
    (
       this : in out EncoderFallbackBuffer.Kind;
-      charUnknownHigh : NetFrameworkBase.Wide_Char;
-      charUnknownLow : NetFrameworkBase.Wide_Char;
+      charUnknownHigh : NetFrameworkBase.Wide_Char; 
+      charUnknownLow : NetFrameworkBase.Wide_Char; 
       index : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Boolean is

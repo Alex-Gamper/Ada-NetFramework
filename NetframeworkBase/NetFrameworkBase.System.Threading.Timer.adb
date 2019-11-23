@@ -91,7 +91,7 @@ package body NetFrameworkBase.System.Threading.Timer is
    function Change
    (
       this : in out Timer.Kind;
-      dueTime : NetFrameworkBase.Int32;
+      dueTime : NetFrameworkBase.Int32; 
       period : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Boolean is
@@ -134,7 +134,7 @@ package body NetFrameworkBase.System.Threading.Timer is
    function Change
    (
       this : in out Timer.Kind;
-      dueTime : NetFrameworkBase.System.TimeSpan.Kind_Ptr;
+      dueTime : NetFrameworkBase.System.TimeSpan.Kind_Ptr; 
       period : NetFrameworkBase.System.TimeSpan.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -177,7 +177,7 @@ package body NetFrameworkBase.System.Threading.Timer is
    function Change
    (
       this : in out Timer.Kind;
-      dueTime : NetFrameworkBase.UInt32;
+      dueTime : NetFrameworkBase.UInt32; 
       period : NetFrameworkBase.UInt32
    )
    return NetFrameworkBase.Boolean is
@@ -220,7 +220,7 @@ package body NetFrameworkBase.System.Threading.Timer is
    function Change
    (
       this : in out Timer.Kind;
-      dueTime : NetFrameworkBase.Int64;
+      dueTime : NetFrameworkBase.Int64; 
       period : NetFrameworkBase.Int64
    )
    return NetFrameworkBase.Boolean is

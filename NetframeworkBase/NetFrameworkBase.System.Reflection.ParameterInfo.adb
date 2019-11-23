@@ -612,7 +612,7 @@ package body NetFrameworkBase.System.Reflection.ParameterInfo is
    function GetCustomAttributes
    (
       this : in out ParameterInfo.Kind;
-      attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+      attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
       inherit : NetFrameworkBase.Boolean
    )
    return NetFrameworkBase.System.Object.Kind_Array is
@@ -688,7 +688,7 @@ package body NetFrameworkBase.System.Reflection.ParameterInfo is
    function IsDefined
    (
       this : in out ParameterInfo.Kind;
-      attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+      attributeType : NetFrameworkBase.System.Type_x.Kind_Ptr; 
       inherit : NetFrameworkBase.Boolean
    )
    return NetFrameworkBase.Boolean is

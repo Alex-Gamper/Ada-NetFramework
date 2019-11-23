@@ -371,7 +371,7 @@ package NetFrameworkBase.System.Globalization.DateTimeFormatInfo is
       procedure SetAllDateTimePatterns
       (
          this : in out DateTimeFormatInfo.Kind;
-         patterns : NetFrameworkBase.BSTR_Array;
+         patterns : NetFrameworkBase.BSTR_Array; 
          format : NetFrameworkBase.Wide_Char
       );
       

@@ -145,7 +145,7 @@ package body NetFrameworkBase.System.Decimal is
    
    function Add
    (
-      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr;
+      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr; 
       d2 : NetFrameworkBase.System.Decimal.Kind_Ptr
    )
    return NetFrameworkBase.System.Decimal.Kind_Ptr is
@@ -226,7 +226,7 @@ package body NetFrameworkBase.System.Decimal is
    
    function Compare
    (
-      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr;
+      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr; 
       d2 : NetFrameworkBase.System.Decimal.Kind_Ptr
    )
    return NetFrameworkBase.Int32 is
@@ -344,7 +344,7 @@ package body NetFrameworkBase.System.Decimal is
    
    function Divide
    (
-      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr;
+      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr; 
       d2 : NetFrameworkBase.System.Decimal.Kind_Ptr
    )
    return NetFrameworkBase.System.Decimal.Kind_Ptr is
@@ -463,7 +463,7 @@ package body NetFrameworkBase.System.Decimal is
    
    function Equals
    (
-      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr;
+      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr; 
       d2 : NetFrameworkBase.System.Decimal.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -646,7 +646,7 @@ package body NetFrameworkBase.System.Decimal is
    function ToString
    (
       this : in out Decimal.Kind;
-      format : NetFrameworkBase.BSTR;
+      format : NetFrameworkBase.BSTR; 
       provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
    )
    return NetFrameworkBase.BSTR is
@@ -727,7 +727,7 @@ package body NetFrameworkBase.System.Decimal is
    
    function Parse
    (
-      s : NetFrameworkBase.BSTR;
+      s : NetFrameworkBase.BSTR; 
       style : NetFrameworkBase.System.Globalization.NumberStyles.Kind
    )
    return NetFrameworkBase.System.Decimal.Kind_Ptr is
@@ -772,7 +772,7 @@ package body NetFrameworkBase.System.Decimal is
    
    function Parse
    (
-      s : NetFrameworkBase.BSTR;
+      s : NetFrameworkBase.BSTR; 
       provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
    )
    return NetFrameworkBase.System.Decimal.Kind_Ptr is
@@ -816,8 +816,8 @@ package body NetFrameworkBase.System.Decimal is
    
    function Parse
    (
-      s : NetFrameworkBase.BSTR;
-      style : NetFrameworkBase.System.Globalization.NumberStyles.Kind;
+      s : NetFrameworkBase.BSTR; 
+      style : NetFrameworkBase.System.Globalization.NumberStyles.Kind; 
       provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
    )
    return NetFrameworkBase.System.Decimal.Kind_Ptr is
@@ -867,7 +867,7 @@ package body NetFrameworkBase.System.Decimal is
    
    function TryParse
    (
-      s : NetFrameworkBase.BSTR;
+      s : NetFrameworkBase.BSTR; 
       result : out NetFrameworkBase.System.Decimal.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -916,9 +916,9 @@ package body NetFrameworkBase.System.Decimal is
    
    function TryParse
    (
-      s : NetFrameworkBase.BSTR;
-      style : NetFrameworkBase.System.Globalization.NumberStyles.Kind;
-      provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
+      s : NetFrameworkBase.BSTR; 
+      style : NetFrameworkBase.System.Globalization.NumberStyles.Kind; 
+      provider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr; 
       result : out NetFrameworkBase.System.Decimal.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -1040,7 +1040,7 @@ package body NetFrameworkBase.System.Decimal is
    
    function Remainder
    (
-      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr;
+      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr; 
       d2 : NetFrameworkBase.System.Decimal.Kind_Ptr
    )
    return NetFrameworkBase.System.Decimal.Kind_Ptr is
@@ -1083,7 +1083,7 @@ package body NetFrameworkBase.System.Decimal is
    
    function Multiply
    (
-      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr;
+      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr; 
       d2 : NetFrameworkBase.System.Decimal.Kind_Ptr
    )
    return NetFrameworkBase.System.Decimal.Kind_Ptr is
@@ -1202,7 +1202,7 @@ package body NetFrameworkBase.System.Decimal is
    
    function Round
    (
-      d : NetFrameworkBase.System.Decimal.Kind_Ptr;
+      d : NetFrameworkBase.System.Decimal.Kind_Ptr; 
       decimals : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.System.Decimal.Kind_Ptr is
@@ -1245,7 +1245,7 @@ package body NetFrameworkBase.System.Decimal is
    
    function Round
    (
-      d : NetFrameworkBase.System.Decimal.Kind_Ptr;
+      d : NetFrameworkBase.System.Decimal.Kind_Ptr; 
       mode : NetFrameworkBase.System.MidpointRounding.Kind
    )
    return NetFrameworkBase.System.Decimal.Kind_Ptr is
@@ -1290,8 +1290,8 @@ package body NetFrameworkBase.System.Decimal is
    
    function Round
    (
-      d : NetFrameworkBase.System.Decimal.Kind_Ptr;
-      decimals : NetFrameworkBase.Int32;
+      d : NetFrameworkBase.System.Decimal.Kind_Ptr; 
+      decimals : NetFrameworkBase.Int32; 
       mode : NetFrameworkBase.System.MidpointRounding.Kind
    )
    return NetFrameworkBase.System.Decimal.Kind_Ptr is
@@ -1340,7 +1340,7 @@ package body NetFrameworkBase.System.Decimal is
    
    function Subtract
    (
-      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr;
+      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr; 
       d2 : NetFrameworkBase.System.Decimal.Kind_Ptr
    )
    return NetFrameworkBase.System.Decimal.Kind_Ptr is
@@ -2694,7 +2694,7 @@ package body NetFrameworkBase.System.Decimal is
    
    function op_Addition
    (
-      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr;
+      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr; 
       d2 : NetFrameworkBase.System.Decimal.Kind_Ptr
    )
    return NetFrameworkBase.System.Decimal.Kind_Ptr is
@@ -2737,7 +2737,7 @@ package body NetFrameworkBase.System.Decimal is
    
    function op_Subtraction
    (
-      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr;
+      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr; 
       d2 : NetFrameworkBase.System.Decimal.Kind_Ptr
    )
    return NetFrameworkBase.System.Decimal.Kind_Ptr is
@@ -2780,7 +2780,7 @@ package body NetFrameworkBase.System.Decimal is
    
    function op_Multiply
    (
-      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr;
+      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr; 
       d2 : NetFrameworkBase.System.Decimal.Kind_Ptr
    )
    return NetFrameworkBase.System.Decimal.Kind_Ptr is
@@ -2823,7 +2823,7 @@ package body NetFrameworkBase.System.Decimal is
    
    function op_Division
    (
-      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr;
+      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr; 
       d2 : NetFrameworkBase.System.Decimal.Kind_Ptr
    )
    return NetFrameworkBase.System.Decimal.Kind_Ptr is
@@ -2866,7 +2866,7 @@ package body NetFrameworkBase.System.Decimal is
    
    function op_Modulus
    (
-      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr;
+      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr; 
       d2 : NetFrameworkBase.System.Decimal.Kind_Ptr
    )
    return NetFrameworkBase.System.Decimal.Kind_Ptr is
@@ -2909,7 +2909,7 @@ package body NetFrameworkBase.System.Decimal is
    
    function op_Equality
    (
-      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr;
+      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr; 
       d2 : NetFrameworkBase.System.Decimal.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -2951,7 +2951,7 @@ package body NetFrameworkBase.System.Decimal is
    
    function op_Inequality
    (
-      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr;
+      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr; 
       d2 : NetFrameworkBase.System.Decimal.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -2993,7 +2993,7 @@ package body NetFrameworkBase.System.Decimal is
    
    function op_LessThan
    (
-      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr;
+      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr; 
       d2 : NetFrameworkBase.System.Decimal.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -3035,7 +3035,7 @@ package body NetFrameworkBase.System.Decimal is
    
    function op_LessThanOrEqual
    (
-      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr;
+      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr; 
       d2 : NetFrameworkBase.System.Decimal.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -3077,7 +3077,7 @@ package body NetFrameworkBase.System.Decimal is
    
    function op_GreaterThan
    (
-      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr;
+      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr; 
       d2 : NetFrameworkBase.System.Decimal.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -3119,7 +3119,7 @@ package body NetFrameworkBase.System.Decimal is
    
    function op_GreaterThanOrEqual
    (
-      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr;
+      d1 : NetFrameworkBase.System.Decimal.Kind_Ptr; 
       d2 : NetFrameworkBase.System.Decimal.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is

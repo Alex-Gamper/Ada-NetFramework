@@ -73,14 +73,14 @@ package NetFrameworkBase.System.ConsoleKeyInfo is
       
       function op_Equality
       (
-         a : NetFrameworkBase.System.ConsoleKeyInfo.Kind_Ptr;
+         a : NetFrameworkBase.System.ConsoleKeyInfo.Kind_Ptr; 
          b : NetFrameworkBase.System.ConsoleKeyInfo.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function op_Inequality
       (
-         a : NetFrameworkBase.System.ConsoleKeyInfo.Kind_Ptr;
+         a : NetFrameworkBase.System.ConsoleKeyInfo.Kind_Ptr; 
          b : NetFrameworkBase.System.ConsoleKeyInfo.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;

@@ -94,7 +94,7 @@ package NetFrameworkBase.System.Collections.ArrayList is
       procedure Item
       (
          this : in out ArrayList.Kind;
-         index : NetFrameworkBase.Int32;
+         index : NetFrameworkBase.Int32; 
          value : NetFrameworkBase.System.Object.Kind_Ptr
       );
       
@@ -120,9 +120,9 @@ package NetFrameworkBase.System.Collections.ArrayList is
       function BinarySearch
       (
          this : in out ArrayList.Kind;
-         index : NetFrameworkBase.Int32;
-         count : NetFrameworkBase.Int32;
-         value : NetFrameworkBase.System.Object.Kind_Ptr;
+         index : NetFrameworkBase.Int32; 
+         count : NetFrameworkBase.Int32; 
+         value : NetFrameworkBase.System.Object.Kind_Ptr; 
          comparer : NetFrameworkBase.System.Collections.IComparer.Kind_Ptr
       )
       return NetFrameworkBase.Int32;
@@ -137,7 +137,7 @@ package NetFrameworkBase.System.Collections.ArrayList is
       function BinarySearch
       (
          this : in out ArrayList.Kind;
-         value : NetFrameworkBase.System.Object.Kind_Ptr;
+         value : NetFrameworkBase.System.Object.Kind_Ptr; 
          comparer : NetFrameworkBase.System.Collections.IComparer.Kind_Ptr
       )
       return NetFrameworkBase.Int32;
@@ -169,16 +169,16 @@ package NetFrameworkBase.System.Collections.ArrayList is
       procedure CopyTo
       (
          this : in out ArrayList.Kind;
-         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr;
+         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr; 
          arrayIndex : NetFrameworkBase.Int32
       );
       
       procedure CopyTo
       (
          this : in out ArrayList.Kind;
-         index : NetFrameworkBase.Int32;
-         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr;
-         arrayIndex : NetFrameworkBase.Int32;
+         index : NetFrameworkBase.Int32; 
+         array_x : NetFrameworkBase.System.Array_x.Kind_Ptr; 
+         arrayIndex : NetFrameworkBase.Int32; 
          count : NetFrameworkBase.Int32
       );
       
@@ -203,7 +203,7 @@ package NetFrameworkBase.System.Collections.ArrayList is
       function GetEnumerator
       (
          this : in out ArrayList.Kind;
-         index : NetFrameworkBase.Int32;
+         index : NetFrameworkBase.Int32; 
          count : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.System.Collections.IEnumerator.Kind_Ptr;
@@ -218,7 +218,7 @@ package NetFrameworkBase.System.Collections.ArrayList is
       function IndexOf
       (
          this : in out ArrayList.Kind;
-         value : NetFrameworkBase.System.Object.Kind_Ptr;
+         value : NetFrameworkBase.System.Object.Kind_Ptr; 
          startIndex : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -226,8 +226,8 @@ package NetFrameworkBase.System.Collections.ArrayList is
       function IndexOf
       (
          this : in out ArrayList.Kind;
-         value : NetFrameworkBase.System.Object.Kind_Ptr;
-         startIndex : NetFrameworkBase.Int32;
+         value : NetFrameworkBase.System.Object.Kind_Ptr; 
+         startIndex : NetFrameworkBase.Int32; 
          count : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -235,14 +235,14 @@ package NetFrameworkBase.System.Collections.ArrayList is
       procedure Insert
       (
          this : in out ArrayList.Kind;
-         index : NetFrameworkBase.Int32;
+         index : NetFrameworkBase.Int32; 
          value : NetFrameworkBase.System.Object.Kind_Ptr
       );
       
       procedure InsertRange
       (
          this : in out ArrayList.Kind;
-         index : NetFrameworkBase.Int32;
+         index : NetFrameworkBase.Int32; 
          c : NetFrameworkBase.System.Collections.ICollection.Kind_Ptr
       );
       
@@ -256,7 +256,7 @@ package NetFrameworkBase.System.Collections.ArrayList is
       function LastIndexOf
       (
          this : in out ArrayList.Kind;
-         value : NetFrameworkBase.System.Object.Kind_Ptr;
+         value : NetFrameworkBase.System.Object.Kind_Ptr; 
          startIndex : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -288,13 +288,13 @@ package NetFrameworkBase.System.Collections.ArrayList is
       procedure RemoveRange
       (
          this : in out ArrayList.Kind;
-         index : NetFrameworkBase.Int32;
+         index : NetFrameworkBase.Int32; 
          count : NetFrameworkBase.Int32
       );
       
       function Repeat
       (
-         value : NetFrameworkBase.System.Object.Kind_Ptr;
+         value : NetFrameworkBase.System.Object.Kind_Ptr; 
          count : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.System.Collections.ArrayList.Kind_Ptr;
@@ -307,14 +307,14 @@ package NetFrameworkBase.System.Collections.ArrayList is
       procedure Reverse_x
       (
          this : in out ArrayList.Kind;
-         index : NetFrameworkBase.Int32;
+         index : NetFrameworkBase.Int32; 
          count : NetFrameworkBase.Int32
       );
       
       procedure SetRange
       (
          this : in out ArrayList.Kind;
-         index : NetFrameworkBase.Int32;
+         index : NetFrameworkBase.Int32; 
          c : NetFrameworkBase.System.Collections.ICollection.Kind_Ptr
       );
       
@@ -332,8 +332,8 @@ package NetFrameworkBase.System.Collections.ArrayList is
       procedure Sort
       (
          this : in out ArrayList.Kind;
-         index : NetFrameworkBase.Int32;
-         count : NetFrameworkBase.Int32;
+         index : NetFrameworkBase.Int32; 
+         count : NetFrameworkBase.Int32; 
          comparer : NetFrameworkBase.System.Collections.IComparer.Kind_Ptr
       );
       
@@ -370,8 +370,8 @@ package NetFrameworkBase.System.Collections.ArrayList is
       function LastIndexOf
       (
          this : in out ArrayList.Kind;
-         value : NetFrameworkBase.System.Object.Kind_Ptr;
-         startIndex : NetFrameworkBase.Int32;
+         value : NetFrameworkBase.System.Object.Kind_Ptr; 
+         startIndex : NetFrameworkBase.Int32; 
          count : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.Int32;
@@ -379,7 +379,7 @@ package NetFrameworkBase.System.Collections.ArrayList is
       function GetRange
       (
          this : in out ArrayList.Kind;
-         index : NetFrameworkBase.Int32;
+         index : NetFrameworkBase.Int32; 
          count : NetFrameworkBase.Int32
       )
       return NetFrameworkBase.System.Collections.ArrayList.Kind_Ptr;

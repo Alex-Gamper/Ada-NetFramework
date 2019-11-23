@@ -113,7 +113,7 @@ package NetFrameworkBase.System.Runtime.Remoting.ObjRef is
       procedure GetObjectData
       (
          this : in out ObjRef.Kind;
-         info : NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr;
+         info : NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr; 
          context : NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind_Ptr
       );
       

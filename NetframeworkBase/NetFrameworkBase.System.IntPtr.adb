@@ -464,7 +464,7 @@ package body NetFrameworkBase.System.IntPtr is
    
    function op_Equality
    (
-      value1 : NetFrameworkBase.IntPtr;
+      value1 : NetFrameworkBase.IntPtr; 
       value2 : NetFrameworkBase.IntPtr
    )
    return NetFrameworkBase.Boolean is
@@ -506,7 +506,7 @@ package body NetFrameworkBase.System.IntPtr is
    
    function op_Inequality
    (
-      value1 : NetFrameworkBase.IntPtr;
+      value1 : NetFrameworkBase.IntPtr; 
       value2 : NetFrameworkBase.IntPtr
    )
    return NetFrameworkBase.Boolean is
@@ -548,7 +548,7 @@ package body NetFrameworkBase.System.IntPtr is
    
    function Add
    (
-      pointer : NetFrameworkBase.IntPtr;
+      pointer : NetFrameworkBase.IntPtr; 
       offset : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.IntPtr is
@@ -590,7 +590,7 @@ package body NetFrameworkBase.System.IntPtr is
    
    function op_Addition
    (
-      pointer : NetFrameworkBase.IntPtr;
+      pointer : NetFrameworkBase.IntPtr; 
       offset : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.IntPtr is
@@ -632,7 +632,7 @@ package body NetFrameworkBase.System.IntPtr is
    
    function Subtract
    (
-      pointer : NetFrameworkBase.IntPtr;
+      pointer : NetFrameworkBase.IntPtr; 
       offset : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.IntPtr is
@@ -674,7 +674,7 @@ package body NetFrameworkBase.System.IntPtr is
    
    function op_Subtraction
    (
-      pointer : NetFrameworkBase.IntPtr;
+      pointer : NetFrameworkBase.IntPtr; 
       offset : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.IntPtr is

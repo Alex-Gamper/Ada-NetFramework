@@ -43,8 +43,8 @@ package NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector is
       procedure AddSurrogate
       (
          this : in out SurrogateSelector.Kind;
-         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
-         context : NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind_Ptr;
+         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr; 
+         context : NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind_Ptr; 
          surrogate : NetFrameworkBase.System.Runtime.Serialization.ISerializationSurrogate.Kind_Ptr
       );
       
@@ -63,8 +63,8 @@ package NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector is
       function GetSurrogate
       (
          this : in out SurrogateSelector.Kind;
-         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
-         context : NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind_Ptr;
+         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr; 
+         context : NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind_Ptr; 
          selector : out NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector.Kind_Ptr
       )
       return NetFrameworkBase.System.Runtime.Serialization.ISerializationSurrogate.Kind_Ptr;
@@ -72,7 +72,7 @@ package NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector is
       procedure RemoveSurrogate
       (
          this : in out SurrogateSelector.Kind;
-         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
+         type_x : NetFrameworkBase.System.Type_x.Kind_Ptr; 
          context : NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind_Ptr
       );
       

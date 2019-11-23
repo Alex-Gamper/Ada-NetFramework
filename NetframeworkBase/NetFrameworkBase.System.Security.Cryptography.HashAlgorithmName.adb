@@ -217,7 +217,7 @@ package body NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName is
    
    function op_Equality
    (
-      left : NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName.Kind_Ptr;
+      left : NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName.Kind_Ptr; 
       right : NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -259,7 +259,7 @@ package body NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName is
    
    function op_Inequality
    (
-      left : NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName.Kind_Ptr;
+      left : NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName.Kind_Ptr; 
       right : NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is

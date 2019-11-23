@@ -40,14 +40,14 @@ package NetFrameworkBase.System.Reflection.CustomAttributeTypedArgument is
    
       function op_Equality
       (
-         left : NetFrameworkBase.System.Reflection.CustomAttributeTypedArgument.Kind_Ptr;
+         left : NetFrameworkBase.System.Reflection.CustomAttributeTypedArgument.Kind_Ptr; 
          right : NetFrameworkBase.System.Reflection.CustomAttributeTypedArgument.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function op_Inequality
       (
-         left : NetFrameworkBase.System.Reflection.CustomAttributeTypedArgument.Kind_Ptr;
+         left : NetFrameworkBase.System.Reflection.CustomAttributeTypedArgument.Kind_Ptr; 
          right : NetFrameworkBase.System.Reflection.CustomAttributeTypedArgument.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;

@@ -49,11 +49,11 @@ package NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity is
       function AccessRuleFactory
       (
          this : in out FileSystemSecurity.Kind;
-         identityReference : NetFrameworkBase.System.Security.Principal.IdentityReference.Kind_Ptr;
-         accessMask : NetFrameworkBase.Int32;
-         isInherited : NetFrameworkBase.Boolean;
-         inheritanceFlags : NetFrameworkBase.System.Security.AccessControl.InheritanceFlags.Kind;
-         propagationFlags : NetFrameworkBase.System.Security.AccessControl.PropagationFlags.Kind;
+         identityReference : NetFrameworkBase.System.Security.Principal.IdentityReference.Kind_Ptr; 
+         accessMask : NetFrameworkBase.Int32; 
+         isInherited : NetFrameworkBase.Boolean; 
+         inheritanceFlags : NetFrameworkBase.System.Security.AccessControl.InheritanceFlags.Kind; 
+         propagationFlags : NetFrameworkBase.System.Security.AccessControl.PropagationFlags.Kind; 
          type_x : NetFrameworkBase.System.Security.AccessControl.AccessControlType.Kind
       )
       return NetFrameworkBase.System.Security.AccessControl.AccessRule.Kind_Ptr;
@@ -61,11 +61,11 @@ package NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity is
       function AuditRuleFactory
       (
          this : in out FileSystemSecurity.Kind;
-         identityReference : NetFrameworkBase.System.Security.Principal.IdentityReference.Kind_Ptr;
-         accessMask : NetFrameworkBase.Int32;
-         isInherited : NetFrameworkBase.Boolean;
-         inheritanceFlags : NetFrameworkBase.System.Security.AccessControl.InheritanceFlags.Kind;
-         propagationFlags : NetFrameworkBase.System.Security.AccessControl.PropagationFlags.Kind;
+         identityReference : NetFrameworkBase.System.Security.Principal.IdentityReference.Kind_Ptr; 
+         accessMask : NetFrameworkBase.Int32; 
+         isInherited : NetFrameworkBase.Boolean; 
+         inheritanceFlags : NetFrameworkBase.System.Security.AccessControl.InheritanceFlags.Kind; 
+         propagationFlags : NetFrameworkBase.System.Security.AccessControl.PropagationFlags.Kind; 
          flags : NetFrameworkBase.System.Security.AccessControl.AuditFlags.Kind
       )
       return NetFrameworkBase.System.Security.AccessControl.AuditRule.Kind_Ptr;

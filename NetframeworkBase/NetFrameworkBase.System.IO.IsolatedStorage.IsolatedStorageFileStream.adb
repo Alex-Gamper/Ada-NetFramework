@@ -365,8 +365,8 @@ package body NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFileStrea
    function Read
    (
       this : in out IsolatedStorageFileStream.Kind;
-      buffer : in out NetFrameworkBase.Byte_Array;
-      offset : NetFrameworkBase.Int32;
+      buffer : in out NetFrameworkBase.Byte_Array; 
+      offset : NetFrameworkBase.Int32; 
       count : NetFrameworkBase.Int32
    )
    return NetFrameworkBase.Int32 is
@@ -456,10 +456,10 @@ package body NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFileStrea
    function BeginRead
    (
       this : in out IsolatedStorageFileStream.Kind;
-      buffer : NetFrameworkBase.Byte_Array;
-      offset : NetFrameworkBase.Int32;
-      numBytes : NetFrameworkBase.Int32;
-      userCallback : NetFrameworkBase.System.AsyncCallback.Kind_Ptr;
+      buffer : NetFrameworkBase.Byte_Array; 
+      offset : NetFrameworkBase.Int32; 
+      numBytes : NetFrameworkBase.Int32; 
+      userCallback : NetFrameworkBase.System.AsyncCallback.Kind_Ptr; 
       stateObject : NetFrameworkBase.System.Object.Kind_Ptr
    )
    return NetFrameworkBase.System.IAsyncResult.Kind_Ptr is
@@ -640,7 +640,7 @@ package body NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFileStrea
    procedure Lock
    (
       this : in out IsolatedStorageFileStream.Kind;
-      position : NetFrameworkBase.Int64;
+      position : NetFrameworkBase.Int64; 
       length : NetFrameworkBase.Int64
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -679,7 +679,7 @@ package body NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFileStrea
    procedure Unlock
    (
       this : in out IsolatedStorageFileStream.Kind;
-      position : NetFrameworkBase.Int64;
+      position : NetFrameworkBase.Int64; 
       length : NetFrameworkBase.Int64
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -718,7 +718,7 @@ package body NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFileStrea
    function Seek
    (
       this : in out IsolatedStorageFileStream.Kind;
-      offset : NetFrameworkBase.Int64;
+      offset : NetFrameworkBase.Int64; 
       origin : NetFrameworkBase.System.IO.SeekOrigin.Kind
    )
    return NetFrameworkBase.Int64 is
@@ -763,8 +763,8 @@ package body NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFileStrea
    procedure Write
    (
       this : in out IsolatedStorageFileStream.Kind;
-      buffer : NetFrameworkBase.Byte_Array;
-      offset : NetFrameworkBase.Int32;
+      buffer : NetFrameworkBase.Byte_Array; 
+      offset : NetFrameworkBase.Int32; 
       count : NetFrameworkBase.Int32
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -859,10 +859,10 @@ package body NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFileStrea
    function BeginWrite
    (
       this : in out IsolatedStorageFileStream.Kind;
-      buffer : NetFrameworkBase.Byte_Array;
-      offset : NetFrameworkBase.Int32;
-      numBytes : NetFrameworkBase.Int32;
-      userCallback : NetFrameworkBase.System.AsyncCallback.Kind_Ptr;
+      buffer : NetFrameworkBase.Byte_Array; 
+      offset : NetFrameworkBase.Int32; 
+      numBytes : NetFrameworkBase.Int32; 
+      userCallback : NetFrameworkBase.System.AsyncCallback.Kind_Ptr; 
       stateObject : NetFrameworkBase.System.Object.Kind_Ptr
    )
    return NetFrameworkBase.System.IAsyncResult.Kind_Ptr is

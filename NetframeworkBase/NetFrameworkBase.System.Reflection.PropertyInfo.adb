@@ -74,7 +74,7 @@ package body NetFrameworkBase.System.Reflection.PropertyInfo is
    
    function op_Equality
    (
-      left : NetFrameworkBase.System.Reflection.PropertyInfo.Kind_Ptr;
+      left : NetFrameworkBase.System.Reflection.PropertyInfo.Kind_Ptr; 
       right : NetFrameworkBase.System.Reflection.PropertyInfo.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -116,7 +116,7 @@ package body NetFrameworkBase.System.Reflection.PropertyInfo is
    
    function op_Inequality
    (
-      left : NetFrameworkBase.System.Reflection.PropertyInfo.Kind_Ptr;
+      left : NetFrameworkBase.System.Reflection.PropertyInfo.Kind_Ptr; 
       right : NetFrameworkBase.System.Reflection.PropertyInfo.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -339,7 +339,7 @@ package body NetFrameworkBase.System.Reflection.PropertyInfo is
    function GetValue
    (
       this : in out PropertyInfo.Kind;
-      obj : NetFrameworkBase.System.Object.Kind_Ptr;
+      obj : NetFrameworkBase.System.Object.Kind_Ptr; 
       index : NetFrameworkBase.System.Object.Kind_Array
    )
    return NetFrameworkBase.System.Object.Kind_Ptr is
@@ -402,7 +402,7 @@ package body NetFrameworkBase.System.Reflection.PropertyInfo is
    procedure SetValue
    (
       this : in out PropertyInfo.Kind;
-      obj : NetFrameworkBase.System.Object.Kind_Ptr;
+      obj : NetFrameworkBase.System.Object.Kind_Ptr; 
       value : NetFrameworkBase.System.Object.Kind_Ptr
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -441,8 +441,8 @@ package body NetFrameworkBase.System.Reflection.PropertyInfo is
    procedure SetValue
    (
       this : in out PropertyInfo.Kind;
-      obj : NetFrameworkBase.System.Object.Kind_Ptr;
-      value : NetFrameworkBase.System.Object.Kind_Ptr;
+      obj : NetFrameworkBase.System.Object.Kind_Ptr; 
+      value : NetFrameworkBase.System.Object.Kind_Ptr; 
       index : NetFrameworkBase.System.Object.Kind_Array
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -833,11 +833,11 @@ package body NetFrameworkBase.System.Reflection.PropertyInfo is
    procedure SetValue
    (
       this : in out PropertyInfo.Kind;
-      obj : NetFrameworkBase.System.Object.Kind_Ptr;
-      value : NetFrameworkBase.System.Object.Kind_Ptr;
-      invokeAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind;
-      binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr;
-      index : NetFrameworkBase.System.Object.Kind_Array;
+      obj : NetFrameworkBase.System.Object.Kind_Ptr; 
+      value : NetFrameworkBase.System.Object.Kind_Ptr; 
+      invokeAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind; 
+      binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr; 
+      index : NetFrameworkBase.System.Object.Kind_Array; 
       culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr
    ) is
       function Convert is new Ada.Unchecked_Conversion (LPVARIANT,LPVOID);
@@ -1196,10 +1196,10 @@ package body NetFrameworkBase.System.Reflection.PropertyInfo is
    function GetValue
    (
       this : in out PropertyInfo.Kind;
-      obj : NetFrameworkBase.System.Object.Kind_Ptr;
-      invokeAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind;
-      binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr;
-      index : NetFrameworkBase.System.Object.Kind_Array;
+      obj : NetFrameworkBase.System.Object.Kind_Ptr; 
+      invokeAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind; 
+      binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr; 
+      index : NetFrameworkBase.System.Object.Kind_Array; 
       culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr
    )
    return NetFrameworkBase.System.Object.Kind_Ptr is

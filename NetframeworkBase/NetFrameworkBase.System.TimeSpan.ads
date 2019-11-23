@@ -114,7 +114,7 @@ package NetFrameworkBase.System.TimeSpan is
       
       function Compare
       (
-         t1 : NetFrameworkBase.System.TimeSpan.Kind_Ptr;
+         t1 : NetFrameworkBase.System.TimeSpan.Kind_Ptr; 
          t2 : NetFrameworkBase.System.TimeSpan.Kind_Ptr
       )
       return NetFrameworkBase.Int32;
@@ -161,7 +161,7 @@ package NetFrameworkBase.System.TimeSpan is
       
       function Equals
       (
-         t1 : NetFrameworkBase.System.TimeSpan.Kind_Ptr;
+         t1 : NetFrameworkBase.System.TimeSpan.Kind_Ptr; 
          t2 : NetFrameworkBase.System.TimeSpan.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
@@ -223,56 +223,56 @@ package NetFrameworkBase.System.TimeSpan is
       
       function Parse
       (
-         input : NetFrameworkBase.BSTR;
+         input : NetFrameworkBase.BSTR; 
          formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
       )
       return NetFrameworkBase.System.TimeSpan.Kind_Ptr;
       
       function ParseExact
       (
-         input : NetFrameworkBase.BSTR;
-         format : NetFrameworkBase.BSTR;
+         input : NetFrameworkBase.BSTR; 
+         format : NetFrameworkBase.BSTR; 
          formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
       )
       return NetFrameworkBase.System.TimeSpan.Kind_Ptr;
       
       function ParseExact
       (
-         input : NetFrameworkBase.BSTR;
-         formats : NetFrameworkBase.BSTR_Array;
+         input : NetFrameworkBase.BSTR; 
+         formats : NetFrameworkBase.BSTR_Array; 
          formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
       )
       return NetFrameworkBase.System.TimeSpan.Kind_Ptr;
       
       function TryParse
       (
-         s : NetFrameworkBase.BSTR;
+         s : NetFrameworkBase.BSTR; 
          result : out NetFrameworkBase.System.TimeSpan.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function TryParse
       (
-         input : NetFrameworkBase.BSTR;
-         formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
+         input : NetFrameworkBase.BSTR; 
+         formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr; 
          result : out NetFrameworkBase.System.TimeSpan.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function TryParseExact
       (
-         input : NetFrameworkBase.BSTR;
-         format : NetFrameworkBase.BSTR;
-         formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
+         input : NetFrameworkBase.BSTR; 
+         format : NetFrameworkBase.BSTR; 
+         formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr; 
          result : out NetFrameworkBase.System.TimeSpan.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function TryParseExact
       (
-         input : NetFrameworkBase.BSTR;
-         formats : NetFrameworkBase.BSTR_Array;
-         formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
+         input : NetFrameworkBase.BSTR; 
+         formats : NetFrameworkBase.BSTR_Array; 
+         formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr; 
          result : out NetFrameworkBase.System.TimeSpan.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
@@ -293,7 +293,7 @@ package NetFrameworkBase.System.TimeSpan is
       function ToString
       (
          this : in out TimeSpan.Kind;
-         format : NetFrameworkBase.BSTR;
+         format : NetFrameworkBase.BSTR; 
          formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
       )
       return NetFrameworkBase.BSTR;
@@ -306,10 +306,11 @@ package NetFrameworkBase.System.TimeSpan is
       
       function op_Subtraction
       (
-         t1 : NetFrameworkBase.System.TimeSpan.Kind_Ptr;
+         t1 : NetFrameworkBase.System.TimeSpan.Kind_Ptr; 
          t2 : NetFrameworkBase.System.TimeSpan.Kind_Ptr
       )
       return NetFrameworkBase.System.TimeSpan.Kind_Ptr;
+      function "-"(t1 : NetFrameworkBase.System.TimeSpan.Kind_Ptr; t2 : NetFrameworkBase.System.TimeSpan.Kind_Ptr) return NetFrameworkBase.System.TimeSpan.Kind_Ptr renames op_Subtraction;
       
       function op_UnaryPlus
       (
@@ -319,87 +320,92 @@ package NetFrameworkBase.System.TimeSpan is
       
       function op_Addition
       (
-         t1 : NetFrameworkBase.System.TimeSpan.Kind_Ptr;
+         t1 : NetFrameworkBase.System.TimeSpan.Kind_Ptr; 
          t2 : NetFrameworkBase.System.TimeSpan.Kind_Ptr
       )
       return NetFrameworkBase.System.TimeSpan.Kind_Ptr;
+      function "+"(t1 : NetFrameworkBase.System.TimeSpan.Kind_Ptr; t2 : NetFrameworkBase.System.TimeSpan.Kind_Ptr) return NetFrameworkBase.System.TimeSpan.Kind_Ptr renames op_Addition;
       
       function op_Equality
       (
-         t1 : NetFrameworkBase.System.TimeSpan.Kind_Ptr;
+         t1 : NetFrameworkBase.System.TimeSpan.Kind_Ptr; 
          t2 : NetFrameworkBase.System.TimeSpan.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function op_Inequality
       (
-         t1 : NetFrameworkBase.System.TimeSpan.Kind_Ptr;
+         t1 : NetFrameworkBase.System.TimeSpan.Kind_Ptr; 
          t2 : NetFrameworkBase.System.TimeSpan.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function op_LessThan
       (
-         t1 : NetFrameworkBase.System.TimeSpan.Kind_Ptr;
+         t1 : NetFrameworkBase.System.TimeSpan.Kind_Ptr; 
          t2 : NetFrameworkBase.System.TimeSpan.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
+      function "<"(t1 : NetFrameworkBase.System.TimeSpan.Kind_Ptr; t2 : NetFrameworkBase.System.TimeSpan.Kind_Ptr) return NetFrameworkBase.Boolean renames op_LessThan;
       
       function op_LessThanOrEqual
       (
-         t1 : NetFrameworkBase.System.TimeSpan.Kind_Ptr;
+         t1 : NetFrameworkBase.System.TimeSpan.Kind_Ptr; 
          t2 : NetFrameworkBase.System.TimeSpan.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
+      function "<="(t1 : NetFrameworkBase.System.TimeSpan.Kind_Ptr; t2 : NetFrameworkBase.System.TimeSpan.Kind_Ptr) return NetFrameworkBase.Boolean renames op_LessThanOrEqual;
       
       function op_GreaterThan
       (
-         t1 : NetFrameworkBase.System.TimeSpan.Kind_Ptr;
+         t1 : NetFrameworkBase.System.TimeSpan.Kind_Ptr; 
          t2 : NetFrameworkBase.System.TimeSpan.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
+      function ">"(t1 : NetFrameworkBase.System.TimeSpan.Kind_Ptr; t2 : NetFrameworkBase.System.TimeSpan.Kind_Ptr) return NetFrameworkBase.Boolean renames op_GreaterThan;
       
       function op_GreaterThanOrEqual
       (
-         t1 : NetFrameworkBase.System.TimeSpan.Kind_Ptr;
+         t1 : NetFrameworkBase.System.TimeSpan.Kind_Ptr; 
          t2 : NetFrameworkBase.System.TimeSpan.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
+      function ">="(t1 : NetFrameworkBase.System.TimeSpan.Kind_Ptr; t2 : NetFrameworkBase.System.TimeSpan.Kind_Ptr) return NetFrameworkBase.Boolean renames op_GreaterThanOrEqual;
       
       function ParseExact
       (
-         input : NetFrameworkBase.BSTR;
-         format : NetFrameworkBase.BSTR;
-         formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
+         input : NetFrameworkBase.BSTR; 
+         format : NetFrameworkBase.BSTR; 
+         formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr; 
          styles : NetFrameworkBase.System.Globalization.TimeSpanStyles.Kind
       )
       return NetFrameworkBase.System.TimeSpan.Kind_Ptr;
       
       function ParseExact
       (
-         input : NetFrameworkBase.BSTR;
-         formats : NetFrameworkBase.BSTR_Array;
-         formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
+         input : NetFrameworkBase.BSTR; 
+         formats : NetFrameworkBase.BSTR_Array; 
+         formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr; 
          styles : NetFrameworkBase.System.Globalization.TimeSpanStyles.Kind
       )
       return NetFrameworkBase.System.TimeSpan.Kind_Ptr;
       
       function TryParseExact
       (
-         input : NetFrameworkBase.BSTR;
-         format : NetFrameworkBase.BSTR;
-         formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
-         styles : NetFrameworkBase.System.Globalization.TimeSpanStyles.Kind;
+         input : NetFrameworkBase.BSTR; 
+         format : NetFrameworkBase.BSTR; 
+         formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr; 
+         styles : NetFrameworkBase.System.Globalization.TimeSpanStyles.Kind; 
          result : out NetFrameworkBase.System.TimeSpan.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function TryParseExact
       (
-         input : NetFrameworkBase.BSTR;
-         formats : NetFrameworkBase.BSTR_Array;
-         formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
-         styles : NetFrameworkBase.System.Globalization.TimeSpanStyles.Kind;
+         input : NetFrameworkBase.BSTR; 
+         formats : NetFrameworkBase.BSTR_Array; 
+         formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr; 
+         styles : NetFrameworkBase.System.Globalization.TimeSpanStyles.Kind; 
          result : out NetFrameworkBase.System.TimeSpan.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;

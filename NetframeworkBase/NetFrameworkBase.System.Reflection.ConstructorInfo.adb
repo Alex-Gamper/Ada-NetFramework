@@ -70,7 +70,7 @@ package body NetFrameworkBase.System.Reflection.ConstructorInfo is
    
    function op_Equality
    (
-      left : NetFrameworkBase.System.Reflection.ConstructorInfo.Kind_Ptr;
+      left : NetFrameworkBase.System.Reflection.ConstructorInfo.Kind_Ptr; 
       right : NetFrameworkBase.System.Reflection.ConstructorInfo.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -112,7 +112,7 @@ package body NetFrameworkBase.System.Reflection.ConstructorInfo is
    
    function op_Inequality
    (
-      left : NetFrameworkBase.System.Reflection.ConstructorInfo.Kind_Ptr;
+      left : NetFrameworkBase.System.Reflection.ConstructorInfo.Kind_Ptr; 
       right : NetFrameworkBase.System.Reflection.ConstructorInfo.Kind_Ptr
    )
    return NetFrameworkBase.Boolean is
@@ -302,9 +302,9 @@ package body NetFrameworkBase.System.Reflection.ConstructorInfo is
    function Invoke
    (
       this : in out ConstructorInfo.Kind;
-      invokeAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind;
-      binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr;
-      parameters : NetFrameworkBase.System.Object.Kind_Array;
+      invokeAttr : NetFrameworkBase.System.Reflection.BindingFlags.Kind; 
+      binder : NetFrameworkBase.System.Reflection.Binder.Kind_Ptr; 
+      parameters : NetFrameworkBase.System.Object.Kind_Array; 
       culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr
    )
    return NetFrameworkBase.System.Object.Kind_Ptr is

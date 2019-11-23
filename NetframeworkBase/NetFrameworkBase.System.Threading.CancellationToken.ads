@@ -71,7 +71,7 @@ package NetFrameworkBase.System.Threading.CancellationToken is
       function Register
       (
          this : in out CancellationToken.Kind;
-         callback : NetFrameworkBase.System.Action.Kind_Ptr;
+         callback : NetFrameworkBase.System.Action.Kind_Ptr; 
          useSynchronizationContext : NetFrameworkBase.Boolean
       )
       return NetFrameworkBase.System.Threading.CancellationTokenRegistration.Kind_Ptr;
@@ -98,14 +98,14 @@ package NetFrameworkBase.System.Threading.CancellationToken is
       
       function op_Equality
       (
-         left : NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr;
+         left : NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr; 
          right : NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
       
       function op_Inequality
       (
-         left : NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr;
+         left : NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr; 
          right : NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
