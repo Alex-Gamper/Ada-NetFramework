@@ -45,6 +45,7 @@ package NetFrameworkBase.System.Reflection.CustomAttributeNamedArgument is
          right : NetFrameworkBase.System.Reflection.CustomAttributeNamedArgument.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
+      function "="(left : NetFrameworkBase.System.Reflection.CustomAttributeNamedArgument.Kind_Ptr; right : NetFrameworkBase.System.Reflection.CustomAttributeNamedArgument.Kind_Ptr) return NetFrameworkBase.Boolean renames op_Equality;
       
       function op_Inequality
       (

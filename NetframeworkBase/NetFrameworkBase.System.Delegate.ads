@@ -188,6 +188,7 @@ package NetFrameworkBase.System.Delegate is
          d2 : NetFrameworkBase.System.Delegate.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
+      function "="(d1 : NetFrameworkBase.System.Delegate.Kind_Ptr; d2 : NetFrameworkBase.System.Delegate.Kind_Ptr) return NetFrameworkBase.Boolean renames op_Equality;
       
       function op_Inequality
       (

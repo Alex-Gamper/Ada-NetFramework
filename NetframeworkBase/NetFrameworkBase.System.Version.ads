@@ -131,6 +131,7 @@ package NetFrameworkBase.System.Version is
          v2 : NetFrameworkBase.System.Version.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
+      function "="(v1 : NetFrameworkBase.System.Version.Kind_Ptr; v2 : NetFrameworkBase.System.Version.Kind_Ptr) return NetFrameworkBase.Boolean renames op_Equality;
       
       function op_Inequality
       (

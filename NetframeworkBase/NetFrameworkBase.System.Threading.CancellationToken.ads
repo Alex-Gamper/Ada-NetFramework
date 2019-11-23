@@ -102,6 +102,7 @@ package NetFrameworkBase.System.Threading.CancellationToken is
          right : NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
+      function "="(left : NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr; right : NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr) return NetFrameworkBase.Boolean renames op_Equality;
       
       function op_Inequality
       (

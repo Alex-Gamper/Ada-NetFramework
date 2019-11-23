@@ -117,6 +117,7 @@ package NetFrameworkBase.System.IntPtr is
          value2 : NetFrameworkBase.IntPtr
       )
       return NetFrameworkBase.Boolean;
+      function "="(value1 : NetFrameworkBase.IntPtr; value2 : NetFrameworkBase.IntPtr) return NetFrameworkBase.Boolean renames op_Equality;
       
       function op_Inequality
       (

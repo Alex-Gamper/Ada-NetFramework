@@ -66,6 +66,7 @@ package NetFrameworkBase.System.ModuleHandle is
          right : NetFrameworkBase.System.ModuleHandle.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
+      function "="(left : NetFrameworkBase.System.ModuleHandle.Kind_Ptr; right : NetFrameworkBase.System.ModuleHandle.Kind_Ptr) return NetFrameworkBase.Boolean renames op_Equality;
       
       function op_Inequality
       (

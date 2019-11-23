@@ -48,6 +48,7 @@ package NetFrameworkBase.System.Reflection.MethodInfo is
          right : NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
+      function "="(left : NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr; right : NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr) return NetFrameworkBase.Boolean renames op_Equality;
       
       function op_Inequality
       (

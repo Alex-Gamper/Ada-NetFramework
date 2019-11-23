@@ -111,6 +111,7 @@ package NetFrameworkBase.System.String is
          b : NetFrameworkBase.BSTR
       )
       return NetFrameworkBase.Boolean;
+      function "="(a : NetFrameworkBase.BSTR; b : NetFrameworkBase.BSTR) return NetFrameworkBase.Boolean renames op_Equality;
       
       function op_Inequality
       (

@@ -75,6 +75,7 @@ package NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName is
          right : NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
+      function "="(left : NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName.Kind_Ptr; right : NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName.Kind_Ptr) return NetFrameworkBase.Boolean renames op_Equality;
       
       function op_Inequality
       (

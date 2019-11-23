@@ -422,6 +422,7 @@ package NetFrameworkBase.System.DateTimeOffset is
          right : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
+      function "="(left : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr; right : NetFrameworkBase.System.DateTimeOffset.Kind_Ptr) return NetFrameworkBase.Boolean renames op_Equality;
       
       function op_Inequality
       (

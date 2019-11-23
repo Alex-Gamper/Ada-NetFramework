@@ -112,6 +112,7 @@ package NetFrameworkBase.System.Guid is
          b : NetFrameworkBase.System.Guid.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
+      function "="(a : NetFrameworkBase.System.Guid.Kind_Ptr; b : NetFrameworkBase.System.Guid.Kind_Ptr) return NetFrameworkBase.Boolean renames op_Equality;
       
       function op_Inequality
       (

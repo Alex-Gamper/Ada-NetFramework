@@ -46,6 +46,7 @@ package NetFrameworkBase.System.RuntimeTypeHandle is
          right : NetFrameworkBase.System.Object.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
+      function "="(left : NetFrameworkBase.System.RuntimeTypeHandle.Kind_Ptr; right : NetFrameworkBase.System.Object.Kind_Ptr) return NetFrameworkBase.Boolean renames op_Equality;
       
       function op_Equality
       (
@@ -53,6 +54,7 @@ package NetFrameworkBase.System.RuntimeTypeHandle is
          right : NetFrameworkBase.System.RuntimeTypeHandle.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
+      function "="(left : NetFrameworkBase.System.Object.Kind_Ptr; right : NetFrameworkBase.System.RuntimeTypeHandle.Kind_Ptr) return NetFrameworkBase.Boolean renames op_Equality;
       
       function op_Inequality
       (

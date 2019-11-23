@@ -70,6 +70,7 @@ package NetFrameworkBase.System.Reflection.MethodBase is
          right : NetFrameworkBase.System.Reflection.MethodBase.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
+      function "="(left : NetFrameworkBase.System.Reflection.MethodBase.Kind_Ptr; right : NetFrameworkBase.System.Reflection.MethodBase.Kind_Ptr) return NetFrameworkBase.Boolean renames op_Equality;
       
       function op_Inequality
       (

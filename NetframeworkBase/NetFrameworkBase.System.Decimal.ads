@@ -507,6 +507,7 @@ package NetFrameworkBase.System.Decimal is
          d2 : NetFrameworkBase.System.Decimal.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
+      function "="(d1 : NetFrameworkBase.System.Decimal.Kind_Ptr; d2 : NetFrameworkBase.System.Decimal.Kind_Ptr) return NetFrameworkBase.Boolean renames op_Equality;
       
       function op_Inequality
       (

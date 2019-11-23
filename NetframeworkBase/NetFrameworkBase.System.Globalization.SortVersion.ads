@@ -75,6 +75,7 @@ package NetFrameworkBase.System.Globalization.SortVersion is
          right : NetFrameworkBase.System.Globalization.SortVersion.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
+      function "="(left : NetFrameworkBase.System.Globalization.SortVersion.Kind_Ptr; right : NetFrameworkBase.System.Globalization.SortVersion.Kind_Ptr) return NetFrameworkBase.Boolean renames op_Equality;
       
       function op_Inequality
       (

@@ -1087,6 +1087,7 @@ package NetFrameworkBase.System.Type_x is
          right : NetFrameworkBase.System.Type_x.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
+      function "="(left : NetFrameworkBase.System.Type_x.Kind_Ptr; right : NetFrameworkBase.System.Type_x.Kind_Ptr) return NetFrameworkBase.Boolean renames op_Equality;
       
       function op_Inequality
       (

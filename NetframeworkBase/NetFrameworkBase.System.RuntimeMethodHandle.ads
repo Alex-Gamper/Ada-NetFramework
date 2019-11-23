@@ -64,6 +64,7 @@ package NetFrameworkBase.System.RuntimeMethodHandle is
          right : NetFrameworkBase.System.RuntimeMethodHandle.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
+      function "="(left : NetFrameworkBase.System.RuntimeMethodHandle.Kind_Ptr; right : NetFrameworkBase.System.RuntimeMethodHandle.Kind_Ptr) return NetFrameworkBase.Boolean renames op_Equality;
       
       function op_Inequality
       (

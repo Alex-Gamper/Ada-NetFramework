@@ -71,6 +71,7 @@ package NetFrameworkBase.System.RuntimeFieldHandle is
          right : NetFrameworkBase.System.RuntimeFieldHandle.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
+      function "="(left : NetFrameworkBase.System.RuntimeFieldHandle.Kind_Ptr; right : NetFrameworkBase.System.RuntimeFieldHandle.Kind_Ptr) return NetFrameworkBase.Boolean renames op_Equality;
       
       function op_Inequality
       (

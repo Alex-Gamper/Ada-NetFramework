@@ -84,6 +84,7 @@ package NetFrameworkBase.System.Single is
          right : NetFrameworkBase.Single
       )
       return NetFrameworkBase.Boolean;
+      function "="(left : NetFrameworkBase.Single; right : NetFrameworkBase.Single) return NetFrameworkBase.Boolean renames op_Equality;
       
       function op_Inequality
       (

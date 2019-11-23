@@ -428,6 +428,7 @@ package NetFrameworkBase.System.DateTime is
          d2 : NetFrameworkBase.Date
       )
       return NetFrameworkBase.Boolean;
+      function "="(d1 : NetFrameworkBase.Date; d2 : NetFrameworkBase.Date) return NetFrameworkBase.Boolean renames op_Equality;
       
       function op_Inequality
       (

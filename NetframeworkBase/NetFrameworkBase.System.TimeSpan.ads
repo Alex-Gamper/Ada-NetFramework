@@ -332,6 +332,7 @@ package NetFrameworkBase.System.TimeSpan is
          t2 : NetFrameworkBase.System.TimeSpan.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
+      function "="(t1 : NetFrameworkBase.System.TimeSpan.Kind_Ptr; t2 : NetFrameworkBase.System.TimeSpan.Kind_Ptr) return NetFrameworkBase.Boolean renames op_Equality;
       
       function op_Inequality
       (

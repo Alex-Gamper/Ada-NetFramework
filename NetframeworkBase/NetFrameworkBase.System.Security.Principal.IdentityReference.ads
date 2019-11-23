@@ -43,6 +43,7 @@ package NetFrameworkBase.System.Security.Principal.IdentityReference is
          right : NetFrameworkBase.System.Security.Principal.IdentityReference.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
+      function "="(left : NetFrameworkBase.System.Security.Principal.IdentityReference.Kind_Ptr; right : NetFrameworkBase.System.Security.Principal.IdentityReference.Kind_Ptr) return NetFrameworkBase.Boolean renames op_Equality;
       
       function op_Inequality
       (

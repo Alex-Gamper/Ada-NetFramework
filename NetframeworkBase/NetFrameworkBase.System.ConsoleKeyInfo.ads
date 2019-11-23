@@ -77,6 +77,7 @@ package NetFrameworkBase.System.ConsoleKeyInfo is
          b : NetFrameworkBase.System.ConsoleKeyInfo.Kind_Ptr
       )
       return NetFrameworkBase.Boolean;
+      function "="(a : NetFrameworkBase.System.ConsoleKeyInfo.Kind_Ptr; b : NetFrameworkBase.System.ConsoleKeyInfo.Kind_Ptr) return NetFrameworkBase.Boolean renames op_Equality;
       
       function op_Inequality
       (

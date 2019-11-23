@@ -91,6 +91,7 @@ package NetFrameworkBase.System.Double is
          right : NetFrameworkBase.Double
       )
       return NetFrameworkBase.Boolean;
+      function "="(left : NetFrameworkBase.Double; right : NetFrameworkBase.Double) return NetFrameworkBase.Boolean renames op_Equality;
       
       function op_Inequality
       (
