@@ -40,6 +40,7 @@ with NetFrameworkBase.System.Runtime.Serialization.ISerializationSurrogate;
 with NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector;
 with NetFramework;
 with NetFramework.System;
+with NetFramework.System.IO;
 with NetFramework.System.Reflection; 
 with NetFramework.System.Threading;
 with NetFramework.System.Runtime.Serialization;
@@ -201,7 +202,7 @@ begin
         end;
 
         ------------------------------------------------------------------------
-        procedure Test_Out_Array is
+        procedure Test_Return_Array is
             m_Object        : NetFramework.System.Object := NetFramework.System.Constructor;
             m_Type          : NetFramework.System.Type_x := m_Object.GetType;
             m_Lengths       : NetFrameworkBase.Int32_array(1..1) := (others => 16);
@@ -229,6 +230,12 @@ begin
         begin
             NetFrameworkBase.System.Console.WriteLine (m_DateTime.ToString);
             Ada.Wide_Text_IO.Put_Line (To_Ada(m_String));
+        end;
+
+        procedure Test_In_Out_Array is
+            m_StreamReader      : Netframework.System.IO.StreamReader := Netframework.System.IO.Constructor (To_BSTR("c:\tmp\ada.txt"));
+        begin
+            null;
         end;
 
         procedure Test_Operators is
@@ -270,9 +277,10 @@ begin
         Test_Constructors;
         Test_Callbacks;
         Test_Interface_Out_Param;
-        Test_Out_Array;
+        Test_Return_Array;
 --        Test_Builtin_Array;
         Test_In_Array;
+        Test_In_Out_Array;
         Test_Operators;
 
         x := NetFrameworkBase.System.Console.ReadLine;

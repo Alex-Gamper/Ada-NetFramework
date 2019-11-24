@@ -36,6 +36,7 @@ with NetFrameworkBase.System.Security.AccessControl.FileSystemAccessRule;
 with NetFrameworkBase.System.Security.AccessControl.FileSystemAuditRule;
 with NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity;
 with NetFrameworkBase.System.Security.AccessControl.FileSecurity;
+with NetFrameworkBase.System.Security.AccessControl.DirectorySecurity;
 with NetFrameworkBase.System.Security.AccessControl.NativeObjectSecurity;
 with NetFrameworkBase.System.Security.AccessControl.AccessControlModification;
 with NetFrameworkBase.System.Security.AccessControl.ObjectSecurity;
@@ -151,6 +152,18 @@ package NetFramework.System.Security.AccessControl is
             includeSections : NetFrameworkBase.System.Security.AccessControl.AccessControlSections.Kind
          )
          return NetFrameworkBase.System.Security.AccessControl.FileSecurity.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.FileSecurity.Constructor; 
+         
+      subtype DirectorySecurity is NetFrameworkBase.System.Security.AccessControl.DirectorySecurity.Kind_Ptr;
+      subtype DirectorySecurity_Array is NetFrameworkBase.System.Security.AccessControl.DirectorySecurity.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.AccessControl.DirectorySecurity.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.DirectorySecurity.Constructor;
+         
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR;
+            includeSections : NetFrameworkBase.System.Security.AccessControl.AccessControlSections.Kind
+         )
+         return NetFrameworkBase.System.Security.AccessControl.DirectorySecurity.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.DirectorySecurity.Constructor; 
          
       subtype NativeObjectSecurity is NetFrameworkBase.System.Security.AccessControl.NativeObjectSecurity.Kind_Ptr;
       subtype NativeObjectSecurity_Array is NetFrameworkBase.System.Security.AccessControl.NativeObjectSecurity.Kind_Array;

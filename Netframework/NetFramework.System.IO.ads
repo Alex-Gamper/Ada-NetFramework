@@ -27,23 +27,59 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.IO.Directory;
+with NetFrameworkBase.System.IO.DirectoryInfo;
+with NetFrameworkBase.System.IO.SearchOption;
+with NetFrameworkBase.System.IO.File;
 with NetFrameworkBase.System.IO.FileAccess;
+with NetFrameworkBase.System.IO.FileInfo;
 with NetFrameworkBase.System.IO.FileMode;
 with NetFrameworkBase.System.IO.FileOptions;
 with NetFrameworkBase.System.IO.FileShare;
 with NetFrameworkBase.System.IO.FileStream;
+with NetFrameworkBase.System.IO.FileSystemInfo;
+with NetFrameworkBase.System.IO.FileAttributes;
 with NetFrameworkBase.System.IO.SeekOrigin;
 with NetFrameworkBase.System.IO.Stream;
+with NetFrameworkBase.System.IO.StreamReader;
+with NetFrameworkBase.System.IO.StreamWriter;
 with NetFrameworkBase.System.IO.TextReader;
 with NetFrameworkBase.System.IO.TextWriter;
 with NetFrameworkBase.System.Security.AccessControl.FileSystemRights;
 with NetFrameworkBase.System.Security.AccessControl.FileSecurity;
 with NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeFileHandle;
+with NetFrameworkBase.System.Text.Encoding;
 --------------------------------------------------------------------------------
 package NetFramework.System.IO is
    
+      subtype Directory is NetFrameworkBase.System.IO.Directory.Kind_Ptr;
+      subtype Directory_Array is NetFrameworkBase.System.IO.Directory.Kind_Array;
+      
+      subtype DirectoryInfo is NetFrameworkBase.System.IO.DirectoryInfo.Kind_Ptr;
+      subtype DirectoryInfo_Array is NetFrameworkBase.System.IO.DirectoryInfo.Kind_Array;
+      
+         function Constructor
+         (
+            path : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.IO.DirectoryInfo.Kind_Ptr renames NetFrameworkBase.System.IO.DirectoryInfo.Constructor; 
+         
+      subtype SearchOption is NetFrameworkBase.System.IO.SearchOption.Kind;
+      
+      subtype File is NetFrameworkBase.System.IO.File.Kind_Ptr;
+      subtype File_Array is NetFrameworkBase.System.IO.File.Kind_Array;
+      
       subtype FileAccess is NetFrameworkBase.System.IO.FileAccess.Kind;
       
+      subtype FileInfo is NetFrameworkBase.System.IO.FileInfo.Kind_Ptr;
+      subtype FileInfo_Array is NetFrameworkBase.System.IO.FileInfo.Kind_Array;
+      
+         function Constructor
+         (
+            fileName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.IO.FileInfo.Kind_Ptr renames NetFrameworkBase.System.IO.FileInfo.Constructor; 
+         
       subtype FileMode is NetFrameworkBase.System.IO.FileMode.Kind;
       
       subtype FileOptions is NetFrameworkBase.System.IO.FileOptions.Kind;
@@ -190,11 +226,166 @@ package NetFramework.System.IO is
          )
          return NetFrameworkBase.System.IO.FileStream.Kind_Ptr renames NetFrameworkBase.System.IO.FileStream.Constructor; 
          
+      subtype FileSystemInfo is NetFrameworkBase.System.IO.FileSystemInfo.Kind_Ptr;
+      subtype FileSystemInfo_Array is NetFrameworkBase.System.IO.FileSystemInfo.Kind_Array;
+      
+      subtype FileAttributes is NetFrameworkBase.System.IO.FileAttributes.Kind;
+      
       subtype SeekOrigin is NetFrameworkBase.System.IO.SeekOrigin.Kind;
       
       subtype Stream is NetFrameworkBase.System.IO.Stream.Kind_Ptr;
       subtype Stream_Array is NetFrameworkBase.System.IO.Stream.Kind_Array;
       
+      subtype StreamReader is NetFrameworkBase.System.IO.StreamReader.Kind_Ptr;
+      subtype StreamReader_Array is NetFrameworkBase.System.IO.StreamReader.Kind_Array;
+      
+         function Constructor
+         (
+            stream : NetFrameworkBase.System.IO.Stream.Kind_Ptr
+         )
+         return NetFrameworkBase.System.IO.StreamReader.Kind_Ptr renames NetFrameworkBase.System.IO.StreamReader.Constructor; 
+         
+         function Constructor
+         (
+            stream : NetFrameworkBase.System.IO.Stream.Kind_Ptr;
+            detectEncodingFromByteOrderMarks : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.IO.StreamReader.Kind_Ptr renames NetFrameworkBase.System.IO.StreamReader.Constructor; 
+         
+         function Constructor
+         (
+            stream : NetFrameworkBase.System.IO.Stream.Kind_Ptr;
+            encoding : NetFrameworkBase.System.Text.Encoding.Kind_Ptr
+         )
+         return NetFrameworkBase.System.IO.StreamReader.Kind_Ptr renames NetFrameworkBase.System.IO.StreamReader.Constructor; 
+         
+         function Constructor
+         (
+            stream : NetFrameworkBase.System.IO.Stream.Kind_Ptr;
+            encoding : NetFrameworkBase.System.Text.Encoding.Kind_Ptr;
+            detectEncodingFromByteOrderMarks : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.IO.StreamReader.Kind_Ptr renames NetFrameworkBase.System.IO.StreamReader.Constructor; 
+         
+         function Constructor
+         (
+            stream : NetFrameworkBase.System.IO.Stream.Kind_Ptr;
+            encoding : NetFrameworkBase.System.Text.Encoding.Kind_Ptr;
+            detectEncodingFromByteOrderMarks : NetFrameworkBase.Boolean;
+            bufferSize : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.IO.StreamReader.Kind_Ptr renames NetFrameworkBase.System.IO.StreamReader.Constructor; 
+         
+         function Constructor
+         (
+            stream : NetFrameworkBase.System.IO.Stream.Kind_Ptr;
+            encoding : NetFrameworkBase.System.Text.Encoding.Kind_Ptr;
+            detectEncodingFromByteOrderMarks : NetFrameworkBase.Boolean;
+            bufferSize : NetFrameworkBase.Int32;
+            leaveOpen : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.IO.StreamReader.Kind_Ptr renames NetFrameworkBase.System.IO.StreamReader.Constructor; 
+         
+         function Constructor
+         (
+            path : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.IO.StreamReader.Kind_Ptr renames NetFrameworkBase.System.IO.StreamReader.Constructor; 
+         
+         function Constructor
+         (
+            path : NetFrameworkBase.BSTR;
+            detectEncodingFromByteOrderMarks : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.IO.StreamReader.Kind_Ptr renames NetFrameworkBase.System.IO.StreamReader.Constructor; 
+         
+         function Constructor
+         (
+            path : NetFrameworkBase.BSTR;
+            encoding : NetFrameworkBase.System.Text.Encoding.Kind_Ptr
+         )
+         return NetFrameworkBase.System.IO.StreamReader.Kind_Ptr renames NetFrameworkBase.System.IO.StreamReader.Constructor; 
+         
+         function Constructor
+         (
+            path : NetFrameworkBase.BSTR;
+            encoding : NetFrameworkBase.System.Text.Encoding.Kind_Ptr;
+            detectEncodingFromByteOrderMarks : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.IO.StreamReader.Kind_Ptr renames NetFrameworkBase.System.IO.StreamReader.Constructor; 
+         
+         function Constructor
+         (
+            path : NetFrameworkBase.BSTR;
+            encoding : NetFrameworkBase.System.Text.Encoding.Kind_Ptr;
+            detectEncodingFromByteOrderMarks : NetFrameworkBase.Boolean;
+            bufferSize : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.IO.StreamReader.Kind_Ptr renames NetFrameworkBase.System.IO.StreamReader.Constructor; 
+         
+      subtype StreamWriter is NetFrameworkBase.System.IO.StreamWriter.Kind_Ptr;
+      subtype StreamWriter_Array is NetFrameworkBase.System.IO.StreamWriter.Kind_Array;
+      
+         function Constructor
+         (
+            stream : NetFrameworkBase.System.IO.Stream.Kind_Ptr
+         )
+         return NetFrameworkBase.System.IO.StreamWriter.Kind_Ptr renames NetFrameworkBase.System.IO.StreamWriter.Constructor; 
+         
+         function Constructor
+         (
+            stream : NetFrameworkBase.System.IO.Stream.Kind_Ptr;
+            encoding : NetFrameworkBase.System.Text.Encoding.Kind_Ptr
+         )
+         return NetFrameworkBase.System.IO.StreamWriter.Kind_Ptr renames NetFrameworkBase.System.IO.StreamWriter.Constructor; 
+         
+         function Constructor
+         (
+            stream : NetFrameworkBase.System.IO.Stream.Kind_Ptr;
+            encoding : NetFrameworkBase.System.Text.Encoding.Kind_Ptr;
+            bufferSize : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.IO.StreamWriter.Kind_Ptr renames NetFrameworkBase.System.IO.StreamWriter.Constructor; 
+         
+         function Constructor
+         (
+            stream : NetFrameworkBase.System.IO.Stream.Kind_Ptr;
+            encoding : NetFrameworkBase.System.Text.Encoding.Kind_Ptr;
+            bufferSize : NetFrameworkBase.Int32;
+            leaveOpen : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.IO.StreamWriter.Kind_Ptr renames NetFrameworkBase.System.IO.StreamWriter.Constructor; 
+         
+         function Constructor
+         (
+            path : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.IO.StreamWriter.Kind_Ptr renames NetFrameworkBase.System.IO.StreamWriter.Constructor; 
+         
+         function Constructor
+         (
+            path : NetFrameworkBase.BSTR;
+            append : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.IO.StreamWriter.Kind_Ptr renames NetFrameworkBase.System.IO.StreamWriter.Constructor; 
+         
+         function Constructor
+         (
+            path : NetFrameworkBase.BSTR;
+            append : NetFrameworkBase.Boolean;
+            encoding : NetFrameworkBase.System.Text.Encoding.Kind_Ptr
+         )
+         return NetFrameworkBase.System.IO.StreamWriter.Kind_Ptr renames NetFrameworkBase.System.IO.StreamWriter.Constructor; 
+         
+         function Constructor
+         (
+            path : NetFrameworkBase.BSTR;
+            append : NetFrameworkBase.Boolean;
+            encoding : NetFrameworkBase.System.Text.Encoding.Kind_Ptr;
+            bufferSize : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.IO.StreamWriter.Kind_Ptr renames NetFrameworkBase.System.IO.StreamWriter.Constructor; 
+         
       subtype TextReader is NetFrameworkBase.System.IO.TextReader.Kind_Ptr;
       subtype TextReader_Array is NetFrameworkBase.System.IO.TextReader.Kind_Array;
       
