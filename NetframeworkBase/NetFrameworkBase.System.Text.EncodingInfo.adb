@@ -81,7 +81,7 @@ package body NetFrameworkBase.System.Text.EncodingInfo is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, False);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -105,7 +105,7 @@ package body NetFrameworkBase.System.Text.EncodingInfo is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, False);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -129,7 +129,7 @@ package body NetFrameworkBase.System.Text.EncodingInfo is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, False);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -154,7 +154,7 @@ package body NetFrameworkBase.System.Text.EncodingInfo is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal, False);
    
       SetObject (RetVal.m_Kind, p_RetVal);
       SetObject (RetVal.m_Kind, p_NetRetVal);
@@ -191,7 +191,7 @@ package body NetFrameworkBase.System.Text.EncodingInfo is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, False);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -216,7 +216,7 @@ package body NetFrameworkBase.System.Text.EncodingInfo is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, False);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);

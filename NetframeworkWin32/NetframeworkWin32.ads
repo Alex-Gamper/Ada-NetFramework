@@ -5111,6 +5111,39 @@ package NetFrameworkWin32 is
          pRetVal : access VARIANT
       ) return HRESULT is abstract;
 
+      function InvokeMethod2(
+         This : access IAdaMarshal;
+         type_x : access IType'Class;
+         name : BSTR;
+         invokeAtts : BindingFlags;
+         binder : access IBinder'Class;
+         target : VARIANT;
+         args : access SAFEARRAY;
+         pRetVal : access IUnknown_Ptr
+      ) return HRESULT is abstract;
+
+      function InvokeMethodValue(
+         This : access IAdaMarshal;
+         type_x : access IType'Class;
+         name : BSTR;
+         invokeAtts : BindingFlags;
+         binder : access IBinder'Class;
+         target : VARIANT;
+         args : access SAFEARRAY;
+         pRetVal : access VARIANT
+      ) return HRESULT is abstract;
+
+      function InvokeMethodValue2(
+         This : access IAdaMarshal;
+         type_x : access IType'Class;
+         name : BSTR;
+         invokeAtts : BindingFlags;
+         binder : access IBinder'Class;
+         target : VARIANT;
+         args : access SAFEARRAY;
+         pRetVal : access IUnknown_Ptr
+      ) return HRESULT is abstract;
+
       function GetObjectForNativeVariant(
          This : access IAdaMarshal;
          pSrcNativeVariant : Interfaces.C.Extensions.long_long;
@@ -5130,16 +5163,6 @@ package NetFrameworkWin32 is
          pRetVal : access IUnknown_Ptr
       ) return HRESULT is abstract;
 
-      function InvokeMethod2(
-         This : access IAdaMarshal;
-         type_x : access IType'Class;
-         name : BSTR;
-         invokeAtts : BindingFlags;
-         binder : access IBinder'Class;
-         target : VARIANT;
-         args : access SAFEARRAY;
-         pRetVal : access IUnknown_Ptr
-      ) return HRESULT is abstract;
 
    type IAdaMarshal_Ptr is access all IAdaMarshal'Class;
 

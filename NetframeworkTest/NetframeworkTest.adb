@@ -235,17 +235,24 @@ begin
             use NetframeworkBase.System.TimeSpan;
             m_TimeSpan1         : Netframework.System.TimeSpan := Netframework.System.Constructor (1, 0, 0);
             m_TimeSpan2         : Netframework.System.TimeSpan := Netframework.System.Constructor (1, 0, 0);
---            m_Ok                : Netframework.Boolean := NetframeworkBase.System.TimeSpan.Op_Equality (m_TimeSpan1, m_TimeSpan2);
+            m_TimeSpan3         : Netframework.System.TimeSpan := m_TimeSpan1.Add (m_TimeSpan2);
+            m_Ok                : Netframework.Boolean := NetframeworkBase.System.TimeSpan.Op_Equality (m_TimeSpan1, m_TimeSpan2);
         begin
---            if m_TimeSpan1 = m_TimeSpan2 then
---                m_TimeSpan1 := m_TimeSpan1 + m_TimeSpan2;
---                if m_TimeSpan1 /= m_TimeSpan2 then
---                    m_TimeSpan1 := m_TimeSpan1 - m_TimeSpan2;
---                end if;
---            else
---                raise PROGRAM_ERROR;
---            end if;
-            null;
+            if m_TimeSpan1 = m_TimeSpan2 then
+                m_TimeSpan1 := m_TimeSpan1 + m_TimeSpan2;
+                if m_TimeSpan1 /= m_TimeSpan2 then
+                    m_TimeSpan1 := m_TimeSpan1 - m_TimeSpan2;
+                    if m_TimeSpan1 = m_TimeSpan2 then
+                        NetFrameworkBase.System.Console.WriteLine (m_TimeSpan1.ToString);
+                        NetFrameworkBase.System.Console.WriteLine (m_TimeSpan2.ToString);
+                        NetFrameworkBase.System.Console.WriteLine (m_TimeSpan3.ToString);
+                    else
+                        raise PROGRAM_ERROR;
+                    end if;
+                end if;
+            else
+                raise PROGRAM_ERROR;
+            end if;
         end;
 
         x : Netframework.BSTR;

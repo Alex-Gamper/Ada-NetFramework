@@ -82,9 +82,9 @@ package body NetFrameworkBase.System.Runtime.CompilerServices.YieldAwaitable is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal, True);
    
-      SetObject (RetVal.m_Kind, p_RetVal);
+      SetObject (RetVal.m_Kind, To_Variant(p_NetRetVal));
       SetObject (RetVal.m_Kind, p_NetRetVal);
       SysFreeString (p_MethodName);
       return RetVal;

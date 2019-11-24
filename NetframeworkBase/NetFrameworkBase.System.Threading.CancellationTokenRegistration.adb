@@ -80,7 +80,7 @@ package body NetFrameworkBase.System.Threading.CancellationTokenRegistration is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal, True);
    
       SysFreeString (p_MethodName);
    end;
@@ -118,7 +118,7 @@ package body NetFrameworkBase.System.Threading.CancellationTokenRegistration is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, True);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -159,7 +159,7 @@ package body NetFrameworkBase.System.Threading.CancellationTokenRegistration is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, True);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -196,7 +196,7 @@ package body NetFrameworkBase.System.Threading.CancellationTokenRegistration is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, True);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -233,7 +233,7 @@ package body NetFrameworkBase.System.Threading.CancellationTokenRegistration is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, True);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -258,7 +258,7 @@ package body NetFrameworkBase.System.Threading.CancellationTokenRegistration is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, True);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);

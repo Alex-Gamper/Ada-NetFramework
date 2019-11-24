@@ -106,7 +106,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal, False);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -141,7 +141,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal, False);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -165,7 +165,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal, False);
    
       SysFreeString (p_MethodName);
       RetVal := p_RetVal.field_1.field_1.field_1.punkval;
@@ -214,7 +214,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal, False);
    
       -- set out parameter [selector : System.Runtime.Serialization.ISurrogateSelector]
       p_Index(1) := 2;
@@ -264,7 +264,7 @@ package body NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, p_NetRetVal, False);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);

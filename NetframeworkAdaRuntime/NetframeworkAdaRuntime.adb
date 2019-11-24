@@ -372,7 +372,7 @@ package body NetFrameworkAdaRuntime is
     end;
 
     ----------------------------------------------------------------------------
-    function InvokeMethod (kind : IType_ptr; Object : VARIANT; MethodName : BSTR ; Flags : UInt32 ; Parameters : access SAFEARRAY) return VARIANT is
+    function InvokeMethod (kind : IType_ptr; Object : VARIANT; MethodName : BSTR ; Flags : UInt32 ; Parameters : access SAFEARRAY; IsValueType : Boolean) return VARIANT is
         pragma suppress(all_checks);
         Hr          : HRESULT := 0;
         Runtime     : RuntimeHost := Instance;
@@ -385,7 +385,11 @@ package body NetFrameworkAdaRuntime is
             if kind /= null then
                 VariantInit (RetVal'access);
 --                p_Flags := p_Flags or FlattenHierarchy'Enum_rep;
-                Hr := Runtime.m_IAdaMarshal.InvokeMethod (Kind, MethodName, Convert(p_Flags), p_Binder, Object, Parameters, Retval'access);
+                if IsValueType then
+                    Hr := Runtime.m_IAdaMarshal.InvokeMethodValue (Kind, MethodName, Convert(p_Flags), p_Binder, Object, Parameters, Retval'access);
+                else
+                    Hr := Runtime.m_IAdaMarshal.InvokeMethod (Kind, MethodName, Convert(p_Flags), p_Binder, Object, Parameters, Retval'access);
+                end if;
                 if Hr /= 0 then
                     raise InvokeMethod_Failed;
                 end if;
@@ -399,7 +403,7 @@ package body NetFrameworkAdaRuntime is
     end;
 
     ----------------------------------------------------------------------------
-    function InvokeMethod2 (kind : IType_ptr; Object : VARIANT; MethodName : BSTR ; Flags : UInt32 ; Parameters : access SAFEARRAY; NetRetVal : in out IUnknown_Ptr) return VARIANT is
+    function InvokeMethod2 (kind : IType_ptr; Object : VARIANT; MethodName : BSTR ; Flags : UInt32 ; Parameters : access SAFEARRAY; NetRetVal : in out IUnknown_Ptr; IsValueType : Boolean) return VARIANT is
         pragma suppress(all_checks);
         Hr          : HRESULT := 0;
         Runtime     : RuntimeHost := Instance;
@@ -413,18 +417,19 @@ package body NetFrameworkAdaRuntime is
             if kind /= null then
                 VariantInit (RetVal'access);
 --                p_Flags := p_Flags or FlattenHierarchy'Enum_rep;
-                Hr := Runtime.m_IAdaMarshal.InvokeMethod2 (Kind, MethodName, Convert(p_Flags), p_Binder, Object, Parameters, p_NetRetval'access);
-                if Hr = 0 then
-                    Hr := Runtime.m_IAdaMarshal.GetNativeVariantForObject (p_NetRetVal, RetVal'access);
+                if IsValueType then
+                    Hr := Runtime.m_IAdaMarshal.InvokeMethodValue2 (Kind, MethodName, Convert(p_Flags), p_Binder, Object, Parameters, p_NetRetval'access);
+                else
+                    Hr := Runtime.m_IAdaMarshal.InvokeMethod2 (Kind, MethodName, Convert(p_Flags), p_Binder, Object, Parameters, p_NetRetval'access);
                     if Hr = 0 then
-                        NetRetVal := p_NetRetVal;
-                    else
-                        raise InvokeMethod_Failed;
+                        Hr := Runtime.m_IAdaMarshal.GetNativeVariantForObject (p_NetRetVal, RetVal'access);
                     end if;
+                end if;
+                if Hr = 0 then
+                    NetRetVal := p_NetRetVal;
                 else
                     raise InvokeMethod_Failed;
                 end if;
-
             else
                 raise Type_Not_Initialized;
             end if;

@@ -95,7 +95,7 @@ package body NetFrameworkBase.System.Double is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, True);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -131,7 +131,7 @@ package body NetFrameworkBase.System.Double is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, True);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -167,7 +167,7 @@ package body NetFrameworkBase.System.Double is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, True);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -203,7 +203,7 @@ package body NetFrameworkBase.System.Double is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, True);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -240,7 +240,7 @@ package body NetFrameworkBase.System.Double is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, True);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -277,7 +277,7 @@ package body NetFrameworkBase.System.Double is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, True);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -314,7 +314,7 @@ package body NetFrameworkBase.System.Double is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, True);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -355,7 +355,7 @@ package body NetFrameworkBase.System.Double is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, True);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -396,7 +396,7 @@ package body NetFrameworkBase.System.Double is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, True);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -437,7 +437,7 @@ package body NetFrameworkBase.System.Double is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, True);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -478,7 +478,7 @@ package body NetFrameworkBase.System.Double is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, True);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -519,7 +519,7 @@ package body NetFrameworkBase.System.Double is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, True);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -560,7 +560,7 @@ package body NetFrameworkBase.System.Double is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, True);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -597,7 +597,7 @@ package body NetFrameworkBase.System.Double is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, True);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -622,7 +622,7 @@ package body NetFrameworkBase.System.Double is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, True);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -646,7 +646,7 @@ package body NetFrameworkBase.System.Double is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, null, True);
    
       SysFreeString (p_MethodName);
       RetVal := From_Variant (p_RetVal);
@@ -682,7 +682,7 @@ package body NetFrameworkBase.System.Double is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, True);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -720,7 +720,7 @@ package body NetFrameworkBase.System.Double is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, True);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -763,7 +763,7 @@ package body NetFrameworkBase.System.Double is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       p_Target := GetObject(this.m_kind);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, True);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -799,7 +799,7 @@ package body NetFrameworkBase.System.Double is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, True);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -842,7 +842,7 @@ package body NetFrameworkBase.System.Double is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, True);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -884,7 +884,7 @@ package body NetFrameworkBase.System.Double is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, True);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -933,7 +933,7 @@ package body NetFrameworkBase.System.Double is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, True);
    
       Hr := SafeArrayDestroy (p_Parameters);
       SysFreeString (p_MethodName);
@@ -976,7 +976,7 @@ package body NetFrameworkBase.System.Double is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, True);
    
       -- set out parameter [result : System.Double]
       p_Index(1) := 1;
@@ -1036,7 +1036,7 @@ package body NetFrameworkBase.System.Double is
       Hr := SafeArrayPutElement (p_Parameters, p_Index(p_Index'first)'access, Convert (p_Value_Ptr));
    
       VariantInit(p_Target'access);
-      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters);
+      p_RetVal := InvokeMethod (Instance, p_Target, p_MethodName, p_Flags, p_Parameters, True);
    
       -- set out parameter [result : System.Double]
       p_Index(1) := 3;
@@ -1067,7 +1067,7 @@ package body NetFrameworkBase.System.Double is
       p_Flags := p_Flags or NetFrameworkWin32.BindingFlags'(Instance)'Enum_rep;
    
       p_Target := GetObject (this.m_kind);
-      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal);
+      p_RetVal := InvokeMethod2 (Instance, p_Target, p_MethodName, p_Flags, null, p_NetRetVal, True);
    
       SysFreeString (p_MethodName);
       RetVal := ConvertEnum (p_RetVal.field_1.field_1.field_1.lVal);
