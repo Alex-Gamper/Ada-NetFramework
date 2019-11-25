@@ -445,12 +445,14 @@ package NetFrameworkBase.System.Decimal is
          d : NetFrameworkBase.System.Decimal.Kind_Ptr
       )
       return NetFrameworkBase.System.Decimal.Kind_Ptr;
+      function "+"(d : NetFrameworkBase.System.Decimal.Kind_Ptr) return NetFrameworkBase.System.Decimal.Kind_Ptr renames op_UnaryPlus;
       
       function op_UnaryNegation
       (
          d : NetFrameworkBase.System.Decimal.Kind_Ptr
       )
       return NetFrameworkBase.System.Decimal.Kind_Ptr;
+      function "-"(d : NetFrameworkBase.System.Decimal.Kind_Ptr) return NetFrameworkBase.System.Decimal.Kind_Ptr renames op_UnaryNegation;
       
       function op_Increment
       (

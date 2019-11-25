@@ -303,6 +303,7 @@ package NetFrameworkBase.System.TimeSpan is
          t : NetFrameworkBase.System.TimeSpan.Kind_Ptr
       )
       return NetFrameworkBase.System.TimeSpan.Kind_Ptr;
+      function "-"(t : NetFrameworkBase.System.TimeSpan.Kind_Ptr) return NetFrameworkBase.System.TimeSpan.Kind_Ptr renames op_UnaryNegation;
       
       function op_Subtraction
       (
@@ -317,6 +318,7 @@ package NetFrameworkBase.System.TimeSpan is
          t : NetFrameworkBase.System.TimeSpan.Kind_Ptr
       )
       return NetFrameworkBase.System.TimeSpan.Kind_Ptr;
+      function "+"(t : NetFrameworkBase.System.TimeSpan.Kind_Ptr) return NetFrameworkBase.System.TimeSpan.Kind_Ptr renames op_UnaryPlus;
       
       function op_Addition
       (
