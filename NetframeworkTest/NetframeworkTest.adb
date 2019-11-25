@@ -20,6 +20,7 @@
 --                                                                            --
 --------------------------------------------------------------------------------
 with AdaPackage;
+with NetFrameworkWin32;
 with NetFrameworkAdaRuntime;                    use NetFrameworkAdaRuntime;
 with NetframeworkBase.System.Array_x;
 with NetframeworkBase.System.DateTime;
@@ -215,14 +216,6 @@ begin
         end;
 
         ------------------------------------------------------------------------
-        procedure Test_Builtin_Array is
-            m_Value     : NetFrameworkBase.Wide_Char_Array(1..16) := (others => 'x');
-            m_String    : NetFramework.System.String := NetFramework.System.Constructor (m_Value); --method not found ??
-        begin
-            null;
-        end;
-
-        ------------------------------------------------------------------------
         procedure Test_In_Array is
             m_DateTime          : NetFramework.System.DateTime := NetFramework.System.Constructor(2018, 1, 1);
             m_Objects           : NetFramework.System.Object_Array (1..3) := (others => Netframework.System.Object(m_DateTime));
@@ -232,12 +225,7 @@ begin
             Ada.Wide_Text_IO.Put_Line (To_Ada(m_String));
         end;
 
-        procedure Test_In_Out_Array is
-            m_StreamReader      : Netframework.System.IO.StreamReader := Netframework.System.IO.Constructor (To_BSTR("c:\tmp\ada.txt"));
-        begin
-            null;
-        end;
-
+        ------------------------------------------------------------------------
         procedure Test_Operators is
             use NetframeworkBase.System.TimeSpan;
             m_TimeSpan1         : Netframework.System.TimeSpan := Netframework.System.Constructor (1, 0, 0);
@@ -256,9 +244,33 @@ begin
                     else
                         raise PROGRAM_ERROR;
                     end if;
+                else
+                    raise PROGRAM_ERROR;
                 end if;
             else
                 raise PROGRAM_ERROR;
+            end if;
+        end;
+
+        ------------------------------------------------------------------------
+        procedure Test_In_Builtin_Array is
+            m_Value     : NetFrameworkBase.Wide_Char_Array(1..16) := (others => 'x');
+            m_String    : NetFramework.System.String := NetFramework.System.Constructor (m_Value); --method not found ??
+        begin
+            null;
+        end;
+
+        ------------------------------------------------------------------------
+        procedure Test_In_Out_Builtin_Array is
+            use NetframeworkWin32;
+            m_StreamReader      : Netframework.System.IO.StreamReader := Netframework.System.IO.Constructor (To_BSTR("c:\tmp\ada.txt"));
+            m_Stream            : Netframework.System.IO.Stream := m_StreamReader.BaseStream;
+            m_Length            : Netframework.Int64 := m_Stream.Length;
+            m_Buffer            : Netframework.Wide_Char_Array (1..14);
+            m_BytesRead         : Netframework.Int32 := 0;
+        begin
+            if m_Length > 0 then
+                m_BytesRead := m_StreamReader.Read (m_Buffer, 0 , 14);  --invalid parameter ??
             end if;
         end;
 
@@ -278,10 +290,10 @@ begin
         Test_Callbacks;
         Test_Interface_Out_Param;
         Test_Return_Array;
---        Test_Builtin_Array;
         Test_In_Array;
-        Test_In_Out_Array;
         Test_Operators;
+--        Test_In_Builtin_Array;
+--        Test_In_Out_Builtin_Array;
 
         x := NetFrameworkBase.System.Console.ReadLine;
 

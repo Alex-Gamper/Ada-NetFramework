@@ -384,7 +384,7 @@ package body NetFrameworkAdaRuntime is
         if Runtime.m_Initialized = true then
             if kind /= null then
                 VariantInit (RetVal'access);
---                p_Flags := p_Flags or FlattenHierarchy'Enum_rep;
+                p_Flags := p_Flags or FlattenHierarchy'Enum_rep;
                 if IsValueType then
                     Hr := Runtime.m_IAdaMarshal.InvokeMethodValue (Kind, MethodName, Convert(p_Flags), p_Binder, Object, Parameters, Retval'access);
                 else
@@ -416,7 +416,7 @@ package body NetFrameworkAdaRuntime is
         if Runtime.m_Initialized = true then
             if kind /= null then
                 VariantInit (RetVal'access);
---                p_Flags := p_Flags or FlattenHierarchy'Enum_rep;
+                p_Flags := p_Flags or FlattenHierarchy'Enum_rep;
                 if IsValueType then
                     Hr := Runtime.m_IAdaMarshal.InvokeMethodValue2 (Kind, MethodName, Convert(p_Flags), p_Binder, Object, Parameters, p_NetRetval'access);
                 else
