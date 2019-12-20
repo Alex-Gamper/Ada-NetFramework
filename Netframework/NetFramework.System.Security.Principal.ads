@@ -27,13 +27,233 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.Security.Principal.GenericIdentity;
+with NetFrameworkBase.System.Security.Principal.GenericPrincipal;
+with NetFrameworkBase.System.Security.Principal.IIdentity;
+with NetFrameworkBase.System.Security.Principal.IPrincipal;
+with NetFrameworkBase.System.Security.Principal.PrincipalPolicy;
+with NetFrameworkBase.System.Security.Principal.TokenAccessLevels;
+with NetFrameworkBase.System.Security.Principal.TokenImpersonationLevel;
+with NetFrameworkBase.System.Security.Principal.WindowsAccountType;
+with NetFrameworkBase.System.Security.Principal.WindowsIdentity;
+with NetFrameworkBase.System.Security.Principal.WindowsImpersonationContext;
+with NetFrameworkBase.System.Security.Principal.WindowsBuiltInRole;
+with NetFrameworkBase.System.Security.Principal.WindowsPrincipal;
 with NetFrameworkBase.System.Security.Principal.IdentityReference;
+with NetFrameworkBase.System.Security.Principal.IdentityReferenceCollection;
+with NetFrameworkBase.System.Security.Principal.NTAccount;
+with NetFrameworkBase.System.Security.Principal.WellKnownSidType;
+with NetFrameworkBase.System.Security.Principal.SecurityIdentifier;
+with NetFrameworkBase.System.Security.Principal.IdentityNotMappedException;
+with NetFrameworkBase.System.Runtime.Serialization.SerializationInfo;
+with NetFrameworkBase.System.Runtime.Serialization.StreamingContext;
+with NetFrameworkBase.System.Exception_x;
 --------------------------------------------------------------------------------
 package NetFramework.System.Security.Principal is
    
       --------------------------------------------------------------------------
+      subtype GenericIdentity is NetFrameworkBase.System.Security.Principal.GenericIdentity.Kind_Ptr;
+      subtype GenericIdentity_Array is NetFrameworkBase.System.Security.Principal.GenericIdentity.Kind_Array;
+      
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Principal.GenericIdentity.Kind_Ptr renames NetFrameworkBase.System.Security.Principal.GenericIdentity.Constructor; 
+         
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR;
+            type_x : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Principal.GenericIdentity.Kind_Ptr renames NetFrameworkBase.System.Security.Principal.GenericIdentity.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype GenericPrincipal is NetFrameworkBase.System.Security.Principal.GenericPrincipal.Kind_Ptr;
+      subtype GenericPrincipal_Array is NetFrameworkBase.System.Security.Principal.GenericPrincipal.Kind_Array;
+      
+         function Constructor
+         (
+            identity : NetFrameworkBase.System.Security.Principal.IIdentity.Kind_Ptr;
+            roles : NetFrameworkBase.BSTR_Array
+         )
+         return NetFrameworkBase.System.Security.Principal.GenericPrincipal.Kind_Ptr renames NetFrameworkBase.System.Security.Principal.GenericPrincipal.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype IIdentity is NetFrameworkBase.System.Security.Principal.IIdentity.Kind_Ptr;
+      subtype IIdentity_Array is NetFrameworkBase.System.Security.Principal.IIdentity.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IPrincipal is NetFrameworkBase.System.Security.Principal.IPrincipal.Kind_Ptr;
+      subtype IPrincipal_Array is NetFrameworkBase.System.Security.Principal.IPrincipal.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype PrincipalPolicy is NetFrameworkBase.System.Security.Principal.PrincipalPolicy.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype TokenAccessLevels is NetFrameworkBase.System.Security.Principal.TokenAccessLevels.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype TokenImpersonationLevel is NetFrameworkBase.System.Security.Principal.TokenImpersonationLevel.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype WindowsAccountType is NetFrameworkBase.System.Security.Principal.WindowsAccountType.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype WindowsIdentity is NetFrameworkBase.System.Security.Principal.WindowsIdentity.Kind_Ptr;
+      subtype WindowsIdentity_Array is NetFrameworkBase.System.Security.Principal.WindowsIdentity.Kind_Array;
+      
+         function Constructor
+         (
+            userToken : NetFrameworkBase.IntPtr
+         )
+         return NetFrameworkBase.System.Security.Principal.WindowsIdentity.Kind_Ptr renames NetFrameworkBase.System.Security.Principal.WindowsIdentity.Constructor; 
+         
+         function Constructor
+         (
+            userToken : NetFrameworkBase.IntPtr;
+            type_x : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Principal.WindowsIdentity.Kind_Ptr renames NetFrameworkBase.System.Security.Principal.WindowsIdentity.Constructor; 
+         
+         function Constructor
+         (
+            userToken : NetFrameworkBase.IntPtr;
+            type_x : NetFrameworkBase.BSTR;
+            acctType : NetFrameworkBase.System.Security.Principal.WindowsAccountType.Kind
+         )
+         return NetFrameworkBase.System.Security.Principal.WindowsIdentity.Kind_Ptr renames NetFrameworkBase.System.Security.Principal.WindowsIdentity.Constructor; 
+         
+         function Constructor
+         (
+            userToken : NetFrameworkBase.IntPtr;
+            type_x : NetFrameworkBase.BSTR;
+            acctType : NetFrameworkBase.System.Security.Principal.WindowsAccountType.Kind;
+            isAuthenticated : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Security.Principal.WindowsIdentity.Kind_Ptr renames NetFrameworkBase.System.Security.Principal.WindowsIdentity.Constructor; 
+         
+         function Constructor
+         (
+            sUserPrincipalName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Principal.WindowsIdentity.Kind_Ptr renames NetFrameworkBase.System.Security.Principal.WindowsIdentity.Constructor; 
+         
+         function Constructor
+         (
+            sUserPrincipalName : NetFrameworkBase.BSTR;
+            type_x : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Principal.WindowsIdentity.Kind_Ptr renames NetFrameworkBase.System.Security.Principal.WindowsIdentity.Constructor; 
+         
+         function Constructor
+         (
+            info : NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr;
+            context : NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Principal.WindowsIdentity.Kind_Ptr renames NetFrameworkBase.System.Security.Principal.WindowsIdentity.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype WindowsImpersonationContext is NetFrameworkBase.System.Security.Principal.WindowsImpersonationContext.Kind_Ptr;
+      subtype WindowsImpersonationContext_Array is NetFrameworkBase.System.Security.Principal.WindowsImpersonationContext.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype WindowsBuiltInRole is NetFrameworkBase.System.Security.Principal.WindowsBuiltInRole.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype WindowsPrincipal is NetFrameworkBase.System.Security.Principal.WindowsPrincipal.Kind_Ptr;
+      subtype WindowsPrincipal_Array is NetFrameworkBase.System.Security.Principal.WindowsPrincipal.Kind_Array;
+      
+         function Constructor
+         (
+            ntIdentity : NetFrameworkBase.System.Security.Principal.WindowsIdentity.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Principal.WindowsPrincipal.Kind_Ptr renames NetFrameworkBase.System.Security.Principal.WindowsPrincipal.Constructor; 
+         
+      --------------------------------------------------------------------------
       subtype IdentityReference is NetFrameworkBase.System.Security.Principal.IdentityReference.Kind_Ptr;
       subtype IdentityReference_Array is NetFrameworkBase.System.Security.Principal.IdentityReference.Kind_Array;
       
+      --------------------------------------------------------------------------
+      subtype IdentityReferenceCollection is NetFrameworkBase.System.Security.Principal.IdentityReferenceCollection.Kind_Ptr;
+      subtype IdentityReferenceCollection_Array is NetFrameworkBase.System.Security.Principal.IdentityReferenceCollection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Principal.IdentityReferenceCollection.Kind_Ptr renames NetFrameworkBase.System.Security.Principal.IdentityReferenceCollection.Constructor;
+         
+         function Constructor
+         (
+            capacity : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Security.Principal.IdentityReferenceCollection.Kind_Ptr renames NetFrameworkBase.System.Security.Principal.IdentityReferenceCollection.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype NTAccount is NetFrameworkBase.System.Security.Principal.NTAccount.Kind_Ptr;
+      subtype NTAccount_Array is NetFrameworkBase.System.Security.Principal.NTAccount.Kind_Array;
+      
+         function Constructor
+         (
+            domainName : NetFrameworkBase.BSTR;
+            accountName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Principal.NTAccount.Kind_Ptr renames NetFrameworkBase.System.Security.Principal.NTAccount.Constructor; 
+         
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Principal.NTAccount.Kind_Ptr renames NetFrameworkBase.System.Security.Principal.NTAccount.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype WellKnownSidType is NetFrameworkBase.System.Security.Principal.WellKnownSidType.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype SecurityIdentifier is NetFrameworkBase.System.Security.Principal.SecurityIdentifier.Kind_Ptr;
+      subtype SecurityIdentifier_Array is NetFrameworkBase.System.Security.Principal.SecurityIdentifier.Kind_Array;
+      
+         function Constructor
+         (
+            sddlForm : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Principal.SecurityIdentifier.Kind_Ptr renames NetFrameworkBase.System.Security.Principal.SecurityIdentifier.Constructor; 
+         
+         function Constructor
+         (
+            binaryForm : NetFrameworkBase.Byte_Array;
+            offset : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Security.Principal.SecurityIdentifier.Kind_Ptr renames NetFrameworkBase.System.Security.Principal.SecurityIdentifier.Constructor; 
+         
+         function Constructor
+         (
+            binaryForm : NetFrameworkBase.IntPtr
+         )
+         return NetFrameworkBase.System.Security.Principal.SecurityIdentifier.Kind_Ptr renames NetFrameworkBase.System.Security.Principal.SecurityIdentifier.Constructor; 
+         
+         function Constructor
+         (
+            sidType : NetFrameworkBase.System.Security.Principal.WellKnownSidType.Kind;
+            domainSid : NetFrameworkBase.System.Security.Principal.SecurityIdentifier.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Principal.SecurityIdentifier.Kind_Ptr renames NetFrameworkBase.System.Security.Principal.SecurityIdentifier.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype IdentityNotMappedException is NetFrameworkBase.System.Security.Principal.IdentityNotMappedException.Kind_Ptr;
+      subtype IdentityNotMappedException_Array is NetFrameworkBase.System.Security.Principal.IdentityNotMappedException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Principal.IdentityNotMappedException.Kind_Ptr renames NetFrameworkBase.System.Security.Principal.IdentityNotMappedException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Principal.IdentityNotMappedException.Kind_Ptr renames NetFrameworkBase.System.Security.Principal.IdentityNotMappedException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Principal.IdentityNotMappedException.Kind_Ptr renames NetFrameworkBase.System.Security.Principal.IdentityNotMappedException.Constructor; 
+         
    
 end;

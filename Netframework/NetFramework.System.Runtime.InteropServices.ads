@@ -28,10 +28,187 @@
 --                                                                            --
 --------------------------------------------------------------------------------
 with NetFrameworkBase.System.Runtime.InteropServices.IActivator;
+with NetFrameworkBase.System.Runtime.InteropServices.IAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.IThread;
+with NetFrameworkBase.System.Runtime.InteropServices.IType;
 with NetFrameworkBase.System.Runtime.InteropServices.IAssembly;
+with NetFrameworkBase.System.Runtime.InteropServices.IMemberInfo;
+with NetFrameworkBase.System.Runtime.InteropServices.IMethodBase;
+with NetFrameworkBase.System.Runtime.InteropServices.IMethodInfo;
+with NetFrameworkBase.System.Runtime.InteropServices.IConstructorInfo;
+with NetFrameworkBase.System.Runtime.InteropServices.IFieldInfo;
+with NetFrameworkBase.System.Runtime.InteropServices.IPropertyInfo;
+with NetFrameworkBase.System.Runtime.InteropServices.IEventInfo;
+with NetFrameworkBase.System.Runtime.InteropServices.IParameterInfo;
+with NetFrameworkBase.System.Runtime.InteropServices.IModule;
+with NetFrameworkBase.System.Runtime.InteropServices.IAssemblyName;
+with NetFrameworkBase.System.Runtime.InteropServices.ArrayWithOffset;
+with NetFrameworkBase.System.Runtime.InteropServices.UnmanagedFunctionPointerAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.TypeIdentifierAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.AllowReversePInvokeCallsAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.DispIdAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.ComInterfaceType;
+with NetFrameworkBase.System.Runtime.InteropServices.InterfaceTypeAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.ComDefaultInterfaceAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.ClassInterfaceType;
+with NetFrameworkBase.System.Runtime.InteropServices.ClassInterfaceAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.ComVisibleAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.TypeLibImportClassAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.LCIDConversionAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.ComRegisterFunctionAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.ComUnregisterFunctionAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.ProgIdAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.ImportedFromTypeLibAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.IDispatchImplType;
+with NetFrameworkBase.System.Runtime.InteropServices.IDispatchImplAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.ComSourceInterfacesAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.ComConversionLossAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.TypeLibTypeFlags;
+with NetFrameworkBase.System.Runtime.InteropServices.TypeLibFuncFlags;
+with NetFrameworkBase.System.Runtime.InteropServices.TypeLibVarFlags;
+with NetFrameworkBase.System.Runtime.InteropServices.TypeLibTypeAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.TypeLibFuncAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.TypeLibVarAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.VarEnum;
+with NetFrameworkBase.System.Runtime.InteropServices.UnmanagedType;
+with NetFrameworkBase.System.Runtime.InteropServices.MarshalAsAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.ComImportAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.GuidAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.PreserveSigAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.InAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.OutAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.OptionalAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.DllImportSearchPath;
+with NetFrameworkBase.System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.DllImportAttribute;
 with NetFrameworkBase.System.Runtime.InteropServices.StructLayoutAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.FieldOffsetAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.ComAliasNameAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.AutomationProxyAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.PrimaryInteropAssemblyAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.CoClassAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.ComEventInterfaceAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.TypeLibVersionAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.ComCompatibleVersionAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.BestFitMappingAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.DefaultCharSetAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.SetWin32ContextInIDispatchAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.ManagedToNativeComInteropStubAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.CallingConvention;
+with NetFrameworkBase.System.Runtime.InteropServices.CharSet;
+with NetFrameworkBase.System.Runtime.InteropServices.COMException;
+with NetFrameworkBase.System.Runtime.InteropServices.CriticalHandle;
+with NetFrameworkBase.System.Runtime.InteropServices.ExternalException;
+with NetFrameworkBase.System.Runtime.InteropServices.GCHandleType;
+with NetFrameworkBase.System.Runtime.InteropServices.GCHandle;
+with NetFrameworkBase.System.Runtime.InteropServices.HandleRef;
+with NetFrameworkBase.System.Runtime.InteropServices.ICustomMarshaler;
+with NetFrameworkBase.System.Runtime.InteropServices.IException;
+with NetFrameworkBase.System.Runtime.InteropServices.InvalidOleVariantTypeException;
 with NetFrameworkBase.System.Runtime.InteropServices.LayoutKind;
+with NetFrameworkBase.System.Runtime.InteropServices.CustomQueryInterfaceMode;
+with NetFrameworkBase.System.Runtime.InteropServices.Marshal;
+with NetFrameworkBase.System.Runtime.InteropServices.MarshalDirectiveException;
+with NetFrameworkBase.System.Runtime.InteropServices.RuntimeEnvironment;
+with NetFrameworkBase.System.Runtime.InteropServices.SEHException;
+with NetFrameworkBase.System.Runtime.InteropServices.SafeBuffer;
 with NetFrameworkBase.System.Runtime.InteropServices.SafeHandle;
+with NetFrameworkBase.System.Runtime.InteropServices.BStrWrapper;
+with NetFrameworkBase.System.Runtime.InteropServices.CurrencyWrapper;
+with NetFrameworkBase.System.Runtime.InteropServices.DispatchWrapper;
+with NetFrameworkBase.System.Runtime.InteropServices.ErrorWrapper;
+with NetFrameworkBase.System.Runtime.InteropServices.UnknownWrapper;
+with NetFrameworkBase.System.Runtime.InteropServices.VariantWrapper;
+with NetFrameworkBase.System.Runtime.InteropServices.ComMemberType;
+with NetFrameworkBase.System.Runtime.InteropServices.ExtensibleClassFactory;
+with NetFrameworkBase.System.Runtime.InteropServices.ICustomAdapter;
+with NetFrameworkBase.System.Runtime.InteropServices.ICustomFactory;
+with NetFrameworkBase.System.Runtime.InteropServices.CustomQueryInterfaceResult;
+with NetFrameworkBase.System.Runtime.InteropServices.ICustomQueryInterface;
+with NetFrameworkBase.System.Runtime.InteropServices.InvalidComObjectException;
+with NetFrameworkBase.System.Runtime.InteropServices.AssemblyRegistrationFlags;
+with NetFrameworkBase.System.Runtime.InteropServices.IRegistrationServices;
+with NetFrameworkBase.System.Runtime.InteropServices.TypeLibImporterFlags;
+with NetFrameworkBase.System.Runtime.InteropServices.TypeLibExporterFlags;
+with NetFrameworkBase.System.Runtime.InteropServices.ImporterEventKind;
+with NetFrameworkBase.System.Runtime.InteropServices.ExporterEventKind;
+with NetFrameworkBase.System.Runtime.InteropServices.ITypeLibImporterNotifySink;
+with NetFrameworkBase.System.Runtime.InteropServices.ITypeLibExporterNotifySink;
+with NetFrameworkBase.System.Runtime.InteropServices.ITypeLibConverter;
+with NetFrameworkBase.System.Runtime.InteropServices.ITypeLibExporterNameProvider;
+with NetFrameworkBase.System.Runtime.InteropServices.ObjectCreationDelegate;
+with NetFrameworkBase.System.Runtime.InteropServices.RegistrationClassContext;
+with NetFrameworkBase.System.Runtime.InteropServices.RegistrationConnectionType;
+with NetFrameworkBase.System.Runtime.InteropServices.RegistrationServices;
+with NetFrameworkBase.System.Runtime.InteropServices.SafeArrayRankMismatchException;
+with NetFrameworkBase.System.Runtime.InteropServices.SafeArrayTypeMismatchException;
+with NetFrameworkBase.System.Runtime.InteropServices.TypeLibConverter;
+with NetFrameworkBase.System.Runtime.InteropServices.BIND_OPTS;
+with NetFrameworkBase.System.Runtime.InteropServices.IUCOMIBindCtx;
+with NetFrameworkBase.System.Runtime.InteropServices.IUCOMIConnectionPointContainer;
+with NetFrameworkBase.System.Runtime.InteropServices.IUCOMIConnectionPoint;
+with NetFrameworkBase.System.Runtime.InteropServices.IUCOMIEnumMoniker;
+with NetFrameworkBase.System.Runtime.InteropServices.CONNECTDATA;
+with NetFrameworkBase.System.Runtime.InteropServices.IUCOMIEnumConnections;
+with NetFrameworkBase.System.Runtime.InteropServices.IUCOMIEnumConnectionPoints;
+with NetFrameworkBase.System.Runtime.InteropServices.IUCOMIEnumString;
+with NetFrameworkBase.System.Runtime.InteropServices.IUCOMIEnumVARIANT;
+with NetFrameworkBase.System.Runtime.InteropServices.FILETIME;
+with NetFrameworkBase.System.Runtime.InteropServices.IUCOMIMoniker;
+with NetFrameworkBase.System.Runtime.InteropServices.IUCOMIPersistFile;
+with NetFrameworkBase.System.Runtime.InteropServices.IUCOMIRunningObjectTable;
+with NetFrameworkBase.System.Runtime.InteropServices.STATSTG;
+with NetFrameworkBase.System.Runtime.InteropServices.IUCOMIStream;
+with NetFrameworkBase.System.Runtime.InteropServices.DESCKIND;
+with NetFrameworkBase.System.Runtime.InteropServices.BINDPTR;
+with NetFrameworkBase.System.Runtime.InteropServices.IUCOMITypeComp;
+with NetFrameworkBase.System.Runtime.InteropServices.TYPEKIND;
+with NetFrameworkBase.System.Runtime.InteropServices.TYPEFLAGS;
+with NetFrameworkBase.System.Runtime.InteropServices.IMPLTYPEFLAGS;
+with NetFrameworkBase.System.Runtime.InteropServices.TYPEATTR;
+with NetFrameworkBase.System.Runtime.InteropServices.FUNCDESC;
+with NetFrameworkBase.System.Runtime.InteropServices.IDLFLAG;
+with NetFrameworkBase.System.Runtime.InteropServices.IDLDESC;
+with NetFrameworkBase.System.Runtime.InteropServices.PARAMFLAG;
+with NetFrameworkBase.System.Runtime.InteropServices.PARAMDESC;
+with NetFrameworkBase.System.Runtime.InteropServices.TYPEDESC;
+with NetFrameworkBase.System.Runtime.InteropServices.ELEMDESC;
+with NetFrameworkBase.System.Runtime.InteropServices.VARDESC;
+with NetFrameworkBase.System.Runtime.InteropServices.DISPPARAMS;
+with NetFrameworkBase.System.Runtime.InteropServices.EXCEPINFO;
+with NetFrameworkBase.System.Runtime.InteropServices.FUNCKIND;
+with NetFrameworkBase.System.Runtime.InteropServices.INVOKEKIND;
+with NetFrameworkBase.System.Runtime.InteropServices.CALLCONV;
+with NetFrameworkBase.System.Runtime.InteropServices.FUNCFLAGS;
+with NetFrameworkBase.System.Runtime.InteropServices.VARFLAGS;
+with NetFrameworkBase.System.Runtime.InteropServices.IUCOMITypeInfo;
+with NetFrameworkBase.System.Runtime.InteropServices.SYSKIND;
+with NetFrameworkBase.System.Runtime.InteropServices.LIBFLAGS;
+with NetFrameworkBase.System.Runtime.InteropServices.TYPELIBATTR;
+with NetFrameworkBase.System.Runtime.InteropServices.IUCOMITypeLib;
+with NetFrameworkBase.System.Runtime.InteropServices.Architecture;
+with NetFrameworkBase.System.Runtime.InteropServices.OSPlatform;
+with NetFrameworkBase.System.Runtime.InteropServices.RuntimeInformation;
+with NetFrameworkBase.System.Runtime.InteropServices.ComEventsHelper;
+with NetFrameworkBase.System.Runtime.InteropServices.IAssemblyBuilder;
+with NetFrameworkBase.System.Runtime.InteropServices.IConstructorBuilder;
+with NetFrameworkBase.System.Runtime.InteropServices.ICustomAttributeBuilder;
+with NetFrameworkBase.System.Runtime.InteropServices.IEnumBuilder;
+with NetFrameworkBase.System.Runtime.InteropServices.IEventBuilder;
+with NetFrameworkBase.System.Runtime.InteropServices.IFieldBuilder;
+with NetFrameworkBase.System.Runtime.InteropServices.ILGenerator;
+with NetFrameworkBase.System.Runtime.InteropServices.ILocalBuilder;
+with NetFrameworkBase.System.Runtime.InteropServices.IMethodBuilder;
+with NetFrameworkBase.System.Runtime.InteropServices.IMethodRental;
+with NetFrameworkBase.System.Runtime.InteropServices.IModuleBuilder;
+with NetFrameworkBase.System.Runtime.InteropServices.IParameterBuilder;
+with NetFrameworkBase.System.Runtime.InteropServices.IPropertyBuilder;
+with NetFrameworkBase.System.Runtime.InteropServices.ISignatureHelper;
+with NetFrameworkBase.System.Runtime.InteropServices.ITypeBuilder;
+with NetFrameworkBase.System.Object;
+with NetFrameworkBase.System.Type_x;
+with NetFrameworkBase.System.Exception_x;
+with NetFrameworkBase.System.Decimal;
 --------------------------------------------------------------------------------
 package NetFramework.System.Runtime.InteropServices is
    
@@ -40,9 +217,428 @@ package NetFramework.System.Runtime.InteropServices is
       subtype IActivator_Array is NetFrameworkBase.System.Runtime.InteropServices.IActivator.Kind_Array;
       
       --------------------------------------------------------------------------
+      subtype IAttribute is NetFrameworkBase.System.Runtime.InteropServices.IAttribute.Kind_Ptr;
+      subtype IAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.IAttribute.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IThread is NetFrameworkBase.System.Runtime.InteropServices.IThread.Kind_Ptr;
+      subtype IThread_Array is NetFrameworkBase.System.Runtime.InteropServices.IThread.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IType is NetFrameworkBase.System.Runtime.InteropServices.IType.Kind_Ptr;
+      subtype IType_Array is NetFrameworkBase.System.Runtime.InteropServices.IType.Kind_Array;
+      
+      --------------------------------------------------------------------------
       subtype IAssembly is NetFrameworkBase.System.Runtime.InteropServices.IAssembly.Kind_Ptr;
       subtype IAssembly_Array is NetFrameworkBase.System.Runtime.InteropServices.IAssembly.Kind_Array;
       
+      --------------------------------------------------------------------------
+      subtype IMemberInfo is NetFrameworkBase.System.Runtime.InteropServices.IMemberInfo.Kind_Ptr;
+      subtype IMemberInfo_Array is NetFrameworkBase.System.Runtime.InteropServices.IMemberInfo.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IMethodBase is NetFrameworkBase.System.Runtime.InteropServices.IMethodBase.Kind_Ptr;
+      subtype IMethodBase_Array is NetFrameworkBase.System.Runtime.InteropServices.IMethodBase.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IMethodInfo is NetFrameworkBase.System.Runtime.InteropServices.IMethodInfo.Kind_Ptr;
+      subtype IMethodInfo_Array is NetFrameworkBase.System.Runtime.InteropServices.IMethodInfo.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IConstructorInfo is NetFrameworkBase.System.Runtime.InteropServices.IConstructorInfo.Kind_Ptr;
+      subtype IConstructorInfo_Array is NetFrameworkBase.System.Runtime.InteropServices.IConstructorInfo.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IFieldInfo is NetFrameworkBase.System.Runtime.InteropServices.IFieldInfo.Kind_Ptr;
+      subtype IFieldInfo_Array is NetFrameworkBase.System.Runtime.InteropServices.IFieldInfo.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IPropertyInfo is NetFrameworkBase.System.Runtime.InteropServices.IPropertyInfo.Kind_Ptr;
+      subtype IPropertyInfo_Array is NetFrameworkBase.System.Runtime.InteropServices.IPropertyInfo.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IEventInfo is NetFrameworkBase.System.Runtime.InteropServices.IEventInfo.Kind_Ptr;
+      subtype IEventInfo_Array is NetFrameworkBase.System.Runtime.InteropServices.IEventInfo.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IParameterInfo is NetFrameworkBase.System.Runtime.InteropServices.IParameterInfo.Kind_Ptr;
+      subtype IParameterInfo_Array is NetFrameworkBase.System.Runtime.InteropServices.IParameterInfo.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IModule is NetFrameworkBase.System.Runtime.InteropServices.IModule.Kind_Ptr;
+      subtype IModule_Array is NetFrameworkBase.System.Runtime.InteropServices.IModule.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IAssemblyName is NetFrameworkBase.System.Runtime.InteropServices.IAssemblyName.Kind_Ptr;
+      subtype IAssemblyName_Array is NetFrameworkBase.System.Runtime.InteropServices.IAssemblyName.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ArrayWithOffset is NetFrameworkBase.System.Runtime.InteropServices.ArrayWithOffset.Kind_Ptr;
+      subtype ArrayWithOffset_Array is NetFrameworkBase.System.Runtime.InteropServices.ArrayWithOffset.Kind_Array;
+      
+         function Constructor
+         (
+            array_x : NetFrameworkBase.System.Object.Kind_Ptr;
+            offset : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.ArrayWithOffset.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.ArrayWithOffset.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype UnmanagedFunctionPointerAttribute is NetFrameworkBase.System.Runtime.InteropServices.UnmanagedFunctionPointerAttribute.Kind_Ptr;
+      subtype UnmanagedFunctionPointerAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.UnmanagedFunctionPointerAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            callingConvention : NetFrameworkBase.System.Runtime.InteropServices.CallingConvention.Kind
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.UnmanagedFunctionPointerAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.UnmanagedFunctionPointerAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype TypeIdentifierAttribute is NetFrameworkBase.System.Runtime.InteropServices.TypeIdentifierAttribute.Kind_Ptr;
+      subtype TypeIdentifierAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.TypeIdentifierAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.InteropServices.TypeIdentifierAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.TypeIdentifierAttribute.Constructor;
+         
+         function Constructor
+         (
+            scope : NetFrameworkBase.BSTR;
+            identifier : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.TypeIdentifierAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.TypeIdentifierAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype AllowReversePInvokeCallsAttribute is NetFrameworkBase.System.Runtime.InteropServices.AllowReversePInvokeCallsAttribute.Kind_Ptr;
+      subtype AllowReversePInvokeCallsAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.AllowReversePInvokeCallsAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.InteropServices.AllowReversePInvokeCallsAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.AllowReversePInvokeCallsAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype DispIdAttribute is NetFrameworkBase.System.Runtime.InteropServices.DispIdAttribute.Kind_Ptr;
+      subtype DispIdAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.DispIdAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            dispId : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.DispIdAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.DispIdAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ComInterfaceType is NetFrameworkBase.System.Runtime.InteropServices.ComInterfaceType.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype InterfaceTypeAttribute is NetFrameworkBase.System.Runtime.InteropServices.InterfaceTypeAttribute.Kind_Ptr;
+      subtype InterfaceTypeAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.InterfaceTypeAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            interfaceType : NetFrameworkBase.System.Runtime.InteropServices.ComInterfaceType.Kind
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.InterfaceTypeAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.InterfaceTypeAttribute.Constructor; 
+         
+         function Constructor
+         (
+            interfaceType : NetFrameworkBase.Int16
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.InterfaceTypeAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.InterfaceTypeAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ComDefaultInterfaceAttribute is NetFrameworkBase.System.Runtime.InteropServices.ComDefaultInterfaceAttribute.Kind_Ptr;
+      subtype ComDefaultInterfaceAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.ComDefaultInterfaceAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            defaultInterface : NetFrameworkBase.System.Type_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.ComDefaultInterfaceAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.ComDefaultInterfaceAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ClassInterfaceType is NetFrameworkBase.System.Runtime.InteropServices.ClassInterfaceType.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype ClassInterfaceAttribute is NetFrameworkBase.System.Runtime.InteropServices.ClassInterfaceAttribute.Kind_Ptr;
+      subtype ClassInterfaceAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.ClassInterfaceAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            classInterfaceType : NetFrameworkBase.System.Runtime.InteropServices.ClassInterfaceType.Kind
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.ClassInterfaceAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.ClassInterfaceAttribute.Constructor; 
+         
+         function Constructor
+         (
+            classInterfaceType : NetFrameworkBase.Int16
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.ClassInterfaceAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.ClassInterfaceAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ComVisibleAttribute is NetFrameworkBase.System.Runtime.InteropServices.ComVisibleAttribute.Kind_Ptr;
+      subtype ComVisibleAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.ComVisibleAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            visibility : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.ComVisibleAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.ComVisibleAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype TypeLibImportClassAttribute is NetFrameworkBase.System.Runtime.InteropServices.TypeLibImportClassAttribute.Kind_Ptr;
+      subtype TypeLibImportClassAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.TypeLibImportClassAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            importClass : NetFrameworkBase.System.Type_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.TypeLibImportClassAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.TypeLibImportClassAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype LCIDConversionAttribute is NetFrameworkBase.System.Runtime.InteropServices.LCIDConversionAttribute.Kind_Ptr;
+      subtype LCIDConversionAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.LCIDConversionAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            lcid : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.LCIDConversionAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.LCIDConversionAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ComRegisterFunctionAttribute is NetFrameworkBase.System.Runtime.InteropServices.ComRegisterFunctionAttribute.Kind_Ptr;
+      subtype ComRegisterFunctionAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.ComRegisterFunctionAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.InteropServices.ComRegisterFunctionAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.ComRegisterFunctionAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype ComUnregisterFunctionAttribute is NetFrameworkBase.System.Runtime.InteropServices.ComUnregisterFunctionAttribute.Kind_Ptr;
+      subtype ComUnregisterFunctionAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.ComUnregisterFunctionAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.InteropServices.ComUnregisterFunctionAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.ComUnregisterFunctionAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype ProgIdAttribute is NetFrameworkBase.System.Runtime.InteropServices.ProgIdAttribute.Kind_Ptr;
+      subtype ProgIdAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.ProgIdAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            progId : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.ProgIdAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.ProgIdAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ImportedFromTypeLibAttribute is NetFrameworkBase.System.Runtime.InteropServices.ImportedFromTypeLibAttribute.Kind_Ptr;
+      subtype ImportedFromTypeLibAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.ImportedFromTypeLibAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            tlbFile : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.ImportedFromTypeLibAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.ImportedFromTypeLibAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype IDispatchImplType is NetFrameworkBase.System.Runtime.InteropServices.IDispatchImplType.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype IDispatchImplAttribute is NetFrameworkBase.System.Runtime.InteropServices.IDispatchImplAttribute.Kind_Ptr;
+      subtype IDispatchImplAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.IDispatchImplAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            implType : NetFrameworkBase.System.Runtime.InteropServices.IDispatchImplType.Kind
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.IDispatchImplAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.IDispatchImplAttribute.Constructor; 
+         
+         function Constructor
+         (
+            implType : NetFrameworkBase.Int16
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.IDispatchImplAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.IDispatchImplAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ComSourceInterfacesAttribute is NetFrameworkBase.System.Runtime.InteropServices.ComSourceInterfacesAttribute.Kind_Ptr;
+      subtype ComSourceInterfacesAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.ComSourceInterfacesAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            sourceInterfaces : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.ComSourceInterfacesAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.ComSourceInterfacesAttribute.Constructor; 
+         
+         function Constructor
+         (
+            sourceInterface : NetFrameworkBase.System.Type_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.ComSourceInterfacesAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.ComSourceInterfacesAttribute.Constructor; 
+         
+         function Constructor
+         (
+            sourceInterface1 : NetFrameworkBase.System.Type_x.Kind_Ptr;
+            sourceInterface2 : NetFrameworkBase.System.Type_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.ComSourceInterfacesAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.ComSourceInterfacesAttribute.Constructor; 
+         
+         function Constructor
+         (
+            sourceInterface1 : NetFrameworkBase.System.Type_x.Kind_Ptr;
+            sourceInterface2 : NetFrameworkBase.System.Type_x.Kind_Ptr;
+            sourceInterface3 : NetFrameworkBase.System.Type_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.ComSourceInterfacesAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.ComSourceInterfacesAttribute.Constructor; 
+         
+         function Constructor
+         (
+            sourceInterface1 : NetFrameworkBase.System.Type_x.Kind_Ptr;
+            sourceInterface2 : NetFrameworkBase.System.Type_x.Kind_Ptr;
+            sourceInterface3 : NetFrameworkBase.System.Type_x.Kind_Ptr;
+            sourceInterface4 : NetFrameworkBase.System.Type_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.ComSourceInterfacesAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.ComSourceInterfacesAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ComConversionLossAttribute is NetFrameworkBase.System.Runtime.InteropServices.ComConversionLossAttribute.Kind_Ptr;
+      subtype ComConversionLossAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.ComConversionLossAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.InteropServices.ComConversionLossAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.ComConversionLossAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype TypeLibTypeFlags is NetFrameworkBase.System.Runtime.InteropServices.TypeLibTypeFlags.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype TypeLibFuncFlags is NetFrameworkBase.System.Runtime.InteropServices.TypeLibFuncFlags.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype TypeLibVarFlags is NetFrameworkBase.System.Runtime.InteropServices.TypeLibVarFlags.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype TypeLibTypeAttribute is NetFrameworkBase.System.Runtime.InteropServices.TypeLibTypeAttribute.Kind_Ptr;
+      subtype TypeLibTypeAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.TypeLibTypeAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            flags : NetFrameworkBase.System.Runtime.InteropServices.TypeLibTypeFlags.Kind
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.TypeLibTypeAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.TypeLibTypeAttribute.Constructor; 
+         
+         function Constructor
+         (
+            flags : NetFrameworkBase.Int16
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.TypeLibTypeAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.TypeLibTypeAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype TypeLibFuncAttribute is NetFrameworkBase.System.Runtime.InteropServices.TypeLibFuncAttribute.Kind_Ptr;
+      subtype TypeLibFuncAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.TypeLibFuncAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            flags : NetFrameworkBase.System.Runtime.InteropServices.TypeLibFuncFlags.Kind
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.TypeLibFuncAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.TypeLibFuncAttribute.Constructor; 
+         
+         function Constructor
+         (
+            flags : NetFrameworkBase.Int16
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.TypeLibFuncAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.TypeLibFuncAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype TypeLibVarAttribute is NetFrameworkBase.System.Runtime.InteropServices.TypeLibVarAttribute.Kind_Ptr;
+      subtype TypeLibVarAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.TypeLibVarAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            flags : NetFrameworkBase.System.Runtime.InteropServices.TypeLibVarFlags.Kind
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.TypeLibVarAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.TypeLibVarAttribute.Constructor; 
+         
+         function Constructor
+         (
+            flags : NetFrameworkBase.Int16
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.TypeLibVarAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.TypeLibVarAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype VarEnum is NetFrameworkBase.System.Runtime.InteropServices.VarEnum.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype UnmanagedType is NetFrameworkBase.System.Runtime.InteropServices.UnmanagedType.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype MarshalAsAttribute is NetFrameworkBase.System.Runtime.InteropServices.MarshalAsAttribute.Kind_Ptr;
+      subtype MarshalAsAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.MarshalAsAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            unmanagedType : NetFrameworkBase.System.Runtime.InteropServices.UnmanagedType.Kind
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.MarshalAsAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.MarshalAsAttribute.Constructor; 
+         
+         function Constructor
+         (
+            unmanagedType : NetFrameworkBase.Int16
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.MarshalAsAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.MarshalAsAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ComImportAttribute is NetFrameworkBase.System.Runtime.InteropServices.ComImportAttribute.Kind_Ptr;
+      subtype ComImportAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.ComImportAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.InteropServices.ComImportAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.ComImportAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype GuidAttribute is NetFrameworkBase.System.Runtime.InteropServices.GuidAttribute.Kind_Ptr;
+      subtype GuidAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.GuidAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            guid : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.GuidAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.GuidAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype PreserveSigAttribute is NetFrameworkBase.System.Runtime.InteropServices.PreserveSigAttribute.Kind_Ptr;
+      subtype PreserveSigAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.PreserveSigAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.InteropServices.PreserveSigAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.PreserveSigAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype InAttribute is NetFrameworkBase.System.Runtime.InteropServices.InAttribute.Kind_Ptr;
+      subtype InAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.InAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.InteropServices.InAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.InAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype OutAttribute is NetFrameworkBase.System.Runtime.InteropServices.OutAttribute.Kind_Ptr;
+      subtype OutAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.OutAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.InteropServices.OutAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.OutAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype OptionalAttribute is NetFrameworkBase.System.Runtime.InteropServices.OptionalAttribute.Kind_Ptr;
+      subtype OptionalAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.OptionalAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.InteropServices.OptionalAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.OptionalAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype DllImportSearchPath is NetFrameworkBase.System.Runtime.InteropServices.DllImportSearchPath.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype DefaultDllImportSearchPathsAttribute is NetFrameworkBase.System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute.Kind_Ptr;
+      subtype DefaultDllImportSearchPathsAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            paths : NetFrameworkBase.System.Runtime.InteropServices.DllImportSearchPath.Kind
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype DllImportAttribute is NetFrameworkBase.System.Runtime.InteropServices.DllImportAttribute.Kind_Ptr;
+      subtype DllImportAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.DllImportAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            dllName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.DllImportAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.DllImportAttribute.Constructor; 
+         
       --------------------------------------------------------------------------
       subtype StructLayoutAttribute is NetFrameworkBase.System.Runtime.InteropServices.StructLayoutAttribute.Kind_Ptr;
       subtype StructLayoutAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.StructLayoutAttribute.Kind_Array;
@@ -60,11 +656,752 @@ package NetFramework.System.Runtime.InteropServices is
          return NetFrameworkBase.System.Runtime.InteropServices.StructLayoutAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.StructLayoutAttribute.Constructor; 
          
       --------------------------------------------------------------------------
+      subtype FieldOffsetAttribute is NetFrameworkBase.System.Runtime.InteropServices.FieldOffsetAttribute.Kind_Ptr;
+      subtype FieldOffsetAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.FieldOffsetAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            offset : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.FieldOffsetAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.FieldOffsetAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ComAliasNameAttribute is NetFrameworkBase.System.Runtime.InteropServices.ComAliasNameAttribute.Kind_Ptr;
+      subtype ComAliasNameAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.ComAliasNameAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            alias : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.ComAliasNameAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.ComAliasNameAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype AutomationProxyAttribute is NetFrameworkBase.System.Runtime.InteropServices.AutomationProxyAttribute.Kind_Ptr;
+      subtype AutomationProxyAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.AutomationProxyAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            val : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.AutomationProxyAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.AutomationProxyAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype PrimaryInteropAssemblyAttribute is NetFrameworkBase.System.Runtime.InteropServices.PrimaryInteropAssemblyAttribute.Kind_Ptr;
+      subtype PrimaryInteropAssemblyAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.PrimaryInteropAssemblyAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            major : NetFrameworkBase.Int32;
+            minor : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.PrimaryInteropAssemblyAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.PrimaryInteropAssemblyAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CoClassAttribute is NetFrameworkBase.System.Runtime.InteropServices.CoClassAttribute.Kind_Ptr;
+      subtype CoClassAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.CoClassAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            coClass : NetFrameworkBase.System.Type_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.CoClassAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.CoClassAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ComEventInterfaceAttribute is NetFrameworkBase.System.Runtime.InteropServices.ComEventInterfaceAttribute.Kind_Ptr;
+      subtype ComEventInterfaceAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.ComEventInterfaceAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            SourceInterface : NetFrameworkBase.System.Type_x.Kind_Ptr;
+            EventProvider : NetFrameworkBase.System.Type_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.ComEventInterfaceAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.ComEventInterfaceAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype TypeLibVersionAttribute is NetFrameworkBase.System.Runtime.InteropServices.TypeLibVersionAttribute.Kind_Ptr;
+      subtype TypeLibVersionAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.TypeLibVersionAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            major : NetFrameworkBase.Int32;
+            minor : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.TypeLibVersionAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.TypeLibVersionAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ComCompatibleVersionAttribute is NetFrameworkBase.System.Runtime.InteropServices.ComCompatibleVersionAttribute.Kind_Ptr;
+      subtype ComCompatibleVersionAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.ComCompatibleVersionAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            major : NetFrameworkBase.Int32;
+            minor : NetFrameworkBase.Int32;
+            build : NetFrameworkBase.Int32;
+            revision : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.ComCompatibleVersionAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.ComCompatibleVersionAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype BestFitMappingAttribute is NetFrameworkBase.System.Runtime.InteropServices.BestFitMappingAttribute.Kind_Ptr;
+      subtype BestFitMappingAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.BestFitMappingAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            BestFitMapping : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.BestFitMappingAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.BestFitMappingAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype DefaultCharSetAttribute is NetFrameworkBase.System.Runtime.InteropServices.DefaultCharSetAttribute.Kind_Ptr;
+      subtype DefaultCharSetAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.DefaultCharSetAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            charSet : NetFrameworkBase.System.Runtime.InteropServices.CharSet.Kind
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.DefaultCharSetAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.DefaultCharSetAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SetWin32ContextInIDispatchAttribute is NetFrameworkBase.System.Runtime.InteropServices.SetWin32ContextInIDispatchAttribute.Kind_Ptr;
+      subtype SetWin32ContextInIDispatchAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.SetWin32ContextInIDispatchAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.InteropServices.SetWin32ContextInIDispatchAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.SetWin32ContextInIDispatchAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype ManagedToNativeComInteropStubAttribute is NetFrameworkBase.System.Runtime.InteropServices.ManagedToNativeComInteropStubAttribute.Kind_Ptr;
+      subtype ManagedToNativeComInteropStubAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.ManagedToNativeComInteropStubAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            classType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+            methodName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.ManagedToNativeComInteropStubAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.ManagedToNativeComInteropStubAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CallingConvention is NetFrameworkBase.System.Runtime.InteropServices.CallingConvention.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype CharSet is NetFrameworkBase.System.Runtime.InteropServices.CharSet.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype COMException is NetFrameworkBase.System.Runtime.InteropServices.COMException.Kind_Ptr;
+      subtype COMException_Array is NetFrameworkBase.System.Runtime.InteropServices.COMException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.InteropServices.COMException.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.COMException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.COMException.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.COMException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.COMException.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.COMException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            errorCode : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.COMException.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.COMException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CriticalHandle is NetFrameworkBase.System.Runtime.InteropServices.CriticalHandle.Kind_Ptr;
+      subtype CriticalHandle_Array is NetFrameworkBase.System.Runtime.InteropServices.CriticalHandle.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ExternalException is NetFrameworkBase.System.Runtime.InteropServices.ExternalException.Kind_Ptr;
+      subtype ExternalException_Array is NetFrameworkBase.System.Runtime.InteropServices.ExternalException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.InteropServices.ExternalException.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.ExternalException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.ExternalException.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.ExternalException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.ExternalException.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.ExternalException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            errorCode : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.ExternalException.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.ExternalException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype GCHandleType is NetFrameworkBase.System.Runtime.InteropServices.GCHandleType.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype GCHandle is NetFrameworkBase.System.Runtime.InteropServices.GCHandle.Kind_Ptr;
+      subtype GCHandle_Array is NetFrameworkBase.System.Runtime.InteropServices.GCHandle.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype HandleRef is NetFrameworkBase.System.Runtime.InteropServices.HandleRef.Kind_Ptr;
+      subtype HandleRef_Array is NetFrameworkBase.System.Runtime.InteropServices.HandleRef.Kind_Array;
+      
+         function Constructor
+         (
+            wrapper : NetFrameworkBase.System.Object.Kind_Ptr;
+            handle : NetFrameworkBase.IntPtr
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.HandleRef.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.HandleRef.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ICustomMarshaler is NetFrameworkBase.System.Runtime.InteropServices.ICustomMarshaler.Kind_Ptr;
+      subtype ICustomMarshaler_Array is NetFrameworkBase.System.Runtime.InteropServices.ICustomMarshaler.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IException is NetFrameworkBase.System.Runtime.InteropServices.IException.Kind_Ptr;
+      subtype IException_Array is NetFrameworkBase.System.Runtime.InteropServices.IException.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype InvalidOleVariantTypeException is NetFrameworkBase.System.Runtime.InteropServices.InvalidOleVariantTypeException.Kind_Ptr;
+      subtype InvalidOleVariantTypeException_Array is NetFrameworkBase.System.Runtime.InteropServices.InvalidOleVariantTypeException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.InteropServices.InvalidOleVariantTypeException.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.InvalidOleVariantTypeException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.InvalidOleVariantTypeException.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.InvalidOleVariantTypeException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.InvalidOleVariantTypeException.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.InvalidOleVariantTypeException.Constructor; 
+         
+      --------------------------------------------------------------------------
       subtype LayoutKind is NetFrameworkBase.System.Runtime.InteropServices.LayoutKind.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype CustomQueryInterfaceMode is NetFrameworkBase.System.Runtime.InteropServices.CustomQueryInterfaceMode.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype Marshal is NetFrameworkBase.System.Runtime.InteropServices.Marshal.Kind_Ptr;
+      subtype Marshal_Array is NetFrameworkBase.System.Runtime.InteropServices.Marshal.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype MarshalDirectiveException is NetFrameworkBase.System.Runtime.InteropServices.MarshalDirectiveException.Kind_Ptr;
+      subtype MarshalDirectiveException_Array is NetFrameworkBase.System.Runtime.InteropServices.MarshalDirectiveException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.InteropServices.MarshalDirectiveException.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.MarshalDirectiveException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.MarshalDirectiveException.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.MarshalDirectiveException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.MarshalDirectiveException.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.MarshalDirectiveException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype RuntimeEnvironment is NetFrameworkBase.System.Runtime.InteropServices.RuntimeEnvironment.Kind_Ptr;
+      subtype RuntimeEnvironment_Array is NetFrameworkBase.System.Runtime.InteropServices.RuntimeEnvironment.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.InteropServices.RuntimeEnvironment.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.RuntimeEnvironment.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SEHException is NetFrameworkBase.System.Runtime.InteropServices.SEHException.Kind_Ptr;
+      subtype SEHException_Array is NetFrameworkBase.System.Runtime.InteropServices.SEHException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.InteropServices.SEHException.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.SEHException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.SEHException.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.SEHException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.SEHException.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.SEHException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SafeBuffer is NetFrameworkBase.System.Runtime.InteropServices.SafeBuffer.Kind_Ptr;
+      subtype SafeBuffer_Array is NetFrameworkBase.System.Runtime.InteropServices.SafeBuffer.Kind_Array;
       
       --------------------------------------------------------------------------
       subtype SafeHandle is NetFrameworkBase.System.Runtime.InteropServices.SafeHandle.Kind_Ptr;
       subtype SafeHandle_Array is NetFrameworkBase.System.Runtime.InteropServices.SafeHandle.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype BStrWrapper is NetFrameworkBase.System.Runtime.InteropServices.BStrWrapper.Kind_Ptr;
+      subtype BStrWrapper_Array is NetFrameworkBase.System.Runtime.InteropServices.BStrWrapper.Kind_Array;
+      
+         function Constructor
+         (
+            value : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.BStrWrapper.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.BStrWrapper.Constructor; 
+         
+         function Constructor
+         (
+            value : NetFrameworkBase.System.Object.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.BStrWrapper.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.BStrWrapper.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CurrencyWrapper is NetFrameworkBase.System.Runtime.InteropServices.CurrencyWrapper.Kind_Ptr;
+      subtype CurrencyWrapper_Array is NetFrameworkBase.System.Runtime.InteropServices.CurrencyWrapper.Kind_Array;
+      
+         function Constructor
+         (
+            obj : NetFrameworkBase.System.Decimal.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.CurrencyWrapper.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.CurrencyWrapper.Constructor; 
+         
+         function Constructor
+         (
+            obj : NetFrameworkBase.System.Object.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.CurrencyWrapper.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.CurrencyWrapper.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype DispatchWrapper is NetFrameworkBase.System.Runtime.InteropServices.DispatchWrapper.Kind_Ptr;
+      subtype DispatchWrapper_Array is NetFrameworkBase.System.Runtime.InteropServices.DispatchWrapper.Kind_Array;
+      
+         function Constructor
+         (
+            obj : NetFrameworkBase.System.Object.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.DispatchWrapper.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.DispatchWrapper.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ErrorWrapper is NetFrameworkBase.System.Runtime.InteropServices.ErrorWrapper.Kind_Ptr;
+      subtype ErrorWrapper_Array is NetFrameworkBase.System.Runtime.InteropServices.ErrorWrapper.Kind_Array;
+      
+         function Constructor
+         (
+            errorCode : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.ErrorWrapper.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.ErrorWrapper.Constructor; 
+         
+         function Constructor
+         (
+            errorCode : NetFrameworkBase.System.Object.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.ErrorWrapper.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.ErrorWrapper.Constructor; 
+         
+         function Constructor
+         (
+            e : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.ErrorWrapper.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.ErrorWrapper.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype UnknownWrapper is NetFrameworkBase.System.Runtime.InteropServices.UnknownWrapper.Kind_Ptr;
+      subtype UnknownWrapper_Array is NetFrameworkBase.System.Runtime.InteropServices.UnknownWrapper.Kind_Array;
+      
+         function Constructor
+         (
+            obj : NetFrameworkBase.System.Object.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.UnknownWrapper.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.UnknownWrapper.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype VariantWrapper is NetFrameworkBase.System.Runtime.InteropServices.VariantWrapper.Kind_Ptr;
+      subtype VariantWrapper_Array is NetFrameworkBase.System.Runtime.InteropServices.VariantWrapper.Kind_Array;
+      
+         function Constructor
+         (
+            obj : NetFrameworkBase.System.Object.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.VariantWrapper.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.VariantWrapper.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ComMemberType is NetFrameworkBase.System.Runtime.InteropServices.ComMemberType.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype ExtensibleClassFactory is NetFrameworkBase.System.Runtime.InteropServices.ExtensibleClassFactory.Kind_Ptr;
+      subtype ExtensibleClassFactory_Array is NetFrameworkBase.System.Runtime.InteropServices.ExtensibleClassFactory.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ICustomAdapter is NetFrameworkBase.System.Runtime.InteropServices.ICustomAdapter.Kind_Ptr;
+      subtype ICustomAdapter_Array is NetFrameworkBase.System.Runtime.InteropServices.ICustomAdapter.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ICustomFactory is NetFrameworkBase.System.Runtime.InteropServices.ICustomFactory.Kind_Ptr;
+      subtype ICustomFactory_Array is NetFrameworkBase.System.Runtime.InteropServices.ICustomFactory.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype CustomQueryInterfaceResult is NetFrameworkBase.System.Runtime.InteropServices.CustomQueryInterfaceResult.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype ICustomQueryInterface is NetFrameworkBase.System.Runtime.InteropServices.ICustomQueryInterface.Kind_Ptr;
+      subtype ICustomQueryInterface_Array is NetFrameworkBase.System.Runtime.InteropServices.ICustomQueryInterface.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype InvalidComObjectException is NetFrameworkBase.System.Runtime.InteropServices.InvalidComObjectException.Kind_Ptr;
+      subtype InvalidComObjectException_Array is NetFrameworkBase.System.Runtime.InteropServices.InvalidComObjectException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.InteropServices.InvalidComObjectException.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.InvalidComObjectException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.InvalidComObjectException.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.InvalidComObjectException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.InvalidComObjectException.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.InvalidComObjectException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype AssemblyRegistrationFlags is NetFrameworkBase.System.Runtime.InteropServices.AssemblyRegistrationFlags.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype IRegistrationServices is NetFrameworkBase.System.Runtime.InteropServices.IRegistrationServices.Kind_Ptr;
+      subtype IRegistrationServices_Array is NetFrameworkBase.System.Runtime.InteropServices.IRegistrationServices.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype TypeLibImporterFlags is NetFrameworkBase.System.Runtime.InteropServices.TypeLibImporterFlags.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype TypeLibExporterFlags is NetFrameworkBase.System.Runtime.InteropServices.TypeLibExporterFlags.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype ImporterEventKind is NetFrameworkBase.System.Runtime.InteropServices.ImporterEventKind.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype ExporterEventKind is NetFrameworkBase.System.Runtime.InteropServices.ExporterEventKind.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype ITypeLibImporterNotifySink is NetFrameworkBase.System.Runtime.InteropServices.ITypeLibImporterNotifySink.Kind_Ptr;
+      subtype ITypeLibImporterNotifySink_Array is NetFrameworkBase.System.Runtime.InteropServices.ITypeLibImporterNotifySink.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ITypeLibExporterNotifySink is NetFrameworkBase.System.Runtime.InteropServices.ITypeLibExporterNotifySink.Kind_Ptr;
+      subtype ITypeLibExporterNotifySink_Array is NetFrameworkBase.System.Runtime.InteropServices.ITypeLibExporterNotifySink.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ITypeLibConverter is NetFrameworkBase.System.Runtime.InteropServices.ITypeLibConverter.Kind_Ptr;
+      subtype ITypeLibConverter_Array is NetFrameworkBase.System.Runtime.InteropServices.ITypeLibConverter.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ITypeLibExporterNameProvider is NetFrameworkBase.System.Runtime.InteropServices.ITypeLibExporterNameProvider.Kind_Ptr;
+      subtype ITypeLibExporterNameProvider_Array is NetFrameworkBase.System.Runtime.InteropServices.ITypeLibExporterNameProvider.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ObjectCreationDelegate is NetFrameworkBase.System.Runtime.InteropServices.ObjectCreationDelegate.Kind_Ptr;
+      subtype ObjectCreationDelegate_Array is NetFrameworkBase.System.Runtime.InteropServices.ObjectCreationDelegate.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.System.Runtime.InteropServices.ObjectCreationDelegate.Kind_Callback) return NetFrameworkBase.System.Runtime.InteropServices.ObjectCreationDelegate.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.ObjectCreationDelegate.Constructor;
+      
+      --------------------------------------------------------------------------
+      subtype RegistrationClassContext is NetFrameworkBase.System.Runtime.InteropServices.RegistrationClassContext.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype RegistrationConnectionType is NetFrameworkBase.System.Runtime.InteropServices.RegistrationConnectionType.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype RegistrationServices is NetFrameworkBase.System.Runtime.InteropServices.RegistrationServices.Kind_Ptr;
+      subtype RegistrationServices_Array is NetFrameworkBase.System.Runtime.InteropServices.RegistrationServices.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.InteropServices.RegistrationServices.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.RegistrationServices.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SafeArrayRankMismatchException is NetFrameworkBase.System.Runtime.InteropServices.SafeArrayRankMismatchException.Kind_Ptr;
+      subtype SafeArrayRankMismatchException_Array is NetFrameworkBase.System.Runtime.InteropServices.SafeArrayRankMismatchException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.InteropServices.SafeArrayRankMismatchException.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.SafeArrayRankMismatchException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.SafeArrayRankMismatchException.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.SafeArrayRankMismatchException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.SafeArrayRankMismatchException.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.SafeArrayRankMismatchException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SafeArrayTypeMismatchException is NetFrameworkBase.System.Runtime.InteropServices.SafeArrayTypeMismatchException.Kind_Ptr;
+      subtype SafeArrayTypeMismatchException_Array is NetFrameworkBase.System.Runtime.InteropServices.SafeArrayTypeMismatchException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.InteropServices.SafeArrayTypeMismatchException.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.SafeArrayTypeMismatchException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.SafeArrayTypeMismatchException.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.SafeArrayTypeMismatchException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.SafeArrayTypeMismatchException.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.SafeArrayTypeMismatchException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype TypeLibConverter is NetFrameworkBase.System.Runtime.InteropServices.TypeLibConverter.Kind_Ptr;
+      subtype TypeLibConverter_Array is NetFrameworkBase.System.Runtime.InteropServices.TypeLibConverter.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.InteropServices.TypeLibConverter.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.TypeLibConverter.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype BIND_OPTS is NetFrameworkBase.System.Runtime.InteropServices.BIND_OPTS.Kind_Ptr;
+      subtype BIND_OPTS_Array is NetFrameworkBase.System.Runtime.InteropServices.BIND_OPTS.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IUCOMIBindCtx is NetFrameworkBase.System.Runtime.InteropServices.IUCOMIBindCtx.Kind_Ptr;
+      subtype IUCOMIBindCtx_Array is NetFrameworkBase.System.Runtime.InteropServices.IUCOMIBindCtx.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IUCOMIConnectionPointContainer is NetFrameworkBase.System.Runtime.InteropServices.IUCOMIConnectionPointContainer.Kind_Ptr;
+      subtype IUCOMIConnectionPointContainer_Array is NetFrameworkBase.System.Runtime.InteropServices.IUCOMIConnectionPointContainer.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IUCOMIConnectionPoint is NetFrameworkBase.System.Runtime.InteropServices.IUCOMIConnectionPoint.Kind_Ptr;
+      subtype IUCOMIConnectionPoint_Array is NetFrameworkBase.System.Runtime.InteropServices.IUCOMIConnectionPoint.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IUCOMIEnumMoniker is NetFrameworkBase.System.Runtime.InteropServices.IUCOMIEnumMoniker.Kind_Ptr;
+      subtype IUCOMIEnumMoniker_Array is NetFrameworkBase.System.Runtime.InteropServices.IUCOMIEnumMoniker.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype CONNECTDATA is NetFrameworkBase.System.Runtime.InteropServices.CONNECTDATA.Kind_Ptr;
+      subtype CONNECTDATA_Array is NetFrameworkBase.System.Runtime.InteropServices.CONNECTDATA.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IUCOMIEnumConnections is NetFrameworkBase.System.Runtime.InteropServices.IUCOMIEnumConnections.Kind_Ptr;
+      subtype IUCOMIEnumConnections_Array is NetFrameworkBase.System.Runtime.InteropServices.IUCOMIEnumConnections.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IUCOMIEnumConnectionPoints is NetFrameworkBase.System.Runtime.InteropServices.IUCOMIEnumConnectionPoints.Kind_Ptr;
+      subtype IUCOMIEnumConnectionPoints_Array is NetFrameworkBase.System.Runtime.InteropServices.IUCOMIEnumConnectionPoints.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IUCOMIEnumString is NetFrameworkBase.System.Runtime.InteropServices.IUCOMIEnumString.Kind_Ptr;
+      subtype IUCOMIEnumString_Array is NetFrameworkBase.System.Runtime.InteropServices.IUCOMIEnumString.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IUCOMIEnumVARIANT is NetFrameworkBase.System.Runtime.InteropServices.IUCOMIEnumVARIANT.Kind_Ptr;
+      subtype IUCOMIEnumVARIANT_Array is NetFrameworkBase.System.Runtime.InteropServices.IUCOMIEnumVARIANT.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype FILETIME is NetFrameworkBase.System.Runtime.InteropServices.FILETIME.Kind_Ptr;
+      subtype FILETIME_Array is NetFrameworkBase.System.Runtime.InteropServices.FILETIME.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IUCOMIMoniker is NetFrameworkBase.System.Runtime.InteropServices.IUCOMIMoniker.Kind_Ptr;
+      subtype IUCOMIMoniker_Array is NetFrameworkBase.System.Runtime.InteropServices.IUCOMIMoniker.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IUCOMIPersistFile is NetFrameworkBase.System.Runtime.InteropServices.IUCOMIPersistFile.Kind_Ptr;
+      subtype IUCOMIPersistFile_Array is NetFrameworkBase.System.Runtime.InteropServices.IUCOMIPersistFile.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IUCOMIRunningObjectTable is NetFrameworkBase.System.Runtime.InteropServices.IUCOMIRunningObjectTable.Kind_Ptr;
+      subtype IUCOMIRunningObjectTable_Array is NetFrameworkBase.System.Runtime.InteropServices.IUCOMIRunningObjectTable.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype STATSTG is NetFrameworkBase.System.Runtime.InteropServices.STATSTG.Kind_Ptr;
+      subtype STATSTG_Array is NetFrameworkBase.System.Runtime.InteropServices.STATSTG.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IUCOMIStream is NetFrameworkBase.System.Runtime.InteropServices.IUCOMIStream.Kind_Ptr;
+      subtype IUCOMIStream_Array is NetFrameworkBase.System.Runtime.InteropServices.IUCOMIStream.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype DESCKIND is NetFrameworkBase.System.Runtime.InteropServices.DESCKIND.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype BINDPTR is NetFrameworkBase.System.Runtime.InteropServices.BINDPTR.Kind_Ptr;
+      subtype BINDPTR_Array is NetFrameworkBase.System.Runtime.InteropServices.BINDPTR.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IUCOMITypeComp is NetFrameworkBase.System.Runtime.InteropServices.IUCOMITypeComp.Kind_Ptr;
+      subtype IUCOMITypeComp_Array is NetFrameworkBase.System.Runtime.InteropServices.IUCOMITypeComp.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype TYPEKIND is NetFrameworkBase.System.Runtime.InteropServices.TYPEKIND.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype TYPEFLAGS is NetFrameworkBase.System.Runtime.InteropServices.TYPEFLAGS.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype IMPLTYPEFLAGS is NetFrameworkBase.System.Runtime.InteropServices.IMPLTYPEFLAGS.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype TYPEATTR is NetFrameworkBase.System.Runtime.InteropServices.TYPEATTR.Kind_Ptr;
+      subtype TYPEATTR_Array is NetFrameworkBase.System.Runtime.InteropServices.TYPEATTR.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype FUNCDESC is NetFrameworkBase.System.Runtime.InteropServices.FUNCDESC.Kind_Ptr;
+      subtype FUNCDESC_Array is NetFrameworkBase.System.Runtime.InteropServices.FUNCDESC.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IDLFLAG is NetFrameworkBase.System.Runtime.InteropServices.IDLFLAG.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype IDLDESC is NetFrameworkBase.System.Runtime.InteropServices.IDLDESC.Kind_Ptr;
+      subtype IDLDESC_Array is NetFrameworkBase.System.Runtime.InteropServices.IDLDESC.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype PARAMFLAG is NetFrameworkBase.System.Runtime.InteropServices.PARAMFLAG.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype PARAMDESC is NetFrameworkBase.System.Runtime.InteropServices.PARAMDESC.Kind_Ptr;
+      subtype PARAMDESC_Array is NetFrameworkBase.System.Runtime.InteropServices.PARAMDESC.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype TYPEDESC is NetFrameworkBase.System.Runtime.InteropServices.TYPEDESC.Kind_Ptr;
+      subtype TYPEDESC_Array is NetFrameworkBase.System.Runtime.InteropServices.TYPEDESC.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ELEMDESC is NetFrameworkBase.System.Runtime.InteropServices.ELEMDESC.Kind_Ptr;
+      subtype ELEMDESC_Array is NetFrameworkBase.System.Runtime.InteropServices.ELEMDESC.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype VARDESC is NetFrameworkBase.System.Runtime.InteropServices.VARDESC.Kind_Ptr;
+      subtype VARDESC_Array is NetFrameworkBase.System.Runtime.InteropServices.VARDESC.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype DISPPARAMS is NetFrameworkBase.System.Runtime.InteropServices.DISPPARAMS.Kind_Ptr;
+      subtype DISPPARAMS_Array is NetFrameworkBase.System.Runtime.InteropServices.DISPPARAMS.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype EXCEPINFO is NetFrameworkBase.System.Runtime.InteropServices.EXCEPINFO.Kind_Ptr;
+      subtype EXCEPINFO_Array is NetFrameworkBase.System.Runtime.InteropServices.EXCEPINFO.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype FUNCKIND is NetFrameworkBase.System.Runtime.InteropServices.FUNCKIND.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype INVOKEKIND is NetFrameworkBase.System.Runtime.InteropServices.INVOKEKIND.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype CALLCONV is NetFrameworkBase.System.Runtime.InteropServices.CALLCONV.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype FUNCFLAGS is NetFrameworkBase.System.Runtime.InteropServices.FUNCFLAGS.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype VARFLAGS is NetFrameworkBase.System.Runtime.InteropServices.VARFLAGS.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype IUCOMITypeInfo is NetFrameworkBase.System.Runtime.InteropServices.IUCOMITypeInfo.Kind_Ptr;
+      subtype IUCOMITypeInfo_Array is NetFrameworkBase.System.Runtime.InteropServices.IUCOMITypeInfo.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype SYSKIND is NetFrameworkBase.System.Runtime.InteropServices.SYSKIND.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype LIBFLAGS is NetFrameworkBase.System.Runtime.InteropServices.LIBFLAGS.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype TYPELIBATTR is NetFrameworkBase.System.Runtime.InteropServices.TYPELIBATTR.Kind_Ptr;
+      subtype TYPELIBATTR_Array is NetFrameworkBase.System.Runtime.InteropServices.TYPELIBATTR.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IUCOMITypeLib is NetFrameworkBase.System.Runtime.InteropServices.IUCOMITypeLib.Kind_Ptr;
+      subtype IUCOMITypeLib_Array is NetFrameworkBase.System.Runtime.InteropServices.IUCOMITypeLib.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype Architecture is NetFrameworkBase.System.Runtime.InteropServices.Architecture.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype OSPlatform is NetFrameworkBase.System.Runtime.InteropServices.OSPlatform.Kind_Ptr;
+      subtype OSPlatform_Array is NetFrameworkBase.System.Runtime.InteropServices.OSPlatform.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype RuntimeInformation is NetFrameworkBase.System.Runtime.InteropServices.RuntimeInformation.Kind_Ptr;
+      subtype RuntimeInformation_Array is NetFrameworkBase.System.Runtime.InteropServices.RuntimeInformation.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ComEventsHelper is NetFrameworkBase.System.Runtime.InteropServices.ComEventsHelper.Kind_Ptr;
+      subtype ComEventsHelper_Array is NetFrameworkBase.System.Runtime.InteropServices.ComEventsHelper.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IAssemblyBuilder is NetFrameworkBase.System.Runtime.InteropServices.IAssemblyBuilder.Kind_Ptr;
+      subtype IAssemblyBuilder_Array is NetFrameworkBase.System.Runtime.InteropServices.IAssemblyBuilder.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IConstructorBuilder is NetFrameworkBase.System.Runtime.InteropServices.IConstructorBuilder.Kind_Ptr;
+      subtype IConstructorBuilder_Array is NetFrameworkBase.System.Runtime.InteropServices.IConstructorBuilder.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ICustomAttributeBuilder is NetFrameworkBase.System.Runtime.InteropServices.ICustomAttributeBuilder.Kind_Ptr;
+      subtype ICustomAttributeBuilder_Array is NetFrameworkBase.System.Runtime.InteropServices.ICustomAttributeBuilder.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IEnumBuilder is NetFrameworkBase.System.Runtime.InteropServices.IEnumBuilder.Kind_Ptr;
+      subtype IEnumBuilder_Array is NetFrameworkBase.System.Runtime.InteropServices.IEnumBuilder.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IEventBuilder is NetFrameworkBase.System.Runtime.InteropServices.IEventBuilder.Kind_Ptr;
+      subtype IEventBuilder_Array is NetFrameworkBase.System.Runtime.InteropServices.IEventBuilder.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IFieldBuilder is NetFrameworkBase.System.Runtime.InteropServices.IFieldBuilder.Kind_Ptr;
+      subtype IFieldBuilder_Array is NetFrameworkBase.System.Runtime.InteropServices.IFieldBuilder.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ILGenerator is NetFrameworkBase.System.Runtime.InteropServices.ILGenerator.Kind_Ptr;
+      subtype ILGenerator_Array is NetFrameworkBase.System.Runtime.InteropServices.ILGenerator.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ILocalBuilder is NetFrameworkBase.System.Runtime.InteropServices.ILocalBuilder.Kind_Ptr;
+      subtype ILocalBuilder_Array is NetFrameworkBase.System.Runtime.InteropServices.ILocalBuilder.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IMethodBuilder is NetFrameworkBase.System.Runtime.InteropServices.IMethodBuilder.Kind_Ptr;
+      subtype IMethodBuilder_Array is NetFrameworkBase.System.Runtime.InteropServices.IMethodBuilder.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IMethodRental is NetFrameworkBase.System.Runtime.InteropServices.IMethodRental.Kind_Ptr;
+      subtype IMethodRental_Array is NetFrameworkBase.System.Runtime.InteropServices.IMethodRental.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IModuleBuilder is NetFrameworkBase.System.Runtime.InteropServices.IModuleBuilder.Kind_Ptr;
+      subtype IModuleBuilder_Array is NetFrameworkBase.System.Runtime.InteropServices.IModuleBuilder.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IParameterBuilder is NetFrameworkBase.System.Runtime.InteropServices.IParameterBuilder.Kind_Ptr;
+      subtype IParameterBuilder_Array is NetFrameworkBase.System.Runtime.InteropServices.IParameterBuilder.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IPropertyBuilder is NetFrameworkBase.System.Runtime.InteropServices.IPropertyBuilder.Kind_Ptr;
+      subtype IPropertyBuilder_Array is NetFrameworkBase.System.Runtime.InteropServices.IPropertyBuilder.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ISignatureHelper is NetFrameworkBase.System.Runtime.InteropServices.ISignatureHelper.Kind_Ptr;
+      subtype ISignatureHelper_Array is NetFrameworkBase.System.Runtime.InteropServices.ISignatureHelper.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ITypeBuilder is NetFrameworkBase.System.Runtime.InteropServices.ITypeBuilder.Kind_Ptr;
+      subtype ITypeBuilder_Array is NetFrameworkBase.System.Runtime.InteropServices.ITypeBuilder.Kind_Array;
       
    
 end;

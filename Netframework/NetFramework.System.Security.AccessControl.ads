@@ -30,23 +30,71 @@
 with NetFrameworkBase.System.Security.AccessControl.InheritanceFlags;
 with NetFrameworkBase.System.Security.AccessControl.PropagationFlags;
 with NetFrameworkBase.System.Security.AccessControl.AuditFlags;
+with NetFrameworkBase.System.Security.AccessControl.SecurityInfos;
+with NetFrameworkBase.System.Security.AccessControl.ResourceType;
 with NetFrameworkBase.System.Security.AccessControl.AccessControlSections;
+with NetFrameworkBase.System.Security.AccessControl.AccessControlActions;
+with NetFrameworkBase.System.Security.AccessControl.AceType;
+with NetFrameworkBase.System.Security.AccessControl.AceFlags;
+with NetFrameworkBase.System.Security.AccessControl.GenericAce;
+with NetFrameworkBase.System.Security.AccessControl.KnownAce;
+with NetFrameworkBase.System.Security.AccessControl.CustomAce;
+with NetFrameworkBase.System.Security.AccessControl.CompoundAceType;
+with NetFrameworkBase.System.Security.AccessControl.CompoundAce;
+with NetFrameworkBase.System.Security.AccessControl.AceQualifier;
+with NetFrameworkBase.System.Security.AccessControl.QualifiedAce;
+with NetFrameworkBase.System.Security.AccessControl.CommonAce;
+with NetFrameworkBase.System.Security.AccessControl.ObjectAceFlags;
+with NetFrameworkBase.System.Security.AccessControl.ObjectAce;
+with NetFrameworkBase.System.Security.AccessControl.AceEnumerator;
+with NetFrameworkBase.System.Security.AccessControl.GenericAcl;
+with NetFrameworkBase.System.Security.AccessControl.RawAcl;
+with NetFrameworkBase.System.Security.AccessControl.CommonAcl;
+with NetFrameworkBase.System.Security.AccessControl.SystemAcl;
+with NetFrameworkBase.System.Security.AccessControl.DiscretionaryAcl;
+with NetFrameworkBase.System.Security.AccessControl.CryptoKeyRights;
+with NetFrameworkBase.System.Security.AccessControl.CryptoKeyAccessRule;
+with NetFrameworkBase.System.Security.AccessControl.CryptoKeyAuditRule;
+with NetFrameworkBase.System.Security.AccessControl.CryptoKeySecurity;
+with NetFrameworkBase.System.Security.AccessControl.EventWaitHandleRights;
+with NetFrameworkBase.System.Security.AccessControl.EventWaitHandleAccessRule;
+with NetFrameworkBase.System.Security.AccessControl.EventWaitHandleAuditRule;
+with NetFrameworkBase.System.Security.AccessControl.EventWaitHandleSecurity;
 with NetFrameworkBase.System.Security.AccessControl.FileSystemRights;
 with NetFrameworkBase.System.Security.AccessControl.FileSystemAccessRule;
 with NetFrameworkBase.System.Security.AccessControl.FileSystemAuditRule;
 with NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity;
 with NetFrameworkBase.System.Security.AccessControl.FileSecurity;
 with NetFrameworkBase.System.Security.AccessControl.DirectorySecurity;
+with NetFrameworkBase.System.Security.AccessControl.MutexRights;
+with NetFrameworkBase.System.Security.AccessControl.MutexAccessRule;
+with NetFrameworkBase.System.Security.AccessControl.MutexAuditRule;
+with NetFrameworkBase.System.Security.AccessControl.MutexSecurity;
 with NetFrameworkBase.System.Security.AccessControl.NativeObjectSecurity;
 with NetFrameworkBase.System.Security.AccessControl.AccessControlModification;
 with NetFrameworkBase.System.Security.AccessControl.ObjectSecurity;
 with NetFrameworkBase.System.Security.AccessControl.CommonObjectSecurity;
+with NetFrameworkBase.System.Security.AccessControl.DirectoryObjectSecurity;
+with NetFrameworkBase.System.Security.AccessControl.PrivilegeNotHeldException;
+with NetFrameworkBase.System.Security.AccessControl.RegistryRights;
+with NetFrameworkBase.System.Security.AccessControl.RegistryAccessRule;
+with NetFrameworkBase.System.Security.AccessControl.RegistryAuditRule;
+with NetFrameworkBase.System.Security.AccessControl.RegistrySecurity;
 with NetFrameworkBase.System.Security.AccessControl.AccessControlType;
 with NetFrameworkBase.System.Security.AccessControl.AuthorizationRule;
 with NetFrameworkBase.System.Security.AccessControl.AccessRule;
+with NetFrameworkBase.System.Security.AccessControl.ObjectAccessRule;
 with NetFrameworkBase.System.Security.AccessControl.AuditRule;
+with NetFrameworkBase.System.Security.AccessControl.ObjectAuditRule;
 with NetFrameworkBase.System.Security.AccessControl.AuthorizationRuleCollection;
+with NetFrameworkBase.System.Security.AccessControl.ControlFlags;
+with NetFrameworkBase.System.Security.AccessControl.GenericSecurityDescriptor;
+with NetFrameworkBase.System.Security.AccessControl.RawSecurityDescriptor;
+with NetFrameworkBase.System.Security.AccessControl.CommonSecurityDescriptor;
+with NetFrameworkBase.System.Security.Principal.SecurityIdentifier;
+with NetFrameworkBase.System.Guid;
 with NetFrameworkBase.System.Security.Principal.IdentityReference;
+with NetFrameworkBase.System.Exception_x;
 --------------------------------------------------------------------------------
 package NetFramework.System.Security.AccessControl is
    
@@ -60,8 +108,286 @@ package NetFramework.System.Security.AccessControl is
       subtype AuditFlags is NetFrameworkBase.System.Security.AccessControl.AuditFlags.Kind;
       
       --------------------------------------------------------------------------
+      subtype SecurityInfos is NetFrameworkBase.System.Security.AccessControl.SecurityInfos.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype ResourceType is NetFrameworkBase.System.Security.AccessControl.ResourceType.Kind;
+      
+      --------------------------------------------------------------------------
       subtype AccessControlSections is NetFrameworkBase.System.Security.AccessControl.AccessControlSections.Kind;
       
+      --------------------------------------------------------------------------
+      subtype AccessControlActions is NetFrameworkBase.System.Security.AccessControl.AccessControlActions.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype AceType is NetFrameworkBase.System.Security.AccessControl.AceType.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype AceFlags is NetFrameworkBase.System.Security.AccessControl.AceFlags.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype GenericAce is NetFrameworkBase.System.Security.AccessControl.GenericAce.Kind_Ptr;
+      subtype GenericAce_Array is NetFrameworkBase.System.Security.AccessControl.GenericAce.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype KnownAce is NetFrameworkBase.System.Security.AccessControl.KnownAce.Kind_Ptr;
+      subtype KnownAce_Array is NetFrameworkBase.System.Security.AccessControl.KnownAce.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype CustomAce is NetFrameworkBase.System.Security.AccessControl.CustomAce.Kind_Ptr;
+      subtype CustomAce_Array is NetFrameworkBase.System.Security.AccessControl.CustomAce.Kind_Array;
+      
+         function Constructor
+         (
+            type_x : NetFrameworkBase.System.Security.AccessControl.AceType.Kind;
+            flags : NetFrameworkBase.System.Security.AccessControl.AceFlags.Kind;
+            opaque : NetFrameworkBase.Byte_Array
+         )
+         return NetFrameworkBase.System.Security.AccessControl.CustomAce.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.CustomAce.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CompoundAceType is NetFrameworkBase.System.Security.AccessControl.CompoundAceType.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype CompoundAce is NetFrameworkBase.System.Security.AccessControl.CompoundAce.Kind_Ptr;
+      subtype CompoundAce_Array is NetFrameworkBase.System.Security.AccessControl.CompoundAce.Kind_Array;
+      
+         function Constructor
+         (
+            flags : NetFrameworkBase.System.Security.AccessControl.AceFlags.Kind;
+            accessMask : NetFrameworkBase.Int32;
+            compoundAceType : NetFrameworkBase.System.Security.AccessControl.CompoundAceType.Kind;
+            sid : NetFrameworkBase.System.Security.Principal.SecurityIdentifier.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.AccessControl.CompoundAce.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.CompoundAce.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype AceQualifier is NetFrameworkBase.System.Security.AccessControl.AceQualifier.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype QualifiedAce is NetFrameworkBase.System.Security.AccessControl.QualifiedAce.Kind_Ptr;
+      subtype QualifiedAce_Array is NetFrameworkBase.System.Security.AccessControl.QualifiedAce.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype CommonAce is NetFrameworkBase.System.Security.AccessControl.CommonAce.Kind_Ptr;
+      subtype CommonAce_Array is NetFrameworkBase.System.Security.AccessControl.CommonAce.Kind_Array;
+      
+         function Constructor
+         (
+            flags : NetFrameworkBase.System.Security.AccessControl.AceFlags.Kind;
+            qualifier : NetFrameworkBase.System.Security.AccessControl.AceQualifier.Kind;
+            accessMask : NetFrameworkBase.Int32;
+            sid : NetFrameworkBase.System.Security.Principal.SecurityIdentifier.Kind_Ptr;
+            isCallback : NetFrameworkBase.Boolean;
+            opaque : NetFrameworkBase.Byte_Array
+         )
+         return NetFrameworkBase.System.Security.AccessControl.CommonAce.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.CommonAce.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ObjectAceFlags is NetFrameworkBase.System.Security.AccessControl.ObjectAceFlags.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype ObjectAce is NetFrameworkBase.System.Security.AccessControl.ObjectAce.Kind_Ptr;
+      subtype ObjectAce_Array is NetFrameworkBase.System.Security.AccessControl.ObjectAce.Kind_Array;
+      
+         function Constructor
+         (
+            aceFlags : NetFrameworkBase.System.Security.AccessControl.AceFlags.Kind;
+            qualifier : NetFrameworkBase.System.Security.AccessControl.AceQualifier.Kind;
+            accessMask : NetFrameworkBase.Int32;
+            sid : NetFrameworkBase.System.Security.Principal.SecurityIdentifier.Kind_Ptr;
+            flags : NetFrameworkBase.System.Security.AccessControl.ObjectAceFlags.Kind;
+            type_x : NetFrameworkBase.System.Guid.Kind_Ptr;
+            inheritedType : NetFrameworkBase.System.Guid.Kind_Ptr;
+            isCallback : NetFrameworkBase.Boolean;
+            opaque : NetFrameworkBase.Byte_Array
+         )
+         return NetFrameworkBase.System.Security.AccessControl.ObjectAce.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.ObjectAce.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype AceEnumerator is NetFrameworkBase.System.Security.AccessControl.AceEnumerator.Kind_Ptr;
+      subtype AceEnumerator_Array is NetFrameworkBase.System.Security.AccessControl.AceEnumerator.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype GenericAcl is NetFrameworkBase.System.Security.AccessControl.GenericAcl.Kind_Ptr;
+      subtype GenericAcl_Array is NetFrameworkBase.System.Security.AccessControl.GenericAcl.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype RawAcl is NetFrameworkBase.System.Security.AccessControl.RawAcl.Kind_Ptr;
+      subtype RawAcl_Array is NetFrameworkBase.System.Security.AccessControl.RawAcl.Kind_Array;
+      
+         function Constructor
+         (
+            revision : NetFrameworkBase.Byte;
+            capacity : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Security.AccessControl.RawAcl.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.RawAcl.Constructor; 
+         
+         function Constructor
+         (
+            binaryForm : NetFrameworkBase.Byte_Array;
+            offset : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Security.AccessControl.RawAcl.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.RawAcl.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CommonAcl is NetFrameworkBase.System.Security.AccessControl.CommonAcl.Kind_Ptr;
+      subtype CommonAcl_Array is NetFrameworkBase.System.Security.AccessControl.CommonAcl.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype SystemAcl is NetFrameworkBase.System.Security.AccessControl.SystemAcl.Kind_Ptr;
+      subtype SystemAcl_Array is NetFrameworkBase.System.Security.AccessControl.SystemAcl.Kind_Array;
+      
+         function Constructor
+         (
+            isContainer : NetFrameworkBase.Boolean;
+            isDS : NetFrameworkBase.Boolean;
+            capacity : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Security.AccessControl.SystemAcl.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.SystemAcl.Constructor; 
+         
+         function Constructor
+         (
+            isContainer : NetFrameworkBase.Boolean;
+            isDS : NetFrameworkBase.Boolean;
+            revision : NetFrameworkBase.Byte;
+            capacity : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Security.AccessControl.SystemAcl.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.SystemAcl.Constructor; 
+         
+         function Constructor
+         (
+            isContainer : NetFrameworkBase.Boolean;
+            isDS : NetFrameworkBase.Boolean;
+            rawAcl : NetFrameworkBase.System.Security.AccessControl.RawAcl.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.AccessControl.SystemAcl.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.SystemAcl.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype DiscretionaryAcl is NetFrameworkBase.System.Security.AccessControl.DiscretionaryAcl.Kind_Ptr;
+      subtype DiscretionaryAcl_Array is NetFrameworkBase.System.Security.AccessControl.DiscretionaryAcl.Kind_Array;
+      
+         function Constructor
+         (
+            isContainer : NetFrameworkBase.Boolean;
+            isDS : NetFrameworkBase.Boolean;
+            capacity : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Security.AccessControl.DiscretionaryAcl.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.DiscretionaryAcl.Constructor; 
+         
+         function Constructor
+         (
+            isContainer : NetFrameworkBase.Boolean;
+            isDS : NetFrameworkBase.Boolean;
+            revision : NetFrameworkBase.Byte;
+            capacity : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Security.AccessControl.DiscretionaryAcl.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.DiscretionaryAcl.Constructor; 
+         
+         function Constructor
+         (
+            isContainer : NetFrameworkBase.Boolean;
+            isDS : NetFrameworkBase.Boolean;
+            rawAcl : NetFrameworkBase.System.Security.AccessControl.RawAcl.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.AccessControl.DiscretionaryAcl.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.DiscretionaryAcl.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CryptoKeyRights is NetFrameworkBase.System.Security.AccessControl.CryptoKeyRights.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype CryptoKeyAccessRule is NetFrameworkBase.System.Security.AccessControl.CryptoKeyAccessRule.Kind_Ptr;
+      subtype CryptoKeyAccessRule_Array is NetFrameworkBase.System.Security.AccessControl.CryptoKeyAccessRule.Kind_Array;
+      
+         function Constructor
+         (
+            identity : NetFrameworkBase.System.Security.Principal.IdentityReference.Kind_Ptr;
+            cryptoKeyRights : NetFrameworkBase.System.Security.AccessControl.CryptoKeyRights.Kind;
+            type_x : NetFrameworkBase.System.Security.AccessControl.AccessControlType.Kind
+         )
+         return NetFrameworkBase.System.Security.AccessControl.CryptoKeyAccessRule.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.CryptoKeyAccessRule.Constructor; 
+         
+         function Constructor
+         (
+            identity : NetFrameworkBase.BSTR;
+            cryptoKeyRights : NetFrameworkBase.System.Security.AccessControl.CryptoKeyRights.Kind;
+            type_x : NetFrameworkBase.System.Security.AccessControl.AccessControlType.Kind
+         )
+         return NetFrameworkBase.System.Security.AccessControl.CryptoKeyAccessRule.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.CryptoKeyAccessRule.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CryptoKeyAuditRule is NetFrameworkBase.System.Security.AccessControl.CryptoKeyAuditRule.Kind_Ptr;
+      subtype CryptoKeyAuditRule_Array is NetFrameworkBase.System.Security.AccessControl.CryptoKeyAuditRule.Kind_Array;
+      
+         function Constructor
+         (
+            identity : NetFrameworkBase.System.Security.Principal.IdentityReference.Kind_Ptr;
+            cryptoKeyRights : NetFrameworkBase.System.Security.AccessControl.CryptoKeyRights.Kind;
+            flags : NetFrameworkBase.System.Security.AccessControl.AuditFlags.Kind
+         )
+         return NetFrameworkBase.System.Security.AccessControl.CryptoKeyAuditRule.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.CryptoKeyAuditRule.Constructor; 
+         
+         function Constructor
+         (
+            identity : NetFrameworkBase.BSTR;
+            cryptoKeyRights : NetFrameworkBase.System.Security.AccessControl.CryptoKeyRights.Kind;
+            flags : NetFrameworkBase.System.Security.AccessControl.AuditFlags.Kind
+         )
+         return NetFrameworkBase.System.Security.AccessControl.CryptoKeyAuditRule.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.CryptoKeyAuditRule.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CryptoKeySecurity is NetFrameworkBase.System.Security.AccessControl.CryptoKeySecurity.Kind_Ptr;
+      subtype CryptoKeySecurity_Array is NetFrameworkBase.System.Security.AccessControl.CryptoKeySecurity.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.AccessControl.CryptoKeySecurity.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.CryptoKeySecurity.Constructor;
+         
+         function Constructor
+         (
+            securityDescriptor : NetFrameworkBase.System.Security.AccessControl.CommonSecurityDescriptor.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.AccessControl.CryptoKeySecurity.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.CryptoKeySecurity.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype EventWaitHandleRights is NetFrameworkBase.System.Security.AccessControl.EventWaitHandleRights.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype EventWaitHandleAccessRule is NetFrameworkBase.System.Security.AccessControl.EventWaitHandleAccessRule.Kind_Ptr;
+      subtype EventWaitHandleAccessRule_Array is NetFrameworkBase.System.Security.AccessControl.EventWaitHandleAccessRule.Kind_Array;
+      
+         function Constructor
+         (
+            identity : NetFrameworkBase.System.Security.Principal.IdentityReference.Kind_Ptr;
+            eventRights : NetFrameworkBase.System.Security.AccessControl.EventWaitHandleRights.Kind;
+            type_x : NetFrameworkBase.System.Security.AccessControl.AccessControlType.Kind
+         )
+         return NetFrameworkBase.System.Security.AccessControl.EventWaitHandleAccessRule.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.EventWaitHandleAccessRule.Constructor; 
+         
+         function Constructor
+         (
+            identity : NetFrameworkBase.BSTR;
+            eventRights : NetFrameworkBase.System.Security.AccessControl.EventWaitHandleRights.Kind;
+            type_x : NetFrameworkBase.System.Security.AccessControl.AccessControlType.Kind
+         )
+         return NetFrameworkBase.System.Security.AccessControl.EventWaitHandleAccessRule.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.EventWaitHandleAccessRule.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype EventWaitHandleAuditRule is NetFrameworkBase.System.Security.AccessControl.EventWaitHandleAuditRule.Kind_Ptr;
+      subtype EventWaitHandleAuditRule_Array is NetFrameworkBase.System.Security.AccessControl.EventWaitHandleAuditRule.Kind_Array;
+      
+         function Constructor
+         (
+            identity : NetFrameworkBase.System.Security.Principal.IdentityReference.Kind_Ptr;
+            eventRights : NetFrameworkBase.System.Security.AccessControl.EventWaitHandleRights.Kind;
+            flags : NetFrameworkBase.System.Security.AccessControl.AuditFlags.Kind
+         )
+         return NetFrameworkBase.System.Security.AccessControl.EventWaitHandleAuditRule.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.EventWaitHandleAuditRule.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype EventWaitHandleSecurity is NetFrameworkBase.System.Security.AccessControl.EventWaitHandleSecurity.Kind_Ptr;
+      subtype EventWaitHandleSecurity_Array is NetFrameworkBase.System.Security.AccessControl.EventWaitHandleSecurity.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.AccessControl.EventWaitHandleSecurity.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.EventWaitHandleSecurity.Constructor;
+         
       --------------------------------------------------------------------------
       subtype FileSystemRights is NetFrameworkBase.System.Security.AccessControl.FileSystemRights.Kind;
       
@@ -176,6 +502,54 @@ package NetFramework.System.Security.AccessControl is
          return NetFrameworkBase.System.Security.AccessControl.DirectorySecurity.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.DirectorySecurity.Constructor; 
          
       --------------------------------------------------------------------------
+      subtype MutexRights is NetFrameworkBase.System.Security.AccessControl.MutexRights.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype MutexAccessRule is NetFrameworkBase.System.Security.AccessControl.MutexAccessRule.Kind_Ptr;
+      subtype MutexAccessRule_Array is NetFrameworkBase.System.Security.AccessControl.MutexAccessRule.Kind_Array;
+      
+         function Constructor
+         (
+            identity : NetFrameworkBase.System.Security.Principal.IdentityReference.Kind_Ptr;
+            eventRights : NetFrameworkBase.System.Security.AccessControl.MutexRights.Kind;
+            type_x : NetFrameworkBase.System.Security.AccessControl.AccessControlType.Kind
+         )
+         return NetFrameworkBase.System.Security.AccessControl.MutexAccessRule.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.MutexAccessRule.Constructor; 
+         
+         function Constructor
+         (
+            identity : NetFrameworkBase.BSTR;
+            eventRights : NetFrameworkBase.System.Security.AccessControl.MutexRights.Kind;
+            type_x : NetFrameworkBase.System.Security.AccessControl.AccessControlType.Kind
+         )
+         return NetFrameworkBase.System.Security.AccessControl.MutexAccessRule.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.MutexAccessRule.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype MutexAuditRule is NetFrameworkBase.System.Security.AccessControl.MutexAuditRule.Kind_Ptr;
+      subtype MutexAuditRule_Array is NetFrameworkBase.System.Security.AccessControl.MutexAuditRule.Kind_Array;
+      
+         function Constructor
+         (
+            identity : NetFrameworkBase.System.Security.Principal.IdentityReference.Kind_Ptr;
+            eventRights : NetFrameworkBase.System.Security.AccessControl.MutexRights.Kind;
+            flags : NetFrameworkBase.System.Security.AccessControl.AuditFlags.Kind
+         )
+         return NetFrameworkBase.System.Security.AccessControl.MutexAuditRule.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.MutexAuditRule.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype MutexSecurity is NetFrameworkBase.System.Security.AccessControl.MutexSecurity.Kind_Ptr;
+      subtype MutexSecurity_Array is NetFrameworkBase.System.Security.AccessControl.MutexSecurity.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.AccessControl.MutexSecurity.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.MutexSecurity.Constructor;
+         
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR;
+            includeSections : NetFrameworkBase.System.Security.AccessControl.AccessControlSections.Kind
+         )
+         return NetFrameworkBase.System.Security.AccessControl.MutexSecurity.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.MutexSecurity.Constructor; 
+         
+      --------------------------------------------------------------------------
       subtype NativeObjectSecurity is NetFrameworkBase.System.Security.AccessControl.NativeObjectSecurity.Kind_Ptr;
       subtype NativeObjectSecurity_Array is NetFrameworkBase.System.Security.AccessControl.NativeObjectSecurity.Kind_Array;
       
@@ -191,6 +565,102 @@ package NetFramework.System.Security.AccessControl is
       subtype CommonObjectSecurity_Array is NetFrameworkBase.System.Security.AccessControl.CommonObjectSecurity.Kind_Array;
       
       --------------------------------------------------------------------------
+      subtype DirectoryObjectSecurity is NetFrameworkBase.System.Security.AccessControl.DirectoryObjectSecurity.Kind_Ptr;
+      subtype DirectoryObjectSecurity_Array is NetFrameworkBase.System.Security.AccessControl.DirectoryObjectSecurity.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype PrivilegeNotHeldException is NetFrameworkBase.System.Security.AccessControl.PrivilegeNotHeldException.Kind_Ptr;
+      subtype PrivilegeNotHeldException_Array is NetFrameworkBase.System.Security.AccessControl.PrivilegeNotHeldException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.AccessControl.PrivilegeNotHeldException.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.PrivilegeNotHeldException.Constructor;
+         
+         function Constructor
+         (
+            privilege : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.AccessControl.PrivilegeNotHeldException.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.PrivilegeNotHeldException.Constructor; 
+         
+         function Constructor
+         (
+            privilege : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.AccessControl.PrivilegeNotHeldException.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.PrivilegeNotHeldException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype RegistryRights is NetFrameworkBase.System.Security.AccessControl.RegistryRights.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype RegistryAccessRule is NetFrameworkBase.System.Security.AccessControl.RegistryAccessRule.Kind_Ptr;
+      subtype RegistryAccessRule_Array is NetFrameworkBase.System.Security.AccessControl.RegistryAccessRule.Kind_Array;
+      
+         function Constructor
+         (
+            identity : NetFrameworkBase.System.Security.Principal.IdentityReference.Kind_Ptr;
+            registryRights : NetFrameworkBase.System.Security.AccessControl.RegistryRights.Kind;
+            type_x : NetFrameworkBase.System.Security.AccessControl.AccessControlType.Kind
+         )
+         return NetFrameworkBase.System.Security.AccessControl.RegistryAccessRule.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.RegistryAccessRule.Constructor; 
+         
+         function Constructor
+         (
+            identity : NetFrameworkBase.BSTR;
+            registryRights : NetFrameworkBase.System.Security.AccessControl.RegistryRights.Kind;
+            type_x : NetFrameworkBase.System.Security.AccessControl.AccessControlType.Kind
+         )
+         return NetFrameworkBase.System.Security.AccessControl.RegistryAccessRule.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.RegistryAccessRule.Constructor; 
+         
+         function Constructor
+         (
+            identity : NetFrameworkBase.System.Security.Principal.IdentityReference.Kind_Ptr;
+            registryRights : NetFrameworkBase.System.Security.AccessControl.RegistryRights.Kind;
+            inheritanceFlags : NetFrameworkBase.System.Security.AccessControl.InheritanceFlags.Kind;
+            propagationFlags : NetFrameworkBase.System.Security.AccessControl.PropagationFlags.Kind;
+            type_x : NetFrameworkBase.System.Security.AccessControl.AccessControlType.Kind
+         )
+         return NetFrameworkBase.System.Security.AccessControl.RegistryAccessRule.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.RegistryAccessRule.Constructor; 
+         
+         function Constructor
+         (
+            identity : NetFrameworkBase.BSTR;
+            registryRights : NetFrameworkBase.System.Security.AccessControl.RegistryRights.Kind;
+            inheritanceFlags : NetFrameworkBase.System.Security.AccessControl.InheritanceFlags.Kind;
+            propagationFlags : NetFrameworkBase.System.Security.AccessControl.PropagationFlags.Kind;
+            type_x : NetFrameworkBase.System.Security.AccessControl.AccessControlType.Kind
+         )
+         return NetFrameworkBase.System.Security.AccessControl.RegistryAccessRule.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.RegistryAccessRule.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype RegistryAuditRule is NetFrameworkBase.System.Security.AccessControl.RegistryAuditRule.Kind_Ptr;
+      subtype RegistryAuditRule_Array is NetFrameworkBase.System.Security.AccessControl.RegistryAuditRule.Kind_Array;
+      
+         function Constructor
+         (
+            identity : NetFrameworkBase.System.Security.Principal.IdentityReference.Kind_Ptr;
+            registryRights : NetFrameworkBase.System.Security.AccessControl.RegistryRights.Kind;
+            inheritanceFlags : NetFrameworkBase.System.Security.AccessControl.InheritanceFlags.Kind;
+            propagationFlags : NetFrameworkBase.System.Security.AccessControl.PropagationFlags.Kind;
+            flags : NetFrameworkBase.System.Security.AccessControl.AuditFlags.Kind
+         )
+         return NetFrameworkBase.System.Security.AccessControl.RegistryAuditRule.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.RegistryAuditRule.Constructor; 
+         
+         function Constructor
+         (
+            identity : NetFrameworkBase.BSTR;
+            registryRights : NetFrameworkBase.System.Security.AccessControl.RegistryRights.Kind;
+            inheritanceFlags : NetFrameworkBase.System.Security.AccessControl.InheritanceFlags.Kind;
+            propagationFlags : NetFrameworkBase.System.Security.AccessControl.PropagationFlags.Kind;
+            flags : NetFrameworkBase.System.Security.AccessControl.AuditFlags.Kind
+         )
+         return NetFrameworkBase.System.Security.AccessControl.RegistryAuditRule.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.RegistryAuditRule.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype RegistrySecurity is NetFrameworkBase.System.Security.AccessControl.RegistrySecurity.Kind_Ptr;
+      subtype RegistrySecurity_Array is NetFrameworkBase.System.Security.AccessControl.RegistrySecurity.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.AccessControl.RegistrySecurity.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.RegistrySecurity.Constructor;
+         
+      --------------------------------------------------------------------------
       subtype AccessControlType is NetFrameworkBase.System.Security.AccessControl.AccessControlType.Kind;
       
       --------------------------------------------------------------------------
@@ -202,14 +672,97 @@ package NetFramework.System.Security.AccessControl is
       subtype AccessRule_Array is NetFrameworkBase.System.Security.AccessControl.AccessRule.Kind_Array;
       
       --------------------------------------------------------------------------
+      subtype ObjectAccessRule is NetFrameworkBase.System.Security.AccessControl.ObjectAccessRule.Kind_Ptr;
+      subtype ObjectAccessRule_Array is NetFrameworkBase.System.Security.AccessControl.ObjectAccessRule.Kind_Array;
+      
+      --------------------------------------------------------------------------
       subtype AuditRule is NetFrameworkBase.System.Security.AccessControl.AuditRule.Kind_Ptr;
       subtype AuditRule_Array is NetFrameworkBase.System.Security.AccessControl.AuditRule.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ObjectAuditRule is NetFrameworkBase.System.Security.AccessControl.ObjectAuditRule.Kind_Ptr;
+      subtype ObjectAuditRule_Array is NetFrameworkBase.System.Security.AccessControl.ObjectAuditRule.Kind_Array;
       
       --------------------------------------------------------------------------
       subtype AuthorizationRuleCollection is NetFrameworkBase.System.Security.AccessControl.AuthorizationRuleCollection.Kind_Ptr;
       subtype AuthorizationRuleCollection_Array is NetFrameworkBase.System.Security.AccessControl.AuthorizationRuleCollection.Kind_Array;
       
          function Constructor return NetFrameworkBase.System.Security.AccessControl.AuthorizationRuleCollection.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.AuthorizationRuleCollection.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype ControlFlags is NetFrameworkBase.System.Security.AccessControl.ControlFlags.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype GenericSecurityDescriptor is NetFrameworkBase.System.Security.AccessControl.GenericSecurityDescriptor.Kind_Ptr;
+      subtype GenericSecurityDescriptor_Array is NetFrameworkBase.System.Security.AccessControl.GenericSecurityDescriptor.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype RawSecurityDescriptor is NetFrameworkBase.System.Security.AccessControl.RawSecurityDescriptor.Kind_Ptr;
+      subtype RawSecurityDescriptor_Array is NetFrameworkBase.System.Security.AccessControl.RawSecurityDescriptor.Kind_Array;
+      
+         function Constructor
+         (
+            flags : NetFrameworkBase.System.Security.AccessControl.ControlFlags.Kind;
+            owner : NetFrameworkBase.System.Security.Principal.SecurityIdentifier.Kind_Ptr;
+            group : NetFrameworkBase.System.Security.Principal.SecurityIdentifier.Kind_Ptr;
+            systemAcl : NetFrameworkBase.System.Security.AccessControl.RawAcl.Kind_Ptr;
+            discretionaryAcl : NetFrameworkBase.System.Security.AccessControl.RawAcl.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.AccessControl.RawSecurityDescriptor.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.RawSecurityDescriptor.Constructor; 
+         
+         function Constructor
+         (
+            sddlForm : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.AccessControl.RawSecurityDescriptor.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.RawSecurityDescriptor.Constructor; 
+         
+         function Constructor
+         (
+            binaryForm : NetFrameworkBase.Byte_Array;
+            offset : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Security.AccessControl.RawSecurityDescriptor.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.RawSecurityDescriptor.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CommonSecurityDescriptor is NetFrameworkBase.System.Security.AccessControl.CommonSecurityDescriptor.Kind_Ptr;
+      subtype CommonSecurityDescriptor_Array is NetFrameworkBase.System.Security.AccessControl.CommonSecurityDescriptor.Kind_Array;
+      
+         function Constructor
+         (
+            isContainer : NetFrameworkBase.Boolean;
+            isDS : NetFrameworkBase.Boolean;
+            flags : NetFrameworkBase.System.Security.AccessControl.ControlFlags.Kind;
+            owner : NetFrameworkBase.System.Security.Principal.SecurityIdentifier.Kind_Ptr;
+            group : NetFrameworkBase.System.Security.Principal.SecurityIdentifier.Kind_Ptr;
+            systemAcl : NetFrameworkBase.System.Security.AccessControl.SystemAcl.Kind_Ptr;
+            discretionaryAcl : NetFrameworkBase.System.Security.AccessControl.DiscretionaryAcl.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.AccessControl.CommonSecurityDescriptor.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.CommonSecurityDescriptor.Constructor; 
+         
+         function Constructor
+         (
+            isContainer : NetFrameworkBase.Boolean;
+            isDS : NetFrameworkBase.Boolean;
+            rawSecurityDescriptor : NetFrameworkBase.System.Security.AccessControl.RawSecurityDescriptor.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.AccessControl.CommonSecurityDescriptor.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.CommonSecurityDescriptor.Constructor; 
+         
+         function Constructor
+         (
+            isContainer : NetFrameworkBase.Boolean;
+            isDS : NetFrameworkBase.Boolean;
+            sddlForm : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.AccessControl.CommonSecurityDescriptor.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.CommonSecurityDescriptor.Constructor; 
+         
+         function Constructor
+         (
+            isContainer : NetFrameworkBase.Boolean;
+            isDS : NetFrameworkBase.Boolean;
+            binaryForm : NetFrameworkBase.Byte_Array;
+            offset : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Security.AccessControl.CommonSecurityDescriptor.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.CommonSecurityDescriptor.Constructor; 
          
    
 end;

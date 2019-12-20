@@ -28,12 +28,48 @@
 --                                                                            --
 --------------------------------------------------------------------------------
 with NetFrameworkBase.System.Security.SecurityElement;
+with NetFrameworkBase.System.Security.XmlSyntaxException;
+with NetFrameworkBase.System.Security.SuppressUnmanagedCodeSecurityAttribute;
+with NetFrameworkBase.System.Security.UnverifiableCodeAttribute;
+with NetFrameworkBase.System.Security.AllowPartiallyTrustedCallersAttribute;
+with NetFrameworkBase.System.Security.PartialTrustVisibilityLevel;
+with NetFrameworkBase.System.Security.SecurityCriticalScope;
+with NetFrameworkBase.System.Security.SecurityCriticalAttribute;
+with NetFrameworkBase.System.Security.SecurityTreatAsSafeAttribute;
+with NetFrameworkBase.System.Security.SecuritySafeCriticalAttribute;
+with NetFrameworkBase.System.Security.SecurityTransparentAttribute;
 with NetFrameworkBase.System.Security.SecurityRuleSet;
+with NetFrameworkBase.System.Security.SecurityRulesAttribute;
+with NetFrameworkBase.System.Security.CodeAccessPermission;
+with NetFrameworkBase.System.Security.IEvidenceFactory;
 with NetFrameworkBase.System.Security.IPermission;
+with NetFrameworkBase.System.Security.ISecurityEncodable;
+with NetFrameworkBase.System.Security.ISecurityPolicyEncodable;
+with NetFrameworkBase.System.Security.IStackWalk;
+with NetFrameworkBase.System.Security.HostSecurityManagerOptions;
+with NetFrameworkBase.System.Security.HostSecurityManager;
+with NetFrameworkBase.System.Security.NamedPermissionSet;
 with NetFrameworkBase.System.Security.PermissionSet;
+with NetFrameworkBase.System.Security.ReadOnlyPermissionSet;
 with NetFrameworkBase.System.Security.SecureString;
 with NetFrameworkBase.System.Security.SecurityContextSource;
+with NetFrameworkBase.System.Security.SecurityContext;
+with NetFrameworkBase.System.Security.SecurityException;
+with NetFrameworkBase.System.Security.SecurityState;
+with NetFrameworkBase.System.Security.HostProtectionException;
+with NetFrameworkBase.System.Security.PolicyLevelType;
+with NetFrameworkBase.System.Security.SecurityManager;
+with NetFrameworkBase.System.Security.SecurityZone;
+with NetFrameworkBase.System.Security.VerificationException;
+with NetFrameworkBase.System.Exception_x;
 with NetFrameworkBase.System.Security.Permissions.PermissionState;
+with NetFrameworkBase.System.Type_x;
+with NetFrameworkBase.System.Reflection.AssemblyName;
+with NetFrameworkBase.System.Reflection.MethodInfo;
+with NetFrameworkBase.System.Security.Permissions.SecurityAction;
+with NetFrameworkBase.System.Object;
+with NetFrameworkBase.System.Security.Policy.Evidence;
+with NetFrameworkBase.System.Security.Permissions.HostProtectionResource;
 --------------------------------------------------------------------------------
 package NetFramework.System.Security is
    
@@ -55,12 +91,167 @@ package NetFramework.System.Security is
          return NetFrameworkBase.System.Security.SecurityElement.Kind_Ptr renames NetFrameworkBase.System.Security.SecurityElement.Constructor; 
          
       --------------------------------------------------------------------------
+      subtype XmlSyntaxException is NetFrameworkBase.System.Security.XmlSyntaxException.Kind_Ptr;
+      subtype XmlSyntaxException_Array is NetFrameworkBase.System.Security.XmlSyntaxException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.XmlSyntaxException.Kind_Ptr renames NetFrameworkBase.System.Security.XmlSyntaxException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.XmlSyntaxException.Kind_Ptr renames NetFrameworkBase.System.Security.XmlSyntaxException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.XmlSyntaxException.Kind_Ptr renames NetFrameworkBase.System.Security.XmlSyntaxException.Constructor; 
+         
+         function Constructor
+         (
+            lineNumber : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Security.XmlSyntaxException.Kind_Ptr renames NetFrameworkBase.System.Security.XmlSyntaxException.Constructor; 
+         
+         function Constructor
+         (
+            lineNumber : NetFrameworkBase.Int32;
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.XmlSyntaxException.Kind_Ptr renames NetFrameworkBase.System.Security.XmlSyntaxException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SuppressUnmanagedCodeSecurityAttribute is NetFrameworkBase.System.Security.SuppressUnmanagedCodeSecurityAttribute.Kind_Ptr;
+      subtype SuppressUnmanagedCodeSecurityAttribute_Array is NetFrameworkBase.System.Security.SuppressUnmanagedCodeSecurityAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.SuppressUnmanagedCodeSecurityAttribute.Kind_Ptr renames NetFrameworkBase.System.Security.SuppressUnmanagedCodeSecurityAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype UnverifiableCodeAttribute is NetFrameworkBase.System.Security.UnverifiableCodeAttribute.Kind_Ptr;
+      subtype UnverifiableCodeAttribute_Array is NetFrameworkBase.System.Security.UnverifiableCodeAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.UnverifiableCodeAttribute.Kind_Ptr renames NetFrameworkBase.System.Security.UnverifiableCodeAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype AllowPartiallyTrustedCallersAttribute is NetFrameworkBase.System.Security.AllowPartiallyTrustedCallersAttribute.Kind_Ptr;
+      subtype AllowPartiallyTrustedCallersAttribute_Array is NetFrameworkBase.System.Security.AllowPartiallyTrustedCallersAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.AllowPartiallyTrustedCallersAttribute.Kind_Ptr renames NetFrameworkBase.System.Security.AllowPartiallyTrustedCallersAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype PartialTrustVisibilityLevel is NetFrameworkBase.System.Security.PartialTrustVisibilityLevel.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype SecurityCriticalScope is NetFrameworkBase.System.Security.SecurityCriticalScope.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype SecurityCriticalAttribute is NetFrameworkBase.System.Security.SecurityCriticalAttribute.Kind_Ptr;
+      subtype SecurityCriticalAttribute_Array is NetFrameworkBase.System.Security.SecurityCriticalAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.SecurityCriticalAttribute.Kind_Ptr renames NetFrameworkBase.System.Security.SecurityCriticalAttribute.Constructor;
+         
+         function Constructor
+         (
+            scope : NetFrameworkBase.System.Security.SecurityCriticalScope.Kind
+         )
+         return NetFrameworkBase.System.Security.SecurityCriticalAttribute.Kind_Ptr renames NetFrameworkBase.System.Security.SecurityCriticalAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SecurityTreatAsSafeAttribute is NetFrameworkBase.System.Security.SecurityTreatAsSafeAttribute.Kind_Ptr;
+      subtype SecurityTreatAsSafeAttribute_Array is NetFrameworkBase.System.Security.SecurityTreatAsSafeAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.SecurityTreatAsSafeAttribute.Kind_Ptr renames NetFrameworkBase.System.Security.SecurityTreatAsSafeAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SecuritySafeCriticalAttribute is NetFrameworkBase.System.Security.SecuritySafeCriticalAttribute.Kind_Ptr;
+      subtype SecuritySafeCriticalAttribute_Array is NetFrameworkBase.System.Security.SecuritySafeCriticalAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.SecuritySafeCriticalAttribute.Kind_Ptr renames NetFrameworkBase.System.Security.SecuritySafeCriticalAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SecurityTransparentAttribute is NetFrameworkBase.System.Security.SecurityTransparentAttribute.Kind_Ptr;
+      subtype SecurityTransparentAttribute_Array is NetFrameworkBase.System.Security.SecurityTransparentAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.SecurityTransparentAttribute.Kind_Ptr renames NetFrameworkBase.System.Security.SecurityTransparentAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
       subtype SecurityRuleSet is NetFrameworkBase.System.Security.SecurityRuleSet.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype SecurityRulesAttribute is NetFrameworkBase.System.Security.SecurityRulesAttribute.Kind_Ptr;
+      subtype SecurityRulesAttribute_Array is NetFrameworkBase.System.Security.SecurityRulesAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            ruleSet : NetFrameworkBase.System.Security.SecurityRuleSet.Kind
+         )
+         return NetFrameworkBase.System.Security.SecurityRulesAttribute.Kind_Ptr renames NetFrameworkBase.System.Security.SecurityRulesAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CodeAccessPermission is NetFrameworkBase.System.Security.CodeAccessPermission.Kind_Ptr;
+      subtype CodeAccessPermission_Array is NetFrameworkBase.System.Security.CodeAccessPermission.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IEvidenceFactory is NetFrameworkBase.System.Security.IEvidenceFactory.Kind_Ptr;
+      subtype IEvidenceFactory_Array is NetFrameworkBase.System.Security.IEvidenceFactory.Kind_Array;
       
       --------------------------------------------------------------------------
       subtype IPermission is NetFrameworkBase.System.Security.IPermission.Kind_Ptr;
       subtype IPermission_Array is NetFrameworkBase.System.Security.IPermission.Kind_Array;
       
+      --------------------------------------------------------------------------
+      subtype ISecurityEncodable is NetFrameworkBase.System.Security.ISecurityEncodable.Kind_Ptr;
+      subtype ISecurityEncodable_Array is NetFrameworkBase.System.Security.ISecurityEncodable.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ISecurityPolicyEncodable is NetFrameworkBase.System.Security.ISecurityPolicyEncodable.Kind_Ptr;
+      subtype ISecurityPolicyEncodable_Array is NetFrameworkBase.System.Security.ISecurityPolicyEncodable.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IStackWalk is NetFrameworkBase.System.Security.IStackWalk.Kind_Ptr;
+      subtype IStackWalk_Array is NetFrameworkBase.System.Security.IStackWalk.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype HostSecurityManagerOptions is NetFrameworkBase.System.Security.HostSecurityManagerOptions.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype HostSecurityManager is NetFrameworkBase.System.Security.HostSecurityManager.Kind_Ptr;
+      subtype HostSecurityManager_Array is NetFrameworkBase.System.Security.HostSecurityManager.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.HostSecurityManager.Kind_Ptr renames NetFrameworkBase.System.Security.HostSecurityManager.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype NamedPermissionSet is NetFrameworkBase.System.Security.NamedPermissionSet.Kind_Ptr;
+      subtype NamedPermissionSet_Array is NetFrameworkBase.System.Security.NamedPermissionSet.Kind_Array;
+      
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.NamedPermissionSet.Kind_Ptr renames NetFrameworkBase.System.Security.NamedPermissionSet.Constructor; 
+         
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR;
+            state : NetFrameworkBase.System.Security.Permissions.PermissionState.Kind
+         )
+         return NetFrameworkBase.System.Security.NamedPermissionSet.Kind_Ptr renames NetFrameworkBase.System.Security.NamedPermissionSet.Constructor; 
+         
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR;
+            permSet : NetFrameworkBase.System.Security.PermissionSet.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.NamedPermissionSet.Kind_Ptr renames NetFrameworkBase.System.Security.NamedPermissionSet.Constructor; 
+         
+         function Constructor
+         (
+            permSet : NetFrameworkBase.System.Security.NamedPermissionSet.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.NamedPermissionSet.Kind_Ptr renames NetFrameworkBase.System.Security.NamedPermissionSet.Constructor; 
+         
       --------------------------------------------------------------------------
       subtype PermissionSet is NetFrameworkBase.System.Security.PermissionSet.Kind_Ptr;
       subtype PermissionSet_Array is NetFrameworkBase.System.Security.PermissionSet.Kind_Array;
@@ -78,6 +269,16 @@ package NetFramework.System.Security is
          return NetFrameworkBase.System.Security.PermissionSet.Kind_Ptr renames NetFrameworkBase.System.Security.PermissionSet.Constructor; 
          
       --------------------------------------------------------------------------
+      subtype ReadOnlyPermissionSet is NetFrameworkBase.System.Security.ReadOnlyPermissionSet.Kind_Ptr;
+      subtype ReadOnlyPermissionSet_Array is NetFrameworkBase.System.Security.ReadOnlyPermissionSet.Kind_Array;
+      
+         function Constructor
+         (
+            permissionSetXml : NetFrameworkBase.System.Security.SecurityElement.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.ReadOnlyPermissionSet.Kind_Ptr renames NetFrameworkBase.System.Security.ReadOnlyPermissionSet.Constructor; 
+         
+      --------------------------------------------------------------------------
       subtype SecureString is NetFrameworkBase.System.Security.SecureString.Kind_Ptr;
       subtype SecureString_Array is NetFrameworkBase.System.Security.SecureString.Kind_Array;
       
@@ -93,5 +294,128 @@ package NetFramework.System.Security is
       --------------------------------------------------------------------------
       subtype SecurityContextSource is NetFrameworkBase.System.Security.SecurityContextSource.Kind;
       
+      --------------------------------------------------------------------------
+      subtype SecurityContext is NetFrameworkBase.System.Security.SecurityContext.Kind_Ptr;
+      subtype SecurityContext_Array is NetFrameworkBase.System.Security.SecurityContext.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype SecurityException is NetFrameworkBase.System.Security.SecurityException.Kind_Ptr;
+      subtype SecurityException_Array is NetFrameworkBase.System.Security.SecurityException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.SecurityException.Kind_Ptr renames NetFrameworkBase.System.Security.SecurityException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.SecurityException.Kind_Ptr renames NetFrameworkBase.System.Security.SecurityException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            type_x : NetFrameworkBase.System.Type_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.SecurityException.Kind_Ptr renames NetFrameworkBase.System.Security.SecurityException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
+            state : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.SecurityException.Kind_Ptr renames NetFrameworkBase.System.Security.SecurityException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.SecurityException.Kind_Ptr renames NetFrameworkBase.System.Security.SecurityException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            assemblyName : NetFrameworkBase.System.Reflection.AssemblyName.Kind_Ptr;
+            grant : NetFrameworkBase.System.Security.PermissionSet.Kind_Ptr;
+            refused : NetFrameworkBase.System.Security.PermissionSet.Kind_Ptr;
+            method : NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr;
+            action : NetFrameworkBase.System.Security.Permissions.SecurityAction.Kind;
+            demanded : NetFrameworkBase.System.Object.Kind_Ptr;
+            permThatFailed : NetFrameworkBase.System.Security.IPermission.Kind_Ptr;
+            evidence : NetFrameworkBase.System.Security.Policy.Evidence.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.SecurityException.Kind_Ptr renames NetFrameworkBase.System.Security.SecurityException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            deny : NetFrameworkBase.System.Object.Kind_Ptr;
+            permitOnly : NetFrameworkBase.System.Object.Kind_Ptr;
+            method : NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr;
+            demanded : NetFrameworkBase.System.Object.Kind_Ptr;
+            permThatFailed : NetFrameworkBase.System.Security.IPermission.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.SecurityException.Kind_Ptr renames NetFrameworkBase.System.Security.SecurityException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SecurityState is NetFrameworkBase.System.Security.SecurityState.Kind_Ptr;
+      subtype SecurityState_Array is NetFrameworkBase.System.Security.SecurityState.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype HostProtectionException is NetFrameworkBase.System.Security.HostProtectionException.Kind_Ptr;
+      subtype HostProtectionException_Array is NetFrameworkBase.System.Security.HostProtectionException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.HostProtectionException.Kind_Ptr renames NetFrameworkBase.System.Security.HostProtectionException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.HostProtectionException.Kind_Ptr renames NetFrameworkBase.System.Security.HostProtectionException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            e : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.HostProtectionException.Kind_Ptr renames NetFrameworkBase.System.Security.HostProtectionException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            protectedResources : NetFrameworkBase.System.Security.Permissions.HostProtectionResource.Kind;
+            demandedResources : NetFrameworkBase.System.Security.Permissions.HostProtectionResource.Kind
+         )
+         return NetFrameworkBase.System.Security.HostProtectionException.Kind_Ptr renames NetFrameworkBase.System.Security.HostProtectionException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype PolicyLevelType is NetFrameworkBase.System.Security.PolicyLevelType.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype SecurityManager is NetFrameworkBase.System.Security.SecurityManager.Kind_Ptr;
+      subtype SecurityManager_Array is NetFrameworkBase.System.Security.SecurityManager.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype SecurityZone is NetFrameworkBase.System.Security.SecurityZone.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype VerificationException is NetFrameworkBase.System.Security.VerificationException.Kind_Ptr;
+      subtype VerificationException_Array is NetFrameworkBase.System.Security.VerificationException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.VerificationException.Kind_Ptr renames NetFrameworkBase.System.Security.VerificationException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.VerificationException.Kind_Ptr renames NetFrameworkBase.System.Security.VerificationException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.VerificationException.Kind_Ptr renames NetFrameworkBase.System.Security.VerificationException.Constructor; 
+         
    
 end;

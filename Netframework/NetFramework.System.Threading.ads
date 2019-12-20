@@ -27,16 +27,503 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.Threading.AbandonedMutexException;
+with NetFrameworkBase.System.Threading.AutoResetEvent;
+with NetFrameworkBase.System.Threading.SendOrPostCallback;
+with NetFrameworkBase.System.Threading.SynchronizationContext;
+with NetFrameworkBase.System.Threading.CompressedStack;
+with NetFrameworkBase.System.Threading.EventResetMode;
+with NetFrameworkBase.System.Threading.EventWaitHandle;
+with NetFrameworkBase.System.Threading.ContextCallback;
+with NetFrameworkBase.System.Threading.AsyncFlowControl;
+with NetFrameworkBase.System.Threading.ExecutionContext;
+with NetFrameworkBase.System.Threading.Interlocked;
+with NetFrameworkBase.System.Threading.HostExecutionContext;
+with NetFrameworkBase.System.Threading.HostExecutionContextManager;
+with NetFrameworkBase.System.Threading.LockCookie;
+with NetFrameworkBase.System.Threading.LockRecursionException;
+with NetFrameworkBase.System.Threading.ManualResetEvent;
+with NetFrameworkBase.System.Threading.Monitor;
+with NetFrameworkBase.System.Threading.Mutex;
+with NetFrameworkBase.System.Threading.NativeOverlapped;
+with NetFrameworkBase.System.Threading.Overlapped;
+with NetFrameworkBase.System.Threading.PreAllocatedOverlapped;
+with NetFrameworkBase.System.Threading.ThreadPoolBoundHandle;
+with NetFrameworkBase.System.Threading.ParameterizedThreadStart;
+with NetFrameworkBase.System.Threading.ReaderWriterLock;
+with NetFrameworkBase.System.Threading.SemaphoreFullException;
+with NetFrameworkBase.System.Threading.SynchronizationLockException;
+with NetFrameworkBase.System.Threading.Thread;
+with NetFrameworkBase.System.Threading.ThreadAbortException;
+with NetFrameworkBase.System.Threading.ThreadInterruptedException;
+with NetFrameworkBase.System.Threading.RegisteredWaitHandle;
+with NetFrameworkBase.System.Threading.WaitCallback;
+with NetFrameworkBase.System.Threading.WaitOrTimerCallback;
+with NetFrameworkBase.System.Threading.IOCompletionCallback;
+with NetFrameworkBase.System.Threading.ThreadPool;
+with NetFrameworkBase.System.Threading.ThreadPriority;
+with NetFrameworkBase.System.Threading.ThreadStart;
+with NetFrameworkBase.System.Threading.ThreadState;
+with NetFrameworkBase.System.Threading.ThreadStateException;
+with NetFrameworkBase.System.Threading.ThreadStartException;
+with NetFrameworkBase.System.Threading.Timeout;
 with NetFrameworkBase.System.Threading.TimerCallback;
 with NetFrameworkBase.System.Threading.Timer;
+with NetFrameworkBase.System.Threading.Volatile;
 with NetFrameworkBase.System.Threading.WaitHandle;
+with NetFrameworkBase.System.Threading.WaitHandleExtensions;
+with NetFrameworkBase.System.Threading.WaitHandleCannotBeOpenedException;
+with NetFrameworkBase.System.Threading.ApartmentState;
+with NetFrameworkBase.System.Threading.SpinLock;
+with NetFrameworkBase.System.Threading.SpinWait;
+with NetFrameworkBase.System.Threading.CountdownEvent;
+with NetFrameworkBase.System.Threading.LazyThreadSafetyMode;
+with NetFrameworkBase.System.Threading.LazyInitializer;
+with NetFrameworkBase.System.Threading.SemaphoreSlim;
+with NetFrameworkBase.System.Threading.ManualResetEventSlim;
 with NetFrameworkBase.System.Threading.CancellationTokenRegistration;
+with NetFrameworkBase.System.Threading.CancellationTokenSource;
 with NetFrameworkBase.System.Threading.CancellationToken;
+with NetFrameworkBase.System.Exception_x;
 with NetFrameworkBase.System.Object;
+with NetFrameworkBase.System.Security.AccessControl.EventWaitHandleSecurity;
+with NetFrameworkBase.System.Security.AccessControl.MutexSecurity;
+with NetFrameworkBase.System.IAsyncResult;
 with NetFrameworkBase.System.TimeSpan;
 --------------------------------------------------------------------------------
 package NetFramework.System.Threading is
    
+      --------------------------------------------------------------------------
+      subtype AbandonedMutexException is NetFrameworkBase.System.Threading.AbandonedMutexException.Kind_Ptr;
+      subtype AbandonedMutexException_Array is NetFrameworkBase.System.Threading.AbandonedMutexException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Threading.AbandonedMutexException.Kind_Ptr renames NetFrameworkBase.System.Threading.AbandonedMutexException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Threading.AbandonedMutexException.Kind_Ptr renames NetFrameworkBase.System.Threading.AbandonedMutexException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.AbandonedMutexException.Kind_Ptr renames NetFrameworkBase.System.Threading.AbandonedMutexException.Constructor; 
+         
+         function Constructor
+         (
+            location : NetFrameworkBase.Int32;
+            handle : NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.AbandonedMutexException.Kind_Ptr renames NetFrameworkBase.System.Threading.AbandonedMutexException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            location : NetFrameworkBase.Int32;
+            handle : NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.AbandonedMutexException.Kind_Ptr renames NetFrameworkBase.System.Threading.AbandonedMutexException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr;
+            location : NetFrameworkBase.Int32;
+            handle : NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.AbandonedMutexException.Kind_Ptr renames NetFrameworkBase.System.Threading.AbandonedMutexException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype AutoResetEvent is NetFrameworkBase.System.Threading.AutoResetEvent.Kind_Ptr;
+      subtype AutoResetEvent_Array is NetFrameworkBase.System.Threading.AutoResetEvent.Kind_Array;
+      
+         function Constructor
+         (
+            initialState : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Threading.AutoResetEvent.Kind_Ptr renames NetFrameworkBase.System.Threading.AutoResetEvent.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SendOrPostCallback is NetFrameworkBase.System.Threading.SendOrPostCallback.Kind_Ptr;
+      subtype SendOrPostCallback_Array is NetFrameworkBase.System.Threading.SendOrPostCallback.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.System.Threading.SendOrPostCallback.Kind_Callback) return NetFrameworkBase.System.Threading.SendOrPostCallback.Kind_Ptr renames NetFrameworkBase.System.Threading.SendOrPostCallback.Constructor;
+      
+      --------------------------------------------------------------------------
+      subtype SynchronizationContext is NetFrameworkBase.System.Threading.SynchronizationContext.Kind_Ptr;
+      subtype SynchronizationContext_Array is NetFrameworkBase.System.Threading.SynchronizationContext.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Threading.SynchronizationContext.Kind_Ptr renames NetFrameworkBase.System.Threading.SynchronizationContext.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype CompressedStack is NetFrameworkBase.System.Threading.CompressedStack.Kind_Ptr;
+      subtype CompressedStack_Array is NetFrameworkBase.System.Threading.CompressedStack.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype EventResetMode is NetFrameworkBase.System.Threading.EventResetMode.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype EventWaitHandle is NetFrameworkBase.System.Threading.EventWaitHandle.Kind_Ptr;
+      subtype EventWaitHandle_Array is NetFrameworkBase.System.Threading.EventWaitHandle.Kind_Array;
+      
+         function Constructor
+         (
+            initialState : NetFrameworkBase.Boolean;
+            mode : NetFrameworkBase.System.Threading.EventResetMode.Kind
+         )
+         return NetFrameworkBase.System.Threading.EventWaitHandle.Kind_Ptr renames NetFrameworkBase.System.Threading.EventWaitHandle.Constructor; 
+         
+         function Constructor
+         (
+            initialState : NetFrameworkBase.Boolean;
+            mode : NetFrameworkBase.System.Threading.EventResetMode.Kind;
+            name : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Threading.EventWaitHandle.Kind_Ptr renames NetFrameworkBase.System.Threading.EventWaitHandle.Constructor; 
+         
+         function Constructor
+         (
+            initialState : NetFrameworkBase.Boolean;
+            mode : NetFrameworkBase.System.Threading.EventResetMode.Kind;
+            name : NetFrameworkBase.BSTR;
+            createdNew : out NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Threading.EventWaitHandle.Kind_Ptr renames NetFrameworkBase.System.Threading.EventWaitHandle.Constructor; 
+         
+         function Constructor
+         (
+            initialState : NetFrameworkBase.Boolean;
+            mode : NetFrameworkBase.System.Threading.EventResetMode.Kind;
+            name : NetFrameworkBase.BSTR;
+            createdNew : out NetFrameworkBase.Boolean;
+            eventSecurity : NetFrameworkBase.System.Security.AccessControl.EventWaitHandleSecurity.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.EventWaitHandle.Kind_Ptr renames NetFrameworkBase.System.Threading.EventWaitHandle.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ContextCallback is NetFrameworkBase.System.Threading.ContextCallback.Kind_Ptr;
+      subtype ContextCallback_Array is NetFrameworkBase.System.Threading.ContextCallback.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.System.Threading.ContextCallback.Kind_Callback) return NetFrameworkBase.System.Threading.ContextCallback.Kind_Ptr renames NetFrameworkBase.System.Threading.ContextCallback.Constructor;
+      
+      --------------------------------------------------------------------------
+      subtype AsyncFlowControl is NetFrameworkBase.System.Threading.AsyncFlowControl.Kind_Ptr;
+      subtype AsyncFlowControl_Array is NetFrameworkBase.System.Threading.AsyncFlowControl.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ExecutionContext is NetFrameworkBase.System.Threading.ExecutionContext.Kind_Ptr;
+      subtype ExecutionContext_Array is NetFrameworkBase.System.Threading.ExecutionContext.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype Interlocked is NetFrameworkBase.System.Threading.Interlocked.Kind_Ptr;
+      subtype Interlocked_Array is NetFrameworkBase.System.Threading.Interlocked.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype HostExecutionContext is NetFrameworkBase.System.Threading.HostExecutionContext.Kind_Ptr;
+      subtype HostExecutionContext_Array is NetFrameworkBase.System.Threading.HostExecutionContext.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Threading.HostExecutionContext.Kind_Ptr renames NetFrameworkBase.System.Threading.HostExecutionContext.Constructor;
+         
+         function Constructor
+         (
+            state : NetFrameworkBase.System.Object.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.HostExecutionContext.Kind_Ptr renames NetFrameworkBase.System.Threading.HostExecutionContext.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype HostExecutionContextManager is NetFrameworkBase.System.Threading.HostExecutionContextManager.Kind_Ptr;
+      subtype HostExecutionContextManager_Array is NetFrameworkBase.System.Threading.HostExecutionContextManager.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Threading.HostExecutionContextManager.Kind_Ptr renames NetFrameworkBase.System.Threading.HostExecutionContextManager.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype LockCookie is NetFrameworkBase.System.Threading.LockCookie.Kind_Ptr;
+      subtype LockCookie_Array is NetFrameworkBase.System.Threading.LockCookie.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype LockRecursionException is NetFrameworkBase.System.Threading.LockRecursionException.Kind_Ptr;
+      subtype LockRecursionException_Array is NetFrameworkBase.System.Threading.LockRecursionException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Threading.LockRecursionException.Kind_Ptr renames NetFrameworkBase.System.Threading.LockRecursionException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Threading.LockRecursionException.Kind_Ptr renames NetFrameworkBase.System.Threading.LockRecursionException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.LockRecursionException.Kind_Ptr renames NetFrameworkBase.System.Threading.LockRecursionException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ManualResetEvent is NetFrameworkBase.System.Threading.ManualResetEvent.Kind_Ptr;
+      subtype ManualResetEvent_Array is NetFrameworkBase.System.Threading.ManualResetEvent.Kind_Array;
+      
+         function Constructor
+         (
+            initialState : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Threading.ManualResetEvent.Kind_Ptr renames NetFrameworkBase.System.Threading.ManualResetEvent.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype Monitor is NetFrameworkBase.System.Threading.Monitor.Kind_Ptr;
+      subtype Monitor_Array is NetFrameworkBase.System.Threading.Monitor.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype Mutex is NetFrameworkBase.System.Threading.Mutex.Kind_Ptr;
+      subtype Mutex_Array is NetFrameworkBase.System.Threading.Mutex.Kind_Array;
+      
+         function Constructor
+         (
+            initiallyOwned : NetFrameworkBase.Boolean;
+            name : NetFrameworkBase.BSTR;
+            createdNew : out NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Threading.Mutex.Kind_Ptr renames NetFrameworkBase.System.Threading.Mutex.Constructor; 
+         
+         function Constructor
+         (
+            initiallyOwned : NetFrameworkBase.Boolean;
+            name : NetFrameworkBase.BSTR;
+            createdNew : out NetFrameworkBase.Boolean;
+            mutexSecurity : NetFrameworkBase.System.Security.AccessControl.MutexSecurity.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.Mutex.Kind_Ptr renames NetFrameworkBase.System.Threading.Mutex.Constructor; 
+         
+         function Constructor
+         (
+            initiallyOwned : NetFrameworkBase.Boolean;
+            name : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Threading.Mutex.Kind_Ptr renames NetFrameworkBase.System.Threading.Mutex.Constructor; 
+         
+         function Constructor
+         (
+            initiallyOwned : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Threading.Mutex.Kind_Ptr renames NetFrameworkBase.System.Threading.Mutex.Constructor; 
+         
+         function Constructor return NetFrameworkBase.System.Threading.Mutex.Kind_Ptr renames NetFrameworkBase.System.Threading.Mutex.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype NativeOverlapped is NetFrameworkBase.System.Threading.NativeOverlapped.Kind_Ptr;
+      subtype NativeOverlapped_Array is NetFrameworkBase.System.Threading.NativeOverlapped.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype Overlapped is NetFrameworkBase.System.Threading.Overlapped.Kind_Ptr;
+      subtype Overlapped_Array is NetFrameworkBase.System.Threading.Overlapped.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Threading.Overlapped.Kind_Ptr renames NetFrameworkBase.System.Threading.Overlapped.Constructor;
+         
+         function Constructor
+         (
+            offsetLo : NetFrameworkBase.Int32;
+            offsetHi : NetFrameworkBase.Int32;
+            hEvent : NetFrameworkBase.IntPtr;
+            ar : NetFrameworkBase.System.IAsyncResult.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.Overlapped.Kind_Ptr renames NetFrameworkBase.System.Threading.Overlapped.Constructor; 
+         
+         function Constructor
+         (
+            offsetLo : NetFrameworkBase.Int32;
+            offsetHi : NetFrameworkBase.Int32;
+            hEvent : NetFrameworkBase.Int32;
+            ar : NetFrameworkBase.System.IAsyncResult.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.Overlapped.Kind_Ptr renames NetFrameworkBase.System.Threading.Overlapped.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype PreAllocatedOverlapped is NetFrameworkBase.System.Threading.PreAllocatedOverlapped.Kind_Ptr;
+      subtype PreAllocatedOverlapped_Array is NetFrameworkBase.System.Threading.PreAllocatedOverlapped.Kind_Array;
+      
+         function Constructor
+         (
+            callback : NetFrameworkBase.System.Threading.IOCompletionCallback.Kind_Ptr;
+            state : NetFrameworkBase.System.Object.Kind_Ptr;
+            pinData : NetFrameworkBase.System.Object.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.PreAllocatedOverlapped.Kind_Ptr renames NetFrameworkBase.System.Threading.PreAllocatedOverlapped.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ThreadPoolBoundHandle is NetFrameworkBase.System.Threading.ThreadPoolBoundHandle.Kind_Ptr;
+      subtype ThreadPoolBoundHandle_Array is NetFrameworkBase.System.Threading.ThreadPoolBoundHandle.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ParameterizedThreadStart is NetFrameworkBase.System.Threading.ParameterizedThreadStart.Kind_Ptr;
+      subtype ParameterizedThreadStart_Array is NetFrameworkBase.System.Threading.ParameterizedThreadStart.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.System.Threading.ParameterizedThreadStart.Kind_Callback) return NetFrameworkBase.System.Threading.ParameterizedThreadStart.Kind_Ptr renames NetFrameworkBase.System.Threading.ParameterizedThreadStart.Constructor;
+      
+      --------------------------------------------------------------------------
+      subtype ReaderWriterLock is NetFrameworkBase.System.Threading.ReaderWriterLock.Kind_Ptr;
+      subtype ReaderWriterLock_Array is NetFrameworkBase.System.Threading.ReaderWriterLock.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Threading.ReaderWriterLock.Kind_Ptr renames NetFrameworkBase.System.Threading.ReaderWriterLock.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SemaphoreFullException is NetFrameworkBase.System.Threading.SemaphoreFullException.Kind_Ptr;
+      subtype SemaphoreFullException_Array is NetFrameworkBase.System.Threading.SemaphoreFullException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Threading.SemaphoreFullException.Kind_Ptr renames NetFrameworkBase.System.Threading.SemaphoreFullException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Threading.SemaphoreFullException.Kind_Ptr renames NetFrameworkBase.System.Threading.SemaphoreFullException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.SemaphoreFullException.Kind_Ptr renames NetFrameworkBase.System.Threading.SemaphoreFullException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SynchronizationLockException is NetFrameworkBase.System.Threading.SynchronizationLockException.Kind_Ptr;
+      subtype SynchronizationLockException_Array is NetFrameworkBase.System.Threading.SynchronizationLockException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Threading.SynchronizationLockException.Kind_Ptr renames NetFrameworkBase.System.Threading.SynchronizationLockException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Threading.SynchronizationLockException.Kind_Ptr renames NetFrameworkBase.System.Threading.SynchronizationLockException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.SynchronizationLockException.Kind_Ptr renames NetFrameworkBase.System.Threading.SynchronizationLockException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype Thread is NetFrameworkBase.System.Threading.Thread.Kind_Ptr;
+      subtype Thread_Array is NetFrameworkBase.System.Threading.Thread.Kind_Array;
+      
+         function Constructor
+         (
+            start : NetFrameworkBase.System.Threading.ThreadStart.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.Thread.Kind_Ptr renames NetFrameworkBase.System.Threading.Thread.Constructor; 
+         
+         function Constructor
+         (
+            start : NetFrameworkBase.System.Threading.ThreadStart.Kind_Ptr;
+            maxStackSize : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Threading.Thread.Kind_Ptr renames NetFrameworkBase.System.Threading.Thread.Constructor; 
+         
+         function Constructor
+         (
+            start : NetFrameworkBase.System.Threading.ParameterizedThreadStart.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.Thread.Kind_Ptr renames NetFrameworkBase.System.Threading.Thread.Constructor; 
+         
+         function Constructor
+         (
+            start : NetFrameworkBase.System.Threading.ParameterizedThreadStart.Kind_Ptr;
+            maxStackSize : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Threading.Thread.Kind_Ptr renames NetFrameworkBase.System.Threading.Thread.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ThreadAbortException is NetFrameworkBase.System.Threading.ThreadAbortException.Kind_Ptr;
+      subtype ThreadAbortException_Array is NetFrameworkBase.System.Threading.ThreadAbortException.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ThreadInterruptedException is NetFrameworkBase.System.Threading.ThreadInterruptedException.Kind_Ptr;
+      subtype ThreadInterruptedException_Array is NetFrameworkBase.System.Threading.ThreadInterruptedException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Threading.ThreadInterruptedException.Kind_Ptr renames NetFrameworkBase.System.Threading.ThreadInterruptedException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Threading.ThreadInterruptedException.Kind_Ptr renames NetFrameworkBase.System.Threading.ThreadInterruptedException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.ThreadInterruptedException.Kind_Ptr renames NetFrameworkBase.System.Threading.ThreadInterruptedException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype RegisteredWaitHandle is NetFrameworkBase.System.Threading.RegisteredWaitHandle.Kind_Ptr;
+      subtype RegisteredWaitHandle_Array is NetFrameworkBase.System.Threading.RegisteredWaitHandle.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype WaitCallback is NetFrameworkBase.System.Threading.WaitCallback.Kind_Ptr;
+      subtype WaitCallback_Array is NetFrameworkBase.System.Threading.WaitCallback.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.System.Threading.WaitCallback.Kind_Callback) return NetFrameworkBase.System.Threading.WaitCallback.Kind_Ptr renames NetFrameworkBase.System.Threading.WaitCallback.Constructor;
+      
+      --------------------------------------------------------------------------
+      subtype WaitOrTimerCallback is NetFrameworkBase.System.Threading.WaitOrTimerCallback.Kind_Ptr;
+      subtype WaitOrTimerCallback_Array is NetFrameworkBase.System.Threading.WaitOrTimerCallback.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.System.Threading.WaitOrTimerCallback.Kind_Callback) return NetFrameworkBase.System.Threading.WaitOrTimerCallback.Kind_Ptr renames NetFrameworkBase.System.Threading.WaitOrTimerCallback.Constructor;
+      
+      --------------------------------------------------------------------------
+      subtype IOCompletionCallback is NetFrameworkBase.System.Threading.IOCompletionCallback.Kind_Ptr;
+      subtype IOCompletionCallback_Array is NetFrameworkBase.System.Threading.IOCompletionCallback.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.System.Threading.IOCompletionCallback.Kind_Callback) return NetFrameworkBase.System.Threading.IOCompletionCallback.Kind_Ptr renames NetFrameworkBase.System.Threading.IOCompletionCallback.Constructor;
+      
+      --------------------------------------------------------------------------
+      subtype ThreadPool is NetFrameworkBase.System.Threading.ThreadPool.Kind_Ptr;
+      subtype ThreadPool_Array is NetFrameworkBase.System.Threading.ThreadPool.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ThreadPriority is NetFrameworkBase.System.Threading.ThreadPriority.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype ThreadStart is NetFrameworkBase.System.Threading.ThreadStart.Kind_Ptr;
+      subtype ThreadStart_Array is NetFrameworkBase.System.Threading.ThreadStart.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.System.Threading.ThreadStart.Kind_Callback) return NetFrameworkBase.System.Threading.ThreadStart.Kind_Ptr renames NetFrameworkBase.System.Threading.ThreadStart.Constructor;
+      
+      --------------------------------------------------------------------------
+      subtype ThreadState is NetFrameworkBase.System.Threading.ThreadState.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype ThreadStateException is NetFrameworkBase.System.Threading.ThreadStateException.Kind_Ptr;
+      subtype ThreadStateException_Array is NetFrameworkBase.System.Threading.ThreadStateException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Threading.ThreadStateException.Kind_Ptr renames NetFrameworkBase.System.Threading.ThreadStateException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Threading.ThreadStateException.Kind_Ptr renames NetFrameworkBase.System.Threading.ThreadStateException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.ThreadStateException.Kind_Ptr renames NetFrameworkBase.System.Threading.ThreadStateException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ThreadStartException is NetFrameworkBase.System.Threading.ThreadStartException.Kind_Ptr;
+      subtype ThreadStartException_Array is NetFrameworkBase.System.Threading.ThreadStartException.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype Timeout is NetFrameworkBase.System.Threading.Timeout.Kind_Ptr;
+      subtype Timeout_Array is NetFrameworkBase.System.Threading.Timeout.Kind_Array;
+      
       --------------------------------------------------------------------------
       subtype TimerCallback is NetFrameworkBase.System.Threading.TimerCallback.Kind_Ptr;
       subtype TimerCallback_Array is NetFrameworkBase.System.Threading.TimerCallback.Kind_Array;
@@ -90,13 +577,128 @@ package NetFramework.System.Threading is
          return NetFrameworkBase.System.Threading.Timer.Kind_Ptr renames NetFrameworkBase.System.Threading.Timer.Constructor; 
          
       --------------------------------------------------------------------------
+      subtype Volatile is NetFrameworkBase.System.Threading.Volatile.Kind_Ptr;
+      subtype Volatile_Array is NetFrameworkBase.System.Threading.Volatile.Kind_Array;
+      
+      --------------------------------------------------------------------------
       subtype WaitHandle is NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr;
       subtype WaitHandle_Array is NetFrameworkBase.System.Threading.WaitHandle.Kind_Array;
       
       --------------------------------------------------------------------------
+      subtype WaitHandleExtensions is NetFrameworkBase.System.Threading.WaitHandleExtensions.Kind_Ptr;
+      subtype WaitHandleExtensions_Array is NetFrameworkBase.System.Threading.WaitHandleExtensions.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype WaitHandleCannotBeOpenedException is NetFrameworkBase.System.Threading.WaitHandleCannotBeOpenedException.Kind_Ptr;
+      subtype WaitHandleCannotBeOpenedException_Array is NetFrameworkBase.System.Threading.WaitHandleCannotBeOpenedException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Threading.WaitHandleCannotBeOpenedException.Kind_Ptr renames NetFrameworkBase.System.Threading.WaitHandleCannotBeOpenedException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Threading.WaitHandleCannotBeOpenedException.Kind_Ptr renames NetFrameworkBase.System.Threading.WaitHandleCannotBeOpenedException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.WaitHandleCannotBeOpenedException.Kind_Ptr renames NetFrameworkBase.System.Threading.WaitHandleCannotBeOpenedException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ApartmentState is NetFrameworkBase.System.Threading.ApartmentState.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype SpinLock is NetFrameworkBase.System.Threading.SpinLock.Kind_Ptr;
+      subtype SpinLock_Array is NetFrameworkBase.System.Threading.SpinLock.Kind_Array;
+      
+         function Constructor
+         (
+            enableThreadOwnerTracking : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Threading.SpinLock.Kind_Ptr renames NetFrameworkBase.System.Threading.SpinLock.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SpinWait is NetFrameworkBase.System.Threading.SpinWait.Kind_Ptr;
+      subtype SpinWait_Array is NetFrameworkBase.System.Threading.SpinWait.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype CountdownEvent is NetFrameworkBase.System.Threading.CountdownEvent.Kind_Ptr;
+      subtype CountdownEvent_Array is NetFrameworkBase.System.Threading.CountdownEvent.Kind_Array;
+      
+         function Constructor
+         (
+            initialCount : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Threading.CountdownEvent.Kind_Ptr renames NetFrameworkBase.System.Threading.CountdownEvent.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype LazyThreadSafetyMode is NetFrameworkBase.System.Threading.LazyThreadSafetyMode.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype LazyInitializer is NetFrameworkBase.System.Threading.LazyInitializer.Kind_Ptr;
+      subtype LazyInitializer_Array is NetFrameworkBase.System.Threading.LazyInitializer.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype SemaphoreSlim is NetFrameworkBase.System.Threading.SemaphoreSlim.Kind_Ptr;
+      subtype SemaphoreSlim_Array is NetFrameworkBase.System.Threading.SemaphoreSlim.Kind_Array;
+      
+         function Constructor
+         (
+            initialCount : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Threading.SemaphoreSlim.Kind_Ptr renames NetFrameworkBase.System.Threading.SemaphoreSlim.Constructor; 
+         
+         function Constructor
+         (
+            initialCount : NetFrameworkBase.Int32;
+            maxCount : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Threading.SemaphoreSlim.Kind_Ptr renames NetFrameworkBase.System.Threading.SemaphoreSlim.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ManualResetEventSlim is NetFrameworkBase.System.Threading.ManualResetEventSlim.Kind_Ptr;
+      subtype ManualResetEventSlim_Array is NetFrameworkBase.System.Threading.ManualResetEventSlim.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Threading.ManualResetEventSlim.Kind_Ptr renames NetFrameworkBase.System.Threading.ManualResetEventSlim.Constructor;
+         
+         function Constructor
+         (
+            initialState : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Threading.ManualResetEventSlim.Kind_Ptr renames NetFrameworkBase.System.Threading.ManualResetEventSlim.Constructor; 
+         
+         function Constructor
+         (
+            initialState : NetFrameworkBase.Boolean;
+            spinCount : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Threading.ManualResetEventSlim.Kind_Ptr renames NetFrameworkBase.System.Threading.ManualResetEventSlim.Constructor; 
+         
+      --------------------------------------------------------------------------
       subtype CancellationTokenRegistration is NetFrameworkBase.System.Threading.CancellationTokenRegistration.Kind_Ptr;
       subtype CancellationTokenRegistration_Array is NetFrameworkBase.System.Threading.CancellationTokenRegistration.Kind_Array;
       
+      --------------------------------------------------------------------------
+      subtype CancellationTokenSource is NetFrameworkBase.System.Threading.CancellationTokenSource.Kind_Ptr;
+      subtype CancellationTokenSource_Array is NetFrameworkBase.System.Threading.CancellationTokenSource.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Threading.CancellationTokenSource.Kind_Ptr renames NetFrameworkBase.System.Threading.CancellationTokenSource.Constructor;
+         
+         function Constructor
+         (
+            delay_x : NetFrameworkBase.System.TimeSpan.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.CancellationTokenSource.Kind_Ptr renames NetFrameworkBase.System.Threading.CancellationTokenSource.Constructor; 
+         
+         function Constructor
+         (
+            millisecondsDelay : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Threading.CancellationTokenSource.Kind_Ptr renames NetFrameworkBase.System.Threading.CancellationTokenSource.Constructor; 
+         
       --------------------------------------------------------------------------
       subtype CancellationToken is NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr;
       subtype CancellationToken_Array is NetFrameworkBase.System.Threading.CancellationToken.Kind_Array;

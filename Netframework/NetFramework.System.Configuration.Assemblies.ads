@@ -27,11 +27,29 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.Configuration.Assemblies.AssemblyHash;
 with NetFrameworkBase.System.Configuration.Assemblies.AssemblyHashAlgorithm;
 with NetFrameworkBase.System.Configuration.Assemblies.AssemblyVersionCompatibility;
 --------------------------------------------------------------------------------
 package NetFramework.System.Configuration.Assemblies is
    
+      --------------------------------------------------------------------------
+      subtype AssemblyHash is NetFrameworkBase.System.Configuration.Assemblies.AssemblyHash.Kind_Ptr;
+      subtype AssemblyHash_Array is NetFrameworkBase.System.Configuration.Assemblies.AssemblyHash.Kind_Array;
+      
+         function Constructor
+         (
+            value : NetFrameworkBase.Byte_Array
+         )
+         return NetFrameworkBase.System.Configuration.Assemblies.AssemblyHash.Kind_Ptr renames NetFrameworkBase.System.Configuration.Assemblies.AssemblyHash.Constructor; 
+         
+         function Constructor
+         (
+            algorithm : NetFrameworkBase.System.Configuration.Assemblies.AssemblyHashAlgorithm.Kind;
+            value : NetFrameworkBase.Byte_Array
+         )
+         return NetFrameworkBase.System.Configuration.Assemblies.AssemblyHash.Kind_Ptr renames NetFrameworkBase.System.Configuration.Assemblies.AssemblyHash.Constructor; 
+         
       --------------------------------------------------------------------------
       subtype AssemblyHashAlgorithm is NetFrameworkBase.System.Configuration.Assemblies.AssemblyHashAlgorithm.Kind;
       

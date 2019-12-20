@@ -27,26 +27,97 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.Collections.CaseInsensitiveComparer;
+with NetFrameworkBase.System.Collections.CaseInsensitiveHashCodeProvider;
+with NetFrameworkBase.System.Collections.CollectionBase;
+with NetFrameworkBase.System.Collections.DictionaryBase;
 with NetFrameworkBase.System.Collections.ReadOnlyCollectionBase;
+with NetFrameworkBase.System.Collections.Queue;
 with NetFrameworkBase.System.Collections.ArrayList;
+with NetFrameworkBase.System.Collections.BitArray;
+with NetFrameworkBase.System.Collections.Stack;
+with NetFrameworkBase.System.Collections.Comparer;
 with NetFrameworkBase.System.Collections.Hashtable;
 with NetFrameworkBase.System.Collections.DictionaryEntry;
 with NetFrameworkBase.System.Collections.ICollection;
 with NetFrameworkBase.System.Collections.IComparer;
 with NetFrameworkBase.System.Collections.IDictionary;
 with NetFrameworkBase.System.Collections.IDictionaryEnumerator;
+with NetFrameworkBase.System.Collections.IEnumerable;
 with NetFrameworkBase.System.Collections.IEnumerator;
 with NetFrameworkBase.System.Collections.IEqualityComparer;
 with NetFrameworkBase.System.Collections.IHashCodeProvider;
 with NetFrameworkBase.System.Collections.IList;
+with NetFrameworkBase.System.Collections.SortedList;
+with NetFrameworkBase.System.Collections.IStructuralEquatable;
+with NetFrameworkBase.System.Collections.IStructuralComparable;
+with NetFrameworkBase.System.Collections.StructuralComparisons;
+with NetFrameworkBase.System.Globalization.CultureInfo;
 with NetFrameworkBase.System.Object;
 --------------------------------------------------------------------------------
 package NetFramework.System.Collections is
    
       --------------------------------------------------------------------------
+      subtype CaseInsensitiveComparer is NetFrameworkBase.System.Collections.CaseInsensitiveComparer.Kind_Ptr;
+      subtype CaseInsensitiveComparer_Array is NetFrameworkBase.System.Collections.CaseInsensitiveComparer.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Collections.CaseInsensitiveComparer.Kind_Ptr renames NetFrameworkBase.System.Collections.CaseInsensitiveComparer.Constructor;
+         
+         function Constructor
+         (
+            culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Collections.CaseInsensitiveComparer.Kind_Ptr renames NetFrameworkBase.System.Collections.CaseInsensitiveComparer.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CaseInsensitiveHashCodeProvider is NetFrameworkBase.System.Collections.CaseInsensitiveHashCodeProvider.Kind_Ptr;
+      subtype CaseInsensitiveHashCodeProvider_Array is NetFrameworkBase.System.Collections.CaseInsensitiveHashCodeProvider.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Collections.CaseInsensitiveHashCodeProvider.Kind_Ptr renames NetFrameworkBase.System.Collections.CaseInsensitiveHashCodeProvider.Constructor;
+         
+         function Constructor
+         (
+            culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Collections.CaseInsensitiveHashCodeProvider.Kind_Ptr renames NetFrameworkBase.System.Collections.CaseInsensitiveHashCodeProvider.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CollectionBase is NetFrameworkBase.System.Collections.CollectionBase.Kind_Ptr;
+      subtype CollectionBase_Array is NetFrameworkBase.System.Collections.CollectionBase.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype DictionaryBase is NetFrameworkBase.System.Collections.DictionaryBase.Kind_Ptr;
+      subtype DictionaryBase_Array is NetFrameworkBase.System.Collections.DictionaryBase.Kind_Array;
+      
+      --------------------------------------------------------------------------
       subtype ReadOnlyCollectionBase is NetFrameworkBase.System.Collections.ReadOnlyCollectionBase.Kind_Ptr;
       subtype ReadOnlyCollectionBase_Array is NetFrameworkBase.System.Collections.ReadOnlyCollectionBase.Kind_Array;
       
+      --------------------------------------------------------------------------
+      subtype Queue is NetFrameworkBase.System.Collections.Queue.Kind_Ptr;
+      subtype Queue_Array is NetFrameworkBase.System.Collections.Queue.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Collections.Queue.Kind_Ptr renames NetFrameworkBase.System.Collections.Queue.Constructor;
+         
+         function Constructor
+         (
+            capacity : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Collections.Queue.Kind_Ptr renames NetFrameworkBase.System.Collections.Queue.Constructor; 
+         
+         function Constructor
+         (
+            capacity : NetFrameworkBase.Int32;
+            growFactor : NetFrameworkBase.Single
+         )
+         return NetFrameworkBase.System.Collections.Queue.Kind_Ptr renames NetFrameworkBase.System.Collections.Queue.Constructor; 
+         
+         function Constructor
+         (
+            col : NetFrameworkBase.System.Collections.ICollection.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Collections.Queue.Kind_Ptr renames NetFrameworkBase.System.Collections.Queue.Constructor; 
+         
       --------------------------------------------------------------------------
       subtype ArrayList is NetFrameworkBase.System.Collections.ArrayList.Kind_Ptr;
       subtype ArrayList_Array is NetFrameworkBase.System.Collections.ArrayList.Kind_Array;
@@ -64,6 +135,75 @@ package NetFramework.System.Collections is
             c : NetFrameworkBase.System.Collections.ICollection.Kind_Ptr
          )
          return NetFrameworkBase.System.Collections.ArrayList.Kind_Ptr renames NetFrameworkBase.System.Collections.ArrayList.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype BitArray is NetFrameworkBase.System.Collections.BitArray.Kind_Ptr;
+      subtype BitArray_Array is NetFrameworkBase.System.Collections.BitArray.Kind_Array;
+      
+         function Constructor
+         (
+            length : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Collections.BitArray.Kind_Ptr renames NetFrameworkBase.System.Collections.BitArray.Constructor; 
+         
+         function Constructor
+         (
+            length : NetFrameworkBase.Int32;
+            defaultValue : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Collections.BitArray.Kind_Ptr renames NetFrameworkBase.System.Collections.BitArray.Constructor; 
+         
+         function Constructor
+         (
+            bytes : NetFrameworkBase.Byte_Array
+         )
+         return NetFrameworkBase.System.Collections.BitArray.Kind_Ptr renames NetFrameworkBase.System.Collections.BitArray.Constructor; 
+         
+         function Constructor
+         (
+            values : NetFrameworkBase.Boolean_Array
+         )
+         return NetFrameworkBase.System.Collections.BitArray.Kind_Ptr renames NetFrameworkBase.System.Collections.BitArray.Constructor; 
+         
+         function Constructor
+         (
+            values : NetFrameworkBase.Int32_Array
+         )
+         return NetFrameworkBase.System.Collections.BitArray.Kind_Ptr renames NetFrameworkBase.System.Collections.BitArray.Constructor; 
+         
+         function Constructor
+         (
+            bits : NetFrameworkBase.System.Collections.BitArray.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Collections.BitArray.Kind_Ptr renames NetFrameworkBase.System.Collections.BitArray.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype Stack is NetFrameworkBase.System.Collections.Stack.Kind_Ptr;
+      subtype Stack_Array is NetFrameworkBase.System.Collections.Stack.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Collections.Stack.Kind_Ptr renames NetFrameworkBase.System.Collections.Stack.Constructor;
+         
+         function Constructor
+         (
+            initialCapacity : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Collections.Stack.Kind_Ptr renames NetFrameworkBase.System.Collections.Stack.Constructor; 
+         
+         function Constructor
+         (
+            col : NetFrameworkBase.System.Collections.ICollection.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Collections.Stack.Kind_Ptr renames NetFrameworkBase.System.Collections.Stack.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype Comparer is NetFrameworkBase.System.Collections.Comparer.Kind_Ptr;
+      subtype Comparer_Array is NetFrameworkBase.System.Collections.Comparer.Kind_Array;
+      
+         function Constructor
+         (
+            culture : NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Collections.Comparer.Kind_Ptr renames NetFrameworkBase.System.Collections.Comparer.Constructor; 
          
       --------------------------------------------------------------------------
       subtype Hashtable is NetFrameworkBase.System.Collections.Hashtable.Kind_Ptr;
@@ -202,6 +342,10 @@ package NetFramework.System.Collections is
       subtype IDictionaryEnumerator_Array is NetFrameworkBase.System.Collections.IDictionaryEnumerator.Kind_Array;
       
       --------------------------------------------------------------------------
+      subtype IEnumerable is NetFrameworkBase.System.Collections.IEnumerable.Kind_Ptr;
+      subtype IEnumerable_Array is NetFrameworkBase.System.Collections.IEnumerable.Kind_Array;
+      
+      --------------------------------------------------------------------------
       subtype IEnumerator is NetFrameworkBase.System.Collections.IEnumerator.Kind_Ptr;
       subtype IEnumerator_Array is NetFrameworkBase.System.Collections.IEnumerator.Kind_Array;
       
@@ -216,6 +360,56 @@ package NetFramework.System.Collections is
       --------------------------------------------------------------------------
       subtype IList is NetFrameworkBase.System.Collections.IList.Kind_Ptr;
       subtype IList_Array is NetFrameworkBase.System.Collections.IList.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype SortedList is NetFrameworkBase.System.Collections.SortedList.Kind_Ptr;
+      subtype SortedList_Array is NetFrameworkBase.System.Collections.SortedList.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Collections.SortedList.Kind_Ptr renames NetFrameworkBase.System.Collections.SortedList.Constructor;
+         
+         function Constructor
+         (
+            initialCapacity : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Collections.SortedList.Kind_Ptr renames NetFrameworkBase.System.Collections.SortedList.Constructor; 
+         
+         function Constructor
+         (
+            comparer : NetFrameworkBase.System.Collections.IComparer.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Collections.SortedList.Kind_Ptr renames NetFrameworkBase.System.Collections.SortedList.Constructor; 
+         
+         function Constructor
+         (
+            comparer : NetFrameworkBase.System.Collections.IComparer.Kind_Ptr;
+            capacity : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Collections.SortedList.Kind_Ptr renames NetFrameworkBase.System.Collections.SortedList.Constructor; 
+         
+         function Constructor
+         (
+            d : NetFrameworkBase.System.Collections.IDictionary.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Collections.SortedList.Kind_Ptr renames NetFrameworkBase.System.Collections.SortedList.Constructor; 
+         
+         function Constructor
+         (
+            d : NetFrameworkBase.System.Collections.IDictionary.Kind_Ptr;
+            comparer : NetFrameworkBase.System.Collections.IComparer.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Collections.SortedList.Kind_Ptr renames NetFrameworkBase.System.Collections.SortedList.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype IStructuralEquatable is NetFrameworkBase.System.Collections.IStructuralEquatable.Kind_Ptr;
+      subtype IStructuralEquatable_Array is NetFrameworkBase.System.Collections.IStructuralEquatable.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IStructuralComparable is NetFrameworkBase.System.Collections.IStructuralComparable.Kind_Ptr;
+      subtype IStructuralComparable_Array is NetFrameworkBase.System.Collections.IStructuralComparable.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype StructuralComparisons is NetFrameworkBase.System.Collections.StructuralComparisons.Kind_Ptr;
+      subtype StructuralComparisons_Array is NetFrameworkBase.System.Collections.StructuralComparisons.Kind_Array;
       
    
 end;

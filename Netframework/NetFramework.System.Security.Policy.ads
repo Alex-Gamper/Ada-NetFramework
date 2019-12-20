@@ -27,12 +27,125 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.Security.Policy.AllMembershipCondition;
+with NetFrameworkBase.System.Security.Policy.ApplicationDirectory;
+with NetFrameworkBase.System.Security.Policy.ApplicationDirectoryMembershipCondition;
+with NetFrameworkBase.System.Security.Policy.ApplicationSecurityInfo;
+with NetFrameworkBase.System.Security.Policy.ApplicationSecurityManager;
+with NetFrameworkBase.System.Security.Policy.ApplicationVersionMatch;
+with NetFrameworkBase.System.Security.Policy.ApplicationTrust;
+with NetFrameworkBase.System.Security.Policy.ApplicationTrustCollection;
+with NetFrameworkBase.System.Security.Policy.ApplicationTrustEnumerator;
+with NetFrameworkBase.System.Security.Policy.CodeGroup;
 with NetFrameworkBase.System.Security.Policy.Evidence;
 with NetFrameworkBase.System.Security.Policy.EvidenceBase;
+with NetFrameworkBase.System.Security.Policy.FileCodeGroup;
+with NetFrameworkBase.System.Security.Policy.FirstMatchCodeGroup;
+with NetFrameworkBase.System.Security.Policy.IIdentityPermissionFactory;
+with NetFrameworkBase.System.Security.Policy.IMembershipCondition;
+with NetFrameworkBase.System.Security.Policy.IApplicationTrustManager;
+with NetFrameworkBase.System.Security.Policy.TrustManagerUIContext;
+with NetFrameworkBase.System.Security.Policy.TrustManagerContext;
+with NetFrameworkBase.System.Security.Policy.CodeConnectAccess;
+with NetFrameworkBase.System.Security.Policy.NetCodeGroup;
+with NetFrameworkBase.System.Security.Policy.PermissionRequestEvidence;
+with NetFrameworkBase.System.Security.Policy.PolicyException;
+with NetFrameworkBase.System.Security.Policy.PolicyLevel;
+with NetFrameworkBase.System.Security.Policy.PolicyStatementAttribute;
+with NetFrameworkBase.System.Security.Policy.PolicyStatement;
+with NetFrameworkBase.System.Security.Policy.Site;
+with NetFrameworkBase.System.Security.Policy.SiteMembershipCondition;
+with NetFrameworkBase.System.Security.Policy.StrongName;
+with NetFrameworkBase.System.Security.Policy.StrongNameMembershipCondition;
+with NetFrameworkBase.System.Security.Policy.UnionCodeGroup;
+with NetFrameworkBase.System.Security.Policy.Url;
+with NetFrameworkBase.System.Security.Policy.UrlMembershipCondition;
+with NetFrameworkBase.System.Security.Policy.Zone;
+with NetFrameworkBase.System.Security.Policy.ZoneMembershipCondition;
+with NetFrameworkBase.System.Security.Policy.GacInstalled;
+with NetFrameworkBase.System.Security.Policy.GacMembershipCondition;
+with NetFrameworkBase.System.Security.Policy.Hash;
+with NetFrameworkBase.System.Security.Policy.HashMembershipCondition;
+with NetFrameworkBase.System.Security.Policy.Publisher;
+with NetFrameworkBase.System.Security.Policy.PublisherMembershipCondition;
+with NetFrameworkBase.System.ActivationContext;
+with NetFrameworkBase.System.ApplicationIdentity;
+with NetFrameworkBase.System.Security.PermissionSet;
 with NetFrameworkBase.System.Object;
+with NetFrameworkBase.System.Security.Permissions.FileIOPermissionAccess;
+with NetFrameworkBase.System.Exception_x;
+with NetFrameworkBase.System.Security.Permissions.StrongNamePublicKeyBlob;
+with NetFrameworkBase.System.Version;
+with NetFrameworkBase.System.Security.SecurityZone;
+with NetFrameworkBase.System.Reflection.Assembly;
+with NetFrameworkBase.System.Security.Cryptography.HashAlgorithm;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate;
 --------------------------------------------------------------------------------
 package NetFramework.System.Security.Policy is
    
+      --------------------------------------------------------------------------
+      subtype AllMembershipCondition is NetFrameworkBase.System.Security.Policy.AllMembershipCondition.Kind_Ptr;
+      subtype AllMembershipCondition_Array is NetFrameworkBase.System.Security.Policy.AllMembershipCondition.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Policy.AllMembershipCondition.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.AllMembershipCondition.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype ApplicationDirectory is NetFrameworkBase.System.Security.Policy.ApplicationDirectory.Kind_Ptr;
+      subtype ApplicationDirectory_Array is NetFrameworkBase.System.Security.Policy.ApplicationDirectory.Kind_Array;
+      
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Policy.ApplicationDirectory.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.ApplicationDirectory.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ApplicationDirectoryMembershipCondition is NetFrameworkBase.System.Security.Policy.ApplicationDirectoryMembershipCondition.Kind_Ptr;
+      subtype ApplicationDirectoryMembershipCondition_Array is NetFrameworkBase.System.Security.Policy.ApplicationDirectoryMembershipCondition.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Policy.ApplicationDirectoryMembershipCondition.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.ApplicationDirectoryMembershipCondition.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype ApplicationSecurityInfo is NetFrameworkBase.System.Security.Policy.ApplicationSecurityInfo.Kind_Ptr;
+      subtype ApplicationSecurityInfo_Array is NetFrameworkBase.System.Security.Policy.ApplicationSecurityInfo.Kind_Array;
+      
+         function Constructor
+         (
+            activationContext : NetFrameworkBase.System.ActivationContext.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Policy.ApplicationSecurityInfo.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.ApplicationSecurityInfo.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ApplicationSecurityManager is NetFrameworkBase.System.Security.Policy.ApplicationSecurityManager.Kind_Ptr;
+      subtype ApplicationSecurityManager_Array is NetFrameworkBase.System.Security.Policy.ApplicationSecurityManager.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ApplicationVersionMatch is NetFrameworkBase.System.Security.Policy.ApplicationVersionMatch.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype ApplicationTrust is NetFrameworkBase.System.Security.Policy.ApplicationTrust.Kind_Ptr;
+      subtype ApplicationTrust_Array is NetFrameworkBase.System.Security.Policy.ApplicationTrust.Kind_Array;
+      
+         function Constructor
+         (
+            applicationIdentity : NetFrameworkBase.System.ApplicationIdentity.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Policy.ApplicationTrust.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.ApplicationTrust.Constructor; 
+         
+         function Constructor return NetFrameworkBase.System.Security.Policy.ApplicationTrust.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.ApplicationTrust.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype ApplicationTrustCollection is NetFrameworkBase.System.Security.Policy.ApplicationTrustCollection.Kind_Ptr;
+      subtype ApplicationTrustCollection_Array is NetFrameworkBase.System.Security.Policy.ApplicationTrustCollection.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ApplicationTrustEnumerator is NetFrameworkBase.System.Security.Policy.ApplicationTrustEnumerator.Kind_Ptr;
+      subtype ApplicationTrustEnumerator_Array is NetFrameworkBase.System.Security.Policy.ApplicationTrustEnumerator.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype CodeGroup is NetFrameworkBase.System.Security.Policy.CodeGroup.Kind_Ptr;
+      subtype CodeGroup_Array is NetFrameworkBase.System.Security.Policy.CodeGroup.Kind_Array;
+      
       --------------------------------------------------------------------------
       subtype Evidence is NetFrameworkBase.System.Security.Policy.Evidence.Kind_Ptr;
       subtype Evidence_Array is NetFrameworkBase.System.Security.Policy.Evidence.Kind_Array;
@@ -63,5 +176,278 @@ package NetFramework.System.Security.Policy is
       subtype EvidenceBase is NetFrameworkBase.System.Security.Policy.EvidenceBase.Kind_Ptr;
       subtype EvidenceBase_Array is NetFrameworkBase.System.Security.Policy.EvidenceBase.Kind_Array;
       
+      --------------------------------------------------------------------------
+      subtype FileCodeGroup is NetFrameworkBase.System.Security.Policy.FileCodeGroup.Kind_Ptr;
+      subtype FileCodeGroup_Array is NetFrameworkBase.System.Security.Policy.FileCodeGroup.Kind_Array;
+      
+         function Constructor
+         (
+            membershipCondition : NetFrameworkBase.System.Security.Policy.IMembershipCondition.Kind_Ptr;
+            access_x : NetFrameworkBase.System.Security.Permissions.FileIOPermissionAccess.Kind
+         )
+         return NetFrameworkBase.System.Security.Policy.FileCodeGroup.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.FileCodeGroup.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype FirstMatchCodeGroup is NetFrameworkBase.System.Security.Policy.FirstMatchCodeGroup.Kind_Ptr;
+      subtype FirstMatchCodeGroup_Array is NetFrameworkBase.System.Security.Policy.FirstMatchCodeGroup.Kind_Array;
+      
+         function Constructor
+         (
+            membershipCondition : NetFrameworkBase.System.Security.Policy.IMembershipCondition.Kind_Ptr;
+            policy : NetFrameworkBase.System.Security.Policy.PolicyStatement.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Policy.FirstMatchCodeGroup.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.FirstMatchCodeGroup.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype IIdentityPermissionFactory is NetFrameworkBase.System.Security.Policy.IIdentityPermissionFactory.Kind_Ptr;
+      subtype IIdentityPermissionFactory_Array is NetFrameworkBase.System.Security.Policy.IIdentityPermissionFactory.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IMembershipCondition is NetFrameworkBase.System.Security.Policy.IMembershipCondition.Kind_Ptr;
+      subtype IMembershipCondition_Array is NetFrameworkBase.System.Security.Policy.IMembershipCondition.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IApplicationTrustManager is NetFrameworkBase.System.Security.Policy.IApplicationTrustManager.Kind_Ptr;
+      subtype IApplicationTrustManager_Array is NetFrameworkBase.System.Security.Policy.IApplicationTrustManager.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype TrustManagerUIContext is NetFrameworkBase.System.Security.Policy.TrustManagerUIContext.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype TrustManagerContext is NetFrameworkBase.System.Security.Policy.TrustManagerContext.Kind_Ptr;
+      subtype TrustManagerContext_Array is NetFrameworkBase.System.Security.Policy.TrustManagerContext.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Policy.TrustManagerContext.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.TrustManagerContext.Constructor;
+         
+         function Constructor
+         (
+            uiContext : NetFrameworkBase.System.Security.Policy.TrustManagerUIContext.Kind
+         )
+         return NetFrameworkBase.System.Security.Policy.TrustManagerContext.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.TrustManagerContext.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CodeConnectAccess is NetFrameworkBase.System.Security.Policy.CodeConnectAccess.Kind_Ptr;
+      subtype CodeConnectAccess_Array is NetFrameworkBase.System.Security.Policy.CodeConnectAccess.Kind_Array;
+      
+         function Constructor
+         (
+            allowScheme : NetFrameworkBase.BSTR;
+            allowPort : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Security.Policy.CodeConnectAccess.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.CodeConnectAccess.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype NetCodeGroup is NetFrameworkBase.System.Security.Policy.NetCodeGroup.Kind_Ptr;
+      subtype NetCodeGroup_Array is NetFrameworkBase.System.Security.Policy.NetCodeGroup.Kind_Array;
+      
+         function Constructor
+         (
+            membershipCondition : NetFrameworkBase.System.Security.Policy.IMembershipCondition.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Policy.NetCodeGroup.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.NetCodeGroup.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype PermissionRequestEvidence is NetFrameworkBase.System.Security.Policy.PermissionRequestEvidence.Kind_Ptr;
+      subtype PermissionRequestEvidence_Array is NetFrameworkBase.System.Security.Policy.PermissionRequestEvidence.Kind_Array;
+      
+         function Constructor
+         (
+            request : NetFrameworkBase.System.Security.PermissionSet.Kind_Ptr;
+            optional : NetFrameworkBase.System.Security.PermissionSet.Kind_Ptr;
+            denied : NetFrameworkBase.System.Security.PermissionSet.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Policy.PermissionRequestEvidence.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.PermissionRequestEvidence.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype PolicyException is NetFrameworkBase.System.Security.Policy.PolicyException.Kind_Ptr;
+      subtype PolicyException_Array is NetFrameworkBase.System.Security.Policy.PolicyException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Policy.PolicyException.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.PolicyException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Policy.PolicyException.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.PolicyException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            exception_x : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Policy.PolicyException.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.PolicyException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype PolicyLevel is NetFrameworkBase.System.Security.Policy.PolicyLevel.Kind_Ptr;
+      subtype PolicyLevel_Array is NetFrameworkBase.System.Security.Policy.PolicyLevel.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype PolicyStatementAttribute is NetFrameworkBase.System.Security.Policy.PolicyStatementAttribute.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype PolicyStatement is NetFrameworkBase.System.Security.Policy.PolicyStatement.Kind_Ptr;
+      subtype PolicyStatement_Array is NetFrameworkBase.System.Security.Policy.PolicyStatement.Kind_Array;
+      
+         function Constructor
+         (
+            permSet : NetFrameworkBase.System.Security.PermissionSet.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Policy.PolicyStatement.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.PolicyStatement.Constructor; 
+         
+         function Constructor
+         (
+            permSet : NetFrameworkBase.System.Security.PermissionSet.Kind_Ptr;
+            attributes : NetFrameworkBase.System.Security.Policy.PolicyStatementAttribute.Kind
+         )
+         return NetFrameworkBase.System.Security.Policy.PolicyStatement.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.PolicyStatement.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype Site is NetFrameworkBase.System.Security.Policy.Site.Kind_Ptr;
+      subtype Site_Array is NetFrameworkBase.System.Security.Policy.Site.Kind_Array;
+      
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Policy.Site.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.Site.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SiteMembershipCondition is NetFrameworkBase.System.Security.Policy.SiteMembershipCondition.Kind_Ptr;
+      subtype SiteMembershipCondition_Array is NetFrameworkBase.System.Security.Policy.SiteMembershipCondition.Kind_Array;
+      
+         function Constructor
+         (
+            site : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Policy.SiteMembershipCondition.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.SiteMembershipCondition.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype StrongName is NetFrameworkBase.System.Security.Policy.StrongName.Kind_Ptr;
+      subtype StrongName_Array is NetFrameworkBase.System.Security.Policy.StrongName.Kind_Array;
+      
+         function Constructor
+         (
+            blob : NetFrameworkBase.System.Security.Permissions.StrongNamePublicKeyBlob.Kind_Ptr;
+            name : NetFrameworkBase.BSTR;
+            version : NetFrameworkBase.System.Version.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Policy.StrongName.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.StrongName.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype StrongNameMembershipCondition is NetFrameworkBase.System.Security.Policy.StrongNameMembershipCondition.Kind_Ptr;
+      subtype StrongNameMembershipCondition_Array is NetFrameworkBase.System.Security.Policy.StrongNameMembershipCondition.Kind_Array;
+      
+         function Constructor
+         (
+            blob : NetFrameworkBase.System.Security.Permissions.StrongNamePublicKeyBlob.Kind_Ptr;
+            name : NetFrameworkBase.BSTR;
+            version : NetFrameworkBase.System.Version.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Policy.StrongNameMembershipCondition.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.StrongNameMembershipCondition.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype UnionCodeGroup is NetFrameworkBase.System.Security.Policy.UnionCodeGroup.Kind_Ptr;
+      subtype UnionCodeGroup_Array is NetFrameworkBase.System.Security.Policy.UnionCodeGroup.Kind_Array;
+      
+         function Constructor
+         (
+            membershipCondition : NetFrameworkBase.System.Security.Policy.IMembershipCondition.Kind_Ptr;
+            policy : NetFrameworkBase.System.Security.Policy.PolicyStatement.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Policy.UnionCodeGroup.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.UnionCodeGroup.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype Url is NetFrameworkBase.System.Security.Policy.Url.Kind_Ptr;
+      subtype Url_Array is NetFrameworkBase.System.Security.Policy.Url.Kind_Array;
+      
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Policy.Url.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.Url.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype UrlMembershipCondition is NetFrameworkBase.System.Security.Policy.UrlMembershipCondition.Kind_Ptr;
+      subtype UrlMembershipCondition_Array is NetFrameworkBase.System.Security.Policy.UrlMembershipCondition.Kind_Array;
+      
+         function Constructor
+         (
+            url : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Policy.UrlMembershipCondition.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.UrlMembershipCondition.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype Zone is NetFrameworkBase.System.Security.Policy.Zone.Kind_Ptr;
+      subtype Zone_Array is NetFrameworkBase.System.Security.Policy.Zone.Kind_Array;
+      
+         function Constructor
+         (
+            zone : NetFrameworkBase.System.Security.SecurityZone.Kind
+         )
+         return NetFrameworkBase.System.Security.Policy.Zone.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.Zone.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ZoneMembershipCondition is NetFrameworkBase.System.Security.Policy.ZoneMembershipCondition.Kind_Ptr;
+      subtype ZoneMembershipCondition_Array is NetFrameworkBase.System.Security.Policy.ZoneMembershipCondition.Kind_Array;
+      
+         function Constructor
+         (
+            zone : NetFrameworkBase.System.Security.SecurityZone.Kind
+         )
+         return NetFrameworkBase.System.Security.Policy.ZoneMembershipCondition.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.ZoneMembershipCondition.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype GacInstalled is NetFrameworkBase.System.Security.Policy.GacInstalled.Kind_Ptr;
+      subtype GacInstalled_Array is NetFrameworkBase.System.Security.Policy.GacInstalled.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Policy.GacInstalled.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.GacInstalled.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype GacMembershipCondition is NetFrameworkBase.System.Security.Policy.GacMembershipCondition.Kind_Ptr;
+      subtype GacMembershipCondition_Array is NetFrameworkBase.System.Security.Policy.GacMembershipCondition.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Policy.GacMembershipCondition.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.GacMembershipCondition.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype Hash is NetFrameworkBase.System.Security.Policy.Hash.Kind_Ptr;
+      subtype Hash_Array is NetFrameworkBase.System.Security.Policy.Hash.Kind_Array;
+      
+         function Constructor
+         (
+            assembly : NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Policy.Hash.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.Hash.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype HashMembershipCondition is NetFrameworkBase.System.Security.Policy.HashMembershipCondition.Kind_Ptr;
+      subtype HashMembershipCondition_Array is NetFrameworkBase.System.Security.Policy.HashMembershipCondition.Kind_Array;
+      
+         function Constructor
+         (
+            hashAlg : NetFrameworkBase.System.Security.Cryptography.HashAlgorithm.Kind_Ptr;
+            value : NetFrameworkBase.Byte_Array
+         )
+         return NetFrameworkBase.System.Security.Policy.HashMembershipCondition.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.HashMembershipCondition.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype Publisher is NetFrameworkBase.System.Security.Policy.Publisher.Kind_Ptr;
+      subtype Publisher_Array is NetFrameworkBase.System.Security.Policy.Publisher.Kind_Array;
+      
+         function Constructor
+         (
+            cert : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Policy.Publisher.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.Publisher.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype PublisherMembershipCondition is NetFrameworkBase.System.Security.Policy.PublisherMembershipCondition.Kind_Ptr;
+      subtype PublisherMembershipCondition_Array is NetFrameworkBase.System.Security.Policy.PublisherMembershipCondition.Kind_Array;
+      
+         function Constructor
+         (
+            certificate : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Policy.PublisherMembershipCondition.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.PublisherMembershipCondition.Constructor; 
+         
    
 end;

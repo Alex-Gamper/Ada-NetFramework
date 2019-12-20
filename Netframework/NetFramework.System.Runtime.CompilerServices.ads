@@ -27,12 +27,533 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.Runtime.CompilerServices.StringFreezingAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.ContractHelper;
+with NetFrameworkBase.System.Runtime.CompilerServices.AccessedThroughPropertyAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.CallConvCdecl;
+with NetFrameworkBase.System.Runtime.CompilerServices.CallConvStdcall;
+with NetFrameworkBase.System.Runtime.CompilerServices.CallConvThiscall;
+with NetFrameworkBase.System.Runtime.CompilerServices.CallConvFastcall;
+with NetFrameworkBase.System.Runtime.CompilerServices.RuntimeHelpers;
+with NetFrameworkBase.System.Runtime.CompilerServices.RuntimeFeature;
+with NetFrameworkBase.System.Runtime.CompilerServices.CompilerGeneratedAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.CustomConstantAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.DateTimeConstantAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.DiscardableAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.DecimalConstantAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.DisablePrivateReflectionAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.CompilationRelaxations;
+with NetFrameworkBase.System.Runtime.CompilerServices.CompilationRelaxationsAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.CompilerGlobalScopeAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.ExtensionAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.FixedBufferAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.IndexerNameAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.InternalsVisibleToAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.IsVolatile;
+with NetFrameworkBase.System.Runtime.CompilerServices.IsByRefLikeAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.MethodImplOptions;
+with NetFrameworkBase.System.Runtime.CompilerServices.MethodCodeType;
+with NetFrameworkBase.System.Runtime.CompilerServices.MethodImplAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.FixedAddressValueTypeAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.UnsafeValueTypeAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.RequiredAttributeAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.LoadHint;
+with NetFrameworkBase.System.Runtime.CompilerServices.DefaultDependencyAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.DependencyAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.CompilerMarshalOverride;
+with NetFrameworkBase.System.Runtime.CompilerServices.HasCopySemanticsAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.IsBoxed;
+with NetFrameworkBase.System.Runtime.CompilerServices.IsByValue;
+with NetFrameworkBase.System.Runtime.CompilerServices.IsConst;
+with NetFrameworkBase.System.Runtime.CompilerServices.IsExplicitlyDereferenced;
+with NetFrameworkBase.System.Runtime.CompilerServices.IsImplicitlyDereferenced;
+with NetFrameworkBase.System.Runtime.CompilerServices.IsJitIntrinsic;
+with NetFrameworkBase.System.Runtime.CompilerServices.IsLong;
+with NetFrameworkBase.System.Runtime.CompilerServices.IsPinned;
+with NetFrameworkBase.System.Runtime.CompilerServices.IsSignUnspecifiedByte;
+with NetFrameworkBase.System.Runtime.CompilerServices.IsUdtReturn;
+with NetFrameworkBase.System.Runtime.CompilerServices.ScopelessEnumAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.SpecialNameAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.IsReadOnlyAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.IsCopyConstructed;
+with NetFrameworkBase.System.Runtime.CompilerServices.SuppressIldasmAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.NativeCppClassAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.TypeForwardedToAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.TypeForwardedFromAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.ReferenceAssemblyAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.RuntimeCompatibilityAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.RuntimeWrappedException;
+with NetFrameworkBase.System.Runtime.CompilerServices.CallerFilePathAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.CallerLineNumberAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.CallerMemberNameAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.StateMachineAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.IteratorStateMachineAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.ITuple;
+with NetFrameworkBase.System.Runtime.CompilerServices.AsyncStateMachineAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.AsyncVoidMethodBuilder;
+with NetFrameworkBase.System.Runtime.CompilerServices.AsyncTaskMethodBuilder;
+with NetFrameworkBase.System.Runtime.CompilerServices.IAsyncStateMachine;
+with NetFrameworkBase.System.Runtime.CompilerServices.INotifyCompletion;
+with NetFrameworkBase.System.Runtime.CompilerServices.ICriticalNotifyCompletion;
 with NetFrameworkBase.System.Runtime.CompilerServices.TaskAwaiter;
 with NetFrameworkBase.System.Runtime.CompilerServices.ConfiguredTaskAwaitable;
 with NetFrameworkBase.System.Runtime.CompilerServices.YieldAwaitable;
+with NetFrameworkBase.System.Runtime.CompilerServices.FormattableStringFactory;
+with NetFrameworkBase.System.Runtime.CompilerServices.IDispatchConstantAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.IUnknownConstantAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.TupleElementNamesAttribute;
+with NetFrameworkBase.System.Type_x;
 --------------------------------------------------------------------------------
 package NetFramework.System.Runtime.CompilerServices is
    
+      --------------------------------------------------------------------------
+      subtype StringFreezingAttribute is NetFrameworkBase.System.Runtime.CompilerServices.StringFreezingAttribute.Kind_Ptr;
+      subtype StringFreezingAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.StringFreezingAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.CompilerServices.StringFreezingAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.StringFreezingAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype ContractHelper is NetFrameworkBase.System.Runtime.CompilerServices.ContractHelper.Kind_Ptr;
+      subtype ContractHelper_Array is NetFrameworkBase.System.Runtime.CompilerServices.ContractHelper.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype AccessedThroughPropertyAttribute is NetFrameworkBase.System.Runtime.CompilerServices.AccessedThroughPropertyAttribute.Kind_Ptr;
+      subtype AccessedThroughPropertyAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.AccessedThroughPropertyAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            propertyName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.CompilerServices.AccessedThroughPropertyAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.AccessedThroughPropertyAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CallConvCdecl is NetFrameworkBase.System.Runtime.CompilerServices.CallConvCdecl.Kind_Ptr;
+      subtype CallConvCdecl_Array is NetFrameworkBase.System.Runtime.CompilerServices.CallConvCdecl.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.CompilerServices.CallConvCdecl.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.CallConvCdecl.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype CallConvStdcall is NetFrameworkBase.System.Runtime.CompilerServices.CallConvStdcall.Kind_Ptr;
+      subtype CallConvStdcall_Array is NetFrameworkBase.System.Runtime.CompilerServices.CallConvStdcall.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.CompilerServices.CallConvStdcall.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.CallConvStdcall.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype CallConvThiscall is NetFrameworkBase.System.Runtime.CompilerServices.CallConvThiscall.Kind_Ptr;
+      subtype CallConvThiscall_Array is NetFrameworkBase.System.Runtime.CompilerServices.CallConvThiscall.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.CompilerServices.CallConvThiscall.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.CallConvThiscall.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype CallConvFastcall is NetFrameworkBase.System.Runtime.CompilerServices.CallConvFastcall.Kind_Ptr;
+      subtype CallConvFastcall_Array is NetFrameworkBase.System.Runtime.CompilerServices.CallConvFastcall.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.CompilerServices.CallConvFastcall.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.CallConvFastcall.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype RuntimeHelpers is NetFrameworkBase.System.Runtime.CompilerServices.RuntimeHelpers.Kind_Ptr;
+      subtype RuntimeHelpers_Array is NetFrameworkBase.System.Runtime.CompilerServices.RuntimeHelpers.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype RuntimeFeature is NetFrameworkBase.System.Runtime.CompilerServices.RuntimeFeature.Kind_Ptr;
+      subtype RuntimeFeature_Array is NetFrameworkBase.System.Runtime.CompilerServices.RuntimeFeature.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype CompilerGeneratedAttribute is NetFrameworkBase.System.Runtime.CompilerServices.CompilerGeneratedAttribute.Kind_Ptr;
+      subtype CompilerGeneratedAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.CompilerGeneratedAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.CompilerServices.CompilerGeneratedAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.CompilerGeneratedAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype CustomConstantAttribute is NetFrameworkBase.System.Runtime.CompilerServices.CustomConstantAttribute.Kind_Ptr;
+      subtype CustomConstantAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.CustomConstantAttribute.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype DateTimeConstantAttribute is NetFrameworkBase.System.Runtime.CompilerServices.DateTimeConstantAttribute.Kind_Ptr;
+      subtype DateTimeConstantAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.DateTimeConstantAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            ticks : NetFrameworkBase.Int64
+         )
+         return NetFrameworkBase.System.Runtime.CompilerServices.DateTimeConstantAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.DateTimeConstantAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype DiscardableAttribute is NetFrameworkBase.System.Runtime.CompilerServices.DiscardableAttribute.Kind_Ptr;
+      subtype DiscardableAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.DiscardableAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.CompilerServices.DiscardableAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.DiscardableAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype DecimalConstantAttribute is NetFrameworkBase.System.Runtime.CompilerServices.DecimalConstantAttribute.Kind_Ptr;
+      subtype DecimalConstantAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.DecimalConstantAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            scale : NetFrameworkBase.Byte;
+            sign : NetFrameworkBase.Byte;
+            hi : NetFrameworkBase.UInt32;
+            mid : NetFrameworkBase.UInt32;
+            low : NetFrameworkBase.UInt32
+         )
+         return NetFrameworkBase.System.Runtime.CompilerServices.DecimalConstantAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.DecimalConstantAttribute.Constructor; 
+         
+         function Constructor
+         (
+            scale : NetFrameworkBase.Byte;
+            sign : NetFrameworkBase.Byte;
+            hi : NetFrameworkBase.Int32;
+            mid : NetFrameworkBase.Int32;
+            low : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Runtime.CompilerServices.DecimalConstantAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.DecimalConstantAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype DisablePrivateReflectionAttribute is NetFrameworkBase.System.Runtime.CompilerServices.DisablePrivateReflectionAttribute.Kind_Ptr;
+      subtype DisablePrivateReflectionAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.DisablePrivateReflectionAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.CompilerServices.DisablePrivateReflectionAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.DisablePrivateReflectionAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype CompilationRelaxations is NetFrameworkBase.System.Runtime.CompilerServices.CompilationRelaxations.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype CompilationRelaxationsAttribute is NetFrameworkBase.System.Runtime.CompilerServices.CompilationRelaxationsAttribute.Kind_Ptr;
+      subtype CompilationRelaxationsAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.CompilationRelaxationsAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            relaxations : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Runtime.CompilerServices.CompilationRelaxationsAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.CompilationRelaxationsAttribute.Constructor; 
+         
+         function Constructor
+         (
+            relaxations : NetFrameworkBase.System.Runtime.CompilerServices.CompilationRelaxations.Kind
+         )
+         return NetFrameworkBase.System.Runtime.CompilerServices.CompilationRelaxationsAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.CompilationRelaxationsAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CompilerGlobalScopeAttribute is NetFrameworkBase.System.Runtime.CompilerServices.CompilerGlobalScopeAttribute.Kind_Ptr;
+      subtype CompilerGlobalScopeAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.CompilerGlobalScopeAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.CompilerServices.CompilerGlobalScopeAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.CompilerGlobalScopeAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype ExtensionAttribute is NetFrameworkBase.System.Runtime.CompilerServices.ExtensionAttribute.Kind_Ptr;
+      subtype ExtensionAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.ExtensionAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.CompilerServices.ExtensionAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.ExtensionAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype FixedBufferAttribute is NetFrameworkBase.System.Runtime.CompilerServices.FixedBufferAttribute.Kind_Ptr;
+      subtype FixedBufferAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.FixedBufferAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            elementType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+            length : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Runtime.CompilerServices.FixedBufferAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.FixedBufferAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype IndexerNameAttribute is NetFrameworkBase.System.Runtime.CompilerServices.IndexerNameAttribute.Kind_Ptr;
+      subtype IndexerNameAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.IndexerNameAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            indexerName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.CompilerServices.IndexerNameAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.IndexerNameAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype InternalsVisibleToAttribute is NetFrameworkBase.System.Runtime.CompilerServices.InternalsVisibleToAttribute.Kind_Ptr;
+      subtype InternalsVisibleToAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.InternalsVisibleToAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            assemblyName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.CompilerServices.InternalsVisibleToAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.InternalsVisibleToAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype IsVolatile is NetFrameworkBase.System.Runtime.CompilerServices.IsVolatile.Kind_Ptr;
+      subtype IsVolatile_Array is NetFrameworkBase.System.Runtime.CompilerServices.IsVolatile.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IsByRefLikeAttribute is NetFrameworkBase.System.Runtime.CompilerServices.IsByRefLikeAttribute.Kind_Ptr;
+      subtype IsByRefLikeAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.IsByRefLikeAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.CompilerServices.IsByRefLikeAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.IsByRefLikeAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype MethodImplOptions is NetFrameworkBase.System.Runtime.CompilerServices.MethodImplOptions.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype MethodCodeType is NetFrameworkBase.System.Runtime.CompilerServices.MethodCodeType.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype MethodImplAttribute is NetFrameworkBase.System.Runtime.CompilerServices.MethodImplAttribute.Kind_Ptr;
+      subtype MethodImplAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.MethodImplAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            methodImplOptions : NetFrameworkBase.System.Runtime.CompilerServices.MethodImplOptions.Kind
+         )
+         return NetFrameworkBase.System.Runtime.CompilerServices.MethodImplAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.MethodImplAttribute.Constructor; 
+         
+         function Constructor
+         (
+            value : NetFrameworkBase.Int16
+         )
+         return NetFrameworkBase.System.Runtime.CompilerServices.MethodImplAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.MethodImplAttribute.Constructor; 
+         
+         function Constructor return NetFrameworkBase.System.Runtime.CompilerServices.MethodImplAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.MethodImplAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype FixedAddressValueTypeAttribute is NetFrameworkBase.System.Runtime.CompilerServices.FixedAddressValueTypeAttribute.Kind_Ptr;
+      subtype FixedAddressValueTypeAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.FixedAddressValueTypeAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.CompilerServices.FixedAddressValueTypeAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.FixedAddressValueTypeAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype UnsafeValueTypeAttribute is NetFrameworkBase.System.Runtime.CompilerServices.UnsafeValueTypeAttribute.Kind_Ptr;
+      subtype UnsafeValueTypeAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.UnsafeValueTypeAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.CompilerServices.UnsafeValueTypeAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.UnsafeValueTypeAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype RequiredAttributeAttribute is NetFrameworkBase.System.Runtime.CompilerServices.RequiredAttributeAttribute.Kind_Ptr;
+      subtype RequiredAttributeAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.RequiredAttributeAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            requiredContract : NetFrameworkBase.System.Type_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.CompilerServices.RequiredAttributeAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.RequiredAttributeAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype LoadHint is NetFrameworkBase.System.Runtime.CompilerServices.LoadHint.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype DefaultDependencyAttribute is NetFrameworkBase.System.Runtime.CompilerServices.DefaultDependencyAttribute.Kind_Ptr;
+      subtype DefaultDependencyAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.DefaultDependencyAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            loadHintArgument : NetFrameworkBase.System.Runtime.CompilerServices.LoadHint.Kind
+         )
+         return NetFrameworkBase.System.Runtime.CompilerServices.DefaultDependencyAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.DefaultDependencyAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype DependencyAttribute is NetFrameworkBase.System.Runtime.CompilerServices.DependencyAttribute.Kind_Ptr;
+      subtype DependencyAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.DependencyAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            dependentAssemblyArgument : NetFrameworkBase.BSTR;
+            loadHintArgument : NetFrameworkBase.System.Runtime.CompilerServices.LoadHint.Kind
+         )
+         return NetFrameworkBase.System.Runtime.CompilerServices.DependencyAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.DependencyAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CompilerMarshalOverride is NetFrameworkBase.System.Runtime.CompilerServices.CompilerMarshalOverride.Kind_Ptr;
+      subtype CompilerMarshalOverride_Array is NetFrameworkBase.System.Runtime.CompilerServices.CompilerMarshalOverride.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype HasCopySemanticsAttribute is NetFrameworkBase.System.Runtime.CompilerServices.HasCopySemanticsAttribute.Kind_Ptr;
+      subtype HasCopySemanticsAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.HasCopySemanticsAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.CompilerServices.HasCopySemanticsAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.HasCopySemanticsAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype IsBoxed is NetFrameworkBase.System.Runtime.CompilerServices.IsBoxed.Kind_Ptr;
+      subtype IsBoxed_Array is NetFrameworkBase.System.Runtime.CompilerServices.IsBoxed.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IsByValue is NetFrameworkBase.System.Runtime.CompilerServices.IsByValue.Kind_Ptr;
+      subtype IsByValue_Array is NetFrameworkBase.System.Runtime.CompilerServices.IsByValue.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IsConst is NetFrameworkBase.System.Runtime.CompilerServices.IsConst.Kind_Ptr;
+      subtype IsConst_Array is NetFrameworkBase.System.Runtime.CompilerServices.IsConst.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IsExplicitlyDereferenced is NetFrameworkBase.System.Runtime.CompilerServices.IsExplicitlyDereferenced.Kind_Ptr;
+      subtype IsExplicitlyDereferenced_Array is NetFrameworkBase.System.Runtime.CompilerServices.IsExplicitlyDereferenced.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IsImplicitlyDereferenced is NetFrameworkBase.System.Runtime.CompilerServices.IsImplicitlyDereferenced.Kind_Ptr;
+      subtype IsImplicitlyDereferenced_Array is NetFrameworkBase.System.Runtime.CompilerServices.IsImplicitlyDereferenced.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IsJitIntrinsic is NetFrameworkBase.System.Runtime.CompilerServices.IsJitIntrinsic.Kind_Ptr;
+      subtype IsJitIntrinsic_Array is NetFrameworkBase.System.Runtime.CompilerServices.IsJitIntrinsic.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IsLong is NetFrameworkBase.System.Runtime.CompilerServices.IsLong.Kind_Ptr;
+      subtype IsLong_Array is NetFrameworkBase.System.Runtime.CompilerServices.IsLong.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IsPinned is NetFrameworkBase.System.Runtime.CompilerServices.IsPinned.Kind_Ptr;
+      subtype IsPinned_Array is NetFrameworkBase.System.Runtime.CompilerServices.IsPinned.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IsSignUnspecifiedByte is NetFrameworkBase.System.Runtime.CompilerServices.IsSignUnspecifiedByte.Kind_Ptr;
+      subtype IsSignUnspecifiedByte_Array is NetFrameworkBase.System.Runtime.CompilerServices.IsSignUnspecifiedByte.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IsUdtReturn is NetFrameworkBase.System.Runtime.CompilerServices.IsUdtReturn.Kind_Ptr;
+      subtype IsUdtReturn_Array is NetFrameworkBase.System.Runtime.CompilerServices.IsUdtReturn.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ScopelessEnumAttribute is NetFrameworkBase.System.Runtime.CompilerServices.ScopelessEnumAttribute.Kind_Ptr;
+      subtype ScopelessEnumAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.ScopelessEnumAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.CompilerServices.ScopelessEnumAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.ScopelessEnumAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SpecialNameAttribute is NetFrameworkBase.System.Runtime.CompilerServices.SpecialNameAttribute.Kind_Ptr;
+      subtype SpecialNameAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.SpecialNameAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.CompilerServices.SpecialNameAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.SpecialNameAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype IsReadOnlyAttribute is NetFrameworkBase.System.Runtime.CompilerServices.IsReadOnlyAttribute.Kind_Ptr;
+      subtype IsReadOnlyAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.IsReadOnlyAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.CompilerServices.IsReadOnlyAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.IsReadOnlyAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype IsCopyConstructed is NetFrameworkBase.System.Runtime.CompilerServices.IsCopyConstructed.Kind_Ptr;
+      subtype IsCopyConstructed_Array is NetFrameworkBase.System.Runtime.CompilerServices.IsCopyConstructed.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype SuppressIldasmAttribute is NetFrameworkBase.System.Runtime.CompilerServices.SuppressIldasmAttribute.Kind_Ptr;
+      subtype SuppressIldasmAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.SuppressIldasmAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.CompilerServices.SuppressIldasmAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.SuppressIldasmAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype NativeCppClassAttribute is NetFrameworkBase.System.Runtime.CompilerServices.NativeCppClassAttribute.Kind_Ptr;
+      subtype NativeCppClassAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.NativeCppClassAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.CompilerServices.NativeCppClassAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.NativeCppClassAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype TypeForwardedToAttribute is NetFrameworkBase.System.Runtime.CompilerServices.TypeForwardedToAttribute.Kind_Ptr;
+      subtype TypeForwardedToAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.TypeForwardedToAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            destination : NetFrameworkBase.System.Type_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.CompilerServices.TypeForwardedToAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.TypeForwardedToAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype TypeForwardedFromAttribute is NetFrameworkBase.System.Runtime.CompilerServices.TypeForwardedFromAttribute.Kind_Ptr;
+      subtype TypeForwardedFromAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.TypeForwardedFromAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            assemblyFullName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.CompilerServices.TypeForwardedFromAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.TypeForwardedFromAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ReferenceAssemblyAttribute is NetFrameworkBase.System.Runtime.CompilerServices.ReferenceAssemblyAttribute.Kind_Ptr;
+      subtype ReferenceAssemblyAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.ReferenceAssemblyAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.CompilerServices.ReferenceAssemblyAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.ReferenceAssemblyAttribute.Constructor;
+         
+         function Constructor
+         (
+            description : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.CompilerServices.ReferenceAssemblyAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.ReferenceAssemblyAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype RuntimeCompatibilityAttribute is NetFrameworkBase.System.Runtime.CompilerServices.RuntimeCompatibilityAttribute.Kind_Ptr;
+      subtype RuntimeCompatibilityAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.RuntimeCompatibilityAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.CompilerServices.RuntimeCompatibilityAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.RuntimeCompatibilityAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype RuntimeWrappedException is NetFrameworkBase.System.Runtime.CompilerServices.RuntimeWrappedException.Kind_Ptr;
+      subtype RuntimeWrappedException_Array is NetFrameworkBase.System.Runtime.CompilerServices.RuntimeWrappedException.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype CallerFilePathAttribute is NetFrameworkBase.System.Runtime.CompilerServices.CallerFilePathAttribute.Kind_Ptr;
+      subtype CallerFilePathAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.CallerFilePathAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.CompilerServices.CallerFilePathAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.CallerFilePathAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype CallerLineNumberAttribute is NetFrameworkBase.System.Runtime.CompilerServices.CallerLineNumberAttribute.Kind_Ptr;
+      subtype CallerLineNumberAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.CallerLineNumberAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.CompilerServices.CallerLineNumberAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.CallerLineNumberAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype CallerMemberNameAttribute is NetFrameworkBase.System.Runtime.CompilerServices.CallerMemberNameAttribute.Kind_Ptr;
+      subtype CallerMemberNameAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.CallerMemberNameAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.CompilerServices.CallerMemberNameAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.CallerMemberNameAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype StateMachineAttribute is NetFrameworkBase.System.Runtime.CompilerServices.StateMachineAttribute.Kind_Ptr;
+      subtype StateMachineAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.StateMachineAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            stateMachineType : NetFrameworkBase.System.Type_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.CompilerServices.StateMachineAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.StateMachineAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype IteratorStateMachineAttribute is NetFrameworkBase.System.Runtime.CompilerServices.IteratorStateMachineAttribute.Kind_Ptr;
+      subtype IteratorStateMachineAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.IteratorStateMachineAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            stateMachineType : NetFrameworkBase.System.Type_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.CompilerServices.IteratorStateMachineAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.IteratorStateMachineAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ITuple is NetFrameworkBase.System.Runtime.CompilerServices.ITuple.Kind_Ptr;
+      subtype ITuple_Array is NetFrameworkBase.System.Runtime.CompilerServices.ITuple.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype AsyncStateMachineAttribute is NetFrameworkBase.System.Runtime.CompilerServices.AsyncStateMachineAttribute.Kind_Ptr;
+      subtype AsyncStateMachineAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.AsyncStateMachineAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            stateMachineType : NetFrameworkBase.System.Type_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.CompilerServices.AsyncStateMachineAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.AsyncStateMachineAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype AsyncVoidMethodBuilder is NetFrameworkBase.System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Kind_Ptr;
+      subtype AsyncVoidMethodBuilder_Array is NetFrameworkBase.System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype AsyncTaskMethodBuilder is NetFrameworkBase.System.Runtime.CompilerServices.AsyncTaskMethodBuilder.Kind_Ptr;
+      subtype AsyncTaskMethodBuilder_Array is NetFrameworkBase.System.Runtime.CompilerServices.AsyncTaskMethodBuilder.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IAsyncStateMachine is NetFrameworkBase.System.Runtime.CompilerServices.IAsyncStateMachine.Kind_Ptr;
+      subtype IAsyncStateMachine_Array is NetFrameworkBase.System.Runtime.CompilerServices.IAsyncStateMachine.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype INotifyCompletion is NetFrameworkBase.System.Runtime.CompilerServices.INotifyCompletion.Kind_Ptr;
+      subtype INotifyCompletion_Array is NetFrameworkBase.System.Runtime.CompilerServices.INotifyCompletion.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ICriticalNotifyCompletion is NetFrameworkBase.System.Runtime.CompilerServices.ICriticalNotifyCompletion.Kind_Ptr;
+      subtype ICriticalNotifyCompletion_Array is NetFrameworkBase.System.Runtime.CompilerServices.ICriticalNotifyCompletion.Kind_Array;
+      
       --------------------------------------------------------------------------
       subtype TaskAwaiter is NetFrameworkBase.System.Runtime.CompilerServices.TaskAwaiter.Kind_Ptr;
       subtype TaskAwaiter_Array is NetFrameworkBase.System.Runtime.CompilerServices.TaskAwaiter.Kind_Array;
@@ -45,5 +566,31 @@ package NetFramework.System.Runtime.CompilerServices is
       subtype YieldAwaitable is NetFrameworkBase.System.Runtime.CompilerServices.YieldAwaitable.Kind_Ptr;
       subtype YieldAwaitable_Array is NetFrameworkBase.System.Runtime.CompilerServices.YieldAwaitable.Kind_Array;
       
+      --------------------------------------------------------------------------
+      subtype FormattableStringFactory is NetFrameworkBase.System.Runtime.CompilerServices.FormattableStringFactory.Kind_Ptr;
+      subtype FormattableStringFactory_Array is NetFrameworkBase.System.Runtime.CompilerServices.FormattableStringFactory.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IDispatchConstantAttribute is NetFrameworkBase.System.Runtime.CompilerServices.IDispatchConstantAttribute.Kind_Ptr;
+      subtype IDispatchConstantAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.IDispatchConstantAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.CompilerServices.IDispatchConstantAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.IDispatchConstantAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype IUnknownConstantAttribute is NetFrameworkBase.System.Runtime.CompilerServices.IUnknownConstantAttribute.Kind_Ptr;
+      subtype IUnknownConstantAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.IUnknownConstantAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.CompilerServices.IUnknownConstantAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.IUnknownConstantAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype TupleElementNamesAttribute is NetFrameworkBase.System.Runtime.CompilerServices.TupleElementNamesAttribute.Kind_Ptr;
+      subtype TupleElementNamesAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.TupleElementNamesAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            transformNames : NetFrameworkBase.BSTR_Array
+         )
+         return NetFrameworkBase.System.Runtime.CompilerServices.TupleElementNamesAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.TupleElementNamesAttribute.Constructor; 
+         
    
 end;

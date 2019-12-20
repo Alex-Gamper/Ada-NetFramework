@@ -27,23 +27,69 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.Runtime.Serialization.FormatterConverter;
+with NetFrameworkBase.System.Runtime.Serialization.FormatterServices;
+with NetFrameworkBase.System.Runtime.Serialization.IDeserializationCallback;
+with NetFrameworkBase.System.Runtime.Serialization.IFormatter;
 with NetFrameworkBase.System.Runtime.Serialization.IFormatterConverter;
+with NetFrameworkBase.System.Runtime.Serialization.IObjectReference;
+with NetFrameworkBase.System.Runtime.Serialization.ISerializable;
 with NetFrameworkBase.System.Runtime.Serialization.ISerializationSurrogate;
 with NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector;
+with NetFrameworkBase.System.Runtime.Serialization.OptionalFieldAttribute;
+with NetFrameworkBase.System.Runtime.Serialization.OnSerializingAttribute;
+with NetFrameworkBase.System.Runtime.Serialization.OnSerializedAttribute;
+with NetFrameworkBase.System.Runtime.Serialization.OnDeserializingAttribute;
+with NetFrameworkBase.System.Runtime.Serialization.OnDeserializedAttribute;
+with NetFrameworkBase.System.Runtime.Serialization.SerializationBinder;
+with NetFrameworkBase.System.Runtime.Serialization.SerializationException;
 with NetFrameworkBase.System.Runtime.Serialization.SerializationInfo;
 with NetFrameworkBase.System.Runtime.Serialization.SerializationEntry;
 with NetFrameworkBase.System.Runtime.Serialization.SerializationInfoEnumerator;
 with NetFrameworkBase.System.Runtime.Serialization.StreamingContext;
 with NetFrameworkBase.System.Runtime.Serialization.StreamingContextStates;
+with NetFrameworkBase.System.Runtime.Serialization.Formatter;
+with NetFrameworkBase.System.Runtime.Serialization.ObjectIDGenerator;
+with NetFrameworkBase.System.Runtime.Serialization.ObjectManager;
+with NetFrameworkBase.System.Runtime.Serialization.SafeSerializationEventArgs;
+with NetFrameworkBase.System.Runtime.Serialization.ISafeSerializationData;
+with NetFrameworkBase.System.Runtime.Serialization.SerializationObjectManager;
 with NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector;
+with NetFrameworkBase.System.Exception_x;
 with NetFrameworkBase.System.Type_x;
 with NetFrameworkBase.System.Object;
 --------------------------------------------------------------------------------
 package NetFramework.System.Runtime.Serialization is
    
       --------------------------------------------------------------------------
+      subtype FormatterConverter is NetFrameworkBase.System.Runtime.Serialization.FormatterConverter.Kind_Ptr;
+      subtype FormatterConverter_Array is NetFrameworkBase.System.Runtime.Serialization.FormatterConverter.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.Serialization.FormatterConverter.Kind_Ptr renames NetFrameworkBase.System.Runtime.Serialization.FormatterConverter.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype FormatterServices is NetFrameworkBase.System.Runtime.Serialization.FormatterServices.Kind_Ptr;
+      subtype FormatterServices_Array is NetFrameworkBase.System.Runtime.Serialization.FormatterServices.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IDeserializationCallback is NetFrameworkBase.System.Runtime.Serialization.IDeserializationCallback.Kind_Ptr;
+      subtype IDeserializationCallback_Array is NetFrameworkBase.System.Runtime.Serialization.IDeserializationCallback.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IFormatter is NetFrameworkBase.System.Runtime.Serialization.IFormatter.Kind_Ptr;
+      subtype IFormatter_Array is NetFrameworkBase.System.Runtime.Serialization.IFormatter.Kind_Array;
+      
+      --------------------------------------------------------------------------
       subtype IFormatterConverter is NetFrameworkBase.System.Runtime.Serialization.IFormatterConverter.Kind_Ptr;
       subtype IFormatterConverter_Array is NetFrameworkBase.System.Runtime.Serialization.IFormatterConverter.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IObjectReference is NetFrameworkBase.System.Runtime.Serialization.IObjectReference.Kind_Ptr;
+      subtype IObjectReference_Array is NetFrameworkBase.System.Runtime.Serialization.IObjectReference.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ISerializable is NetFrameworkBase.System.Runtime.Serialization.ISerializable.Kind_Ptr;
+      subtype ISerializable_Array is NetFrameworkBase.System.Runtime.Serialization.ISerializable.Kind_Array;
       
       --------------------------------------------------------------------------
       subtype ISerializationSurrogate is NetFrameworkBase.System.Runtime.Serialization.ISerializationSurrogate.Kind_Ptr;
@@ -53,6 +99,59 @@ package NetFramework.System.Runtime.Serialization is
       subtype ISurrogateSelector is NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector.Kind_Ptr;
       subtype ISurrogateSelector_Array is NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector.Kind_Array;
       
+      --------------------------------------------------------------------------
+      subtype OptionalFieldAttribute is NetFrameworkBase.System.Runtime.Serialization.OptionalFieldAttribute.Kind_Ptr;
+      subtype OptionalFieldAttribute_Array is NetFrameworkBase.System.Runtime.Serialization.OptionalFieldAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.Serialization.OptionalFieldAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.Serialization.OptionalFieldAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype OnSerializingAttribute is NetFrameworkBase.System.Runtime.Serialization.OnSerializingAttribute.Kind_Ptr;
+      subtype OnSerializingAttribute_Array is NetFrameworkBase.System.Runtime.Serialization.OnSerializingAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.Serialization.OnSerializingAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.Serialization.OnSerializingAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype OnSerializedAttribute is NetFrameworkBase.System.Runtime.Serialization.OnSerializedAttribute.Kind_Ptr;
+      subtype OnSerializedAttribute_Array is NetFrameworkBase.System.Runtime.Serialization.OnSerializedAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.Serialization.OnSerializedAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.Serialization.OnSerializedAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype OnDeserializingAttribute is NetFrameworkBase.System.Runtime.Serialization.OnDeserializingAttribute.Kind_Ptr;
+      subtype OnDeserializingAttribute_Array is NetFrameworkBase.System.Runtime.Serialization.OnDeserializingAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.Serialization.OnDeserializingAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.Serialization.OnDeserializingAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype OnDeserializedAttribute is NetFrameworkBase.System.Runtime.Serialization.OnDeserializedAttribute.Kind_Ptr;
+      subtype OnDeserializedAttribute_Array is NetFrameworkBase.System.Runtime.Serialization.OnDeserializedAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.Serialization.OnDeserializedAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.Serialization.OnDeserializedAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SerializationBinder is NetFrameworkBase.System.Runtime.Serialization.SerializationBinder.Kind_Ptr;
+      subtype SerializationBinder_Array is NetFrameworkBase.System.Runtime.Serialization.SerializationBinder.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype SerializationException is NetFrameworkBase.System.Runtime.Serialization.SerializationException.Kind_Ptr;
+      subtype SerializationException_Array is NetFrameworkBase.System.Runtime.Serialization.SerializationException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.Serialization.SerializationException.Kind_Ptr renames NetFrameworkBase.System.Runtime.Serialization.SerializationException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.Serialization.SerializationException.Kind_Ptr renames NetFrameworkBase.System.Runtime.Serialization.SerializationException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.Serialization.SerializationException.Kind_Ptr renames NetFrameworkBase.System.Runtime.Serialization.SerializationException.Constructor; 
+         
       --------------------------------------------------------------------------
       subtype SerializationInfo is NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr;
       subtype SerializationInfo_Array is NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Array;
@@ -100,6 +199,45 @@ package NetFramework.System.Runtime.Serialization is
       --------------------------------------------------------------------------
       subtype StreamingContextStates is NetFrameworkBase.System.Runtime.Serialization.StreamingContextStates.Kind;
       
+      --------------------------------------------------------------------------
+      subtype Formatter is NetFrameworkBase.System.Runtime.Serialization.Formatter.Kind_Ptr;
+      subtype Formatter_Array is NetFrameworkBase.System.Runtime.Serialization.Formatter.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ObjectIDGenerator is NetFrameworkBase.System.Runtime.Serialization.ObjectIDGenerator.Kind_Ptr;
+      subtype ObjectIDGenerator_Array is NetFrameworkBase.System.Runtime.Serialization.ObjectIDGenerator.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.Serialization.ObjectIDGenerator.Kind_Ptr renames NetFrameworkBase.System.Runtime.Serialization.ObjectIDGenerator.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype ObjectManager is NetFrameworkBase.System.Runtime.Serialization.ObjectManager.Kind_Ptr;
+      subtype ObjectManager_Array is NetFrameworkBase.System.Runtime.Serialization.ObjectManager.Kind_Array;
+      
+         function Constructor
+         (
+            selector : NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector.Kind_Ptr;
+            context : NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.Serialization.ObjectManager.Kind_Ptr renames NetFrameworkBase.System.Runtime.Serialization.ObjectManager.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SafeSerializationEventArgs is NetFrameworkBase.System.Runtime.Serialization.SafeSerializationEventArgs.Kind_Ptr;
+      subtype SafeSerializationEventArgs_Array is NetFrameworkBase.System.Runtime.Serialization.SafeSerializationEventArgs.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ISafeSerializationData is NetFrameworkBase.System.Runtime.Serialization.ISafeSerializationData.Kind_Ptr;
+      subtype ISafeSerializationData_Array is NetFrameworkBase.System.Runtime.Serialization.ISafeSerializationData.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype SerializationObjectManager is NetFrameworkBase.System.Runtime.Serialization.SerializationObjectManager.Kind_Ptr;
+      subtype SerializationObjectManager_Array is NetFrameworkBase.System.Runtime.Serialization.SerializationObjectManager.Kind_Array;
+      
+         function Constructor
+         (
+            context : NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.Serialization.SerializationObjectManager.Kind_Ptr renames NetFrameworkBase.System.Runtime.Serialization.SerializationObjectManager.Constructor; 
+         
       --------------------------------------------------------------------------
       subtype SurrogateSelector is NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector.Kind_Ptr;
       subtype SurrogateSelector_Array is NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector.Kind_Array;

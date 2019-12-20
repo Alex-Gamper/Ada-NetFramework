@@ -27,23 +27,126 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.Text.StringBuilder;
+with NetFrameworkBase.System.Text.ASCIIEncoding;
 with NetFrameworkBase.System.Text.Decoder;
+with NetFrameworkBase.System.Text.DecoderExceptionFallback;
+with NetFrameworkBase.System.Text.DecoderExceptionFallbackBuffer;
+with NetFrameworkBase.System.Text.DecoderFallbackException;
 with NetFrameworkBase.System.Text.DecoderFallback;
 with NetFrameworkBase.System.Text.DecoderFallbackBuffer;
+with NetFrameworkBase.System.Text.DecoderReplacementFallback;
+with NetFrameworkBase.System.Text.DecoderReplacementFallbackBuffer;
 with NetFrameworkBase.System.Text.Encoder;
+with NetFrameworkBase.System.Text.EncoderExceptionFallback;
+with NetFrameworkBase.System.Text.EncoderExceptionFallbackBuffer;
+with NetFrameworkBase.System.Text.EncoderFallbackException;
 with NetFrameworkBase.System.Text.EncoderFallback;
 with NetFrameworkBase.System.Text.EncoderFallbackBuffer;
+with NetFrameworkBase.System.Text.EncoderReplacementFallback;
+with NetFrameworkBase.System.Text.EncoderReplacementFallbackBuffer;
 with NetFrameworkBase.System.Text.Encoding;
 with NetFrameworkBase.System.Text.EncodingInfo;
 with NetFrameworkBase.System.Text.EncodingProvider;
 with NetFrameworkBase.System.Text.NormalizationForm;
+with NetFrameworkBase.System.Text.UnicodeEncoding;
+with NetFrameworkBase.System.Text.UTF7Encoding;
+with NetFrameworkBase.System.Text.UTF8Encoding;
+with NetFrameworkBase.System.Text.UTF32Encoding;
+with NetFrameworkBase.System.Exception_x;
 --------------------------------------------------------------------------------
 package NetFramework.System.Text is
    
       --------------------------------------------------------------------------
+      subtype StringBuilder is NetFrameworkBase.System.Text.StringBuilder.Kind_Ptr;
+      subtype StringBuilder_Array is NetFrameworkBase.System.Text.StringBuilder.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Text.StringBuilder.Kind_Ptr renames NetFrameworkBase.System.Text.StringBuilder.Constructor;
+         
+         function Constructor
+         (
+            capacity : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Text.StringBuilder.Kind_Ptr renames NetFrameworkBase.System.Text.StringBuilder.Constructor; 
+         
+         function Constructor
+         (
+            value : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Text.StringBuilder.Kind_Ptr renames NetFrameworkBase.System.Text.StringBuilder.Constructor; 
+         
+         function Constructor
+         (
+            value : NetFrameworkBase.BSTR;
+            capacity : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Text.StringBuilder.Kind_Ptr renames NetFrameworkBase.System.Text.StringBuilder.Constructor; 
+         
+         function Constructor
+         (
+            value : NetFrameworkBase.BSTR;
+            startIndex : NetFrameworkBase.Int32;
+            length : NetFrameworkBase.Int32;
+            capacity : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Text.StringBuilder.Kind_Ptr renames NetFrameworkBase.System.Text.StringBuilder.Constructor; 
+         
+         function Constructor
+         (
+            capacity : NetFrameworkBase.Int32;
+            maxCapacity : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Text.StringBuilder.Kind_Ptr renames NetFrameworkBase.System.Text.StringBuilder.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ASCIIEncoding is NetFrameworkBase.System.Text.ASCIIEncoding.Kind_Ptr;
+      subtype ASCIIEncoding_Array is NetFrameworkBase.System.Text.ASCIIEncoding.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Text.ASCIIEncoding.Kind_Ptr renames NetFrameworkBase.System.Text.ASCIIEncoding.Constructor;
+         
+      --------------------------------------------------------------------------
       subtype Decoder is NetFrameworkBase.System.Text.Decoder.Kind_Ptr;
       subtype Decoder_Array is NetFrameworkBase.System.Text.Decoder.Kind_Array;
       
+      --------------------------------------------------------------------------
+      subtype DecoderExceptionFallback is NetFrameworkBase.System.Text.DecoderExceptionFallback.Kind_Ptr;
+      subtype DecoderExceptionFallback_Array is NetFrameworkBase.System.Text.DecoderExceptionFallback.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Text.DecoderExceptionFallback.Kind_Ptr renames NetFrameworkBase.System.Text.DecoderExceptionFallback.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype DecoderExceptionFallbackBuffer is NetFrameworkBase.System.Text.DecoderExceptionFallbackBuffer.Kind_Ptr;
+      subtype DecoderExceptionFallbackBuffer_Array is NetFrameworkBase.System.Text.DecoderExceptionFallbackBuffer.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Text.DecoderExceptionFallbackBuffer.Kind_Ptr renames NetFrameworkBase.System.Text.DecoderExceptionFallbackBuffer.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype DecoderFallbackException is NetFrameworkBase.System.Text.DecoderFallbackException.Kind_Ptr;
+      subtype DecoderFallbackException_Array is NetFrameworkBase.System.Text.DecoderFallbackException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Text.DecoderFallbackException.Kind_Ptr renames NetFrameworkBase.System.Text.DecoderFallbackException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Text.DecoderFallbackException.Kind_Ptr renames NetFrameworkBase.System.Text.DecoderFallbackException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Text.DecoderFallbackException.Kind_Ptr renames NetFrameworkBase.System.Text.DecoderFallbackException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            bytesUnknown : NetFrameworkBase.Byte_Array;
+            index : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Text.DecoderFallbackException.Kind_Ptr renames NetFrameworkBase.System.Text.DecoderFallbackException.Constructor; 
+         
       --------------------------------------------------------------------------
       subtype DecoderFallback is NetFrameworkBase.System.Text.DecoderFallback.Kind_Ptr;
       subtype DecoderFallback_Array is NetFrameworkBase.System.Text.DecoderFallback.Kind_Array;
@@ -53,9 +156,62 @@ package NetFramework.System.Text is
       subtype DecoderFallbackBuffer_Array is NetFrameworkBase.System.Text.DecoderFallbackBuffer.Kind_Array;
       
       --------------------------------------------------------------------------
+      subtype DecoderReplacementFallback is NetFrameworkBase.System.Text.DecoderReplacementFallback.Kind_Ptr;
+      subtype DecoderReplacementFallback_Array is NetFrameworkBase.System.Text.DecoderReplacementFallback.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Text.DecoderReplacementFallback.Kind_Ptr renames NetFrameworkBase.System.Text.DecoderReplacementFallback.Constructor;
+         
+         function Constructor
+         (
+            replacement : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Text.DecoderReplacementFallback.Kind_Ptr renames NetFrameworkBase.System.Text.DecoderReplacementFallback.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype DecoderReplacementFallbackBuffer is NetFrameworkBase.System.Text.DecoderReplacementFallbackBuffer.Kind_Ptr;
+      subtype DecoderReplacementFallbackBuffer_Array is NetFrameworkBase.System.Text.DecoderReplacementFallbackBuffer.Kind_Array;
+      
+         function Constructor
+         (
+            fallback : NetFrameworkBase.System.Text.DecoderReplacementFallback.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Text.DecoderReplacementFallbackBuffer.Kind_Ptr renames NetFrameworkBase.System.Text.DecoderReplacementFallbackBuffer.Constructor; 
+         
+      --------------------------------------------------------------------------
       subtype Encoder is NetFrameworkBase.System.Text.Encoder.Kind_Ptr;
       subtype Encoder_Array is NetFrameworkBase.System.Text.Encoder.Kind_Array;
       
+      --------------------------------------------------------------------------
+      subtype EncoderExceptionFallback is NetFrameworkBase.System.Text.EncoderExceptionFallback.Kind_Ptr;
+      subtype EncoderExceptionFallback_Array is NetFrameworkBase.System.Text.EncoderExceptionFallback.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Text.EncoderExceptionFallback.Kind_Ptr renames NetFrameworkBase.System.Text.EncoderExceptionFallback.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype EncoderExceptionFallbackBuffer is NetFrameworkBase.System.Text.EncoderExceptionFallbackBuffer.Kind_Ptr;
+      subtype EncoderExceptionFallbackBuffer_Array is NetFrameworkBase.System.Text.EncoderExceptionFallbackBuffer.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Text.EncoderExceptionFallbackBuffer.Kind_Ptr renames NetFrameworkBase.System.Text.EncoderExceptionFallbackBuffer.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype EncoderFallbackException is NetFrameworkBase.System.Text.EncoderFallbackException.Kind_Ptr;
+      subtype EncoderFallbackException_Array is NetFrameworkBase.System.Text.EncoderFallbackException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Text.EncoderFallbackException.Kind_Ptr renames NetFrameworkBase.System.Text.EncoderFallbackException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Text.EncoderFallbackException.Kind_Ptr renames NetFrameworkBase.System.Text.EncoderFallbackException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Text.EncoderFallbackException.Kind_Ptr renames NetFrameworkBase.System.Text.EncoderFallbackException.Constructor; 
+         
       --------------------------------------------------------------------------
       subtype EncoderFallback is NetFrameworkBase.System.Text.EncoderFallback.Kind_Ptr;
       subtype EncoderFallback_Array is NetFrameworkBase.System.Text.EncoderFallback.Kind_Array;
@@ -64,6 +220,28 @@ package NetFramework.System.Text is
       subtype EncoderFallbackBuffer is NetFrameworkBase.System.Text.EncoderFallbackBuffer.Kind_Ptr;
       subtype EncoderFallbackBuffer_Array is NetFrameworkBase.System.Text.EncoderFallbackBuffer.Kind_Array;
       
+      --------------------------------------------------------------------------
+      subtype EncoderReplacementFallback is NetFrameworkBase.System.Text.EncoderReplacementFallback.Kind_Ptr;
+      subtype EncoderReplacementFallback_Array is NetFrameworkBase.System.Text.EncoderReplacementFallback.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Text.EncoderReplacementFallback.Kind_Ptr renames NetFrameworkBase.System.Text.EncoderReplacementFallback.Constructor;
+         
+         function Constructor
+         (
+            replacement : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Text.EncoderReplacementFallback.Kind_Ptr renames NetFrameworkBase.System.Text.EncoderReplacementFallback.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype EncoderReplacementFallbackBuffer is NetFrameworkBase.System.Text.EncoderReplacementFallbackBuffer.Kind_Ptr;
+      subtype EncoderReplacementFallbackBuffer_Array is NetFrameworkBase.System.Text.EncoderReplacementFallbackBuffer.Kind_Array;
+      
+         function Constructor
+         (
+            fallback : NetFrameworkBase.System.Text.EncoderReplacementFallback.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Text.EncoderReplacementFallbackBuffer.Kind_Ptr renames NetFrameworkBase.System.Text.EncoderReplacementFallbackBuffer.Constructor; 
+         
       --------------------------------------------------------------------------
       subtype Encoding is NetFrameworkBase.System.Text.Encoding.Kind_Ptr;
       subtype Encoding_Array is NetFrameworkBase.System.Text.Encoding.Kind_Array;
@@ -79,5 +257,78 @@ package NetFramework.System.Text is
       --------------------------------------------------------------------------
       subtype NormalizationForm is NetFrameworkBase.System.Text.NormalizationForm.Kind;
       
+      --------------------------------------------------------------------------
+      subtype UnicodeEncoding is NetFrameworkBase.System.Text.UnicodeEncoding.Kind_Ptr;
+      subtype UnicodeEncoding_Array is NetFrameworkBase.System.Text.UnicodeEncoding.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Text.UnicodeEncoding.Kind_Ptr renames NetFrameworkBase.System.Text.UnicodeEncoding.Constructor;
+         
+         function Constructor
+         (
+            bigEndian : NetFrameworkBase.Boolean;
+            byteOrderMark : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Text.UnicodeEncoding.Kind_Ptr renames NetFrameworkBase.System.Text.UnicodeEncoding.Constructor; 
+         
+         function Constructor
+         (
+            bigEndian : NetFrameworkBase.Boolean;
+            byteOrderMark : NetFrameworkBase.Boolean;
+            throwOnInvalidBytes : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Text.UnicodeEncoding.Kind_Ptr renames NetFrameworkBase.System.Text.UnicodeEncoding.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype UTF7Encoding is NetFrameworkBase.System.Text.UTF7Encoding.Kind_Ptr;
+      subtype UTF7Encoding_Array is NetFrameworkBase.System.Text.UTF7Encoding.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Text.UTF7Encoding.Kind_Ptr renames NetFrameworkBase.System.Text.UTF7Encoding.Constructor;
+         
+         function Constructor
+         (
+            allowOptionals : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Text.UTF7Encoding.Kind_Ptr renames NetFrameworkBase.System.Text.UTF7Encoding.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype UTF8Encoding is NetFrameworkBase.System.Text.UTF8Encoding.Kind_Ptr;
+      subtype UTF8Encoding_Array is NetFrameworkBase.System.Text.UTF8Encoding.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Text.UTF8Encoding.Kind_Ptr renames NetFrameworkBase.System.Text.UTF8Encoding.Constructor;
+         
+         function Constructor
+         (
+            encoderShouldEmitUTF8Identifier : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Text.UTF8Encoding.Kind_Ptr renames NetFrameworkBase.System.Text.UTF8Encoding.Constructor; 
+         
+         function Constructor
+         (
+            encoderShouldEmitUTF8Identifier : NetFrameworkBase.Boolean;
+            throwOnInvalidBytes : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Text.UTF8Encoding.Kind_Ptr renames NetFrameworkBase.System.Text.UTF8Encoding.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype UTF32Encoding is NetFrameworkBase.System.Text.UTF32Encoding.Kind_Ptr;
+      subtype UTF32Encoding_Array is NetFrameworkBase.System.Text.UTF32Encoding.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Text.UTF32Encoding.Kind_Ptr renames NetFrameworkBase.System.Text.UTF32Encoding.Constructor;
+         
+         function Constructor
+         (
+            bigEndian : NetFrameworkBase.Boolean;
+            byteOrderMark : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Text.UTF32Encoding.Kind_Ptr renames NetFrameworkBase.System.Text.UTF32Encoding.Constructor; 
+         
+         function Constructor
+         (
+            bigEndian : NetFrameworkBase.Boolean;
+            byteOrderMark : NetFrameworkBase.Boolean;
+            throwOnInvalidCharacters : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Text.UTF32Encoding.Kind_Ptr renames NetFrameworkBase.System.Text.UTF32Encoding.Constructor; 
+         
    
 end;

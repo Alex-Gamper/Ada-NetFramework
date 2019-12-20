@@ -27,10 +27,493 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.Security.Cryptography.CipherMode;
+with NetFrameworkBase.System.Security.Cryptography.PaddingMode;
+with NetFrameworkBase.System.Security.Cryptography.KeySizes;
+with NetFrameworkBase.System.Security.Cryptography.CryptographicException;
+with NetFrameworkBase.System.Security.Cryptography.CryptographicUnexpectedOperationException;
+with NetFrameworkBase.System.Security.Cryptography.ICryptoTransform;
+with NetFrameworkBase.System.Security.Cryptography.RandomNumberGenerator;
+with NetFrameworkBase.System.Security.Cryptography.RNGCryptoServiceProvider;
+with NetFrameworkBase.System.Security.Cryptography.Aes;
+with NetFrameworkBase.System.Security.Cryptography.AsymmetricAlgorithm;
+with NetFrameworkBase.System.Security.Cryptography.AsymmetricKeyExchangeDeformatter;
+with NetFrameworkBase.System.Security.Cryptography.AsymmetricKeyExchangeFormatter;
+with NetFrameworkBase.System.Security.Cryptography.AsymmetricSignatureDeformatter;
+with NetFrameworkBase.System.Security.Cryptography.AsymmetricSignatureFormatter;
+with NetFrameworkBase.System.Security.Cryptography.FromBase64TransformMode;
+with NetFrameworkBase.System.Security.Cryptography.ToBase64Transform;
+with NetFrameworkBase.System.Security.Cryptography.FromBase64Transform;
+with NetFrameworkBase.System.Security.Cryptography.CryptoAPITransform;
+with NetFrameworkBase.System.Security.Cryptography.CspProviderFlags;
+with NetFrameworkBase.System.Security.Cryptography.CspParameters;
+with NetFrameworkBase.System.Security.Cryptography.CryptoConfig;
+with NetFrameworkBase.System.Security.Cryptography.CryptoStreamMode;
+with NetFrameworkBase.System.Security.Cryptography.CryptoStream;
+with NetFrameworkBase.System.Security.Cryptography.DES;
+with NetFrameworkBase.System.Security.Cryptography.DESCryptoServiceProvider;
+with NetFrameworkBase.System.Security.Cryptography.DeriveBytes;
+with NetFrameworkBase.System.Security.Cryptography.DSAParameters;
+with NetFrameworkBase.System.Security.Cryptography.DSA;
+with NetFrameworkBase.System.Security.Cryptography.DSACryptoServiceProvider;
+with NetFrameworkBase.System.Security.Cryptography.DSASignatureDeformatter;
+with NetFrameworkBase.System.Security.Cryptography.DSASignatureFormatter;
+with NetFrameworkBase.System.Security.Cryptography.HMAC;
+with NetFrameworkBase.System.Security.Cryptography.HMACMD5;
+with NetFrameworkBase.System.Security.Cryptography.HMACRIPEMD160;
+with NetFrameworkBase.System.Security.Cryptography.HMACSHA1;
+with NetFrameworkBase.System.Security.Cryptography.HMACSHA256;
+with NetFrameworkBase.System.Security.Cryptography.HMACSHA384;
+with NetFrameworkBase.System.Security.Cryptography.HMACSHA512;
+with NetFrameworkBase.System.Security.Cryptography.HashAlgorithm;
 with NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName;
+with NetFrameworkBase.System.Security.Cryptography.KeyNumber;
+with NetFrameworkBase.System.Security.Cryptography.CspKeyContainerInfo;
+with NetFrameworkBase.System.Security.Cryptography.ICspAsymmetricAlgorithm;
+with NetFrameworkBase.System.Security.Cryptography.KeyedHashAlgorithm;
+with NetFrameworkBase.System.Security.Cryptography.MACTripleDES;
+with NetFrameworkBase.System.Security.Cryptography.MD5;
+with NetFrameworkBase.System.Security.Cryptography.MD5CryptoServiceProvider;
+with NetFrameworkBase.System.Security.Cryptography.MaskGenerationMethod;
+with NetFrameworkBase.System.Security.Cryptography.PasswordDeriveBytes;
+with NetFrameworkBase.System.Security.Cryptography.PKCS1MaskGenerationMethod;
+with NetFrameworkBase.System.Security.Cryptography.RC2;
+with NetFrameworkBase.System.Security.Cryptography.RC2CryptoServiceProvider;
+with NetFrameworkBase.System.Security.Cryptography.Rfc2898DeriveBytes;
+with NetFrameworkBase.System.Security.Cryptography.RIPEMD160;
+with NetFrameworkBase.System.Security.Cryptography.RIPEMD160Managed;
+with NetFrameworkBase.System.Security.Cryptography.RSAParameters;
+with NetFrameworkBase.System.Security.Cryptography.RSA;
+with NetFrameworkBase.System.Security.Cryptography.RSASignaturePadding;
+with NetFrameworkBase.System.Security.Cryptography.RSASignaturePaddingMode;
+with NetFrameworkBase.System.Security.Cryptography.RSACryptoServiceProvider;
+with NetFrameworkBase.System.Security.Cryptography.RSAEncryptionPadding;
+with NetFrameworkBase.System.Security.Cryptography.RSAEncryptionPaddingMode;
+with NetFrameworkBase.System.Security.Cryptography.RSAOAEPKeyExchangeDeformatter;
+with NetFrameworkBase.System.Security.Cryptography.RSAOAEPKeyExchangeFormatter;
+with NetFrameworkBase.System.Security.Cryptography.RSAPKCS1KeyExchangeDeformatter;
+with NetFrameworkBase.System.Security.Cryptography.RSAPKCS1KeyExchangeFormatter;
+with NetFrameworkBase.System.Security.Cryptography.RSAPKCS1SignatureDeformatter;
+with NetFrameworkBase.System.Security.Cryptography.RSAPKCS1SignatureFormatter;
+with NetFrameworkBase.System.Security.Cryptography.Rijndael;
+with NetFrameworkBase.System.Security.Cryptography.RijndaelManaged;
+with NetFrameworkBase.System.Security.Cryptography.RijndaelManagedTransform;
+with NetFrameworkBase.System.Security.Cryptography.SHA1;
+with NetFrameworkBase.System.Security.Cryptography.SHA1CryptoServiceProvider;
+with NetFrameworkBase.System.Security.Cryptography.SHA1Managed;
+with NetFrameworkBase.System.Security.Cryptography.SHA256;
+with NetFrameworkBase.System.Security.Cryptography.SHA256Managed;
+with NetFrameworkBase.System.Security.Cryptography.SHA384;
+with NetFrameworkBase.System.Security.Cryptography.SHA384Managed;
+with NetFrameworkBase.System.Security.Cryptography.SHA512;
+with NetFrameworkBase.System.Security.Cryptography.SHA512Managed;
+with NetFrameworkBase.System.Security.Cryptography.SignatureDescription;
+with NetFrameworkBase.System.Security.Cryptography.SymmetricAlgorithm;
+with NetFrameworkBase.System.Security.Cryptography.TripleDES;
+with NetFrameworkBase.System.Security.Cryptography.TripleDESCryptoServiceProvider;
+with NetFrameworkBase.System.Exception_x;
+with NetFrameworkBase.System.Security.AccessControl.CryptoKeySecurity;
+with NetFrameworkBase.System.Security.SecureString;
+with NetFrameworkBase.System.IO.Stream;
+with NetFrameworkBase.System.Security.SecurityElement;
 --------------------------------------------------------------------------------
 package NetFramework.System.Security.Cryptography is
    
+      --------------------------------------------------------------------------
+      subtype CipherMode is NetFrameworkBase.System.Security.Cryptography.CipherMode.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype PaddingMode is NetFrameworkBase.System.Security.Cryptography.PaddingMode.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype KeySizes is NetFrameworkBase.System.Security.Cryptography.KeySizes.Kind_Ptr;
+      subtype KeySizes_Array is NetFrameworkBase.System.Security.Cryptography.KeySizes.Kind_Array;
+      
+         function Constructor
+         (
+            minSize : NetFrameworkBase.Int32;
+            maxSize : NetFrameworkBase.Int32;
+            skipSize : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Security.Cryptography.KeySizes.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.KeySizes.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CryptographicException is NetFrameworkBase.System.Security.Cryptography.CryptographicException.Kind_Ptr;
+      subtype CryptographicException_Array is NetFrameworkBase.System.Security.Cryptography.CryptographicException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.CryptographicException.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CryptographicException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Cryptography.CryptographicException.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CryptographicException.Constructor; 
+         
+         function Constructor
+         (
+            format : NetFrameworkBase.BSTR;
+            insert : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Cryptography.CryptographicException.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CryptographicException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.CryptographicException.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CryptographicException.Constructor; 
+         
+         function Constructor
+         (
+            hr : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Security.Cryptography.CryptographicException.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CryptographicException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CryptographicUnexpectedOperationException is NetFrameworkBase.System.Security.Cryptography.CryptographicUnexpectedOperationException.Kind_Ptr;
+      subtype CryptographicUnexpectedOperationException_Array is NetFrameworkBase.System.Security.Cryptography.CryptographicUnexpectedOperationException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.CryptographicUnexpectedOperationException.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CryptographicUnexpectedOperationException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Cryptography.CryptographicUnexpectedOperationException.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CryptographicUnexpectedOperationException.Constructor; 
+         
+         function Constructor
+         (
+            format : NetFrameworkBase.BSTR;
+            insert : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Cryptography.CryptographicUnexpectedOperationException.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CryptographicUnexpectedOperationException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.CryptographicUnexpectedOperationException.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CryptographicUnexpectedOperationException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ICryptoTransform is NetFrameworkBase.System.Security.Cryptography.ICryptoTransform.Kind_Ptr;
+      subtype ICryptoTransform_Array is NetFrameworkBase.System.Security.Cryptography.ICryptoTransform.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype RandomNumberGenerator is NetFrameworkBase.System.Security.Cryptography.RandomNumberGenerator.Kind_Ptr;
+      subtype RandomNumberGenerator_Array is NetFrameworkBase.System.Security.Cryptography.RandomNumberGenerator.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype RNGCryptoServiceProvider is NetFrameworkBase.System.Security.Cryptography.RNGCryptoServiceProvider.Kind_Ptr;
+      subtype RNGCryptoServiceProvider_Array is NetFrameworkBase.System.Security.Cryptography.RNGCryptoServiceProvider.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.RNGCryptoServiceProvider.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.RNGCryptoServiceProvider.Constructor;
+         
+         function Constructor
+         (
+            str : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Cryptography.RNGCryptoServiceProvider.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.RNGCryptoServiceProvider.Constructor; 
+         
+         function Constructor
+         (
+            rgb : NetFrameworkBase.Byte_Array
+         )
+         return NetFrameworkBase.System.Security.Cryptography.RNGCryptoServiceProvider.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.RNGCryptoServiceProvider.Constructor; 
+         
+         function Constructor
+         (
+            cspParams : NetFrameworkBase.System.Security.Cryptography.CspParameters.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.RNGCryptoServiceProvider.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.RNGCryptoServiceProvider.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype Aes is NetFrameworkBase.System.Security.Cryptography.Aes.Kind_Ptr;
+      subtype Aes_Array is NetFrameworkBase.System.Security.Cryptography.Aes.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype AsymmetricAlgorithm is NetFrameworkBase.System.Security.Cryptography.AsymmetricAlgorithm.Kind_Ptr;
+      subtype AsymmetricAlgorithm_Array is NetFrameworkBase.System.Security.Cryptography.AsymmetricAlgorithm.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype AsymmetricKeyExchangeDeformatter is NetFrameworkBase.System.Security.Cryptography.AsymmetricKeyExchangeDeformatter.Kind_Ptr;
+      subtype AsymmetricKeyExchangeDeformatter_Array is NetFrameworkBase.System.Security.Cryptography.AsymmetricKeyExchangeDeformatter.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype AsymmetricKeyExchangeFormatter is NetFrameworkBase.System.Security.Cryptography.AsymmetricKeyExchangeFormatter.Kind_Ptr;
+      subtype AsymmetricKeyExchangeFormatter_Array is NetFrameworkBase.System.Security.Cryptography.AsymmetricKeyExchangeFormatter.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype AsymmetricSignatureDeformatter is NetFrameworkBase.System.Security.Cryptography.AsymmetricSignatureDeformatter.Kind_Ptr;
+      subtype AsymmetricSignatureDeformatter_Array is NetFrameworkBase.System.Security.Cryptography.AsymmetricSignatureDeformatter.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype AsymmetricSignatureFormatter is NetFrameworkBase.System.Security.Cryptography.AsymmetricSignatureFormatter.Kind_Ptr;
+      subtype AsymmetricSignatureFormatter_Array is NetFrameworkBase.System.Security.Cryptography.AsymmetricSignatureFormatter.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype FromBase64TransformMode is NetFrameworkBase.System.Security.Cryptography.FromBase64TransformMode.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype ToBase64Transform is NetFrameworkBase.System.Security.Cryptography.ToBase64Transform.Kind_Ptr;
+      subtype ToBase64Transform_Array is NetFrameworkBase.System.Security.Cryptography.ToBase64Transform.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.ToBase64Transform.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.ToBase64Transform.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype FromBase64Transform is NetFrameworkBase.System.Security.Cryptography.FromBase64Transform.Kind_Ptr;
+      subtype FromBase64Transform_Array is NetFrameworkBase.System.Security.Cryptography.FromBase64Transform.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.FromBase64Transform.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.FromBase64Transform.Constructor;
+         
+         function Constructor
+         (
+            whitespaces : NetFrameworkBase.System.Security.Cryptography.FromBase64TransformMode.Kind
+         )
+         return NetFrameworkBase.System.Security.Cryptography.FromBase64Transform.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.FromBase64Transform.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CryptoAPITransform is NetFrameworkBase.System.Security.Cryptography.CryptoAPITransform.Kind_Ptr;
+      subtype CryptoAPITransform_Array is NetFrameworkBase.System.Security.Cryptography.CryptoAPITransform.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype CspProviderFlags is NetFrameworkBase.System.Security.Cryptography.CspProviderFlags.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype CspParameters is NetFrameworkBase.System.Security.Cryptography.CspParameters.Kind_Ptr;
+      subtype CspParameters_Array is NetFrameworkBase.System.Security.Cryptography.CspParameters.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.CspParameters.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CspParameters.Constructor;
+         
+         function Constructor
+         (
+            dwTypeIn : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Security.Cryptography.CspParameters.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CspParameters.Constructor; 
+         
+         function Constructor
+         (
+            dwTypeIn : NetFrameworkBase.Int32;
+            strProviderNameIn : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Cryptography.CspParameters.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CspParameters.Constructor; 
+         
+         function Constructor
+         (
+            dwTypeIn : NetFrameworkBase.Int32;
+            strProviderNameIn : NetFrameworkBase.BSTR;
+            strContainerNameIn : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Cryptography.CspParameters.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CspParameters.Constructor; 
+         
+         function Constructor
+         (
+            providerType : NetFrameworkBase.Int32;
+            providerName : NetFrameworkBase.BSTR;
+            keyContainerName : NetFrameworkBase.BSTR;
+            cryptoKeySecurity : NetFrameworkBase.System.Security.AccessControl.CryptoKeySecurity.Kind_Ptr;
+            keyPassword : NetFrameworkBase.System.Security.SecureString.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.CspParameters.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CspParameters.Constructor; 
+         
+         function Constructor
+         (
+            providerType : NetFrameworkBase.Int32;
+            providerName : NetFrameworkBase.BSTR;
+            keyContainerName : NetFrameworkBase.BSTR;
+            cryptoKeySecurity : NetFrameworkBase.System.Security.AccessControl.CryptoKeySecurity.Kind_Ptr;
+            parentWindowHandle : NetFrameworkBase.IntPtr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.CspParameters.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CspParameters.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CryptoConfig is NetFrameworkBase.System.Security.Cryptography.CryptoConfig.Kind_Ptr;
+      subtype CryptoConfig_Array is NetFrameworkBase.System.Security.Cryptography.CryptoConfig.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.CryptoConfig.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CryptoConfig.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype CryptoStreamMode is NetFrameworkBase.System.Security.Cryptography.CryptoStreamMode.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype CryptoStream is NetFrameworkBase.System.Security.Cryptography.CryptoStream.Kind_Ptr;
+      subtype CryptoStream_Array is NetFrameworkBase.System.Security.Cryptography.CryptoStream.Kind_Array;
+      
+         function Constructor
+         (
+            stream : NetFrameworkBase.System.IO.Stream.Kind_Ptr;
+            transform : NetFrameworkBase.System.Security.Cryptography.ICryptoTransform.Kind_Ptr;
+            mode : NetFrameworkBase.System.Security.Cryptography.CryptoStreamMode.Kind
+         )
+         return NetFrameworkBase.System.Security.Cryptography.CryptoStream.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CryptoStream.Constructor; 
+         
+         function Constructor
+         (
+            stream : NetFrameworkBase.System.IO.Stream.Kind_Ptr;
+            transform : NetFrameworkBase.System.Security.Cryptography.ICryptoTransform.Kind_Ptr;
+            mode : NetFrameworkBase.System.Security.Cryptography.CryptoStreamMode.Kind;
+            leaveOpen : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Security.Cryptography.CryptoStream.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CryptoStream.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype DES is NetFrameworkBase.System.Security.Cryptography.DES.Kind_Ptr;
+      subtype DES_Array is NetFrameworkBase.System.Security.Cryptography.DES.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype DESCryptoServiceProvider is NetFrameworkBase.System.Security.Cryptography.DESCryptoServiceProvider.Kind_Ptr;
+      subtype DESCryptoServiceProvider_Array is NetFrameworkBase.System.Security.Cryptography.DESCryptoServiceProvider.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.DESCryptoServiceProvider.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.DESCryptoServiceProvider.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype DeriveBytes is NetFrameworkBase.System.Security.Cryptography.DeriveBytes.Kind_Ptr;
+      subtype DeriveBytes_Array is NetFrameworkBase.System.Security.Cryptography.DeriveBytes.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype DSAParameters is NetFrameworkBase.System.Security.Cryptography.DSAParameters.Kind_Ptr;
+      subtype DSAParameters_Array is NetFrameworkBase.System.Security.Cryptography.DSAParameters.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype DSA is NetFrameworkBase.System.Security.Cryptography.DSA.Kind_Ptr;
+      subtype DSA_Array is NetFrameworkBase.System.Security.Cryptography.DSA.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype DSACryptoServiceProvider is NetFrameworkBase.System.Security.Cryptography.DSACryptoServiceProvider.Kind_Ptr;
+      subtype DSACryptoServiceProvider_Array is NetFrameworkBase.System.Security.Cryptography.DSACryptoServiceProvider.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.DSACryptoServiceProvider.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.DSACryptoServiceProvider.Constructor;
+         
+         function Constructor
+         (
+            dwKeySize : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Security.Cryptography.DSACryptoServiceProvider.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.DSACryptoServiceProvider.Constructor; 
+         
+         function Constructor
+         (
+            parameters : NetFrameworkBase.System.Security.Cryptography.CspParameters.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.DSACryptoServiceProvider.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.DSACryptoServiceProvider.Constructor; 
+         
+         function Constructor
+         (
+            dwKeySize : NetFrameworkBase.Int32;
+            parameters : NetFrameworkBase.System.Security.Cryptography.CspParameters.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.DSACryptoServiceProvider.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.DSACryptoServiceProvider.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype DSASignatureDeformatter is NetFrameworkBase.System.Security.Cryptography.DSASignatureDeformatter.Kind_Ptr;
+      subtype DSASignatureDeformatter_Array is NetFrameworkBase.System.Security.Cryptography.DSASignatureDeformatter.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.DSASignatureDeformatter.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.DSASignatureDeformatter.Constructor;
+         
+         function Constructor
+         (
+            key : NetFrameworkBase.System.Security.Cryptography.AsymmetricAlgorithm.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.DSASignatureDeformatter.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.DSASignatureDeformatter.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype DSASignatureFormatter is NetFrameworkBase.System.Security.Cryptography.DSASignatureFormatter.Kind_Ptr;
+      subtype DSASignatureFormatter_Array is NetFrameworkBase.System.Security.Cryptography.DSASignatureFormatter.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.DSASignatureFormatter.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.DSASignatureFormatter.Constructor;
+         
+         function Constructor
+         (
+            key : NetFrameworkBase.System.Security.Cryptography.AsymmetricAlgorithm.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.DSASignatureFormatter.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.DSASignatureFormatter.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype HMAC is NetFrameworkBase.System.Security.Cryptography.HMAC.Kind_Ptr;
+      subtype HMAC_Array is NetFrameworkBase.System.Security.Cryptography.HMAC.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype HMACMD5 is NetFrameworkBase.System.Security.Cryptography.HMACMD5.Kind_Ptr;
+      subtype HMACMD5_Array is NetFrameworkBase.System.Security.Cryptography.HMACMD5.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.HMACMD5.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.HMACMD5.Constructor;
+         
+         function Constructor
+         (
+            key : NetFrameworkBase.Byte_Array
+         )
+         return NetFrameworkBase.System.Security.Cryptography.HMACMD5.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.HMACMD5.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype HMACRIPEMD160 is NetFrameworkBase.System.Security.Cryptography.HMACRIPEMD160.Kind_Ptr;
+      subtype HMACRIPEMD160_Array is NetFrameworkBase.System.Security.Cryptography.HMACRIPEMD160.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.HMACRIPEMD160.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.HMACRIPEMD160.Constructor;
+         
+         function Constructor
+         (
+            key : NetFrameworkBase.Byte_Array
+         )
+         return NetFrameworkBase.System.Security.Cryptography.HMACRIPEMD160.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.HMACRIPEMD160.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype HMACSHA1 is NetFrameworkBase.System.Security.Cryptography.HMACSHA1.Kind_Ptr;
+      subtype HMACSHA1_Array is NetFrameworkBase.System.Security.Cryptography.HMACSHA1.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.HMACSHA1.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.HMACSHA1.Constructor;
+         
+         function Constructor
+         (
+            key : NetFrameworkBase.Byte_Array
+         )
+         return NetFrameworkBase.System.Security.Cryptography.HMACSHA1.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.HMACSHA1.Constructor; 
+         
+         function Constructor
+         (
+            key : NetFrameworkBase.Byte_Array;
+            useManagedSha1 : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Security.Cryptography.HMACSHA1.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.HMACSHA1.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype HMACSHA256 is NetFrameworkBase.System.Security.Cryptography.HMACSHA256.Kind_Ptr;
+      subtype HMACSHA256_Array is NetFrameworkBase.System.Security.Cryptography.HMACSHA256.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.HMACSHA256.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.HMACSHA256.Constructor;
+         
+         function Constructor
+         (
+            key : NetFrameworkBase.Byte_Array
+         )
+         return NetFrameworkBase.System.Security.Cryptography.HMACSHA256.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.HMACSHA256.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype HMACSHA384 is NetFrameworkBase.System.Security.Cryptography.HMACSHA384.Kind_Ptr;
+      subtype HMACSHA384_Array is NetFrameworkBase.System.Security.Cryptography.HMACSHA384.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.HMACSHA384.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.HMACSHA384.Constructor;
+         
+         function Constructor
+         (
+            key : NetFrameworkBase.Byte_Array
+         )
+         return NetFrameworkBase.System.Security.Cryptography.HMACSHA384.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.HMACSHA384.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype HMACSHA512 is NetFrameworkBase.System.Security.Cryptography.HMACSHA512.Kind_Ptr;
+      subtype HMACSHA512_Array is NetFrameworkBase.System.Security.Cryptography.HMACSHA512.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.HMACSHA512.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.HMACSHA512.Constructor;
+         
+         function Constructor
+         (
+            key : NetFrameworkBase.Byte_Array
+         )
+         return NetFrameworkBase.System.Security.Cryptography.HMACSHA512.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.HMACSHA512.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype HashAlgorithm is NetFrameworkBase.System.Security.Cryptography.HashAlgorithm.Kind_Ptr;
+      subtype HashAlgorithm_Array is NetFrameworkBase.System.Security.Cryptography.HashAlgorithm.Kind_Array;
+      
       --------------------------------------------------------------------------
       subtype HashAlgorithmName is NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName.Kind_Ptr;
       subtype HashAlgorithmName_Array is NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName.Kind_Array;
@@ -40,6 +523,432 @@ package NetFramework.System.Security.Cryptography is
             name : NetFrameworkBase.BSTR
          )
          return NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype KeyNumber is NetFrameworkBase.System.Security.Cryptography.KeyNumber.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype CspKeyContainerInfo is NetFrameworkBase.System.Security.Cryptography.CspKeyContainerInfo.Kind_Ptr;
+      subtype CspKeyContainerInfo_Array is NetFrameworkBase.System.Security.Cryptography.CspKeyContainerInfo.Kind_Array;
+      
+         function Constructor
+         (
+            parameters : NetFrameworkBase.System.Security.Cryptography.CspParameters.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.CspKeyContainerInfo.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CspKeyContainerInfo.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ICspAsymmetricAlgorithm is NetFrameworkBase.System.Security.Cryptography.ICspAsymmetricAlgorithm.Kind_Ptr;
+      subtype ICspAsymmetricAlgorithm_Array is NetFrameworkBase.System.Security.Cryptography.ICspAsymmetricAlgorithm.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype KeyedHashAlgorithm is NetFrameworkBase.System.Security.Cryptography.KeyedHashAlgorithm.Kind_Ptr;
+      subtype KeyedHashAlgorithm_Array is NetFrameworkBase.System.Security.Cryptography.KeyedHashAlgorithm.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype MACTripleDES is NetFrameworkBase.System.Security.Cryptography.MACTripleDES.Kind_Ptr;
+      subtype MACTripleDES_Array is NetFrameworkBase.System.Security.Cryptography.MACTripleDES.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.MACTripleDES.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.MACTripleDES.Constructor;
+         
+         function Constructor
+         (
+            rgbKey : NetFrameworkBase.Byte_Array
+         )
+         return NetFrameworkBase.System.Security.Cryptography.MACTripleDES.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.MACTripleDES.Constructor; 
+         
+         function Constructor
+         (
+            strTripleDES : NetFrameworkBase.BSTR;
+            rgbKey : NetFrameworkBase.Byte_Array
+         )
+         return NetFrameworkBase.System.Security.Cryptography.MACTripleDES.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.MACTripleDES.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype MD5 is NetFrameworkBase.System.Security.Cryptography.MD5.Kind_Ptr;
+      subtype MD5_Array is NetFrameworkBase.System.Security.Cryptography.MD5.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype MD5CryptoServiceProvider is NetFrameworkBase.System.Security.Cryptography.MD5CryptoServiceProvider.Kind_Ptr;
+      subtype MD5CryptoServiceProvider_Array is NetFrameworkBase.System.Security.Cryptography.MD5CryptoServiceProvider.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.MD5CryptoServiceProvider.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.MD5CryptoServiceProvider.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype MaskGenerationMethod is NetFrameworkBase.System.Security.Cryptography.MaskGenerationMethod.Kind_Ptr;
+      subtype MaskGenerationMethod_Array is NetFrameworkBase.System.Security.Cryptography.MaskGenerationMethod.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype PasswordDeriveBytes is NetFrameworkBase.System.Security.Cryptography.PasswordDeriveBytes.Kind_Ptr;
+      subtype PasswordDeriveBytes_Array is NetFrameworkBase.System.Security.Cryptography.PasswordDeriveBytes.Kind_Array;
+      
+         function Constructor
+         (
+            strPassword : NetFrameworkBase.BSTR;
+            rgbSalt : NetFrameworkBase.Byte_Array
+         )
+         return NetFrameworkBase.System.Security.Cryptography.PasswordDeriveBytes.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.PasswordDeriveBytes.Constructor; 
+         
+         function Constructor
+         (
+            password : NetFrameworkBase.Byte_Array;
+            salt : NetFrameworkBase.Byte_Array
+         )
+         return NetFrameworkBase.System.Security.Cryptography.PasswordDeriveBytes.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.PasswordDeriveBytes.Constructor; 
+         
+         function Constructor
+         (
+            strPassword : NetFrameworkBase.BSTR;
+            rgbSalt : NetFrameworkBase.Byte_Array;
+            strHashName : NetFrameworkBase.BSTR;
+            iterations : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Security.Cryptography.PasswordDeriveBytes.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.PasswordDeriveBytes.Constructor; 
+         
+         function Constructor
+         (
+            password : NetFrameworkBase.Byte_Array;
+            salt : NetFrameworkBase.Byte_Array;
+            hashName : NetFrameworkBase.BSTR;
+            iterations : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Security.Cryptography.PasswordDeriveBytes.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.PasswordDeriveBytes.Constructor; 
+         
+         function Constructor
+         (
+            strPassword : NetFrameworkBase.BSTR;
+            rgbSalt : NetFrameworkBase.Byte_Array;
+            cspParams : NetFrameworkBase.System.Security.Cryptography.CspParameters.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.PasswordDeriveBytes.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.PasswordDeriveBytes.Constructor; 
+         
+         function Constructor
+         (
+            password : NetFrameworkBase.Byte_Array;
+            salt : NetFrameworkBase.Byte_Array;
+            cspParams : NetFrameworkBase.System.Security.Cryptography.CspParameters.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.PasswordDeriveBytes.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.PasswordDeriveBytes.Constructor; 
+         
+         function Constructor
+         (
+            strPassword : NetFrameworkBase.BSTR;
+            rgbSalt : NetFrameworkBase.Byte_Array;
+            strHashName : NetFrameworkBase.BSTR;
+            iterations : NetFrameworkBase.Int32;
+            cspParams : NetFrameworkBase.System.Security.Cryptography.CspParameters.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.PasswordDeriveBytes.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.PasswordDeriveBytes.Constructor; 
+         
+         function Constructor
+         (
+            password : NetFrameworkBase.Byte_Array;
+            salt : NetFrameworkBase.Byte_Array;
+            hashName : NetFrameworkBase.BSTR;
+            iterations : NetFrameworkBase.Int32;
+            cspParams : NetFrameworkBase.System.Security.Cryptography.CspParameters.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.PasswordDeriveBytes.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.PasswordDeriveBytes.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype PKCS1MaskGenerationMethod is NetFrameworkBase.System.Security.Cryptography.PKCS1MaskGenerationMethod.Kind_Ptr;
+      subtype PKCS1MaskGenerationMethod_Array is NetFrameworkBase.System.Security.Cryptography.PKCS1MaskGenerationMethod.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.PKCS1MaskGenerationMethod.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.PKCS1MaskGenerationMethod.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype RC2 is NetFrameworkBase.System.Security.Cryptography.RC2.Kind_Ptr;
+      subtype RC2_Array is NetFrameworkBase.System.Security.Cryptography.RC2.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype RC2CryptoServiceProvider is NetFrameworkBase.System.Security.Cryptography.RC2CryptoServiceProvider.Kind_Ptr;
+      subtype RC2CryptoServiceProvider_Array is NetFrameworkBase.System.Security.Cryptography.RC2CryptoServiceProvider.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.RC2CryptoServiceProvider.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.RC2CryptoServiceProvider.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype Rfc2898DeriveBytes is NetFrameworkBase.System.Security.Cryptography.Rfc2898DeriveBytes.Kind_Ptr;
+      subtype Rfc2898DeriveBytes_Array is NetFrameworkBase.System.Security.Cryptography.Rfc2898DeriveBytes.Kind_Array;
+      
+         function Constructor
+         (
+            password : NetFrameworkBase.BSTR;
+            saltSize : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Security.Cryptography.Rfc2898DeriveBytes.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.Rfc2898DeriveBytes.Constructor; 
+         
+         function Constructor
+         (
+            password : NetFrameworkBase.BSTR;
+            saltSize : NetFrameworkBase.Int32;
+            iterations : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Security.Cryptography.Rfc2898DeriveBytes.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.Rfc2898DeriveBytes.Constructor; 
+         
+         function Constructor
+         (
+            password : NetFrameworkBase.BSTR;
+            saltSize : NetFrameworkBase.Int32;
+            iterations : NetFrameworkBase.Int32;
+            hashAlgorithm : NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.Rfc2898DeriveBytes.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.Rfc2898DeriveBytes.Constructor; 
+         
+         function Constructor
+         (
+            password : NetFrameworkBase.BSTR;
+            salt : NetFrameworkBase.Byte_Array
+         )
+         return NetFrameworkBase.System.Security.Cryptography.Rfc2898DeriveBytes.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.Rfc2898DeriveBytes.Constructor; 
+         
+         function Constructor
+         (
+            password : NetFrameworkBase.BSTR;
+            salt : NetFrameworkBase.Byte_Array;
+            iterations : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Security.Cryptography.Rfc2898DeriveBytes.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.Rfc2898DeriveBytes.Constructor; 
+         
+         function Constructor
+         (
+            password : NetFrameworkBase.BSTR;
+            salt : NetFrameworkBase.Byte_Array;
+            iterations : NetFrameworkBase.Int32;
+            hashAlgorithm : NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.Rfc2898DeriveBytes.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.Rfc2898DeriveBytes.Constructor; 
+         
+         function Constructor
+         (
+            password : NetFrameworkBase.Byte_Array;
+            salt : NetFrameworkBase.Byte_Array;
+            iterations : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Security.Cryptography.Rfc2898DeriveBytes.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.Rfc2898DeriveBytes.Constructor; 
+         
+         function Constructor
+         (
+            password : NetFrameworkBase.Byte_Array;
+            salt : NetFrameworkBase.Byte_Array;
+            iterations : NetFrameworkBase.Int32;
+            hashAlgorithm : NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.Rfc2898DeriveBytes.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.Rfc2898DeriveBytes.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype RIPEMD160 is NetFrameworkBase.System.Security.Cryptography.RIPEMD160.Kind_Ptr;
+      subtype RIPEMD160_Array is NetFrameworkBase.System.Security.Cryptography.RIPEMD160.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype RIPEMD160Managed is NetFrameworkBase.System.Security.Cryptography.RIPEMD160Managed.Kind_Ptr;
+      subtype RIPEMD160Managed_Array is NetFrameworkBase.System.Security.Cryptography.RIPEMD160Managed.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.RIPEMD160Managed.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.RIPEMD160Managed.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype RSAParameters is NetFrameworkBase.System.Security.Cryptography.RSAParameters.Kind_Ptr;
+      subtype RSAParameters_Array is NetFrameworkBase.System.Security.Cryptography.RSAParameters.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype RSA is NetFrameworkBase.System.Security.Cryptography.RSA.Kind_Ptr;
+      subtype RSA_Array is NetFrameworkBase.System.Security.Cryptography.RSA.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype RSASignaturePadding is NetFrameworkBase.System.Security.Cryptography.RSASignaturePadding.Kind_Ptr;
+      subtype RSASignaturePadding_Array is NetFrameworkBase.System.Security.Cryptography.RSASignaturePadding.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype RSASignaturePaddingMode is NetFrameworkBase.System.Security.Cryptography.RSASignaturePaddingMode.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype RSACryptoServiceProvider is NetFrameworkBase.System.Security.Cryptography.RSACryptoServiceProvider.Kind_Ptr;
+      subtype RSACryptoServiceProvider_Array is NetFrameworkBase.System.Security.Cryptography.RSACryptoServiceProvider.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.RSACryptoServiceProvider.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.RSACryptoServiceProvider.Constructor;
+         
+         function Constructor
+         (
+            dwKeySize : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Security.Cryptography.RSACryptoServiceProvider.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.RSACryptoServiceProvider.Constructor; 
+         
+         function Constructor
+         (
+            parameters : NetFrameworkBase.System.Security.Cryptography.CspParameters.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.RSACryptoServiceProvider.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.RSACryptoServiceProvider.Constructor; 
+         
+         function Constructor
+         (
+            dwKeySize : NetFrameworkBase.Int32;
+            parameters : NetFrameworkBase.System.Security.Cryptography.CspParameters.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.RSACryptoServiceProvider.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.RSACryptoServiceProvider.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype RSAEncryptionPadding is NetFrameworkBase.System.Security.Cryptography.RSAEncryptionPadding.Kind_Ptr;
+      subtype RSAEncryptionPadding_Array is NetFrameworkBase.System.Security.Cryptography.RSAEncryptionPadding.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype RSAEncryptionPaddingMode is NetFrameworkBase.System.Security.Cryptography.RSAEncryptionPaddingMode.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype RSAOAEPKeyExchangeDeformatter is NetFrameworkBase.System.Security.Cryptography.RSAOAEPKeyExchangeDeformatter.Kind_Ptr;
+      subtype RSAOAEPKeyExchangeDeformatter_Array is NetFrameworkBase.System.Security.Cryptography.RSAOAEPKeyExchangeDeformatter.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.RSAOAEPKeyExchangeDeformatter.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.RSAOAEPKeyExchangeDeformatter.Constructor;
+         
+         function Constructor
+         (
+            key : NetFrameworkBase.System.Security.Cryptography.AsymmetricAlgorithm.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.RSAOAEPKeyExchangeDeformatter.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.RSAOAEPKeyExchangeDeformatter.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype RSAOAEPKeyExchangeFormatter is NetFrameworkBase.System.Security.Cryptography.RSAOAEPKeyExchangeFormatter.Kind_Ptr;
+      subtype RSAOAEPKeyExchangeFormatter_Array is NetFrameworkBase.System.Security.Cryptography.RSAOAEPKeyExchangeFormatter.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.RSAOAEPKeyExchangeFormatter.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.RSAOAEPKeyExchangeFormatter.Constructor;
+         
+         function Constructor
+         (
+            key : NetFrameworkBase.System.Security.Cryptography.AsymmetricAlgorithm.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.RSAOAEPKeyExchangeFormatter.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.RSAOAEPKeyExchangeFormatter.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype RSAPKCS1KeyExchangeDeformatter is NetFrameworkBase.System.Security.Cryptography.RSAPKCS1KeyExchangeDeformatter.Kind_Ptr;
+      subtype RSAPKCS1KeyExchangeDeformatter_Array is NetFrameworkBase.System.Security.Cryptography.RSAPKCS1KeyExchangeDeformatter.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.RSAPKCS1KeyExchangeDeformatter.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.RSAPKCS1KeyExchangeDeformatter.Constructor;
+         
+         function Constructor
+         (
+            key : NetFrameworkBase.System.Security.Cryptography.AsymmetricAlgorithm.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.RSAPKCS1KeyExchangeDeformatter.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.RSAPKCS1KeyExchangeDeformatter.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype RSAPKCS1KeyExchangeFormatter is NetFrameworkBase.System.Security.Cryptography.RSAPKCS1KeyExchangeFormatter.Kind_Ptr;
+      subtype RSAPKCS1KeyExchangeFormatter_Array is NetFrameworkBase.System.Security.Cryptography.RSAPKCS1KeyExchangeFormatter.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.RSAPKCS1KeyExchangeFormatter.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.RSAPKCS1KeyExchangeFormatter.Constructor;
+         
+         function Constructor
+         (
+            key : NetFrameworkBase.System.Security.Cryptography.AsymmetricAlgorithm.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.RSAPKCS1KeyExchangeFormatter.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.RSAPKCS1KeyExchangeFormatter.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype RSAPKCS1SignatureDeformatter is NetFrameworkBase.System.Security.Cryptography.RSAPKCS1SignatureDeformatter.Kind_Ptr;
+      subtype RSAPKCS1SignatureDeformatter_Array is NetFrameworkBase.System.Security.Cryptography.RSAPKCS1SignatureDeformatter.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.RSAPKCS1SignatureDeformatter.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.RSAPKCS1SignatureDeformatter.Constructor;
+         
+         function Constructor
+         (
+            key : NetFrameworkBase.System.Security.Cryptography.AsymmetricAlgorithm.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.RSAPKCS1SignatureDeformatter.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.RSAPKCS1SignatureDeformatter.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype RSAPKCS1SignatureFormatter is NetFrameworkBase.System.Security.Cryptography.RSAPKCS1SignatureFormatter.Kind_Ptr;
+      subtype RSAPKCS1SignatureFormatter_Array is NetFrameworkBase.System.Security.Cryptography.RSAPKCS1SignatureFormatter.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.RSAPKCS1SignatureFormatter.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.RSAPKCS1SignatureFormatter.Constructor;
+         
+         function Constructor
+         (
+            key : NetFrameworkBase.System.Security.Cryptography.AsymmetricAlgorithm.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.RSAPKCS1SignatureFormatter.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.RSAPKCS1SignatureFormatter.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype Rijndael is NetFrameworkBase.System.Security.Cryptography.Rijndael.Kind_Ptr;
+      subtype Rijndael_Array is NetFrameworkBase.System.Security.Cryptography.Rijndael.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype RijndaelManaged is NetFrameworkBase.System.Security.Cryptography.RijndaelManaged.Kind_Ptr;
+      subtype RijndaelManaged_Array is NetFrameworkBase.System.Security.Cryptography.RijndaelManaged.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.RijndaelManaged.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.RijndaelManaged.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype RijndaelManagedTransform is NetFrameworkBase.System.Security.Cryptography.RijndaelManagedTransform.Kind_Ptr;
+      subtype RijndaelManagedTransform_Array is NetFrameworkBase.System.Security.Cryptography.RijndaelManagedTransform.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype SHA1 is NetFrameworkBase.System.Security.Cryptography.SHA1.Kind_Ptr;
+      subtype SHA1_Array is NetFrameworkBase.System.Security.Cryptography.SHA1.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype SHA1CryptoServiceProvider is NetFrameworkBase.System.Security.Cryptography.SHA1CryptoServiceProvider.Kind_Ptr;
+      subtype SHA1CryptoServiceProvider_Array is NetFrameworkBase.System.Security.Cryptography.SHA1CryptoServiceProvider.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.SHA1CryptoServiceProvider.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.SHA1CryptoServiceProvider.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SHA1Managed is NetFrameworkBase.System.Security.Cryptography.SHA1Managed.Kind_Ptr;
+      subtype SHA1Managed_Array is NetFrameworkBase.System.Security.Cryptography.SHA1Managed.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.SHA1Managed.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.SHA1Managed.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SHA256 is NetFrameworkBase.System.Security.Cryptography.SHA256.Kind_Ptr;
+      subtype SHA256_Array is NetFrameworkBase.System.Security.Cryptography.SHA256.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype SHA256Managed is NetFrameworkBase.System.Security.Cryptography.SHA256Managed.Kind_Ptr;
+      subtype SHA256Managed_Array is NetFrameworkBase.System.Security.Cryptography.SHA256Managed.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.SHA256Managed.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.SHA256Managed.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SHA384 is NetFrameworkBase.System.Security.Cryptography.SHA384.Kind_Ptr;
+      subtype SHA384_Array is NetFrameworkBase.System.Security.Cryptography.SHA384.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype SHA384Managed is NetFrameworkBase.System.Security.Cryptography.SHA384Managed.Kind_Ptr;
+      subtype SHA384Managed_Array is NetFrameworkBase.System.Security.Cryptography.SHA384Managed.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.SHA384Managed.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.SHA384Managed.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SHA512 is NetFrameworkBase.System.Security.Cryptography.SHA512.Kind_Ptr;
+      subtype SHA512_Array is NetFrameworkBase.System.Security.Cryptography.SHA512.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype SHA512Managed is NetFrameworkBase.System.Security.Cryptography.SHA512Managed.Kind_Ptr;
+      subtype SHA512Managed_Array is NetFrameworkBase.System.Security.Cryptography.SHA512Managed.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.SHA512Managed.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.SHA512Managed.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SignatureDescription is NetFrameworkBase.System.Security.Cryptography.SignatureDescription.Kind_Ptr;
+      subtype SignatureDescription_Array is NetFrameworkBase.System.Security.Cryptography.SignatureDescription.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.SignatureDescription.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.SignatureDescription.Constructor;
+         
+         function Constructor
+         (
+            el : NetFrameworkBase.System.Security.SecurityElement.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.SignatureDescription.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.SignatureDescription.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SymmetricAlgorithm is NetFrameworkBase.System.Security.Cryptography.SymmetricAlgorithm.Kind_Ptr;
+      subtype SymmetricAlgorithm_Array is NetFrameworkBase.System.Security.Cryptography.SymmetricAlgorithm.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype TripleDES is NetFrameworkBase.System.Security.Cryptography.TripleDES.Kind_Ptr;
+      subtype TripleDES_Array is NetFrameworkBase.System.Security.Cryptography.TripleDES.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype TripleDESCryptoServiceProvider is NetFrameworkBase.System.Security.Cryptography.TripleDESCryptoServiceProvider.Kind_Ptr;
+      subtype TripleDESCryptoServiceProvider_Array is NetFrameworkBase.System.Security.Cryptography.TripleDESCryptoServiceProvider.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.TripleDESCryptoServiceProvider.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.TripleDESCryptoServiceProvider.Constructor;
          
    
 end;

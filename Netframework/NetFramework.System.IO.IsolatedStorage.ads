@@ -30,10 +30,15 @@
 with NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageScope;
 with NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorage;
 with NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFileStream;
+with NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageException;
+with NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageSecurityOptions;
+with NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageSecurityState;
+with NetFrameworkBase.System.IO.IsolatedStorage.INormalizeForIsolatedStorage;
 with NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFile;
 with NetFrameworkBase.System.IO.FileMode;
 with NetFrameworkBase.System.IO.FileAccess;
 with NetFrameworkBase.System.IO.FileShare;
+with NetFrameworkBase.System.Exception_x;
 --------------------------------------------------------------------------------
 package NetFramework.System.IO.IsolatedStorage is
    
@@ -120,6 +125,36 @@ package NetFramework.System.IO.IsolatedStorage is
          )
          return NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFileStream.Kind_Ptr renames NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFileStream.Constructor; 
          
+      --------------------------------------------------------------------------
+      subtype IsolatedStorageException is NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageException.Kind_Ptr;
+      subtype IsolatedStorageException_Array is NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageException.Kind_Ptr renames NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageException.Kind_Ptr renames NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageException.Kind_Ptr renames NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype IsolatedStorageSecurityOptions is NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageSecurityOptions.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype IsolatedStorageSecurityState is NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageSecurityState.Kind_Ptr;
+      subtype IsolatedStorageSecurityState_Array is NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageSecurityState.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype INormalizeForIsolatedStorage is NetFrameworkBase.System.IO.IsolatedStorage.INormalizeForIsolatedStorage.Kind_Ptr;
+      subtype INormalizeForIsolatedStorage_Array is NetFrameworkBase.System.IO.IsolatedStorage.INormalizeForIsolatedStorage.Kind_Array;
+      
       --------------------------------------------------------------------------
       subtype IsolatedStorageFile is NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFile.Kind_Ptr;
       subtype IsolatedStorageFile_Array is NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFile.Kind_Array;

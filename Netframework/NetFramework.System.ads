@@ -28,25 +28,73 @@
 --                                                                            --
 --------------------------------------------------------------------------------
 with NetFrameworkBase.System.AggregateException;
+with NetFrameworkBase.System.AppContext;
 with NetFrameworkBase.System.Object;
+with NetFrameworkBase.System.ICloneable;
 with NetFrameworkBase.System.Action;
 with NetFrameworkBase.System.Array_x;
+with NetFrameworkBase.System.IComparable;
+with NetFrameworkBase.System.Tuple;
+with NetFrameworkBase.System.ValueTuple;
+with NetFrameworkBase.System.TupleExtensions;
 with NetFrameworkBase.System.String;
 with NetFrameworkBase.System.StringSplitOptions;
+with NetFrameworkBase.System.StringComparer;
 with NetFrameworkBase.System.StringComparison;
 with NetFrameworkBase.System.Exception_x;
 with NetFrameworkBase.System.DateTime;
 with NetFrameworkBase.System.DateTimeKind;
 with NetFrameworkBase.System.DateTimeOffset;
+with NetFrameworkBase.System.SystemException;
+with NetFrameworkBase.System.OutOfMemoryException;
+with NetFrameworkBase.System.StackOverflowException;
+with NetFrameworkBase.System.DataMisalignedException;
+with NetFrameworkBase.System.ExecutionEngineException;
 with NetFrameworkBase.System.Delegate;
 with NetFrameworkBase.System.MulticastDelegate;
+with NetFrameworkBase.System.MemberAccessException;
+with NetFrameworkBase.System.Activator;
+with NetFrameworkBase.System.AccessViolationException;
+with NetFrameworkBase.System.ApplicationException;
 with NetFrameworkBase.System.ResolveEventArgs;
+with NetFrameworkBase.System.AssemblyLoadEventArgs;
+with NetFrameworkBase.System.ResolveEventHandler;
+with NetFrameworkBase.System.AssemblyLoadEventHandler;
+with NetFrameworkBase.System.AppDomainInitializer;
+with NetFrameworkBase.System.AppDomain;
+with NetFrameworkBase.System.CrossAppDomainDelegate;
+with NetFrameworkBase.System.AppDomainManagerInitializationOptions;
+with NetFrameworkBase.System.AppDomainManager;
+with NetFrameworkBase.System.IAppDomain;
+with NetFrameworkBase.System.AppDomainSetup;
+with NetFrameworkBase.System.IAppDomainSetup;
+with NetFrameworkBase.System.LoaderOptimization;
+with NetFrameworkBase.System.LoaderOptimizationAttribute;
+with NetFrameworkBase.System.AppDomainUnloadedException;
+with NetFrameworkBase.System.ActivationContext;
+with NetFrameworkBase.System.ApplicationIdentity;
+with NetFrameworkBase.System.ApplicationId;
+with NetFrameworkBase.System.ArgumentException;
+with NetFrameworkBase.System.ArgumentNullException;
+with NetFrameworkBase.System.ArgumentOutOfRangeException;
+with NetFrameworkBase.System.ArgIterator;
+with NetFrameworkBase.System.ArithmeticException;
+with NetFrameworkBase.System.ArrayTypeMismatchException;
 with NetFrameworkBase.System.AsyncCallback;
 with NetFrameworkBase.System.Attribute;
+with NetFrameworkBase.System.AttributeTargets;
+with NetFrameworkBase.System.AttributeUsageAttribute;
+with NetFrameworkBase.System.BadImageFormatException;
+with NetFrameworkBase.System.BitConverter;
 with NetFrameworkBase.System.Boolean;
+with NetFrameworkBase.System.Buffer;
 with NetFrameworkBase.System.Byte;
+with NetFrameworkBase.System.CannotUnloadAppDomainException;
 with NetFrameworkBase.System.Char;
 with NetFrameworkBase.System.CharEnumerator;
+with NetFrameworkBase.System.CLSCompliantAttribute;
+with NetFrameworkBase.System.TypeUnloadedException;
+with NetFrameworkBase.System.ComObject;
 with NetFrameworkBase.System.Console;
 with NetFrameworkBase.System.ConsoleCancelEventHandler;
 with NetFrameworkBase.System.ConsoleCancelEventArgs;
@@ -55,43 +103,113 @@ with NetFrameworkBase.System.ConsoleKey;
 with NetFrameworkBase.System.ConsoleKeyInfo;
 with NetFrameworkBase.System.ConsoleModifiers;
 with NetFrameworkBase.System.ConsoleSpecialKey;
+with NetFrameworkBase.System.ContextMarshalException;
+with NetFrameworkBase.System.Base64FormattingOptions;
+with NetFrameworkBase.System.Convert;
+with NetFrameworkBase.System.ContextBoundObject;
+with NetFrameworkBase.System.ContextStaticAttribute;
 with NetFrameworkBase.System.DayOfWeek;
+with NetFrameworkBase.System.DBNull;
 with NetFrameworkBase.System.Decimal;
+with NetFrameworkBase.System.DivideByZeroException;
 with NetFrameworkBase.System.Double;
+with NetFrameworkBase.System.DuplicateWaitObjectException;
 with NetFrameworkBase.System.Enum;
+with NetFrameworkBase.System.EntryPointNotFoundException;
+with NetFrameworkBase.System.DllNotFoundException;
 with NetFrameworkBase.System.EnvironmentVariableTarget;
 with NetFrameworkBase.System.Environment;
 with NetFrameworkBase.System.EventArgs;
+with NetFrameworkBase.System.EventHandler;
+with NetFrameworkBase.System.FieldAccessException;
+with NetFrameworkBase.System.FlagsAttribute;
+with NetFrameworkBase.System.FormatException;
+with NetFrameworkBase.System.FormattableString;
+with NetFrameworkBase.System.GCCollectionMode;
+with NetFrameworkBase.System.GCNotificationStatus;
+with NetFrameworkBase.System.GC;
 with NetFrameworkBase.System.Guid;
 with NetFrameworkBase.System.IAsyncResult;
+with NetFrameworkBase.System.ICustomFormatter;
+with NetFrameworkBase.System.IDisposable;
 with NetFrameworkBase.System.IFormatProvider;
+with NetFrameworkBase.System.IFormattable;
+with NetFrameworkBase.System.IndexOutOfRangeException;
+with NetFrameworkBase.System.InsufficientMemoryException;
+with NetFrameworkBase.System.InsufficientExecutionStackException;
 with NetFrameworkBase.System.Int16;
 with NetFrameworkBase.System.Int32;
 with NetFrameworkBase.System.Int64;
 with NetFrameworkBase.System.IntPtr;
+with NetFrameworkBase.System.InvalidCastException;
+with NetFrameworkBase.System.InvalidOperationException;
+with NetFrameworkBase.System.InvalidProgramException;
+with NetFrameworkBase.System.InvalidTimeZoneException;
+with NetFrameworkBase.System.IConvertible;
+with NetFrameworkBase.System.IServiceProvider;
+with NetFrameworkBase.System.LocalDataStoreSlot;
 with NetFrameworkBase.System.MarshalByRefObject;
+with NetFrameworkBase.System.Math;
+with NetFrameworkBase.System.MethodAccessException;
 with NetFrameworkBase.System.MidpointRounding;
+with NetFrameworkBase.System.MissingFieldException;
+with NetFrameworkBase.System.MissingMemberException;
+with NetFrameworkBase.System.MissingMethodException;
+with NetFrameworkBase.System.MulticastNotSupportedException;
+with NetFrameworkBase.System.NonSerializedAttribute;
+with NetFrameworkBase.System.NotFiniteNumberException;
+with NetFrameworkBase.System.NotImplementedException;
+with NetFrameworkBase.System.NotSupportedException;
+with NetFrameworkBase.System.NullReferenceException;
+with NetFrameworkBase.System.ObjectDisposedException;
+with NetFrameworkBase.System.ObsoleteAttribute;
 with NetFrameworkBase.System.OperatingSystem;
+with NetFrameworkBase.System.OperationCanceledException;
+with NetFrameworkBase.System.OverflowException;
+with NetFrameworkBase.System.ParamArrayAttribute;
 with NetFrameworkBase.System.PlatformID;
+with NetFrameworkBase.System.PlatformNotSupportedException;
+with NetFrameworkBase.System.Random;
+with NetFrameworkBase.System.RankException;
+with NetFrameworkBase.System.RuntimeArgumentHandle;
 with NetFrameworkBase.System.RuntimeTypeHandle;
 with NetFrameworkBase.System.RuntimeMethodHandle;
 with NetFrameworkBase.System.RuntimeFieldHandle;
 with NetFrameworkBase.System.ModuleHandle;
 with NetFrameworkBase.System.SByte;
+with NetFrameworkBase.System.SerializableAttribute;
 with NetFrameworkBase.System.Single;
+with NetFrameworkBase.System.STAThreadAttribute;
+with NetFrameworkBase.System.MTAThreadAttribute;
+with NetFrameworkBase.System.TimeoutException;
 with NetFrameworkBase.System.TimeSpan;
+with NetFrameworkBase.System.TimeZone;
+with NetFrameworkBase.System.TimeZoneInfo;
+with NetFrameworkBase.System.TimeZoneNotFoundException;
 with NetFrameworkBase.System.Type_x;
+with NetFrameworkBase.System.TypeAccessException;
 with NetFrameworkBase.System.TypeCode;
 with NetFrameworkBase.System.TypedReference;
+with NetFrameworkBase.System.TypeInitializationException;
+with NetFrameworkBase.System.TypeLoadException;
 with NetFrameworkBase.System.UInt16;
 with NetFrameworkBase.System.UInt32;
 with NetFrameworkBase.System.UInt64;
+with NetFrameworkBase.System.UIntPtr;
+with NetFrameworkBase.System.UnauthorizedAccessException;
+with NetFrameworkBase.System.UnhandledExceptionEventArgs;
+with NetFrameworkBase.System.UnhandledExceptionEventHandler;
 with NetFrameworkBase.System.ValueType;
 with NetFrameworkBase.System.Version;
 with NetFrameworkBase.System.Void;
+with NetFrameworkBase.System.WeakReference;
+with NetFrameworkBase.System.ThreadStaticAttribute;
+with NetFrameworkBase.System.Nullable;
 with NetFrameworkBase.System.Text.Encoding;
 with NetFrameworkBase.System.Globalization.Calendar;
 with NetFrameworkBase.System.Reflection.Assembly;
+with NetFrameworkBase.System.Runtime.Hosting.ActivationArguments;
+with NetFrameworkBase.System.Threading.CancellationToken;
 --------------------------------------------------------------------------------
 package NetFramework.System is
    
@@ -128,11 +246,19 @@ package NetFramework.System is
          return NetFrameworkBase.System.AggregateException.Kind_Ptr renames NetFrameworkBase.System.AggregateException.Constructor; 
          
       --------------------------------------------------------------------------
+      subtype AppContext is NetFrameworkBase.System.AppContext.Kind_Ptr;
+      subtype AppContext_Array is NetFrameworkBase.System.AppContext.Kind_Array;
+      
+      --------------------------------------------------------------------------
       subtype Object is NetFrameworkBase.System.Object.Kind_Ptr;
       subtype Object_Array is NetFrameworkBase.System.Object.Kind_Array;
       
          function Constructor return NetFrameworkBase.System.Object.Kind_Ptr renames NetFrameworkBase.System.Object.Constructor;
          
+      --------------------------------------------------------------------------
+      subtype ICloneable is NetFrameworkBase.System.ICloneable.Kind_Ptr;
+      subtype ICloneable_Array is NetFrameworkBase.System.ICloneable.Kind_Array;
+      
       --------------------------------------------------------------------------
       subtype Action is NetFrameworkBase.System.Action.Kind_Ptr;
       subtype Action_Array is NetFrameworkBase.System.Action.Kind_Array;
@@ -142,6 +268,22 @@ package NetFramework.System is
       --------------------------------------------------------------------------
       subtype Array_x is NetFrameworkBase.System.Array_x.Kind_Ptr;
       subtype Array_x_Array is NetFrameworkBase.System.Array_x.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IComparable is NetFrameworkBase.System.IComparable.Kind_Ptr;
+      subtype IComparable_Array is NetFrameworkBase.System.IComparable.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype Tuple is NetFrameworkBase.System.Tuple.Kind_Ptr;
+      subtype Tuple_Array is NetFrameworkBase.System.Tuple.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ValueTuple is NetFrameworkBase.System.ValueTuple.Kind_Ptr;
+      subtype ValueTuple_Array is NetFrameworkBase.System.ValueTuple.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype TupleExtensions is NetFrameworkBase.System.TupleExtensions.Kind_Ptr;
+      subtype TupleExtensions_Array is NetFrameworkBase.System.TupleExtensions.Kind_Array;
       
       --------------------------------------------------------------------------
       subtype String is NetFrameworkBase.System.String.Kind_Ptr;
@@ -207,6 +349,10 @@ package NetFramework.System is
          
       --------------------------------------------------------------------------
       subtype StringSplitOptions is NetFrameworkBase.System.StringSplitOptions.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype StringComparer is NetFrameworkBase.System.StringComparer.Kind_Ptr;
+      subtype StringComparer_Array is NetFrameworkBase.System.StringComparer.Kind_Array;
       
       --------------------------------------------------------------------------
       subtype StringComparison is NetFrameworkBase.System.StringComparison.Kind;
@@ -418,6 +564,101 @@ package NetFramework.System is
          return NetFrameworkBase.System.DateTimeOffset.Kind_Ptr renames NetFrameworkBase.System.DateTimeOffset.Constructor; 
          
       --------------------------------------------------------------------------
+      subtype SystemException is NetFrameworkBase.System.SystemException.Kind_Ptr;
+      subtype SystemException_Array is NetFrameworkBase.System.SystemException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.SystemException.Kind_Ptr renames NetFrameworkBase.System.SystemException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.SystemException.Kind_Ptr renames NetFrameworkBase.System.SystemException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.SystemException.Kind_Ptr renames NetFrameworkBase.System.SystemException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype OutOfMemoryException is NetFrameworkBase.System.OutOfMemoryException.Kind_Ptr;
+      subtype OutOfMemoryException_Array is NetFrameworkBase.System.OutOfMemoryException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.OutOfMemoryException.Kind_Ptr renames NetFrameworkBase.System.OutOfMemoryException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.OutOfMemoryException.Kind_Ptr renames NetFrameworkBase.System.OutOfMemoryException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.OutOfMemoryException.Kind_Ptr renames NetFrameworkBase.System.OutOfMemoryException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype StackOverflowException is NetFrameworkBase.System.StackOverflowException.Kind_Ptr;
+      subtype StackOverflowException_Array is NetFrameworkBase.System.StackOverflowException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.StackOverflowException.Kind_Ptr renames NetFrameworkBase.System.StackOverflowException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.StackOverflowException.Kind_Ptr renames NetFrameworkBase.System.StackOverflowException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.StackOverflowException.Kind_Ptr renames NetFrameworkBase.System.StackOverflowException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype DataMisalignedException is NetFrameworkBase.System.DataMisalignedException.Kind_Ptr;
+      subtype DataMisalignedException_Array is NetFrameworkBase.System.DataMisalignedException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.DataMisalignedException.Kind_Ptr renames NetFrameworkBase.System.DataMisalignedException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.DataMisalignedException.Kind_Ptr renames NetFrameworkBase.System.DataMisalignedException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.DataMisalignedException.Kind_Ptr renames NetFrameworkBase.System.DataMisalignedException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ExecutionEngineException is NetFrameworkBase.System.ExecutionEngineException.Kind_Ptr;
+      subtype ExecutionEngineException_Array is NetFrameworkBase.System.ExecutionEngineException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.ExecutionEngineException.Kind_Ptr renames NetFrameworkBase.System.ExecutionEngineException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.ExecutionEngineException.Kind_Ptr renames NetFrameworkBase.System.ExecutionEngineException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.ExecutionEngineException.Kind_Ptr renames NetFrameworkBase.System.ExecutionEngineException.Constructor; 
+         
+      --------------------------------------------------------------------------
       subtype Delegate is NetFrameworkBase.System.Delegate.Kind_Ptr;
       subtype Delegate_Array is NetFrameworkBase.System.Delegate.Kind_Array;
       
@@ -425,6 +666,67 @@ package NetFramework.System is
       subtype MulticastDelegate is NetFrameworkBase.System.MulticastDelegate.Kind_Ptr;
       subtype MulticastDelegate_Array is NetFrameworkBase.System.MulticastDelegate.Kind_Array;
       
+      --------------------------------------------------------------------------
+      subtype MemberAccessException is NetFrameworkBase.System.MemberAccessException.Kind_Ptr;
+      subtype MemberAccessException_Array is NetFrameworkBase.System.MemberAccessException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.MemberAccessException.Kind_Ptr renames NetFrameworkBase.System.MemberAccessException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.MemberAccessException.Kind_Ptr renames NetFrameworkBase.System.MemberAccessException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.MemberAccessException.Kind_Ptr renames NetFrameworkBase.System.MemberAccessException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype Activator is NetFrameworkBase.System.Activator.Kind_Ptr;
+      subtype Activator_Array is NetFrameworkBase.System.Activator.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype AccessViolationException is NetFrameworkBase.System.AccessViolationException.Kind_Ptr;
+      subtype AccessViolationException_Array is NetFrameworkBase.System.AccessViolationException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.AccessViolationException.Kind_Ptr renames NetFrameworkBase.System.AccessViolationException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.AccessViolationException.Kind_Ptr renames NetFrameworkBase.System.AccessViolationException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.AccessViolationException.Kind_Ptr renames NetFrameworkBase.System.AccessViolationException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ApplicationException is NetFrameworkBase.System.ApplicationException.Kind_Ptr;
+      subtype ApplicationException_Array is NetFrameworkBase.System.ApplicationException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.ApplicationException.Kind_Ptr renames NetFrameworkBase.System.ApplicationException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.ApplicationException.Kind_Ptr renames NetFrameworkBase.System.ApplicationException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.ApplicationException.Kind_Ptr renames NetFrameworkBase.System.ApplicationException.Constructor; 
+         
       --------------------------------------------------------------------------
       subtype ResolveEventArgs is NetFrameworkBase.System.ResolveEventArgs.Kind_Ptr;
       subtype ResolveEventArgs_Array is NetFrameworkBase.System.ResolveEventArgs.Kind_Array;
@@ -443,6 +745,294 @@ package NetFramework.System is
          return NetFrameworkBase.System.ResolveEventArgs.Kind_Ptr renames NetFrameworkBase.System.ResolveEventArgs.Constructor; 
          
       --------------------------------------------------------------------------
+      subtype AssemblyLoadEventArgs is NetFrameworkBase.System.AssemblyLoadEventArgs.Kind_Ptr;
+      subtype AssemblyLoadEventArgs_Array is NetFrameworkBase.System.AssemblyLoadEventArgs.Kind_Array;
+      
+         function Constructor
+         (
+            loadedAssembly : NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr
+         )
+         return NetFrameworkBase.System.AssemblyLoadEventArgs.Kind_Ptr renames NetFrameworkBase.System.AssemblyLoadEventArgs.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ResolveEventHandler is NetFrameworkBase.System.ResolveEventHandler.Kind_Ptr;
+      subtype ResolveEventHandler_Array is NetFrameworkBase.System.ResolveEventHandler.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.System.ResolveEventHandler.Kind_Callback) return NetFrameworkBase.System.ResolveEventHandler.Kind_Ptr renames NetFrameworkBase.System.ResolveEventHandler.Constructor;
+      
+      --------------------------------------------------------------------------
+      subtype AssemblyLoadEventHandler is NetFrameworkBase.System.AssemblyLoadEventHandler.Kind_Ptr;
+      subtype AssemblyLoadEventHandler_Array is NetFrameworkBase.System.AssemblyLoadEventHandler.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.System.AssemblyLoadEventHandler.Kind_Callback) return NetFrameworkBase.System.AssemblyLoadEventHandler.Kind_Ptr renames NetFrameworkBase.System.AssemblyLoadEventHandler.Constructor;
+      
+      --------------------------------------------------------------------------
+      subtype AppDomainInitializer is NetFrameworkBase.System.AppDomainInitializer.Kind_Ptr;
+      subtype AppDomainInitializer_Array is NetFrameworkBase.System.AppDomainInitializer.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.System.AppDomainInitializer.Kind_Callback) return NetFrameworkBase.System.AppDomainInitializer.Kind_Ptr renames NetFrameworkBase.System.AppDomainInitializer.Constructor;
+      
+      --------------------------------------------------------------------------
+      subtype AppDomain is NetFrameworkBase.System.AppDomain.Kind_Ptr;
+      subtype AppDomain_Array is NetFrameworkBase.System.AppDomain.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype CrossAppDomainDelegate is NetFrameworkBase.System.CrossAppDomainDelegate.Kind_Ptr;
+      subtype CrossAppDomainDelegate_Array is NetFrameworkBase.System.CrossAppDomainDelegate.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.System.CrossAppDomainDelegate.Kind_Callback) return NetFrameworkBase.System.CrossAppDomainDelegate.Kind_Ptr renames NetFrameworkBase.System.CrossAppDomainDelegate.Constructor;
+      
+      --------------------------------------------------------------------------
+      subtype AppDomainManagerInitializationOptions is NetFrameworkBase.System.AppDomainManagerInitializationOptions.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype AppDomainManager is NetFrameworkBase.System.AppDomainManager.Kind_Ptr;
+      subtype AppDomainManager_Array is NetFrameworkBase.System.AppDomainManager.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.AppDomainManager.Kind_Ptr renames NetFrameworkBase.System.AppDomainManager.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype IAppDomain is NetFrameworkBase.System.IAppDomain.Kind_Ptr;
+      subtype IAppDomain_Array is NetFrameworkBase.System.IAppDomain.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype AppDomainSetup is NetFrameworkBase.System.AppDomainSetup.Kind_Ptr;
+      subtype AppDomainSetup_Array is NetFrameworkBase.System.AppDomainSetup.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.AppDomainSetup.Kind_Ptr renames NetFrameworkBase.System.AppDomainSetup.Constructor;
+         
+         function Constructor
+         (
+            activationContext : NetFrameworkBase.System.ActivationContext.Kind_Ptr
+         )
+         return NetFrameworkBase.System.AppDomainSetup.Kind_Ptr renames NetFrameworkBase.System.AppDomainSetup.Constructor; 
+         
+         function Constructor
+         (
+            activationArguments : NetFrameworkBase.System.Runtime.Hosting.ActivationArguments.Kind_Ptr
+         )
+         return NetFrameworkBase.System.AppDomainSetup.Kind_Ptr renames NetFrameworkBase.System.AppDomainSetup.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype IAppDomainSetup is NetFrameworkBase.System.IAppDomainSetup.Kind_Ptr;
+      subtype IAppDomainSetup_Array is NetFrameworkBase.System.IAppDomainSetup.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype LoaderOptimization is NetFrameworkBase.System.LoaderOptimization.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype LoaderOptimizationAttribute is NetFrameworkBase.System.LoaderOptimizationAttribute.Kind_Ptr;
+      subtype LoaderOptimizationAttribute_Array is NetFrameworkBase.System.LoaderOptimizationAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            value : NetFrameworkBase.Byte
+         )
+         return NetFrameworkBase.System.LoaderOptimizationAttribute.Kind_Ptr renames NetFrameworkBase.System.LoaderOptimizationAttribute.Constructor; 
+         
+         function Constructor
+         (
+            value : NetFrameworkBase.System.LoaderOptimization.Kind
+         )
+         return NetFrameworkBase.System.LoaderOptimizationAttribute.Kind_Ptr renames NetFrameworkBase.System.LoaderOptimizationAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype AppDomainUnloadedException is NetFrameworkBase.System.AppDomainUnloadedException.Kind_Ptr;
+      subtype AppDomainUnloadedException_Array is NetFrameworkBase.System.AppDomainUnloadedException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.AppDomainUnloadedException.Kind_Ptr renames NetFrameworkBase.System.AppDomainUnloadedException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.AppDomainUnloadedException.Kind_Ptr renames NetFrameworkBase.System.AppDomainUnloadedException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.AppDomainUnloadedException.Kind_Ptr renames NetFrameworkBase.System.AppDomainUnloadedException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ActivationContext is NetFrameworkBase.System.ActivationContext.Kind_Ptr;
+      subtype ActivationContext_Array is NetFrameworkBase.System.ActivationContext.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ApplicationIdentity is NetFrameworkBase.System.ApplicationIdentity.Kind_Ptr;
+      subtype ApplicationIdentity_Array is NetFrameworkBase.System.ApplicationIdentity.Kind_Array;
+      
+         function Constructor
+         (
+            applicationIdentityFullName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.ApplicationIdentity.Kind_Ptr renames NetFrameworkBase.System.ApplicationIdentity.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ApplicationId is NetFrameworkBase.System.ApplicationId.Kind_Ptr;
+      subtype ApplicationId_Array is NetFrameworkBase.System.ApplicationId.Kind_Array;
+      
+         function Constructor
+         (
+            publicKeyToken : NetFrameworkBase.Byte_Array;
+            name : NetFrameworkBase.BSTR;
+            version : NetFrameworkBase.System.Version.Kind_Ptr;
+            processorArchitecture : NetFrameworkBase.BSTR;
+            culture : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.ApplicationId.Kind_Ptr renames NetFrameworkBase.System.ApplicationId.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ArgumentException is NetFrameworkBase.System.ArgumentException.Kind_Ptr;
+      subtype ArgumentException_Array is NetFrameworkBase.System.ArgumentException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.ArgumentException.Kind_Ptr renames NetFrameworkBase.System.ArgumentException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.ArgumentException.Kind_Ptr renames NetFrameworkBase.System.ArgumentException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.ArgumentException.Kind_Ptr renames NetFrameworkBase.System.ArgumentException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            paramName : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.ArgumentException.Kind_Ptr renames NetFrameworkBase.System.ArgumentException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            paramName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.ArgumentException.Kind_Ptr renames NetFrameworkBase.System.ArgumentException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ArgumentNullException is NetFrameworkBase.System.ArgumentNullException.Kind_Ptr;
+      subtype ArgumentNullException_Array is NetFrameworkBase.System.ArgumentNullException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.ArgumentNullException.Kind_Ptr renames NetFrameworkBase.System.ArgumentNullException.Constructor;
+         
+         function Constructor
+         (
+            paramName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.ArgumentNullException.Kind_Ptr renames NetFrameworkBase.System.ArgumentNullException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.ArgumentNullException.Kind_Ptr renames NetFrameworkBase.System.ArgumentNullException.Constructor; 
+         
+         function Constructor
+         (
+            paramName : NetFrameworkBase.BSTR;
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.ArgumentNullException.Kind_Ptr renames NetFrameworkBase.System.ArgumentNullException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ArgumentOutOfRangeException is NetFrameworkBase.System.ArgumentOutOfRangeException.Kind_Ptr;
+      subtype ArgumentOutOfRangeException_Array is NetFrameworkBase.System.ArgumentOutOfRangeException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.ArgumentOutOfRangeException.Kind_Ptr renames NetFrameworkBase.System.ArgumentOutOfRangeException.Constructor;
+         
+         function Constructor
+         (
+            paramName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.ArgumentOutOfRangeException.Kind_Ptr renames NetFrameworkBase.System.ArgumentOutOfRangeException.Constructor; 
+         
+         function Constructor
+         (
+            paramName : NetFrameworkBase.BSTR;
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.ArgumentOutOfRangeException.Kind_Ptr renames NetFrameworkBase.System.ArgumentOutOfRangeException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.ArgumentOutOfRangeException.Kind_Ptr renames NetFrameworkBase.System.ArgumentOutOfRangeException.Constructor; 
+         
+         function Constructor
+         (
+            paramName : NetFrameworkBase.BSTR;
+            actualValue : NetFrameworkBase.System.Object.Kind_Ptr;
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.ArgumentOutOfRangeException.Kind_Ptr renames NetFrameworkBase.System.ArgumentOutOfRangeException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ArgIterator is NetFrameworkBase.System.ArgIterator.Kind_Ptr;
+      subtype ArgIterator_Array is NetFrameworkBase.System.ArgIterator.Kind_Array;
+      
+         function Constructor
+         (
+            arglist : NetFrameworkBase.System.RuntimeArgumentHandle.Kind_Ptr
+         )
+         return NetFrameworkBase.System.ArgIterator.Kind_Ptr renames NetFrameworkBase.System.ArgIterator.Constructor; 
+         
+         function Constructor
+         (
+            arglist : NetFrameworkBase.System.RuntimeArgumentHandle.Kind_Ptr;
+            ptr : NetFrameworkBase.Void_Ptr
+         )
+         return NetFrameworkBase.System.ArgIterator.Kind_Ptr renames NetFrameworkBase.System.ArgIterator.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ArithmeticException is NetFrameworkBase.System.ArithmeticException.Kind_Ptr;
+      subtype ArithmeticException_Array is NetFrameworkBase.System.ArithmeticException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.ArithmeticException.Kind_Ptr renames NetFrameworkBase.System.ArithmeticException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.ArithmeticException.Kind_Ptr renames NetFrameworkBase.System.ArithmeticException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.ArithmeticException.Kind_Ptr renames NetFrameworkBase.System.ArithmeticException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ArrayTypeMismatchException is NetFrameworkBase.System.ArrayTypeMismatchException.Kind_Ptr;
+      subtype ArrayTypeMismatchException_Array is NetFrameworkBase.System.ArrayTypeMismatchException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.ArrayTypeMismatchException.Kind_Ptr renames NetFrameworkBase.System.ArrayTypeMismatchException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.ArrayTypeMismatchException.Kind_Ptr renames NetFrameworkBase.System.ArrayTypeMismatchException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.ArrayTypeMismatchException.Kind_Ptr renames NetFrameworkBase.System.ArrayTypeMismatchException.Constructor; 
+         
+      --------------------------------------------------------------------------
       subtype AsyncCallback is NetFrameworkBase.System.AsyncCallback.Kind_Ptr;
       subtype AsyncCallback_Array is NetFrameworkBase.System.AsyncCallback.Kind_Array;
       
@@ -453,8 +1043,63 @@ package NetFramework.System is
       subtype Attribute_Array is NetFrameworkBase.System.Attribute.Kind_Array;
       
       --------------------------------------------------------------------------
+      subtype AttributeTargets is NetFrameworkBase.System.AttributeTargets.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype AttributeUsageAttribute is NetFrameworkBase.System.AttributeUsageAttribute.Kind_Ptr;
+      subtype AttributeUsageAttribute_Array is NetFrameworkBase.System.AttributeUsageAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            validOn : NetFrameworkBase.System.AttributeTargets.Kind
+         )
+         return NetFrameworkBase.System.AttributeUsageAttribute.Kind_Ptr renames NetFrameworkBase.System.AttributeUsageAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype BadImageFormatException is NetFrameworkBase.System.BadImageFormatException.Kind_Ptr;
+      subtype BadImageFormatException_Array is NetFrameworkBase.System.BadImageFormatException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.BadImageFormatException.Kind_Ptr renames NetFrameworkBase.System.BadImageFormatException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.BadImageFormatException.Kind_Ptr renames NetFrameworkBase.System.BadImageFormatException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.BadImageFormatException.Kind_Ptr renames NetFrameworkBase.System.BadImageFormatException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            fileName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.BadImageFormatException.Kind_Ptr renames NetFrameworkBase.System.BadImageFormatException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            fileName : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.BadImageFormatException.Kind_Ptr renames NetFrameworkBase.System.BadImageFormatException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype BitConverter is NetFrameworkBase.System.BitConverter.Kind_Ptr;
+      subtype BitConverter_Array is NetFrameworkBase.System.BitConverter.Kind_Array;
+      
+      --------------------------------------------------------------------------
       subtype Boolean is NetFrameworkBase.System.Boolean.Kind_Ptr;
       subtype Boolean_Array is NetFrameworkBase.System.Boolean.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype Buffer is NetFrameworkBase.System.Buffer.Kind_Ptr;
+      subtype Buffer_Array is NetFrameworkBase.System.Buffer.Kind_Array;
       
       --------------------------------------------------------------------------
       subtype Byte is NetFrameworkBase.System.Byte.Kind_Ptr;
@@ -463,12 +1108,64 @@ package NetFramework.System is
          function Constructor return NetFrameworkBase.System.Byte.Kind_Ptr renames NetFrameworkBase.System.Byte.Constructor;
          
       --------------------------------------------------------------------------
+      subtype CannotUnloadAppDomainException is NetFrameworkBase.System.CannotUnloadAppDomainException.Kind_Ptr;
+      subtype CannotUnloadAppDomainException_Array is NetFrameworkBase.System.CannotUnloadAppDomainException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.CannotUnloadAppDomainException.Kind_Ptr renames NetFrameworkBase.System.CannotUnloadAppDomainException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.CannotUnloadAppDomainException.Kind_Ptr renames NetFrameworkBase.System.CannotUnloadAppDomainException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.CannotUnloadAppDomainException.Kind_Ptr renames NetFrameworkBase.System.CannotUnloadAppDomainException.Constructor; 
+         
+      --------------------------------------------------------------------------
       subtype Char is NetFrameworkBase.System.Char.Kind_Ptr;
       subtype Char_Array is NetFrameworkBase.System.Char.Kind_Array;
       
       --------------------------------------------------------------------------
       subtype CharEnumerator is NetFrameworkBase.System.CharEnumerator.Kind_Ptr;
       subtype CharEnumerator_Array is NetFrameworkBase.System.CharEnumerator.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype CLSCompliantAttribute is NetFrameworkBase.System.CLSCompliantAttribute.Kind_Ptr;
+      subtype CLSCompliantAttribute_Array is NetFrameworkBase.System.CLSCompliantAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            isCompliant : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.CLSCompliantAttribute.Kind_Ptr renames NetFrameworkBase.System.CLSCompliantAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype TypeUnloadedException is NetFrameworkBase.System.TypeUnloadedException.Kind_Ptr;
+      subtype TypeUnloadedException_Array is NetFrameworkBase.System.TypeUnloadedException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.TypeUnloadedException.Kind_Ptr renames NetFrameworkBase.System.TypeUnloadedException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.TypeUnloadedException.Kind_Ptr renames NetFrameworkBase.System.TypeUnloadedException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.TypeUnloadedException.Kind_Ptr renames NetFrameworkBase.System.TypeUnloadedException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ComObject is NetFrameworkBase.System.ComObject.Kind_Ptr;
+      subtype ComObject_Array is NetFrameworkBase.System.ComObject.Kind_Array;
       
       --------------------------------------------------------------------------
       subtype Console is NetFrameworkBase.System.Console.Kind_Ptr;
@@ -511,7 +1208,47 @@ package NetFramework.System is
       subtype ConsoleSpecialKey is NetFrameworkBase.System.ConsoleSpecialKey.Kind;
       
       --------------------------------------------------------------------------
+      subtype ContextMarshalException is NetFrameworkBase.System.ContextMarshalException.Kind_Ptr;
+      subtype ContextMarshalException_Array is NetFrameworkBase.System.ContextMarshalException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.ContextMarshalException.Kind_Ptr renames NetFrameworkBase.System.ContextMarshalException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.ContextMarshalException.Kind_Ptr renames NetFrameworkBase.System.ContextMarshalException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.ContextMarshalException.Kind_Ptr renames NetFrameworkBase.System.ContextMarshalException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype Base64FormattingOptions is NetFrameworkBase.System.Base64FormattingOptions.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype Convert is NetFrameworkBase.System.Convert.Kind_Ptr;
+      subtype Convert_Array is NetFrameworkBase.System.Convert.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ContextBoundObject is NetFrameworkBase.System.ContextBoundObject.Kind_Ptr;
+      subtype ContextBoundObject_Array is NetFrameworkBase.System.ContextBoundObject.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ContextStaticAttribute is NetFrameworkBase.System.ContextStaticAttribute.Kind_Ptr;
+      subtype ContextStaticAttribute_Array is NetFrameworkBase.System.ContextStaticAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.ContextStaticAttribute.Kind_Ptr renames NetFrameworkBase.System.ContextStaticAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
       subtype DayOfWeek is NetFrameworkBase.System.DayOfWeek.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype DBNull is NetFrameworkBase.System.DBNull.Kind_Ptr;
+      subtype DBNull_Array is NetFrameworkBase.System.DBNull.Kind_Array;
       
       --------------------------------------------------------------------------
       subtype Decimal is NetFrameworkBase.System.Decimal.Kind_Ptr;
@@ -570,13 +1307,96 @@ package NetFramework.System is
          return NetFrameworkBase.System.Decimal.Kind_Ptr renames NetFrameworkBase.System.Decimal.Constructor; 
          
       --------------------------------------------------------------------------
+      subtype DivideByZeroException is NetFrameworkBase.System.DivideByZeroException.Kind_Ptr;
+      subtype DivideByZeroException_Array is NetFrameworkBase.System.DivideByZeroException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.DivideByZeroException.Kind_Ptr renames NetFrameworkBase.System.DivideByZeroException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.DivideByZeroException.Kind_Ptr renames NetFrameworkBase.System.DivideByZeroException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.DivideByZeroException.Kind_Ptr renames NetFrameworkBase.System.DivideByZeroException.Constructor; 
+         
+      --------------------------------------------------------------------------
       subtype Double is NetFrameworkBase.System.Double.Kind_Ptr;
       subtype Double_Array is NetFrameworkBase.System.Double.Kind_Array;
       
       --------------------------------------------------------------------------
+      subtype DuplicateWaitObjectException is NetFrameworkBase.System.DuplicateWaitObjectException.Kind_Ptr;
+      subtype DuplicateWaitObjectException_Array is NetFrameworkBase.System.DuplicateWaitObjectException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.DuplicateWaitObjectException.Kind_Ptr renames NetFrameworkBase.System.DuplicateWaitObjectException.Constructor;
+         
+         function Constructor
+         (
+            parameterName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.DuplicateWaitObjectException.Kind_Ptr renames NetFrameworkBase.System.DuplicateWaitObjectException.Constructor; 
+         
+         function Constructor
+         (
+            parameterName : NetFrameworkBase.BSTR;
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.DuplicateWaitObjectException.Kind_Ptr renames NetFrameworkBase.System.DuplicateWaitObjectException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.DuplicateWaitObjectException.Kind_Ptr renames NetFrameworkBase.System.DuplicateWaitObjectException.Constructor; 
+         
+      --------------------------------------------------------------------------
       subtype Enum is NetFrameworkBase.System.Enum.Kind_Ptr;
       subtype Enum_Array is NetFrameworkBase.System.Enum.Kind_Array;
       
+      --------------------------------------------------------------------------
+      subtype EntryPointNotFoundException is NetFrameworkBase.System.EntryPointNotFoundException.Kind_Ptr;
+      subtype EntryPointNotFoundException_Array is NetFrameworkBase.System.EntryPointNotFoundException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.EntryPointNotFoundException.Kind_Ptr renames NetFrameworkBase.System.EntryPointNotFoundException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.EntryPointNotFoundException.Kind_Ptr renames NetFrameworkBase.System.EntryPointNotFoundException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.EntryPointNotFoundException.Kind_Ptr renames NetFrameworkBase.System.EntryPointNotFoundException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype DllNotFoundException is NetFrameworkBase.System.DllNotFoundException.Kind_Ptr;
+      subtype DllNotFoundException_Array is NetFrameworkBase.System.DllNotFoundException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.DllNotFoundException.Kind_Ptr renames NetFrameworkBase.System.DllNotFoundException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.DllNotFoundException.Kind_Ptr renames NetFrameworkBase.System.DllNotFoundException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.DllNotFoundException.Kind_Ptr renames NetFrameworkBase.System.DllNotFoundException.Constructor; 
+         
       --------------------------------------------------------------------------
       subtype EnvironmentVariableTarget is NetFrameworkBase.System.EnvironmentVariableTarget.Kind;
       
@@ -590,6 +1410,70 @@ package NetFramework.System is
       
          function Constructor return NetFrameworkBase.System.EventArgs.Kind_Ptr renames NetFrameworkBase.System.EventArgs.Constructor;
          
+      --------------------------------------------------------------------------
+      subtype EventHandler is NetFrameworkBase.System.EventHandler.Kind_Ptr;
+      subtype EventHandler_Array is NetFrameworkBase.System.EventHandler.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.System.EventHandler.Kind_Callback) return NetFrameworkBase.System.EventHandler.Kind_Ptr renames NetFrameworkBase.System.EventHandler.Constructor;
+      
+      --------------------------------------------------------------------------
+      subtype FieldAccessException is NetFrameworkBase.System.FieldAccessException.Kind_Ptr;
+      subtype FieldAccessException_Array is NetFrameworkBase.System.FieldAccessException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.FieldAccessException.Kind_Ptr renames NetFrameworkBase.System.FieldAccessException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.FieldAccessException.Kind_Ptr renames NetFrameworkBase.System.FieldAccessException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.FieldAccessException.Kind_Ptr renames NetFrameworkBase.System.FieldAccessException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype FlagsAttribute is NetFrameworkBase.System.FlagsAttribute.Kind_Ptr;
+      subtype FlagsAttribute_Array is NetFrameworkBase.System.FlagsAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.FlagsAttribute.Kind_Ptr renames NetFrameworkBase.System.FlagsAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype FormatException is NetFrameworkBase.System.FormatException.Kind_Ptr;
+      subtype FormatException_Array is NetFrameworkBase.System.FormatException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.FormatException.Kind_Ptr renames NetFrameworkBase.System.FormatException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.FormatException.Kind_Ptr renames NetFrameworkBase.System.FormatException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.FormatException.Kind_Ptr renames NetFrameworkBase.System.FormatException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype FormattableString is NetFrameworkBase.System.FormattableString.Kind_Ptr;
+      subtype FormattableString_Array is NetFrameworkBase.System.FormattableString.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype GCCollectionMode is NetFrameworkBase.System.GCCollectionMode.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype GCNotificationStatus is NetFrameworkBase.System.GCNotificationStatus.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype GC is NetFrameworkBase.System.GC.Kind_Ptr;
+      subtype GC_Array is NetFrameworkBase.System.GC.Kind_Array;
+      
       --------------------------------------------------------------------------
       subtype Guid is NetFrameworkBase.System.Guid.Kind_Ptr;
       subtype Guid_Array is NetFrameworkBase.System.Guid.Kind_Array;
@@ -652,9 +1536,78 @@ package NetFramework.System is
       subtype IAsyncResult_Array is NetFrameworkBase.System.IAsyncResult.Kind_Array;
       
       --------------------------------------------------------------------------
+      subtype ICustomFormatter is NetFrameworkBase.System.ICustomFormatter.Kind_Ptr;
+      subtype ICustomFormatter_Array is NetFrameworkBase.System.ICustomFormatter.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IDisposable is NetFrameworkBase.System.IDisposable.Kind_Ptr;
+      subtype IDisposable_Array is NetFrameworkBase.System.IDisposable.Kind_Array;
+      
+      --------------------------------------------------------------------------
       subtype IFormatProvider is NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
       subtype IFormatProvider_Array is NetFrameworkBase.System.IFormatProvider.Kind_Array;
       
+      --------------------------------------------------------------------------
+      subtype IFormattable is NetFrameworkBase.System.IFormattable.Kind_Ptr;
+      subtype IFormattable_Array is NetFrameworkBase.System.IFormattable.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IndexOutOfRangeException is NetFrameworkBase.System.IndexOutOfRangeException.Kind_Ptr;
+      subtype IndexOutOfRangeException_Array is NetFrameworkBase.System.IndexOutOfRangeException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.IndexOutOfRangeException.Kind_Ptr renames NetFrameworkBase.System.IndexOutOfRangeException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.IndexOutOfRangeException.Kind_Ptr renames NetFrameworkBase.System.IndexOutOfRangeException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.IndexOutOfRangeException.Kind_Ptr renames NetFrameworkBase.System.IndexOutOfRangeException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype InsufficientMemoryException is NetFrameworkBase.System.InsufficientMemoryException.Kind_Ptr;
+      subtype InsufficientMemoryException_Array is NetFrameworkBase.System.InsufficientMemoryException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.InsufficientMemoryException.Kind_Ptr renames NetFrameworkBase.System.InsufficientMemoryException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.InsufficientMemoryException.Kind_Ptr renames NetFrameworkBase.System.InsufficientMemoryException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.InsufficientMemoryException.Kind_Ptr renames NetFrameworkBase.System.InsufficientMemoryException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype InsufficientExecutionStackException is NetFrameworkBase.System.InsufficientExecutionStackException.Kind_Ptr;
+      subtype InsufficientExecutionStackException_Array is NetFrameworkBase.System.InsufficientExecutionStackException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.InsufficientExecutionStackException.Kind_Ptr renames NetFrameworkBase.System.InsufficientExecutionStackException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.InsufficientExecutionStackException.Kind_Ptr renames NetFrameworkBase.System.InsufficientExecutionStackException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.InsufficientExecutionStackException.Kind_Ptr renames NetFrameworkBase.System.InsufficientExecutionStackException.Constructor; 
+         
       --------------------------------------------------------------------------
       subtype Int16 is NetFrameworkBase.System.Int16.Kind_Ptr;
       subtype Int16_Array is NetFrameworkBase.System.Int16.Kind_Array;
@@ -696,12 +1649,373 @@ package NetFramework.System is
          return NetFrameworkBase.System.IntPtr.Kind_Ptr renames NetFrameworkBase.System.IntPtr.Constructor; 
          
       --------------------------------------------------------------------------
+      subtype InvalidCastException is NetFrameworkBase.System.InvalidCastException.Kind_Ptr;
+      subtype InvalidCastException_Array is NetFrameworkBase.System.InvalidCastException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.InvalidCastException.Kind_Ptr renames NetFrameworkBase.System.InvalidCastException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.InvalidCastException.Kind_Ptr renames NetFrameworkBase.System.InvalidCastException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.InvalidCastException.Kind_Ptr renames NetFrameworkBase.System.InvalidCastException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            errorCode : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.InvalidCastException.Kind_Ptr renames NetFrameworkBase.System.InvalidCastException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype InvalidOperationException is NetFrameworkBase.System.InvalidOperationException.Kind_Ptr;
+      subtype InvalidOperationException_Array is NetFrameworkBase.System.InvalidOperationException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.InvalidOperationException.Kind_Ptr renames NetFrameworkBase.System.InvalidOperationException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.InvalidOperationException.Kind_Ptr renames NetFrameworkBase.System.InvalidOperationException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.InvalidOperationException.Kind_Ptr renames NetFrameworkBase.System.InvalidOperationException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype InvalidProgramException is NetFrameworkBase.System.InvalidProgramException.Kind_Ptr;
+      subtype InvalidProgramException_Array is NetFrameworkBase.System.InvalidProgramException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.InvalidProgramException.Kind_Ptr renames NetFrameworkBase.System.InvalidProgramException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.InvalidProgramException.Kind_Ptr renames NetFrameworkBase.System.InvalidProgramException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.InvalidProgramException.Kind_Ptr renames NetFrameworkBase.System.InvalidProgramException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype InvalidTimeZoneException is NetFrameworkBase.System.InvalidTimeZoneException.Kind_Ptr;
+      subtype InvalidTimeZoneException_Array is NetFrameworkBase.System.InvalidTimeZoneException.Kind_Array;
+      
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.InvalidTimeZoneException.Kind_Ptr renames NetFrameworkBase.System.InvalidTimeZoneException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.InvalidTimeZoneException.Kind_Ptr renames NetFrameworkBase.System.InvalidTimeZoneException.Constructor; 
+         
+         function Constructor return NetFrameworkBase.System.InvalidTimeZoneException.Kind_Ptr renames NetFrameworkBase.System.InvalidTimeZoneException.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype IConvertible is NetFrameworkBase.System.IConvertible.Kind_Ptr;
+      subtype IConvertible_Array is NetFrameworkBase.System.IConvertible.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IServiceProvider is NetFrameworkBase.System.IServiceProvider.Kind_Ptr;
+      subtype IServiceProvider_Array is NetFrameworkBase.System.IServiceProvider.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype LocalDataStoreSlot is NetFrameworkBase.System.LocalDataStoreSlot.Kind_Ptr;
+      subtype LocalDataStoreSlot_Array is NetFrameworkBase.System.LocalDataStoreSlot.Kind_Array;
+      
+      --------------------------------------------------------------------------
       subtype MarshalByRefObject is NetFrameworkBase.System.MarshalByRefObject.Kind_Ptr;
       subtype MarshalByRefObject_Array is NetFrameworkBase.System.MarshalByRefObject.Kind_Array;
       
       --------------------------------------------------------------------------
+      subtype Math is NetFrameworkBase.System.Math.Kind_Ptr;
+      subtype Math_Array is NetFrameworkBase.System.Math.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype MethodAccessException is NetFrameworkBase.System.MethodAccessException.Kind_Ptr;
+      subtype MethodAccessException_Array is NetFrameworkBase.System.MethodAccessException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.MethodAccessException.Kind_Ptr renames NetFrameworkBase.System.MethodAccessException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.MethodAccessException.Kind_Ptr renames NetFrameworkBase.System.MethodAccessException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.MethodAccessException.Kind_Ptr renames NetFrameworkBase.System.MethodAccessException.Constructor; 
+         
+      --------------------------------------------------------------------------
       subtype MidpointRounding is NetFrameworkBase.System.MidpointRounding.Kind;
       
+      --------------------------------------------------------------------------
+      subtype MissingFieldException is NetFrameworkBase.System.MissingFieldException.Kind_Ptr;
+      subtype MissingFieldException_Array is NetFrameworkBase.System.MissingFieldException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.MissingFieldException.Kind_Ptr renames NetFrameworkBase.System.MissingFieldException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.MissingFieldException.Kind_Ptr renames NetFrameworkBase.System.MissingFieldException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.MissingFieldException.Kind_Ptr renames NetFrameworkBase.System.MissingFieldException.Constructor; 
+         
+         function Constructor
+         (
+            className : NetFrameworkBase.BSTR;
+            fieldName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.MissingFieldException.Kind_Ptr renames NetFrameworkBase.System.MissingFieldException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype MissingMemberException is NetFrameworkBase.System.MissingMemberException.Kind_Ptr;
+      subtype MissingMemberException_Array is NetFrameworkBase.System.MissingMemberException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.MissingMemberException.Kind_Ptr renames NetFrameworkBase.System.MissingMemberException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.MissingMemberException.Kind_Ptr renames NetFrameworkBase.System.MissingMemberException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.MissingMemberException.Kind_Ptr renames NetFrameworkBase.System.MissingMemberException.Constructor; 
+         
+         function Constructor
+         (
+            className : NetFrameworkBase.BSTR;
+            memberName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.MissingMemberException.Kind_Ptr renames NetFrameworkBase.System.MissingMemberException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype MissingMethodException is NetFrameworkBase.System.MissingMethodException.Kind_Ptr;
+      subtype MissingMethodException_Array is NetFrameworkBase.System.MissingMethodException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.MissingMethodException.Kind_Ptr renames NetFrameworkBase.System.MissingMethodException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.MissingMethodException.Kind_Ptr renames NetFrameworkBase.System.MissingMethodException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.MissingMethodException.Kind_Ptr renames NetFrameworkBase.System.MissingMethodException.Constructor; 
+         
+         function Constructor
+         (
+            className : NetFrameworkBase.BSTR;
+            methodName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.MissingMethodException.Kind_Ptr renames NetFrameworkBase.System.MissingMethodException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype MulticastNotSupportedException is NetFrameworkBase.System.MulticastNotSupportedException.Kind_Ptr;
+      subtype MulticastNotSupportedException_Array is NetFrameworkBase.System.MulticastNotSupportedException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.MulticastNotSupportedException.Kind_Ptr renames NetFrameworkBase.System.MulticastNotSupportedException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.MulticastNotSupportedException.Kind_Ptr renames NetFrameworkBase.System.MulticastNotSupportedException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.MulticastNotSupportedException.Kind_Ptr renames NetFrameworkBase.System.MulticastNotSupportedException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype NonSerializedAttribute is NetFrameworkBase.System.NonSerializedAttribute.Kind_Ptr;
+      subtype NonSerializedAttribute_Array is NetFrameworkBase.System.NonSerializedAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.NonSerializedAttribute.Kind_Ptr renames NetFrameworkBase.System.NonSerializedAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype NotFiniteNumberException is NetFrameworkBase.System.NotFiniteNumberException.Kind_Ptr;
+      subtype NotFiniteNumberException_Array is NetFrameworkBase.System.NotFiniteNumberException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.NotFiniteNumberException.Kind_Ptr renames NetFrameworkBase.System.NotFiniteNumberException.Constructor;
+         
+         function Constructor
+         (
+            offendingNumber : NetFrameworkBase.Double
+         )
+         return NetFrameworkBase.System.NotFiniteNumberException.Kind_Ptr renames NetFrameworkBase.System.NotFiniteNumberException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.NotFiniteNumberException.Kind_Ptr renames NetFrameworkBase.System.NotFiniteNumberException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            offendingNumber : NetFrameworkBase.Double
+         )
+         return NetFrameworkBase.System.NotFiniteNumberException.Kind_Ptr renames NetFrameworkBase.System.NotFiniteNumberException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.NotFiniteNumberException.Kind_Ptr renames NetFrameworkBase.System.NotFiniteNumberException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            offendingNumber : NetFrameworkBase.Double;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.NotFiniteNumberException.Kind_Ptr renames NetFrameworkBase.System.NotFiniteNumberException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype NotImplementedException is NetFrameworkBase.System.NotImplementedException.Kind_Ptr;
+      subtype NotImplementedException_Array is NetFrameworkBase.System.NotImplementedException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.NotImplementedException.Kind_Ptr renames NetFrameworkBase.System.NotImplementedException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.NotImplementedException.Kind_Ptr renames NetFrameworkBase.System.NotImplementedException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.NotImplementedException.Kind_Ptr renames NetFrameworkBase.System.NotImplementedException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype NotSupportedException is NetFrameworkBase.System.NotSupportedException.Kind_Ptr;
+      subtype NotSupportedException_Array is NetFrameworkBase.System.NotSupportedException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.NotSupportedException.Kind_Ptr renames NetFrameworkBase.System.NotSupportedException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.NotSupportedException.Kind_Ptr renames NetFrameworkBase.System.NotSupportedException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.NotSupportedException.Kind_Ptr renames NetFrameworkBase.System.NotSupportedException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype NullReferenceException is NetFrameworkBase.System.NullReferenceException.Kind_Ptr;
+      subtype NullReferenceException_Array is NetFrameworkBase.System.NullReferenceException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.NullReferenceException.Kind_Ptr renames NetFrameworkBase.System.NullReferenceException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.NullReferenceException.Kind_Ptr renames NetFrameworkBase.System.NullReferenceException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.NullReferenceException.Kind_Ptr renames NetFrameworkBase.System.NullReferenceException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ObjectDisposedException is NetFrameworkBase.System.ObjectDisposedException.Kind_Ptr;
+      subtype ObjectDisposedException_Array is NetFrameworkBase.System.ObjectDisposedException.Kind_Array;
+      
+         function Constructor
+         (
+            objectName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.ObjectDisposedException.Kind_Ptr renames NetFrameworkBase.System.ObjectDisposedException.Constructor; 
+         
+         function Constructor
+         (
+            objectName : NetFrameworkBase.BSTR;
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.ObjectDisposedException.Kind_Ptr renames NetFrameworkBase.System.ObjectDisposedException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.ObjectDisposedException.Kind_Ptr renames NetFrameworkBase.System.ObjectDisposedException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ObsoleteAttribute is NetFrameworkBase.System.ObsoleteAttribute.Kind_Ptr;
+      subtype ObsoleteAttribute_Array is NetFrameworkBase.System.ObsoleteAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.ObsoleteAttribute.Kind_Ptr renames NetFrameworkBase.System.ObsoleteAttribute.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.ObsoleteAttribute.Kind_Ptr renames NetFrameworkBase.System.ObsoleteAttribute.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            error : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.ObsoleteAttribute.Kind_Ptr renames NetFrameworkBase.System.ObsoleteAttribute.Constructor; 
+         
       --------------------------------------------------------------------------
       subtype OperatingSystem is NetFrameworkBase.System.OperatingSystem.Kind_Ptr;
       subtype OperatingSystem_Array is NetFrameworkBase.System.OperatingSystem.Kind_Array;
@@ -714,7 +2028,126 @@ package NetFramework.System is
          return NetFrameworkBase.System.OperatingSystem.Kind_Ptr renames NetFrameworkBase.System.OperatingSystem.Constructor; 
          
       --------------------------------------------------------------------------
+      subtype OperationCanceledException is NetFrameworkBase.System.OperationCanceledException.Kind_Ptr;
+      subtype OperationCanceledException_Array is NetFrameworkBase.System.OperationCanceledException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.OperationCanceledException.Kind_Ptr renames NetFrameworkBase.System.OperationCanceledException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.OperationCanceledException.Kind_Ptr renames NetFrameworkBase.System.OperationCanceledException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.OperationCanceledException.Kind_Ptr renames NetFrameworkBase.System.OperationCanceledException.Constructor; 
+         
+         function Constructor
+         (
+            token : NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr
+         )
+         return NetFrameworkBase.System.OperationCanceledException.Kind_Ptr renames NetFrameworkBase.System.OperationCanceledException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            token : NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr
+         )
+         return NetFrameworkBase.System.OperationCanceledException.Kind_Ptr renames NetFrameworkBase.System.OperationCanceledException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr;
+            token : NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr
+         )
+         return NetFrameworkBase.System.OperationCanceledException.Kind_Ptr renames NetFrameworkBase.System.OperationCanceledException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype OverflowException is NetFrameworkBase.System.OverflowException.Kind_Ptr;
+      subtype OverflowException_Array is NetFrameworkBase.System.OverflowException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.OverflowException.Kind_Ptr renames NetFrameworkBase.System.OverflowException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.OverflowException.Kind_Ptr renames NetFrameworkBase.System.OverflowException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.OverflowException.Kind_Ptr renames NetFrameworkBase.System.OverflowException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ParamArrayAttribute is NetFrameworkBase.System.ParamArrayAttribute.Kind_Ptr;
+      subtype ParamArrayAttribute_Array is NetFrameworkBase.System.ParamArrayAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.ParamArrayAttribute.Kind_Ptr renames NetFrameworkBase.System.ParamArrayAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
       subtype PlatformID is NetFrameworkBase.System.PlatformID.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype PlatformNotSupportedException is NetFrameworkBase.System.PlatformNotSupportedException.Kind_Ptr;
+      subtype PlatformNotSupportedException_Array is NetFrameworkBase.System.PlatformNotSupportedException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.PlatformNotSupportedException.Kind_Ptr renames NetFrameworkBase.System.PlatformNotSupportedException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.PlatformNotSupportedException.Kind_Ptr renames NetFrameworkBase.System.PlatformNotSupportedException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.PlatformNotSupportedException.Kind_Ptr renames NetFrameworkBase.System.PlatformNotSupportedException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype Random is NetFrameworkBase.System.Random.Kind_Ptr;
+      subtype Random_Array is NetFrameworkBase.System.Random.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Random.Kind_Ptr renames NetFrameworkBase.System.Random.Constructor;
+         
+         function Constructor
+         (
+            Seed : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Random.Kind_Ptr renames NetFrameworkBase.System.Random.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype RankException is NetFrameworkBase.System.RankException.Kind_Ptr;
+      subtype RankException_Array is NetFrameworkBase.System.RankException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.RankException.Kind_Ptr renames NetFrameworkBase.System.RankException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.RankException.Kind_Ptr renames NetFrameworkBase.System.RankException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.RankException.Kind_Ptr renames NetFrameworkBase.System.RankException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype RuntimeArgumentHandle is NetFrameworkBase.System.RuntimeArgumentHandle.Kind_Ptr;
+      subtype RuntimeArgumentHandle_Array is NetFrameworkBase.System.RuntimeArgumentHandle.Kind_Array;
       
       --------------------------------------------------------------------------
       subtype RuntimeTypeHandle is NetFrameworkBase.System.RuntimeTypeHandle.Kind_Ptr;
@@ -739,10 +2172,47 @@ package NetFramework.System is
          function Constructor return NetFrameworkBase.System.SByte.Kind_Ptr renames NetFrameworkBase.System.SByte.Constructor;
          
       --------------------------------------------------------------------------
+      subtype SerializableAttribute is NetFrameworkBase.System.SerializableAttribute.Kind_Ptr;
+      subtype SerializableAttribute_Array is NetFrameworkBase.System.SerializableAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.SerializableAttribute.Kind_Ptr renames NetFrameworkBase.System.SerializableAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
       subtype Single is NetFrameworkBase.System.Single.Kind_Ptr;
       subtype Single_Array is NetFrameworkBase.System.Single.Kind_Array;
       
          function Constructor return NetFrameworkBase.System.Single.Kind_Ptr renames NetFrameworkBase.System.Single.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype STAThreadAttribute is NetFrameworkBase.System.STAThreadAttribute.Kind_Ptr;
+      subtype STAThreadAttribute_Array is NetFrameworkBase.System.STAThreadAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.STAThreadAttribute.Kind_Ptr renames NetFrameworkBase.System.STAThreadAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype MTAThreadAttribute is NetFrameworkBase.System.MTAThreadAttribute.Kind_Ptr;
+      subtype MTAThreadAttribute_Array is NetFrameworkBase.System.MTAThreadAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.MTAThreadAttribute.Kind_Ptr renames NetFrameworkBase.System.MTAThreadAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype TimeoutException is NetFrameworkBase.System.TimeoutException.Kind_Ptr;
+      subtype TimeoutException_Array is NetFrameworkBase.System.TimeoutException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.TimeoutException.Kind_Ptr renames NetFrameworkBase.System.TimeoutException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.TimeoutException.Kind_Ptr renames NetFrameworkBase.System.TimeoutException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.TimeoutException.Kind_Ptr renames NetFrameworkBase.System.TimeoutException.Constructor; 
          
       --------------------------------------------------------------------------
       subtype TimeSpan is NetFrameworkBase.System.TimeSpan.Kind_Ptr;
@@ -782,9 +2252,55 @@ package NetFramework.System is
          return NetFrameworkBase.System.TimeSpan.Kind_Ptr renames NetFrameworkBase.System.TimeSpan.Constructor; 
          
       --------------------------------------------------------------------------
+      subtype TimeZone is NetFrameworkBase.System.TimeZone.Kind_Ptr;
+      subtype TimeZone_Array is NetFrameworkBase.System.TimeZone.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype TimeZoneInfo is NetFrameworkBase.System.TimeZoneInfo.Kind_Ptr;
+      subtype TimeZoneInfo_Array is NetFrameworkBase.System.TimeZoneInfo.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype TimeZoneNotFoundException is NetFrameworkBase.System.TimeZoneNotFoundException.Kind_Ptr;
+      subtype TimeZoneNotFoundException_Array is NetFrameworkBase.System.TimeZoneNotFoundException.Kind_Array;
+      
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.TimeZoneNotFoundException.Kind_Ptr renames NetFrameworkBase.System.TimeZoneNotFoundException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.TimeZoneNotFoundException.Kind_Ptr renames NetFrameworkBase.System.TimeZoneNotFoundException.Constructor; 
+         
+         function Constructor return NetFrameworkBase.System.TimeZoneNotFoundException.Kind_Ptr renames NetFrameworkBase.System.TimeZoneNotFoundException.Constructor;
+         
+      --------------------------------------------------------------------------
       subtype Type_x is NetFrameworkBase.System.Type_x.Kind_Ptr;
       subtype Type_x_Array is NetFrameworkBase.System.Type_x.Kind_Array;
       
+      --------------------------------------------------------------------------
+      subtype TypeAccessException is NetFrameworkBase.System.TypeAccessException.Kind_Ptr;
+      subtype TypeAccessException_Array is NetFrameworkBase.System.TypeAccessException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.TypeAccessException.Kind_Ptr renames NetFrameworkBase.System.TypeAccessException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.TypeAccessException.Kind_Ptr renames NetFrameworkBase.System.TypeAccessException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.TypeAccessException.Kind_Ptr renames NetFrameworkBase.System.TypeAccessException.Constructor; 
+         
       --------------------------------------------------------------------------
       subtype TypeCode is NetFrameworkBase.System.TypeCode.Kind;
       
@@ -792,6 +2308,36 @@ package NetFramework.System is
       subtype TypedReference is NetFrameworkBase.System.TypedReference.Kind_Ptr;
       subtype TypedReference_Array is NetFrameworkBase.System.TypedReference.Kind_Array;
       
+      --------------------------------------------------------------------------
+      subtype TypeInitializationException is NetFrameworkBase.System.TypeInitializationException.Kind_Ptr;
+      subtype TypeInitializationException_Array is NetFrameworkBase.System.TypeInitializationException.Kind_Array;
+      
+         function Constructor
+         (
+            fullTypeName : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.TypeInitializationException.Kind_Ptr renames NetFrameworkBase.System.TypeInitializationException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype TypeLoadException is NetFrameworkBase.System.TypeLoadException.Kind_Ptr;
+      subtype TypeLoadException_Array is NetFrameworkBase.System.TypeLoadException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.TypeLoadException.Kind_Ptr renames NetFrameworkBase.System.TypeLoadException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.TypeLoadException.Kind_Ptr renames NetFrameworkBase.System.TypeLoadException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.TypeLoadException.Kind_Ptr renames NetFrameworkBase.System.TypeLoadException.Constructor; 
+         
       --------------------------------------------------------------------------
       subtype UInt16 is NetFrameworkBase.System.UInt16.Kind_Ptr;
       subtype UInt16_Array is NetFrameworkBase.System.UInt16.Kind_Array;
@@ -810,6 +2356,64 @@ package NetFramework.System is
       
          function Constructor return NetFrameworkBase.System.UInt64.Kind_Ptr renames NetFrameworkBase.System.UInt64.Constructor;
          
+      --------------------------------------------------------------------------
+      subtype UIntPtr is NetFrameworkBase.System.UIntPtr.Kind_Ptr;
+      subtype UIntPtr_Array is NetFrameworkBase.System.UIntPtr.Kind_Array;
+      
+         function Constructor
+         (
+            value : NetFrameworkBase.UInt32
+         )
+         return NetFrameworkBase.System.UIntPtr.Kind_Ptr renames NetFrameworkBase.System.UIntPtr.Constructor; 
+         
+         function Constructor
+         (
+            value : NetFrameworkBase.UInt64
+         )
+         return NetFrameworkBase.System.UIntPtr.Kind_Ptr renames NetFrameworkBase.System.UIntPtr.Constructor; 
+         
+         function Constructor
+         (
+            value : NetFrameworkBase.Void_Ptr
+         )
+         return NetFrameworkBase.System.UIntPtr.Kind_Ptr renames NetFrameworkBase.System.UIntPtr.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype UnauthorizedAccessException is NetFrameworkBase.System.UnauthorizedAccessException.Kind_Ptr;
+      subtype UnauthorizedAccessException_Array is NetFrameworkBase.System.UnauthorizedAccessException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.UnauthorizedAccessException.Kind_Ptr renames NetFrameworkBase.System.UnauthorizedAccessException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.UnauthorizedAccessException.Kind_Ptr renames NetFrameworkBase.System.UnauthorizedAccessException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.UnauthorizedAccessException.Kind_Ptr renames NetFrameworkBase.System.UnauthorizedAccessException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype UnhandledExceptionEventArgs is NetFrameworkBase.System.UnhandledExceptionEventArgs.Kind_Ptr;
+      subtype UnhandledExceptionEventArgs_Array is NetFrameworkBase.System.UnhandledExceptionEventArgs.Kind_Array;
+      
+         function Constructor
+         (
+            exception_x : NetFrameworkBase.System.Object.Kind_Ptr;
+            isTerminating : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.UnhandledExceptionEventArgs.Kind_Ptr renames NetFrameworkBase.System.UnhandledExceptionEventArgs.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype UnhandledExceptionEventHandler is NetFrameworkBase.System.UnhandledExceptionEventHandler.Kind_Ptr;
+      subtype UnhandledExceptionEventHandler_Array is NetFrameworkBase.System.UnhandledExceptionEventHandler.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.System.UnhandledExceptionEventHandler.Kind_Callback) return NetFrameworkBase.System.UnhandledExceptionEventHandler.Kind_Ptr renames NetFrameworkBase.System.UnhandledExceptionEventHandler.Constructor;
+      
       --------------------------------------------------------------------------
       subtype ValueType is NetFrameworkBase.System.ValueType.Kind_Ptr;
       subtype ValueType_Array is NetFrameworkBase.System.ValueType.Kind_Array;
@@ -856,5 +2460,32 @@ package NetFramework.System is
       
          function Constructor return NetFrameworkBase.System.Void.Kind_Ptr renames NetFrameworkBase.System.Void.Constructor;
          
+      --------------------------------------------------------------------------
+      subtype WeakReference is NetFrameworkBase.System.WeakReference.Kind_Ptr;
+      subtype WeakReference_Array is NetFrameworkBase.System.WeakReference.Kind_Array;
+      
+         function Constructor
+         (
+            target : NetFrameworkBase.System.Object.Kind_Ptr
+         )
+         return NetFrameworkBase.System.WeakReference.Kind_Ptr renames NetFrameworkBase.System.WeakReference.Constructor; 
+         
+         function Constructor
+         (
+            target : NetFrameworkBase.System.Object.Kind_Ptr;
+            trackResurrection : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.WeakReference.Kind_Ptr renames NetFrameworkBase.System.WeakReference.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ThreadStaticAttribute is NetFrameworkBase.System.ThreadStaticAttribute.Kind_Ptr;
+      subtype ThreadStaticAttribute_Array is NetFrameworkBase.System.ThreadStaticAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.ThreadStaticAttribute.Kind_Ptr renames NetFrameworkBase.System.ThreadStaticAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype Nullable is NetFrameworkBase.System.Nullable.Kind_Ptr;
+      subtype Nullable_Array is NetFrameworkBase.System.Nullable.Kind_Array;
+      
    
 end;

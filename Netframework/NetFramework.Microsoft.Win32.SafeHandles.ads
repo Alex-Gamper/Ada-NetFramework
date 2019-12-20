@@ -28,8 +28,13 @@
 --                                                                            --
 --------------------------------------------------------------------------------
 with NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeFileHandle;
+with NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeRegistryHandle;
 with NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeWaitHandle;
 with NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid;
+with NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeHandleMinusOneIsInvalid;
+with NetFrameworkBase.Microsoft.Win32.SafeHandles.CriticalHandleZeroOrMinusOneIsInvalid;
+with NetFrameworkBase.Microsoft.Win32.SafeHandles.CriticalHandleMinusOneIsInvalid;
+with NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeAccessTokenHandle;
 --------------------------------------------------------------------------------
 package NetFramework.Microsoft.Win32.SafeHandles is
    
@@ -43,6 +48,17 @@ package NetFramework.Microsoft.Win32.SafeHandles is
             ownsHandle : NetFrameworkBase.Boolean
          )
          return NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeFileHandle.Kind_Ptr renames NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeFileHandle.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SafeRegistryHandle is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeRegistryHandle.Kind_Ptr;
+      subtype SafeRegistryHandle_Array is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeRegistryHandle.Kind_Array;
+      
+         function Constructor
+         (
+            preexistingHandle : NetFrameworkBase.IntPtr;
+            ownsHandle : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeRegistryHandle.Kind_Ptr renames NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeRegistryHandle.Constructor; 
          
       --------------------------------------------------------------------------
       subtype SafeWaitHandle is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeWaitHandle.Kind_Ptr;
@@ -59,5 +75,27 @@ package NetFramework.Microsoft.Win32.SafeHandles is
       subtype SafeHandleZeroOrMinusOneIsInvalid is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid.Kind_Ptr;
       subtype SafeHandleZeroOrMinusOneIsInvalid_Array is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid.Kind_Array;
       
+      --------------------------------------------------------------------------
+      subtype SafeHandleMinusOneIsInvalid is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeHandleMinusOneIsInvalid.Kind_Ptr;
+      subtype SafeHandleMinusOneIsInvalid_Array is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeHandleMinusOneIsInvalid.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype CriticalHandleZeroOrMinusOneIsInvalid is NetFrameworkBase.Microsoft.Win32.SafeHandles.CriticalHandleZeroOrMinusOneIsInvalid.Kind_Ptr;
+      subtype CriticalHandleZeroOrMinusOneIsInvalid_Array is NetFrameworkBase.Microsoft.Win32.SafeHandles.CriticalHandleZeroOrMinusOneIsInvalid.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype CriticalHandleMinusOneIsInvalid is NetFrameworkBase.Microsoft.Win32.SafeHandles.CriticalHandleMinusOneIsInvalid.Kind_Ptr;
+      subtype CriticalHandleMinusOneIsInvalid_Array is NetFrameworkBase.Microsoft.Win32.SafeHandles.CriticalHandleMinusOneIsInvalid.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype SafeAccessTokenHandle is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeAccessTokenHandle.Kind_Ptr;
+      subtype SafeAccessTokenHandle_Array is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeAccessTokenHandle.Kind_Array;
+      
+         function Constructor
+         (
+            handle : NetFrameworkBase.IntPtr
+         )
+         return NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeAccessTokenHandle.Kind_Ptr renames NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeAccessTokenHandle.Constructor; 
+         
    
 end;

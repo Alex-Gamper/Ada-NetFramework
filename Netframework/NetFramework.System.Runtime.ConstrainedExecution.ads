@@ -28,6 +28,10 @@
 --                                                                            --
 --------------------------------------------------------------------------------
 with NetFrameworkBase.System.Runtime.ConstrainedExecution.CriticalFinalizerObject;
+with NetFrameworkBase.System.Runtime.ConstrainedExecution.Consistency;
+with NetFrameworkBase.System.Runtime.ConstrainedExecution.Cer;
+with NetFrameworkBase.System.Runtime.ConstrainedExecution.ReliabilityContractAttribute;
+with NetFrameworkBase.System.Runtime.ConstrainedExecution.PrePrepareMethodAttribute;
 --------------------------------------------------------------------------------
 package NetFramework.System.Runtime.ConstrainedExecution is
    
@@ -35,5 +39,28 @@ package NetFramework.System.Runtime.ConstrainedExecution is
       subtype CriticalFinalizerObject is NetFrameworkBase.System.Runtime.ConstrainedExecution.CriticalFinalizerObject.Kind_Ptr;
       subtype CriticalFinalizerObject_Array is NetFrameworkBase.System.Runtime.ConstrainedExecution.CriticalFinalizerObject.Kind_Array;
       
+      --------------------------------------------------------------------------
+      subtype Consistency is NetFrameworkBase.System.Runtime.ConstrainedExecution.Consistency.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype Cer is NetFrameworkBase.System.Runtime.ConstrainedExecution.Cer.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype ReliabilityContractAttribute is NetFrameworkBase.System.Runtime.ConstrainedExecution.ReliabilityContractAttribute.Kind_Ptr;
+      subtype ReliabilityContractAttribute_Array is NetFrameworkBase.System.Runtime.ConstrainedExecution.ReliabilityContractAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            consistencyGuarantee : NetFrameworkBase.System.Runtime.ConstrainedExecution.Consistency.Kind;
+            cer : NetFrameworkBase.System.Runtime.ConstrainedExecution.Cer.Kind
+         )
+         return NetFrameworkBase.System.Runtime.ConstrainedExecution.ReliabilityContractAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.ConstrainedExecution.ReliabilityContractAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype PrePrepareMethodAttribute is NetFrameworkBase.System.Runtime.ConstrainedExecution.PrePrepareMethodAttribute.Kind_Ptr;
+      subtype PrePrepareMethodAttribute_Array is NetFrameworkBase.System.Runtime.ConstrainedExecution.PrePrepareMethodAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.ConstrainedExecution.PrePrepareMethodAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.ConstrainedExecution.PrePrepareMethodAttribute.Constructor;
+         
    
 end;

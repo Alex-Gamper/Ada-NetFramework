@@ -27,18 +27,46 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.Threading.Tasks.ParallelOptions;
+with NetFrameworkBase.System.Threading.Tasks.Parallel;
+with NetFrameworkBase.System.Threading.Tasks.ParallelLoopState;
+with NetFrameworkBase.System.Threading.Tasks.ParallelLoopResult;
 with NetFrameworkBase.System.Threading.Tasks.TaskStatus;
 with NetFrameworkBase.System.Threading.Tasks.Task_x;
 with NetFrameworkBase.System.Threading.Tasks.TaskCreationOptions;
 with NetFrameworkBase.System.Threading.Tasks.TaskContinuationOptions;
+with NetFrameworkBase.System.Threading.Tasks.TaskCanceledException;
+with NetFrameworkBase.System.Threading.Tasks.TaskSchedulerException;
 with NetFrameworkBase.System.Threading.Tasks.TaskFactory;
 with NetFrameworkBase.System.Threading.Tasks.TaskScheduler;
+with NetFrameworkBase.System.Threading.Tasks.UnobservedTaskExceptionEventArgs;
+with NetFrameworkBase.System.Threading.Tasks.ConcurrentExclusiveSchedulerPair;
 with NetFrameworkBase.System.Action;
 with NetFrameworkBase.System.Threading.CancellationToken;
 with NetFrameworkBase.System.Object;
+with NetFrameworkBase.System.Exception_x;
+with NetFrameworkBase.System.AggregateException;
 --------------------------------------------------------------------------------
 package NetFramework.System.Threading.Tasks is
    
+      --------------------------------------------------------------------------
+      subtype ParallelOptions is NetFrameworkBase.System.Threading.Tasks.ParallelOptions.Kind_Ptr;
+      subtype ParallelOptions_Array is NetFrameworkBase.System.Threading.Tasks.ParallelOptions.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Threading.Tasks.ParallelOptions.Kind_Ptr renames NetFrameworkBase.System.Threading.Tasks.ParallelOptions.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype Parallel is NetFrameworkBase.System.Threading.Tasks.Parallel.Kind_Ptr;
+      subtype Parallel_Array is NetFrameworkBase.System.Threading.Tasks.Parallel.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ParallelLoopState is NetFrameworkBase.System.Threading.Tasks.ParallelLoopState.Kind_Ptr;
+      subtype ParallelLoopState_Array is NetFrameworkBase.System.Threading.Tasks.ParallelLoopState.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ParallelLoopResult is NetFrameworkBase.System.Threading.Tasks.ParallelLoopResult.Kind_Ptr;
+      subtype ParallelLoopResult_Array is NetFrameworkBase.System.Threading.Tasks.ParallelLoopResult.Kind_Array;
+      
       --------------------------------------------------------------------------
       subtype TaskStatus is NetFrameworkBase.System.Threading.Tasks.TaskStatus.Kind;
       
@@ -81,6 +109,56 @@ package NetFramework.System.Threading.Tasks is
       subtype TaskContinuationOptions is NetFrameworkBase.System.Threading.Tasks.TaskContinuationOptions.Kind;
       
       --------------------------------------------------------------------------
+      subtype TaskCanceledException is NetFrameworkBase.System.Threading.Tasks.TaskCanceledException.Kind_Ptr;
+      subtype TaskCanceledException_Array is NetFrameworkBase.System.Threading.Tasks.TaskCanceledException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Threading.Tasks.TaskCanceledException.Kind_Ptr renames NetFrameworkBase.System.Threading.Tasks.TaskCanceledException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Threading.Tasks.TaskCanceledException.Kind_Ptr renames NetFrameworkBase.System.Threading.Tasks.TaskCanceledException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.Tasks.TaskCanceledException.Kind_Ptr renames NetFrameworkBase.System.Threading.Tasks.TaskCanceledException.Constructor; 
+         
+         function Constructor
+         (
+            task_x : NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.Tasks.TaskCanceledException.Kind_Ptr renames NetFrameworkBase.System.Threading.Tasks.TaskCanceledException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype TaskSchedulerException is NetFrameworkBase.System.Threading.Tasks.TaskSchedulerException.Kind_Ptr;
+      subtype TaskSchedulerException_Array is NetFrameworkBase.System.Threading.Tasks.TaskSchedulerException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Threading.Tasks.TaskSchedulerException.Kind_Ptr renames NetFrameworkBase.System.Threading.Tasks.TaskSchedulerException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Threading.Tasks.TaskSchedulerException.Kind_Ptr renames NetFrameworkBase.System.Threading.Tasks.TaskSchedulerException.Constructor; 
+         
+         function Constructor
+         (
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.Tasks.TaskSchedulerException.Kind_Ptr renames NetFrameworkBase.System.Threading.Tasks.TaskSchedulerException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.Tasks.TaskSchedulerException.Kind_Ptr renames NetFrameworkBase.System.Threading.Tasks.TaskSchedulerException.Constructor; 
+         
+      --------------------------------------------------------------------------
       subtype TaskFactory is NetFrameworkBase.System.Threading.Tasks.TaskFactory.Kind_Ptr;
       subtype TaskFactory_Array is NetFrameworkBase.System.Threading.Tasks.TaskFactory.Kind_Array;
       
@@ -118,5 +196,42 @@ package NetFramework.System.Threading.Tasks is
       subtype TaskScheduler is NetFrameworkBase.System.Threading.Tasks.TaskScheduler.Kind_Ptr;
       subtype TaskScheduler_Array is NetFrameworkBase.System.Threading.Tasks.TaskScheduler.Kind_Array;
       
+      --------------------------------------------------------------------------
+      subtype UnobservedTaskExceptionEventArgs is NetFrameworkBase.System.Threading.Tasks.UnobservedTaskExceptionEventArgs.Kind_Ptr;
+      subtype UnobservedTaskExceptionEventArgs_Array is NetFrameworkBase.System.Threading.Tasks.UnobservedTaskExceptionEventArgs.Kind_Array;
+      
+         function Constructor
+         (
+            exception_x : NetFrameworkBase.System.AggregateException.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.Tasks.UnobservedTaskExceptionEventArgs.Kind_Ptr renames NetFrameworkBase.System.Threading.Tasks.UnobservedTaskExceptionEventArgs.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ConcurrentExclusiveSchedulerPair is NetFrameworkBase.System.Threading.Tasks.ConcurrentExclusiveSchedulerPair.Kind_Ptr;
+      subtype ConcurrentExclusiveSchedulerPair_Array is NetFrameworkBase.System.Threading.Tasks.ConcurrentExclusiveSchedulerPair.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Threading.Tasks.ConcurrentExclusiveSchedulerPair.Kind_Ptr renames NetFrameworkBase.System.Threading.Tasks.ConcurrentExclusiveSchedulerPair.Constructor;
+         
+         function Constructor
+         (
+            taskScheduler : NetFrameworkBase.System.Threading.Tasks.TaskScheduler.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.Tasks.ConcurrentExclusiveSchedulerPair.Kind_Ptr renames NetFrameworkBase.System.Threading.Tasks.ConcurrentExclusiveSchedulerPair.Constructor; 
+         
+         function Constructor
+         (
+            taskScheduler : NetFrameworkBase.System.Threading.Tasks.TaskScheduler.Kind_Ptr;
+            maxConcurrencyLevel : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Threading.Tasks.ConcurrentExclusiveSchedulerPair.Kind_Ptr renames NetFrameworkBase.System.Threading.Tasks.ConcurrentExclusiveSchedulerPair.Constructor; 
+         
+         function Constructor
+         (
+            taskScheduler : NetFrameworkBase.System.Threading.Tasks.TaskScheduler.Kind_Ptr;
+            maxConcurrencyLevel : NetFrameworkBase.Int32;
+            maxItemsPerTask : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Threading.Tasks.ConcurrentExclusiveSchedulerPair.Kind_Ptr renames NetFrameworkBase.System.Threading.Tasks.ConcurrentExclusiveSchedulerPair.Constructor; 
+         
    
 end;

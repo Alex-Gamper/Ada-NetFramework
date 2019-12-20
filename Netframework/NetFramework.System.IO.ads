@@ -27,31 +27,120 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.IO.BinaryReader;
+with NetFrameworkBase.System.IO.BinaryWriter;
+with NetFrameworkBase.System.IO.BufferedStream;
 with NetFrameworkBase.System.IO.Directory;
 with NetFrameworkBase.System.IO.DirectoryInfo;
 with NetFrameworkBase.System.IO.SearchOption;
+with NetFrameworkBase.System.IO.DirectoryNotFoundException;
+with NetFrameworkBase.System.IO.DriveType;
+with NetFrameworkBase.System.IO.DriveInfo;
+with NetFrameworkBase.System.IO.DriveNotFoundException;
+with NetFrameworkBase.System.IO.EndOfStreamException;
 with NetFrameworkBase.System.IO.File;
 with NetFrameworkBase.System.IO.FileAccess;
 with NetFrameworkBase.System.IO.FileInfo;
+with NetFrameworkBase.System.IO.FileLoadException;
 with NetFrameworkBase.System.IO.FileMode;
+with NetFrameworkBase.System.IO.FileNotFoundException;
 with NetFrameworkBase.System.IO.FileOptions;
 with NetFrameworkBase.System.IO.FileShare;
 with NetFrameworkBase.System.IO.FileStream;
 with NetFrameworkBase.System.IO.FileSystemInfo;
 with NetFrameworkBase.System.IO.FileAttributes;
+with NetFrameworkBase.System.IO.IOException;
+with NetFrameworkBase.System.IO.MemoryStream;
+with NetFrameworkBase.System.IO.Path;
+with NetFrameworkBase.System.IO.PathTooLongException;
 with NetFrameworkBase.System.IO.SeekOrigin;
 with NetFrameworkBase.System.IO.Stream;
 with NetFrameworkBase.System.IO.StreamReader;
 with NetFrameworkBase.System.IO.StreamWriter;
+with NetFrameworkBase.System.IO.StringReader;
+with NetFrameworkBase.System.IO.StringWriter;
 with NetFrameworkBase.System.IO.TextReader;
 with NetFrameworkBase.System.IO.TextWriter;
+with NetFrameworkBase.System.IO.UnmanagedMemoryAccessor;
+with NetFrameworkBase.System.IO.UnmanagedMemoryStream;
+with NetFrameworkBase.System.Text.Encoding;
+with NetFrameworkBase.System.Exception_x;
 with NetFrameworkBase.System.Security.AccessControl.FileSystemRights;
 with NetFrameworkBase.System.Security.AccessControl.FileSecurity;
 with NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeFileHandle;
-with NetFrameworkBase.System.Text.Encoding;
+with NetFrameworkBase.System.IFormatProvider;
+with NetFrameworkBase.System.Text.StringBuilder;
+with NetFrameworkBase.System.Runtime.InteropServices.SafeBuffer;
 --------------------------------------------------------------------------------
 package NetFramework.System.IO is
    
+      --------------------------------------------------------------------------
+      subtype BinaryReader is NetFrameworkBase.System.IO.BinaryReader.Kind_Ptr;
+      subtype BinaryReader_Array is NetFrameworkBase.System.IO.BinaryReader.Kind_Array;
+      
+         function Constructor
+         (
+            input : NetFrameworkBase.System.IO.Stream.Kind_Ptr
+         )
+         return NetFrameworkBase.System.IO.BinaryReader.Kind_Ptr renames NetFrameworkBase.System.IO.BinaryReader.Constructor; 
+         
+         function Constructor
+         (
+            input : NetFrameworkBase.System.IO.Stream.Kind_Ptr;
+            encoding : NetFrameworkBase.System.Text.Encoding.Kind_Ptr
+         )
+         return NetFrameworkBase.System.IO.BinaryReader.Kind_Ptr renames NetFrameworkBase.System.IO.BinaryReader.Constructor; 
+         
+         function Constructor
+         (
+            input : NetFrameworkBase.System.IO.Stream.Kind_Ptr;
+            encoding : NetFrameworkBase.System.Text.Encoding.Kind_Ptr;
+            leaveOpen : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.IO.BinaryReader.Kind_Ptr renames NetFrameworkBase.System.IO.BinaryReader.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype BinaryWriter is NetFrameworkBase.System.IO.BinaryWriter.Kind_Ptr;
+      subtype BinaryWriter_Array is NetFrameworkBase.System.IO.BinaryWriter.Kind_Array;
+      
+         function Constructor
+         (
+            output : NetFrameworkBase.System.IO.Stream.Kind_Ptr
+         )
+         return NetFrameworkBase.System.IO.BinaryWriter.Kind_Ptr renames NetFrameworkBase.System.IO.BinaryWriter.Constructor; 
+         
+         function Constructor
+         (
+            output : NetFrameworkBase.System.IO.Stream.Kind_Ptr;
+            encoding : NetFrameworkBase.System.Text.Encoding.Kind_Ptr
+         )
+         return NetFrameworkBase.System.IO.BinaryWriter.Kind_Ptr renames NetFrameworkBase.System.IO.BinaryWriter.Constructor; 
+         
+         function Constructor
+         (
+            output : NetFrameworkBase.System.IO.Stream.Kind_Ptr;
+            encoding : NetFrameworkBase.System.Text.Encoding.Kind_Ptr;
+            leaveOpen : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.IO.BinaryWriter.Kind_Ptr renames NetFrameworkBase.System.IO.BinaryWriter.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype BufferedStream is NetFrameworkBase.System.IO.BufferedStream.Kind_Ptr;
+      subtype BufferedStream_Array is NetFrameworkBase.System.IO.BufferedStream.Kind_Array;
+      
+         function Constructor
+         (
+            stream : NetFrameworkBase.System.IO.Stream.Kind_Ptr
+         )
+         return NetFrameworkBase.System.IO.BufferedStream.Kind_Ptr renames NetFrameworkBase.System.IO.BufferedStream.Constructor; 
+         
+         function Constructor
+         (
+            stream : NetFrameworkBase.System.IO.Stream.Kind_Ptr;
+            bufferSize : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.IO.BufferedStream.Kind_Ptr renames NetFrameworkBase.System.IO.BufferedStream.Constructor; 
+         
       --------------------------------------------------------------------------
       subtype Directory is NetFrameworkBase.System.IO.Directory.Kind_Ptr;
       subtype Directory_Array is NetFrameworkBase.System.IO.Directory.Kind_Array;
@@ -70,6 +159,76 @@ package NetFramework.System.IO is
       subtype SearchOption is NetFrameworkBase.System.IO.SearchOption.Kind;
       
       --------------------------------------------------------------------------
+      subtype DirectoryNotFoundException is NetFrameworkBase.System.IO.DirectoryNotFoundException.Kind_Ptr;
+      subtype DirectoryNotFoundException_Array is NetFrameworkBase.System.IO.DirectoryNotFoundException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.IO.DirectoryNotFoundException.Kind_Ptr renames NetFrameworkBase.System.IO.DirectoryNotFoundException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.IO.DirectoryNotFoundException.Kind_Ptr renames NetFrameworkBase.System.IO.DirectoryNotFoundException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.IO.DirectoryNotFoundException.Kind_Ptr renames NetFrameworkBase.System.IO.DirectoryNotFoundException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype DriveType is NetFrameworkBase.System.IO.DriveType.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype DriveInfo is NetFrameworkBase.System.IO.DriveInfo.Kind_Ptr;
+      subtype DriveInfo_Array is NetFrameworkBase.System.IO.DriveInfo.Kind_Array;
+      
+         function Constructor
+         (
+            driveName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.IO.DriveInfo.Kind_Ptr renames NetFrameworkBase.System.IO.DriveInfo.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype DriveNotFoundException is NetFrameworkBase.System.IO.DriveNotFoundException.Kind_Ptr;
+      subtype DriveNotFoundException_Array is NetFrameworkBase.System.IO.DriveNotFoundException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.IO.DriveNotFoundException.Kind_Ptr renames NetFrameworkBase.System.IO.DriveNotFoundException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.IO.DriveNotFoundException.Kind_Ptr renames NetFrameworkBase.System.IO.DriveNotFoundException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.IO.DriveNotFoundException.Kind_Ptr renames NetFrameworkBase.System.IO.DriveNotFoundException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype EndOfStreamException is NetFrameworkBase.System.IO.EndOfStreamException.Kind_Ptr;
+      subtype EndOfStreamException_Array is NetFrameworkBase.System.IO.EndOfStreamException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.IO.EndOfStreamException.Kind_Ptr renames NetFrameworkBase.System.IO.EndOfStreamException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.IO.EndOfStreamException.Kind_Ptr renames NetFrameworkBase.System.IO.EndOfStreamException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.IO.EndOfStreamException.Kind_Ptr renames NetFrameworkBase.System.IO.EndOfStreamException.Constructor; 
+         
+      --------------------------------------------------------------------------
       subtype File is NetFrameworkBase.System.IO.File.Kind_Ptr;
       subtype File_Array is NetFrameworkBase.System.IO.File.Kind_Array;
       
@@ -87,8 +246,76 @@ package NetFramework.System.IO is
          return NetFrameworkBase.System.IO.FileInfo.Kind_Ptr renames NetFrameworkBase.System.IO.FileInfo.Constructor; 
          
       --------------------------------------------------------------------------
+      subtype FileLoadException is NetFrameworkBase.System.IO.FileLoadException.Kind_Ptr;
+      subtype FileLoadException_Array is NetFrameworkBase.System.IO.FileLoadException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.IO.FileLoadException.Kind_Ptr renames NetFrameworkBase.System.IO.FileLoadException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.IO.FileLoadException.Kind_Ptr renames NetFrameworkBase.System.IO.FileLoadException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.IO.FileLoadException.Kind_Ptr renames NetFrameworkBase.System.IO.FileLoadException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            fileName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.IO.FileLoadException.Kind_Ptr renames NetFrameworkBase.System.IO.FileLoadException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            fileName : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.IO.FileLoadException.Kind_Ptr renames NetFrameworkBase.System.IO.FileLoadException.Constructor; 
+         
+      --------------------------------------------------------------------------
       subtype FileMode is NetFrameworkBase.System.IO.FileMode.Kind;
       
+      --------------------------------------------------------------------------
+      subtype FileNotFoundException is NetFrameworkBase.System.IO.FileNotFoundException.Kind_Ptr;
+      subtype FileNotFoundException_Array is NetFrameworkBase.System.IO.FileNotFoundException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.IO.FileNotFoundException.Kind_Ptr renames NetFrameworkBase.System.IO.FileNotFoundException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.IO.FileNotFoundException.Kind_Ptr renames NetFrameworkBase.System.IO.FileNotFoundException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.IO.FileNotFoundException.Kind_Ptr renames NetFrameworkBase.System.IO.FileNotFoundException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            fileName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.IO.FileNotFoundException.Kind_Ptr renames NetFrameworkBase.System.IO.FileNotFoundException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            fileName : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.IO.FileNotFoundException.Kind_Ptr renames NetFrameworkBase.System.IO.FileNotFoundException.Constructor; 
+         
       --------------------------------------------------------------------------
       subtype FileOptions is NetFrameworkBase.System.IO.FileOptions.Kind;
       
@@ -243,6 +470,107 @@ package NetFramework.System.IO is
       --------------------------------------------------------------------------
       subtype FileAttributes is NetFrameworkBase.System.IO.FileAttributes.Kind;
       
+      --------------------------------------------------------------------------
+      subtype IOException is NetFrameworkBase.System.IO.IOException.Kind_Ptr;
+      subtype IOException_Array is NetFrameworkBase.System.IO.IOException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.IO.IOException.Kind_Ptr renames NetFrameworkBase.System.IO.IOException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.IO.IOException.Kind_Ptr renames NetFrameworkBase.System.IO.IOException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            HResult_x : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.IO.IOException.Kind_Ptr renames NetFrameworkBase.System.IO.IOException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.IO.IOException.Kind_Ptr renames NetFrameworkBase.System.IO.IOException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype MemoryStream is NetFrameworkBase.System.IO.MemoryStream.Kind_Ptr;
+      subtype MemoryStream_Array is NetFrameworkBase.System.IO.MemoryStream.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.IO.MemoryStream.Kind_Ptr renames NetFrameworkBase.System.IO.MemoryStream.Constructor;
+         
+         function Constructor
+         (
+            capacity : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.IO.MemoryStream.Kind_Ptr renames NetFrameworkBase.System.IO.MemoryStream.Constructor; 
+         
+         function Constructor
+         (
+            buffer : NetFrameworkBase.Byte_Array
+         )
+         return NetFrameworkBase.System.IO.MemoryStream.Kind_Ptr renames NetFrameworkBase.System.IO.MemoryStream.Constructor; 
+         
+         function Constructor
+         (
+            buffer : NetFrameworkBase.Byte_Array;
+            writable : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.IO.MemoryStream.Kind_Ptr renames NetFrameworkBase.System.IO.MemoryStream.Constructor; 
+         
+         function Constructor
+         (
+            buffer : NetFrameworkBase.Byte_Array;
+            index : NetFrameworkBase.Int32;
+            count : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.IO.MemoryStream.Kind_Ptr renames NetFrameworkBase.System.IO.MemoryStream.Constructor; 
+         
+         function Constructor
+         (
+            buffer : NetFrameworkBase.Byte_Array;
+            index : NetFrameworkBase.Int32;
+            count : NetFrameworkBase.Int32;
+            writable : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.IO.MemoryStream.Kind_Ptr renames NetFrameworkBase.System.IO.MemoryStream.Constructor; 
+         
+         function Constructor
+         (
+            buffer : NetFrameworkBase.Byte_Array;
+            index : NetFrameworkBase.Int32;
+            count : NetFrameworkBase.Int32;
+            writable : NetFrameworkBase.Boolean;
+            publiclyVisible : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.IO.MemoryStream.Kind_Ptr renames NetFrameworkBase.System.IO.MemoryStream.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype Path is NetFrameworkBase.System.IO.Path.Kind_Ptr;
+      subtype Path_Array is NetFrameworkBase.System.IO.Path.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype PathTooLongException is NetFrameworkBase.System.IO.PathTooLongException.Kind_Ptr;
+      subtype PathTooLongException_Array is NetFrameworkBase.System.IO.PathTooLongException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.IO.PathTooLongException.Kind_Ptr renames NetFrameworkBase.System.IO.PathTooLongException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.IO.PathTooLongException.Kind_Ptr renames NetFrameworkBase.System.IO.PathTooLongException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.IO.PathTooLongException.Kind_Ptr renames NetFrameworkBase.System.IO.PathTooLongException.Constructor; 
+         
       --------------------------------------------------------------------------
       subtype SeekOrigin is NetFrameworkBase.System.IO.SeekOrigin.Kind;
       
@@ -403,6 +731,41 @@ package NetFramework.System.IO is
          return NetFrameworkBase.System.IO.StreamWriter.Kind_Ptr renames NetFrameworkBase.System.IO.StreamWriter.Constructor; 
          
       --------------------------------------------------------------------------
+      subtype StringReader is NetFrameworkBase.System.IO.StringReader.Kind_Ptr;
+      subtype StringReader_Array is NetFrameworkBase.System.IO.StringReader.Kind_Array;
+      
+         function Constructor
+         (
+            s : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.IO.StringReader.Kind_Ptr renames NetFrameworkBase.System.IO.StringReader.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype StringWriter is NetFrameworkBase.System.IO.StringWriter.Kind_Ptr;
+      subtype StringWriter_Array is NetFrameworkBase.System.IO.StringWriter.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.IO.StringWriter.Kind_Ptr renames NetFrameworkBase.System.IO.StringWriter.Constructor;
+         
+         function Constructor
+         (
+            formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
+         )
+         return NetFrameworkBase.System.IO.StringWriter.Kind_Ptr renames NetFrameworkBase.System.IO.StringWriter.Constructor; 
+         
+         function Constructor
+         (
+            sb : NetFrameworkBase.System.Text.StringBuilder.Kind_Ptr
+         )
+         return NetFrameworkBase.System.IO.StringWriter.Kind_Ptr renames NetFrameworkBase.System.IO.StringWriter.Constructor; 
+         
+         function Constructor
+         (
+            sb : NetFrameworkBase.System.Text.StringBuilder.Kind_Ptr;
+            formatProvider : NetFrameworkBase.System.IFormatProvider.Kind_Ptr
+         )
+         return NetFrameworkBase.System.IO.StringWriter.Kind_Ptr renames NetFrameworkBase.System.IO.StringWriter.Constructor; 
+         
+      --------------------------------------------------------------------------
       subtype TextReader is NetFrameworkBase.System.IO.TextReader.Kind_Ptr;
       subtype TextReader_Array is NetFrameworkBase.System.IO.TextReader.Kind_Array;
       
@@ -410,5 +773,63 @@ package NetFramework.System.IO is
       subtype TextWriter is NetFrameworkBase.System.IO.TextWriter.Kind_Ptr;
       subtype TextWriter_Array is NetFrameworkBase.System.IO.TextWriter.Kind_Array;
       
+      --------------------------------------------------------------------------
+      subtype UnmanagedMemoryAccessor is NetFrameworkBase.System.IO.UnmanagedMemoryAccessor.Kind_Ptr;
+      subtype UnmanagedMemoryAccessor_Array is NetFrameworkBase.System.IO.UnmanagedMemoryAccessor.Kind_Array;
+      
+         function Constructor
+         (
+            buffer : NetFrameworkBase.System.Runtime.InteropServices.SafeBuffer.Kind_Ptr;
+            offset : NetFrameworkBase.Int64;
+            capacity : NetFrameworkBase.Int64
+         )
+         return NetFrameworkBase.System.IO.UnmanagedMemoryAccessor.Kind_Ptr renames NetFrameworkBase.System.IO.UnmanagedMemoryAccessor.Constructor; 
+         
+         function Constructor
+         (
+            buffer : NetFrameworkBase.System.Runtime.InteropServices.SafeBuffer.Kind_Ptr;
+            offset : NetFrameworkBase.Int64;
+            capacity : NetFrameworkBase.Int64;
+            access_x : NetFrameworkBase.System.IO.FileAccess.Kind
+         )
+         return NetFrameworkBase.System.IO.UnmanagedMemoryAccessor.Kind_Ptr renames NetFrameworkBase.System.IO.UnmanagedMemoryAccessor.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype UnmanagedMemoryStream is NetFrameworkBase.System.IO.UnmanagedMemoryStream.Kind_Ptr;
+      subtype UnmanagedMemoryStream_Array is NetFrameworkBase.System.IO.UnmanagedMemoryStream.Kind_Array;
+      
+         function Constructor
+         (
+            buffer : NetFrameworkBase.System.Runtime.InteropServices.SafeBuffer.Kind_Ptr;
+            offset : NetFrameworkBase.Int64;
+            length : NetFrameworkBase.Int64
+         )
+         return NetFrameworkBase.System.IO.UnmanagedMemoryStream.Kind_Ptr renames NetFrameworkBase.System.IO.UnmanagedMemoryStream.Constructor; 
+         
+         function Constructor
+         (
+            buffer : NetFrameworkBase.System.Runtime.InteropServices.SafeBuffer.Kind_Ptr;
+            offset : NetFrameworkBase.Int64;
+            length : NetFrameworkBase.Int64;
+            access_x : NetFrameworkBase.System.IO.FileAccess.Kind
+         )
+         return NetFrameworkBase.System.IO.UnmanagedMemoryStream.Kind_Ptr renames NetFrameworkBase.System.IO.UnmanagedMemoryStream.Constructor; 
+         
+         function Constructor
+         (
+            pointer : NetFrameworkBase.Byte_Ptr;
+            length : NetFrameworkBase.Int64
+         )
+         return NetFrameworkBase.System.IO.UnmanagedMemoryStream.Kind_Ptr renames NetFrameworkBase.System.IO.UnmanagedMemoryStream.Constructor; 
+         
+         function Constructor
+         (
+            pointer : NetFrameworkBase.Byte_Ptr;
+            length : NetFrameworkBase.Int64;
+            capacity : NetFrameworkBase.Int64;
+            access_x : NetFrameworkBase.System.IO.FileAccess.Kind
+         )
+         return NetFrameworkBase.System.IO.UnmanagedMemoryStream.Kind_Ptr renames NetFrameworkBase.System.IO.UnmanagedMemoryStream.Constructor; 
+         
    
 end;

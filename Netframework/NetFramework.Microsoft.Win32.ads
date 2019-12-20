@@ -27,6 +27,42 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.Microsoft.Win32.Registry;
+with NetFrameworkBase.Microsoft.Win32.RegistryHive;
+with NetFrameworkBase.Microsoft.Win32.RegistryKey;
+with NetFrameworkBase.Microsoft.Win32.RegistryValueOptions;
+with NetFrameworkBase.Microsoft.Win32.RegistryKeyPermissionCheck;
+with NetFrameworkBase.Microsoft.Win32.RegistryOptions;
+with NetFrameworkBase.Microsoft.Win32.RegistryValueKind;
+with NetFrameworkBase.Microsoft.Win32.RegistryView;
 --------------------------------------------------------------------------------
 package NetFramework.Microsoft.Win32 is
+   
+      --------------------------------------------------------------------------
+      subtype Registry is NetFrameworkBase.Microsoft.Win32.Registry.Kind_Ptr;
+      subtype Registry_Array is NetFrameworkBase.Microsoft.Win32.Registry.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype RegistryHive is NetFrameworkBase.Microsoft.Win32.RegistryHive.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype RegistryKey is NetFrameworkBase.Microsoft.Win32.RegistryKey.Kind_Ptr;
+      subtype RegistryKey_Array is NetFrameworkBase.Microsoft.Win32.RegistryKey.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype RegistryValueOptions is NetFrameworkBase.Microsoft.Win32.RegistryValueOptions.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype RegistryKeyPermissionCheck is NetFrameworkBase.Microsoft.Win32.RegistryKeyPermissionCheck.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype RegistryOptions is NetFrameworkBase.Microsoft.Win32.RegistryOptions.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype RegistryValueKind is NetFrameworkBase.Microsoft.Win32.RegistryValueKind.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype RegistryView is NetFrameworkBase.Microsoft.Win32.RegistryView.Kind;
+      
+   
 end;

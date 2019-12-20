@@ -27,15 +27,40 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.Runtime.Remoting.IObjectHandle;
+with NetFrameworkBase.System.Runtime.Remoting.WellKnownObjectMode;
 with NetFrameworkBase.System.Runtime.Remoting.IRemotingTypeInfo;
 with NetFrameworkBase.System.Runtime.Remoting.IChannelInfo;
 with NetFrameworkBase.System.Runtime.Remoting.IEnvoyInfo;
 with NetFrameworkBase.System.Runtime.Remoting.ObjRef;
+with NetFrameworkBase.System.Runtime.Remoting.RemotingConfiguration;
+with NetFrameworkBase.System.Runtime.Remoting.TypeEntry;
+with NetFrameworkBase.System.Runtime.Remoting.ActivatedClientTypeEntry;
+with NetFrameworkBase.System.Runtime.Remoting.ActivatedServiceTypeEntry;
+with NetFrameworkBase.System.Runtime.Remoting.WellKnownClientTypeEntry;
+with NetFrameworkBase.System.Runtime.Remoting.WellKnownServiceTypeEntry;
+with NetFrameworkBase.System.Runtime.Remoting.CustomErrorsModes;
+with NetFrameworkBase.System.Runtime.Remoting.RemotingException;
+with NetFrameworkBase.System.Runtime.Remoting.ServerException;
+with NetFrameworkBase.System.Runtime.Remoting.RemotingTimeoutException;
+with NetFrameworkBase.System.Runtime.Remoting.RemotingServices;
+with NetFrameworkBase.System.Runtime.Remoting.InternalRemotingServices;
+with NetFrameworkBase.System.Runtime.Remoting.SoapServices;
+with NetFrameworkBase.System.Runtime.Remoting.ObjectHandle;
 with NetFrameworkBase.System.MarshalByRefObject;
 with NetFrameworkBase.System.Type_x;
+with NetFrameworkBase.System.Exception_x;
+with NetFrameworkBase.System.Object;
 --------------------------------------------------------------------------------
 package NetFramework.System.Runtime.Remoting is
    
+      --------------------------------------------------------------------------
+      subtype IObjectHandle is NetFrameworkBase.System.Runtime.Remoting.IObjectHandle.Kind_Ptr;
+      subtype IObjectHandle_Array is NetFrameworkBase.System.Runtime.Remoting.IObjectHandle.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype WellKnownObjectMode is NetFrameworkBase.System.Runtime.Remoting.WellKnownObjectMode.Kind;
+      
       --------------------------------------------------------------------------
       subtype IRemotingTypeInfo is NetFrameworkBase.System.Runtime.Remoting.IRemotingTypeInfo.Kind_Ptr;
       subtype IRemotingTypeInfo_Array is NetFrameworkBase.System.Runtime.Remoting.IRemotingTypeInfo.Kind_Array;
@@ -60,6 +85,174 @@ package NetFramework.System.Runtime.Remoting is
          return NetFrameworkBase.System.Runtime.Remoting.ObjRef.Kind_Ptr renames NetFrameworkBase.System.Runtime.Remoting.ObjRef.Constructor; 
          
          function Constructor return NetFrameworkBase.System.Runtime.Remoting.ObjRef.Kind_Ptr renames NetFrameworkBase.System.Runtime.Remoting.ObjRef.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype RemotingConfiguration is NetFrameworkBase.System.Runtime.Remoting.RemotingConfiguration.Kind_Ptr;
+      subtype RemotingConfiguration_Array is NetFrameworkBase.System.Runtime.Remoting.RemotingConfiguration.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype TypeEntry is NetFrameworkBase.System.Runtime.Remoting.TypeEntry.Kind_Ptr;
+      subtype TypeEntry_Array is NetFrameworkBase.System.Runtime.Remoting.TypeEntry.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ActivatedClientTypeEntry is NetFrameworkBase.System.Runtime.Remoting.ActivatedClientTypeEntry.Kind_Ptr;
+      subtype ActivatedClientTypeEntry_Array is NetFrameworkBase.System.Runtime.Remoting.ActivatedClientTypeEntry.Kind_Array;
+      
+         function Constructor
+         (
+            typeName : NetFrameworkBase.BSTR;
+            assemblyName : NetFrameworkBase.BSTR;
+            appUrl : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.Remoting.ActivatedClientTypeEntry.Kind_Ptr renames NetFrameworkBase.System.Runtime.Remoting.ActivatedClientTypeEntry.Constructor; 
+         
+         function Constructor
+         (
+            type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
+            appUrl : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.Remoting.ActivatedClientTypeEntry.Kind_Ptr renames NetFrameworkBase.System.Runtime.Remoting.ActivatedClientTypeEntry.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ActivatedServiceTypeEntry is NetFrameworkBase.System.Runtime.Remoting.ActivatedServiceTypeEntry.Kind_Ptr;
+      subtype ActivatedServiceTypeEntry_Array is NetFrameworkBase.System.Runtime.Remoting.ActivatedServiceTypeEntry.Kind_Array;
+      
+         function Constructor
+         (
+            typeName : NetFrameworkBase.BSTR;
+            assemblyName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.Remoting.ActivatedServiceTypeEntry.Kind_Ptr renames NetFrameworkBase.System.Runtime.Remoting.ActivatedServiceTypeEntry.Constructor; 
+         
+         function Constructor
+         (
+            type_x : NetFrameworkBase.System.Type_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.Remoting.ActivatedServiceTypeEntry.Kind_Ptr renames NetFrameworkBase.System.Runtime.Remoting.ActivatedServiceTypeEntry.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype WellKnownClientTypeEntry is NetFrameworkBase.System.Runtime.Remoting.WellKnownClientTypeEntry.Kind_Ptr;
+      subtype WellKnownClientTypeEntry_Array is NetFrameworkBase.System.Runtime.Remoting.WellKnownClientTypeEntry.Kind_Array;
+      
+         function Constructor
+         (
+            typeName : NetFrameworkBase.BSTR;
+            assemblyName : NetFrameworkBase.BSTR;
+            objectUrl : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.Remoting.WellKnownClientTypeEntry.Kind_Ptr renames NetFrameworkBase.System.Runtime.Remoting.WellKnownClientTypeEntry.Constructor; 
+         
+         function Constructor
+         (
+            type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
+            objectUrl : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.Remoting.WellKnownClientTypeEntry.Kind_Ptr renames NetFrameworkBase.System.Runtime.Remoting.WellKnownClientTypeEntry.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype WellKnownServiceTypeEntry is NetFrameworkBase.System.Runtime.Remoting.WellKnownServiceTypeEntry.Kind_Ptr;
+      subtype WellKnownServiceTypeEntry_Array is NetFrameworkBase.System.Runtime.Remoting.WellKnownServiceTypeEntry.Kind_Array;
+      
+         function Constructor
+         (
+            typeName : NetFrameworkBase.BSTR;
+            assemblyName : NetFrameworkBase.BSTR;
+            objectUri : NetFrameworkBase.BSTR;
+            mode : NetFrameworkBase.System.Runtime.Remoting.WellKnownObjectMode.Kind
+         )
+         return NetFrameworkBase.System.Runtime.Remoting.WellKnownServiceTypeEntry.Kind_Ptr renames NetFrameworkBase.System.Runtime.Remoting.WellKnownServiceTypeEntry.Constructor; 
+         
+         function Constructor
+         (
+            type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
+            objectUri : NetFrameworkBase.BSTR;
+            mode : NetFrameworkBase.System.Runtime.Remoting.WellKnownObjectMode.Kind
+         )
+         return NetFrameworkBase.System.Runtime.Remoting.WellKnownServiceTypeEntry.Kind_Ptr renames NetFrameworkBase.System.Runtime.Remoting.WellKnownServiceTypeEntry.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CustomErrorsModes is NetFrameworkBase.System.Runtime.Remoting.CustomErrorsModes.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype RemotingException is NetFrameworkBase.System.Runtime.Remoting.RemotingException.Kind_Ptr;
+      subtype RemotingException_Array is NetFrameworkBase.System.Runtime.Remoting.RemotingException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.Remoting.RemotingException.Kind_Ptr renames NetFrameworkBase.System.Runtime.Remoting.RemotingException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.Remoting.RemotingException.Kind_Ptr renames NetFrameworkBase.System.Runtime.Remoting.RemotingException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            InnerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.Remoting.RemotingException.Kind_Ptr renames NetFrameworkBase.System.Runtime.Remoting.RemotingException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ServerException is NetFrameworkBase.System.Runtime.Remoting.ServerException.Kind_Ptr;
+      subtype ServerException_Array is NetFrameworkBase.System.Runtime.Remoting.ServerException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.Remoting.ServerException.Kind_Ptr renames NetFrameworkBase.System.Runtime.Remoting.ServerException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.Remoting.ServerException.Kind_Ptr renames NetFrameworkBase.System.Runtime.Remoting.ServerException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            InnerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.Remoting.ServerException.Kind_Ptr renames NetFrameworkBase.System.Runtime.Remoting.ServerException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype RemotingTimeoutException is NetFrameworkBase.System.Runtime.Remoting.RemotingTimeoutException.Kind_Ptr;
+      subtype RemotingTimeoutException_Array is NetFrameworkBase.System.Runtime.Remoting.RemotingTimeoutException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.Remoting.RemotingTimeoutException.Kind_Ptr renames NetFrameworkBase.System.Runtime.Remoting.RemotingTimeoutException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.Remoting.RemotingTimeoutException.Kind_Ptr renames NetFrameworkBase.System.Runtime.Remoting.RemotingTimeoutException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            InnerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.Remoting.RemotingTimeoutException.Kind_Ptr renames NetFrameworkBase.System.Runtime.Remoting.RemotingTimeoutException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype RemotingServices is NetFrameworkBase.System.Runtime.Remoting.RemotingServices.Kind_Ptr;
+      subtype RemotingServices_Array is NetFrameworkBase.System.Runtime.Remoting.RemotingServices.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype InternalRemotingServices is NetFrameworkBase.System.Runtime.Remoting.InternalRemotingServices.Kind_Ptr;
+      subtype InternalRemotingServices_Array is NetFrameworkBase.System.Runtime.Remoting.InternalRemotingServices.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.Remoting.InternalRemotingServices.Kind_Ptr renames NetFrameworkBase.System.Runtime.Remoting.InternalRemotingServices.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SoapServices is NetFrameworkBase.System.Runtime.Remoting.SoapServices.Kind_Ptr;
+      subtype SoapServices_Array is NetFrameworkBase.System.Runtime.Remoting.SoapServices.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ObjectHandle is NetFrameworkBase.System.Runtime.Remoting.ObjectHandle.Kind_Ptr;
+      subtype ObjectHandle_Array is NetFrameworkBase.System.Runtime.Remoting.ObjectHandle.Kind_Array;
+      
+         function Constructor
+         (
+            o : NetFrameworkBase.System.Object.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.Remoting.ObjectHandle.Kind_Ptr renames NetFrameworkBase.System.Runtime.Remoting.ObjectHandle.Constructor; 
          
    
 end;

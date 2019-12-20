@@ -27,6 +27,59 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.Runtime.MemoryFailPoint;
+with NetFrameworkBase.System.Runtime.GCLargeObjectHeapCompactionMode;
+with NetFrameworkBase.System.Runtime.GCLatencyMode;
+with NetFrameworkBase.System.Runtime.GCSettings;
+with NetFrameworkBase.System.Runtime.AssemblyTargetedPatchBandAttribute;
+with NetFrameworkBase.System.Runtime.TargetedPatchingOptOutAttribute;
+with NetFrameworkBase.System.Runtime.ProfileOptimization;
 --------------------------------------------------------------------------------
 package NetFramework.System.Runtime is
+   
+      --------------------------------------------------------------------------
+      subtype MemoryFailPoint is NetFrameworkBase.System.Runtime.MemoryFailPoint.Kind_Ptr;
+      subtype MemoryFailPoint_Array is NetFrameworkBase.System.Runtime.MemoryFailPoint.Kind_Array;
+      
+         function Constructor
+         (
+            sizeInMegabytes : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Runtime.MemoryFailPoint.Kind_Ptr renames NetFrameworkBase.System.Runtime.MemoryFailPoint.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype GCLargeObjectHeapCompactionMode is NetFrameworkBase.System.Runtime.GCLargeObjectHeapCompactionMode.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype GCLatencyMode is NetFrameworkBase.System.Runtime.GCLatencyMode.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype GCSettings is NetFrameworkBase.System.Runtime.GCSettings.Kind_Ptr;
+      subtype GCSettings_Array is NetFrameworkBase.System.Runtime.GCSettings.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype AssemblyTargetedPatchBandAttribute is NetFrameworkBase.System.Runtime.AssemblyTargetedPatchBandAttribute.Kind_Ptr;
+      subtype AssemblyTargetedPatchBandAttribute_Array is NetFrameworkBase.System.Runtime.AssemblyTargetedPatchBandAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            targetedPatchBand : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.AssemblyTargetedPatchBandAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.AssemblyTargetedPatchBandAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype TargetedPatchingOptOutAttribute is NetFrameworkBase.System.Runtime.TargetedPatchingOptOutAttribute.Kind_Ptr;
+      subtype TargetedPatchingOptOutAttribute_Array is NetFrameworkBase.System.Runtime.TargetedPatchingOptOutAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            reason : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.TargetedPatchingOptOutAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.TargetedPatchingOptOutAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ProfileOptimization is NetFrameworkBase.System.Runtime.ProfileOptimization.Kind_Ptr;
+      subtype ProfileOptimization_Array is NetFrameworkBase.System.Runtime.ProfileOptimization.Kind_Array;
+      
+   
 end;
