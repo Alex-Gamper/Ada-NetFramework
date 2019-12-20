@@ -31,6 +31,7 @@ with NetFrameworkBase.System.Security.Principal.IdentityReference;
 --------------------------------------------------------------------------------
 package NetFramework.System.Security.Principal is
    
+      --------------------------------------------------------------------------
       subtype IdentityReference is NetFrameworkBase.System.Security.Principal.IdentityReference.Kind_Ptr;
       subtype IdentityReference_Array is NetFrameworkBase.System.Security.Principal.IdentityReference.Kind_Array;
       

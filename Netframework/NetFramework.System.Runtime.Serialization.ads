@@ -41,15 +41,19 @@ with NetFrameworkBase.System.Object;
 --------------------------------------------------------------------------------
 package NetFramework.System.Runtime.Serialization is
    
+      --------------------------------------------------------------------------
       subtype IFormatterConverter is NetFrameworkBase.System.Runtime.Serialization.IFormatterConverter.Kind_Ptr;
       subtype IFormatterConverter_Array is NetFrameworkBase.System.Runtime.Serialization.IFormatterConverter.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype ISerializationSurrogate is NetFrameworkBase.System.Runtime.Serialization.ISerializationSurrogate.Kind_Ptr;
       subtype ISerializationSurrogate_Array is NetFrameworkBase.System.Runtime.Serialization.ISerializationSurrogate.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype ISurrogateSelector is NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector.Kind_Ptr;
       subtype ISurrogateSelector_Array is NetFrameworkBase.System.Runtime.Serialization.ISurrogateSelector.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype SerializationInfo is NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr;
       subtype SerializationInfo_Array is NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Array;
       
@@ -68,12 +72,15 @@ package NetFramework.System.Runtime.Serialization is
          )
          return NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Kind_Ptr renames NetFrameworkBase.System.Runtime.Serialization.SerializationInfo.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype SerializationEntry is NetFrameworkBase.System.Runtime.Serialization.SerializationEntry.Kind_Ptr;
       subtype SerializationEntry_Array is NetFrameworkBase.System.Runtime.Serialization.SerializationEntry.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype SerializationInfoEnumerator is NetFrameworkBase.System.Runtime.Serialization.SerializationInfoEnumerator.Kind_Ptr;
       subtype SerializationInfoEnumerator_Array is NetFrameworkBase.System.Runtime.Serialization.SerializationInfoEnumerator.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype StreamingContext is NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind_Ptr;
       subtype StreamingContext_Array is NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind_Array;
       
@@ -90,8 +97,10 @@ package NetFramework.System.Runtime.Serialization is
          )
          return NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind_Ptr renames NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype StreamingContextStates is NetFrameworkBase.System.Runtime.Serialization.StreamingContextStates.Kind;
       
+      --------------------------------------------------------------------------
       subtype SurrogateSelector is NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector.Kind_Ptr;
       subtype SurrogateSelector_Array is NetFrameworkBase.System.Runtime.Serialization.SurrogateSelector.Kind_Array;
       

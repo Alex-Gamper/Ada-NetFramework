@@ -31,6 +31,7 @@ with NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName;
 --------------------------------------------------------------------------------
 package NetFramework.System.Security.Cryptography is
    
+      --------------------------------------------------------------------------
       subtype HashAlgorithmName is NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName.Kind_Ptr;
       subtype HashAlgorithmName_Array is NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName.Kind_Array;
       

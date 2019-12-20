@@ -33,12 +33,15 @@ with NetFrameworkBase.System.Runtime.CompilerServices.YieldAwaitable;
 --------------------------------------------------------------------------------
 package NetFramework.System.Runtime.CompilerServices is
    
+      --------------------------------------------------------------------------
       subtype TaskAwaiter is NetFrameworkBase.System.Runtime.CompilerServices.TaskAwaiter.Kind_Ptr;
       subtype TaskAwaiter_Array is NetFrameworkBase.System.Runtime.CompilerServices.TaskAwaiter.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype ConfiguredTaskAwaitable is NetFrameworkBase.System.Runtime.CompilerServices.ConfiguredTaskAwaitable.Kind_Ptr;
       subtype ConfiguredTaskAwaitable_Array is NetFrameworkBase.System.Runtime.CompilerServices.ConfiguredTaskAwaitable.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype YieldAwaitable is NetFrameworkBase.System.Runtime.CompilerServices.YieldAwaitable.Kind_Ptr;
       subtype YieldAwaitable_Array is NetFrameworkBase.System.Runtime.CompilerServices.YieldAwaitable.Kind_Array;
       

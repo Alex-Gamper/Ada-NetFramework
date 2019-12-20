@@ -37,9 +37,13 @@ with NetFrameworkBase.System.TimeSpan;
 --------------------------------------------------------------------------------
 package NetFramework.System.Threading is
    
+      --------------------------------------------------------------------------
       subtype TimerCallback is NetFrameworkBase.System.Threading.TimerCallback.Kind_Ptr;
       subtype TimerCallback_Array is NetFrameworkBase.System.Threading.TimerCallback.Kind_Array;
       
+         function Constructor (Callback : NetFrameworkBase.System.Threading.TimerCallback.Kind_Callback) return NetFrameworkBase.System.Threading.TimerCallback.Kind_Ptr renames NetFrameworkBase.System.Threading.TimerCallback.Constructor;
+      
+      --------------------------------------------------------------------------
       subtype Timer is NetFrameworkBase.System.Threading.Timer.Kind_Ptr;
       subtype Timer_Array is NetFrameworkBase.System.Threading.Timer.Kind_Array;
       
@@ -85,12 +89,15 @@ package NetFramework.System.Threading is
          )
          return NetFrameworkBase.System.Threading.Timer.Kind_Ptr renames NetFrameworkBase.System.Threading.Timer.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype WaitHandle is NetFrameworkBase.System.Threading.WaitHandle.Kind_Ptr;
       subtype WaitHandle_Array is NetFrameworkBase.System.Threading.WaitHandle.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype CancellationTokenRegistration is NetFrameworkBase.System.Threading.CancellationTokenRegistration.Kind_Ptr;
       subtype CancellationTokenRegistration_Array is NetFrameworkBase.System.Threading.CancellationTokenRegistration.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype CancellationToken is NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr;
       subtype CancellationToken_Array is NetFrameworkBase.System.Threading.CancellationToken.Kind_Array;
       

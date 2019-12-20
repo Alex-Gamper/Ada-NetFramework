@@ -35,12 +35,15 @@ with NetFrameworkBase.System.Runtime.InteropServices.SafeHandle;
 --------------------------------------------------------------------------------
 package NetFramework.System.Runtime.InteropServices is
    
+      --------------------------------------------------------------------------
       subtype IActivator is NetFrameworkBase.System.Runtime.InteropServices.IActivator.Kind_Ptr;
       subtype IActivator_Array is NetFrameworkBase.System.Runtime.InteropServices.IActivator.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype IAssembly is NetFrameworkBase.System.Runtime.InteropServices.IAssembly.Kind_Ptr;
       subtype IAssembly_Array is NetFrameworkBase.System.Runtime.InteropServices.IAssembly.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype StructLayoutAttribute is NetFrameworkBase.System.Runtime.InteropServices.StructLayoutAttribute.Kind_Ptr;
       subtype StructLayoutAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.StructLayoutAttribute.Kind_Array;
       
@@ -56,8 +59,10 @@ package NetFramework.System.Runtime.InteropServices is
          )
          return NetFrameworkBase.System.Runtime.InteropServices.StructLayoutAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.StructLayoutAttribute.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype LayoutKind is NetFrameworkBase.System.Runtime.InteropServices.LayoutKind.Kind;
       
+      --------------------------------------------------------------------------
       subtype SafeHandle is NetFrameworkBase.System.Runtime.InteropServices.SafeHandle.Kind_Ptr;
       subtype SafeHandle_Array is NetFrameworkBase.System.Runtime.InteropServices.SafeHandle.Kind_Array;
       

@@ -275,7 +275,7 @@ begin
         end;
 
         x : Netframework.BSTR;
-
+        
     begin
 
         Test_Statics;
@@ -296,6 +296,7 @@ begin
 --        Test_In_Out_Builtin_Array;
 
         x := NetFrameworkBase.System.Console.ReadLine;
+        
 
     end;
 
@@ -306,6 +307,6 @@ exception
     when Error : others =>
         OutputDebugString (Ada.Exceptions.Exception_Name (Error));
         OutputDebugString (Ada.Exceptions.Exception_Message (Error));
-        OutputDebugString (Ada.Exceptions.Exception_Information( Error));
+        OutputDebugString (Ada.Exceptions.Exception_Information (Error));
 
 end;

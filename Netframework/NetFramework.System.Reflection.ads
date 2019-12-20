@@ -37,9 +37,6 @@ with NetFrameworkBase.System.Reflection.Binder;
 with NetFrameworkBase.System.Reflection.BindingFlags;
 with NetFrameworkBase.System.Reflection.CallingConventions;
 with NetFrameworkBase.System.Reflection.ConstructorInfo;
-with NetFrameworkBase.System.Reflection.CustomAttributeData;
-with NetFrameworkBase.System.Reflection.CustomAttributeNamedArgument;
-with NetFrameworkBase.System.Reflection.CustomAttributeTypedArgument;
 with NetFrameworkBase.System.Reflection.EventAttributes;
 with NetFrameworkBase.System.Reflection.EventInfo;
 with NetFrameworkBase.System.Reflection.FieldAttributes;
@@ -59,10 +56,7 @@ with NetFrameworkBase.System.Reflection.MethodInfo;
 with NetFrameworkBase.System.Reflection.PortableExecutableKinds;
 with NetFrameworkBase.System.Reflection.ImageFileMachine;
 with NetFrameworkBase.System.Reflection.Module;
-with NetFrameworkBase.System.Reflection.ExceptionHandlingClauseOptions;
-with NetFrameworkBase.System.Reflection.ExceptionHandlingClause;
 with NetFrameworkBase.System.Reflection.MethodBody;
-with NetFrameworkBase.System.Reflection.LocalVariableInfo;
 with NetFrameworkBase.System.Reflection.ParameterAttributes;
 with NetFrameworkBase.System.Reflection.ParameterInfo;
 with NetFrameworkBase.System.Reflection.ParameterModifier;
@@ -71,19 +65,22 @@ with NetFrameworkBase.System.Reflection.PropertyInfo;
 with NetFrameworkBase.System.Reflection.StrongNameKeyPair;
 with NetFrameworkBase.System.Reflection.TypeAttributes;
 with NetFrameworkBase.System.Reflection.TypeFilter;
-with NetFrameworkBase.System.Reflection.TypeInfo;
 with NetFrameworkBase.System.Object;
-with NetFrameworkBase.System.Type_x;
 with NetFrameworkBase.System.IO.FileStream;
 --------------------------------------------------------------------------------
 package NetFramework.System.Reflection is
    
+      --------------------------------------------------------------------------
       subtype ModuleResolveEventHandler is NetFrameworkBase.System.Reflection.ModuleResolveEventHandler.Kind_Ptr;
       subtype ModuleResolveEventHandler_Array is NetFrameworkBase.System.Reflection.ModuleResolveEventHandler.Kind_Array;
       
+         function Constructor (Callback : NetFrameworkBase.System.Reflection.ModuleResolveEventHandler.Kind_Callback) return NetFrameworkBase.System.Reflection.ModuleResolveEventHandler.Kind_Ptr renames NetFrameworkBase.System.Reflection.ModuleResolveEventHandler.Constructor;
+      
+      --------------------------------------------------------------------------
       subtype Assembly is NetFrameworkBase.System.Reflection.Assembly.Kind_Ptr;
       subtype Assembly_Array is NetFrameworkBase.System.Reflection.Assembly.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype AssemblyName is NetFrameworkBase.System.Reflection.AssemblyName.Kind_Ptr;
       subtype AssemblyName_Array is NetFrameworkBase.System.Reflection.AssemblyName.Kind_Array;
       
@@ -95,76 +92,55 @@ package NetFramework.System.Reflection is
          )
          return NetFrameworkBase.System.Reflection.AssemblyName.Kind_Ptr renames NetFrameworkBase.System.Reflection.AssemblyName.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype AssemblyNameFlags is NetFrameworkBase.System.Reflection.AssemblyNameFlags.Kind;
       
+      --------------------------------------------------------------------------
       subtype AssemblyContentType is NetFrameworkBase.System.Reflection.AssemblyContentType.Kind;
       
+      --------------------------------------------------------------------------
       subtype ProcessorArchitecture is NetFrameworkBase.System.Reflection.ProcessorArchitecture.Kind;
       
+      --------------------------------------------------------------------------
       subtype Binder is NetFrameworkBase.System.Reflection.Binder.Kind_Ptr;
       subtype Binder_Array is NetFrameworkBase.System.Reflection.Binder.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype BindingFlags is NetFrameworkBase.System.Reflection.BindingFlags.Kind;
       
+      --------------------------------------------------------------------------
       subtype CallingConventions is NetFrameworkBase.System.Reflection.CallingConventions.Kind;
       
+      --------------------------------------------------------------------------
       subtype ConstructorInfo is NetFrameworkBase.System.Reflection.ConstructorInfo.Kind_Ptr;
       subtype ConstructorInfo_Array is NetFrameworkBase.System.Reflection.ConstructorInfo.Kind_Array;
       
-      subtype CustomAttributeData is NetFrameworkBase.System.Reflection.CustomAttributeData.Kind_Ptr;
-      subtype CustomAttributeData_Array is NetFrameworkBase.System.Reflection.CustomAttributeData.Kind_Array;
-      
-      subtype CustomAttributeNamedArgument is NetFrameworkBase.System.Reflection.CustomAttributeNamedArgument.Kind_Ptr;
-      subtype CustomAttributeNamedArgument_Array is NetFrameworkBase.System.Reflection.CustomAttributeNamedArgument.Kind_Array;
-      
-         function Constructor
-         (
-            memberInfo : NetFrameworkBase.System.Reflection.MemberInfo.Kind_Ptr;
-            value : NetFrameworkBase.System.Object.Kind_Ptr
-         )
-         return NetFrameworkBase.System.Reflection.CustomAttributeNamedArgument.Kind_Ptr renames NetFrameworkBase.System.Reflection.CustomAttributeNamedArgument.Constructor; 
-         
-         function Constructor
-         (
-            memberInfo : NetFrameworkBase.System.Reflection.MemberInfo.Kind_Ptr;
-            typedArgument : NetFrameworkBase.System.Reflection.CustomAttributeTypedArgument.Kind_Ptr
-         )
-         return NetFrameworkBase.System.Reflection.CustomAttributeNamedArgument.Kind_Ptr renames NetFrameworkBase.System.Reflection.CustomAttributeNamedArgument.Constructor; 
-         
-      subtype CustomAttributeTypedArgument is NetFrameworkBase.System.Reflection.CustomAttributeTypedArgument.Kind_Ptr;
-      subtype CustomAttributeTypedArgument_Array is NetFrameworkBase.System.Reflection.CustomAttributeTypedArgument.Kind_Array;
-      
-         function Constructor
-         (
-            argumentType : NetFrameworkBase.System.Type_x.Kind_Ptr;
-            value : NetFrameworkBase.System.Object.Kind_Ptr
-         )
-         return NetFrameworkBase.System.Reflection.CustomAttributeTypedArgument.Kind_Ptr renames NetFrameworkBase.System.Reflection.CustomAttributeTypedArgument.Constructor; 
-         
-         function Constructor
-         (
-            value : NetFrameworkBase.System.Object.Kind_Ptr
-         )
-         return NetFrameworkBase.System.Reflection.CustomAttributeTypedArgument.Kind_Ptr renames NetFrameworkBase.System.Reflection.CustomAttributeTypedArgument.Constructor; 
-         
+      --------------------------------------------------------------------------
       subtype EventAttributes is NetFrameworkBase.System.Reflection.EventAttributes.Kind;
       
+      --------------------------------------------------------------------------
       subtype EventInfo is NetFrameworkBase.System.Reflection.EventInfo.Kind_Ptr;
       subtype EventInfo_Array is NetFrameworkBase.System.Reflection.EventInfo.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype FieldAttributes is NetFrameworkBase.System.Reflection.FieldAttributes.Kind;
       
+      --------------------------------------------------------------------------
       subtype FieldInfo is NetFrameworkBase.System.Reflection.FieldInfo.Kind_Ptr;
       subtype FieldInfo_Array is NetFrameworkBase.System.Reflection.FieldInfo.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype GenericParameterAttributes is NetFrameworkBase.System.Reflection.GenericParameterAttributes.Kind;
       
+      --------------------------------------------------------------------------
       subtype ICustomAttributeProvider is NetFrameworkBase.System.Reflection.ICustomAttributeProvider.Kind_Ptr;
       subtype ICustomAttributeProvider_Array is NetFrameworkBase.System.Reflection.ICustomAttributeProvider.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype InterfaceMapping is NetFrameworkBase.System.Reflection.InterfaceMapping.Kind_Ptr;
       subtype InterfaceMapping_Array is NetFrameworkBase.System.Reflection.InterfaceMapping.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype ManifestResourceInfo is NetFrameworkBase.System.Reflection.ManifestResourceInfo.Kind_Ptr;
       subtype ManifestResourceInfo_Array is NetFrameworkBase.System.Reflection.ManifestResourceInfo.Kind_Array;
       
@@ -176,49 +152,58 @@ package NetFramework.System.Reflection is
          )
          return NetFrameworkBase.System.Reflection.ManifestResourceInfo.Kind_Ptr renames NetFrameworkBase.System.Reflection.ManifestResourceInfo.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype ResourceLocation is NetFrameworkBase.System.Reflection.ResourceLocation.Kind;
       
+      --------------------------------------------------------------------------
       subtype MemberFilter is NetFrameworkBase.System.Reflection.MemberFilter.Kind_Ptr;
       subtype MemberFilter_Array is NetFrameworkBase.System.Reflection.MemberFilter.Kind_Array;
       
+         function Constructor (Callback : NetFrameworkBase.System.Reflection.MemberFilter.Kind_Callback) return NetFrameworkBase.System.Reflection.MemberFilter.Kind_Ptr renames NetFrameworkBase.System.Reflection.MemberFilter.Constructor;
+      
+      --------------------------------------------------------------------------
       subtype MemberInfo is NetFrameworkBase.System.Reflection.MemberInfo.Kind_Ptr;
       subtype MemberInfo_Array is NetFrameworkBase.System.Reflection.MemberInfo.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype MemberTypes is NetFrameworkBase.System.Reflection.MemberTypes.Kind;
       
+      --------------------------------------------------------------------------
       subtype MethodAttributes is NetFrameworkBase.System.Reflection.MethodAttributes.Kind;
       
+      --------------------------------------------------------------------------
       subtype MethodBase is NetFrameworkBase.System.Reflection.MethodBase.Kind_Ptr;
       subtype MethodBase_Array is NetFrameworkBase.System.Reflection.MethodBase.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype MethodImplAttributes is NetFrameworkBase.System.Reflection.MethodImplAttributes.Kind;
       
+      --------------------------------------------------------------------------
       subtype MethodInfo is NetFrameworkBase.System.Reflection.MethodInfo.Kind_Ptr;
       subtype MethodInfo_Array is NetFrameworkBase.System.Reflection.MethodInfo.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype PortableExecutableKinds is NetFrameworkBase.System.Reflection.PortableExecutableKinds.Kind;
       
+      --------------------------------------------------------------------------
       subtype ImageFileMachine is NetFrameworkBase.System.Reflection.ImageFileMachine.Kind;
       
+      --------------------------------------------------------------------------
       subtype Module is NetFrameworkBase.System.Reflection.Module.Kind_Ptr;
       subtype Module_Array is NetFrameworkBase.System.Reflection.Module.Kind_Array;
       
-      subtype ExceptionHandlingClauseOptions is NetFrameworkBase.System.Reflection.ExceptionHandlingClauseOptions.Kind;
-      
-      subtype ExceptionHandlingClause is NetFrameworkBase.System.Reflection.ExceptionHandlingClause.Kind_Ptr;
-      subtype ExceptionHandlingClause_Array is NetFrameworkBase.System.Reflection.ExceptionHandlingClause.Kind_Array;
-      
+      --------------------------------------------------------------------------
       subtype MethodBody is NetFrameworkBase.System.Reflection.MethodBody.Kind_Ptr;
       subtype MethodBody_Array is NetFrameworkBase.System.Reflection.MethodBody.Kind_Array;
       
-      subtype LocalVariableInfo is NetFrameworkBase.System.Reflection.LocalVariableInfo.Kind_Ptr;
-      subtype LocalVariableInfo_Array is NetFrameworkBase.System.Reflection.LocalVariableInfo.Kind_Array;
-      
+      --------------------------------------------------------------------------
       subtype ParameterAttributes is NetFrameworkBase.System.Reflection.ParameterAttributes.Kind;
       
+      --------------------------------------------------------------------------
       subtype ParameterInfo is NetFrameworkBase.System.Reflection.ParameterInfo.Kind_Ptr;
       subtype ParameterInfo_Array is NetFrameworkBase.System.Reflection.ParameterInfo.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype ParameterModifier is NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Ptr;
       subtype ParameterModifier_Array is NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Array;
       
@@ -228,11 +213,14 @@ package NetFramework.System.Reflection is
          )
          return NetFrameworkBase.System.Reflection.ParameterModifier.Kind_Ptr renames NetFrameworkBase.System.Reflection.ParameterModifier.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype PropertyAttributes is NetFrameworkBase.System.Reflection.PropertyAttributes.Kind;
       
+      --------------------------------------------------------------------------
       subtype PropertyInfo is NetFrameworkBase.System.Reflection.PropertyInfo.Kind_Ptr;
       subtype PropertyInfo_Array is NetFrameworkBase.System.Reflection.PropertyInfo.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype StrongNameKeyPair is NetFrameworkBase.System.Reflection.StrongNameKeyPair.Kind_Ptr;
       subtype StrongNameKeyPair_Array is NetFrameworkBase.System.Reflection.StrongNameKeyPair.Kind_Array;
       
@@ -254,13 +242,14 @@ package NetFramework.System.Reflection is
          )
          return NetFrameworkBase.System.Reflection.StrongNameKeyPair.Kind_Ptr renames NetFrameworkBase.System.Reflection.StrongNameKeyPair.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype TypeAttributes is NetFrameworkBase.System.Reflection.TypeAttributes.Kind;
       
+      --------------------------------------------------------------------------
       subtype TypeFilter is NetFrameworkBase.System.Reflection.TypeFilter.Kind_Ptr;
       subtype TypeFilter_Array is NetFrameworkBase.System.Reflection.TypeFilter.Kind_Array;
       
-      subtype TypeInfo is NetFrameworkBase.System.Reflection.TypeInfo.Kind_Ptr;
-      subtype TypeInfo_Array is NetFrameworkBase.System.Reflection.TypeInfo.Kind_Array;
+         function Constructor (Callback : NetFrameworkBase.System.Reflection.TypeFilter.Kind_Callback) return NetFrameworkBase.System.Reflection.TypeFilter.Kind_Ptr renames NetFrameworkBase.System.Reflection.TypeFilter.Constructor;
       
    
 end;

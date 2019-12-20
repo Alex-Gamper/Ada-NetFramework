@@ -52,9 +52,11 @@ with NetFrameworkBase.System.Text.Encoding;
 --------------------------------------------------------------------------------
 package NetFramework.System.IO is
    
+      --------------------------------------------------------------------------
       subtype Directory is NetFrameworkBase.System.IO.Directory.Kind_Ptr;
       subtype Directory_Array is NetFrameworkBase.System.IO.Directory.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype DirectoryInfo is NetFrameworkBase.System.IO.DirectoryInfo.Kind_Ptr;
       subtype DirectoryInfo_Array is NetFrameworkBase.System.IO.DirectoryInfo.Kind_Array;
       
@@ -64,13 +66,17 @@ package NetFramework.System.IO is
          )
          return NetFrameworkBase.System.IO.DirectoryInfo.Kind_Ptr renames NetFrameworkBase.System.IO.DirectoryInfo.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype SearchOption is NetFrameworkBase.System.IO.SearchOption.Kind;
       
+      --------------------------------------------------------------------------
       subtype File is NetFrameworkBase.System.IO.File.Kind_Ptr;
       subtype File_Array is NetFrameworkBase.System.IO.File.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype FileAccess is NetFrameworkBase.System.IO.FileAccess.Kind;
       
+      --------------------------------------------------------------------------
       subtype FileInfo is NetFrameworkBase.System.IO.FileInfo.Kind_Ptr;
       subtype FileInfo_Array is NetFrameworkBase.System.IO.FileInfo.Kind_Array;
       
@@ -80,12 +86,16 @@ package NetFramework.System.IO is
          )
          return NetFrameworkBase.System.IO.FileInfo.Kind_Ptr renames NetFrameworkBase.System.IO.FileInfo.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype FileMode is NetFrameworkBase.System.IO.FileMode.Kind;
       
+      --------------------------------------------------------------------------
       subtype FileOptions is NetFrameworkBase.System.IO.FileOptions.Kind;
       
+      --------------------------------------------------------------------------
       subtype FileShare is NetFrameworkBase.System.IO.FileShare.Kind;
       
+      --------------------------------------------------------------------------
       subtype FileStream is NetFrameworkBase.System.IO.FileStream.Kind_Ptr;
       subtype FileStream_Array is NetFrameworkBase.System.IO.FileStream.Kind_Array;
       
@@ -226,16 +236,21 @@ package NetFramework.System.IO is
          )
          return NetFrameworkBase.System.IO.FileStream.Kind_Ptr renames NetFrameworkBase.System.IO.FileStream.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype FileSystemInfo is NetFrameworkBase.System.IO.FileSystemInfo.Kind_Ptr;
       subtype FileSystemInfo_Array is NetFrameworkBase.System.IO.FileSystemInfo.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype FileAttributes is NetFrameworkBase.System.IO.FileAttributes.Kind;
       
+      --------------------------------------------------------------------------
       subtype SeekOrigin is NetFrameworkBase.System.IO.SeekOrigin.Kind;
       
+      --------------------------------------------------------------------------
       subtype Stream is NetFrameworkBase.System.IO.Stream.Kind_Ptr;
       subtype Stream_Array is NetFrameworkBase.System.IO.Stream.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype StreamReader is NetFrameworkBase.System.IO.StreamReader.Kind_Ptr;
       subtype StreamReader_Array is NetFrameworkBase.System.IO.StreamReader.Kind_Array;
       
@@ -323,6 +338,7 @@ package NetFramework.System.IO is
          )
          return NetFrameworkBase.System.IO.StreamReader.Kind_Ptr renames NetFrameworkBase.System.IO.StreamReader.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype StreamWriter is NetFrameworkBase.System.IO.StreamWriter.Kind_Ptr;
       subtype StreamWriter_Array is NetFrameworkBase.System.IO.StreamWriter.Kind_Array;
       
@@ -386,9 +402,11 @@ package NetFramework.System.IO is
          )
          return NetFrameworkBase.System.IO.StreamWriter.Kind_Ptr renames NetFrameworkBase.System.IO.StreamWriter.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype TextReader is NetFrameworkBase.System.IO.TextReader.Kind_Ptr;
       subtype TextReader_Array is NetFrameworkBase.System.IO.TextReader.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype TextWriter is NetFrameworkBase.System.IO.TextWriter.Kind_Ptr;
       subtype TextWriter_Array is NetFrameworkBase.System.IO.TextWriter.Kind_Array;
       

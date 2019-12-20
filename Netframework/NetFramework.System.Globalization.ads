@@ -48,18 +48,24 @@ with NetFrameworkBase.System.Guid;
 --------------------------------------------------------------------------------
 package NetFramework.System.Globalization is
    
+      --------------------------------------------------------------------------
       subtype Calendar is NetFrameworkBase.System.Globalization.Calendar.Kind_Ptr;
       subtype Calendar_Array is NetFrameworkBase.System.Globalization.Calendar.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype CalendarAlgorithmType is NetFrameworkBase.System.Globalization.CalendarAlgorithmType.Kind;
       
+      --------------------------------------------------------------------------
       subtype CalendarWeekRule is NetFrameworkBase.System.Globalization.CalendarWeekRule.Kind;
       
+      --------------------------------------------------------------------------
       subtype CompareOptions is NetFrameworkBase.System.Globalization.CompareOptions.Kind;
       
+      --------------------------------------------------------------------------
       subtype CompareInfo is NetFrameworkBase.System.Globalization.CompareInfo.Kind_Ptr;
       subtype CompareInfo_Array is NetFrameworkBase.System.Globalization.CompareInfo.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype CultureInfo is NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr;
       subtype CultureInfo_Array is NetFrameworkBase.System.Globalization.CultureInfo.Kind_Array;
       
@@ -89,34 +95,45 @@ package NetFramework.System.Globalization is
          )
          return NetFrameworkBase.System.Globalization.CultureInfo.Kind_Ptr renames NetFrameworkBase.System.Globalization.CultureInfo.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype CultureTypes is NetFrameworkBase.System.Globalization.CultureTypes.Kind;
       
+      --------------------------------------------------------------------------
       subtype DateTimeStyles is NetFrameworkBase.System.Globalization.DateTimeStyles.Kind;
       
+      --------------------------------------------------------------------------
       subtype DateTimeFormatInfo is NetFrameworkBase.System.Globalization.DateTimeFormatInfo.Kind_Ptr;
       subtype DateTimeFormatInfo_Array is NetFrameworkBase.System.Globalization.DateTimeFormatInfo.Kind_Array;
       
          function Constructor return NetFrameworkBase.System.Globalization.DateTimeFormatInfo.Kind_Ptr renames NetFrameworkBase.System.Globalization.DateTimeFormatInfo.Constructor;
          
+      --------------------------------------------------------------------------
       subtype DigitShapes is NetFrameworkBase.System.Globalization.DigitShapes.Kind;
       
+      --------------------------------------------------------------------------
       subtype SortKey is NetFrameworkBase.System.Globalization.SortKey.Kind_Ptr;
       subtype SortKey_Array is NetFrameworkBase.System.Globalization.SortKey.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype TextInfo is NetFrameworkBase.System.Globalization.TextInfo.Kind_Ptr;
       subtype TextInfo_Array is NetFrameworkBase.System.Globalization.TextInfo.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype TimeSpanStyles is NetFrameworkBase.System.Globalization.TimeSpanStyles.Kind;
       
+      --------------------------------------------------------------------------
       subtype NumberFormatInfo is NetFrameworkBase.System.Globalization.NumberFormatInfo.Kind_Ptr;
       subtype NumberFormatInfo_Array is NetFrameworkBase.System.Globalization.NumberFormatInfo.Kind_Array;
       
          function Constructor return NetFrameworkBase.System.Globalization.NumberFormatInfo.Kind_Ptr renames NetFrameworkBase.System.Globalization.NumberFormatInfo.Constructor;
          
+      --------------------------------------------------------------------------
       subtype NumberStyles is NetFrameworkBase.System.Globalization.NumberStyles.Kind;
       
+      --------------------------------------------------------------------------
       subtype UnicodeCategory is NetFrameworkBase.System.Globalization.UnicodeCategory.Kind;
       
+      --------------------------------------------------------------------------
       subtype SortVersion is NetFrameworkBase.System.Globalization.SortVersion.Kind_Ptr;
       subtype SortVersion_Array is NetFrameworkBase.System.Globalization.SortVersion.Kind_Array;
       

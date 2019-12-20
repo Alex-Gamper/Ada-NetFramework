@@ -33,16 +33,16 @@ with NetFrameworkBase.System.Threading.Tasks.TaskCreationOptions;
 with NetFrameworkBase.System.Threading.Tasks.TaskContinuationOptions;
 with NetFrameworkBase.System.Threading.Tasks.TaskFactory;
 with NetFrameworkBase.System.Threading.Tasks.TaskScheduler;
-with NetFrameworkBase.System.Threading.Tasks.UnobservedTaskExceptionEventArgs;
 with NetFrameworkBase.System.Action;
 with NetFrameworkBase.System.Threading.CancellationToken;
 with NetFrameworkBase.System.Object;
-with NetFrameworkBase.System.AggregateException;
 --------------------------------------------------------------------------------
 package NetFramework.System.Threading.Tasks is
    
+      --------------------------------------------------------------------------
       subtype TaskStatus is NetFrameworkBase.System.Threading.Tasks.TaskStatus.Kind;
       
+      --------------------------------------------------------------------------
       subtype Task_x is NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr;
       subtype Task_x_Array is NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Array;
       
@@ -74,10 +74,13 @@ package NetFramework.System.Threading.Tasks is
          )
          return NetFrameworkBase.System.Threading.Tasks.Task_x.Kind_Ptr renames NetFrameworkBase.System.Threading.Tasks.Task_x.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype TaskCreationOptions is NetFrameworkBase.System.Threading.Tasks.TaskCreationOptions.Kind;
       
+      --------------------------------------------------------------------------
       subtype TaskContinuationOptions is NetFrameworkBase.System.Threading.Tasks.TaskContinuationOptions.Kind;
       
+      --------------------------------------------------------------------------
       subtype TaskFactory is NetFrameworkBase.System.Threading.Tasks.TaskFactory.Kind_Ptr;
       subtype TaskFactory_Array is NetFrameworkBase.System.Threading.Tasks.TaskFactory.Kind_Array;
       
@@ -111,17 +114,9 @@ package NetFramework.System.Threading.Tasks is
          )
          return NetFrameworkBase.System.Threading.Tasks.TaskFactory.Kind_Ptr renames NetFrameworkBase.System.Threading.Tasks.TaskFactory.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype TaskScheduler is NetFrameworkBase.System.Threading.Tasks.TaskScheduler.Kind_Ptr;
       subtype TaskScheduler_Array is NetFrameworkBase.System.Threading.Tasks.TaskScheduler.Kind_Array;
       
-      subtype UnobservedTaskExceptionEventArgs is NetFrameworkBase.System.Threading.Tasks.UnobservedTaskExceptionEventArgs.Kind_Ptr;
-      subtype UnobservedTaskExceptionEventArgs_Array is NetFrameworkBase.System.Threading.Tasks.UnobservedTaskExceptionEventArgs.Kind_Array;
-      
-         function Constructor
-         (
-            exception_x : NetFrameworkBase.System.AggregateException.Kind_Ptr
-         )
-         return NetFrameworkBase.System.Threading.Tasks.UnobservedTaskExceptionEventArgs.Kind_Ptr renames NetFrameworkBase.System.Threading.Tasks.UnobservedTaskExceptionEventArgs.Constructor; 
-         
    
 end;

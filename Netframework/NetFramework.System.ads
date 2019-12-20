@@ -95,6 +95,7 @@ with NetFrameworkBase.System.Reflection.Assembly;
 --------------------------------------------------------------------------------
 package NetFramework.System is
    
+      --------------------------------------------------------------------------
       subtype AggregateException is NetFrameworkBase.System.AggregateException.Kind_Ptr;
       subtype AggregateException_Array is NetFrameworkBase.System.AggregateException.Kind_Array;
       
@@ -126,17 +127,23 @@ package NetFramework.System is
          )
          return NetFrameworkBase.System.AggregateException.Kind_Ptr renames NetFrameworkBase.System.AggregateException.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype Object is NetFrameworkBase.System.Object.Kind_Ptr;
       subtype Object_Array is NetFrameworkBase.System.Object.Kind_Array;
       
          function Constructor return NetFrameworkBase.System.Object.Kind_Ptr renames NetFrameworkBase.System.Object.Constructor;
          
+      --------------------------------------------------------------------------
       subtype Action is NetFrameworkBase.System.Action.Kind_Ptr;
       subtype Action_Array is NetFrameworkBase.System.Action.Kind_Array;
       
+         function Constructor (Callback : NetFrameworkBase.System.Action.Kind_Callback) return NetFrameworkBase.System.Action.Kind_Ptr renames NetFrameworkBase.System.Action.Constructor;
+      
+      --------------------------------------------------------------------------
       subtype Array_x is NetFrameworkBase.System.Array_x.Kind_Ptr;
       subtype Array_x_Array is NetFrameworkBase.System.Array_x.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype String is NetFrameworkBase.System.String.Kind_Ptr;
       subtype String_Array is NetFrameworkBase.System.String.Kind_Array;
       
@@ -198,10 +205,13 @@ package NetFramework.System is
          )
          return NetFrameworkBase.System.String.Kind_Ptr renames NetFrameworkBase.System.String.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype StringSplitOptions is NetFrameworkBase.System.StringSplitOptions.Kind;
       
+      --------------------------------------------------------------------------
       subtype StringComparison is NetFrameworkBase.System.StringComparison.Kind;
       
+      --------------------------------------------------------------------------
       subtype Exception_x is NetFrameworkBase.System.Exception_x.Kind_Ptr;
       subtype Exception_x_Array is NetFrameworkBase.System.Exception_x.Kind_Array;
       
@@ -220,6 +230,7 @@ package NetFramework.System is
          )
          return NetFrameworkBase.System.Exception_x.Kind_Ptr renames NetFrameworkBase.System.Exception_x.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype DateTime is NetFrameworkBase.System.DateTime.Kind_Ptr;
       subtype DateTime_Array is NetFrameworkBase.System.DateTime.Kind_Array;
       
@@ -340,8 +351,10 @@ package NetFramework.System is
          )
          return NetFrameworkBase.System.DateTime.Kind_Ptr renames NetFrameworkBase.System.DateTime.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype DateTimeKind is NetFrameworkBase.System.DateTimeKind.Kind;
       
+      --------------------------------------------------------------------------
       subtype DateTimeOffset is NetFrameworkBase.System.DateTimeOffset.Kind_Ptr;
       subtype DateTimeOffset_Array is NetFrameworkBase.System.DateTimeOffset.Kind_Array;
       
@@ -404,12 +417,15 @@ package NetFramework.System is
          )
          return NetFrameworkBase.System.DateTimeOffset.Kind_Ptr renames NetFrameworkBase.System.DateTimeOffset.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype Delegate is NetFrameworkBase.System.Delegate.Kind_Ptr;
       subtype Delegate_Array is NetFrameworkBase.System.Delegate.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype MulticastDelegate is NetFrameworkBase.System.MulticastDelegate.Kind_Ptr;
       subtype MulticastDelegate_Array is NetFrameworkBase.System.MulticastDelegate.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype ResolveEventArgs is NetFrameworkBase.System.ResolveEventArgs.Kind_Ptr;
       subtype ResolveEventArgs_Array is NetFrameworkBase.System.ResolveEventArgs.Kind_Array;
       
@@ -426,39 +442,55 @@ package NetFramework.System is
          )
          return NetFrameworkBase.System.ResolveEventArgs.Kind_Ptr renames NetFrameworkBase.System.ResolveEventArgs.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype AsyncCallback is NetFrameworkBase.System.AsyncCallback.Kind_Ptr;
       subtype AsyncCallback_Array is NetFrameworkBase.System.AsyncCallback.Kind_Array;
       
+         function Constructor (Callback : NetFrameworkBase.System.AsyncCallback.Kind_Callback) return NetFrameworkBase.System.AsyncCallback.Kind_Ptr renames NetFrameworkBase.System.AsyncCallback.Constructor;
+      
+      --------------------------------------------------------------------------
       subtype Attribute is NetFrameworkBase.System.Attribute.Kind_Ptr;
       subtype Attribute_Array is NetFrameworkBase.System.Attribute.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype Boolean is NetFrameworkBase.System.Boolean.Kind_Ptr;
       subtype Boolean_Array is NetFrameworkBase.System.Boolean.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype Byte is NetFrameworkBase.System.Byte.Kind_Ptr;
       subtype Byte_Array is NetFrameworkBase.System.Byte.Kind_Array;
       
          function Constructor return NetFrameworkBase.System.Byte.Kind_Ptr renames NetFrameworkBase.System.Byte.Constructor;
          
+      --------------------------------------------------------------------------
       subtype Char is NetFrameworkBase.System.Char.Kind_Ptr;
       subtype Char_Array is NetFrameworkBase.System.Char.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype CharEnumerator is NetFrameworkBase.System.CharEnumerator.Kind_Ptr;
       subtype CharEnumerator_Array is NetFrameworkBase.System.CharEnumerator.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype Console is NetFrameworkBase.System.Console.Kind_Ptr;
       subtype Console_Array is NetFrameworkBase.System.Console.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype ConsoleCancelEventHandler is NetFrameworkBase.System.ConsoleCancelEventHandler.Kind_Ptr;
       subtype ConsoleCancelEventHandler_Array is NetFrameworkBase.System.ConsoleCancelEventHandler.Kind_Array;
       
+         function Constructor (Callback : NetFrameworkBase.System.ConsoleCancelEventHandler.Kind_Callback) return NetFrameworkBase.System.ConsoleCancelEventHandler.Kind_Ptr renames NetFrameworkBase.System.ConsoleCancelEventHandler.Constructor;
+      
+      --------------------------------------------------------------------------
       subtype ConsoleCancelEventArgs is NetFrameworkBase.System.ConsoleCancelEventArgs.Kind_Ptr;
       subtype ConsoleCancelEventArgs_Array is NetFrameworkBase.System.ConsoleCancelEventArgs.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype ConsoleColor is NetFrameworkBase.System.ConsoleColor.Kind;
       
+      --------------------------------------------------------------------------
       subtype ConsoleKey is NetFrameworkBase.System.ConsoleKey.Kind;
       
+      --------------------------------------------------------------------------
       subtype ConsoleKeyInfo is NetFrameworkBase.System.ConsoleKeyInfo.Kind_Ptr;
       subtype ConsoleKeyInfo_Array is NetFrameworkBase.System.ConsoleKeyInfo.Kind_Array;
       
@@ -472,12 +504,16 @@ package NetFramework.System is
          )
          return NetFrameworkBase.System.ConsoleKeyInfo.Kind_Ptr renames NetFrameworkBase.System.ConsoleKeyInfo.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype ConsoleModifiers is NetFrameworkBase.System.ConsoleModifiers.Kind;
       
+      --------------------------------------------------------------------------
       subtype ConsoleSpecialKey is NetFrameworkBase.System.ConsoleSpecialKey.Kind;
       
+      --------------------------------------------------------------------------
       subtype DayOfWeek is NetFrameworkBase.System.DayOfWeek.Kind;
       
+      --------------------------------------------------------------------------
       subtype Decimal is NetFrameworkBase.System.Decimal.Kind_Ptr;
       subtype Decimal_Array is NetFrameworkBase.System.Decimal.Kind_Array;
       
@@ -533,22 +569,28 @@ package NetFramework.System is
          )
          return NetFrameworkBase.System.Decimal.Kind_Ptr renames NetFrameworkBase.System.Decimal.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype Double is NetFrameworkBase.System.Double.Kind_Ptr;
       subtype Double_Array is NetFrameworkBase.System.Double.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype Enum is NetFrameworkBase.System.Enum.Kind_Ptr;
       subtype Enum_Array is NetFrameworkBase.System.Enum.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype EnvironmentVariableTarget is NetFrameworkBase.System.EnvironmentVariableTarget.Kind;
       
+      --------------------------------------------------------------------------
       subtype Environment is NetFrameworkBase.System.Environment.Kind_Ptr;
       subtype Environment_Array is NetFrameworkBase.System.Environment.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype EventArgs is NetFrameworkBase.System.EventArgs.Kind_Ptr;
       subtype EventArgs_Array is NetFrameworkBase.System.EventArgs.Kind_Array;
       
          function Constructor return NetFrameworkBase.System.EventArgs.Kind_Ptr renames NetFrameworkBase.System.EventArgs.Constructor;
          
+      --------------------------------------------------------------------------
       subtype Guid is NetFrameworkBase.System.Guid.Kind_Ptr;
       subtype Guid_Array is NetFrameworkBase.System.Guid.Kind_Array;
       
@@ -605,27 +647,33 @@ package NetFramework.System is
          )
          return NetFrameworkBase.System.Guid.Kind_Ptr renames NetFrameworkBase.System.Guid.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype IAsyncResult is NetFrameworkBase.System.IAsyncResult.Kind_Ptr;
       subtype IAsyncResult_Array is NetFrameworkBase.System.IAsyncResult.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype IFormatProvider is NetFrameworkBase.System.IFormatProvider.Kind_Ptr;
       subtype IFormatProvider_Array is NetFrameworkBase.System.IFormatProvider.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype Int16 is NetFrameworkBase.System.Int16.Kind_Ptr;
       subtype Int16_Array is NetFrameworkBase.System.Int16.Kind_Array;
       
          function Constructor return NetFrameworkBase.System.Int16.Kind_Ptr renames NetFrameworkBase.System.Int16.Constructor;
          
+      --------------------------------------------------------------------------
       subtype Int32 is NetFrameworkBase.System.Int32.Kind_Ptr;
       subtype Int32_Array is NetFrameworkBase.System.Int32.Kind_Array;
       
          function Constructor return NetFrameworkBase.System.Int32.Kind_Ptr renames NetFrameworkBase.System.Int32.Constructor;
          
+      --------------------------------------------------------------------------
       subtype Int64 is NetFrameworkBase.System.Int64.Kind_Ptr;
       subtype Int64_Array is NetFrameworkBase.System.Int64.Kind_Array;
       
          function Constructor return NetFrameworkBase.System.Int64.Kind_Ptr renames NetFrameworkBase.System.Int64.Constructor;
          
+      --------------------------------------------------------------------------
       subtype IntPtr is NetFrameworkBase.System.IntPtr.Kind_Ptr;
       subtype IntPtr_Array is NetFrameworkBase.System.IntPtr.Kind_Array;
       
@@ -647,11 +695,14 @@ package NetFramework.System is
          )
          return NetFrameworkBase.System.IntPtr.Kind_Ptr renames NetFrameworkBase.System.IntPtr.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype MarshalByRefObject is NetFrameworkBase.System.MarshalByRefObject.Kind_Ptr;
       subtype MarshalByRefObject_Array is NetFrameworkBase.System.MarshalByRefObject.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype MidpointRounding is NetFrameworkBase.System.MidpointRounding.Kind;
       
+      --------------------------------------------------------------------------
       subtype OperatingSystem is NetFrameworkBase.System.OperatingSystem.Kind_Ptr;
       subtype OperatingSystem_Array is NetFrameworkBase.System.OperatingSystem.Kind_Array;
       
@@ -662,30 +713,38 @@ package NetFramework.System is
          )
          return NetFrameworkBase.System.OperatingSystem.Kind_Ptr renames NetFrameworkBase.System.OperatingSystem.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype PlatformID is NetFrameworkBase.System.PlatformID.Kind;
       
+      --------------------------------------------------------------------------
       subtype RuntimeTypeHandle is NetFrameworkBase.System.RuntimeTypeHandle.Kind_Ptr;
       subtype RuntimeTypeHandle_Array is NetFrameworkBase.System.RuntimeTypeHandle.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype RuntimeMethodHandle is NetFrameworkBase.System.RuntimeMethodHandle.Kind_Ptr;
       subtype RuntimeMethodHandle_Array is NetFrameworkBase.System.RuntimeMethodHandle.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype RuntimeFieldHandle is NetFrameworkBase.System.RuntimeFieldHandle.Kind_Ptr;
       subtype RuntimeFieldHandle_Array is NetFrameworkBase.System.RuntimeFieldHandle.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype ModuleHandle is NetFrameworkBase.System.ModuleHandle.Kind_Ptr;
       subtype ModuleHandle_Array is NetFrameworkBase.System.ModuleHandle.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype SByte is NetFrameworkBase.System.SByte.Kind_Ptr;
       subtype SByte_Array is NetFrameworkBase.System.SByte.Kind_Array;
       
          function Constructor return NetFrameworkBase.System.SByte.Kind_Ptr renames NetFrameworkBase.System.SByte.Constructor;
          
+      --------------------------------------------------------------------------
       subtype Single is NetFrameworkBase.System.Single.Kind_Ptr;
       subtype Single_Array is NetFrameworkBase.System.Single.Kind_Array;
       
          function Constructor return NetFrameworkBase.System.Single.Kind_Ptr renames NetFrameworkBase.System.Single.Constructor;
          
+      --------------------------------------------------------------------------
       subtype TimeSpan is NetFrameworkBase.System.TimeSpan.Kind_Ptr;
       subtype TimeSpan_Array is NetFrameworkBase.System.TimeSpan.Kind_Array;
       
@@ -722,32 +781,40 @@ package NetFramework.System is
          )
          return NetFrameworkBase.System.TimeSpan.Kind_Ptr renames NetFrameworkBase.System.TimeSpan.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype Type_x is NetFrameworkBase.System.Type_x.Kind_Ptr;
       subtype Type_x_Array is NetFrameworkBase.System.Type_x.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype TypeCode is NetFrameworkBase.System.TypeCode.Kind;
       
+      --------------------------------------------------------------------------
       subtype TypedReference is NetFrameworkBase.System.TypedReference.Kind_Ptr;
       subtype TypedReference_Array is NetFrameworkBase.System.TypedReference.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype UInt16 is NetFrameworkBase.System.UInt16.Kind_Ptr;
       subtype UInt16_Array is NetFrameworkBase.System.UInt16.Kind_Array;
       
          function Constructor return NetFrameworkBase.System.UInt16.Kind_Ptr renames NetFrameworkBase.System.UInt16.Constructor;
          
+      --------------------------------------------------------------------------
       subtype UInt32 is NetFrameworkBase.System.UInt32.Kind_Ptr;
       subtype UInt32_Array is NetFrameworkBase.System.UInt32.Kind_Array;
       
          function Constructor return NetFrameworkBase.System.UInt32.Kind_Ptr renames NetFrameworkBase.System.UInt32.Constructor;
          
+      --------------------------------------------------------------------------
       subtype UInt64 is NetFrameworkBase.System.UInt64.Kind_Ptr;
       subtype UInt64_Array is NetFrameworkBase.System.UInt64.Kind_Array;
       
          function Constructor return NetFrameworkBase.System.UInt64.Kind_Ptr renames NetFrameworkBase.System.UInt64.Constructor;
          
+      --------------------------------------------------------------------------
       subtype ValueType is NetFrameworkBase.System.ValueType.Kind_Ptr;
       subtype ValueType_Array is NetFrameworkBase.System.ValueType.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype Version is NetFrameworkBase.System.Version.Kind_Ptr;
       subtype Version_Array is NetFrameworkBase.System.Version.Kind_Array;
       
@@ -783,6 +850,7 @@ package NetFramework.System is
          
          function Constructor return NetFrameworkBase.System.Version.Kind_Ptr renames NetFrameworkBase.System.Version.Constructor;
          
+      --------------------------------------------------------------------------
       subtype Void is NetFrameworkBase.System.Void.Kind_Ptr;
       subtype Void_Array is NetFrameworkBase.System.Void.Kind_Array;
       

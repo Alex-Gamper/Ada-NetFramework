@@ -32,8 +32,10 @@ with NetFrameworkBase.System.Configuration.Assemblies.AssemblyVersionCompatibili
 --------------------------------------------------------------------------------
 package NetFramework.System.Configuration.Assemblies is
    
+      --------------------------------------------------------------------------
       subtype AssemblyHashAlgorithm is NetFrameworkBase.System.Configuration.Assemblies.AssemblyHashAlgorithm.Kind;
       
+      --------------------------------------------------------------------------
       subtype AssemblyVersionCompatibility is NetFrameworkBase.System.Configuration.Assemblies.AssemblyVersionCompatibility.Kind;
       
    

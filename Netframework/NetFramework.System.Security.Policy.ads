@@ -33,6 +33,7 @@ with NetFrameworkBase.System.Object;
 --------------------------------------------------------------------------------
 package NetFramework.System.Security.Policy is
    
+      --------------------------------------------------------------------------
       subtype Evidence is NetFrameworkBase.System.Security.Policy.Evidence.Kind_Ptr;
       subtype Evidence_Array is NetFrameworkBase.System.Security.Policy.Evidence.Kind_Array;
       
@@ -58,6 +59,7 @@ package NetFramework.System.Security.Policy is
          )
          return NetFrameworkBase.System.Security.Policy.Evidence.Kind_Ptr renames NetFrameworkBase.System.Security.Policy.Evidence.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype EvidenceBase is NetFrameworkBase.System.Security.Policy.EvidenceBase.Kind_Ptr;
       subtype EvidenceBase_Array is NetFrameworkBase.System.Security.Policy.EvidenceBase.Kind_Array;
       

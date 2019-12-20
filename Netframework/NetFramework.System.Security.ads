@@ -37,6 +37,7 @@ with NetFrameworkBase.System.Security.Permissions.PermissionState;
 --------------------------------------------------------------------------------
 package NetFramework.System.Security is
    
+      --------------------------------------------------------------------------
       subtype SecurityElement is NetFrameworkBase.System.Security.SecurityElement.Kind_Ptr;
       subtype SecurityElement_Array is NetFrameworkBase.System.Security.SecurityElement.Kind_Array;
       
@@ -53,11 +54,14 @@ package NetFramework.System.Security is
          )
          return NetFrameworkBase.System.Security.SecurityElement.Kind_Ptr renames NetFrameworkBase.System.Security.SecurityElement.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype SecurityRuleSet is NetFrameworkBase.System.Security.SecurityRuleSet.Kind;
       
+      --------------------------------------------------------------------------
       subtype IPermission is NetFrameworkBase.System.Security.IPermission.Kind_Ptr;
       subtype IPermission_Array is NetFrameworkBase.System.Security.IPermission.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype PermissionSet is NetFrameworkBase.System.Security.PermissionSet.Kind_Ptr;
       subtype PermissionSet_Array is NetFrameworkBase.System.Security.PermissionSet.Kind_Array;
       
@@ -73,6 +77,7 @@ package NetFramework.System.Security is
          )
          return NetFrameworkBase.System.Security.PermissionSet.Kind_Ptr renames NetFrameworkBase.System.Security.PermissionSet.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype SecureString is NetFrameworkBase.System.Security.SecureString.Kind_Ptr;
       subtype SecureString_Array is NetFrameworkBase.System.Security.SecureString.Kind_Array;
       
@@ -85,6 +90,7 @@ package NetFramework.System.Security is
          )
          return NetFrameworkBase.System.Security.SecureString.Kind_Ptr renames NetFrameworkBase.System.Security.SecureString.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype SecurityContextSource is NetFrameworkBase.System.Security.SecurityContextSource.Kind;
       
    

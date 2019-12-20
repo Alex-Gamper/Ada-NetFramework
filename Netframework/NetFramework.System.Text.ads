@@ -40,33 +40,43 @@ with NetFrameworkBase.System.Text.NormalizationForm;
 --------------------------------------------------------------------------------
 package NetFramework.System.Text is
    
+      --------------------------------------------------------------------------
       subtype Decoder is NetFrameworkBase.System.Text.Decoder.Kind_Ptr;
       subtype Decoder_Array is NetFrameworkBase.System.Text.Decoder.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype DecoderFallback is NetFrameworkBase.System.Text.DecoderFallback.Kind_Ptr;
       subtype DecoderFallback_Array is NetFrameworkBase.System.Text.DecoderFallback.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype DecoderFallbackBuffer is NetFrameworkBase.System.Text.DecoderFallbackBuffer.Kind_Ptr;
       subtype DecoderFallbackBuffer_Array is NetFrameworkBase.System.Text.DecoderFallbackBuffer.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype Encoder is NetFrameworkBase.System.Text.Encoder.Kind_Ptr;
       subtype Encoder_Array is NetFrameworkBase.System.Text.Encoder.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype EncoderFallback is NetFrameworkBase.System.Text.EncoderFallback.Kind_Ptr;
       subtype EncoderFallback_Array is NetFrameworkBase.System.Text.EncoderFallback.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype EncoderFallbackBuffer is NetFrameworkBase.System.Text.EncoderFallbackBuffer.Kind_Ptr;
       subtype EncoderFallbackBuffer_Array is NetFrameworkBase.System.Text.EncoderFallbackBuffer.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype Encoding is NetFrameworkBase.System.Text.Encoding.Kind_Ptr;
       subtype Encoding_Array is NetFrameworkBase.System.Text.Encoding.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype EncodingInfo is NetFrameworkBase.System.Text.EncodingInfo.Kind_Ptr;
       subtype EncodingInfo_Array is NetFrameworkBase.System.Text.EncodingInfo.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype EncodingProvider is NetFrameworkBase.System.Text.EncodingProvider.Kind_Ptr;
       subtype EncodingProvider_Array is NetFrameworkBase.System.Text.EncodingProvider.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype NormalizationForm is NetFrameworkBase.System.Text.NormalizationForm.Kind;
       
    

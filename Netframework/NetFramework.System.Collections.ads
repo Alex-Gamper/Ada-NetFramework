@@ -43,9 +43,11 @@ with NetFrameworkBase.System.Object;
 --------------------------------------------------------------------------------
 package NetFramework.System.Collections is
    
+      --------------------------------------------------------------------------
       subtype ReadOnlyCollectionBase is NetFrameworkBase.System.Collections.ReadOnlyCollectionBase.Kind_Ptr;
       subtype ReadOnlyCollectionBase_Array is NetFrameworkBase.System.Collections.ReadOnlyCollectionBase.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype ArrayList is NetFrameworkBase.System.Collections.ArrayList.Kind_Ptr;
       subtype ArrayList_Array is NetFrameworkBase.System.Collections.ArrayList.Kind_Array;
       
@@ -63,6 +65,7 @@ package NetFramework.System.Collections is
          )
          return NetFrameworkBase.System.Collections.ArrayList.Kind_Ptr renames NetFrameworkBase.System.Collections.ArrayList.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype Hashtable is NetFrameworkBase.System.Collections.Hashtable.Kind_Ptr;
       subtype Hashtable_Array is NetFrameworkBase.System.Collections.Hashtable.Kind_Array;
       
@@ -171,6 +174,7 @@ package NetFramework.System.Collections is
          )
          return NetFrameworkBase.System.Collections.Hashtable.Kind_Ptr renames NetFrameworkBase.System.Collections.Hashtable.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype DictionaryEntry is NetFrameworkBase.System.Collections.DictionaryEntry.Kind_Ptr;
       subtype DictionaryEntry_Array is NetFrameworkBase.System.Collections.DictionaryEntry.Kind_Array;
       
@@ -181,27 +185,35 @@ package NetFramework.System.Collections is
          )
          return NetFrameworkBase.System.Collections.DictionaryEntry.Kind_Ptr renames NetFrameworkBase.System.Collections.DictionaryEntry.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype ICollection is NetFrameworkBase.System.Collections.ICollection.Kind_Ptr;
       subtype ICollection_Array is NetFrameworkBase.System.Collections.ICollection.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype IComparer is NetFrameworkBase.System.Collections.IComparer.Kind_Ptr;
       subtype IComparer_Array is NetFrameworkBase.System.Collections.IComparer.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype IDictionary is NetFrameworkBase.System.Collections.IDictionary.Kind_Ptr;
       subtype IDictionary_Array is NetFrameworkBase.System.Collections.IDictionary.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype IDictionaryEnumerator is NetFrameworkBase.System.Collections.IDictionaryEnumerator.Kind_Ptr;
       subtype IDictionaryEnumerator_Array is NetFrameworkBase.System.Collections.IDictionaryEnumerator.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype IEnumerator is NetFrameworkBase.System.Collections.IEnumerator.Kind_Ptr;
       subtype IEnumerator_Array is NetFrameworkBase.System.Collections.IEnumerator.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype IEqualityComparer is NetFrameworkBase.System.Collections.IEqualityComparer.Kind_Ptr;
       subtype IEqualityComparer_Array is NetFrameworkBase.System.Collections.IEqualityComparer.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype IHashCodeProvider is NetFrameworkBase.System.Collections.IHashCodeProvider.Kind_Ptr;
       subtype IHashCodeProvider_Array is NetFrameworkBase.System.Collections.IHashCodeProvider.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype IList is NetFrameworkBase.System.Collections.IList.Kind_Ptr;
       subtype IList_Array is NetFrameworkBase.System.Collections.IList.Kind_Array;
       

@@ -33,6 +33,7 @@ with NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInva
 --------------------------------------------------------------------------------
 package NetFramework.Microsoft.Win32.SafeHandles is
    
+      --------------------------------------------------------------------------
       subtype SafeFileHandle is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeFileHandle.Kind_Ptr;
       subtype SafeFileHandle_Array is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeFileHandle.Kind_Array;
       
@@ -43,6 +44,7 @@ package NetFramework.Microsoft.Win32.SafeHandles is
          )
          return NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeFileHandle.Kind_Ptr renames NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeFileHandle.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype SafeWaitHandle is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeWaitHandle.Kind_Ptr;
       subtype SafeWaitHandle_Array is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeWaitHandle.Kind_Array;
       
@@ -53,6 +55,7 @@ package NetFramework.Microsoft.Win32.SafeHandles is
          )
          return NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeWaitHandle.Kind_Ptr renames NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeWaitHandle.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype SafeHandleZeroOrMinusOneIsInvalid is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid.Kind_Ptr;
       subtype SafeHandleZeroOrMinusOneIsInvalid_Array is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid.Kind_Array;
       

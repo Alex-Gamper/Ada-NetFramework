@@ -33,12 +33,15 @@ with NetFrameworkBase.System.Runtime.Remoting.Messaging.IMessageSink;
 --------------------------------------------------------------------------------
 package NetFramework.System.Runtime.Remoting.Messaging is
    
+      --------------------------------------------------------------------------
       subtype IMessage is NetFrameworkBase.System.Runtime.Remoting.Messaging.IMessage.Kind_Ptr;
       subtype IMessage_Array is NetFrameworkBase.System.Runtime.Remoting.Messaging.IMessage.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype IMessageCtrl is NetFrameworkBase.System.Runtime.Remoting.Messaging.IMessageCtrl.Kind_Ptr;
       subtype IMessageCtrl_Array is NetFrameworkBase.System.Runtime.Remoting.Messaging.IMessageCtrl.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype IMessageSink is NetFrameworkBase.System.Runtime.Remoting.Messaging.IMessageSink.Kind_Ptr;
       subtype IMessageSink_Array is NetFrameworkBase.System.Runtime.Remoting.Messaging.IMessageSink.Kind_Array;
       

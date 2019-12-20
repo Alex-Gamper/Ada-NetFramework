@@ -50,16 +50,22 @@ with NetFrameworkBase.System.Security.Principal.IdentityReference;
 --------------------------------------------------------------------------------
 package NetFramework.System.Security.AccessControl is
    
+      --------------------------------------------------------------------------
       subtype InheritanceFlags is NetFrameworkBase.System.Security.AccessControl.InheritanceFlags.Kind;
       
+      --------------------------------------------------------------------------
       subtype PropagationFlags is NetFrameworkBase.System.Security.AccessControl.PropagationFlags.Kind;
       
+      --------------------------------------------------------------------------
       subtype AuditFlags is NetFrameworkBase.System.Security.AccessControl.AuditFlags.Kind;
       
+      --------------------------------------------------------------------------
       subtype AccessControlSections is NetFrameworkBase.System.Security.AccessControl.AccessControlSections.Kind;
       
+      --------------------------------------------------------------------------
       subtype FileSystemRights is NetFrameworkBase.System.Security.AccessControl.FileSystemRights.Kind;
       
+      --------------------------------------------------------------------------
       subtype FileSystemAccessRule is NetFrameworkBase.System.Security.AccessControl.FileSystemAccessRule.Kind_Ptr;
       subtype FileSystemAccessRule_Array is NetFrameworkBase.System.Security.AccessControl.FileSystemAccessRule.Kind_Array;
       
@@ -99,6 +105,7 @@ package NetFramework.System.Security.AccessControl is
          )
          return NetFrameworkBase.System.Security.AccessControl.FileSystemAccessRule.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.FileSystemAccessRule.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype FileSystemAuditRule is NetFrameworkBase.System.Security.AccessControl.FileSystemAuditRule.Kind_Ptr;
       subtype FileSystemAuditRule_Array is NetFrameworkBase.System.Security.AccessControl.FileSystemAuditRule.Kind_Array;
       
@@ -138,9 +145,11 @@ package NetFramework.System.Security.AccessControl is
          )
          return NetFrameworkBase.System.Security.AccessControl.FileSystemAuditRule.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.FileSystemAuditRule.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype FileSystemSecurity is NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity.Kind_Ptr;
       subtype FileSystemSecurity_Array is NetFrameworkBase.System.Security.AccessControl.FileSystemSecurity.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype FileSecurity is NetFrameworkBase.System.Security.AccessControl.FileSecurity.Kind_Ptr;
       subtype FileSecurity_Array is NetFrameworkBase.System.Security.AccessControl.FileSecurity.Kind_Array;
       
@@ -153,6 +162,7 @@ package NetFramework.System.Security.AccessControl is
          )
          return NetFrameworkBase.System.Security.AccessControl.FileSecurity.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.FileSecurity.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype DirectorySecurity is NetFrameworkBase.System.Security.AccessControl.DirectorySecurity.Kind_Ptr;
       subtype DirectorySecurity_Array is NetFrameworkBase.System.Security.AccessControl.DirectorySecurity.Kind_Array;
       
@@ -165,28 +175,37 @@ package NetFramework.System.Security.AccessControl is
          )
          return NetFrameworkBase.System.Security.AccessControl.DirectorySecurity.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.DirectorySecurity.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype NativeObjectSecurity is NetFrameworkBase.System.Security.AccessControl.NativeObjectSecurity.Kind_Ptr;
       subtype NativeObjectSecurity_Array is NetFrameworkBase.System.Security.AccessControl.NativeObjectSecurity.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype AccessControlModification is NetFrameworkBase.System.Security.AccessControl.AccessControlModification.Kind;
       
+      --------------------------------------------------------------------------
       subtype ObjectSecurity is NetFrameworkBase.System.Security.AccessControl.ObjectSecurity.Kind_Ptr;
       subtype ObjectSecurity_Array is NetFrameworkBase.System.Security.AccessControl.ObjectSecurity.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype CommonObjectSecurity is NetFrameworkBase.System.Security.AccessControl.CommonObjectSecurity.Kind_Ptr;
       subtype CommonObjectSecurity_Array is NetFrameworkBase.System.Security.AccessControl.CommonObjectSecurity.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype AccessControlType is NetFrameworkBase.System.Security.AccessControl.AccessControlType.Kind;
       
+      --------------------------------------------------------------------------
       subtype AuthorizationRule is NetFrameworkBase.System.Security.AccessControl.AuthorizationRule.Kind_Ptr;
       subtype AuthorizationRule_Array is NetFrameworkBase.System.Security.AccessControl.AuthorizationRule.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype AccessRule is NetFrameworkBase.System.Security.AccessControl.AccessRule.Kind_Ptr;
       subtype AccessRule_Array is NetFrameworkBase.System.Security.AccessControl.AccessRule.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype AuditRule is NetFrameworkBase.System.Security.AccessControl.AuditRule.Kind_Ptr;
       subtype AuditRule_Array is NetFrameworkBase.System.Security.AccessControl.AuditRule.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype AuthorizationRuleCollection is NetFrameworkBase.System.Security.AccessControl.AuthorizationRuleCollection.Kind_Ptr;
       subtype AuthorizationRuleCollection_Array is NetFrameworkBase.System.Security.AccessControl.AuthorizationRuleCollection.Kind_Array;
       

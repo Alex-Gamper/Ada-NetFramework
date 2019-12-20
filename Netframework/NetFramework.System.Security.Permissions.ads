@@ -31,6 +31,7 @@ with NetFrameworkBase.System.Security.Permissions.PermissionState;
 --------------------------------------------------------------------------------
 package NetFramework.System.Security.Permissions is
    
+      --------------------------------------------------------------------------
       subtype PermissionState is NetFrameworkBase.System.Security.Permissions.PermissionState.Kind;
       
    

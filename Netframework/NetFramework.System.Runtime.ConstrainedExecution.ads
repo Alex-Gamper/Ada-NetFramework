@@ -31,6 +31,7 @@ with NetFrameworkBase.System.Runtime.ConstrainedExecution.CriticalFinalizerObjec
 --------------------------------------------------------------------------------
 package NetFramework.System.Runtime.ConstrainedExecution is
    
+      --------------------------------------------------------------------------
       subtype CriticalFinalizerObject is NetFrameworkBase.System.Runtime.ConstrainedExecution.CriticalFinalizerObject.Kind_Ptr;
       subtype CriticalFinalizerObject_Array is NetFrameworkBase.System.Runtime.ConstrainedExecution.CriticalFinalizerObject.Kind_Array;
       

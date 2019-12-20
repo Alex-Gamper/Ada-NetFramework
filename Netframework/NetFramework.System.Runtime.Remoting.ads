@@ -36,15 +36,19 @@ with NetFrameworkBase.System.Type_x;
 --------------------------------------------------------------------------------
 package NetFramework.System.Runtime.Remoting is
    
+      --------------------------------------------------------------------------
       subtype IRemotingTypeInfo is NetFrameworkBase.System.Runtime.Remoting.IRemotingTypeInfo.Kind_Ptr;
       subtype IRemotingTypeInfo_Array is NetFrameworkBase.System.Runtime.Remoting.IRemotingTypeInfo.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype IChannelInfo is NetFrameworkBase.System.Runtime.Remoting.IChannelInfo.Kind_Ptr;
       subtype IChannelInfo_Array is NetFrameworkBase.System.Runtime.Remoting.IChannelInfo.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype IEnvoyInfo is NetFrameworkBase.System.Runtime.Remoting.IEnvoyInfo.Kind_Ptr;
       subtype IEnvoyInfo_Array is NetFrameworkBase.System.Runtime.Remoting.IEnvoyInfo.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype ObjRef is NetFrameworkBase.System.Runtime.Remoting.ObjRef.Kind_Ptr;
       subtype ObjRef_Array is NetFrameworkBase.System.Runtime.Remoting.ObjRef.Kind_Array;
       

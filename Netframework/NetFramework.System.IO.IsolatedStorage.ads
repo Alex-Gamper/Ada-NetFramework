@@ -37,11 +37,14 @@ with NetFrameworkBase.System.IO.FileShare;
 --------------------------------------------------------------------------------
 package NetFramework.System.IO.IsolatedStorage is
    
+      --------------------------------------------------------------------------
       subtype IsolatedStorageScope is NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageScope.Kind;
       
+      --------------------------------------------------------------------------
       subtype IsolatedStorage is NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorage.Kind_Ptr;
       subtype IsolatedStorage_Array is NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorage.Kind_Array;
       
+      --------------------------------------------------------------------------
       subtype IsolatedStorageFileStream is NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFileStream.Kind_Ptr;
       subtype IsolatedStorageFileStream_Array is NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFileStream.Kind_Array;
       
@@ -117,6 +120,7 @@ package NetFramework.System.IO.IsolatedStorage is
          )
          return NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFileStream.Kind_Ptr renames NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFileStream.Constructor; 
          
+      --------------------------------------------------------------------------
       subtype IsolatedStorageFile is NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFile.Kind_Ptr;
       subtype IsolatedStorageFile_Array is NetFrameworkBase.System.IO.IsolatedStorage.IsolatedStorageFile.Kind_Array;
       

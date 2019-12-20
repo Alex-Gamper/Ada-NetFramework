@@ -36,10 +36,13 @@ with NetFrameworkBase.System.Runtime.Serialization.StreamingContext;
 --------------------------------------------------------------------------------
 package NetFramework.System.Security.Cryptography.X509Certificates is
    
+      --------------------------------------------------------------------------
       subtype X509ContentType is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ContentType.Kind;
       
+      --------------------------------------------------------------------------
       subtype X509KeyStorageFlags is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.Kind;
       
+      --------------------------------------------------------------------------
       subtype X509Certificate is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate.Kind_Ptr;
       subtype X509Certificate_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate.Kind_Array;
       
