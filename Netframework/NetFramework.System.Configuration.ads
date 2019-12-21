@@ -27,6 +27,1425 @@
 -- along with this program.If not, see http://www.gnu.org/licenses            --
 --                                                                            --
 --------------------------------------------------------------------------------
+with NetFrameworkBase.System.Configuration.AppSettingsSection;
+with NetFrameworkBase.System.Configuration.CallbackValidator;
+with NetFrameworkBase.System.Configuration.CallbackValidatorAttribute;
+with NetFrameworkBase.System.Configuration.CommaDelimitedStringCollectionConverter;
+with NetFrameworkBase.System.Configuration.Configuration;
+with NetFrameworkBase.System.Configuration.ConfigurationAllowDefinition;
+with NetFrameworkBase.System.Configuration.ConfigurationAllowExeDefinition;
+with NetFrameworkBase.System.Configuration.ConfigurationBuilder;
+with NetFrameworkBase.System.Configuration.ConfigurationBuilderCollection;
+with NetFrameworkBase.System.Configuration.ConfigurationBuildersSection;
+with NetFrameworkBase.System.Configuration.ConfigurationBuilderSettings;
+with NetFrameworkBase.System.Configuration.ConfigurationCollectionAttribute;
+with NetFrameworkBase.System.Configuration.ConfigurationConverterBase;
+with NetFrameworkBase.System.Configuration.ConfigurationElement;
+with NetFrameworkBase.System.Configuration.ConfigurationElementCollection;
+with NetFrameworkBase.System.Configuration.ConfigurationElementCollectionType;
+with NetFrameworkBase.System.Configuration.ConfigurationElementProperty;
+with NetFrameworkBase.System.Configuration.ConfigurationErrorsException;
+with NetFrameworkBase.System.Configuration.ConfigurationFileMap;
+with NetFrameworkBase.System.Configuration.ConfigurationLocation;
+with NetFrameworkBase.System.Configuration.ConfigurationLocationCollection;
+with NetFrameworkBase.System.Configuration.ConfigurationLockCollection;
+with NetFrameworkBase.System.Configuration.ConfigurationManager;
+with NetFrameworkBase.System.Configuration.ConfigurationPermissionAttribute;
+with NetFrameworkBase.System.Configuration.ConfigurationPermission;
+with NetFrameworkBase.System.Configuration.ConfigurationProperty;
+with NetFrameworkBase.System.Configuration.ConfigurationPropertyAttribute;
+with NetFrameworkBase.System.Configuration.ConfigurationPropertyCollection;
+with NetFrameworkBase.System.Configuration.ConfigurationPropertyOptions;
+with NetFrameworkBase.System.Configuration.ConfigurationSaveMode;
+with NetFrameworkBase.System.Configuration.ConfigurationSection;
+with NetFrameworkBase.System.Configuration.ConfigurationSectionCollection;
+with NetFrameworkBase.System.Configuration.ConfigurationSectionGroup;
+with NetFrameworkBase.System.Configuration.ConfigurationSectionGroupCollection;
+with NetFrameworkBase.System.Configuration.ConfigurationUserLevel;
+with NetFrameworkBase.System.Configuration.ConfigurationValidatorAttribute;
+with NetFrameworkBase.System.Configuration.ConfigurationValidatorBase;
+with NetFrameworkBase.System.Configuration.ConnectionStringSettings;
+with NetFrameworkBase.System.Configuration.ConnectionStringSettingsCollection;
+with NetFrameworkBase.System.Configuration.ConnectionStringsSection;
+with NetFrameworkBase.System.Configuration.ContextInformation;
+with NetFrameworkBase.System.Configuration.DefaultSection;
+with NetFrameworkBase.System.Configuration.DefaultValidator;
+with NetFrameworkBase.System.Configuration.DpapiProtectedConfigurationProvider;
+with NetFrameworkBase.System.Configuration.ElementInformation;
+with NetFrameworkBase.System.Configuration.ExeConfigurationFileMap;
+with NetFrameworkBase.System.Configuration.ExeContext;
+with NetFrameworkBase.System.Configuration.GenericEnumConverter;
+with NetFrameworkBase.System.Configuration.IgnoreSection;
+with NetFrameworkBase.System.Configuration.InfiniteIntConverter;
+with NetFrameworkBase.System.Configuration.InfiniteTimeSpanConverter;
+with NetFrameworkBase.System.Configuration.IntegerValidator;
+with NetFrameworkBase.System.Configuration.IntegerValidatorAttribute;
+with NetFrameworkBase.System.Configuration.KeyValueConfigurationCollection;
+with NetFrameworkBase.System.Configuration.KeyValueConfigurationElement;
+with NetFrameworkBase.System.Configuration.LongValidator;
+with NetFrameworkBase.System.Configuration.LongValidatorAttribute;
+with NetFrameworkBase.System.Configuration.NameValueConfigurationCollection;
+with NetFrameworkBase.System.Configuration.NameValueConfigurationElement;
+with NetFrameworkBase.System.Configuration.OverrideMode;
+with NetFrameworkBase.System.Configuration.PositiveTimeSpanValidator;
+with NetFrameworkBase.System.Configuration.PositiveTimeSpanValidatorAttribute;
+with NetFrameworkBase.System.Configuration.PropertyInformation;
+with NetFrameworkBase.System.Configuration.PropertyInformationCollection;
+with NetFrameworkBase.System.Configuration.PropertyValueOrigin;
+with NetFrameworkBase.System.Configuration.ProtectedConfiguration;
+with NetFrameworkBase.System.Configuration.ProtectedConfigurationProvider;
+with NetFrameworkBase.System.Configuration.ProtectedConfigurationProviderCollection;
+with NetFrameworkBase.System.Configuration.ProtectedConfigurationSection;
+with NetFrameworkBase.System.Configuration.ProtectedProviderSettings;
+with NetFrameworkBase.System.Configuration.ProviderSettings;
+with NetFrameworkBase.System.Configuration.ProviderSettingsCollection;
+with NetFrameworkBase.System.Configuration.RegexStringValidator;
+with NetFrameworkBase.System.Configuration.RegexStringValidatorAttribute;
+with NetFrameworkBase.System.Configuration.RsaProtectedConfigurationProvider;
+with NetFrameworkBase.System.Configuration.SectionInformation;
+with NetFrameworkBase.System.Configuration.CommaDelimitedStringCollection;
+with NetFrameworkBase.System.Configuration.StringValidator;
+with NetFrameworkBase.System.Configuration.StringValidatorAttribute;
+with NetFrameworkBase.System.Configuration.SubclassTypeValidator;
+with NetFrameworkBase.System.Configuration.SubclassTypeValidatorAttribute;
+with NetFrameworkBase.System.Configuration.TimeSpanMinutesConverter;
+with NetFrameworkBase.System.Configuration.TimeSpanMinutesOrInfiniteConverter;
+with NetFrameworkBase.System.Configuration.TimeSpanSecondsConverter;
+with NetFrameworkBase.System.Configuration.TimeSpanSecondsOrInfiniteConverter;
+with NetFrameworkBase.System.Configuration.TimeSpanValidator;
+with NetFrameworkBase.System.Configuration.TimeSpanValidatorAttribute;
+with NetFrameworkBase.System.Configuration.TypeNameConverter;
+with NetFrameworkBase.System.Configuration.ValidatorCallback;
+with NetFrameworkBase.System.Configuration.WhiteSpaceTrimStringConverter;
+with NetFrameworkBase.System.Configuration.SchemeSettingElement;
+with NetFrameworkBase.System.Configuration.SchemeSettingElementCollection;
+with NetFrameworkBase.System.Configuration.UriSection;
+with NetFrameworkBase.System.Configuration.IriParsingElement;
+with NetFrameworkBase.System.Configuration.IdnElement;
+with NetFrameworkBase.System.Configuration.ApplicationSettingsBase;
+with NetFrameworkBase.System.Configuration.SettingsLoadedEventHandler;
+with NetFrameworkBase.System.Configuration.SettingsSavingEventHandler;
+with NetFrameworkBase.System.Configuration.SettingChangingEventHandler;
+with NetFrameworkBase.System.Configuration.SettingChangingEventArgs;
+with NetFrameworkBase.System.Configuration.SettingsLoadedEventArgs;
+with NetFrameworkBase.System.Configuration.ConfigurationException;
+with NetFrameworkBase.System.Configuration.ConfigurationSettings;
+with NetFrameworkBase.System.Configuration.ConfigXmlDocument;
+with NetFrameworkBase.System.Configuration.DictionarySectionHandler;
+with NetFrameworkBase.System.Configuration.IApplicationSettingsProvider;
+with NetFrameworkBase.System.Configuration.IConfigurationSectionHandler;
+with NetFrameworkBase.System.Configuration.IConfigurationSystem;
+with NetFrameworkBase.System.Configuration.IgnoreSectionHandler;
+with NetFrameworkBase.System.Configuration.IPersistComponentSettings;
+with NetFrameworkBase.System.Configuration.ISettingsProviderService;
+with NetFrameworkBase.System.Configuration.LocalFileSettingsProvider;
+with NetFrameworkBase.System.Configuration.NameValueFileSectionHandler;
+with NetFrameworkBase.System.Configuration.NameValueSectionHandler;
+with NetFrameworkBase.System.Configuration.SettingsAttributeDictionary;
+with NetFrameworkBase.System.Configuration.ApplicationScopedSettingAttribute;
+with NetFrameworkBase.System.Configuration.DefaultSettingValueAttribute;
+with NetFrameworkBase.System.Configuration.NoSettingsVersionUpgradeAttribute;
+with NetFrameworkBase.System.Configuration.SettingAttribute;
+with NetFrameworkBase.System.Configuration.SettingsDescriptionAttribute;
+with NetFrameworkBase.System.Configuration.SettingsGroupDescriptionAttribute;
+with NetFrameworkBase.System.Configuration.SettingsGroupNameAttribute;
+with NetFrameworkBase.System.Configuration.SettingsManageabilityAttribute;
+with NetFrameworkBase.System.Configuration.SettingsProviderAttribute;
+with NetFrameworkBase.System.Configuration.SettingsSerializeAsAttribute;
+with NetFrameworkBase.System.Configuration.SpecialSettingAttribute;
+with NetFrameworkBase.System.Configuration.UserScopedSettingAttribute;
+with NetFrameworkBase.System.Configuration.SettingsManageability;
+with NetFrameworkBase.System.Configuration.SpecialSetting;
+with NetFrameworkBase.System.Configuration.SettingsBase;
+with NetFrameworkBase.System.Configuration.SettingsContext;
+with NetFrameworkBase.System.Configuration.SettingsProperty;
+with NetFrameworkBase.System.Configuration.SettingsPropertyCollection;
+with NetFrameworkBase.System.Configuration.SettingsPropertyIsReadOnlyException;
+with NetFrameworkBase.System.Configuration.SettingsPropertyNotFoundException;
+with NetFrameworkBase.System.Configuration.SettingsPropertyValue;
+with NetFrameworkBase.System.Configuration.SettingsPropertyValueCollection;
+with NetFrameworkBase.System.Configuration.SettingsPropertyWrongTypeException;
+with NetFrameworkBase.System.Configuration.SettingsProvider;
+with NetFrameworkBase.System.Configuration.SettingsProviderCollection;
+with NetFrameworkBase.System.Configuration.SettingsSerializeAs;
+with NetFrameworkBase.System.Configuration.SingleTagSectionHandler;
+with NetFrameworkBase.System.Configuration.ApplicationSettingsGroup;
+with NetFrameworkBase.System.Configuration.UserSettingsGroup;
+with NetFrameworkBase.System.Configuration.ClientSettingsSection;
+with NetFrameworkBase.System.Configuration.SettingElementCollection;
+with NetFrameworkBase.System.Configuration.SettingElement;
+with NetFrameworkBase.System.Configuration.SettingValueElement;
+with NetFrameworkBase.System.Configuration.AppSettingsReader;
+with NetFrameworkBase.System.Type_x;
+with NetFrameworkBase.System.Exception_x;
+with NetFrameworkBase.System.Xml.XmlNode;
+with NetFrameworkBase.System.Xml.XmlReader;
+with NetFrameworkBase.System.Security.Permissions.SecurityAction;
+with NetFrameworkBase.System.Security.Permissions.PermissionState;
+with NetFrameworkBase.System.Object;
+with NetFrameworkBase.System.ComponentModel.TypeConverter;
+with NetFrameworkBase.System.TimeSpan;
 --------------------------------------------------------------------------------
 package NetFramework.System.Configuration is
+   
+      --------------------------------------------------------------------------
+      subtype AppSettingsSection is NetFrameworkBase.System.Configuration.AppSettingsSection.Kind_Ptr;
+      subtype AppSettingsSection_Array is NetFrameworkBase.System.Configuration.AppSettingsSection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.AppSettingsSection.Kind_Ptr renames NetFrameworkBase.System.Configuration.AppSettingsSection.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype CallbackValidator is NetFrameworkBase.System.Configuration.CallbackValidator.Kind_Ptr;
+      subtype CallbackValidator_Array is NetFrameworkBase.System.Configuration.CallbackValidator.Kind_Array;
+      
+         function Constructor
+         (
+            type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
+            callback : NetFrameworkBase.System.Configuration.ValidatorCallback.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Configuration.CallbackValidator.Kind_Ptr renames NetFrameworkBase.System.Configuration.CallbackValidator.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CallbackValidatorAttribute is NetFrameworkBase.System.Configuration.CallbackValidatorAttribute.Kind_Ptr;
+      subtype CallbackValidatorAttribute_Array is NetFrameworkBase.System.Configuration.CallbackValidatorAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.CallbackValidatorAttribute.Kind_Ptr renames NetFrameworkBase.System.Configuration.CallbackValidatorAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype CommaDelimitedStringCollectionConverter is NetFrameworkBase.System.Configuration.CommaDelimitedStringCollectionConverter.Kind_Ptr;
+      subtype CommaDelimitedStringCollectionConverter_Array is NetFrameworkBase.System.Configuration.CommaDelimitedStringCollectionConverter.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.CommaDelimitedStringCollectionConverter.Kind_Ptr renames NetFrameworkBase.System.Configuration.CommaDelimitedStringCollectionConverter.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype Configuration is NetFrameworkBase.System.Configuration.Configuration.Kind_Ptr;
+      subtype Configuration_Array is NetFrameworkBase.System.Configuration.Configuration.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ConfigurationAllowDefinition is NetFrameworkBase.System.Configuration.ConfigurationAllowDefinition.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype ConfigurationAllowExeDefinition is NetFrameworkBase.System.Configuration.ConfigurationAllowExeDefinition.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype ConfigurationBuilder is NetFrameworkBase.System.Configuration.ConfigurationBuilder.Kind_Ptr;
+      subtype ConfigurationBuilder_Array is NetFrameworkBase.System.Configuration.ConfigurationBuilder.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ConfigurationBuilderCollection is NetFrameworkBase.System.Configuration.ConfigurationBuilderCollection.Kind_Ptr;
+      subtype ConfigurationBuilderCollection_Array is NetFrameworkBase.System.Configuration.ConfigurationBuilderCollection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.ConfigurationBuilderCollection.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationBuilderCollection.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype ConfigurationBuildersSection is NetFrameworkBase.System.Configuration.ConfigurationBuildersSection.Kind_Ptr;
+      subtype ConfigurationBuildersSection_Array is NetFrameworkBase.System.Configuration.ConfigurationBuildersSection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.ConfigurationBuildersSection.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationBuildersSection.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype ConfigurationBuilderSettings is NetFrameworkBase.System.Configuration.ConfigurationBuilderSettings.Kind_Ptr;
+      subtype ConfigurationBuilderSettings_Array is NetFrameworkBase.System.Configuration.ConfigurationBuilderSettings.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.ConfigurationBuilderSettings.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationBuilderSettings.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype ConfigurationCollectionAttribute is NetFrameworkBase.System.Configuration.ConfigurationCollectionAttribute.Kind_Ptr;
+      subtype ConfigurationCollectionAttribute_Array is NetFrameworkBase.System.Configuration.ConfigurationCollectionAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            itemType : NetFrameworkBase.System.Type_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Configuration.ConfigurationCollectionAttribute.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationCollectionAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ConfigurationConverterBase is NetFrameworkBase.System.Configuration.ConfigurationConverterBase.Kind_Ptr;
+      subtype ConfigurationConverterBase_Array is NetFrameworkBase.System.Configuration.ConfigurationConverterBase.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ConfigurationElement is NetFrameworkBase.System.Configuration.ConfigurationElement.Kind_Ptr;
+      subtype ConfigurationElement_Array is NetFrameworkBase.System.Configuration.ConfigurationElement.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ConfigurationElementCollection is NetFrameworkBase.System.Configuration.ConfigurationElementCollection.Kind_Ptr;
+      subtype ConfigurationElementCollection_Array is NetFrameworkBase.System.Configuration.ConfigurationElementCollection.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ConfigurationElementCollectionType is NetFrameworkBase.System.Configuration.ConfigurationElementCollectionType.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype ConfigurationElementProperty is NetFrameworkBase.System.Configuration.ConfigurationElementProperty.Kind_Ptr;
+      subtype ConfigurationElementProperty_Array is NetFrameworkBase.System.Configuration.ConfigurationElementProperty.Kind_Array;
+      
+         function Constructor
+         (
+            validator : NetFrameworkBase.System.Configuration.ConfigurationValidatorBase.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Configuration.ConfigurationElementProperty.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationElementProperty.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ConfigurationErrorsException is NetFrameworkBase.System.Configuration.ConfigurationErrorsException.Kind_Ptr;
+      subtype ConfigurationErrorsException_Array is NetFrameworkBase.System.Configuration.ConfigurationErrorsException.Kind_Array;
+      
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr;
+            filename : NetFrameworkBase.BSTR;
+            line : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Configuration.ConfigurationErrorsException.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationErrorsException.Constructor; 
+         
+         function Constructor return NetFrameworkBase.System.Configuration.ConfigurationErrorsException.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationErrorsException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Configuration.ConfigurationErrorsException.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationErrorsException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Configuration.ConfigurationErrorsException.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationErrorsException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            filename : NetFrameworkBase.BSTR;
+            line : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Configuration.ConfigurationErrorsException.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationErrorsException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            node : NetFrameworkBase.System.Xml.XmlNode.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Configuration.ConfigurationErrorsException.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationErrorsException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr;
+            node : NetFrameworkBase.System.Xml.XmlNode.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Configuration.ConfigurationErrorsException.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationErrorsException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            reader : NetFrameworkBase.System.Xml.XmlReader.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Configuration.ConfigurationErrorsException.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationErrorsException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr;
+            reader : NetFrameworkBase.System.Xml.XmlReader.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Configuration.ConfigurationErrorsException.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationErrorsException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ConfigurationFileMap is NetFrameworkBase.System.Configuration.ConfigurationFileMap.Kind_Ptr;
+      subtype ConfigurationFileMap_Array is NetFrameworkBase.System.Configuration.ConfigurationFileMap.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.ConfigurationFileMap.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationFileMap.Constructor;
+         
+         function Constructor
+         (
+            machineConfigFilename : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Configuration.ConfigurationFileMap.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationFileMap.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ConfigurationLocation is NetFrameworkBase.System.Configuration.ConfigurationLocation.Kind_Ptr;
+      subtype ConfigurationLocation_Array is NetFrameworkBase.System.Configuration.ConfigurationLocation.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ConfigurationLocationCollection is NetFrameworkBase.System.Configuration.ConfigurationLocationCollection.Kind_Ptr;
+      subtype ConfigurationLocationCollection_Array is NetFrameworkBase.System.Configuration.ConfigurationLocationCollection.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ConfigurationLockCollection is NetFrameworkBase.System.Configuration.ConfigurationLockCollection.Kind_Ptr;
+      subtype ConfigurationLockCollection_Array is NetFrameworkBase.System.Configuration.ConfigurationLockCollection.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ConfigurationManager is NetFrameworkBase.System.Configuration.ConfigurationManager.Kind_Ptr;
+      subtype ConfigurationManager_Array is NetFrameworkBase.System.Configuration.ConfigurationManager.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ConfigurationPermissionAttribute is NetFrameworkBase.System.Configuration.ConfigurationPermissionAttribute.Kind_Ptr;
+      subtype ConfigurationPermissionAttribute_Array is NetFrameworkBase.System.Configuration.ConfigurationPermissionAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            action : NetFrameworkBase.System.Security.Permissions.SecurityAction.Kind
+         )
+         return NetFrameworkBase.System.Configuration.ConfigurationPermissionAttribute.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationPermissionAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ConfigurationPermission is NetFrameworkBase.System.Configuration.ConfigurationPermission.Kind_Ptr;
+      subtype ConfigurationPermission_Array is NetFrameworkBase.System.Configuration.ConfigurationPermission.Kind_Array;
+      
+         function Constructor
+         (
+            state : NetFrameworkBase.System.Security.Permissions.PermissionState.Kind
+         )
+         return NetFrameworkBase.System.Configuration.ConfigurationPermission.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationPermission.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ConfigurationProperty is NetFrameworkBase.System.Configuration.ConfigurationProperty.Kind_Ptr;
+      subtype ConfigurationProperty_Array is NetFrameworkBase.System.Configuration.ConfigurationProperty.Kind_Array;
+      
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR;
+            type_x : NetFrameworkBase.System.Type_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Configuration.ConfigurationProperty.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationProperty.Constructor; 
+         
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR;
+            type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
+            defaultValue : NetFrameworkBase.System.Object.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Configuration.ConfigurationProperty.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationProperty.Constructor; 
+         
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR;
+            type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
+            defaultValue : NetFrameworkBase.System.Object.Kind_Ptr;
+            options : NetFrameworkBase.System.Configuration.ConfigurationPropertyOptions.Kind
+         )
+         return NetFrameworkBase.System.Configuration.ConfigurationProperty.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationProperty.Constructor; 
+         
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR;
+            type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
+            defaultValue : NetFrameworkBase.System.Object.Kind_Ptr;
+            typeConverter : NetFrameworkBase.System.ComponentModel.TypeConverter.Kind_Ptr;
+            validator : NetFrameworkBase.System.Configuration.ConfigurationValidatorBase.Kind_Ptr;
+            options : NetFrameworkBase.System.Configuration.ConfigurationPropertyOptions.Kind
+         )
+         return NetFrameworkBase.System.Configuration.ConfigurationProperty.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationProperty.Constructor; 
+         
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR;
+            type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
+            defaultValue : NetFrameworkBase.System.Object.Kind_Ptr;
+            typeConverter : NetFrameworkBase.System.ComponentModel.TypeConverter.Kind_Ptr;
+            validator : NetFrameworkBase.System.Configuration.ConfigurationValidatorBase.Kind_Ptr;
+            options : NetFrameworkBase.System.Configuration.ConfigurationPropertyOptions.Kind;
+            description : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Configuration.ConfigurationProperty.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationProperty.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ConfigurationPropertyAttribute is NetFrameworkBase.System.Configuration.ConfigurationPropertyAttribute.Kind_Ptr;
+      subtype ConfigurationPropertyAttribute_Array is NetFrameworkBase.System.Configuration.ConfigurationPropertyAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Configuration.ConfigurationPropertyAttribute.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationPropertyAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ConfigurationPropertyCollection is NetFrameworkBase.System.Configuration.ConfigurationPropertyCollection.Kind_Ptr;
+      subtype ConfigurationPropertyCollection_Array is NetFrameworkBase.System.Configuration.ConfigurationPropertyCollection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.ConfigurationPropertyCollection.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationPropertyCollection.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype ConfigurationPropertyOptions is NetFrameworkBase.System.Configuration.ConfigurationPropertyOptions.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype ConfigurationSaveMode is NetFrameworkBase.System.Configuration.ConfigurationSaveMode.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype ConfigurationSection is NetFrameworkBase.System.Configuration.ConfigurationSection.Kind_Ptr;
+      subtype ConfigurationSection_Array is NetFrameworkBase.System.Configuration.ConfigurationSection.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ConfigurationSectionCollection is NetFrameworkBase.System.Configuration.ConfigurationSectionCollection.Kind_Ptr;
+      subtype ConfigurationSectionCollection_Array is NetFrameworkBase.System.Configuration.ConfigurationSectionCollection.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ConfigurationSectionGroup is NetFrameworkBase.System.Configuration.ConfigurationSectionGroup.Kind_Ptr;
+      subtype ConfigurationSectionGroup_Array is NetFrameworkBase.System.Configuration.ConfigurationSectionGroup.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.ConfigurationSectionGroup.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationSectionGroup.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype ConfigurationSectionGroupCollection is NetFrameworkBase.System.Configuration.ConfigurationSectionGroupCollection.Kind_Ptr;
+      subtype ConfigurationSectionGroupCollection_Array is NetFrameworkBase.System.Configuration.ConfigurationSectionGroupCollection.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ConfigurationUserLevel is NetFrameworkBase.System.Configuration.ConfigurationUserLevel.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype ConfigurationValidatorAttribute is NetFrameworkBase.System.Configuration.ConfigurationValidatorAttribute.Kind_Ptr;
+      subtype ConfigurationValidatorAttribute_Array is NetFrameworkBase.System.Configuration.ConfigurationValidatorAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            validator : NetFrameworkBase.System.Type_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Configuration.ConfigurationValidatorAttribute.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationValidatorAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ConfigurationValidatorBase is NetFrameworkBase.System.Configuration.ConfigurationValidatorBase.Kind_Ptr;
+      subtype ConfigurationValidatorBase_Array is NetFrameworkBase.System.Configuration.ConfigurationValidatorBase.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ConnectionStringSettings is NetFrameworkBase.System.Configuration.ConnectionStringSettings.Kind_Ptr;
+      subtype ConnectionStringSettings_Array is NetFrameworkBase.System.Configuration.ConnectionStringSettings.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.ConnectionStringSettings.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConnectionStringSettings.Constructor;
+         
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR;
+            connectionString : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Configuration.ConnectionStringSettings.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConnectionStringSettings.Constructor; 
+         
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR;
+            connectionString : NetFrameworkBase.BSTR;
+            providerName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Configuration.ConnectionStringSettings.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConnectionStringSettings.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ConnectionStringSettingsCollection is NetFrameworkBase.System.Configuration.ConnectionStringSettingsCollection.Kind_Ptr;
+      subtype ConnectionStringSettingsCollection_Array is NetFrameworkBase.System.Configuration.ConnectionStringSettingsCollection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.ConnectionStringSettingsCollection.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConnectionStringSettingsCollection.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype ConnectionStringsSection is NetFrameworkBase.System.Configuration.ConnectionStringsSection.Kind_Ptr;
+      subtype ConnectionStringsSection_Array is NetFrameworkBase.System.Configuration.ConnectionStringsSection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.ConnectionStringsSection.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConnectionStringsSection.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype ContextInformation is NetFrameworkBase.System.Configuration.ContextInformation.Kind_Ptr;
+      subtype ContextInformation_Array is NetFrameworkBase.System.Configuration.ContextInformation.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype DefaultSection is NetFrameworkBase.System.Configuration.DefaultSection.Kind_Ptr;
+      subtype DefaultSection_Array is NetFrameworkBase.System.Configuration.DefaultSection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.DefaultSection.Kind_Ptr renames NetFrameworkBase.System.Configuration.DefaultSection.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype DefaultValidator is NetFrameworkBase.System.Configuration.DefaultValidator.Kind_Ptr;
+      subtype DefaultValidator_Array is NetFrameworkBase.System.Configuration.DefaultValidator.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.DefaultValidator.Kind_Ptr renames NetFrameworkBase.System.Configuration.DefaultValidator.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype DpapiProtectedConfigurationProvider is NetFrameworkBase.System.Configuration.DpapiProtectedConfigurationProvider.Kind_Ptr;
+      subtype DpapiProtectedConfigurationProvider_Array is NetFrameworkBase.System.Configuration.DpapiProtectedConfigurationProvider.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.DpapiProtectedConfigurationProvider.Kind_Ptr renames NetFrameworkBase.System.Configuration.DpapiProtectedConfigurationProvider.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype ElementInformation is NetFrameworkBase.System.Configuration.ElementInformation.Kind_Ptr;
+      subtype ElementInformation_Array is NetFrameworkBase.System.Configuration.ElementInformation.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ExeConfigurationFileMap is NetFrameworkBase.System.Configuration.ExeConfigurationFileMap.Kind_Ptr;
+      subtype ExeConfigurationFileMap_Array is NetFrameworkBase.System.Configuration.ExeConfigurationFileMap.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.ExeConfigurationFileMap.Kind_Ptr renames NetFrameworkBase.System.Configuration.ExeConfigurationFileMap.Constructor;
+         
+         function Constructor
+         (
+            machineConfigFileName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Configuration.ExeConfigurationFileMap.Kind_Ptr renames NetFrameworkBase.System.Configuration.ExeConfigurationFileMap.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ExeContext is NetFrameworkBase.System.Configuration.ExeContext.Kind_Ptr;
+      subtype ExeContext_Array is NetFrameworkBase.System.Configuration.ExeContext.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype GenericEnumConverter is NetFrameworkBase.System.Configuration.GenericEnumConverter.Kind_Ptr;
+      subtype GenericEnumConverter_Array is NetFrameworkBase.System.Configuration.GenericEnumConverter.Kind_Array;
+      
+         function Constructor
+         (
+            typeEnum : NetFrameworkBase.System.Type_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Configuration.GenericEnumConverter.Kind_Ptr renames NetFrameworkBase.System.Configuration.GenericEnumConverter.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype IgnoreSection is NetFrameworkBase.System.Configuration.IgnoreSection.Kind_Ptr;
+      subtype IgnoreSection_Array is NetFrameworkBase.System.Configuration.IgnoreSection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.IgnoreSection.Kind_Ptr renames NetFrameworkBase.System.Configuration.IgnoreSection.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype InfiniteIntConverter is NetFrameworkBase.System.Configuration.InfiniteIntConverter.Kind_Ptr;
+      subtype InfiniteIntConverter_Array is NetFrameworkBase.System.Configuration.InfiniteIntConverter.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.InfiniteIntConverter.Kind_Ptr renames NetFrameworkBase.System.Configuration.InfiniteIntConverter.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype InfiniteTimeSpanConverter is NetFrameworkBase.System.Configuration.InfiniteTimeSpanConverter.Kind_Ptr;
+      subtype InfiniteTimeSpanConverter_Array is NetFrameworkBase.System.Configuration.InfiniteTimeSpanConverter.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.InfiniteTimeSpanConverter.Kind_Ptr renames NetFrameworkBase.System.Configuration.InfiniteTimeSpanConverter.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype IntegerValidator is NetFrameworkBase.System.Configuration.IntegerValidator.Kind_Ptr;
+      subtype IntegerValidator_Array is NetFrameworkBase.System.Configuration.IntegerValidator.Kind_Array;
+      
+         function Constructor
+         (
+            minValue : NetFrameworkBase.Int32;
+            maxValue : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Configuration.IntegerValidator.Kind_Ptr renames NetFrameworkBase.System.Configuration.IntegerValidator.Constructor; 
+         
+         function Constructor
+         (
+            minValue : NetFrameworkBase.Int32;
+            maxValue : NetFrameworkBase.Int32;
+            rangeIsExclusive : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Configuration.IntegerValidator.Kind_Ptr renames NetFrameworkBase.System.Configuration.IntegerValidator.Constructor; 
+         
+         function Constructor
+         (
+            minValue : NetFrameworkBase.Int32;
+            maxValue : NetFrameworkBase.Int32;
+            rangeIsExclusive : NetFrameworkBase.Boolean;
+            resolution : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Configuration.IntegerValidator.Kind_Ptr renames NetFrameworkBase.System.Configuration.IntegerValidator.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype IntegerValidatorAttribute is NetFrameworkBase.System.Configuration.IntegerValidatorAttribute.Kind_Ptr;
+      subtype IntegerValidatorAttribute_Array is NetFrameworkBase.System.Configuration.IntegerValidatorAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.IntegerValidatorAttribute.Kind_Ptr renames NetFrameworkBase.System.Configuration.IntegerValidatorAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype KeyValueConfigurationCollection is NetFrameworkBase.System.Configuration.KeyValueConfigurationCollection.Kind_Ptr;
+      subtype KeyValueConfigurationCollection_Array is NetFrameworkBase.System.Configuration.KeyValueConfigurationCollection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.KeyValueConfigurationCollection.Kind_Ptr renames NetFrameworkBase.System.Configuration.KeyValueConfigurationCollection.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype KeyValueConfigurationElement is NetFrameworkBase.System.Configuration.KeyValueConfigurationElement.Kind_Ptr;
+      subtype KeyValueConfigurationElement_Array is NetFrameworkBase.System.Configuration.KeyValueConfigurationElement.Kind_Array;
+      
+         function Constructor
+         (
+            key : NetFrameworkBase.BSTR;
+            value : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Configuration.KeyValueConfigurationElement.Kind_Ptr renames NetFrameworkBase.System.Configuration.KeyValueConfigurationElement.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype LongValidator is NetFrameworkBase.System.Configuration.LongValidator.Kind_Ptr;
+      subtype LongValidator_Array is NetFrameworkBase.System.Configuration.LongValidator.Kind_Array;
+      
+         function Constructor
+         (
+            minValue : NetFrameworkBase.Int64;
+            maxValue : NetFrameworkBase.Int64
+         )
+         return NetFrameworkBase.System.Configuration.LongValidator.Kind_Ptr renames NetFrameworkBase.System.Configuration.LongValidator.Constructor; 
+         
+         function Constructor
+         (
+            minValue : NetFrameworkBase.Int64;
+            maxValue : NetFrameworkBase.Int64;
+            rangeIsExclusive : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Configuration.LongValidator.Kind_Ptr renames NetFrameworkBase.System.Configuration.LongValidator.Constructor; 
+         
+         function Constructor
+         (
+            minValue : NetFrameworkBase.Int64;
+            maxValue : NetFrameworkBase.Int64;
+            rangeIsExclusive : NetFrameworkBase.Boolean;
+            resolution : NetFrameworkBase.Int64
+         )
+         return NetFrameworkBase.System.Configuration.LongValidator.Kind_Ptr renames NetFrameworkBase.System.Configuration.LongValidator.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype LongValidatorAttribute is NetFrameworkBase.System.Configuration.LongValidatorAttribute.Kind_Ptr;
+      subtype LongValidatorAttribute_Array is NetFrameworkBase.System.Configuration.LongValidatorAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.LongValidatorAttribute.Kind_Ptr renames NetFrameworkBase.System.Configuration.LongValidatorAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype NameValueConfigurationCollection is NetFrameworkBase.System.Configuration.NameValueConfigurationCollection.Kind_Ptr;
+      subtype NameValueConfigurationCollection_Array is NetFrameworkBase.System.Configuration.NameValueConfigurationCollection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.NameValueConfigurationCollection.Kind_Ptr renames NetFrameworkBase.System.Configuration.NameValueConfigurationCollection.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype NameValueConfigurationElement is NetFrameworkBase.System.Configuration.NameValueConfigurationElement.Kind_Ptr;
+      subtype NameValueConfigurationElement_Array is NetFrameworkBase.System.Configuration.NameValueConfigurationElement.Kind_Array;
+      
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR;
+            value : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Configuration.NameValueConfigurationElement.Kind_Ptr renames NetFrameworkBase.System.Configuration.NameValueConfigurationElement.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype OverrideMode is NetFrameworkBase.System.Configuration.OverrideMode.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype PositiveTimeSpanValidator is NetFrameworkBase.System.Configuration.PositiveTimeSpanValidator.Kind_Ptr;
+      subtype PositiveTimeSpanValidator_Array is NetFrameworkBase.System.Configuration.PositiveTimeSpanValidator.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.PositiveTimeSpanValidator.Kind_Ptr renames NetFrameworkBase.System.Configuration.PositiveTimeSpanValidator.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype PositiveTimeSpanValidatorAttribute is NetFrameworkBase.System.Configuration.PositiveTimeSpanValidatorAttribute.Kind_Ptr;
+      subtype PositiveTimeSpanValidatorAttribute_Array is NetFrameworkBase.System.Configuration.PositiveTimeSpanValidatorAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.PositiveTimeSpanValidatorAttribute.Kind_Ptr renames NetFrameworkBase.System.Configuration.PositiveTimeSpanValidatorAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype PropertyInformation is NetFrameworkBase.System.Configuration.PropertyInformation.Kind_Ptr;
+      subtype PropertyInformation_Array is NetFrameworkBase.System.Configuration.PropertyInformation.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype PropertyInformationCollection is NetFrameworkBase.System.Configuration.PropertyInformationCollection.Kind_Ptr;
+      subtype PropertyInformationCollection_Array is NetFrameworkBase.System.Configuration.PropertyInformationCollection.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype PropertyValueOrigin is NetFrameworkBase.System.Configuration.PropertyValueOrigin.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype ProtectedConfiguration is NetFrameworkBase.System.Configuration.ProtectedConfiguration.Kind_Ptr;
+      subtype ProtectedConfiguration_Array is NetFrameworkBase.System.Configuration.ProtectedConfiguration.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ProtectedConfigurationProvider is NetFrameworkBase.System.Configuration.ProtectedConfigurationProvider.Kind_Ptr;
+      subtype ProtectedConfigurationProvider_Array is NetFrameworkBase.System.Configuration.ProtectedConfigurationProvider.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ProtectedConfigurationProviderCollection is NetFrameworkBase.System.Configuration.ProtectedConfigurationProviderCollection.Kind_Ptr;
+      subtype ProtectedConfigurationProviderCollection_Array is NetFrameworkBase.System.Configuration.ProtectedConfigurationProviderCollection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.ProtectedConfigurationProviderCollection.Kind_Ptr renames NetFrameworkBase.System.Configuration.ProtectedConfigurationProviderCollection.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype ProtectedConfigurationSection is NetFrameworkBase.System.Configuration.ProtectedConfigurationSection.Kind_Ptr;
+      subtype ProtectedConfigurationSection_Array is NetFrameworkBase.System.Configuration.ProtectedConfigurationSection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.ProtectedConfigurationSection.Kind_Ptr renames NetFrameworkBase.System.Configuration.ProtectedConfigurationSection.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype ProtectedProviderSettings is NetFrameworkBase.System.Configuration.ProtectedProviderSettings.Kind_Ptr;
+      subtype ProtectedProviderSettings_Array is NetFrameworkBase.System.Configuration.ProtectedProviderSettings.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.ProtectedProviderSettings.Kind_Ptr renames NetFrameworkBase.System.Configuration.ProtectedProviderSettings.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype ProviderSettings is NetFrameworkBase.System.Configuration.ProviderSettings.Kind_Ptr;
+      subtype ProviderSettings_Array is NetFrameworkBase.System.Configuration.ProviderSettings.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.ProviderSettings.Kind_Ptr renames NetFrameworkBase.System.Configuration.ProviderSettings.Constructor;
+         
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR;
+            type_x : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Configuration.ProviderSettings.Kind_Ptr renames NetFrameworkBase.System.Configuration.ProviderSettings.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ProviderSettingsCollection is NetFrameworkBase.System.Configuration.ProviderSettingsCollection.Kind_Ptr;
+      subtype ProviderSettingsCollection_Array is NetFrameworkBase.System.Configuration.ProviderSettingsCollection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.ProviderSettingsCollection.Kind_Ptr renames NetFrameworkBase.System.Configuration.ProviderSettingsCollection.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype RegexStringValidator is NetFrameworkBase.System.Configuration.RegexStringValidator.Kind_Ptr;
+      subtype RegexStringValidator_Array is NetFrameworkBase.System.Configuration.RegexStringValidator.Kind_Array;
+      
+         function Constructor
+         (
+            regex : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Configuration.RegexStringValidator.Kind_Ptr renames NetFrameworkBase.System.Configuration.RegexStringValidator.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype RegexStringValidatorAttribute is NetFrameworkBase.System.Configuration.RegexStringValidatorAttribute.Kind_Ptr;
+      subtype RegexStringValidatorAttribute_Array is NetFrameworkBase.System.Configuration.RegexStringValidatorAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            regex : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Configuration.RegexStringValidatorAttribute.Kind_Ptr renames NetFrameworkBase.System.Configuration.RegexStringValidatorAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype RsaProtectedConfigurationProvider is NetFrameworkBase.System.Configuration.RsaProtectedConfigurationProvider.Kind_Ptr;
+      subtype RsaProtectedConfigurationProvider_Array is NetFrameworkBase.System.Configuration.RsaProtectedConfigurationProvider.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.RsaProtectedConfigurationProvider.Kind_Ptr renames NetFrameworkBase.System.Configuration.RsaProtectedConfigurationProvider.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SectionInformation is NetFrameworkBase.System.Configuration.SectionInformation.Kind_Ptr;
+      subtype SectionInformation_Array is NetFrameworkBase.System.Configuration.SectionInformation.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype CommaDelimitedStringCollection is NetFrameworkBase.System.Configuration.CommaDelimitedStringCollection.Kind_Ptr;
+      subtype CommaDelimitedStringCollection_Array is NetFrameworkBase.System.Configuration.CommaDelimitedStringCollection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.CommaDelimitedStringCollection.Kind_Ptr renames NetFrameworkBase.System.Configuration.CommaDelimitedStringCollection.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype StringValidator is NetFrameworkBase.System.Configuration.StringValidator.Kind_Ptr;
+      subtype StringValidator_Array is NetFrameworkBase.System.Configuration.StringValidator.Kind_Array;
+      
+         function Constructor
+         (
+            minLength : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Configuration.StringValidator.Kind_Ptr renames NetFrameworkBase.System.Configuration.StringValidator.Constructor; 
+         
+         function Constructor
+         (
+            minLength : NetFrameworkBase.Int32;
+            maxLength : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Configuration.StringValidator.Kind_Ptr renames NetFrameworkBase.System.Configuration.StringValidator.Constructor; 
+         
+         function Constructor
+         (
+            minLength : NetFrameworkBase.Int32;
+            maxLength : NetFrameworkBase.Int32;
+            invalidCharacters : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Configuration.StringValidator.Kind_Ptr renames NetFrameworkBase.System.Configuration.StringValidator.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype StringValidatorAttribute is NetFrameworkBase.System.Configuration.StringValidatorAttribute.Kind_Ptr;
+      subtype StringValidatorAttribute_Array is NetFrameworkBase.System.Configuration.StringValidatorAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.StringValidatorAttribute.Kind_Ptr renames NetFrameworkBase.System.Configuration.StringValidatorAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SubclassTypeValidator is NetFrameworkBase.System.Configuration.SubclassTypeValidator.Kind_Ptr;
+      subtype SubclassTypeValidator_Array is NetFrameworkBase.System.Configuration.SubclassTypeValidator.Kind_Array;
+      
+         function Constructor
+         (
+            baseClass : NetFrameworkBase.System.Type_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Configuration.SubclassTypeValidator.Kind_Ptr renames NetFrameworkBase.System.Configuration.SubclassTypeValidator.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SubclassTypeValidatorAttribute is NetFrameworkBase.System.Configuration.SubclassTypeValidatorAttribute.Kind_Ptr;
+      subtype SubclassTypeValidatorAttribute_Array is NetFrameworkBase.System.Configuration.SubclassTypeValidatorAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            baseClass : NetFrameworkBase.System.Type_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Configuration.SubclassTypeValidatorAttribute.Kind_Ptr renames NetFrameworkBase.System.Configuration.SubclassTypeValidatorAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype TimeSpanMinutesConverter is NetFrameworkBase.System.Configuration.TimeSpanMinutesConverter.Kind_Ptr;
+      subtype TimeSpanMinutesConverter_Array is NetFrameworkBase.System.Configuration.TimeSpanMinutesConverter.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.TimeSpanMinutesConverter.Kind_Ptr renames NetFrameworkBase.System.Configuration.TimeSpanMinutesConverter.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype TimeSpanMinutesOrInfiniteConverter is NetFrameworkBase.System.Configuration.TimeSpanMinutesOrInfiniteConverter.Kind_Ptr;
+      subtype TimeSpanMinutesOrInfiniteConverter_Array is NetFrameworkBase.System.Configuration.TimeSpanMinutesOrInfiniteConverter.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.TimeSpanMinutesOrInfiniteConverter.Kind_Ptr renames NetFrameworkBase.System.Configuration.TimeSpanMinutesOrInfiniteConverter.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype TimeSpanSecondsConverter is NetFrameworkBase.System.Configuration.TimeSpanSecondsConverter.Kind_Ptr;
+      subtype TimeSpanSecondsConverter_Array is NetFrameworkBase.System.Configuration.TimeSpanSecondsConverter.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.TimeSpanSecondsConverter.Kind_Ptr renames NetFrameworkBase.System.Configuration.TimeSpanSecondsConverter.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype TimeSpanSecondsOrInfiniteConverter is NetFrameworkBase.System.Configuration.TimeSpanSecondsOrInfiniteConverter.Kind_Ptr;
+      subtype TimeSpanSecondsOrInfiniteConverter_Array is NetFrameworkBase.System.Configuration.TimeSpanSecondsOrInfiniteConverter.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.TimeSpanSecondsOrInfiniteConverter.Kind_Ptr renames NetFrameworkBase.System.Configuration.TimeSpanSecondsOrInfiniteConverter.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype TimeSpanValidator is NetFrameworkBase.System.Configuration.TimeSpanValidator.Kind_Ptr;
+      subtype TimeSpanValidator_Array is NetFrameworkBase.System.Configuration.TimeSpanValidator.Kind_Array;
+      
+         function Constructor
+         (
+            minValue : NetFrameworkBase.System.TimeSpan.Kind_Ptr;
+            maxValue : NetFrameworkBase.System.TimeSpan.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Configuration.TimeSpanValidator.Kind_Ptr renames NetFrameworkBase.System.Configuration.TimeSpanValidator.Constructor; 
+         
+         function Constructor
+         (
+            minValue : NetFrameworkBase.System.TimeSpan.Kind_Ptr;
+            maxValue : NetFrameworkBase.System.TimeSpan.Kind_Ptr;
+            rangeIsExclusive : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Configuration.TimeSpanValidator.Kind_Ptr renames NetFrameworkBase.System.Configuration.TimeSpanValidator.Constructor; 
+         
+         function Constructor
+         (
+            minValue : NetFrameworkBase.System.TimeSpan.Kind_Ptr;
+            maxValue : NetFrameworkBase.System.TimeSpan.Kind_Ptr;
+            rangeIsExclusive : NetFrameworkBase.Boolean;
+            resolutionInSeconds : NetFrameworkBase.Int64
+         )
+         return NetFrameworkBase.System.Configuration.TimeSpanValidator.Kind_Ptr renames NetFrameworkBase.System.Configuration.TimeSpanValidator.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype TimeSpanValidatorAttribute is NetFrameworkBase.System.Configuration.TimeSpanValidatorAttribute.Kind_Ptr;
+      subtype TimeSpanValidatorAttribute_Array is NetFrameworkBase.System.Configuration.TimeSpanValidatorAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.TimeSpanValidatorAttribute.Kind_Ptr renames NetFrameworkBase.System.Configuration.TimeSpanValidatorAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype TypeNameConverter is NetFrameworkBase.System.Configuration.TypeNameConverter.Kind_Ptr;
+      subtype TypeNameConverter_Array is NetFrameworkBase.System.Configuration.TypeNameConverter.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.TypeNameConverter.Kind_Ptr renames NetFrameworkBase.System.Configuration.TypeNameConverter.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype ValidatorCallback is NetFrameworkBase.System.Configuration.ValidatorCallback.Kind_Ptr;
+      subtype ValidatorCallback_Array is NetFrameworkBase.System.Configuration.ValidatorCallback.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.System.Configuration.ValidatorCallback.Kind_Callback) return NetFrameworkBase.System.Configuration.ValidatorCallback.Kind_Ptr renames NetFrameworkBase.System.Configuration.ValidatorCallback.Constructor;
+      
+      --------------------------------------------------------------------------
+      subtype WhiteSpaceTrimStringConverter is NetFrameworkBase.System.Configuration.WhiteSpaceTrimStringConverter.Kind_Ptr;
+      subtype WhiteSpaceTrimStringConverter_Array is NetFrameworkBase.System.Configuration.WhiteSpaceTrimStringConverter.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.WhiteSpaceTrimStringConverter.Kind_Ptr renames NetFrameworkBase.System.Configuration.WhiteSpaceTrimStringConverter.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SchemeSettingElement is NetFrameworkBase.System.Configuration.SchemeSettingElement.Kind_Ptr;
+      subtype SchemeSettingElement_Array is NetFrameworkBase.System.Configuration.SchemeSettingElement.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.SchemeSettingElement.Kind_Ptr renames NetFrameworkBase.System.Configuration.SchemeSettingElement.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SchemeSettingElementCollection is NetFrameworkBase.System.Configuration.SchemeSettingElementCollection.Kind_Ptr;
+      subtype SchemeSettingElementCollection_Array is NetFrameworkBase.System.Configuration.SchemeSettingElementCollection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.SchemeSettingElementCollection.Kind_Ptr renames NetFrameworkBase.System.Configuration.SchemeSettingElementCollection.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype UriSection is NetFrameworkBase.System.Configuration.UriSection.Kind_Ptr;
+      subtype UriSection_Array is NetFrameworkBase.System.Configuration.UriSection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.UriSection.Kind_Ptr renames NetFrameworkBase.System.Configuration.UriSection.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype IriParsingElement is NetFrameworkBase.System.Configuration.IriParsingElement.Kind_Ptr;
+      subtype IriParsingElement_Array is NetFrameworkBase.System.Configuration.IriParsingElement.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.IriParsingElement.Kind_Ptr renames NetFrameworkBase.System.Configuration.IriParsingElement.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype IdnElement is NetFrameworkBase.System.Configuration.IdnElement.Kind_Ptr;
+      subtype IdnElement_Array is NetFrameworkBase.System.Configuration.IdnElement.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.IdnElement.Kind_Ptr renames NetFrameworkBase.System.Configuration.IdnElement.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype ApplicationSettingsBase is NetFrameworkBase.System.Configuration.ApplicationSettingsBase.Kind_Ptr;
+      subtype ApplicationSettingsBase_Array is NetFrameworkBase.System.Configuration.ApplicationSettingsBase.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype SettingsLoadedEventHandler is NetFrameworkBase.System.Configuration.SettingsLoadedEventHandler.Kind_Ptr;
+      subtype SettingsLoadedEventHandler_Array is NetFrameworkBase.System.Configuration.SettingsLoadedEventHandler.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.System.Configuration.SettingsLoadedEventHandler.Kind_Callback) return NetFrameworkBase.System.Configuration.SettingsLoadedEventHandler.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingsLoadedEventHandler.Constructor;
+      
+      --------------------------------------------------------------------------
+      subtype SettingsSavingEventHandler is NetFrameworkBase.System.Configuration.SettingsSavingEventHandler.Kind_Ptr;
+      subtype SettingsSavingEventHandler_Array is NetFrameworkBase.System.Configuration.SettingsSavingEventHandler.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.System.Configuration.SettingsSavingEventHandler.Kind_Callback) return NetFrameworkBase.System.Configuration.SettingsSavingEventHandler.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingsSavingEventHandler.Constructor;
+      
+      --------------------------------------------------------------------------
+      subtype SettingChangingEventHandler is NetFrameworkBase.System.Configuration.SettingChangingEventHandler.Kind_Ptr;
+      subtype SettingChangingEventHandler_Array is NetFrameworkBase.System.Configuration.SettingChangingEventHandler.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.System.Configuration.SettingChangingEventHandler.Kind_Callback) return NetFrameworkBase.System.Configuration.SettingChangingEventHandler.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingChangingEventHandler.Constructor;
+      
+      --------------------------------------------------------------------------
+      subtype SettingChangingEventArgs is NetFrameworkBase.System.Configuration.SettingChangingEventArgs.Kind_Ptr;
+      subtype SettingChangingEventArgs_Array is NetFrameworkBase.System.Configuration.SettingChangingEventArgs.Kind_Array;
+      
+         function Constructor
+         (
+            settingName : NetFrameworkBase.BSTR;
+            settingClass : NetFrameworkBase.BSTR;
+            settingKey : NetFrameworkBase.BSTR;
+            newValue : NetFrameworkBase.System.Object.Kind_Ptr;
+            cancel : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Configuration.SettingChangingEventArgs.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingChangingEventArgs.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SettingsLoadedEventArgs is NetFrameworkBase.System.Configuration.SettingsLoadedEventArgs.Kind_Ptr;
+      subtype SettingsLoadedEventArgs_Array is NetFrameworkBase.System.Configuration.SettingsLoadedEventArgs.Kind_Array;
+      
+         function Constructor
+         (
+            provider : NetFrameworkBase.System.Configuration.SettingsProvider.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Configuration.SettingsLoadedEventArgs.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingsLoadedEventArgs.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ConfigurationException is NetFrameworkBase.System.Configuration.ConfigurationException.Kind_Ptr;
+      subtype ConfigurationException_Array is NetFrameworkBase.System.Configuration.ConfigurationException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.ConfigurationException.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Configuration.ConfigurationException.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Configuration.ConfigurationException.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            node : NetFrameworkBase.System.Xml.XmlNode.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Configuration.ConfigurationException.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr;
+            node : NetFrameworkBase.System.Xml.XmlNode.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Configuration.ConfigurationException.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            filename : NetFrameworkBase.BSTR;
+            line : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Configuration.ConfigurationException.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr;
+            filename : NetFrameworkBase.BSTR;
+            line : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Configuration.ConfigurationException.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigurationException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ConfigurationSettings is NetFrameworkBase.System.Configuration.ConfigurationSettings.Kind_Ptr;
+      subtype ConfigurationSettings_Array is NetFrameworkBase.System.Configuration.ConfigurationSettings.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ConfigXmlDocument is NetFrameworkBase.System.Configuration.ConfigXmlDocument.Kind_Ptr;
+      subtype ConfigXmlDocument_Array is NetFrameworkBase.System.Configuration.ConfigXmlDocument.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.ConfigXmlDocument.Kind_Ptr renames NetFrameworkBase.System.Configuration.ConfigXmlDocument.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype DictionarySectionHandler is NetFrameworkBase.System.Configuration.DictionarySectionHandler.Kind_Ptr;
+      subtype DictionarySectionHandler_Array is NetFrameworkBase.System.Configuration.DictionarySectionHandler.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.DictionarySectionHandler.Kind_Ptr renames NetFrameworkBase.System.Configuration.DictionarySectionHandler.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype IApplicationSettingsProvider is NetFrameworkBase.System.Configuration.IApplicationSettingsProvider.Kind_Ptr;
+      subtype IApplicationSettingsProvider_Array is NetFrameworkBase.System.Configuration.IApplicationSettingsProvider.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IConfigurationSectionHandler is NetFrameworkBase.System.Configuration.IConfigurationSectionHandler.Kind_Ptr;
+      subtype IConfigurationSectionHandler_Array is NetFrameworkBase.System.Configuration.IConfigurationSectionHandler.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IConfigurationSystem is NetFrameworkBase.System.Configuration.IConfigurationSystem.Kind_Ptr;
+      subtype IConfigurationSystem_Array is NetFrameworkBase.System.Configuration.IConfigurationSystem.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IgnoreSectionHandler is NetFrameworkBase.System.Configuration.IgnoreSectionHandler.Kind_Ptr;
+      subtype IgnoreSectionHandler_Array is NetFrameworkBase.System.Configuration.IgnoreSectionHandler.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.IgnoreSectionHandler.Kind_Ptr renames NetFrameworkBase.System.Configuration.IgnoreSectionHandler.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype IPersistComponentSettings is NetFrameworkBase.System.Configuration.IPersistComponentSettings.Kind_Ptr;
+      subtype IPersistComponentSettings_Array is NetFrameworkBase.System.Configuration.IPersistComponentSettings.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ISettingsProviderService is NetFrameworkBase.System.Configuration.ISettingsProviderService.Kind_Ptr;
+      subtype ISettingsProviderService_Array is NetFrameworkBase.System.Configuration.ISettingsProviderService.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype LocalFileSettingsProvider is NetFrameworkBase.System.Configuration.LocalFileSettingsProvider.Kind_Ptr;
+      subtype LocalFileSettingsProvider_Array is NetFrameworkBase.System.Configuration.LocalFileSettingsProvider.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.LocalFileSettingsProvider.Kind_Ptr renames NetFrameworkBase.System.Configuration.LocalFileSettingsProvider.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype NameValueFileSectionHandler is NetFrameworkBase.System.Configuration.NameValueFileSectionHandler.Kind_Ptr;
+      subtype NameValueFileSectionHandler_Array is NetFrameworkBase.System.Configuration.NameValueFileSectionHandler.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.NameValueFileSectionHandler.Kind_Ptr renames NetFrameworkBase.System.Configuration.NameValueFileSectionHandler.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype NameValueSectionHandler is NetFrameworkBase.System.Configuration.NameValueSectionHandler.Kind_Ptr;
+      subtype NameValueSectionHandler_Array is NetFrameworkBase.System.Configuration.NameValueSectionHandler.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.NameValueSectionHandler.Kind_Ptr renames NetFrameworkBase.System.Configuration.NameValueSectionHandler.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SettingsAttributeDictionary is NetFrameworkBase.System.Configuration.SettingsAttributeDictionary.Kind_Ptr;
+      subtype SettingsAttributeDictionary_Array is NetFrameworkBase.System.Configuration.SettingsAttributeDictionary.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.SettingsAttributeDictionary.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingsAttributeDictionary.Constructor;
+         
+         function Constructor
+         (
+            attributes : NetFrameworkBase.System.Configuration.SettingsAttributeDictionary.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Configuration.SettingsAttributeDictionary.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingsAttributeDictionary.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ApplicationScopedSettingAttribute is NetFrameworkBase.System.Configuration.ApplicationScopedSettingAttribute.Kind_Ptr;
+      subtype ApplicationScopedSettingAttribute_Array is NetFrameworkBase.System.Configuration.ApplicationScopedSettingAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.ApplicationScopedSettingAttribute.Kind_Ptr renames NetFrameworkBase.System.Configuration.ApplicationScopedSettingAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype DefaultSettingValueAttribute is NetFrameworkBase.System.Configuration.DefaultSettingValueAttribute.Kind_Ptr;
+      subtype DefaultSettingValueAttribute_Array is NetFrameworkBase.System.Configuration.DefaultSettingValueAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            value : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Configuration.DefaultSettingValueAttribute.Kind_Ptr renames NetFrameworkBase.System.Configuration.DefaultSettingValueAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype NoSettingsVersionUpgradeAttribute is NetFrameworkBase.System.Configuration.NoSettingsVersionUpgradeAttribute.Kind_Ptr;
+      subtype NoSettingsVersionUpgradeAttribute_Array is NetFrameworkBase.System.Configuration.NoSettingsVersionUpgradeAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.NoSettingsVersionUpgradeAttribute.Kind_Ptr renames NetFrameworkBase.System.Configuration.NoSettingsVersionUpgradeAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SettingAttribute is NetFrameworkBase.System.Configuration.SettingAttribute.Kind_Ptr;
+      subtype SettingAttribute_Array is NetFrameworkBase.System.Configuration.SettingAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.SettingAttribute.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SettingsDescriptionAttribute is NetFrameworkBase.System.Configuration.SettingsDescriptionAttribute.Kind_Ptr;
+      subtype SettingsDescriptionAttribute_Array is NetFrameworkBase.System.Configuration.SettingsDescriptionAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            description : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Configuration.SettingsDescriptionAttribute.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingsDescriptionAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SettingsGroupDescriptionAttribute is NetFrameworkBase.System.Configuration.SettingsGroupDescriptionAttribute.Kind_Ptr;
+      subtype SettingsGroupDescriptionAttribute_Array is NetFrameworkBase.System.Configuration.SettingsGroupDescriptionAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            description : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Configuration.SettingsGroupDescriptionAttribute.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingsGroupDescriptionAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SettingsGroupNameAttribute is NetFrameworkBase.System.Configuration.SettingsGroupNameAttribute.Kind_Ptr;
+      subtype SettingsGroupNameAttribute_Array is NetFrameworkBase.System.Configuration.SettingsGroupNameAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            groupName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Configuration.SettingsGroupNameAttribute.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingsGroupNameAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SettingsManageabilityAttribute is NetFrameworkBase.System.Configuration.SettingsManageabilityAttribute.Kind_Ptr;
+      subtype SettingsManageabilityAttribute_Array is NetFrameworkBase.System.Configuration.SettingsManageabilityAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            manageability : NetFrameworkBase.System.Configuration.SettingsManageability.Kind
+         )
+         return NetFrameworkBase.System.Configuration.SettingsManageabilityAttribute.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingsManageabilityAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SettingsProviderAttribute is NetFrameworkBase.System.Configuration.SettingsProviderAttribute.Kind_Ptr;
+      subtype SettingsProviderAttribute_Array is NetFrameworkBase.System.Configuration.SettingsProviderAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            providerTypeName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Configuration.SettingsProviderAttribute.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingsProviderAttribute.Constructor; 
+         
+         function Constructor
+         (
+            providerType : NetFrameworkBase.System.Type_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Configuration.SettingsProviderAttribute.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingsProviderAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SettingsSerializeAsAttribute is NetFrameworkBase.System.Configuration.SettingsSerializeAsAttribute.Kind_Ptr;
+      subtype SettingsSerializeAsAttribute_Array is NetFrameworkBase.System.Configuration.SettingsSerializeAsAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            serializeAs : NetFrameworkBase.System.Configuration.SettingsSerializeAs.Kind
+         )
+         return NetFrameworkBase.System.Configuration.SettingsSerializeAsAttribute.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingsSerializeAsAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SpecialSettingAttribute is NetFrameworkBase.System.Configuration.SpecialSettingAttribute.Kind_Ptr;
+      subtype SpecialSettingAttribute_Array is NetFrameworkBase.System.Configuration.SpecialSettingAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            specialSetting : NetFrameworkBase.System.Configuration.SpecialSetting.Kind
+         )
+         return NetFrameworkBase.System.Configuration.SpecialSettingAttribute.Kind_Ptr renames NetFrameworkBase.System.Configuration.SpecialSettingAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype UserScopedSettingAttribute is NetFrameworkBase.System.Configuration.UserScopedSettingAttribute.Kind_Ptr;
+      subtype UserScopedSettingAttribute_Array is NetFrameworkBase.System.Configuration.UserScopedSettingAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.UserScopedSettingAttribute.Kind_Ptr renames NetFrameworkBase.System.Configuration.UserScopedSettingAttribute.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SettingsManageability is NetFrameworkBase.System.Configuration.SettingsManageability.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype SpecialSetting is NetFrameworkBase.System.Configuration.SpecialSetting.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype SettingsBase is NetFrameworkBase.System.Configuration.SettingsBase.Kind_Ptr;
+      subtype SettingsBase_Array is NetFrameworkBase.System.Configuration.SettingsBase.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype SettingsContext is NetFrameworkBase.System.Configuration.SettingsContext.Kind_Ptr;
+      subtype SettingsContext_Array is NetFrameworkBase.System.Configuration.SettingsContext.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.SettingsContext.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingsContext.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SettingsProperty is NetFrameworkBase.System.Configuration.SettingsProperty.Kind_Ptr;
+      subtype SettingsProperty_Array is NetFrameworkBase.System.Configuration.SettingsProperty.Kind_Array;
+      
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Configuration.SettingsProperty.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingsProperty.Constructor; 
+         
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR;
+            propertyType : NetFrameworkBase.System.Type_x.Kind_Ptr;
+            provider : NetFrameworkBase.System.Configuration.SettingsProvider.Kind_Ptr;
+            isReadOnly : NetFrameworkBase.Boolean;
+            defaultValue : NetFrameworkBase.System.Object.Kind_Ptr;
+            serializeAs : NetFrameworkBase.System.Configuration.SettingsSerializeAs.Kind;
+            attributes : NetFrameworkBase.System.Configuration.SettingsAttributeDictionary.Kind_Ptr;
+            throwOnErrorDeserializing : NetFrameworkBase.Boolean;
+            throwOnErrorSerializing : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Configuration.SettingsProperty.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingsProperty.Constructor; 
+         
+         function Constructor
+         (
+            propertyToCopy : NetFrameworkBase.System.Configuration.SettingsProperty.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Configuration.SettingsProperty.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingsProperty.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SettingsPropertyCollection is NetFrameworkBase.System.Configuration.SettingsPropertyCollection.Kind_Ptr;
+      subtype SettingsPropertyCollection_Array is NetFrameworkBase.System.Configuration.SettingsPropertyCollection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.SettingsPropertyCollection.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingsPropertyCollection.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SettingsPropertyIsReadOnlyException is NetFrameworkBase.System.Configuration.SettingsPropertyIsReadOnlyException.Kind_Ptr;
+      subtype SettingsPropertyIsReadOnlyException_Array is NetFrameworkBase.System.Configuration.SettingsPropertyIsReadOnlyException.Kind_Array;
+      
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Configuration.SettingsPropertyIsReadOnlyException.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingsPropertyIsReadOnlyException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Configuration.SettingsPropertyIsReadOnlyException.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingsPropertyIsReadOnlyException.Constructor; 
+         
+         function Constructor return NetFrameworkBase.System.Configuration.SettingsPropertyIsReadOnlyException.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingsPropertyIsReadOnlyException.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SettingsPropertyNotFoundException is NetFrameworkBase.System.Configuration.SettingsPropertyNotFoundException.Kind_Ptr;
+      subtype SettingsPropertyNotFoundException_Array is NetFrameworkBase.System.Configuration.SettingsPropertyNotFoundException.Kind_Array;
+      
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Configuration.SettingsPropertyNotFoundException.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingsPropertyNotFoundException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Configuration.SettingsPropertyNotFoundException.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingsPropertyNotFoundException.Constructor; 
+         
+         function Constructor return NetFrameworkBase.System.Configuration.SettingsPropertyNotFoundException.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingsPropertyNotFoundException.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SettingsPropertyValue is NetFrameworkBase.System.Configuration.SettingsPropertyValue.Kind_Ptr;
+      subtype SettingsPropertyValue_Array is NetFrameworkBase.System.Configuration.SettingsPropertyValue.Kind_Array;
+      
+         function Constructor
+         (
+            property : NetFrameworkBase.System.Configuration.SettingsProperty.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Configuration.SettingsPropertyValue.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingsPropertyValue.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SettingsPropertyValueCollection is NetFrameworkBase.System.Configuration.SettingsPropertyValueCollection.Kind_Ptr;
+      subtype SettingsPropertyValueCollection_Array is NetFrameworkBase.System.Configuration.SettingsPropertyValueCollection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.SettingsPropertyValueCollection.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingsPropertyValueCollection.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SettingsPropertyWrongTypeException is NetFrameworkBase.System.Configuration.SettingsPropertyWrongTypeException.Kind_Ptr;
+      subtype SettingsPropertyWrongTypeException_Array is NetFrameworkBase.System.Configuration.SettingsPropertyWrongTypeException.Kind_Array;
+      
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Configuration.SettingsPropertyWrongTypeException.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingsPropertyWrongTypeException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Configuration.SettingsPropertyWrongTypeException.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingsPropertyWrongTypeException.Constructor; 
+         
+         function Constructor return NetFrameworkBase.System.Configuration.SettingsPropertyWrongTypeException.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingsPropertyWrongTypeException.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SettingsProvider is NetFrameworkBase.System.Configuration.SettingsProvider.Kind_Ptr;
+      subtype SettingsProvider_Array is NetFrameworkBase.System.Configuration.SettingsProvider.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype SettingsProviderCollection is NetFrameworkBase.System.Configuration.SettingsProviderCollection.Kind_Ptr;
+      subtype SettingsProviderCollection_Array is NetFrameworkBase.System.Configuration.SettingsProviderCollection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.SettingsProviderCollection.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingsProviderCollection.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SettingsSerializeAs is NetFrameworkBase.System.Configuration.SettingsSerializeAs.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype SingleTagSectionHandler is NetFrameworkBase.System.Configuration.SingleTagSectionHandler.Kind_Ptr;
+      subtype SingleTagSectionHandler_Array is NetFrameworkBase.System.Configuration.SingleTagSectionHandler.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.SingleTagSectionHandler.Kind_Ptr renames NetFrameworkBase.System.Configuration.SingleTagSectionHandler.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype ApplicationSettingsGroup is NetFrameworkBase.System.Configuration.ApplicationSettingsGroup.Kind_Ptr;
+      subtype ApplicationSettingsGroup_Array is NetFrameworkBase.System.Configuration.ApplicationSettingsGroup.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.ApplicationSettingsGroup.Kind_Ptr renames NetFrameworkBase.System.Configuration.ApplicationSettingsGroup.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype UserSettingsGroup is NetFrameworkBase.System.Configuration.UserSettingsGroup.Kind_Ptr;
+      subtype UserSettingsGroup_Array is NetFrameworkBase.System.Configuration.UserSettingsGroup.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.UserSettingsGroup.Kind_Ptr renames NetFrameworkBase.System.Configuration.UserSettingsGroup.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype ClientSettingsSection is NetFrameworkBase.System.Configuration.ClientSettingsSection.Kind_Ptr;
+      subtype ClientSettingsSection_Array is NetFrameworkBase.System.Configuration.ClientSettingsSection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.ClientSettingsSection.Kind_Ptr renames NetFrameworkBase.System.Configuration.ClientSettingsSection.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SettingElementCollection is NetFrameworkBase.System.Configuration.SettingElementCollection.Kind_Ptr;
+      subtype SettingElementCollection_Array is NetFrameworkBase.System.Configuration.SettingElementCollection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.SettingElementCollection.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingElementCollection.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SettingElement is NetFrameworkBase.System.Configuration.SettingElement.Kind_Ptr;
+      subtype SettingElement_Array is NetFrameworkBase.System.Configuration.SettingElement.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.SettingElement.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingElement.Constructor;
+         
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR;
+            serializeAs : NetFrameworkBase.System.Configuration.SettingsSerializeAs.Kind
+         )
+         return NetFrameworkBase.System.Configuration.SettingElement.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingElement.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SettingValueElement is NetFrameworkBase.System.Configuration.SettingValueElement.Kind_Ptr;
+      subtype SettingValueElement_Array is NetFrameworkBase.System.Configuration.SettingValueElement.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.SettingValueElement.Kind_Ptr renames NetFrameworkBase.System.Configuration.SettingValueElement.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype AppSettingsReader is NetFrameworkBase.System.Configuration.AppSettingsReader.Kind_Ptr;
+      subtype AppSettingsReader_Array is NetFrameworkBase.System.Configuration.AppSettingsReader.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Configuration.AppSettingsReader.Kind_Ptr renames NetFrameworkBase.System.Configuration.AppSettingsReader.Constructor;
+         
+   
 end;

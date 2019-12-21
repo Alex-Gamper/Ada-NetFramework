@@ -111,6 +111,68 @@ with NetFrameworkBase.System.Security.Cryptography.SignatureDescription;
 with NetFrameworkBase.System.Security.Cryptography.SymmetricAlgorithm;
 with NetFrameworkBase.System.Security.Cryptography.TripleDES;
 with NetFrameworkBase.System.Security.Cryptography.TripleDESCryptoServiceProvider;
+with NetFrameworkBase.System.Security.Cryptography.CryptographicAttributeObject;
+with NetFrameworkBase.System.Security.Cryptography.CryptographicAttributeObjectCollection;
+with NetFrameworkBase.System.Security.Cryptography.CryptographicAttributeObjectEnumerator;
+with NetFrameworkBase.System.Security.Cryptography.DataProtectionScope;
+with NetFrameworkBase.System.Security.Cryptography.MemoryProtectionScope;
+with NetFrameworkBase.System.Security.Cryptography.ProtectedData;
+with NetFrameworkBase.System.Security.Cryptography.ProtectedMemory;
+with NetFrameworkBase.System.Security.Cryptography.DataProtector;
+with NetFrameworkBase.System.Security.Cryptography.DpapiDataProtector;
+with NetFrameworkBase.System.Security.Cryptography.IncrementalHash;
+with NetFrameworkBase.System.Security.Cryptography.AesCng;
+with NetFrameworkBase.System.Security.Cryptography.AesCryptoServiceProvider;
+with NetFrameworkBase.System.Security.Cryptography.AesManaged;
+with NetFrameworkBase.System.Security.Cryptography.CngAlgorithm;
+with NetFrameworkBase.System.Security.Cryptography.CngAlgorithmGroup;
+with NetFrameworkBase.System.Security.Cryptography.CngKeyHandleOpenOptions;
+with NetFrameworkBase.System.Security.Cryptography.CngKey;
+with NetFrameworkBase.System.Security.Cryptography.CngKeyBlobFormat;
+with NetFrameworkBase.System.Security.Cryptography.CngKeyCreationParameters;
+with NetFrameworkBase.System.Security.Cryptography.CngProperty;
+with NetFrameworkBase.System.Security.Cryptography.CngPropertyCollection;
+with NetFrameworkBase.System.Security.Cryptography.CngProvider;
+with NetFrameworkBase.System.Security.Cryptography.CngUIPolicy;
+with NetFrameworkBase.System.Security.Cryptography.DSACng;
+with NetFrameworkBase.System.Security.Cryptography.ECCurve;
+with NetFrameworkBase.System.Security.Cryptography.ECDiffieHellman;
+with NetFrameworkBase.System.Security.Cryptography.ECDiffieHellmanPublicKey;
+with NetFrameworkBase.System.Security.Cryptography.ECDiffieHellmanKeyDerivationFunction;
+with NetFrameworkBase.System.Security.Cryptography.ECDiffieHellmanCng;
+with NetFrameworkBase.System.Security.Cryptography.ECDiffieHellmanCngPublicKey;
+with NetFrameworkBase.System.Security.Cryptography.ECDsa;
+with NetFrameworkBase.System.Security.Cryptography.ECDsaCng;
+with NetFrameworkBase.System.Security.Cryptography.ECKeyXmlFormat;
+with NetFrameworkBase.System.Security.Cryptography.ECParameters;
+with NetFrameworkBase.System.Security.Cryptography.ECPoint;
+with NetFrameworkBase.System.Security.Cryptography.ManifestSignatureInformation;
+with NetFrameworkBase.System.Security.Cryptography.ManifestSignatureInformationCollection;
+with NetFrameworkBase.System.Security.Cryptography.MD5Cng;
+with NetFrameworkBase.System.Security.Cryptography.CngExportPolicies;
+with NetFrameworkBase.System.Security.Cryptography.CngKeyCreationOptions;
+with NetFrameworkBase.System.Security.Cryptography.CngKeyOpenOptions;
+with NetFrameworkBase.System.Security.Cryptography.CngKeyUsages;
+with NetFrameworkBase.System.Security.Cryptography.CngPropertyOptions;
+with NetFrameworkBase.System.Security.Cryptography.CngUIProtectionLevels;
+with NetFrameworkBase.System.Security.Cryptography.RSACng;
+with NetFrameworkBase.System.Security.Cryptography.SHA1Cng;
+with NetFrameworkBase.System.Security.Cryptography.SHA256Cng;
+with NetFrameworkBase.System.Security.Cryptography.SHA256CryptoServiceProvider;
+with NetFrameworkBase.System.Security.Cryptography.SHA384Cng;
+with NetFrameworkBase.System.Security.Cryptography.SHA384CryptoServiceProvider;
+with NetFrameworkBase.System.Security.Cryptography.SHA512Cng;
+with NetFrameworkBase.System.Security.Cryptography.SHA512CryptoServiceProvider;
+with NetFrameworkBase.System.Security.Cryptography.SignatureVerificationResult;
+with NetFrameworkBase.System.Security.Cryptography.StrongNameSignatureInformation;
+with NetFrameworkBase.System.Security.Cryptography.TripleDESCng;
+with NetFrameworkBase.System.Security.Cryptography.AsnEncodedData;
+with NetFrameworkBase.System.Security.Cryptography.AsnEncodedDataCollection;
+with NetFrameworkBase.System.Security.Cryptography.AsnEncodedDataEnumerator;
+with NetFrameworkBase.System.Security.Cryptography.OidGroup;
+with NetFrameworkBase.System.Security.Cryptography.Oid;
+with NetFrameworkBase.System.Security.Cryptography.OidCollection;
+with NetFrameworkBase.System.Security.Cryptography.OidEnumerator;
 with NetFrameworkBase.System.Exception_x;
 with NetFrameworkBase.System.Security.AccessControl.CryptoKeySecurity;
 with NetFrameworkBase.System.Security.SecureString;
@@ -950,5 +1012,536 @@ package NetFramework.System.Security.Cryptography is
       
          function Constructor return NetFrameworkBase.System.Security.Cryptography.TripleDESCryptoServiceProvider.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.TripleDESCryptoServiceProvider.Constructor;
          
+      --------------------------------------------------------------------------
+      subtype CryptographicAttributeObject is NetFrameworkBase.System.Security.Cryptography.CryptographicAttributeObject.Kind_Ptr;
+      subtype CryptographicAttributeObject_Array is NetFrameworkBase.System.Security.Cryptography.CryptographicAttributeObject.Kind_Array;
+      
+         function Constructor
+         (
+            oid : NetFrameworkBase.System.Security.Cryptography.Oid.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.CryptographicAttributeObject.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CryptographicAttributeObject.Constructor; 
+         
+         function Constructor
+         (
+            oid : NetFrameworkBase.System.Security.Cryptography.Oid.Kind_Ptr;
+            values : NetFrameworkBase.System.Security.Cryptography.AsnEncodedDataCollection.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.CryptographicAttributeObject.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CryptographicAttributeObject.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CryptographicAttributeObjectCollection is NetFrameworkBase.System.Security.Cryptography.CryptographicAttributeObjectCollection.Kind_Ptr;
+      subtype CryptographicAttributeObjectCollection_Array is NetFrameworkBase.System.Security.Cryptography.CryptographicAttributeObjectCollection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.CryptographicAttributeObjectCollection.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CryptographicAttributeObjectCollection.Constructor;
+         
+         function Constructor
+         (
+            attribute : NetFrameworkBase.System.Security.Cryptography.CryptographicAttributeObject.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.CryptographicAttributeObjectCollection.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CryptographicAttributeObjectCollection.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CryptographicAttributeObjectEnumerator is NetFrameworkBase.System.Security.Cryptography.CryptographicAttributeObjectEnumerator.Kind_Ptr;
+      subtype CryptographicAttributeObjectEnumerator_Array is NetFrameworkBase.System.Security.Cryptography.CryptographicAttributeObjectEnumerator.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype DataProtectionScope is NetFrameworkBase.System.Security.Cryptography.DataProtectionScope.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype MemoryProtectionScope is NetFrameworkBase.System.Security.Cryptography.MemoryProtectionScope.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype ProtectedData is NetFrameworkBase.System.Security.Cryptography.ProtectedData.Kind_Ptr;
+      subtype ProtectedData_Array is NetFrameworkBase.System.Security.Cryptography.ProtectedData.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ProtectedMemory is NetFrameworkBase.System.Security.Cryptography.ProtectedMemory.Kind_Ptr;
+      subtype ProtectedMemory_Array is NetFrameworkBase.System.Security.Cryptography.ProtectedMemory.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype DataProtector is NetFrameworkBase.System.Security.Cryptography.DataProtector.Kind_Ptr;
+      subtype DataProtector_Array is NetFrameworkBase.System.Security.Cryptography.DataProtector.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype DpapiDataProtector is NetFrameworkBase.System.Security.Cryptography.DpapiDataProtector.Kind_Ptr;
+      subtype DpapiDataProtector_Array is NetFrameworkBase.System.Security.Cryptography.DpapiDataProtector.Kind_Array;
+      
+         function Constructor
+         (
+            appName : NetFrameworkBase.BSTR;
+            primaryPurpose : NetFrameworkBase.BSTR;
+            specificPurpose : NetFrameworkBase.BSTR_Array
+         )
+         return NetFrameworkBase.System.Security.Cryptography.DpapiDataProtector.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.DpapiDataProtector.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype IncrementalHash is NetFrameworkBase.System.Security.Cryptography.IncrementalHash.Kind_Ptr;
+      subtype IncrementalHash_Array is NetFrameworkBase.System.Security.Cryptography.IncrementalHash.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype AesCng is NetFrameworkBase.System.Security.Cryptography.AesCng.Kind_Ptr;
+      subtype AesCng_Array is NetFrameworkBase.System.Security.Cryptography.AesCng.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.AesCng.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.AesCng.Constructor;
+         
+         function Constructor
+         (
+            keyName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Cryptography.AesCng.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.AesCng.Constructor; 
+         
+         function Constructor
+         (
+            keyName : NetFrameworkBase.BSTR;
+            provider : NetFrameworkBase.System.Security.Cryptography.CngProvider.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.AesCng.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.AesCng.Constructor; 
+         
+         function Constructor
+         (
+            keyName : NetFrameworkBase.BSTR;
+            provider : NetFrameworkBase.System.Security.Cryptography.CngProvider.Kind_Ptr;
+            openOptions : NetFrameworkBase.System.Security.Cryptography.CngKeyOpenOptions.Kind
+         )
+         return NetFrameworkBase.System.Security.Cryptography.AesCng.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.AesCng.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype AesCryptoServiceProvider is NetFrameworkBase.System.Security.Cryptography.AesCryptoServiceProvider.Kind_Ptr;
+      subtype AesCryptoServiceProvider_Array is NetFrameworkBase.System.Security.Cryptography.AesCryptoServiceProvider.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.AesCryptoServiceProvider.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.AesCryptoServiceProvider.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype AesManaged is NetFrameworkBase.System.Security.Cryptography.AesManaged.Kind_Ptr;
+      subtype AesManaged_Array is NetFrameworkBase.System.Security.Cryptography.AesManaged.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.AesManaged.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.AesManaged.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype CngAlgorithm is NetFrameworkBase.System.Security.Cryptography.CngAlgorithm.Kind_Ptr;
+      subtype CngAlgorithm_Array is NetFrameworkBase.System.Security.Cryptography.CngAlgorithm.Kind_Array;
+      
+         function Constructor
+         (
+            algorithm : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Cryptography.CngAlgorithm.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CngAlgorithm.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CngAlgorithmGroup is NetFrameworkBase.System.Security.Cryptography.CngAlgorithmGroup.Kind_Ptr;
+      subtype CngAlgorithmGroup_Array is NetFrameworkBase.System.Security.Cryptography.CngAlgorithmGroup.Kind_Array;
+      
+         function Constructor
+         (
+            algorithmGroup : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Cryptography.CngAlgorithmGroup.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CngAlgorithmGroup.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CngKeyHandleOpenOptions is NetFrameworkBase.System.Security.Cryptography.CngKeyHandleOpenOptions.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype CngKey is NetFrameworkBase.System.Security.Cryptography.CngKey.Kind_Ptr;
+      subtype CngKey_Array is NetFrameworkBase.System.Security.Cryptography.CngKey.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype CngKeyBlobFormat is NetFrameworkBase.System.Security.Cryptography.CngKeyBlobFormat.Kind_Ptr;
+      subtype CngKeyBlobFormat_Array is NetFrameworkBase.System.Security.Cryptography.CngKeyBlobFormat.Kind_Array;
+      
+         function Constructor
+         (
+            format : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Cryptography.CngKeyBlobFormat.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CngKeyBlobFormat.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CngKeyCreationParameters is NetFrameworkBase.System.Security.Cryptography.CngKeyCreationParameters.Kind_Ptr;
+      subtype CngKeyCreationParameters_Array is NetFrameworkBase.System.Security.Cryptography.CngKeyCreationParameters.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.CngKeyCreationParameters.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CngKeyCreationParameters.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype CngProperty is NetFrameworkBase.System.Security.Cryptography.CngProperty.Kind_Ptr;
+      subtype CngProperty_Array is NetFrameworkBase.System.Security.Cryptography.CngProperty.Kind_Array;
+      
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR;
+            value : NetFrameworkBase.Byte_Array;
+            options : NetFrameworkBase.System.Security.Cryptography.CngPropertyOptions.Kind
+         )
+         return NetFrameworkBase.System.Security.Cryptography.CngProperty.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CngProperty.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CngPropertyCollection is NetFrameworkBase.System.Security.Cryptography.CngPropertyCollection.Kind_Ptr;
+      subtype CngPropertyCollection_Array is NetFrameworkBase.System.Security.Cryptography.CngPropertyCollection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.CngPropertyCollection.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CngPropertyCollection.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype CngProvider is NetFrameworkBase.System.Security.Cryptography.CngProvider.Kind_Ptr;
+      subtype CngProvider_Array is NetFrameworkBase.System.Security.Cryptography.CngProvider.Kind_Array;
+      
+         function Constructor
+         (
+            provider : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Cryptography.CngProvider.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CngProvider.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CngUIPolicy is NetFrameworkBase.System.Security.Cryptography.CngUIPolicy.Kind_Ptr;
+      subtype CngUIPolicy_Array is NetFrameworkBase.System.Security.Cryptography.CngUIPolicy.Kind_Array;
+      
+         function Constructor
+         (
+            protectionLevel : NetFrameworkBase.System.Security.Cryptography.CngUIProtectionLevels.Kind
+         )
+         return NetFrameworkBase.System.Security.Cryptography.CngUIPolicy.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CngUIPolicy.Constructor; 
+         
+         function Constructor
+         (
+            protectionLevel : NetFrameworkBase.System.Security.Cryptography.CngUIProtectionLevels.Kind;
+            friendlyName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Cryptography.CngUIPolicy.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CngUIPolicy.Constructor; 
+         
+         function Constructor
+         (
+            protectionLevel : NetFrameworkBase.System.Security.Cryptography.CngUIProtectionLevels.Kind;
+            friendlyName : NetFrameworkBase.BSTR;
+            description : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Cryptography.CngUIPolicy.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CngUIPolicy.Constructor; 
+         
+         function Constructor
+         (
+            protectionLevel : NetFrameworkBase.System.Security.Cryptography.CngUIProtectionLevels.Kind;
+            friendlyName : NetFrameworkBase.BSTR;
+            description : NetFrameworkBase.BSTR;
+            useContext : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Cryptography.CngUIPolicy.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CngUIPolicy.Constructor; 
+         
+         function Constructor
+         (
+            protectionLevel : NetFrameworkBase.System.Security.Cryptography.CngUIProtectionLevels.Kind;
+            friendlyName : NetFrameworkBase.BSTR;
+            description : NetFrameworkBase.BSTR;
+            useContext : NetFrameworkBase.BSTR;
+            creationTitle : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Cryptography.CngUIPolicy.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.CngUIPolicy.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype DSACng is NetFrameworkBase.System.Security.Cryptography.DSACng.Kind_Ptr;
+      subtype DSACng_Array is NetFrameworkBase.System.Security.Cryptography.DSACng.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.DSACng.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.DSACng.Constructor;
+         
+         function Constructor
+         (
+            keySize : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Security.Cryptography.DSACng.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.DSACng.Constructor; 
+         
+         function Constructor
+         (
+            key : NetFrameworkBase.System.Security.Cryptography.CngKey.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.DSACng.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.DSACng.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ECCurve is NetFrameworkBase.System.Security.Cryptography.ECCurve.Kind_Ptr;
+      subtype ECCurve_Array is NetFrameworkBase.System.Security.Cryptography.ECCurve.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ECDiffieHellman is NetFrameworkBase.System.Security.Cryptography.ECDiffieHellman.Kind_Ptr;
+      subtype ECDiffieHellman_Array is NetFrameworkBase.System.Security.Cryptography.ECDiffieHellman.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ECDiffieHellmanPublicKey is NetFrameworkBase.System.Security.Cryptography.ECDiffieHellmanPublicKey.Kind_Ptr;
+      subtype ECDiffieHellmanPublicKey_Array is NetFrameworkBase.System.Security.Cryptography.ECDiffieHellmanPublicKey.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ECDiffieHellmanKeyDerivationFunction is NetFrameworkBase.System.Security.Cryptography.ECDiffieHellmanKeyDerivationFunction.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype ECDiffieHellmanCng is NetFrameworkBase.System.Security.Cryptography.ECDiffieHellmanCng.Kind_Ptr;
+      subtype ECDiffieHellmanCng_Array is NetFrameworkBase.System.Security.Cryptography.ECDiffieHellmanCng.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.ECDiffieHellmanCng.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.ECDiffieHellmanCng.Constructor;
+         
+         function Constructor
+         (
+            keySize : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Security.Cryptography.ECDiffieHellmanCng.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.ECDiffieHellmanCng.Constructor; 
+         
+         function Constructor
+         (
+            curve : NetFrameworkBase.System.Security.Cryptography.ECCurve.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.ECDiffieHellmanCng.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.ECDiffieHellmanCng.Constructor; 
+         
+         function Constructor
+         (
+            key : NetFrameworkBase.System.Security.Cryptography.CngKey.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.ECDiffieHellmanCng.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.ECDiffieHellmanCng.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ECDiffieHellmanCngPublicKey is NetFrameworkBase.System.Security.Cryptography.ECDiffieHellmanCngPublicKey.Kind_Ptr;
+      subtype ECDiffieHellmanCngPublicKey_Array is NetFrameworkBase.System.Security.Cryptography.ECDiffieHellmanCngPublicKey.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ECDsa is NetFrameworkBase.System.Security.Cryptography.ECDsa.Kind_Ptr;
+      subtype ECDsa_Array is NetFrameworkBase.System.Security.Cryptography.ECDsa.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ECDsaCng is NetFrameworkBase.System.Security.Cryptography.ECDsaCng.Kind_Ptr;
+      subtype ECDsaCng_Array is NetFrameworkBase.System.Security.Cryptography.ECDsaCng.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.ECDsaCng.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.ECDsaCng.Constructor;
+         
+         function Constructor
+         (
+            keySize : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Security.Cryptography.ECDsaCng.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.ECDsaCng.Constructor; 
+         
+         function Constructor
+         (
+            curve : NetFrameworkBase.System.Security.Cryptography.ECCurve.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.ECDsaCng.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.ECDsaCng.Constructor; 
+         
+         function Constructor
+         (
+            key : NetFrameworkBase.System.Security.Cryptography.CngKey.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.ECDsaCng.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.ECDsaCng.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ECKeyXmlFormat is NetFrameworkBase.System.Security.Cryptography.ECKeyXmlFormat.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype ECParameters is NetFrameworkBase.System.Security.Cryptography.ECParameters.Kind_Ptr;
+      subtype ECParameters_Array is NetFrameworkBase.System.Security.Cryptography.ECParameters.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ECPoint is NetFrameworkBase.System.Security.Cryptography.ECPoint.Kind_Ptr;
+      subtype ECPoint_Array is NetFrameworkBase.System.Security.Cryptography.ECPoint.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ManifestSignatureInformation is NetFrameworkBase.System.Security.Cryptography.ManifestSignatureInformation.Kind_Ptr;
+      subtype ManifestSignatureInformation_Array is NetFrameworkBase.System.Security.Cryptography.ManifestSignatureInformation.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ManifestSignatureInformationCollection is NetFrameworkBase.System.Security.Cryptography.ManifestSignatureInformationCollection.Kind_Ptr;
+      subtype ManifestSignatureInformationCollection_Array is NetFrameworkBase.System.Security.Cryptography.ManifestSignatureInformationCollection.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype MD5Cng is NetFrameworkBase.System.Security.Cryptography.MD5Cng.Kind_Ptr;
+      subtype MD5Cng_Array is NetFrameworkBase.System.Security.Cryptography.MD5Cng.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.MD5Cng.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.MD5Cng.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype CngExportPolicies is NetFrameworkBase.System.Security.Cryptography.CngExportPolicies.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype CngKeyCreationOptions is NetFrameworkBase.System.Security.Cryptography.CngKeyCreationOptions.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype CngKeyOpenOptions is NetFrameworkBase.System.Security.Cryptography.CngKeyOpenOptions.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype CngKeyUsages is NetFrameworkBase.System.Security.Cryptography.CngKeyUsages.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype CngPropertyOptions is NetFrameworkBase.System.Security.Cryptography.CngPropertyOptions.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype CngUIProtectionLevels is NetFrameworkBase.System.Security.Cryptography.CngUIProtectionLevels.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype RSACng is NetFrameworkBase.System.Security.Cryptography.RSACng.Kind_Ptr;
+      subtype RSACng_Array is NetFrameworkBase.System.Security.Cryptography.RSACng.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.RSACng.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.RSACng.Constructor;
+         
+         function Constructor
+         (
+            keySize : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Security.Cryptography.RSACng.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.RSACng.Constructor; 
+         
+         function Constructor
+         (
+            key : NetFrameworkBase.System.Security.Cryptography.CngKey.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.RSACng.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.RSACng.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SHA1Cng is NetFrameworkBase.System.Security.Cryptography.SHA1Cng.Kind_Ptr;
+      subtype SHA1Cng_Array is NetFrameworkBase.System.Security.Cryptography.SHA1Cng.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.SHA1Cng.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.SHA1Cng.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SHA256Cng is NetFrameworkBase.System.Security.Cryptography.SHA256Cng.Kind_Ptr;
+      subtype SHA256Cng_Array is NetFrameworkBase.System.Security.Cryptography.SHA256Cng.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.SHA256Cng.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.SHA256Cng.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SHA256CryptoServiceProvider is NetFrameworkBase.System.Security.Cryptography.SHA256CryptoServiceProvider.Kind_Ptr;
+      subtype SHA256CryptoServiceProvider_Array is NetFrameworkBase.System.Security.Cryptography.SHA256CryptoServiceProvider.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.SHA256CryptoServiceProvider.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.SHA256CryptoServiceProvider.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SHA384Cng is NetFrameworkBase.System.Security.Cryptography.SHA384Cng.Kind_Ptr;
+      subtype SHA384Cng_Array is NetFrameworkBase.System.Security.Cryptography.SHA384Cng.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.SHA384Cng.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.SHA384Cng.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SHA384CryptoServiceProvider is NetFrameworkBase.System.Security.Cryptography.SHA384CryptoServiceProvider.Kind_Ptr;
+      subtype SHA384CryptoServiceProvider_Array is NetFrameworkBase.System.Security.Cryptography.SHA384CryptoServiceProvider.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.SHA384CryptoServiceProvider.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.SHA384CryptoServiceProvider.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SHA512Cng is NetFrameworkBase.System.Security.Cryptography.SHA512Cng.Kind_Ptr;
+      subtype SHA512Cng_Array is NetFrameworkBase.System.Security.Cryptography.SHA512Cng.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.SHA512Cng.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.SHA512Cng.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SHA512CryptoServiceProvider is NetFrameworkBase.System.Security.Cryptography.SHA512CryptoServiceProvider.Kind_Ptr;
+      subtype SHA512CryptoServiceProvider_Array is NetFrameworkBase.System.Security.Cryptography.SHA512CryptoServiceProvider.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.SHA512CryptoServiceProvider.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.SHA512CryptoServiceProvider.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SignatureVerificationResult is NetFrameworkBase.System.Security.Cryptography.SignatureVerificationResult.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype StrongNameSignatureInformation is NetFrameworkBase.System.Security.Cryptography.StrongNameSignatureInformation.Kind_Ptr;
+      subtype StrongNameSignatureInformation_Array is NetFrameworkBase.System.Security.Cryptography.StrongNameSignatureInformation.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype TripleDESCng is NetFrameworkBase.System.Security.Cryptography.TripleDESCng.Kind_Ptr;
+      subtype TripleDESCng_Array is NetFrameworkBase.System.Security.Cryptography.TripleDESCng.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.TripleDESCng.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.TripleDESCng.Constructor;
+         
+         function Constructor
+         (
+            keyName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Cryptography.TripleDESCng.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.TripleDESCng.Constructor; 
+         
+         function Constructor
+         (
+            keyName : NetFrameworkBase.BSTR;
+            provider : NetFrameworkBase.System.Security.Cryptography.CngProvider.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.TripleDESCng.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.TripleDESCng.Constructor; 
+         
+         function Constructor
+         (
+            keyName : NetFrameworkBase.BSTR;
+            provider : NetFrameworkBase.System.Security.Cryptography.CngProvider.Kind_Ptr;
+            openOptions : NetFrameworkBase.System.Security.Cryptography.CngKeyOpenOptions.Kind
+         )
+         return NetFrameworkBase.System.Security.Cryptography.TripleDESCng.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.TripleDESCng.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype AsnEncodedData is NetFrameworkBase.System.Security.Cryptography.AsnEncodedData.Kind_Ptr;
+      subtype AsnEncodedData_Array is NetFrameworkBase.System.Security.Cryptography.AsnEncodedData.Kind_Array;
+      
+         function Constructor
+         (
+            rawData : NetFrameworkBase.Byte_Array
+         )
+         return NetFrameworkBase.System.Security.Cryptography.AsnEncodedData.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.AsnEncodedData.Constructor; 
+         
+         function Constructor
+         (
+            oid : NetFrameworkBase.BSTR;
+            rawData : NetFrameworkBase.Byte_Array
+         )
+         return NetFrameworkBase.System.Security.Cryptography.AsnEncodedData.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.AsnEncodedData.Constructor; 
+         
+         function Constructor
+         (
+            oid : NetFrameworkBase.System.Security.Cryptography.Oid.Kind_Ptr;
+            rawData : NetFrameworkBase.Byte_Array
+         )
+         return NetFrameworkBase.System.Security.Cryptography.AsnEncodedData.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.AsnEncodedData.Constructor; 
+         
+         function Constructor
+         (
+            asnEncodedData : NetFrameworkBase.System.Security.Cryptography.AsnEncodedData.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.AsnEncodedData.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.AsnEncodedData.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype AsnEncodedDataCollection is NetFrameworkBase.System.Security.Cryptography.AsnEncodedDataCollection.Kind_Ptr;
+      subtype AsnEncodedDataCollection_Array is NetFrameworkBase.System.Security.Cryptography.AsnEncodedDataCollection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.AsnEncodedDataCollection.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.AsnEncodedDataCollection.Constructor;
+         
+         function Constructor
+         (
+            asnEncodedData : NetFrameworkBase.System.Security.Cryptography.AsnEncodedData.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.AsnEncodedDataCollection.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.AsnEncodedDataCollection.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype AsnEncodedDataEnumerator is NetFrameworkBase.System.Security.Cryptography.AsnEncodedDataEnumerator.Kind_Ptr;
+      subtype AsnEncodedDataEnumerator_Array is NetFrameworkBase.System.Security.Cryptography.AsnEncodedDataEnumerator.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype OidGroup is NetFrameworkBase.System.Security.Cryptography.OidGroup.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype Oid is NetFrameworkBase.System.Security.Cryptography.Oid.Kind_Ptr;
+      subtype Oid_Array is NetFrameworkBase.System.Security.Cryptography.Oid.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.Oid.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.Oid.Constructor;
+         
+         function Constructor
+         (
+            oid : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Cryptography.Oid.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.Oid.Constructor; 
+         
+         function Constructor
+         (
+            value : NetFrameworkBase.BSTR;
+            friendlyName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Cryptography.Oid.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.Oid.Constructor; 
+         
+         function Constructor
+         (
+            oid : NetFrameworkBase.System.Security.Cryptography.Oid.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.Oid.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.Oid.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype OidCollection is NetFrameworkBase.System.Security.Cryptography.OidCollection.Kind_Ptr;
+      subtype OidCollection_Array is NetFrameworkBase.System.Security.Cryptography.OidCollection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.OidCollection.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.OidCollection.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype OidEnumerator is NetFrameworkBase.System.Security.Cryptography.OidEnumerator.Kind_Ptr;
+      subtype OidEnumerator_Array is NetFrameworkBase.System.Security.Cryptography.OidEnumerator.Kind_Array;
+      
    
 end;

@@ -41,10 +41,95 @@ with NetFrameworkBase.System.Diagnostics.DebuggerDisplayAttribute;
 with NetFrameworkBase.System.Diagnostics.DebuggerVisualizerAttribute;
 with NetFrameworkBase.System.Diagnostics.StackTrace;
 with NetFrameworkBase.System.Diagnostics.StackFrame;
+with NetFrameworkBase.System.Diagnostics.EventSchemaTraceListener;
+with NetFrameworkBase.System.Diagnostics.TraceLogRetentionOption;
+with NetFrameworkBase.System.Diagnostics.UnescapedXmlDiagnosticData;
+with NetFrameworkBase.System.Diagnostics.BooleanSwitch;
+with NetFrameworkBase.System.Diagnostics.ConsoleTraceListener;
+with NetFrameworkBase.System.Diagnostics.CorrelationManager;
+with NetFrameworkBase.System.Diagnostics.Debug;
+with NetFrameworkBase.System.Diagnostics.DefaultTraceListener;
+with NetFrameworkBase.System.Diagnostics.DelimitedListTraceListener;
+with NetFrameworkBase.System.Diagnostics.EventTypeFilter;
+with NetFrameworkBase.System.Diagnostics.SourceFilter;
+with NetFrameworkBase.System.Diagnostics.SourceLevels;
+with NetFrameworkBase.System.Diagnostics.SourceSwitch;
+with NetFrameworkBase.System.Diagnostics.Switch;
+with NetFrameworkBase.System.Diagnostics.SwitchAttribute;
+with NetFrameworkBase.System.Diagnostics.SwitchLevelAttribute;
+with NetFrameworkBase.System.Diagnostics.TextWriterTraceListener;
+with NetFrameworkBase.System.Diagnostics.Trace;
+with NetFrameworkBase.System.Diagnostics.TraceEventCache;
+with NetFrameworkBase.System.Diagnostics.TraceEventType;
+with NetFrameworkBase.System.Diagnostics.TraceFilter;
+with NetFrameworkBase.System.Diagnostics.TraceLevel;
+with NetFrameworkBase.System.Diagnostics.TraceListener;
+with NetFrameworkBase.System.Diagnostics.TraceListenerCollection;
+with NetFrameworkBase.System.Diagnostics.TraceOptions;
+with NetFrameworkBase.System.Diagnostics.TraceSource;
+with NetFrameworkBase.System.Diagnostics.TraceSwitch;
+with NetFrameworkBase.System.Diagnostics.XmlWriterTraceListener;
+with NetFrameworkBase.System.Diagnostics.StackFrameExtensions;
+with NetFrameworkBase.System.Diagnostics.CounterCreationData;
+with NetFrameworkBase.System.Diagnostics.CounterCreationDataCollection;
+with NetFrameworkBase.System.Diagnostics.CounterSample;
+with NetFrameworkBase.System.Diagnostics.CounterSampleCalculator;
+with NetFrameworkBase.System.Diagnostics.DataReceivedEventHandler;
+with NetFrameworkBase.System.Diagnostics.DataReceivedEventArgs;
+with NetFrameworkBase.System.Diagnostics.DiagnosticsConfigurationHandler;
+with NetFrameworkBase.System.Diagnostics.EntryWrittenEventArgs;
+with NetFrameworkBase.System.Diagnostics.EntryWrittenEventHandler;
+with NetFrameworkBase.System.Diagnostics.EventInstance;
+with NetFrameworkBase.System.Diagnostics.EventLog;
+with NetFrameworkBase.System.Diagnostics.EventLogEntry;
+with NetFrameworkBase.System.Diagnostics.EventLogEntryCollection;
+with NetFrameworkBase.System.Diagnostics.EventLogEntryType;
+with NetFrameworkBase.System.Diagnostics.EventLogPermission;
+with NetFrameworkBase.System.Diagnostics.EventLogPermissionAccess;
+with NetFrameworkBase.System.Diagnostics.EventLogPermissionAttribute;
+with NetFrameworkBase.System.Diagnostics.EventLogPermissionEntry;
+with NetFrameworkBase.System.Diagnostics.EventLogPermissionEntryCollection;
+with NetFrameworkBase.System.Diagnostics.EventLogTraceListener;
+with NetFrameworkBase.System.Diagnostics.EventSourceCreationData;
+with NetFrameworkBase.System.Diagnostics.FileVersionInfo;
+with NetFrameworkBase.System.Diagnostics.ICollectData;
+with NetFrameworkBase.System.Diagnostics.InstanceData;
+with NetFrameworkBase.System.Diagnostics.InstanceDataCollection;
+with NetFrameworkBase.System.Diagnostics.InstanceDataCollectionCollection;
+with NetFrameworkBase.System.Diagnostics.MonitoringDescriptionAttribute;
+with NetFrameworkBase.System.Diagnostics.OverflowAction;
+with NetFrameworkBase.System.Diagnostics.PerformanceCounter;
+with NetFrameworkBase.System.Diagnostics.PerformanceCounterCategory;
+with NetFrameworkBase.System.Diagnostics.PerformanceCounterCategoryType;
+with NetFrameworkBase.System.Diagnostics.PerformanceCounterInstanceLifetime;
+with NetFrameworkBase.System.Diagnostics.PerformanceCounterManager;
+with NetFrameworkBase.System.Diagnostics.PerformanceCounterPermission;
+with NetFrameworkBase.System.Diagnostics.PerformanceCounterPermissionAccess;
+with NetFrameworkBase.System.Diagnostics.PerformanceCounterPermissionAttribute;
+with NetFrameworkBase.System.Diagnostics.PerformanceCounterPermissionEntry;
+with NetFrameworkBase.System.Diagnostics.PerformanceCounterPermissionEntryCollection;
+with NetFrameworkBase.System.Diagnostics.PerformanceCounterType;
+with NetFrameworkBase.System.Diagnostics.Process;
+with NetFrameworkBase.System.Diagnostics.ProcessModule;
+with NetFrameworkBase.System.Diagnostics.ProcessModuleCollection;
+with NetFrameworkBase.System.Diagnostics.ProcessPriorityClass;
+with NetFrameworkBase.System.Diagnostics.ProcessStartInfo;
+with NetFrameworkBase.System.Diagnostics.ProcessThread;
+with NetFrameworkBase.System.Diagnostics.ProcessThreadCollection;
+with NetFrameworkBase.System.Diagnostics.ProcessWindowStyle;
+with NetFrameworkBase.System.Diagnostics.Stopwatch;
+with NetFrameworkBase.System.Diagnostics.ThreadPriorityLevel;
+with NetFrameworkBase.System.Diagnostics.ThreadState;
+with NetFrameworkBase.System.Diagnostics.ThreadWaitReason;
 with NetFrameworkBase.System.Diagnostics.DebuggableAttribute.DebuggingModes;
 with NetFrameworkBase.System.Type_x;
 with NetFrameworkBase.System.Exception_x;
 with NetFrameworkBase.System.Threading.Thread;
+with NetFrameworkBase.System.IO.Stream;
+with NetFrameworkBase.System.IO.TextWriter;
+with NetFrameworkBase.System.Object;
+with NetFrameworkBase.System.Security.Permissions.PermissionState;
+with NetFrameworkBase.System.Security.Permissions.SecurityAction;
 --------------------------------------------------------------------------------
 package NetFramework.System.Diagnostics is
    
@@ -294,5 +379,881 @@ package NetFramework.System.Diagnostics is
          )
          return NetFrameworkBase.System.Diagnostics.StackFrame.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.StackFrame.Constructor; 
          
+      --------------------------------------------------------------------------
+      subtype EventSchemaTraceListener is NetFrameworkBase.System.Diagnostics.EventSchemaTraceListener.Kind_Ptr;
+      subtype EventSchemaTraceListener_Array is NetFrameworkBase.System.Diagnostics.EventSchemaTraceListener.Kind_Array;
+      
+         function Constructor
+         (
+            fileName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.EventSchemaTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.EventSchemaTraceListener.Constructor; 
+         
+         function Constructor
+         (
+            fileName : NetFrameworkBase.BSTR;
+            name : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.EventSchemaTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.EventSchemaTraceListener.Constructor; 
+         
+         function Constructor
+         (
+            fileName : NetFrameworkBase.BSTR;
+            name : NetFrameworkBase.BSTR;
+            bufferSize : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Diagnostics.EventSchemaTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.EventSchemaTraceListener.Constructor; 
+         
+         function Constructor
+         (
+            fileName : NetFrameworkBase.BSTR;
+            name : NetFrameworkBase.BSTR;
+            bufferSize : NetFrameworkBase.Int32;
+            logRetentionOption : NetFrameworkBase.System.Diagnostics.TraceLogRetentionOption.Kind
+         )
+         return NetFrameworkBase.System.Diagnostics.EventSchemaTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.EventSchemaTraceListener.Constructor; 
+         
+         function Constructor
+         (
+            fileName : NetFrameworkBase.BSTR;
+            name : NetFrameworkBase.BSTR;
+            bufferSize : NetFrameworkBase.Int32;
+            logRetentionOption : NetFrameworkBase.System.Diagnostics.TraceLogRetentionOption.Kind;
+            maximumFileSize : NetFrameworkBase.Int64
+         )
+         return NetFrameworkBase.System.Diagnostics.EventSchemaTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.EventSchemaTraceListener.Constructor; 
+         
+         function Constructor
+         (
+            fileName : NetFrameworkBase.BSTR;
+            name : NetFrameworkBase.BSTR;
+            bufferSize : NetFrameworkBase.Int32;
+            logRetentionOption : NetFrameworkBase.System.Diagnostics.TraceLogRetentionOption.Kind;
+            maximumFileSize : NetFrameworkBase.Int64;
+            maximumNumberOfFiles : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Diagnostics.EventSchemaTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.EventSchemaTraceListener.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype TraceLogRetentionOption is NetFrameworkBase.System.Diagnostics.TraceLogRetentionOption.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype UnescapedXmlDiagnosticData is NetFrameworkBase.System.Diagnostics.UnescapedXmlDiagnosticData.Kind_Ptr;
+      subtype UnescapedXmlDiagnosticData_Array is NetFrameworkBase.System.Diagnostics.UnescapedXmlDiagnosticData.Kind_Array;
+      
+         function Constructor
+         (
+            xmlPayload : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.UnescapedXmlDiagnosticData.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.UnescapedXmlDiagnosticData.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype BooleanSwitch is NetFrameworkBase.System.Diagnostics.BooleanSwitch.Kind_Ptr;
+      subtype BooleanSwitch_Array is NetFrameworkBase.System.Diagnostics.BooleanSwitch.Kind_Array;
+      
+         function Constructor
+         (
+            displayName : NetFrameworkBase.BSTR;
+            description : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.BooleanSwitch.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.BooleanSwitch.Constructor; 
+         
+         function Constructor
+         (
+            displayName : NetFrameworkBase.BSTR;
+            description : NetFrameworkBase.BSTR;
+            defaultSwitchValue : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.BooleanSwitch.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.BooleanSwitch.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ConsoleTraceListener is NetFrameworkBase.System.Diagnostics.ConsoleTraceListener.Kind_Ptr;
+      subtype ConsoleTraceListener_Array is NetFrameworkBase.System.Diagnostics.ConsoleTraceListener.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Diagnostics.ConsoleTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.ConsoleTraceListener.Constructor;
+         
+         function Constructor
+         (
+            useErrorStream : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Diagnostics.ConsoleTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.ConsoleTraceListener.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CorrelationManager is NetFrameworkBase.System.Diagnostics.CorrelationManager.Kind_Ptr;
+      subtype CorrelationManager_Array is NetFrameworkBase.System.Diagnostics.CorrelationManager.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype Debug is NetFrameworkBase.System.Diagnostics.Debug.Kind_Ptr;
+      subtype Debug_Array is NetFrameworkBase.System.Diagnostics.Debug.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype DefaultTraceListener is NetFrameworkBase.System.Diagnostics.DefaultTraceListener.Kind_Ptr;
+      subtype DefaultTraceListener_Array is NetFrameworkBase.System.Diagnostics.DefaultTraceListener.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Diagnostics.DefaultTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.DefaultTraceListener.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype DelimitedListTraceListener is NetFrameworkBase.System.Diagnostics.DelimitedListTraceListener.Kind_Ptr;
+      subtype DelimitedListTraceListener_Array is NetFrameworkBase.System.Diagnostics.DelimitedListTraceListener.Kind_Array;
+      
+         function Constructor
+         (
+            stream : NetFrameworkBase.System.IO.Stream.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Diagnostics.DelimitedListTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.DelimitedListTraceListener.Constructor; 
+         
+         function Constructor
+         (
+            stream : NetFrameworkBase.System.IO.Stream.Kind_Ptr;
+            name : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.DelimitedListTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.DelimitedListTraceListener.Constructor; 
+         
+         function Constructor
+         (
+            writer : NetFrameworkBase.System.IO.TextWriter.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Diagnostics.DelimitedListTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.DelimitedListTraceListener.Constructor; 
+         
+         function Constructor
+         (
+            writer : NetFrameworkBase.System.IO.TextWriter.Kind_Ptr;
+            name : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.DelimitedListTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.DelimitedListTraceListener.Constructor; 
+         
+         function Constructor
+         (
+            fileName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.DelimitedListTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.DelimitedListTraceListener.Constructor; 
+         
+         function Constructor
+         (
+            fileName : NetFrameworkBase.BSTR;
+            name : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.DelimitedListTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.DelimitedListTraceListener.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype EventTypeFilter is NetFrameworkBase.System.Diagnostics.EventTypeFilter.Kind_Ptr;
+      subtype EventTypeFilter_Array is NetFrameworkBase.System.Diagnostics.EventTypeFilter.Kind_Array;
+      
+         function Constructor
+         (
+            level : NetFrameworkBase.System.Diagnostics.SourceLevels.Kind
+         )
+         return NetFrameworkBase.System.Diagnostics.EventTypeFilter.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.EventTypeFilter.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SourceFilter is NetFrameworkBase.System.Diagnostics.SourceFilter.Kind_Ptr;
+      subtype SourceFilter_Array is NetFrameworkBase.System.Diagnostics.SourceFilter.Kind_Array;
+      
+         function Constructor
+         (
+            source : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.SourceFilter.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.SourceFilter.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SourceLevels is NetFrameworkBase.System.Diagnostics.SourceLevels.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype SourceSwitch is NetFrameworkBase.System.Diagnostics.SourceSwitch.Kind_Ptr;
+      subtype SourceSwitch_Array is NetFrameworkBase.System.Diagnostics.SourceSwitch.Kind_Array;
+      
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.SourceSwitch.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.SourceSwitch.Constructor; 
+         
+         function Constructor
+         (
+            displayName : NetFrameworkBase.BSTR;
+            defaultSwitchValue : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.SourceSwitch.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.SourceSwitch.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype Switch is NetFrameworkBase.System.Diagnostics.Switch.Kind_Ptr;
+      subtype Switch_Array is NetFrameworkBase.System.Diagnostics.Switch.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype SwitchAttribute is NetFrameworkBase.System.Diagnostics.SwitchAttribute.Kind_Ptr;
+      subtype SwitchAttribute_Array is NetFrameworkBase.System.Diagnostics.SwitchAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            switchName : NetFrameworkBase.BSTR;
+            switchType : NetFrameworkBase.System.Type_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Diagnostics.SwitchAttribute.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.SwitchAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SwitchLevelAttribute is NetFrameworkBase.System.Diagnostics.SwitchLevelAttribute.Kind_Ptr;
+      subtype SwitchLevelAttribute_Array is NetFrameworkBase.System.Diagnostics.SwitchLevelAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            switchLevelType : NetFrameworkBase.System.Type_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Diagnostics.SwitchLevelAttribute.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.SwitchLevelAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype TextWriterTraceListener is NetFrameworkBase.System.Diagnostics.TextWriterTraceListener.Kind_Ptr;
+      subtype TextWriterTraceListener_Array is NetFrameworkBase.System.Diagnostics.TextWriterTraceListener.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Diagnostics.TextWriterTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.TextWriterTraceListener.Constructor;
+         
+         function Constructor
+         (
+            stream : NetFrameworkBase.System.IO.Stream.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Diagnostics.TextWriterTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.TextWriterTraceListener.Constructor; 
+         
+         function Constructor
+         (
+            stream : NetFrameworkBase.System.IO.Stream.Kind_Ptr;
+            name : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.TextWriterTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.TextWriterTraceListener.Constructor; 
+         
+         function Constructor
+         (
+            writer : NetFrameworkBase.System.IO.TextWriter.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Diagnostics.TextWriterTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.TextWriterTraceListener.Constructor; 
+         
+         function Constructor
+         (
+            writer : NetFrameworkBase.System.IO.TextWriter.Kind_Ptr;
+            name : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.TextWriterTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.TextWriterTraceListener.Constructor; 
+         
+         function Constructor
+         (
+            fileName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.TextWriterTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.TextWriterTraceListener.Constructor; 
+         
+         function Constructor
+         (
+            fileName : NetFrameworkBase.BSTR;
+            name : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.TextWriterTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.TextWriterTraceListener.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype Trace is NetFrameworkBase.System.Diagnostics.Trace.Kind_Ptr;
+      subtype Trace_Array is NetFrameworkBase.System.Diagnostics.Trace.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype TraceEventCache is NetFrameworkBase.System.Diagnostics.TraceEventCache.Kind_Ptr;
+      subtype TraceEventCache_Array is NetFrameworkBase.System.Diagnostics.TraceEventCache.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Diagnostics.TraceEventCache.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.TraceEventCache.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype TraceEventType is NetFrameworkBase.System.Diagnostics.TraceEventType.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype TraceFilter is NetFrameworkBase.System.Diagnostics.TraceFilter.Kind_Ptr;
+      subtype TraceFilter_Array is NetFrameworkBase.System.Diagnostics.TraceFilter.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype TraceLevel is NetFrameworkBase.System.Diagnostics.TraceLevel.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype TraceListener is NetFrameworkBase.System.Diagnostics.TraceListener.Kind_Ptr;
+      subtype TraceListener_Array is NetFrameworkBase.System.Diagnostics.TraceListener.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype TraceListenerCollection is NetFrameworkBase.System.Diagnostics.TraceListenerCollection.Kind_Ptr;
+      subtype TraceListenerCollection_Array is NetFrameworkBase.System.Diagnostics.TraceListenerCollection.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype TraceOptions is NetFrameworkBase.System.Diagnostics.TraceOptions.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype TraceSource is NetFrameworkBase.System.Diagnostics.TraceSource.Kind_Ptr;
+      subtype TraceSource_Array is NetFrameworkBase.System.Diagnostics.TraceSource.Kind_Array;
+      
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.TraceSource.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.TraceSource.Constructor; 
+         
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR;
+            defaultLevel : NetFrameworkBase.System.Diagnostics.SourceLevels.Kind
+         )
+         return NetFrameworkBase.System.Diagnostics.TraceSource.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.TraceSource.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype TraceSwitch is NetFrameworkBase.System.Diagnostics.TraceSwitch.Kind_Ptr;
+      subtype TraceSwitch_Array is NetFrameworkBase.System.Diagnostics.TraceSwitch.Kind_Array;
+      
+         function Constructor
+         (
+            displayName : NetFrameworkBase.BSTR;
+            description : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.TraceSwitch.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.TraceSwitch.Constructor; 
+         
+         function Constructor
+         (
+            displayName : NetFrameworkBase.BSTR;
+            description : NetFrameworkBase.BSTR;
+            defaultSwitchValue : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.TraceSwitch.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.TraceSwitch.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype XmlWriterTraceListener is NetFrameworkBase.System.Diagnostics.XmlWriterTraceListener.Kind_Ptr;
+      subtype XmlWriterTraceListener_Array is NetFrameworkBase.System.Diagnostics.XmlWriterTraceListener.Kind_Array;
+      
+         function Constructor
+         (
+            stream : NetFrameworkBase.System.IO.Stream.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Diagnostics.XmlWriterTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.XmlWriterTraceListener.Constructor; 
+         
+         function Constructor
+         (
+            stream : NetFrameworkBase.System.IO.Stream.Kind_Ptr;
+            name : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.XmlWriterTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.XmlWriterTraceListener.Constructor; 
+         
+         function Constructor
+         (
+            writer : NetFrameworkBase.System.IO.TextWriter.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Diagnostics.XmlWriterTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.XmlWriterTraceListener.Constructor; 
+         
+         function Constructor
+         (
+            writer : NetFrameworkBase.System.IO.TextWriter.Kind_Ptr;
+            name : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.XmlWriterTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.XmlWriterTraceListener.Constructor; 
+         
+         function Constructor
+         (
+            filename : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.XmlWriterTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.XmlWriterTraceListener.Constructor; 
+         
+         function Constructor
+         (
+            filename : NetFrameworkBase.BSTR;
+            name : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.XmlWriterTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.XmlWriterTraceListener.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype StackFrameExtensions is NetFrameworkBase.System.Diagnostics.StackFrameExtensions.Kind_Ptr;
+      subtype StackFrameExtensions_Array is NetFrameworkBase.System.Diagnostics.StackFrameExtensions.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype CounterCreationData is NetFrameworkBase.System.Diagnostics.CounterCreationData.Kind_Ptr;
+      subtype CounterCreationData_Array is NetFrameworkBase.System.Diagnostics.CounterCreationData.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Diagnostics.CounterCreationData.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.CounterCreationData.Constructor;
+         
+         function Constructor
+         (
+            counterName : NetFrameworkBase.BSTR;
+            counterHelp : NetFrameworkBase.BSTR;
+            counterType : NetFrameworkBase.System.Diagnostics.PerformanceCounterType.Kind
+         )
+         return NetFrameworkBase.System.Diagnostics.CounterCreationData.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.CounterCreationData.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CounterCreationDataCollection is NetFrameworkBase.System.Diagnostics.CounterCreationDataCollection.Kind_Ptr;
+      subtype CounterCreationDataCollection_Array is NetFrameworkBase.System.Diagnostics.CounterCreationDataCollection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Diagnostics.CounterCreationDataCollection.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.CounterCreationDataCollection.Constructor;
+         
+         function Constructor
+         (
+            value : NetFrameworkBase.System.Diagnostics.CounterCreationDataCollection.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Diagnostics.CounterCreationDataCollection.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.CounterCreationDataCollection.Constructor; 
+         
+         function Constructor
+         (
+            value : NetFrameworkBase.System.Diagnostics.CounterCreationData.Kind_Array
+         )
+         return NetFrameworkBase.System.Diagnostics.CounterCreationDataCollection.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.CounterCreationDataCollection.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CounterSample is NetFrameworkBase.System.Diagnostics.CounterSample.Kind_Ptr;
+      subtype CounterSample_Array is NetFrameworkBase.System.Diagnostics.CounterSample.Kind_Array;
+      
+         function Constructor
+         (
+            rawValue : NetFrameworkBase.Int64;
+            baseValue : NetFrameworkBase.Int64;
+            counterFrequency : NetFrameworkBase.Int64;
+            systemFrequency : NetFrameworkBase.Int64;
+            timeStamp : NetFrameworkBase.Int64;
+            timeStamp100nSec : NetFrameworkBase.Int64;
+            counterType : NetFrameworkBase.System.Diagnostics.PerformanceCounterType.Kind
+         )
+         return NetFrameworkBase.System.Diagnostics.CounterSample.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.CounterSample.Constructor; 
+         
+         function Constructor
+         (
+            rawValue : NetFrameworkBase.Int64;
+            baseValue : NetFrameworkBase.Int64;
+            counterFrequency : NetFrameworkBase.Int64;
+            systemFrequency : NetFrameworkBase.Int64;
+            timeStamp : NetFrameworkBase.Int64;
+            timeStamp100nSec : NetFrameworkBase.Int64;
+            counterType : NetFrameworkBase.System.Diagnostics.PerformanceCounterType.Kind;
+            counterTimeStamp : NetFrameworkBase.Int64
+         )
+         return NetFrameworkBase.System.Diagnostics.CounterSample.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.CounterSample.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CounterSampleCalculator is NetFrameworkBase.System.Diagnostics.CounterSampleCalculator.Kind_Ptr;
+      subtype CounterSampleCalculator_Array is NetFrameworkBase.System.Diagnostics.CounterSampleCalculator.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype DataReceivedEventHandler is NetFrameworkBase.System.Diagnostics.DataReceivedEventHandler.Kind_Ptr;
+      subtype DataReceivedEventHandler_Array is NetFrameworkBase.System.Diagnostics.DataReceivedEventHandler.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.System.Diagnostics.DataReceivedEventHandler.Kind_Callback) return NetFrameworkBase.System.Diagnostics.DataReceivedEventHandler.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.DataReceivedEventHandler.Constructor;
+      
+      --------------------------------------------------------------------------
+      subtype DataReceivedEventArgs is NetFrameworkBase.System.Diagnostics.DataReceivedEventArgs.Kind_Ptr;
+      subtype DataReceivedEventArgs_Array is NetFrameworkBase.System.Diagnostics.DataReceivedEventArgs.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype DiagnosticsConfigurationHandler is NetFrameworkBase.System.Diagnostics.DiagnosticsConfigurationHandler.Kind_Ptr;
+      subtype DiagnosticsConfigurationHandler_Array is NetFrameworkBase.System.Diagnostics.DiagnosticsConfigurationHandler.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Diagnostics.DiagnosticsConfigurationHandler.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.DiagnosticsConfigurationHandler.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype EntryWrittenEventArgs is NetFrameworkBase.System.Diagnostics.EntryWrittenEventArgs.Kind_Ptr;
+      subtype EntryWrittenEventArgs_Array is NetFrameworkBase.System.Diagnostics.EntryWrittenEventArgs.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Diagnostics.EntryWrittenEventArgs.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.EntryWrittenEventArgs.Constructor;
+         
+         function Constructor
+         (
+            entry_x : NetFrameworkBase.System.Diagnostics.EventLogEntry.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Diagnostics.EntryWrittenEventArgs.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.EntryWrittenEventArgs.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype EntryWrittenEventHandler is NetFrameworkBase.System.Diagnostics.EntryWrittenEventHandler.Kind_Ptr;
+      subtype EntryWrittenEventHandler_Array is NetFrameworkBase.System.Diagnostics.EntryWrittenEventHandler.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.System.Diagnostics.EntryWrittenEventHandler.Kind_Callback) return NetFrameworkBase.System.Diagnostics.EntryWrittenEventHandler.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.EntryWrittenEventHandler.Constructor;
+      
+      --------------------------------------------------------------------------
+      subtype EventInstance is NetFrameworkBase.System.Diagnostics.EventInstance.Kind_Ptr;
+      subtype EventInstance_Array is NetFrameworkBase.System.Diagnostics.EventInstance.Kind_Array;
+      
+         function Constructor
+         (
+            instanceId : NetFrameworkBase.Int64;
+            categoryId : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Diagnostics.EventInstance.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.EventInstance.Constructor; 
+         
+         function Constructor
+         (
+            instanceId : NetFrameworkBase.Int64;
+            categoryId : NetFrameworkBase.Int32;
+            entryType : NetFrameworkBase.System.Diagnostics.EventLogEntryType.Kind
+         )
+         return NetFrameworkBase.System.Diagnostics.EventInstance.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.EventInstance.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype EventLog is NetFrameworkBase.System.Diagnostics.EventLog.Kind_Ptr;
+      subtype EventLog_Array is NetFrameworkBase.System.Diagnostics.EventLog.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Diagnostics.EventLog.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.EventLog.Constructor;
+         
+         function Constructor
+         (
+            logName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.EventLog.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.EventLog.Constructor; 
+         
+         function Constructor
+         (
+            logName : NetFrameworkBase.BSTR;
+            machineName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.EventLog.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.EventLog.Constructor; 
+         
+         function Constructor
+         (
+            logName : NetFrameworkBase.BSTR;
+            machineName : NetFrameworkBase.BSTR;
+            source : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.EventLog.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.EventLog.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype EventLogEntry is NetFrameworkBase.System.Diagnostics.EventLogEntry.Kind_Ptr;
+      subtype EventLogEntry_Array is NetFrameworkBase.System.Diagnostics.EventLogEntry.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype EventLogEntryCollection is NetFrameworkBase.System.Diagnostics.EventLogEntryCollection.Kind_Ptr;
+      subtype EventLogEntryCollection_Array is NetFrameworkBase.System.Diagnostics.EventLogEntryCollection.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype EventLogEntryType is NetFrameworkBase.System.Diagnostics.EventLogEntryType.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype EventLogPermission is NetFrameworkBase.System.Diagnostics.EventLogPermission.Kind_Ptr;
+      subtype EventLogPermission_Array is NetFrameworkBase.System.Diagnostics.EventLogPermission.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Diagnostics.EventLogPermission.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.EventLogPermission.Constructor;
+         
+         function Constructor
+         (
+            state : NetFrameworkBase.System.Security.Permissions.PermissionState.Kind
+         )
+         return NetFrameworkBase.System.Diagnostics.EventLogPermission.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.EventLogPermission.Constructor; 
+         
+         function Constructor
+         (
+            permissionAccess : NetFrameworkBase.System.Diagnostics.EventLogPermissionAccess.Kind;
+            machineName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.EventLogPermission.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.EventLogPermission.Constructor; 
+         
+         function Constructor
+         (
+            permissionAccessEntries : NetFrameworkBase.System.Diagnostics.EventLogPermissionEntry.Kind_Array
+         )
+         return NetFrameworkBase.System.Diagnostics.EventLogPermission.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.EventLogPermission.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype EventLogPermissionAccess is NetFrameworkBase.System.Diagnostics.EventLogPermissionAccess.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype EventLogPermissionAttribute is NetFrameworkBase.System.Diagnostics.EventLogPermissionAttribute.Kind_Ptr;
+      subtype EventLogPermissionAttribute_Array is NetFrameworkBase.System.Diagnostics.EventLogPermissionAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            action : NetFrameworkBase.System.Security.Permissions.SecurityAction.Kind
+         )
+         return NetFrameworkBase.System.Diagnostics.EventLogPermissionAttribute.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.EventLogPermissionAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype EventLogPermissionEntry is NetFrameworkBase.System.Diagnostics.EventLogPermissionEntry.Kind_Ptr;
+      subtype EventLogPermissionEntry_Array is NetFrameworkBase.System.Diagnostics.EventLogPermissionEntry.Kind_Array;
+      
+         function Constructor
+         (
+            permissionAccess : NetFrameworkBase.System.Diagnostics.EventLogPermissionAccess.Kind;
+            machineName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.EventLogPermissionEntry.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.EventLogPermissionEntry.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype EventLogPermissionEntryCollection is NetFrameworkBase.System.Diagnostics.EventLogPermissionEntryCollection.Kind_Ptr;
+      subtype EventLogPermissionEntryCollection_Array is NetFrameworkBase.System.Diagnostics.EventLogPermissionEntryCollection.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype EventLogTraceListener is NetFrameworkBase.System.Diagnostics.EventLogTraceListener.Kind_Ptr;
+      subtype EventLogTraceListener_Array is NetFrameworkBase.System.Diagnostics.EventLogTraceListener.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Diagnostics.EventLogTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.EventLogTraceListener.Constructor;
+         
+         function Constructor
+         (
+            eventLog : NetFrameworkBase.System.Diagnostics.EventLog.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Diagnostics.EventLogTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.EventLogTraceListener.Constructor; 
+         
+         function Constructor
+         (
+            source : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.EventLogTraceListener.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.EventLogTraceListener.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype EventSourceCreationData is NetFrameworkBase.System.Diagnostics.EventSourceCreationData.Kind_Ptr;
+      subtype EventSourceCreationData_Array is NetFrameworkBase.System.Diagnostics.EventSourceCreationData.Kind_Array;
+      
+         function Constructor
+         (
+            source : NetFrameworkBase.BSTR;
+            logName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.EventSourceCreationData.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.EventSourceCreationData.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype FileVersionInfo is NetFrameworkBase.System.Diagnostics.FileVersionInfo.Kind_Ptr;
+      subtype FileVersionInfo_Array is NetFrameworkBase.System.Diagnostics.FileVersionInfo.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ICollectData is NetFrameworkBase.System.Diagnostics.ICollectData.Kind_Ptr;
+      subtype ICollectData_Array is NetFrameworkBase.System.Diagnostics.ICollectData.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype InstanceData is NetFrameworkBase.System.Diagnostics.InstanceData.Kind_Ptr;
+      subtype InstanceData_Array is NetFrameworkBase.System.Diagnostics.InstanceData.Kind_Array;
+      
+         function Constructor
+         (
+            instanceName : NetFrameworkBase.BSTR;
+            sample : NetFrameworkBase.System.Diagnostics.CounterSample.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Diagnostics.InstanceData.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.InstanceData.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype InstanceDataCollection is NetFrameworkBase.System.Diagnostics.InstanceDataCollection.Kind_Ptr;
+      subtype InstanceDataCollection_Array is NetFrameworkBase.System.Diagnostics.InstanceDataCollection.Kind_Array;
+      
+         function Constructor
+         (
+            counterName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.InstanceDataCollection.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.InstanceDataCollection.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype InstanceDataCollectionCollection is NetFrameworkBase.System.Diagnostics.InstanceDataCollectionCollection.Kind_Ptr;
+      subtype InstanceDataCollectionCollection_Array is NetFrameworkBase.System.Diagnostics.InstanceDataCollectionCollection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Diagnostics.InstanceDataCollectionCollection.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.InstanceDataCollectionCollection.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype MonitoringDescriptionAttribute is NetFrameworkBase.System.Diagnostics.MonitoringDescriptionAttribute.Kind_Ptr;
+      subtype MonitoringDescriptionAttribute_Array is NetFrameworkBase.System.Diagnostics.MonitoringDescriptionAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            description : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.MonitoringDescriptionAttribute.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.MonitoringDescriptionAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype OverflowAction is NetFrameworkBase.System.Diagnostics.OverflowAction.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype PerformanceCounter is NetFrameworkBase.System.Diagnostics.PerformanceCounter.Kind_Ptr;
+      subtype PerformanceCounter_Array is NetFrameworkBase.System.Diagnostics.PerformanceCounter.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Diagnostics.PerformanceCounter.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.PerformanceCounter.Constructor;
+         
+         function Constructor
+         (
+            categoryName : NetFrameworkBase.BSTR;
+            counterName : NetFrameworkBase.BSTR;
+            instanceName : NetFrameworkBase.BSTR;
+            machineName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.PerformanceCounter.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.PerformanceCounter.Constructor; 
+         
+         function Constructor
+         (
+            categoryName : NetFrameworkBase.BSTR;
+            counterName : NetFrameworkBase.BSTR;
+            instanceName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.PerformanceCounter.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.PerformanceCounter.Constructor; 
+         
+         function Constructor
+         (
+            categoryName : NetFrameworkBase.BSTR;
+            counterName : NetFrameworkBase.BSTR;
+            instanceName : NetFrameworkBase.BSTR;
+            readOnly : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Diagnostics.PerformanceCounter.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.PerformanceCounter.Constructor; 
+         
+         function Constructor
+         (
+            categoryName : NetFrameworkBase.BSTR;
+            counterName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.PerformanceCounter.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.PerformanceCounter.Constructor; 
+         
+         function Constructor
+         (
+            categoryName : NetFrameworkBase.BSTR;
+            counterName : NetFrameworkBase.BSTR;
+            readOnly : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Diagnostics.PerformanceCounter.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.PerformanceCounter.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype PerformanceCounterCategory is NetFrameworkBase.System.Diagnostics.PerformanceCounterCategory.Kind_Ptr;
+      subtype PerformanceCounterCategory_Array is NetFrameworkBase.System.Diagnostics.PerformanceCounterCategory.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Diagnostics.PerformanceCounterCategory.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.PerformanceCounterCategory.Constructor;
+         
+         function Constructor
+         (
+            categoryName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.PerformanceCounterCategory.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.PerformanceCounterCategory.Constructor; 
+         
+         function Constructor
+         (
+            categoryName : NetFrameworkBase.BSTR;
+            machineName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.PerformanceCounterCategory.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.PerformanceCounterCategory.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype PerformanceCounterCategoryType is NetFrameworkBase.System.Diagnostics.PerformanceCounterCategoryType.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype PerformanceCounterInstanceLifetime is NetFrameworkBase.System.Diagnostics.PerformanceCounterInstanceLifetime.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype PerformanceCounterManager is NetFrameworkBase.System.Diagnostics.PerformanceCounterManager.Kind_Ptr;
+      subtype PerformanceCounterManager_Array is NetFrameworkBase.System.Diagnostics.PerformanceCounterManager.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Diagnostics.PerformanceCounterManager.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.PerformanceCounterManager.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype PerformanceCounterPermission is NetFrameworkBase.System.Diagnostics.PerformanceCounterPermission.Kind_Ptr;
+      subtype PerformanceCounterPermission_Array is NetFrameworkBase.System.Diagnostics.PerformanceCounterPermission.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Diagnostics.PerformanceCounterPermission.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.PerformanceCounterPermission.Constructor;
+         
+         function Constructor
+         (
+            state : NetFrameworkBase.System.Security.Permissions.PermissionState.Kind
+         )
+         return NetFrameworkBase.System.Diagnostics.PerformanceCounterPermission.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.PerformanceCounterPermission.Constructor; 
+         
+         function Constructor
+         (
+            permissionAccess : NetFrameworkBase.System.Diagnostics.PerformanceCounterPermissionAccess.Kind;
+            machineName : NetFrameworkBase.BSTR;
+            categoryName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.PerformanceCounterPermission.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.PerformanceCounterPermission.Constructor; 
+         
+         function Constructor
+         (
+            permissionAccessEntries : NetFrameworkBase.System.Diagnostics.PerformanceCounterPermissionEntry.Kind_Array
+         )
+         return NetFrameworkBase.System.Diagnostics.PerformanceCounterPermission.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.PerformanceCounterPermission.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype PerformanceCounterPermissionAccess is NetFrameworkBase.System.Diagnostics.PerformanceCounterPermissionAccess.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype PerformanceCounterPermissionAttribute is NetFrameworkBase.System.Diagnostics.PerformanceCounterPermissionAttribute.Kind_Ptr;
+      subtype PerformanceCounterPermissionAttribute_Array is NetFrameworkBase.System.Diagnostics.PerformanceCounterPermissionAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            action : NetFrameworkBase.System.Security.Permissions.SecurityAction.Kind
+         )
+         return NetFrameworkBase.System.Diagnostics.PerformanceCounterPermissionAttribute.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.PerformanceCounterPermissionAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype PerformanceCounterPermissionEntry is NetFrameworkBase.System.Diagnostics.PerformanceCounterPermissionEntry.Kind_Ptr;
+      subtype PerformanceCounterPermissionEntry_Array is NetFrameworkBase.System.Diagnostics.PerformanceCounterPermissionEntry.Kind_Array;
+      
+         function Constructor
+         (
+            permissionAccess : NetFrameworkBase.System.Diagnostics.PerformanceCounterPermissionAccess.Kind;
+            machineName : NetFrameworkBase.BSTR;
+            categoryName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.PerformanceCounterPermissionEntry.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.PerformanceCounterPermissionEntry.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype PerformanceCounterPermissionEntryCollection is NetFrameworkBase.System.Diagnostics.PerformanceCounterPermissionEntryCollection.Kind_Ptr;
+      subtype PerformanceCounterPermissionEntryCollection_Array is NetFrameworkBase.System.Diagnostics.PerformanceCounterPermissionEntryCollection.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype PerformanceCounterType is NetFrameworkBase.System.Diagnostics.PerformanceCounterType.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype Process is NetFrameworkBase.System.Diagnostics.Process.Kind_Ptr;
+      subtype Process_Array is NetFrameworkBase.System.Diagnostics.Process.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Diagnostics.Process.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.Process.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype ProcessModule is NetFrameworkBase.System.Diagnostics.ProcessModule.Kind_Ptr;
+      subtype ProcessModule_Array is NetFrameworkBase.System.Diagnostics.ProcessModule.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ProcessModuleCollection is NetFrameworkBase.System.Diagnostics.ProcessModuleCollection.Kind_Ptr;
+      subtype ProcessModuleCollection_Array is NetFrameworkBase.System.Diagnostics.ProcessModuleCollection.Kind_Array;
+      
+         function Constructor
+         (
+            processModules : NetFrameworkBase.System.Diagnostics.ProcessModule.Kind_Array
+         )
+         return NetFrameworkBase.System.Diagnostics.ProcessModuleCollection.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.ProcessModuleCollection.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ProcessPriorityClass is NetFrameworkBase.System.Diagnostics.ProcessPriorityClass.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype ProcessStartInfo is NetFrameworkBase.System.Diagnostics.ProcessStartInfo.Kind_Ptr;
+      subtype ProcessStartInfo_Array is NetFrameworkBase.System.Diagnostics.ProcessStartInfo.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Diagnostics.ProcessStartInfo.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.ProcessStartInfo.Constructor;
+         
+         function Constructor
+         (
+            fileName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.ProcessStartInfo.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.ProcessStartInfo.Constructor; 
+         
+         function Constructor
+         (
+            fileName : NetFrameworkBase.BSTR;
+            arguments : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Diagnostics.ProcessStartInfo.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.ProcessStartInfo.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ProcessThread is NetFrameworkBase.System.Diagnostics.ProcessThread.Kind_Ptr;
+      subtype ProcessThread_Array is NetFrameworkBase.System.Diagnostics.ProcessThread.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ProcessThreadCollection is NetFrameworkBase.System.Diagnostics.ProcessThreadCollection.Kind_Ptr;
+      subtype ProcessThreadCollection_Array is NetFrameworkBase.System.Diagnostics.ProcessThreadCollection.Kind_Array;
+      
+         function Constructor
+         (
+            processThreads : NetFrameworkBase.System.Diagnostics.ProcessThread.Kind_Array
+         )
+         return NetFrameworkBase.System.Diagnostics.ProcessThreadCollection.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.ProcessThreadCollection.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ProcessWindowStyle is NetFrameworkBase.System.Diagnostics.ProcessWindowStyle.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype Stopwatch is NetFrameworkBase.System.Diagnostics.Stopwatch.Kind_Ptr;
+      subtype Stopwatch_Array is NetFrameworkBase.System.Diagnostics.Stopwatch.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Diagnostics.Stopwatch.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.Stopwatch.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype ThreadPriorityLevel is NetFrameworkBase.System.Diagnostics.ThreadPriorityLevel.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype ThreadState is NetFrameworkBase.System.Diagnostics.ThreadState.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype ThreadWaitReason is NetFrameworkBase.System.Diagnostics.ThreadWaitReason.Kind;
+      
    
 end;

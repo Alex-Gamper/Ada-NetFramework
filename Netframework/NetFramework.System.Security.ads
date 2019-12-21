@@ -61,6 +61,8 @@ with NetFrameworkBase.System.Security.PolicyLevelType;
 with NetFrameworkBase.System.Security.SecurityManager;
 with NetFrameworkBase.System.Security.SecurityZone;
 with NetFrameworkBase.System.Security.VerificationException;
+with NetFrameworkBase.System.Security.ManifestKinds;
+with NetFrameworkBase.System.Security.SecureStringMarshal;
 with NetFrameworkBase.System.Exception_x;
 with NetFrameworkBase.System.Security.Permissions.PermissionState;
 with NetFrameworkBase.System.Type_x;
@@ -417,5 +419,12 @@ package NetFramework.System.Security is
          )
          return NetFrameworkBase.System.Security.VerificationException.Kind_Ptr renames NetFrameworkBase.System.Security.VerificationException.Constructor; 
          
+      --------------------------------------------------------------------------
+      subtype ManifestKinds is NetFrameworkBase.System.Security.ManifestKinds.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype SecureStringMarshal is NetFrameworkBase.System.Security.SecureStringMarshal.Kind_Ptr;
+      subtype SecureStringMarshal_Array is NetFrameworkBase.System.Security.SecureStringMarshal.Kind_Array;
+      
    
 end;

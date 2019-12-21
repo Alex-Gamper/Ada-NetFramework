@@ -73,6 +73,17 @@ with NetFrameworkBase.System.Runtime.InteropServices.ComTypes.TYPELIBATTR;
 with NetFrameworkBase.System.Runtime.InteropServices.ComTypes.ITypeLib;
 with NetFrameworkBase.System.Runtime.InteropServices.ComTypes.ITypeLib2;
 with NetFrameworkBase.System.Runtime.InteropServices.ComTypes.ITypeInfo2;
+with NetFrameworkBase.System.Runtime.InteropServices.ComTypes.ADVF;
+with NetFrameworkBase.System.Runtime.InteropServices.ComTypes.DATADIR;
+with NetFrameworkBase.System.Runtime.InteropServices.ComTypes.DVASPECT;
+with NetFrameworkBase.System.Runtime.InteropServices.ComTypes.FORMATETC;
+with NetFrameworkBase.System.Runtime.InteropServices.ComTypes.IAdviseSink;
+with NetFrameworkBase.System.Runtime.InteropServices.ComTypes.IDataObject;
+with NetFrameworkBase.System.Runtime.InteropServices.ComTypes.IEnumFORMATETC;
+with NetFrameworkBase.System.Runtime.InteropServices.ComTypes.IEnumSTATDATA;
+with NetFrameworkBase.System.Runtime.InteropServices.ComTypes.STATDATA;
+with NetFrameworkBase.System.Runtime.InteropServices.ComTypes.STGMEDIUM;
+with NetFrameworkBase.System.Runtime.InteropServices.ComTypes.TYMED;
 --------------------------------------------------------------------------------
 package NetFramework.System.Runtime.InteropServices.ComTypes is
    
@@ -245,6 +256,46 @@ package NetFramework.System.Runtime.InteropServices.ComTypes is
       --------------------------------------------------------------------------
       subtype ITypeInfo2 is NetFrameworkBase.System.Runtime.InteropServices.ComTypes.ITypeInfo2.Kind_Ptr;
       subtype ITypeInfo2_Array is NetFrameworkBase.System.Runtime.InteropServices.ComTypes.ITypeInfo2.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ADVF is NetFrameworkBase.System.Runtime.InteropServices.ComTypes.ADVF.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype DATADIR is NetFrameworkBase.System.Runtime.InteropServices.ComTypes.DATADIR.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype DVASPECT is NetFrameworkBase.System.Runtime.InteropServices.ComTypes.DVASPECT.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype FORMATETC is NetFrameworkBase.System.Runtime.InteropServices.ComTypes.FORMATETC.Kind_Ptr;
+      subtype FORMATETC_Array is NetFrameworkBase.System.Runtime.InteropServices.ComTypes.FORMATETC.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IAdviseSink is NetFrameworkBase.System.Runtime.InteropServices.ComTypes.IAdviseSink.Kind_Ptr;
+      subtype IAdviseSink_Array is NetFrameworkBase.System.Runtime.InteropServices.ComTypes.IAdviseSink.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IDataObject is NetFrameworkBase.System.Runtime.InteropServices.ComTypes.IDataObject.Kind_Ptr;
+      subtype IDataObject_Array is NetFrameworkBase.System.Runtime.InteropServices.ComTypes.IDataObject.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IEnumFORMATETC is NetFrameworkBase.System.Runtime.InteropServices.ComTypes.IEnumFORMATETC.Kind_Ptr;
+      subtype IEnumFORMATETC_Array is NetFrameworkBase.System.Runtime.InteropServices.ComTypes.IEnumFORMATETC.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IEnumSTATDATA is NetFrameworkBase.System.Runtime.InteropServices.ComTypes.IEnumSTATDATA.Kind_Ptr;
+      subtype IEnumSTATDATA_Array is NetFrameworkBase.System.Runtime.InteropServices.ComTypes.IEnumSTATDATA.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype STATDATA is NetFrameworkBase.System.Runtime.InteropServices.ComTypes.STATDATA.Kind_Ptr;
+      subtype STATDATA_Array is NetFrameworkBase.System.Runtime.InteropServices.ComTypes.STATDATA.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype STGMEDIUM is NetFrameworkBase.System.Runtime.InteropServices.ComTypes.STGMEDIUM.Kind_Ptr;
+      subtype STGMEDIUM_Array is NetFrameworkBase.System.Runtime.InteropServices.ComTypes.STGMEDIUM.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype TYMED is NetFrameworkBase.System.Runtime.InteropServices.ComTypes.TYMED.Kind;
       
    
 end;

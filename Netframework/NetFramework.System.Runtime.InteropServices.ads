@@ -205,6 +205,10 @@ with NetFrameworkBase.System.Runtime.InteropServices.IParameterBuilder;
 with NetFrameworkBase.System.Runtime.InteropServices.IPropertyBuilder;
 with NetFrameworkBase.System.Runtime.InteropServices.ISignatureHelper;
 with NetFrameworkBase.System.Runtime.InteropServices.ITypeBuilder;
+with NetFrameworkBase.System.Runtime.InteropServices.ComAwareEventInfo;
+with NetFrameworkBase.System.Runtime.InteropServices.HandleCollector;
+with NetFrameworkBase.System.Runtime.InteropServices.DefaultParameterValueAttribute;
+with NetFrameworkBase.System.Runtime.InteropServices.StandardOleMarshalObject;
 with NetFrameworkBase.System.Object;
 with NetFrameworkBase.System.Type_x;
 with NetFrameworkBase.System.Exception_x;
@@ -1402,6 +1406,50 @@ package NetFramework.System.Runtime.InteropServices is
       --------------------------------------------------------------------------
       subtype ITypeBuilder is NetFrameworkBase.System.Runtime.InteropServices.ITypeBuilder.Kind_Ptr;
       subtype ITypeBuilder_Array is NetFrameworkBase.System.Runtime.InteropServices.ITypeBuilder.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ComAwareEventInfo is NetFrameworkBase.System.Runtime.InteropServices.ComAwareEventInfo.Kind_Ptr;
+      subtype ComAwareEventInfo_Array is NetFrameworkBase.System.Runtime.InteropServices.ComAwareEventInfo.Kind_Array;
+      
+         function Constructor
+         (
+            type_x : NetFrameworkBase.System.Type_x.Kind_Ptr;
+            eventName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.ComAwareEventInfo.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.ComAwareEventInfo.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype HandleCollector is NetFrameworkBase.System.Runtime.InteropServices.HandleCollector.Kind_Ptr;
+      subtype HandleCollector_Array is NetFrameworkBase.System.Runtime.InteropServices.HandleCollector.Kind_Array;
+      
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR;
+            initialThreshold : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.HandleCollector.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.HandleCollector.Constructor; 
+         
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR;
+            initialThreshold : NetFrameworkBase.Int32;
+            maximumThreshold : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.HandleCollector.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.HandleCollector.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype DefaultParameterValueAttribute is NetFrameworkBase.System.Runtime.InteropServices.DefaultParameterValueAttribute.Kind_Ptr;
+      subtype DefaultParameterValueAttribute_Array is NetFrameworkBase.System.Runtime.InteropServices.DefaultParameterValueAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            value : NetFrameworkBase.System.Object.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.InteropServices.DefaultParameterValueAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.InteropServices.DefaultParameterValueAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype StandardOleMarshalObject is NetFrameworkBase.System.Runtime.InteropServices.StandardOleMarshalObject.Kind_Ptr;
+      subtype StandardOleMarshalObject_Array is NetFrameworkBase.System.Runtime.InteropServices.StandardOleMarshalObject.Kind_Array;
       
    
 end;

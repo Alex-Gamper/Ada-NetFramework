@@ -102,7 +102,19 @@ with NetFrameworkBase.System.Runtime.CompilerServices.FormattableStringFactory;
 with NetFrameworkBase.System.Runtime.CompilerServices.IDispatchConstantAttribute;
 with NetFrameworkBase.System.Runtime.CompilerServices.IUnknownConstantAttribute;
 with NetFrameworkBase.System.Runtime.CompilerServices.TupleElementNamesAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.ExecutionScope;
+with NetFrameworkBase.System.Runtime.CompilerServices.DynamicAttribute;
+with NetFrameworkBase.System.Runtime.CompilerServices.CallSite;
+with NetFrameworkBase.System.Runtime.CompilerServices.CallSiteBinder;
+with NetFrameworkBase.System.Runtime.CompilerServices.CallSiteHelpers;
+with NetFrameworkBase.System.Runtime.CompilerServices.CallSiteOps;
+with NetFrameworkBase.System.Runtime.CompilerServices.RuntimeOps;
+with NetFrameworkBase.System.Runtime.CompilerServices.Closure;
+with NetFrameworkBase.System.Runtime.CompilerServices.DebugInfoGenerator;
+with NetFrameworkBase.System.Runtime.CompilerServices.IRuntimeVariables;
+with NetFrameworkBase.System.Runtime.CompilerServices.IStrongBox;
 with NetFrameworkBase.System.Type_x;
+with NetFrameworkBase.System.Object;
 --------------------------------------------------------------------------------
 package NetFramework.System.Runtime.CompilerServices is
    
@@ -592,5 +604,64 @@ package NetFramework.System.Runtime.CompilerServices is
          )
          return NetFrameworkBase.System.Runtime.CompilerServices.TupleElementNamesAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.TupleElementNamesAttribute.Constructor; 
          
+      --------------------------------------------------------------------------
+      subtype ExecutionScope is NetFrameworkBase.System.Runtime.CompilerServices.ExecutionScope.Kind_Ptr;
+      subtype ExecutionScope_Array is NetFrameworkBase.System.Runtime.CompilerServices.ExecutionScope.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype DynamicAttribute is NetFrameworkBase.System.Runtime.CompilerServices.DynamicAttribute.Kind_Ptr;
+      subtype DynamicAttribute_Array is NetFrameworkBase.System.Runtime.CompilerServices.DynamicAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Runtime.CompilerServices.DynamicAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.DynamicAttribute.Constructor;
+         
+         function Constructor
+         (
+            transformFlags : NetFrameworkBase.Boolean_Array
+         )
+         return NetFrameworkBase.System.Runtime.CompilerServices.DynamicAttribute.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.DynamicAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype CallSite is NetFrameworkBase.System.Runtime.CompilerServices.CallSite.Kind_Ptr;
+      subtype CallSite_Array is NetFrameworkBase.System.Runtime.CompilerServices.CallSite.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype CallSiteBinder is NetFrameworkBase.System.Runtime.CompilerServices.CallSiteBinder.Kind_Ptr;
+      subtype CallSiteBinder_Array is NetFrameworkBase.System.Runtime.CompilerServices.CallSiteBinder.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype CallSiteHelpers is NetFrameworkBase.System.Runtime.CompilerServices.CallSiteHelpers.Kind_Ptr;
+      subtype CallSiteHelpers_Array is NetFrameworkBase.System.Runtime.CompilerServices.CallSiteHelpers.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype CallSiteOps is NetFrameworkBase.System.Runtime.CompilerServices.CallSiteOps.Kind_Ptr;
+      subtype CallSiteOps_Array is NetFrameworkBase.System.Runtime.CompilerServices.CallSiteOps.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype RuntimeOps is NetFrameworkBase.System.Runtime.CompilerServices.RuntimeOps.Kind_Ptr;
+      subtype RuntimeOps_Array is NetFrameworkBase.System.Runtime.CompilerServices.RuntimeOps.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype Closure is NetFrameworkBase.System.Runtime.CompilerServices.Closure.Kind_Ptr;
+      subtype Closure_Array is NetFrameworkBase.System.Runtime.CompilerServices.Closure.Kind_Array;
+      
+         function Constructor
+         (
+            constants : NetFrameworkBase.System.Object.Kind_Array;
+            locals : NetFrameworkBase.System.Object.Kind_Array
+         )
+         return NetFrameworkBase.System.Runtime.CompilerServices.Closure.Kind_Ptr renames NetFrameworkBase.System.Runtime.CompilerServices.Closure.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype DebugInfoGenerator is NetFrameworkBase.System.Runtime.CompilerServices.DebugInfoGenerator.Kind_Ptr;
+      subtype DebugInfoGenerator_Array is NetFrameworkBase.System.Runtime.CompilerServices.DebugInfoGenerator.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IRuntimeVariables is NetFrameworkBase.System.Runtime.CompilerServices.IRuntimeVariables.Kind_Ptr;
+      subtype IRuntimeVariables_Array is NetFrameworkBase.System.Runtime.CompilerServices.IRuntimeVariables.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype IStrongBox is NetFrameworkBase.System.Runtime.CompilerServices.IStrongBox.Kind_Ptr;
+      subtype IStrongBox_Array is NetFrameworkBase.System.Runtime.CompilerServices.IStrongBox.Kind_Array;
+      
    
 end;

@@ -91,6 +91,10 @@ with NetFrameworkBase.System.Security.AccessControl.ControlFlags;
 with NetFrameworkBase.System.Security.AccessControl.GenericSecurityDescriptor;
 with NetFrameworkBase.System.Security.AccessControl.RawSecurityDescriptor;
 with NetFrameworkBase.System.Security.AccessControl.CommonSecurityDescriptor;
+with NetFrameworkBase.System.Security.AccessControl.SemaphoreRights;
+with NetFrameworkBase.System.Security.AccessControl.SemaphoreAccessRule;
+with NetFrameworkBase.System.Security.AccessControl.SemaphoreAuditRule;
+with NetFrameworkBase.System.Security.AccessControl.SemaphoreSecurity;
 with NetFrameworkBase.System.Security.Principal.SecurityIdentifier;
 with NetFrameworkBase.System.Guid;
 with NetFrameworkBase.System.Security.Principal.IdentityReference;
@@ -763,6 +767,54 @@ package NetFramework.System.Security.AccessControl is
             offset : NetFrameworkBase.Int32
          )
          return NetFrameworkBase.System.Security.AccessControl.CommonSecurityDescriptor.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.CommonSecurityDescriptor.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SemaphoreRights is NetFrameworkBase.System.Security.AccessControl.SemaphoreRights.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype SemaphoreAccessRule is NetFrameworkBase.System.Security.AccessControl.SemaphoreAccessRule.Kind_Ptr;
+      subtype SemaphoreAccessRule_Array is NetFrameworkBase.System.Security.AccessControl.SemaphoreAccessRule.Kind_Array;
+      
+         function Constructor
+         (
+            identity : NetFrameworkBase.System.Security.Principal.IdentityReference.Kind_Ptr;
+            eventRights : NetFrameworkBase.System.Security.AccessControl.SemaphoreRights.Kind;
+            type_x : NetFrameworkBase.System.Security.AccessControl.AccessControlType.Kind
+         )
+         return NetFrameworkBase.System.Security.AccessControl.SemaphoreAccessRule.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.SemaphoreAccessRule.Constructor; 
+         
+         function Constructor
+         (
+            identity : NetFrameworkBase.BSTR;
+            eventRights : NetFrameworkBase.System.Security.AccessControl.SemaphoreRights.Kind;
+            type_x : NetFrameworkBase.System.Security.AccessControl.AccessControlType.Kind
+         )
+         return NetFrameworkBase.System.Security.AccessControl.SemaphoreAccessRule.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.SemaphoreAccessRule.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SemaphoreAuditRule is NetFrameworkBase.System.Security.AccessControl.SemaphoreAuditRule.Kind_Ptr;
+      subtype SemaphoreAuditRule_Array is NetFrameworkBase.System.Security.AccessControl.SemaphoreAuditRule.Kind_Array;
+      
+         function Constructor
+         (
+            identity : NetFrameworkBase.System.Security.Principal.IdentityReference.Kind_Ptr;
+            eventRights : NetFrameworkBase.System.Security.AccessControl.SemaphoreRights.Kind;
+            flags : NetFrameworkBase.System.Security.AccessControl.AuditFlags.Kind
+         )
+         return NetFrameworkBase.System.Security.AccessControl.SemaphoreAuditRule.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.SemaphoreAuditRule.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SemaphoreSecurity is NetFrameworkBase.System.Security.AccessControl.SemaphoreSecurity.Kind_Ptr;
+      subtype SemaphoreSecurity_Array is NetFrameworkBase.System.Security.AccessControl.SemaphoreSecurity.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.AccessControl.SemaphoreSecurity.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.SemaphoreSecurity.Constructor;
+         
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR;
+            includeSections : NetFrameworkBase.System.Security.AccessControl.AccessControlSections.Kind
+         )
+         return NetFrameworkBase.System.Security.AccessControl.SemaphoreSecurity.Kind_Ptr renames NetFrameworkBase.System.Security.AccessControl.SemaphoreSecurity.Constructor; 
          
    
 end;

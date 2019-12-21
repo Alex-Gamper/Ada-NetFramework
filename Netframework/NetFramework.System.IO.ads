@@ -63,6 +63,20 @@ with NetFrameworkBase.System.IO.TextReader;
 with NetFrameworkBase.System.IO.TextWriter;
 with NetFrameworkBase.System.IO.UnmanagedMemoryAccessor;
 with NetFrameworkBase.System.IO.UnmanagedMemoryStream;
+with NetFrameworkBase.System.IO.HandleInheritability;
+with NetFrameworkBase.System.IO.InvalidDataException;
+with NetFrameworkBase.System.IO.NotifyFilters;
+with NetFrameworkBase.System.IO.ErrorEventArgs;
+with NetFrameworkBase.System.IO.ErrorEventHandler;
+with NetFrameworkBase.System.IO.FileSystemEventArgs;
+with NetFrameworkBase.System.IO.FileSystemEventHandler;
+with NetFrameworkBase.System.IO.FileSystemWatcher;
+with NetFrameworkBase.System.IO.InternalBufferOverflowException;
+with NetFrameworkBase.System.IO.IODescriptionAttribute;
+with NetFrameworkBase.System.IO.RenamedEventArgs;
+with NetFrameworkBase.System.IO.RenamedEventHandler;
+with NetFrameworkBase.System.IO.WaitForChangedResult;
+with NetFrameworkBase.System.IO.WatcherChangeTypes;
 with NetFrameworkBase.System.Text.Encoding;
 with NetFrameworkBase.System.Exception_x;
 with NetFrameworkBase.System.Security.AccessControl.FileSystemRights;
@@ -71,6 +85,7 @@ with NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeFileHandle;
 with NetFrameworkBase.System.IFormatProvider;
 with NetFrameworkBase.System.Text.StringBuilder;
 with NetFrameworkBase.System.Runtime.InteropServices.SafeBuffer;
+with NetFrameworkBase.System.Object;
 --------------------------------------------------------------------------------
 package NetFramework.System.IO is
    
@@ -831,5 +846,138 @@ package NetFramework.System.IO is
          )
          return NetFrameworkBase.System.IO.UnmanagedMemoryStream.Kind_Ptr renames NetFrameworkBase.System.IO.UnmanagedMemoryStream.Constructor; 
          
+      --------------------------------------------------------------------------
+      subtype HandleInheritability is NetFrameworkBase.System.IO.HandleInheritability.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype InvalidDataException is NetFrameworkBase.System.IO.InvalidDataException.Kind_Ptr;
+      subtype InvalidDataException_Array is NetFrameworkBase.System.IO.InvalidDataException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.IO.InvalidDataException.Kind_Ptr renames NetFrameworkBase.System.IO.InvalidDataException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.IO.InvalidDataException.Kind_Ptr renames NetFrameworkBase.System.IO.InvalidDataException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.IO.InvalidDataException.Kind_Ptr renames NetFrameworkBase.System.IO.InvalidDataException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype NotifyFilters is NetFrameworkBase.System.IO.NotifyFilters.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype ErrorEventArgs is NetFrameworkBase.System.IO.ErrorEventArgs.Kind_Ptr;
+      subtype ErrorEventArgs_Array is NetFrameworkBase.System.IO.ErrorEventArgs.Kind_Array;
+      
+         function Constructor
+         (
+            exception_x : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.IO.ErrorEventArgs.Kind_Ptr renames NetFrameworkBase.System.IO.ErrorEventArgs.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ErrorEventHandler is NetFrameworkBase.System.IO.ErrorEventHandler.Kind_Ptr;
+      subtype ErrorEventHandler_Array is NetFrameworkBase.System.IO.ErrorEventHandler.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.System.IO.ErrorEventHandler.Kind_Callback) return NetFrameworkBase.System.IO.ErrorEventHandler.Kind_Ptr renames NetFrameworkBase.System.IO.ErrorEventHandler.Constructor;
+      
+      --------------------------------------------------------------------------
+      subtype FileSystemEventArgs is NetFrameworkBase.System.IO.FileSystemEventArgs.Kind_Ptr;
+      subtype FileSystemEventArgs_Array is NetFrameworkBase.System.IO.FileSystemEventArgs.Kind_Array;
+      
+         function Constructor
+         (
+            changeType : NetFrameworkBase.System.IO.WatcherChangeTypes.Kind;
+            directory : NetFrameworkBase.BSTR;
+            name : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.IO.FileSystemEventArgs.Kind_Ptr renames NetFrameworkBase.System.IO.FileSystemEventArgs.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype FileSystemEventHandler is NetFrameworkBase.System.IO.FileSystemEventHandler.Kind_Ptr;
+      subtype FileSystemEventHandler_Array is NetFrameworkBase.System.IO.FileSystemEventHandler.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.System.IO.FileSystemEventHandler.Kind_Callback) return NetFrameworkBase.System.IO.FileSystemEventHandler.Kind_Ptr renames NetFrameworkBase.System.IO.FileSystemEventHandler.Constructor;
+      
+      --------------------------------------------------------------------------
+      subtype FileSystemWatcher is NetFrameworkBase.System.IO.FileSystemWatcher.Kind_Ptr;
+      subtype FileSystemWatcher_Array is NetFrameworkBase.System.IO.FileSystemWatcher.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.IO.FileSystemWatcher.Kind_Ptr renames NetFrameworkBase.System.IO.FileSystemWatcher.Constructor;
+         
+         function Constructor
+         (
+            path : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.IO.FileSystemWatcher.Kind_Ptr renames NetFrameworkBase.System.IO.FileSystemWatcher.Constructor; 
+         
+         function Constructor
+         (
+            path : NetFrameworkBase.BSTR;
+            filter : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.IO.FileSystemWatcher.Kind_Ptr renames NetFrameworkBase.System.IO.FileSystemWatcher.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype InternalBufferOverflowException is NetFrameworkBase.System.IO.InternalBufferOverflowException.Kind_Ptr;
+      subtype InternalBufferOverflowException_Array is NetFrameworkBase.System.IO.InternalBufferOverflowException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.IO.InternalBufferOverflowException.Kind_Ptr renames NetFrameworkBase.System.IO.InternalBufferOverflowException.Constructor;
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.IO.InternalBufferOverflowException.Kind_Ptr renames NetFrameworkBase.System.IO.InternalBufferOverflowException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            inner : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.IO.InternalBufferOverflowException.Kind_Ptr renames NetFrameworkBase.System.IO.InternalBufferOverflowException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype IODescriptionAttribute is NetFrameworkBase.System.IO.IODescriptionAttribute.Kind_Ptr;
+      subtype IODescriptionAttribute_Array is NetFrameworkBase.System.IO.IODescriptionAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            description : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.IO.IODescriptionAttribute.Kind_Ptr renames NetFrameworkBase.System.IO.IODescriptionAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype RenamedEventArgs is NetFrameworkBase.System.IO.RenamedEventArgs.Kind_Ptr;
+      subtype RenamedEventArgs_Array is NetFrameworkBase.System.IO.RenamedEventArgs.Kind_Array;
+      
+         function Constructor
+         (
+            changeType : NetFrameworkBase.System.IO.WatcherChangeTypes.Kind;
+            directory : NetFrameworkBase.BSTR;
+            name : NetFrameworkBase.BSTR;
+            oldName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.IO.RenamedEventArgs.Kind_Ptr renames NetFrameworkBase.System.IO.RenamedEventArgs.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype RenamedEventHandler is NetFrameworkBase.System.IO.RenamedEventHandler.Kind_Ptr;
+      subtype RenamedEventHandler_Array is NetFrameworkBase.System.IO.RenamedEventHandler.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.System.IO.RenamedEventHandler.Kind_Callback) return NetFrameworkBase.System.IO.RenamedEventHandler.Kind_Ptr renames NetFrameworkBase.System.IO.RenamedEventHandler.Constructor;
+      
+      --------------------------------------------------------------------------
+      subtype WaitForChangedResult is NetFrameworkBase.System.IO.WaitForChangedResult.Kind_Ptr;
+      subtype WaitForChangedResult_Array is NetFrameworkBase.System.IO.WaitForChangedResult.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype WatcherChangeTypes is NetFrameworkBase.System.IO.WatcherChangeTypes.Kind;
+      
    
 end;

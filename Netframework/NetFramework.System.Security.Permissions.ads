@@ -83,6 +83,17 @@ with NetFrameworkBase.System.Security.Permissions.KeyContainerPermission;
 with NetFrameworkBase.System.Security.Permissions.PublisherIdentityPermission;
 with NetFrameworkBase.System.Security.Permissions.RegistryPermissionAccess;
 with NetFrameworkBase.System.Security.Permissions.RegistryPermission;
+with NetFrameworkBase.System.Security.Permissions.DataProtectionPermission;
+with NetFrameworkBase.System.Security.Permissions.DataProtectionPermissionAttribute;
+with NetFrameworkBase.System.Security.Permissions.DataProtectionPermissionFlags;
+with NetFrameworkBase.System.Security.Permissions.StorePermission;
+with NetFrameworkBase.System.Security.Permissions.StorePermissionAttribute;
+with NetFrameworkBase.System.Security.Permissions.StorePermissionFlags;
+with NetFrameworkBase.System.Security.Permissions.TypeDescriptorPermissionFlags;
+with NetFrameworkBase.System.Security.Permissions.TypeDescriptorPermission;
+with NetFrameworkBase.System.Security.Permissions.TypeDescriptorPermissionAttribute;
+with NetFrameworkBase.System.Security.Permissions.ResourcePermissionBase;
+with NetFrameworkBase.System.Security.Permissions.ResourcePermissionBaseEntry;
 with NetFrameworkBase.System.Security.AccessControl.AccessControlActions;
 with NetFrameworkBase.System.Version;
 with NetFrameworkBase.System.Security.SecurityZone;
@@ -689,6 +700,110 @@ package NetFramework.System.Security.Permissions is
             pathList : NetFrameworkBase.BSTR
          )
          return NetFrameworkBase.System.Security.Permissions.RegistryPermission.Kind_Ptr renames NetFrameworkBase.System.Security.Permissions.RegistryPermission.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype DataProtectionPermission is NetFrameworkBase.System.Security.Permissions.DataProtectionPermission.Kind_Ptr;
+      subtype DataProtectionPermission_Array is NetFrameworkBase.System.Security.Permissions.DataProtectionPermission.Kind_Array;
+      
+         function Constructor
+         (
+            state : NetFrameworkBase.System.Security.Permissions.PermissionState.Kind
+         )
+         return NetFrameworkBase.System.Security.Permissions.DataProtectionPermission.Kind_Ptr renames NetFrameworkBase.System.Security.Permissions.DataProtectionPermission.Constructor; 
+         
+         function Constructor
+         (
+            flag : NetFrameworkBase.System.Security.Permissions.DataProtectionPermissionFlags.Kind
+         )
+         return NetFrameworkBase.System.Security.Permissions.DataProtectionPermission.Kind_Ptr renames NetFrameworkBase.System.Security.Permissions.DataProtectionPermission.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype DataProtectionPermissionAttribute is NetFrameworkBase.System.Security.Permissions.DataProtectionPermissionAttribute.Kind_Ptr;
+      subtype DataProtectionPermissionAttribute_Array is NetFrameworkBase.System.Security.Permissions.DataProtectionPermissionAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            action : NetFrameworkBase.System.Security.Permissions.SecurityAction.Kind
+         )
+         return NetFrameworkBase.System.Security.Permissions.DataProtectionPermissionAttribute.Kind_Ptr renames NetFrameworkBase.System.Security.Permissions.DataProtectionPermissionAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype DataProtectionPermissionFlags is NetFrameworkBase.System.Security.Permissions.DataProtectionPermissionFlags.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype StorePermission is NetFrameworkBase.System.Security.Permissions.StorePermission.Kind_Ptr;
+      subtype StorePermission_Array is NetFrameworkBase.System.Security.Permissions.StorePermission.Kind_Array;
+      
+         function Constructor
+         (
+            state : NetFrameworkBase.System.Security.Permissions.PermissionState.Kind
+         )
+         return NetFrameworkBase.System.Security.Permissions.StorePermission.Kind_Ptr renames NetFrameworkBase.System.Security.Permissions.StorePermission.Constructor; 
+         
+         function Constructor
+         (
+            flag : NetFrameworkBase.System.Security.Permissions.StorePermissionFlags.Kind
+         )
+         return NetFrameworkBase.System.Security.Permissions.StorePermission.Kind_Ptr renames NetFrameworkBase.System.Security.Permissions.StorePermission.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype StorePermissionAttribute is NetFrameworkBase.System.Security.Permissions.StorePermissionAttribute.Kind_Ptr;
+      subtype StorePermissionAttribute_Array is NetFrameworkBase.System.Security.Permissions.StorePermissionAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            action : NetFrameworkBase.System.Security.Permissions.SecurityAction.Kind
+         )
+         return NetFrameworkBase.System.Security.Permissions.StorePermissionAttribute.Kind_Ptr renames NetFrameworkBase.System.Security.Permissions.StorePermissionAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype StorePermissionFlags is NetFrameworkBase.System.Security.Permissions.StorePermissionFlags.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype TypeDescriptorPermissionFlags is NetFrameworkBase.System.Security.Permissions.TypeDescriptorPermissionFlags.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype TypeDescriptorPermission is NetFrameworkBase.System.Security.Permissions.TypeDescriptorPermission.Kind_Ptr;
+      subtype TypeDescriptorPermission_Array is NetFrameworkBase.System.Security.Permissions.TypeDescriptorPermission.Kind_Array;
+      
+         function Constructor
+         (
+            state : NetFrameworkBase.System.Security.Permissions.PermissionState.Kind
+         )
+         return NetFrameworkBase.System.Security.Permissions.TypeDescriptorPermission.Kind_Ptr renames NetFrameworkBase.System.Security.Permissions.TypeDescriptorPermission.Constructor; 
+         
+         function Constructor
+         (
+            flag : NetFrameworkBase.System.Security.Permissions.TypeDescriptorPermissionFlags.Kind
+         )
+         return NetFrameworkBase.System.Security.Permissions.TypeDescriptorPermission.Kind_Ptr renames NetFrameworkBase.System.Security.Permissions.TypeDescriptorPermission.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype TypeDescriptorPermissionAttribute is NetFrameworkBase.System.Security.Permissions.TypeDescriptorPermissionAttribute.Kind_Ptr;
+      subtype TypeDescriptorPermissionAttribute_Array is NetFrameworkBase.System.Security.Permissions.TypeDescriptorPermissionAttribute.Kind_Array;
+      
+         function Constructor
+         (
+            action : NetFrameworkBase.System.Security.Permissions.SecurityAction.Kind
+         )
+         return NetFrameworkBase.System.Security.Permissions.TypeDescriptorPermissionAttribute.Kind_Ptr renames NetFrameworkBase.System.Security.Permissions.TypeDescriptorPermissionAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ResourcePermissionBase is NetFrameworkBase.System.Security.Permissions.ResourcePermissionBase.Kind_Ptr;
+      subtype ResourcePermissionBase_Array is NetFrameworkBase.System.Security.Permissions.ResourcePermissionBase.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ResourcePermissionBaseEntry is NetFrameworkBase.System.Security.Permissions.ResourcePermissionBaseEntry.Kind_Ptr;
+      subtype ResourcePermissionBaseEntry_Array is NetFrameworkBase.System.Security.Permissions.ResourcePermissionBaseEntry.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Permissions.ResourcePermissionBaseEntry.Kind_Ptr renames NetFrameworkBase.System.Security.Permissions.ResourcePermissionBaseEntry.Constructor;
+         
+         function Constructor
+         (
+            permissionAccess : NetFrameworkBase.Int32;
+            permissionAccessPath : NetFrameworkBase.BSTR_Array
+         )
+         return NetFrameworkBase.System.Security.Permissions.ResourcePermissionBaseEntry.Kind_Ptr renames NetFrameworkBase.System.Security.Permissions.ResourcePermissionBaseEntry.Constructor; 
          
    
 end;

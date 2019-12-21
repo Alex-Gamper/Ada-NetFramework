@@ -41,6 +41,7 @@ with NetFrameworkBase.System.Threading.Tasks.TaskFactory;
 with NetFrameworkBase.System.Threading.Tasks.TaskScheduler;
 with NetFrameworkBase.System.Threading.Tasks.UnobservedTaskExceptionEventArgs;
 with NetFrameworkBase.System.Threading.Tasks.ConcurrentExclusiveSchedulerPair;
+with NetFrameworkBase.System.Threading.Tasks.TaskExtensions;
 with NetFrameworkBase.System.Action;
 with NetFrameworkBase.System.Threading.CancellationToken;
 with NetFrameworkBase.System.Object;
@@ -233,5 +234,9 @@ package NetFramework.System.Threading.Tasks is
          )
          return NetFrameworkBase.System.Threading.Tasks.ConcurrentExclusiveSchedulerPair.Kind_Ptr renames NetFrameworkBase.System.Threading.Tasks.ConcurrentExclusiveSchedulerPair.Constructor; 
          
+      --------------------------------------------------------------------------
+      subtype TaskExtensions is NetFrameworkBase.System.Threading.Tasks.TaskExtensions.Kind_Ptr;
+      subtype TaskExtensions_Array is NetFrameworkBase.System.Threading.Tasks.TaskExtensions.Kind_Array;
+      
    
 end;

@@ -28,6 +28,7 @@
 --                                                                            --
 --------------------------------------------------------------------------------
 with NetFrameworkBase.System.Diagnostics.CodeAnalysis.SuppressMessageAttribute;
+with NetFrameworkBase.System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute;
 --------------------------------------------------------------------------------
 package NetFramework.System.Diagnostics.CodeAnalysis is
    
@@ -41,6 +42,12 @@ package NetFramework.System.Diagnostics.CodeAnalysis is
             checkId : NetFrameworkBase.BSTR
          )
          return NetFrameworkBase.System.Diagnostics.CodeAnalysis.SuppressMessageAttribute.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.CodeAnalysis.SuppressMessageAttribute.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ExcludeFromCodeCoverageAttribute is NetFrameworkBase.System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute.Kind_Ptr;
+      subtype ExcludeFromCodeCoverageAttribute_Array is NetFrameworkBase.System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute.Kind_Ptr renames NetFrameworkBase.System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute.Constructor;
          
    
 end;

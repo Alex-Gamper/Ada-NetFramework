@@ -84,12 +84,20 @@ with NetFrameworkBase.System.Threading.ManualResetEventSlim;
 with NetFrameworkBase.System.Threading.CancellationTokenRegistration;
 with NetFrameworkBase.System.Threading.CancellationTokenSource;
 with NetFrameworkBase.System.Threading.CancellationToken;
+with NetFrameworkBase.System.Threading.LockRecursionPolicy;
+with NetFrameworkBase.System.Threading.ReaderWriterLockSlim;
+with NetFrameworkBase.System.Threading.Semaphore;
+with NetFrameworkBase.System.Threading.BarrierPostPhaseException;
+with NetFrameworkBase.System.Threading.Barrier;
+with NetFrameworkBase.System.Threading.ThreadExceptionEventArgs;
+with NetFrameworkBase.System.Threading.ThreadExceptionEventHandler;
 with NetFrameworkBase.System.Exception_x;
 with NetFrameworkBase.System.Object;
 with NetFrameworkBase.System.Security.AccessControl.EventWaitHandleSecurity;
 with NetFrameworkBase.System.Security.AccessControl.MutexSecurity;
 with NetFrameworkBase.System.IAsyncResult;
 with NetFrameworkBase.System.TimeSpan;
+with NetFrameworkBase.System.Security.AccessControl.SemaphoreSecurity;
 --------------------------------------------------------------------------------
 package NetFramework.System.Threading is
    
@@ -709,5 +717,109 @@ package NetFramework.System.Threading is
          )
          return NetFrameworkBase.System.Threading.CancellationToken.Kind_Ptr renames NetFrameworkBase.System.Threading.CancellationToken.Constructor; 
          
+      --------------------------------------------------------------------------
+      subtype LockRecursionPolicy is NetFrameworkBase.System.Threading.LockRecursionPolicy.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype ReaderWriterLockSlim is NetFrameworkBase.System.Threading.ReaderWriterLockSlim.Kind_Ptr;
+      subtype ReaderWriterLockSlim_Array is NetFrameworkBase.System.Threading.ReaderWriterLockSlim.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Threading.ReaderWriterLockSlim.Kind_Ptr renames NetFrameworkBase.System.Threading.ReaderWriterLockSlim.Constructor;
+         
+         function Constructor
+         (
+            recursionPolicy : NetFrameworkBase.System.Threading.LockRecursionPolicy.Kind
+         )
+         return NetFrameworkBase.System.Threading.ReaderWriterLockSlim.Kind_Ptr renames NetFrameworkBase.System.Threading.ReaderWriterLockSlim.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype Semaphore is NetFrameworkBase.System.Threading.Semaphore.Kind_Ptr;
+      subtype Semaphore_Array is NetFrameworkBase.System.Threading.Semaphore.Kind_Array;
+      
+         function Constructor
+         (
+            initialCount : NetFrameworkBase.Int32;
+            maximumCount : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Threading.Semaphore.Kind_Ptr renames NetFrameworkBase.System.Threading.Semaphore.Constructor; 
+         
+         function Constructor
+         (
+            initialCount : NetFrameworkBase.Int32;
+            maximumCount : NetFrameworkBase.Int32;
+            name : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Threading.Semaphore.Kind_Ptr renames NetFrameworkBase.System.Threading.Semaphore.Constructor; 
+         
+         function Constructor
+         (
+            initialCount : NetFrameworkBase.Int32;
+            maximumCount : NetFrameworkBase.Int32;
+            name : NetFrameworkBase.BSTR;
+            createdNew : out NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Threading.Semaphore.Kind_Ptr renames NetFrameworkBase.System.Threading.Semaphore.Constructor; 
+         
+         function Constructor
+         (
+            initialCount : NetFrameworkBase.Int32;
+            maximumCount : NetFrameworkBase.Int32;
+            name : NetFrameworkBase.BSTR;
+            createdNew : out NetFrameworkBase.Boolean;
+            semaphoreSecurity : NetFrameworkBase.System.Security.AccessControl.SemaphoreSecurity.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.Semaphore.Kind_Ptr renames NetFrameworkBase.System.Threading.Semaphore.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype BarrierPostPhaseException is NetFrameworkBase.System.Threading.BarrierPostPhaseException.Kind_Ptr;
+      subtype BarrierPostPhaseException_Array is NetFrameworkBase.System.Threading.BarrierPostPhaseException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Threading.BarrierPostPhaseException.Kind_Ptr renames NetFrameworkBase.System.Threading.BarrierPostPhaseException.Constructor;
+         
+         function Constructor
+         (
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.BarrierPostPhaseException.Kind_Ptr renames NetFrameworkBase.System.Threading.BarrierPostPhaseException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Threading.BarrierPostPhaseException.Kind_Ptr renames NetFrameworkBase.System.Threading.BarrierPostPhaseException.Constructor; 
+         
+         function Constructor
+         (
+            message : NetFrameworkBase.BSTR;
+            innerException : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.BarrierPostPhaseException.Kind_Ptr renames NetFrameworkBase.System.Threading.BarrierPostPhaseException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype Barrier is NetFrameworkBase.System.Threading.Barrier.Kind_Ptr;
+      subtype Barrier_Array is NetFrameworkBase.System.Threading.Barrier.Kind_Array;
+      
+         function Constructor
+         (
+            participantCount : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.Threading.Barrier.Kind_Ptr renames NetFrameworkBase.System.Threading.Barrier.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ThreadExceptionEventArgs is NetFrameworkBase.System.Threading.ThreadExceptionEventArgs.Kind_Ptr;
+      subtype ThreadExceptionEventArgs_Array is NetFrameworkBase.System.Threading.ThreadExceptionEventArgs.Kind_Array;
+      
+         function Constructor
+         (
+            t : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Threading.ThreadExceptionEventArgs.Kind_Ptr renames NetFrameworkBase.System.Threading.ThreadExceptionEventArgs.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ThreadExceptionEventHandler is NetFrameworkBase.System.Threading.ThreadExceptionEventHandler.Kind_Ptr;
+      subtype ThreadExceptionEventHandler_Array is NetFrameworkBase.System.Threading.ThreadExceptionEventHandler.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.System.Threading.ThreadExceptionEventHandler.Kind_Callback) return NetFrameworkBase.System.Threading.ThreadExceptionEventHandler.Kind_Ptr renames NetFrameworkBase.System.Threading.ThreadExceptionEventHandler.Constructor;
+      
    
 end;

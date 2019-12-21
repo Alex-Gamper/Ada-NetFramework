@@ -30,9 +30,60 @@
 with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ContentType;
 with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyStorageFlags;
 with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509SelectionFlag;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2UI;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.AuthenticodeSignatureInformation;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.CertificateRequest;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.DSACertificateExtensions;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.ECDsaCertificateExtensions;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.RSACertificateExtensions;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.SubjectAlternativeNameBuilder;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.TimestampInformation;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.TrustStatus;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509SignatureGenerator;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X500DistinguishedNameFlags;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X500DistinguishedName;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509NameType;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509IncludeOption;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.PublicKey;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509FindType;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2Collection;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2Enumerator;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ChainStatusFlags;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ChainStatus;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Chain;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ChainElement;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ChainElementCollection;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ChainElementEnumerator;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509RevocationMode;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509RevocationFlag;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509VerificationFlags;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ChainPolicy;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Extension;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyUsageFlags;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyUsageExtension;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509BasicConstraintsExtension;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509EnhancedKeyUsageExtension;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509SubjectKeyIdentifierHashAlgorithm;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509SubjectKeyIdentifierExtension;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ExtensionCollection;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ExtensionEnumerator;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.StoreLocation;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.OpenFlags;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.StoreName;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Store;
+with NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509CertificateCollection;
 with NetFrameworkBase.System.Security.SecureString;
 with NetFrameworkBase.System.Runtime.Serialization.SerializationInfo;
 with NetFrameworkBase.System.Runtime.Serialization.StreamingContext;
+with NetFrameworkBase.System.Security.Cryptography.ECDsa;
+with NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName;
+with NetFrameworkBase.System.Security.Cryptography.RSA;
+with NetFrameworkBase.System.Security.Cryptography.RSASignaturePadding;
+with NetFrameworkBase.System.Security.Cryptography.AsnEncodedData;
+with NetFrameworkBase.System.Security.Cryptography.Oid;
+with NetFrameworkBase.System.Security.Cryptography.OidCollection;
 --------------------------------------------------------------------------------
 package NetFramework.System.Security.Cryptography.X509Certificates is
    
@@ -138,6 +189,539 @@ package NetFramework.System.Security.Cryptography.X509Certificates is
             context : NetFrameworkBase.System.Runtime.Serialization.StreamingContext.Kind_Ptr
          )
          return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype X509SelectionFlag is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509SelectionFlag.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype X509Certificate2UI is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2UI.Kind_Ptr;
+      subtype X509Certificate2UI_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2UI.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype AuthenticodeSignatureInformation is NetFrameworkBase.System.Security.Cryptography.X509Certificates.AuthenticodeSignatureInformation.Kind_Ptr;
+      subtype AuthenticodeSignatureInformation_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.AuthenticodeSignatureInformation.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype CertificateRequest is NetFrameworkBase.System.Security.Cryptography.X509Certificates.CertificateRequest.Kind_Ptr;
+      subtype CertificateRequest_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.CertificateRequest.Kind_Array;
+      
+         function Constructor
+         (
+            subjectName : NetFrameworkBase.BSTR;
+            key : NetFrameworkBase.System.Security.Cryptography.ECDsa.Kind_Ptr;
+            hashAlgorithm : NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.CertificateRequest.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.CertificateRequest.Constructor; 
+         
+         function Constructor
+         (
+            subjectName : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X500DistinguishedName.Kind_Ptr;
+            key : NetFrameworkBase.System.Security.Cryptography.ECDsa.Kind_Ptr;
+            hashAlgorithm : NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.CertificateRequest.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.CertificateRequest.Constructor; 
+         
+         function Constructor
+         (
+            subjectName : NetFrameworkBase.BSTR;
+            key : NetFrameworkBase.System.Security.Cryptography.RSA.Kind_Ptr;
+            hashAlgorithm : NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName.Kind_Ptr;
+            padding : NetFrameworkBase.System.Security.Cryptography.RSASignaturePadding.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.CertificateRequest.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.CertificateRequest.Constructor; 
+         
+         function Constructor
+         (
+            subjectName : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X500DistinguishedName.Kind_Ptr;
+            key : NetFrameworkBase.System.Security.Cryptography.RSA.Kind_Ptr;
+            hashAlgorithm : NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName.Kind_Ptr;
+            padding : NetFrameworkBase.System.Security.Cryptography.RSASignaturePadding.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.CertificateRequest.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.CertificateRequest.Constructor; 
+         
+         function Constructor
+         (
+            subjectName : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X500DistinguishedName.Kind_Ptr;
+            publicKey : NetFrameworkBase.System.Security.Cryptography.X509Certificates.PublicKey.Kind_Ptr;
+            hashAlgorithm : NetFrameworkBase.System.Security.Cryptography.HashAlgorithmName.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.CertificateRequest.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.CertificateRequest.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype DSACertificateExtensions is NetFrameworkBase.System.Security.Cryptography.X509Certificates.DSACertificateExtensions.Kind_Ptr;
+      subtype DSACertificateExtensions_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.DSACertificateExtensions.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ECDsaCertificateExtensions is NetFrameworkBase.System.Security.Cryptography.X509Certificates.ECDsaCertificateExtensions.Kind_Ptr;
+      subtype ECDsaCertificateExtensions_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.ECDsaCertificateExtensions.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype RSACertificateExtensions is NetFrameworkBase.System.Security.Cryptography.X509Certificates.RSACertificateExtensions.Kind_Ptr;
+      subtype RSACertificateExtensions_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.RSACertificateExtensions.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype SubjectAlternativeNameBuilder is NetFrameworkBase.System.Security.Cryptography.X509Certificates.SubjectAlternativeNameBuilder.Kind_Ptr;
+      subtype SubjectAlternativeNameBuilder_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.SubjectAlternativeNameBuilder.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.X509Certificates.SubjectAlternativeNameBuilder.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.SubjectAlternativeNameBuilder.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype TimestampInformation is NetFrameworkBase.System.Security.Cryptography.X509Certificates.TimestampInformation.Kind_Ptr;
+      subtype TimestampInformation_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.TimestampInformation.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype TrustStatus is NetFrameworkBase.System.Security.Cryptography.X509Certificates.TrustStatus.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype X509SignatureGenerator is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509SignatureGenerator.Kind_Ptr;
+      subtype X509SignatureGenerator_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509SignatureGenerator.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype X500DistinguishedNameFlags is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X500DistinguishedNameFlags.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype X500DistinguishedName is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X500DistinguishedName.Kind_Ptr;
+      subtype X500DistinguishedName_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X500DistinguishedName.Kind_Array;
+      
+         function Constructor
+         (
+            encodedDistinguishedName : NetFrameworkBase.Byte_Array
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X500DistinguishedName.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X500DistinguishedName.Constructor; 
+         
+         function Constructor
+         (
+            encodedDistinguishedName : NetFrameworkBase.System.Security.Cryptography.AsnEncodedData.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X500DistinguishedName.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X500DistinguishedName.Constructor; 
+         
+         function Constructor
+         (
+            distinguishedName : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X500DistinguishedName.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X500DistinguishedName.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X500DistinguishedName.Constructor; 
+         
+         function Constructor
+         (
+            distinguishedName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X500DistinguishedName.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X500DistinguishedName.Constructor; 
+         
+         function Constructor
+         (
+            distinguishedName : NetFrameworkBase.BSTR;
+            flag : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X500DistinguishedNameFlags.Kind
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X500DistinguishedName.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X500DistinguishedName.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype X509NameType is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509NameType.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype X509IncludeOption is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509IncludeOption.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype PublicKey is NetFrameworkBase.System.Security.Cryptography.X509Certificates.PublicKey.Kind_Ptr;
+      subtype PublicKey_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.PublicKey.Kind_Array;
+      
+         function Constructor
+         (
+            oid : NetFrameworkBase.System.Security.Cryptography.Oid.Kind_Ptr;
+            parameters : NetFrameworkBase.System.Security.Cryptography.AsnEncodedData.Kind_Ptr;
+            keyValue : NetFrameworkBase.System.Security.Cryptography.AsnEncodedData.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.PublicKey.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.PublicKey.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype X509Certificate2 is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Kind_Ptr;
+      subtype X509Certificate2_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Constructor;
+         
+         function Constructor
+         (
+            rawData : NetFrameworkBase.Byte_Array
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Constructor; 
+         
+         function Constructor
+         (
+            rawData : NetFrameworkBase.Byte_Array;
+            password : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Constructor; 
+         
+         function Constructor
+         (
+            rawData : NetFrameworkBase.Byte_Array;
+            password : NetFrameworkBase.System.Security.SecureString.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Constructor; 
+         
+         function Constructor
+         (
+            rawData : NetFrameworkBase.Byte_Array;
+            password : NetFrameworkBase.BSTR;
+            keyStorageFlags : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.Kind
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Constructor; 
+         
+         function Constructor
+         (
+            rawData : NetFrameworkBase.Byte_Array;
+            password : NetFrameworkBase.System.Security.SecureString.Kind_Ptr;
+            keyStorageFlags : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.Kind
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Constructor; 
+         
+         function Constructor
+         (
+            fileName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Constructor; 
+         
+         function Constructor
+         (
+            fileName : NetFrameworkBase.BSTR;
+            password : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Constructor; 
+         
+         function Constructor
+         (
+            fileName : NetFrameworkBase.BSTR;
+            password : NetFrameworkBase.System.Security.SecureString.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Constructor; 
+         
+         function Constructor
+         (
+            fileName : NetFrameworkBase.BSTR;
+            password : NetFrameworkBase.BSTR;
+            keyStorageFlags : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.Kind
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Constructor; 
+         
+         function Constructor
+         (
+            fileName : NetFrameworkBase.BSTR;
+            password : NetFrameworkBase.System.Security.SecureString.Kind_Ptr;
+            keyStorageFlags : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.Kind
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Constructor; 
+         
+         function Constructor
+         (
+            handle : NetFrameworkBase.IntPtr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Constructor; 
+         
+         function Constructor
+         (
+            certificate : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype X509FindType is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509FindType.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype X509Certificate2Collection is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2Collection.Kind_Ptr;
+      subtype X509Certificate2Collection_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2Collection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2Collection.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2Collection.Constructor;
+         
+         function Constructor
+         (
+            certificate : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2Collection.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2Collection.Constructor; 
+         
+         function Constructor
+         (
+            certificates : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2Collection.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2Collection.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2Collection.Constructor; 
+         
+         function Constructor
+         (
+            certificates : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2.Kind_Array
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2Collection.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2Collection.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype X509Certificate2Enumerator is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2Enumerator.Kind_Ptr;
+      subtype X509Certificate2Enumerator_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate2Enumerator.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype X509ChainStatusFlags is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ChainStatusFlags.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype X509ChainStatus is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ChainStatus.Kind_Ptr;
+      subtype X509ChainStatus_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ChainStatus.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype X509Chain is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Chain.Kind_Ptr;
+      subtype X509Chain_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Chain.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Chain.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Chain.Constructor;
+         
+         function Constructor
+         (
+            useMachineContext : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Chain.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Chain.Constructor; 
+         
+         function Constructor
+         (
+            chainContext : NetFrameworkBase.IntPtr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Chain.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Chain.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype X509ChainElement is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ChainElement.Kind_Ptr;
+      subtype X509ChainElement_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ChainElement.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype X509ChainElementCollection is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ChainElementCollection.Kind_Ptr;
+      subtype X509ChainElementCollection_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ChainElementCollection.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype X509ChainElementEnumerator is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ChainElementEnumerator.Kind_Ptr;
+      subtype X509ChainElementEnumerator_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ChainElementEnumerator.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype X509RevocationMode is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509RevocationMode.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype X509RevocationFlag is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509RevocationFlag.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype X509VerificationFlags is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509VerificationFlags.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype X509ChainPolicy is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ChainPolicy.Kind_Ptr;
+      subtype X509ChainPolicy_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ChainPolicy.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ChainPolicy.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ChainPolicy.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype X509Extension is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Extension.Kind_Ptr;
+      subtype X509Extension_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Extension.Kind_Array;
+      
+         function Constructor
+         (
+            oid : NetFrameworkBase.BSTR;
+            rawData : NetFrameworkBase.Byte_Array;
+            critical : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Extension.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Extension.Constructor; 
+         
+         function Constructor
+         (
+            encodedExtension : NetFrameworkBase.System.Security.Cryptography.AsnEncodedData.Kind_Ptr;
+            critical : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Extension.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Extension.Constructor; 
+         
+         function Constructor
+         (
+            oid : NetFrameworkBase.System.Security.Cryptography.Oid.Kind_Ptr;
+            rawData : NetFrameworkBase.Byte_Array;
+            critical : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Extension.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Extension.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype X509KeyUsageFlags is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyUsageFlags.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype X509KeyUsageExtension is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyUsageExtension.Kind_Ptr;
+      subtype X509KeyUsageExtension_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyUsageExtension.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyUsageExtension.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyUsageExtension.Constructor;
+         
+         function Constructor
+         (
+            keyUsages : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyUsageFlags.Kind;
+            critical : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyUsageExtension.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyUsageExtension.Constructor; 
+         
+         function Constructor
+         (
+            encodedKeyUsage : NetFrameworkBase.System.Security.Cryptography.AsnEncodedData.Kind_Ptr;
+            critical : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyUsageExtension.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509KeyUsageExtension.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype X509BasicConstraintsExtension is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509BasicConstraintsExtension.Kind_Ptr;
+      subtype X509BasicConstraintsExtension_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509BasicConstraintsExtension.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509BasicConstraintsExtension.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509BasicConstraintsExtension.Constructor;
+         
+         function Constructor
+         (
+            certificateAuthority : NetFrameworkBase.Boolean;
+            hasPathLengthConstraint : NetFrameworkBase.Boolean;
+            pathLengthConstraint : NetFrameworkBase.Int32;
+            critical : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509BasicConstraintsExtension.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509BasicConstraintsExtension.Constructor; 
+         
+         function Constructor
+         (
+            encodedBasicConstraints : NetFrameworkBase.System.Security.Cryptography.AsnEncodedData.Kind_Ptr;
+            critical : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509BasicConstraintsExtension.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509BasicConstraintsExtension.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype X509EnhancedKeyUsageExtension is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509EnhancedKeyUsageExtension.Kind_Ptr;
+      subtype X509EnhancedKeyUsageExtension_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509EnhancedKeyUsageExtension.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509EnhancedKeyUsageExtension.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509EnhancedKeyUsageExtension.Constructor;
+         
+         function Constructor
+         (
+            enhancedKeyUsages : NetFrameworkBase.System.Security.Cryptography.OidCollection.Kind_Ptr;
+            critical : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509EnhancedKeyUsageExtension.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509EnhancedKeyUsageExtension.Constructor; 
+         
+         function Constructor
+         (
+            encodedEnhancedKeyUsages : NetFrameworkBase.System.Security.Cryptography.AsnEncodedData.Kind_Ptr;
+            critical : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509EnhancedKeyUsageExtension.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509EnhancedKeyUsageExtension.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype X509SubjectKeyIdentifierHashAlgorithm is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509SubjectKeyIdentifierHashAlgorithm.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype X509SubjectKeyIdentifierExtension is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509SubjectKeyIdentifierExtension.Kind_Ptr;
+      subtype X509SubjectKeyIdentifierExtension_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509SubjectKeyIdentifierExtension.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509SubjectKeyIdentifierExtension.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509SubjectKeyIdentifierExtension.Constructor;
+         
+         function Constructor
+         (
+            subjectKeyIdentifier : NetFrameworkBase.BSTR;
+            critical : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509SubjectKeyIdentifierExtension.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509SubjectKeyIdentifierExtension.Constructor; 
+         
+         function Constructor
+         (
+            subjectKeyIdentifier : NetFrameworkBase.Byte_Array;
+            critical : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509SubjectKeyIdentifierExtension.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509SubjectKeyIdentifierExtension.Constructor; 
+         
+         function Constructor
+         (
+            encodedSubjectKeyIdentifier : NetFrameworkBase.System.Security.Cryptography.AsnEncodedData.Kind_Ptr;
+            critical : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509SubjectKeyIdentifierExtension.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509SubjectKeyIdentifierExtension.Constructor; 
+         
+         function Constructor
+         (
+            key : NetFrameworkBase.System.Security.Cryptography.X509Certificates.PublicKey.Kind_Ptr;
+            critical : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509SubjectKeyIdentifierExtension.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509SubjectKeyIdentifierExtension.Constructor; 
+         
+         function Constructor
+         (
+            key : NetFrameworkBase.System.Security.Cryptography.X509Certificates.PublicKey.Kind_Ptr;
+            algorithm : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509SubjectKeyIdentifierHashAlgorithm.Kind;
+            critical : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509SubjectKeyIdentifierExtension.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509SubjectKeyIdentifierExtension.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype X509ExtensionCollection is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ExtensionCollection.Kind_Ptr;
+      subtype X509ExtensionCollection_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ExtensionCollection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ExtensionCollection.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ExtensionCollection.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype X509ExtensionEnumerator is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ExtensionEnumerator.Kind_Ptr;
+      subtype X509ExtensionEnumerator_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509ExtensionEnumerator.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype StoreLocation is NetFrameworkBase.System.Security.Cryptography.X509Certificates.StoreLocation.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype OpenFlags is NetFrameworkBase.System.Security.Cryptography.X509Certificates.OpenFlags.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype StoreName is NetFrameworkBase.System.Security.Cryptography.X509Certificates.StoreName.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype X509Store is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Store.Kind_Ptr;
+      subtype X509Store_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Store.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Store.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Store.Constructor;
+         
+         function Constructor
+         (
+            storeName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Store.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Store.Constructor; 
+         
+         function Constructor
+         (
+            storeName : NetFrameworkBase.System.Security.Cryptography.X509Certificates.StoreName.Kind
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Store.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Store.Constructor; 
+         
+         function Constructor
+         (
+            storeLocation : NetFrameworkBase.System.Security.Cryptography.X509Certificates.StoreLocation.Kind
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Store.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Store.Constructor; 
+         
+         function Constructor
+         (
+            storeName : NetFrameworkBase.System.Security.Cryptography.X509Certificates.StoreName.Kind;
+            storeLocation : NetFrameworkBase.System.Security.Cryptography.X509Certificates.StoreLocation.Kind
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Store.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Store.Constructor; 
+         
+         function Constructor
+         (
+            storeName : NetFrameworkBase.BSTR;
+            storeLocation : NetFrameworkBase.System.Security.Cryptography.X509Certificates.StoreLocation.Kind
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Store.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Store.Constructor; 
+         
+         function Constructor
+         (
+            storeHandle : NetFrameworkBase.IntPtr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Store.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Store.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype X509CertificateCollection is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509CertificateCollection.Kind_Ptr;
+      subtype X509CertificateCollection_Array is NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509CertificateCollection.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509CertificateCollection.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509CertificateCollection.Constructor;
+         
+         function Constructor
+         (
+            value : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509CertificateCollection.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509CertificateCollection.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509CertificateCollection.Constructor; 
+         
+         function Constructor
+         (
+            value : NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509Certificate.Kind_Array
+         )
+         return NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509CertificateCollection.Kind_Ptr renames NetFrameworkBase.System.Security.Cryptography.X509Certificates.X509CertificateCollection.Constructor; 
          
    
 end;

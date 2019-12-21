@@ -205,6 +205,28 @@ with NetFrameworkBase.System.Void;
 with NetFrameworkBase.System.WeakReference;
 with NetFrameworkBase.System.ThreadStaticAttribute;
 with NetFrameworkBase.System.Nullable;
+with NetFrameworkBase.System.StringNormalizationExtensions;
+with NetFrameworkBase.System.UriParser;
+with NetFrameworkBase.System.Uri;
+with NetFrameworkBase.System.UriBuilder;
+with NetFrameworkBase.System.UriFormatException;
+with NetFrameworkBase.System.UriHostNameType;
+with NetFrameworkBase.System.UriPartial;
+with NetFrameworkBase.System.UriTypeConverter;
+with NetFrameworkBase.System.UriKind;
+with NetFrameworkBase.System.UriComponents;
+with NetFrameworkBase.System.UriFormat;
+with NetFrameworkBase.System.UriIdnScope;
+with NetFrameworkBase.System.GenericUriParserOptions;
+with NetFrameworkBase.System.GenericUriParser;
+with NetFrameworkBase.System.HttpStyleUriParser;
+with NetFrameworkBase.System.FtpStyleUriParser;
+with NetFrameworkBase.System.FileStyleUriParser;
+with NetFrameworkBase.System.NewsStyleUriParser;
+with NetFrameworkBase.System.GopherStyleUriParser;
+with NetFrameworkBase.System.LdapStyleUriParser;
+with NetFrameworkBase.System.NetPipeStyleUriParser;
+with NetFrameworkBase.System.NetTcpStyleUriParser;
 with NetFrameworkBase.System.Text.Encoding;
 with NetFrameworkBase.System.Globalization.Calendar;
 with NetFrameworkBase.System.Reflection.Assembly;
@@ -2487,5 +2509,215 @@ package NetFramework.System is
       subtype Nullable is NetFrameworkBase.System.Nullable.Kind_Ptr;
       subtype Nullable_Array is NetFrameworkBase.System.Nullable.Kind_Array;
       
+      --------------------------------------------------------------------------
+      subtype StringNormalizationExtensions is NetFrameworkBase.System.StringNormalizationExtensions.Kind_Ptr;
+      subtype StringNormalizationExtensions_Array is NetFrameworkBase.System.StringNormalizationExtensions.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype UriParser is NetFrameworkBase.System.UriParser.Kind_Ptr;
+      subtype UriParser_Array is NetFrameworkBase.System.UriParser.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype Uri is NetFrameworkBase.System.Uri.Kind_Ptr;
+      subtype Uri_Array is NetFrameworkBase.System.Uri.Kind_Array;
+      
+         function Constructor
+         (
+            uriString : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Uri.Kind_Ptr renames NetFrameworkBase.System.Uri.Constructor; 
+         
+         function Constructor
+         (
+            uriString : NetFrameworkBase.BSTR;
+            dontEscape : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Uri.Kind_Ptr renames NetFrameworkBase.System.Uri.Constructor; 
+         
+         function Constructor
+         (
+            baseUri : NetFrameworkBase.System.Uri.Kind_Ptr;
+            relativeUri : NetFrameworkBase.BSTR;
+            dontEscape : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.System.Uri.Kind_Ptr renames NetFrameworkBase.System.Uri.Constructor; 
+         
+         function Constructor
+         (
+            uriString : NetFrameworkBase.BSTR;
+            uriKind : NetFrameworkBase.System.UriKind.Kind
+         )
+         return NetFrameworkBase.System.Uri.Kind_Ptr renames NetFrameworkBase.System.Uri.Constructor; 
+         
+         function Constructor
+         (
+            baseUri : NetFrameworkBase.System.Uri.Kind_Ptr;
+            relativeUri : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Uri.Kind_Ptr renames NetFrameworkBase.System.Uri.Constructor; 
+         
+         function Constructor
+         (
+            baseUri : NetFrameworkBase.System.Uri.Kind_Ptr;
+            relativeUri : NetFrameworkBase.System.Uri.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Uri.Kind_Ptr renames NetFrameworkBase.System.Uri.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype UriBuilder is NetFrameworkBase.System.UriBuilder.Kind_Ptr;
+      subtype UriBuilder_Array is NetFrameworkBase.System.UriBuilder.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.UriBuilder.Kind_Ptr renames NetFrameworkBase.System.UriBuilder.Constructor;
+         
+         function Constructor
+         (
+            uri : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.UriBuilder.Kind_Ptr renames NetFrameworkBase.System.UriBuilder.Constructor; 
+         
+         function Constructor
+         (
+            uri : NetFrameworkBase.System.Uri.Kind_Ptr
+         )
+         return NetFrameworkBase.System.UriBuilder.Kind_Ptr renames NetFrameworkBase.System.UriBuilder.Constructor; 
+         
+         function Constructor
+         (
+            schemeName : NetFrameworkBase.BSTR;
+            hostName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.UriBuilder.Kind_Ptr renames NetFrameworkBase.System.UriBuilder.Constructor; 
+         
+         function Constructor
+         (
+            scheme : NetFrameworkBase.BSTR;
+            host : NetFrameworkBase.BSTR;
+            portNumber : NetFrameworkBase.Int32
+         )
+         return NetFrameworkBase.System.UriBuilder.Kind_Ptr renames NetFrameworkBase.System.UriBuilder.Constructor; 
+         
+         function Constructor
+         (
+            scheme : NetFrameworkBase.BSTR;
+            host : NetFrameworkBase.BSTR;
+            port : NetFrameworkBase.Int32;
+            pathValue : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.UriBuilder.Kind_Ptr renames NetFrameworkBase.System.UriBuilder.Constructor; 
+         
+         function Constructor
+         (
+            scheme : NetFrameworkBase.BSTR;
+            host : NetFrameworkBase.BSTR;
+            port : NetFrameworkBase.Int32;
+            path : NetFrameworkBase.BSTR;
+            extraValue : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.UriBuilder.Kind_Ptr renames NetFrameworkBase.System.UriBuilder.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype UriFormatException is NetFrameworkBase.System.UriFormatException.Kind_Ptr;
+      subtype UriFormatException_Array is NetFrameworkBase.System.UriFormatException.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.UriFormatException.Kind_Ptr renames NetFrameworkBase.System.UriFormatException.Constructor;
+         
+         function Constructor
+         (
+            textString : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.UriFormatException.Kind_Ptr renames NetFrameworkBase.System.UriFormatException.Constructor; 
+         
+         function Constructor
+         (
+            textString : NetFrameworkBase.BSTR;
+            e : NetFrameworkBase.System.Exception_x.Kind_Ptr
+         )
+         return NetFrameworkBase.System.UriFormatException.Kind_Ptr renames NetFrameworkBase.System.UriFormatException.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype UriHostNameType is NetFrameworkBase.System.UriHostNameType.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype UriPartial is NetFrameworkBase.System.UriPartial.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype UriTypeConverter is NetFrameworkBase.System.UriTypeConverter.Kind_Ptr;
+      subtype UriTypeConverter_Array is NetFrameworkBase.System.UriTypeConverter.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.UriTypeConverter.Kind_Ptr renames NetFrameworkBase.System.UriTypeConverter.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype UriKind is NetFrameworkBase.System.UriKind.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype UriComponents is NetFrameworkBase.System.UriComponents.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype UriFormat is NetFrameworkBase.System.UriFormat.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype UriIdnScope is NetFrameworkBase.System.UriIdnScope.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype GenericUriParserOptions is NetFrameworkBase.System.GenericUriParserOptions.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype GenericUriParser is NetFrameworkBase.System.GenericUriParser.Kind_Ptr;
+      subtype GenericUriParser_Array is NetFrameworkBase.System.GenericUriParser.Kind_Array;
+      
+         function Constructor
+         (
+            options : NetFrameworkBase.System.GenericUriParserOptions.Kind
+         )
+         return NetFrameworkBase.System.GenericUriParser.Kind_Ptr renames NetFrameworkBase.System.GenericUriParser.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype HttpStyleUriParser is NetFrameworkBase.System.HttpStyleUriParser.Kind_Ptr;
+      subtype HttpStyleUriParser_Array is NetFrameworkBase.System.HttpStyleUriParser.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.HttpStyleUriParser.Kind_Ptr renames NetFrameworkBase.System.HttpStyleUriParser.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype FtpStyleUriParser is NetFrameworkBase.System.FtpStyleUriParser.Kind_Ptr;
+      subtype FtpStyleUriParser_Array is NetFrameworkBase.System.FtpStyleUriParser.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.FtpStyleUriParser.Kind_Ptr renames NetFrameworkBase.System.FtpStyleUriParser.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype FileStyleUriParser is NetFrameworkBase.System.FileStyleUriParser.Kind_Ptr;
+      subtype FileStyleUriParser_Array is NetFrameworkBase.System.FileStyleUriParser.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.FileStyleUriParser.Kind_Ptr renames NetFrameworkBase.System.FileStyleUriParser.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype NewsStyleUriParser is NetFrameworkBase.System.NewsStyleUriParser.Kind_Ptr;
+      subtype NewsStyleUriParser_Array is NetFrameworkBase.System.NewsStyleUriParser.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.NewsStyleUriParser.Kind_Ptr renames NetFrameworkBase.System.NewsStyleUriParser.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype GopherStyleUriParser is NetFrameworkBase.System.GopherStyleUriParser.Kind_Ptr;
+      subtype GopherStyleUriParser_Array is NetFrameworkBase.System.GopherStyleUriParser.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.GopherStyleUriParser.Kind_Ptr renames NetFrameworkBase.System.GopherStyleUriParser.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype LdapStyleUriParser is NetFrameworkBase.System.LdapStyleUriParser.Kind_Ptr;
+      subtype LdapStyleUriParser_Array is NetFrameworkBase.System.LdapStyleUriParser.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.LdapStyleUriParser.Kind_Ptr renames NetFrameworkBase.System.LdapStyleUriParser.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype NetPipeStyleUriParser is NetFrameworkBase.System.NetPipeStyleUriParser.Kind_Ptr;
+      subtype NetPipeStyleUriParser_Array is NetFrameworkBase.System.NetPipeStyleUriParser.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.NetPipeStyleUriParser.Kind_Ptr renames NetFrameworkBase.System.NetPipeStyleUriParser.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype NetTcpStyleUriParser is NetFrameworkBase.System.NetTcpStyleUriParser.Kind_Ptr;
+      subtype NetTcpStyleUriParser_Array is NetFrameworkBase.System.NetTcpStyleUriParser.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.NetTcpStyleUriParser.Kind_Ptr renames NetFrameworkBase.System.NetTcpStyleUriParser.Constructor;
+         
    
 end;

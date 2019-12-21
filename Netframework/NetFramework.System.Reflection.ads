@@ -112,6 +112,7 @@ with NetFrameworkBase.System.Reflection.TypeAttributes;
 with NetFrameworkBase.System.Reflection.TypeDelegator;
 with NetFrameworkBase.System.Reflection.TypeFilter;
 with NetFrameworkBase.System.Reflection.TypeInfo;
+with NetFrameworkBase.System.Reflection.ICustomTypeProvider;
 with NetFrameworkBase.System.Exception_x;
 with NetFrameworkBase.System.Object;
 with NetFrameworkBase.System.Configuration.Assemblies.AssemblyHashAlgorithm;
@@ -772,6 +773,10 @@ package NetFramework.System.Reflection is
       --------------------------------------------------------------------------
       subtype TypeInfo is NetFrameworkBase.System.Reflection.TypeInfo.Kind_Ptr;
       subtype TypeInfo_Array is NetFrameworkBase.System.Reflection.TypeInfo.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype ICustomTypeProvider is NetFrameworkBase.System.Reflection.ICustomTypeProvider.Kind_Ptr;
+      subtype ICustomTypeProvider_Array is NetFrameworkBase.System.Reflection.ICustomTypeProvider.Kind_Array;
       
    
 end;

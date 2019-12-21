@@ -35,6 +35,16 @@ with NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeHandleMinusOneIsInvalid;
 with NetFrameworkBase.Microsoft.Win32.SafeHandles.CriticalHandleZeroOrMinusOneIsInvalid;
 with NetFrameworkBase.Microsoft.Win32.SafeHandles.CriticalHandleMinusOneIsInvalid;
 with NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeAccessTokenHandle;
+with NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeNCryptHandle;
+with NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeNCryptKeyHandle;
+with NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeNCryptProviderHandle;
+with NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeNCryptSecretHandle;
+with NetFrameworkBase.Microsoft.Win32.SafeHandles.SafePipeHandle;
+with NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeMemoryMappedFileHandle;
+with NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeMemoryMappedViewHandle;
+with NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeProcessHandle;
+with NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeX509ChainHandle;
+with NetFrameworkBase.System.Runtime.InteropServices.SafeHandle;
 --------------------------------------------------------------------------------
 package NetFramework.Microsoft.Win32.SafeHandles is
    
@@ -97,5 +107,68 @@ package NetFramework.Microsoft.Win32.SafeHandles is
          )
          return NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeAccessTokenHandle.Kind_Ptr renames NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeAccessTokenHandle.Constructor; 
          
+      --------------------------------------------------------------------------
+      subtype SafeNCryptHandle is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeNCryptHandle.Kind_Ptr;
+      subtype SafeNCryptHandle_Array is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeNCryptHandle.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype SafeNCryptKeyHandle is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeNCryptKeyHandle.Kind_Ptr;
+      subtype SafeNCryptKeyHandle_Array is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeNCryptKeyHandle.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeNCryptKeyHandle.Kind_Ptr renames NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeNCryptKeyHandle.Constructor;
+         
+         function Constructor
+         (
+            handle : NetFrameworkBase.IntPtr;
+            parentHandle : NetFrameworkBase.System.Runtime.InteropServices.SafeHandle.Kind_Ptr
+         )
+         return NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeNCryptKeyHandle.Kind_Ptr renames NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeNCryptKeyHandle.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SafeNCryptProviderHandle is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeNCryptProviderHandle.Kind_Ptr;
+      subtype SafeNCryptProviderHandle_Array is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeNCryptProviderHandle.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeNCryptProviderHandle.Kind_Ptr renames NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeNCryptProviderHandle.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SafeNCryptSecretHandle is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeNCryptSecretHandle.Kind_Ptr;
+      subtype SafeNCryptSecretHandle_Array is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeNCryptSecretHandle.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeNCryptSecretHandle.Kind_Ptr renames NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeNCryptSecretHandle.Constructor;
+         
+      --------------------------------------------------------------------------
+      subtype SafePipeHandle is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafePipeHandle.Kind_Ptr;
+      subtype SafePipeHandle_Array is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafePipeHandle.Kind_Array;
+      
+         function Constructor
+         (
+            preexistingHandle : NetFrameworkBase.IntPtr;
+            ownsHandle : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.Microsoft.Win32.SafeHandles.SafePipeHandle.Kind_Ptr renames NetFrameworkBase.Microsoft.Win32.SafeHandles.SafePipeHandle.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SafeMemoryMappedFileHandle is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeMemoryMappedFileHandle.Kind_Ptr;
+      subtype SafeMemoryMappedFileHandle_Array is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeMemoryMappedFileHandle.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype SafeMemoryMappedViewHandle is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeMemoryMappedViewHandle.Kind_Ptr;
+      subtype SafeMemoryMappedViewHandle_Array is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeMemoryMappedViewHandle.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype SafeProcessHandle is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeProcessHandle.Kind_Ptr;
+      subtype SafeProcessHandle_Array is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeProcessHandle.Kind_Array;
+      
+         function Constructor
+         (
+            existingHandle : NetFrameworkBase.IntPtr;
+            ownsHandle : NetFrameworkBase.Boolean
+         )
+         return NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeProcessHandle.Kind_Ptr renames NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeProcessHandle.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SafeX509ChainHandle is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeX509ChainHandle.Kind_Ptr;
+      subtype SafeX509ChainHandle_Array is NetFrameworkBase.Microsoft.Win32.SafeHandles.SafeX509ChainHandle.Kind_Array;
+      
    
 end;

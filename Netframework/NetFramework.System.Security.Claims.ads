@@ -32,6 +32,7 @@ with NetFrameworkBase.System.Security.Claims.ClaimsIdentity;
 with NetFrameworkBase.System.Security.Claims.ClaimsPrincipal;
 with NetFrameworkBase.System.Security.Claims.ClaimTypes;
 with NetFrameworkBase.System.Security.Claims.ClaimValueTypes;
+with NetFrameworkBase.System.Security.Claims.DynamicRoleClaimProvider;
 with NetFrameworkBase.System.IO.BinaryReader;
 with NetFrameworkBase.System.Security.Principal.IIdentity;
 with NetFrameworkBase.System.Security.Principal.IPrincipal;
@@ -163,6 +164,10 @@ package NetFramework.System.Security.Claims is
       --------------------------------------------------------------------------
       subtype ClaimValueTypes is NetFrameworkBase.System.Security.Claims.ClaimValueTypes.Kind_Ptr;
       subtype ClaimValueTypes_Array is NetFrameworkBase.System.Security.Claims.ClaimValueTypes.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype DynamicRoleClaimProvider is NetFrameworkBase.System.Security.Claims.DynamicRoleClaimProvider.Kind_Ptr;
+      subtype DynamicRoleClaimProvider_Array is NetFrameworkBase.System.Security.Claims.DynamicRoleClaimProvider.Kind_Array;
       
    
 end;

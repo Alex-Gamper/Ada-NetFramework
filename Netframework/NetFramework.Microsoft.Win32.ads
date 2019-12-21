@@ -35,6 +35,27 @@ with NetFrameworkBase.Microsoft.Win32.RegistryKeyPermissionCheck;
 with NetFrameworkBase.Microsoft.Win32.RegistryOptions;
 with NetFrameworkBase.Microsoft.Win32.RegistryValueKind;
 with NetFrameworkBase.Microsoft.Win32.RegistryView;
+with NetFrameworkBase.Microsoft.Win32.PowerModeChangedEventArgs;
+with NetFrameworkBase.Microsoft.Win32.PowerModeChangedEventHandler;
+with NetFrameworkBase.Microsoft.Win32.PowerModes;
+with NetFrameworkBase.Microsoft.Win32.SessionEndedEventArgs;
+with NetFrameworkBase.Microsoft.Win32.SessionEndedEventHandler;
+with NetFrameworkBase.Microsoft.Win32.SessionEndingEventArgs;
+with NetFrameworkBase.Microsoft.Win32.SessionEndingEventHandler;
+with NetFrameworkBase.Microsoft.Win32.SessionEndReasons;
+with NetFrameworkBase.Microsoft.Win32.SessionSwitchEventArgs;
+with NetFrameworkBase.Microsoft.Win32.SessionSwitchEventHandler;
+with NetFrameworkBase.Microsoft.Win32.SessionSwitchReason;
+with NetFrameworkBase.Microsoft.Win32.SystemEvents;
+with NetFrameworkBase.Microsoft.Win32.TimerElapsedEventArgs;
+with NetFrameworkBase.Microsoft.Win32.TimerElapsedEventHandler;
+with NetFrameworkBase.Microsoft.Win32.UserPreferenceCategory;
+with NetFrameworkBase.Microsoft.Win32.UserPreferenceChangedEventArgs;
+with NetFrameworkBase.Microsoft.Win32.UserPreferenceChangedEventHandler;
+with NetFrameworkBase.Microsoft.Win32.UserPreferenceChangingEventArgs;
+with NetFrameworkBase.Microsoft.Win32.UserPreferenceChangingEventHandler;
+with NetFrameworkBase.Microsoft.Win32.IntranetZoneCredentialPolicy;
+with NetFrameworkBase.System.Object;
 --------------------------------------------------------------------------------
 package NetFramework.Microsoft.Win32 is
    
@@ -64,5 +85,139 @@ package NetFramework.Microsoft.Win32 is
       --------------------------------------------------------------------------
       subtype RegistryView is NetFrameworkBase.Microsoft.Win32.RegistryView.Kind;
       
+      --------------------------------------------------------------------------
+      subtype PowerModeChangedEventArgs is NetFrameworkBase.Microsoft.Win32.PowerModeChangedEventArgs.Kind_Ptr;
+      subtype PowerModeChangedEventArgs_Array is NetFrameworkBase.Microsoft.Win32.PowerModeChangedEventArgs.Kind_Array;
+      
+         function Constructor
+         (
+            mode : NetFrameworkBase.Microsoft.Win32.PowerModes.Kind
+         )
+         return NetFrameworkBase.Microsoft.Win32.PowerModeChangedEventArgs.Kind_Ptr renames NetFrameworkBase.Microsoft.Win32.PowerModeChangedEventArgs.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype PowerModeChangedEventHandler is NetFrameworkBase.Microsoft.Win32.PowerModeChangedEventHandler.Kind_Ptr;
+      subtype PowerModeChangedEventHandler_Array is NetFrameworkBase.Microsoft.Win32.PowerModeChangedEventHandler.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.Microsoft.Win32.PowerModeChangedEventHandler.Kind_Callback) return NetFrameworkBase.Microsoft.Win32.PowerModeChangedEventHandler.Kind_Ptr renames NetFrameworkBase.Microsoft.Win32.PowerModeChangedEventHandler.Constructor;
+      
+      --------------------------------------------------------------------------
+      subtype PowerModes is NetFrameworkBase.Microsoft.Win32.PowerModes.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype SessionEndedEventArgs is NetFrameworkBase.Microsoft.Win32.SessionEndedEventArgs.Kind_Ptr;
+      subtype SessionEndedEventArgs_Array is NetFrameworkBase.Microsoft.Win32.SessionEndedEventArgs.Kind_Array;
+      
+         function Constructor
+         (
+            reason : NetFrameworkBase.Microsoft.Win32.SessionEndReasons.Kind
+         )
+         return NetFrameworkBase.Microsoft.Win32.SessionEndedEventArgs.Kind_Ptr renames NetFrameworkBase.Microsoft.Win32.SessionEndedEventArgs.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SessionEndedEventHandler is NetFrameworkBase.Microsoft.Win32.SessionEndedEventHandler.Kind_Ptr;
+      subtype SessionEndedEventHandler_Array is NetFrameworkBase.Microsoft.Win32.SessionEndedEventHandler.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.Microsoft.Win32.SessionEndedEventHandler.Kind_Callback) return NetFrameworkBase.Microsoft.Win32.SessionEndedEventHandler.Kind_Ptr renames NetFrameworkBase.Microsoft.Win32.SessionEndedEventHandler.Constructor;
+      
+      --------------------------------------------------------------------------
+      subtype SessionEndingEventArgs is NetFrameworkBase.Microsoft.Win32.SessionEndingEventArgs.Kind_Ptr;
+      subtype SessionEndingEventArgs_Array is NetFrameworkBase.Microsoft.Win32.SessionEndingEventArgs.Kind_Array;
+      
+         function Constructor
+         (
+            reason : NetFrameworkBase.Microsoft.Win32.SessionEndReasons.Kind
+         )
+         return NetFrameworkBase.Microsoft.Win32.SessionEndingEventArgs.Kind_Ptr renames NetFrameworkBase.Microsoft.Win32.SessionEndingEventArgs.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SessionEndingEventHandler is NetFrameworkBase.Microsoft.Win32.SessionEndingEventHandler.Kind_Ptr;
+      subtype SessionEndingEventHandler_Array is NetFrameworkBase.Microsoft.Win32.SessionEndingEventHandler.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.Microsoft.Win32.SessionEndingEventHandler.Kind_Callback) return NetFrameworkBase.Microsoft.Win32.SessionEndingEventHandler.Kind_Ptr renames NetFrameworkBase.Microsoft.Win32.SessionEndingEventHandler.Constructor;
+      
+      --------------------------------------------------------------------------
+      subtype SessionEndReasons is NetFrameworkBase.Microsoft.Win32.SessionEndReasons.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype SessionSwitchEventArgs is NetFrameworkBase.Microsoft.Win32.SessionSwitchEventArgs.Kind_Ptr;
+      subtype SessionSwitchEventArgs_Array is NetFrameworkBase.Microsoft.Win32.SessionSwitchEventArgs.Kind_Array;
+      
+         function Constructor
+         (
+            reason : NetFrameworkBase.Microsoft.Win32.SessionSwitchReason.Kind
+         )
+         return NetFrameworkBase.Microsoft.Win32.SessionSwitchEventArgs.Kind_Ptr renames NetFrameworkBase.Microsoft.Win32.SessionSwitchEventArgs.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype SessionSwitchEventHandler is NetFrameworkBase.Microsoft.Win32.SessionSwitchEventHandler.Kind_Ptr;
+      subtype SessionSwitchEventHandler_Array is NetFrameworkBase.Microsoft.Win32.SessionSwitchEventHandler.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.Microsoft.Win32.SessionSwitchEventHandler.Kind_Callback) return NetFrameworkBase.Microsoft.Win32.SessionSwitchEventHandler.Kind_Ptr renames NetFrameworkBase.Microsoft.Win32.SessionSwitchEventHandler.Constructor;
+      
+      --------------------------------------------------------------------------
+      subtype SessionSwitchReason is NetFrameworkBase.Microsoft.Win32.SessionSwitchReason.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype SystemEvents is NetFrameworkBase.Microsoft.Win32.SystemEvents.Kind_Ptr;
+      subtype SystemEvents_Array is NetFrameworkBase.Microsoft.Win32.SystemEvents.Kind_Array;
+      
+      --------------------------------------------------------------------------
+      subtype TimerElapsedEventArgs is NetFrameworkBase.Microsoft.Win32.TimerElapsedEventArgs.Kind_Ptr;
+      subtype TimerElapsedEventArgs_Array is NetFrameworkBase.Microsoft.Win32.TimerElapsedEventArgs.Kind_Array;
+      
+         function Constructor
+         (
+            timerId : NetFrameworkBase.IntPtr
+         )
+         return NetFrameworkBase.Microsoft.Win32.TimerElapsedEventArgs.Kind_Ptr renames NetFrameworkBase.Microsoft.Win32.TimerElapsedEventArgs.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype TimerElapsedEventHandler is NetFrameworkBase.Microsoft.Win32.TimerElapsedEventHandler.Kind_Ptr;
+      subtype TimerElapsedEventHandler_Array is NetFrameworkBase.Microsoft.Win32.TimerElapsedEventHandler.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.Microsoft.Win32.TimerElapsedEventHandler.Kind_Callback) return NetFrameworkBase.Microsoft.Win32.TimerElapsedEventHandler.Kind_Ptr renames NetFrameworkBase.Microsoft.Win32.TimerElapsedEventHandler.Constructor;
+      
+      --------------------------------------------------------------------------
+      subtype UserPreferenceCategory is NetFrameworkBase.Microsoft.Win32.UserPreferenceCategory.Kind;
+      
+      --------------------------------------------------------------------------
+      subtype UserPreferenceChangedEventArgs is NetFrameworkBase.Microsoft.Win32.UserPreferenceChangedEventArgs.Kind_Ptr;
+      subtype UserPreferenceChangedEventArgs_Array is NetFrameworkBase.Microsoft.Win32.UserPreferenceChangedEventArgs.Kind_Array;
+      
+         function Constructor
+         (
+            category : NetFrameworkBase.Microsoft.Win32.UserPreferenceCategory.Kind
+         )
+         return NetFrameworkBase.Microsoft.Win32.UserPreferenceChangedEventArgs.Kind_Ptr renames NetFrameworkBase.Microsoft.Win32.UserPreferenceChangedEventArgs.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype UserPreferenceChangedEventHandler is NetFrameworkBase.Microsoft.Win32.UserPreferenceChangedEventHandler.Kind_Ptr;
+      subtype UserPreferenceChangedEventHandler_Array is NetFrameworkBase.Microsoft.Win32.UserPreferenceChangedEventHandler.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.Microsoft.Win32.UserPreferenceChangedEventHandler.Kind_Callback) return NetFrameworkBase.Microsoft.Win32.UserPreferenceChangedEventHandler.Kind_Ptr renames NetFrameworkBase.Microsoft.Win32.UserPreferenceChangedEventHandler.Constructor;
+      
+      --------------------------------------------------------------------------
+      subtype UserPreferenceChangingEventArgs is NetFrameworkBase.Microsoft.Win32.UserPreferenceChangingEventArgs.Kind_Ptr;
+      subtype UserPreferenceChangingEventArgs_Array is NetFrameworkBase.Microsoft.Win32.UserPreferenceChangingEventArgs.Kind_Array;
+      
+         function Constructor
+         (
+            category : NetFrameworkBase.Microsoft.Win32.UserPreferenceCategory.Kind
+         )
+         return NetFrameworkBase.Microsoft.Win32.UserPreferenceChangingEventArgs.Kind_Ptr renames NetFrameworkBase.Microsoft.Win32.UserPreferenceChangingEventArgs.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype UserPreferenceChangingEventHandler is NetFrameworkBase.Microsoft.Win32.UserPreferenceChangingEventHandler.Kind_Ptr;
+      subtype UserPreferenceChangingEventHandler_Array is NetFrameworkBase.Microsoft.Win32.UserPreferenceChangingEventHandler.Kind_Array;
+      
+         function Constructor (Callback : NetFrameworkBase.Microsoft.Win32.UserPreferenceChangingEventHandler.Kind_Callback) return NetFrameworkBase.Microsoft.Win32.UserPreferenceChangingEventHandler.Kind_Ptr renames NetFrameworkBase.Microsoft.Win32.UserPreferenceChangingEventHandler.Constructor;
+      
+      --------------------------------------------------------------------------
+      subtype IntranetZoneCredentialPolicy is NetFrameworkBase.Microsoft.Win32.IntranetZoneCredentialPolicy.Kind_Ptr;
+      subtype IntranetZoneCredentialPolicy_Array is NetFrameworkBase.Microsoft.Win32.IntranetZoneCredentialPolicy.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.Microsoft.Win32.IntranetZoneCredentialPolicy.Kind_Ptr renames NetFrameworkBase.Microsoft.Win32.IntranetZoneCredentialPolicy.Constructor;
+         
    
 end;

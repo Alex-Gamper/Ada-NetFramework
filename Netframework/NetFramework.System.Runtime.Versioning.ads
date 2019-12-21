@@ -35,6 +35,8 @@ with NetFrameworkBase.System.Runtime.Versioning.ResourceScope;
 with NetFrameworkBase.System.Runtime.Versioning.VersioningHelper;
 with NetFrameworkBase.System.Runtime.Versioning.TargetFrameworkAttribute;
 with NetFrameworkBase.System.Runtime.Versioning.CompatibilitySwitch;
+with NetFrameworkBase.System.Runtime.Versioning.FrameworkName;
+with NetFrameworkBase.System.Version;
 --------------------------------------------------------------------------------
 package NetFramework.System.Runtime.Versioning is
    
@@ -99,5 +101,30 @@ package NetFramework.System.Runtime.Versioning is
       subtype CompatibilitySwitch is NetFrameworkBase.System.Runtime.Versioning.CompatibilitySwitch.Kind_Ptr;
       subtype CompatibilitySwitch_Array is NetFrameworkBase.System.Runtime.Versioning.CompatibilitySwitch.Kind_Array;
       
+      --------------------------------------------------------------------------
+      subtype FrameworkName is NetFrameworkBase.System.Runtime.Versioning.FrameworkName.Kind_Ptr;
+      subtype FrameworkName_Array is NetFrameworkBase.System.Runtime.Versioning.FrameworkName.Kind_Array;
+      
+         function Constructor
+         (
+            identifier : NetFrameworkBase.BSTR;
+            version : NetFrameworkBase.System.Version.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Runtime.Versioning.FrameworkName.Kind_Ptr renames NetFrameworkBase.System.Runtime.Versioning.FrameworkName.Constructor; 
+         
+         function Constructor
+         (
+            identifier : NetFrameworkBase.BSTR;
+            version : NetFrameworkBase.System.Version.Kind_Ptr;
+            profile : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.Versioning.FrameworkName.Kind_Ptr renames NetFrameworkBase.System.Runtime.Versioning.FrameworkName.Constructor; 
+         
+         function Constructor
+         (
+            frameworkName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Runtime.Versioning.FrameworkName.Kind_Ptr renames NetFrameworkBase.System.Runtime.Versioning.FrameworkName.Constructor; 
+         
    
 end;
