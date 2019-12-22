@@ -179,9 +179,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <AdaCompile Include="NetFramework.Accessibility.ads" />
     <AdaCompile Include="NetFramework.ads" />
     <AdaCompile Include="NetFramework.Microsoft.ads" />
     <AdaCompile Include="NetFramework.Microsoft.CSharp.ads" />
+    <AdaCompile Include="NetFramework.Microsoft.SqlServer.ads" />
+    <AdaCompile Include="NetFramework.Microsoft.SqlServer.Server.ads" />
     <AdaCompile Include="NetFramework.Microsoft.VisualBasic.ads" />
     <AdaCompile Include="NetFramework.Microsoft.Win32.ads" />
     <AdaCompile Include="NetFramework.Microsoft.Win32.SafeHandles.ads" />
@@ -199,8 +202,17 @@
     <AdaCompile Include="NetFramework.System.Configuration.Assemblies.ads" />
     <AdaCompile Include="NetFramework.System.Configuration.Internal.ads" />
     <AdaCompile Include="NetFramework.System.Configuration.Provider.ads" />
+    <AdaCompile Include="NetFramework.System.Data.ads" />
+    <AdaCompile Include="NetFramework.System.Data.Common.ads" />
+    <AdaCompile Include="NetFramework.System.Data.Odbc.ads" />
+    <AdaCompile Include="NetFramework.System.Data.OleDb.ads" />
+    <AdaCompile Include="NetFramework.System.Data.Sql.ads" />
+    <AdaCompile Include="NetFramework.System.Data.SqlClient.ads" />
+    <AdaCompile Include="NetFramework.System.Data.SqlTypes.ads" />
     <AdaCompile Include="NetFramework.System.Deployment.ads" />
+    <AdaCompile Include="NetFramework.System.Deployment.Application.ads" />
     <AdaCompile Include="NetFramework.System.Deployment.Internal.ads" />
+    <AdaCompile Include="NetFramework.System.Deployment.Internal.CodeSigning.ads" />
     <AdaCompile Include="NetFramework.System.Diagnostics.ads" />
     <AdaCompile Include="NetFramework.System.Diagnostics.CodeAnalysis.ads" />
     <AdaCompile Include="NetFramework.System.Diagnostics.Contracts.ads" />
@@ -210,7 +222,17 @@
     <AdaCompile Include="NetFramework.System.Diagnostics.PerformanceData.ads" />
     <AdaCompile Include="NetFramework.System.Diagnostics.SymbolStore.ads" />
     <AdaCompile Include="NetFramework.System.Diagnostics.Tracing.ads" />
+    <AdaCompile Include="NetFramework.System.Drawing.ads" />
+    <AdaCompile Include="NetFramework.System.Drawing.Configuration.ads" />
+    <AdaCompile Include="NetFramework.System.Drawing.Design.ads" />
+    <AdaCompile Include="NetFramework.System.Drawing.Drawing2D.ads" />
+    <AdaCompile Include="NetFramework.System.Drawing.Imaging.ads" />
+    <AdaCompile Include="NetFramework.System.Drawing.Printing.ads" />
+    <AdaCompile Include="NetFramework.System.Drawing.Text.ads" />
     <AdaCompile Include="NetFramework.System.Dynamic.ads" />
+    <AdaCompile Include="NetFramework.System.EnterpriseServices.ads" />
+    <AdaCompile Include="NetFramework.System.EnterpriseServices.CompensatingResourceManager.ads" />
+    <AdaCompile Include="NetFramework.System.EnterpriseServices.Internal.ads" />
     <AdaCompile Include="NetFramework.System.Globalization.ads" />
     <AdaCompile Include="NetFramework.System.IO.ads" />
     <AdaCompile Include="NetFramework.System.IO.Compression.ads" />
@@ -259,6 +281,7 @@
     <AdaCompile Include="NetFramework.System.Runtime.Serialization.ads" />
     <AdaCompile Include="NetFramework.System.Runtime.Serialization.Formatters.ads" />
     <AdaCompile Include="NetFramework.System.Runtime.Serialization.Formatters.Binary.ads" />
+    <AdaCompile Include="NetFramework.System.Runtime.Serialization.Formatters.Soap.ads" />
     <AdaCompile Include="NetFramework.System.Runtime.Versioning.ads" />
     <AdaCompile Include="NetFramework.System.Security.AccessControl.ads" />
     <AdaCompile Include="NetFramework.System.Security.ads" />
@@ -278,8 +301,18 @@
     <AdaCompile Include="NetFramework.System.Threading.ads" />
     <AdaCompile Include="NetFramework.System.Threading.Tasks.ads" />
     <AdaCompile Include="NetFramework.System.Timers.ads" />
+    <AdaCompile Include="NetFramework.System.Transactions.ads" />
+    <AdaCompile Include="NetFramework.System.Transactions.Configuration.ads" />
     <AdaCompile Include="NetFramework.System.Web.ads" />
     <AdaCompile Include="NetFramework.System.Windows.ads" />
+    <AdaCompile Include="NetFramework.System.Windows.Forms.ads" />
+    <AdaCompile Include="NetFramework.System.Windows.Forms.Automation.ads" />
+    <AdaCompile Include="NetFramework.System.Windows.Forms.ComponentModel.ads" />
+    <AdaCompile Include="NetFramework.System.Windows.Forms.ComponentModel.Com2Interop.ads" />
+    <AdaCompile Include="NetFramework.System.Windows.Forms.Design.ads" />
+    <AdaCompile Include="NetFramework.System.Windows.Forms.Layout.ads" />
+    <AdaCompile Include="NetFramework.System.Windows.Forms.PropertyGridInternal.ads" />
+    <AdaCompile Include="NetFramework.System.Windows.Forms.VisualStyles.ads" />
     <AdaCompile Include="NetFramework.System.Windows.Input.ads" />
     <AdaCompile Include="NetFramework.System.Windows.Markup.ads" />
     <AdaCompile Include="NetFramework.System.Xml.ads" />

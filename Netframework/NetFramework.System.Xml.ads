@@ -92,6 +92,7 @@ with NetFrameworkBase.System.Xml.XmlSignificantWhitespace;
 with NetFrameworkBase.System.Xml.XmlText;
 with NetFrameworkBase.System.Xml.XmlWhitespace;
 with NetFrameworkBase.System.Xml.XmlTokenizedType;
+with NetFrameworkBase.System.Xml.XmlDataDocument;
 with NetFrameworkBase.System.Exception_x;
 with NetFrameworkBase.System.Security.Policy.Evidence;
 with NetFrameworkBase.System.Security.PermissionSet;
@@ -100,6 +101,7 @@ with NetFrameworkBase.System.IO.Stream;
 with NetFrameworkBase.System.IO.TextReader;
 with NetFrameworkBase.System.IO.TextWriter;
 with NetFrameworkBase.System.Object;
+with NetFrameworkBase.System.Data.DataSet;
 --------------------------------------------------------------------------------
 package NetFramework.System.Xml is
    
@@ -639,5 +641,17 @@ package NetFramework.System.Xml is
       --------------------------------------------------------------------------
       subtype XmlTokenizedType is NetFrameworkBase.System.Xml.XmlTokenizedType.Kind;
       
+      --------------------------------------------------------------------------
+      subtype XmlDataDocument is NetFrameworkBase.System.Xml.XmlDataDocument.Kind_Ptr;
+      subtype XmlDataDocument_Array is NetFrameworkBase.System.Xml.XmlDataDocument.Kind_Array;
+      
+         function Constructor return NetFrameworkBase.System.Xml.XmlDataDocument.Kind_Ptr renames NetFrameworkBase.System.Xml.XmlDataDocument.Constructor;
+         
+         function Constructor
+         (
+            dataset : NetFrameworkBase.System.Data.DataSet.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Xml.XmlDataDocument.Kind_Ptr renames NetFrameworkBase.System.Xml.XmlDataDocument.Constructor; 
+         
    
 end;

@@ -38,10 +38,21 @@ with NetFrameworkBase.System.Resources.ResourceSet;
 with NetFrameworkBase.System.Resources.ResourceWriter;
 with NetFrameworkBase.System.Resources.SatelliteContractVersionAttribute;
 with NetFrameworkBase.System.Resources.UltimateResourceFallbackLocation;
+with NetFrameworkBase.System.Resources.ResXDataNode;
+with NetFrameworkBase.System.Resources.ResXFileRef;
+with NetFrameworkBase.System.Resources.ResXResourceReader;
+with NetFrameworkBase.System.Resources.ResXResourceSet;
+with NetFrameworkBase.System.Resources.ResXResourceWriter;
 with NetFrameworkBase.System.Exception_x;
 with NetFrameworkBase.System.Reflection.Assembly;
 with NetFrameworkBase.System.Type_x;
 with NetFrameworkBase.System.IO.Stream;
+with NetFrameworkBase.System.Object;
+with NetFrameworkBase.System.Text.Encoding;
+with NetFrameworkBase.System.ComponentModel.Design.ITypeResolutionService;
+with NetFrameworkBase.System.IO.TextReader;
+with NetFrameworkBase.System.Reflection.AssemblyName;
+with NetFrameworkBase.System.IO.TextWriter;
 --------------------------------------------------------------------------------
 package NetFramework.System.Resources is
    
@@ -207,5 +218,144 @@ package NetFramework.System.Resources is
       --------------------------------------------------------------------------
       subtype UltimateResourceFallbackLocation is NetFrameworkBase.System.Resources.UltimateResourceFallbackLocation.Kind;
       
+      --------------------------------------------------------------------------
+      subtype ResXDataNode is NetFrameworkBase.System.Resources.ResXDataNode.Kind_Ptr;
+      subtype ResXDataNode_Array is NetFrameworkBase.System.Resources.ResXDataNode.Kind_Array;
+      
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR;
+            value : NetFrameworkBase.System.Object.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Resources.ResXDataNode.Kind_Ptr renames NetFrameworkBase.System.Resources.ResXDataNode.Constructor; 
+         
+         function Constructor
+         (
+            name : NetFrameworkBase.BSTR;
+            fileRef : NetFrameworkBase.System.Resources.ResXFileRef.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Resources.ResXDataNode.Kind_Ptr renames NetFrameworkBase.System.Resources.ResXDataNode.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ResXFileRef is NetFrameworkBase.System.Resources.ResXFileRef.Kind_Ptr;
+      subtype ResXFileRef_Array is NetFrameworkBase.System.Resources.ResXFileRef.Kind_Array;
+      
+         function Constructor
+         (
+            fileName : NetFrameworkBase.BSTR;
+            typeName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Resources.ResXFileRef.Kind_Ptr renames NetFrameworkBase.System.Resources.ResXFileRef.Constructor; 
+         
+         function Constructor
+         (
+            fileName : NetFrameworkBase.BSTR;
+            typeName : NetFrameworkBase.BSTR;
+            textFileEncoding : NetFrameworkBase.System.Text.Encoding.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Resources.ResXFileRef.Kind_Ptr renames NetFrameworkBase.System.Resources.ResXFileRef.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ResXResourceReader is NetFrameworkBase.System.Resources.ResXResourceReader.Kind_Ptr;
+      subtype ResXResourceReader_Array is NetFrameworkBase.System.Resources.ResXResourceReader.Kind_Array;
+      
+         function Constructor
+         (
+            fileName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Resources.ResXResourceReader.Kind_Ptr renames NetFrameworkBase.System.Resources.ResXResourceReader.Constructor; 
+         
+         function Constructor
+         (
+            fileName : NetFrameworkBase.BSTR;
+            typeResolver : NetFrameworkBase.System.ComponentModel.Design.ITypeResolutionService.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Resources.ResXResourceReader.Kind_Ptr renames NetFrameworkBase.System.Resources.ResXResourceReader.Constructor; 
+         
+         function Constructor
+         (
+            reader : NetFrameworkBase.System.IO.TextReader.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Resources.ResXResourceReader.Kind_Ptr renames NetFrameworkBase.System.Resources.ResXResourceReader.Constructor; 
+         
+         function Constructor
+         (
+            reader : NetFrameworkBase.System.IO.TextReader.Kind_Ptr;
+            typeResolver : NetFrameworkBase.System.ComponentModel.Design.ITypeResolutionService.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Resources.ResXResourceReader.Kind_Ptr renames NetFrameworkBase.System.Resources.ResXResourceReader.Constructor; 
+         
+         function Constructor
+         (
+            stream : NetFrameworkBase.System.IO.Stream.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Resources.ResXResourceReader.Kind_Ptr renames NetFrameworkBase.System.Resources.ResXResourceReader.Constructor; 
+         
+         function Constructor
+         (
+            stream : NetFrameworkBase.System.IO.Stream.Kind_Ptr;
+            typeResolver : NetFrameworkBase.System.ComponentModel.Design.ITypeResolutionService.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Resources.ResXResourceReader.Kind_Ptr renames NetFrameworkBase.System.Resources.ResXResourceReader.Constructor; 
+         
+         function Constructor
+         (
+            stream : NetFrameworkBase.System.IO.Stream.Kind_Ptr;
+            assemblyNames : NetFrameworkBase.System.Reflection.AssemblyName.Kind_Array
+         )
+         return NetFrameworkBase.System.Resources.ResXResourceReader.Kind_Ptr renames NetFrameworkBase.System.Resources.ResXResourceReader.Constructor; 
+         
+         function Constructor
+         (
+            reader : NetFrameworkBase.System.IO.TextReader.Kind_Ptr;
+            assemblyNames : NetFrameworkBase.System.Reflection.AssemblyName.Kind_Array
+         )
+         return NetFrameworkBase.System.Resources.ResXResourceReader.Kind_Ptr renames NetFrameworkBase.System.Resources.ResXResourceReader.Constructor; 
+         
+         function Constructor
+         (
+            fileName : NetFrameworkBase.BSTR;
+            assemblyNames : NetFrameworkBase.System.Reflection.AssemblyName.Kind_Array
+         )
+         return NetFrameworkBase.System.Resources.ResXResourceReader.Kind_Ptr renames NetFrameworkBase.System.Resources.ResXResourceReader.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ResXResourceSet is NetFrameworkBase.System.Resources.ResXResourceSet.Kind_Ptr;
+      subtype ResXResourceSet_Array is NetFrameworkBase.System.Resources.ResXResourceSet.Kind_Array;
+      
+         function Constructor
+         (
+            fileName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Resources.ResXResourceSet.Kind_Ptr renames NetFrameworkBase.System.Resources.ResXResourceSet.Constructor; 
+         
+         function Constructor
+         (
+            stream : NetFrameworkBase.System.IO.Stream.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Resources.ResXResourceSet.Kind_Ptr renames NetFrameworkBase.System.Resources.ResXResourceSet.Constructor; 
+         
+      --------------------------------------------------------------------------
+      subtype ResXResourceWriter is NetFrameworkBase.System.Resources.ResXResourceWriter.Kind_Ptr;
+      subtype ResXResourceWriter_Array is NetFrameworkBase.System.Resources.ResXResourceWriter.Kind_Array;
+      
+         function Constructor
+         (
+            fileName : NetFrameworkBase.BSTR
+         )
+         return NetFrameworkBase.System.Resources.ResXResourceWriter.Kind_Ptr renames NetFrameworkBase.System.Resources.ResXResourceWriter.Constructor; 
+         
+         function Constructor
+         (
+            stream : NetFrameworkBase.System.IO.Stream.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Resources.ResXResourceWriter.Kind_Ptr renames NetFrameworkBase.System.Resources.ResXResourceWriter.Constructor; 
+         
+         function Constructor
+         (
+            textWriter : NetFrameworkBase.System.IO.TextWriter.Kind_Ptr
+         )
+         return NetFrameworkBase.System.Resources.ResXResourceWriter.Kind_Ptr renames NetFrameworkBase.System.Resources.ResXResourceWriter.Constructor; 
+         
    
 end;
