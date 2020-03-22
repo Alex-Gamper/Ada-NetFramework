@@ -443,30 +443,41 @@ package body NetFrameworkAdaRuntime is
     function Addr (S : Wide_String) return LPWSTR is
         function To_LPWSTR is new Ada.Unchecked_Conversion (System.Address, LPWSTR);
     begin
-        return To_LPWSTR (S (S'First)'Address);
+        if S'Length > 1 then
+            return To_LPWSTR (S (S'First)'Address);
+        end if;
+        return null;
     end;
 
     ----------------------------------------------------------------------------
     function Addr (S : Wide_String) return LPCWSTR is
         function To_LPCWSTR is new Ada.Unchecked_Conversion (System.Address, LPCWSTR);
     begin
-        return To_LPCWSTR (S (S'First)'Address);
+        if S'Length > 1 then
+            return To_LPCWSTR (S (S'First)'Address);
+        end if;
+        return null;
     end;
 
     ----------------------------------------------------------------------------
     function Addr (S : Wide_String) return LPOLESTR is
         function To_LPOLESTR is new Ada.Unchecked_Conversion (System.Address, LPOLESTR);
     begin
-        return To_LPOLESTR (S (S'First)'Address);
+        if S'Length > 1 then
+            return To_LPOLESTR (S (S'First)'Address);
+        end if;
+        return null;
     end;
 
     ----------------------------------------------------------------------------
     function To_BSTR (Value : Wide_String) return BSTR is
         Hr		: HRESULT := 0;
-        Buffer  : LPOLESTR := Addr(Value);
-        RetVal	: aliased BSTR;
+        Buffer  : LPOLESTR := Addr (Value);
+        RetVal	: aliased BSTR := null;
     begin
-        RetVal := SysAllocStringLen(Buffer, Value'Length);
+        if Buffer /= null then
+            RetVal := SysAllocStringLen (Buffer, Value'Length);
+        end if;
         return RetVal;
     end;
 
