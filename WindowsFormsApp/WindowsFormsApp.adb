@@ -60,7 +60,7 @@ begin
             use Ada.Real_Time;
 
             Epoch   : constant Ada.Real_Time.Time := Ada.Real_Time.Clock;
-            Text    : NetFramework.BSTR := null;
+            Text    : NetFramework.BSTR := To_BSTR ("");
 
             function Elapsed_Time return Wide_String is
             begin

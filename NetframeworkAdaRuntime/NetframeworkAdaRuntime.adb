@@ -443,14 +443,20 @@ package body NetFrameworkAdaRuntime is
     function Addr (S : Wide_String) return LPWSTR is
         function To_LPWSTR is new Ada.Unchecked_Conversion (System.Address, LPWSTR);
     begin
-        return To_LPWSTR (S (S'First)'Address);
+        if S'Length > 1 then
+            return To_LPWSTR (S (S'First)'Address);
+        end if;
+        return null;
     end;
 
     ----------------------------------------------------------------------------
     function Addr (S : Wide_String) return LPCWSTR is
         function To_LPCWSTR is new Ada.Unchecked_Conversion (System.Address, LPCWSTR);
     begin
-        return To_LPCWSTR (S (S'First)'Address);
+        if S'Length > 1 then
+            return To_LPCWSTR (S (S'First)'Address);
+        end if;
+        return null;
     end;
 
     ----------------------------------------------------------------------------
