@@ -2,7 +2,6 @@
 with Ada.Exceptions;
 with Ada.Real_Time;
 with EventHandlers;
-
 with NetFrameworkWin32;
 with NetFrameworkAdaRuntime;
 with NetFrameworkBase.System.Drawing.KnownColor;
@@ -11,16 +10,13 @@ with NetFrameworkBase.System.Windows.Forms.Control.ControlCollection;
 with NetFramework;
 with NetFramework.System.Drawing;
 with NetFramework.System.Windows.Forms;
-
 with WinMainStartup;                            use WinMainStartup;
 --------------------------------------------------------------------------------
 procedure WindowsFormsApp is
-
-    package NfS renames  NetFramework.System;
+    package Nfs renames  NetFramework.System;
     package NfSWF renames  NfS.Windows.Forms;
 
     m_Runtime   : NetFrameworkAdaRuntime.RuntimeHost := NetFrameworkAdaRuntime.Instance;
-
 begin
 
     NetFrameworkAdaRuntime.Initialize (m_Runtime);
@@ -31,19 +27,19 @@ begin
         use NetFrameworkBase.System.Drawing.KnownColor;
 
         m_Form              : NfSWF.Form := NfSWF.Constructor;
-        m_OnLoad            : NfS.EventHandler := Nfs.Constructor (EventHandlers.OnLoad'access);
-        m_OnFileMenuOpen    : NfS.EventHandler := Nfs.Constructor (EventHandlers.OnFileMenuOpen'access);
-        m_OnFileMenuClose   : NfS.EventHandler := Nfs.Constructor (EventHandlers.OnFileMenuClose'access);
-        m_OnFileMenuExit    : NfS.EventHandler := Nfs.Constructor (EventHandlers.OnFileMenuExit'access);
-        m_Size              : NfS.Drawing.Size := NfS.Drawing.Constructor (1024, 768);
-        m_Controls          : NetFrameworkBase.System.Windows.Forms.Control.ControlCollection.Kind_Ptr := m_Form.Controls;
+        m_OnLoad            : Nfs.EventHandler := Nfs.Constructor (EventHandlers.OnLoad'access);
+        m_OnFileMenuOpen    : Nfs.EventHandler := Nfs.Constructor (EventHandlers.OnFileMenuOpen'access);
+        m_OnFileMenuClose   : Nfs.EventHandler := Nfs.Constructor (EventHandlers.OnFileMenuClose'access);
+        m_OnFileMenuExit    : Nfs.EventHandler := Nfs.Constructor (EventHandlers.OnFileMenuExit'access);
+        m_Size              : Nfs.Drawing.Size := Nfs.Drawing.Constructor (1024, 768);
+        m_Controls          : NetFrameworkBase.System.Windows.Forms.Control.ControlCollection.Kind_Ptr := null; 
         m_MenuStrip         : NfSWF.MenuStrip := NfSWF.Constructor;
         m_MenuStripItems    : NfSWF.ToolStripItemCollection := m_MenuStrip.Items;
-            m_FileMenu      : NfSWF.ToolStripMenuItem := NfSWF.Constructor(To_BSTR("File"));
+            m_FileMenu      : NfSWF.ToolStripMenuItem := NfSWF.Constructor (To_BSTR("File"));
             m_FileMenuItems : NfSWF.ToolStripItemCollection := m_FileMenu.DropDownItems;
-                m_OpenMenu  : NfSWF.ToolStripMenuItem := NfSWF.Constructor(To_BSTR("Open"));
-                m_CloseMenu : NfSWF.ToolStripMenuItem := NfSWF.Constructor(To_BSTR("Close"));
-                m_ExitMenu  : NfSWF.ToolStripMenuItem := NfSWF.Constructor(To_BSTR("Exit"));
+                m_OpenMenu  : NfSWF.ToolStripMenuItem := NfSWF.Constructor (To_BSTR("Open"));
+                m_CloseMenu : NfSWF.ToolStripMenuItem := NfSWF.Constructor (To_BSTR("Close"));
+                m_ExitMenu  : NfSWF.ToolStripMenuItem := NfSWF.Constructor (To_BSTR("Exit"));
         m_ToolStrip         : NfSWF.ToolStrip := NfSWF.Constructor;
         m_ToolStripItems    : NfSWF.ToolStripItemCollection := m_ToolStrip.Items;
             m_Button1       : NfSWF.ToolStripButton := NfSWF.Constructor (To_BSTR("Button 1"));
@@ -64,7 +60,7 @@ begin
             use Ada.Real_Time;
 
             Epoch   : constant Ada.Real_Time.Time := Ada.Real_Time.Clock;
-            Text    : NetFramework.BSTR;
+            Text    : NetFramework.BSTR := null;
 
             function Elapsed_Time return Wide_String is
             begin
@@ -89,7 +85,7 @@ begin
         NetframeworkBase.System.Windows.Forms.Application.EnableVisualStyles;
 
         m_Form.SuspendLayout;
-        
+        m_Controls := m_Form.Controls;
         m_OpenMenu.add_Click (m_OnFileMenuOpen);
         m_CloseMenu.add_Click (m_OnFileMenuClose);
         m_ExitMenu.add_Click (m_OnFileMenuExit);
@@ -98,14 +94,14 @@ begin
         m_Button2.add_Click (m_OnButton2);
         m_Button3.add_Click (m_OnButton3);
 
-        Index := m_MenuStripItems.Add (NfSWF.ToolStripItem(m_FileMenu));
-        Index := m_FileMenuItems.Add (NfSWF.ToolStripItem(m_OpenMenu));
-        Index := m_FileMenuItems.Add (NfSWF.ToolStripItem(m_CloseMenu));
-        Index := m_FileMenuItems.Add (NfSWF.ToolStripItem(m_ExitMenu));
+        Index := m_MenuStripItems.Add (NfSWF.ToolStripItem (m_FileMenu));
+        Index := m_FileMenuItems.Add (NfSWF.ToolStripItem (m_OpenMenu));
+        Index := m_FileMenuItems.Add (NfSWF.ToolStripItem (m_CloseMenu));
+        Index := m_FileMenuItems.Add (NfSWF.ToolStripItem (m_ExitMenu));
 
-        Index := m_ToolStripItems.Add (NfSWF.ToolStripItem(m_Button1));
-        Index := m_ToolStripItems.Add (NfSWF.ToolStripItem(m_Button2));
-        Index := m_ToolStripItems.Add (NfSWF.ToolStripItem(m_Button3));
+        Index := m_ToolStripItems.Add (NfSWF.ToolStripItem (m_Button1));
+        Index := m_ToolStripItems.Add (NfSWF.ToolStripItem (m_Button2));
+        Index := m_ToolStripItems.Add (NfSWF.ToolStripItem (m_Button3));
 
         m_Controls.Add (NfSWF.Control (m_ToolStrip));
         m_Controls.Add (NfSWF.Control (m_MenuStrip));
@@ -115,7 +111,7 @@ begin
         m_Form.Text (To_BSTR("WinForm application written in Ada"));
         m_Form.Size (m_Size);
         m_Form.add_Load (m_OnLoad);
-        m_Form.ResumeLayout(false);
+        m_Form.ResumeLayout (false);
         m_Form.PerformLayout;
         m_StatusBar.Text (To_BSTR ("qwerty"));
         NetFrameworkBase.System.Windows.Forms.Application.Run (m_Form);
